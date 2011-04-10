@@ -1,0 +1,13 @@
+# This is an office desk.
+OBJECT:Executive Office Desk:DESK:263:234
+OBJECT:Executive_Chair:DESK_CHAIR:283:256
+ITEM:Package:PACKAGE:332:255
+OBJECT:executive_office_door_to_top_floor:OFFICE_DOOR:256:90
+
+# The map file.
+MAP:Executive Office.map
+
+# The lights from the windows.
+LIGHT_QUAD:light_window_1:604:142:604:182:515:228:515:188
+LIGHT_QUAD:light_window_2:604:202:604:242:515:288:515:248
+LIGHT_QUAD:light_window_3:604:262:604:302:515:348:515:308

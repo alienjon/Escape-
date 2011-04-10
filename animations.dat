@@ -1,0 +1,21 @@
+##
+# As always, empty lines and lines beginning with '#' are ignored.
+#
+# The animations.dat file specifies the animation files for the various animations in the game.  With the
+# exception of a few game-specific keywords this file does not specify any animations itself, just the
+# files that do.  All animation files are denoted with the '.ani' extension, so only the basename is
+# required (ie: 'Player' will translate to 'Player.ani').
+##
+Player
+Pink Zombie
+Red Zombie
+Green Zombie
+Soldier
+Desk
+Closed Door
+Open Door
+Desk Chair
+Conversation Images
+Package
+Flashlight
+#Fire Explosion

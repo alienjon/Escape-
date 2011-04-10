@@ -1,0 +1,6 @@
+Logging to error.log
+[Logfile for Escape! v0.0.0]
+---------------
+Log: Setting video driver to x11
+Log: Video initialization successful.
+Log: Audio initialization successful.

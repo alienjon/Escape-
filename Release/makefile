@@ -1,0 +1,81 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+################################################################################
+
+-include ../makefile.init
+
+RM := rm -rf
+
+# All of the sources participating in the build are defined here
+-include sources.mk
+-include subdir.mk
+-include Widgets/subdir.mk
+-include Widgets/GameOptions/subdir.mk
+-include Triggers/subdir.mk
+-include Screens/subdir.mk
+-include Screens/MenuScreenWidgets/subdir.mk
+-include Screens/MenuScreenWidgets/LoadGame/subdir.mk
+-include PlotInfo/subdir.mk
+-include Math/subdir.mk
+-include MapInfo/subdir.mk
+-include Managers/subdir.mk
+-include LevelInfo/subdir.mk
+-include Interfaces/subdir.mk
+-include Guichan/widgets/subdir.mk
+-include Guichan/subdir.mk
+-include Guichan/sdl/subdir.mk
+-include Guichan/opengl/subdir.mk
+-include Game/subdir.mk
+-include Entities/Non-Creatures/subdir.mk
+-include Entities/subdir.mk
+-include Entities/Creatures/Zombies/subdir.mk
+-include Entities/Creatures/subdir.mk
+-include Engine/subdir.mk
+-include Actions/subdir.mk
+-include objects.mk
+
+ifneq ($(MAKECMDGOALS),clean)
+ifneq ($(strip $(C++_DEPS)),)
+-include $(C++_DEPS)
+endif
+ifneq ($(strip $(C_DEPS)),)
+-include $(C_DEPS)
+endif
+ifneq ($(strip $(CC_DEPS)),)
+-include $(CC_DEPS)
+endif
+ifneq ($(strip $(CPP_DEPS)),)
+-include $(CPP_DEPS)
+endif
+ifneq ($(strip $(CXX_DEPS)),)
+-include $(CXX_DEPS)
+endif
+ifneq ($(strip $(C_UPPER_DEPS)),)
+-include $(C_UPPER_DEPS)
+endif
+endif
+
+-include ../makefile.defs
+
+# Add inputs and outputs from these tool invocations to the build variables 
+
+# All Target
+all: Escape
+
+# Tool invocations
+Escape: $(OBJS) $(USER_OBJS)
+	@echo 'Building target: $@'
+	@echo 'Invoking: GCC C++ Linker'
+	g++  -o"Escape" $(OBJS) $(USER_OBJS) $(LIBS)
+	@echo 'Finished building target: $@'
+	@echo ' '
+
+# Other Targets
+clean:
+	-$(RM) $(OBJS)$(C++_DEPS)$(C_DEPS)$(CC_DEPS)$(CPP_DEPS)$(EXECUTABLES)$(CXX_DEPS)$(C_UPPER_DEPS) Escape
+	-@echo ' '
+
+.PHONY: all clean dependents
+.SECONDARY:
+
+-include ../makefile.targets

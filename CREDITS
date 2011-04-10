@@ -1,0 +1,32 @@
+CODING
+------
+I did most of the coding, and the little I didn't do was inspired from various books and online tutorials, including:
+Accelerated C++, Lazy Foo Productions (http://www.lazyfoo.net/SDL_tutorials/index.php), Rene Nyffenegger (adp-gmbh.ch/cpp/common/base64.html),
+blackspawn's geometrical triangulation calculations (www.blackspwan.com)
+
+GRAPHICS
+--------
+The tilesets and most 2D graphics were found at Reiner's website: reinerstileset.4players.de
+He has an excellent collection.
+
+The rest of the poor excuses for 2D artwork was done by me using The GIMP.  Image fonts used the GIMP fonts: "Marked Fool" and "It Wasn't Me"
+Should you be crazy enough to use them elsewhere I only ask you include my name with it and a link to my contact information
+(my website is preferred: cyberneticpitstop.zapto.org - See CONTACT for additional information)
+
+AUDIO
+----
+Anitras Dance and Human Drums were both obtained from the Tribe of Noise website (www.tribeofnoise.com).  Credits go to:
+Intelligence: Anitras Dance
+RubX Project: Human Drums.
+
+Additionally, Partners in Rhyme created several of the menu sound effects (also obtained from the Tribe of Noise website).
+
+Several additional sounds were obtained from opengameart.org and created by Michel Baradari.
+
+The fizzle sound is used under the Creative Commons Attribution License 3.0 (http://creativecommons.org/licenses/by/3.0/).
+It was made by Mike Koenig and retrieved from http://soundbible.com/1308-Fizzle.html on 08/12/2010.
+
+The door creaking sound is under public domain and made by Stephan.  It was found at http://soundbible.com/1362-Old-Door-Creaking.html
+on 08/12/2010.
+
+The grunt.wav sound was created by Matthew Newman and downloaded from http://opengameart.org/content/vocal-grunts-tribeewav.  It is licensed as GPL 2/3.

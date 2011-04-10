@@ -1,0 +1,39 @@
+##
+# Green Zombie.ani - This file describes the various animations for the player.
+#
+# A definition begins with a user defined-keyword for the specified animation followed by parameters which define that animation.
+# Note: Creature are required to have animations for the following: walking, standing, getting hurt, falling down. In each of the
+# 8 directions: up, upright, right, downright, down, downleft, left, upleft
+##
+GREENZOMBIE_WALKING_UP:Green Zombie/walking n0000.png:Green Zombie/walking n0001.png:Green Zombie/walking n0002.png:Green Zombie/walking n0003.png:Green Zombie/walking n0004.png:Green Zombie/walking n0005.png:Green Zombie/walking n0006.png:Green Zombie/walking n0007.png
+GREENZOMBIE_WALKING_UPRIGHT:Green Zombie/walking ne0000.png:Green Zombie/walking ne0001.png:Green Zombie/walking ne0002.png:Green Zombie/walking ne0003.png:Green Zombie/walking ne0004.png:Green Zombie/walking ne0005.png:Green Zombie/walking ne0006.png:Green Zombie/walking ne0007.png
+GREENZOMBIE_WALKING_RIGHT:Green Zombie/walking e0000.png:Green Zombie/walking e0001.png:Green Zombie/walking e0002.png:Green Zombie/walking e0003.png:Green Zombie/walking e0004.png:Green Zombie/walking e0005.png:Green Zombie/walking e0006.png:Green Zombie/walking e0007.png
+GREENZOMBIE_WALKING_DOWNRIGHT:Green Zombie/walking se0000.png:Green Zombie/walking se0001.png:Green Zombie/walking se0002.png:Green Zombie/walking se0003.png:Green Zombie/walking se0004.png:Green Zombie/walking se0005.png:Green Zombie/walking se0006.png:Green Zombie/walking se0007.png
+GREENZOMBIE_WALKING_DOWN:Green Zombie/walking s0000.png:Green Zombie/walking s0001.png:Green Zombie/walking s0002.png:Green Zombie/walking s0003.png:Green Zombie/walking s0004.png:Green Zombie/walking s0005.png:Green Zombie/walking s0006.png:Green Zombie/walking s0007.png
+GREENZOMBIE_WALKING_DOWNLEFT:Green Zombie/walking sw0000.png:Green Zombie/walking sw0001.png:Green Zombie/walking sw0002.png:Green Zombie/walking sw0003.png:Green Zombie/walking sw0004.png:Green Zombie/walking sw0005.png:Green Zombie/walking sw0006.png:Green Zombie/walking sw0007.png
+GREENZOMBIE_WALKING_LEFT:Green Zombie/walking w0000.png:Green Zombie/walking w0001.png:Green Zombie/walking w0002.png:Green Zombie/walking w0003.png:Green Zombie/walking w0004.png:Green Zombie/walking w0005.png:Green Zombie/walking w0006.png:Green Zombie/walking w0007.png
+GREENZOMBIE_WALKING_UPLEFT:Green Zombie/walking nw0000.png:Green Zombie/walking nw0001.png:Green Zombie/walking nw0002.png:Green Zombie/walking nw0003.png:Green Zombie/walking nw0004.png:Green Zombie/walking nw0005.png:Green Zombie/walking nw0006.png:Green Zombie/walking nw0007.png
+GREENZOMBIE_STANDING_UP:Green Zombie/stopped0004.png
+GREENZOMBIE_STANDING_UPRIGHT:Green Zombie/stopped0005.png
+GREENZOMBIE_STANDING_RIGHT:Green Zombie/stopped0006.png
+GREENZOMBIE_STANDING_DOWNRIGHT:Green Zombie/stopped0007.png
+GREENZOMBIE_STANDING_DOWN:Green Zombie/stopped0000.png
+GREENZOMBIE_STANDING_DOWNLEFT:Green Zombie/stopped0001.png
+GREENZOMBIE_STANDING_LEFT:Green Zombie/stopped0002.png
+GREENZOMBIE_STANDING_UPLEFT:Green Zombie/stopped0003.png
+GREENZOMBIE_HURT_UP:Green Zombie/been hit n0000.png:Green Zombie/been hit n0001.png:Green Zombie/been hit n0002.png:Green Zombie/been hit n0003.png:Green Zombie/been hit n0004.png:Green Zombie/been hit n0005.png:Green Zombie/been hit n0006.png:Green Zombie/been hit n0007.png
+GREENZOMBIE_HURT_UPRIGHT:Green Zombie/been hit ne0000.png:Green Zombie/been hit ne0001.png:Green Zombie/been hit ne0002.png:Green Zombie/been hit ne0003.png:Green Zombie/been hit ne0004.png:Green Zombie/been hit ne0005.png:Green Zombie/been hit ne0006.png:Green Zombie/been hit ne0007.png
+GREENZOMBIE_HURT_RIGHT:Green Zombie/been hit e0000.png:Green Zombie/been hit e0001.png:Green Zombie/been hit e0002.png:Green Zombie/been hit e0003.png:Green Zombie/been hit e0004.png:Green Zombie/been hit e0005.png:Green Zombie/been hit e0006.png:Green Zombie/been hit e0007.png
+GREENZOMBIE_HURT_DOWNRIGHT:Green Zombie/been hit se0000.png:Green Zombie/been hit se0001.png:Green Zombie/been hit se0002.png:Green Zombie/been hit se0003.png:Green Zombie/been hit se0004.png:Green Zombie/been hit se0005.png:Green Zombie/been hit se0006.png:Green Zombie/been hit se0007.png
+GREENZOMBIE_HURT_DOWN:Green Zombie/been hit s0000.png:Green Zombie/been hit s0001.png:Green Zombie/been hit s0002.png:Green Zombie/been hit s0003.png:Green Zombie/been hit s0004.png:Green Zombie/been hit s0005.png:Green Zombie/been hit s0006.png:Green Zombie/been hit s0007.png
+GREENZOMBIE_HURT_DOWNLEFT:Green Zombie/been hit sw0000.png:Green Zombie/been hit sw0001.png:Green Zombie/been hit sw0002.png:Green Zombie/been hit sw0003.png:Green Zombie/been hit sw0004.png:Green Zombie/been hit sw0005.png:Green Zombie/been hit sw0006.png:Green Zombie/been hit sw0007.png
+GREENZOMBIE_HURT_LEFT:Green Zombie/been hit w0000.png:Green Zombie/been hit w0001.png:Green Zombie/been hit w0002.png:Green Zombie/been hit w0003.png:Green Zombie/been hit w0004.png:Green Zombie/been hit w0005.png:Green Zombie/been hit w0006.png:Green Zombie/been hit w0007.png
+GREENZOMBIE_HURT_UPLEFT:Green Zombie/been hit nw0000.png:Green Zombie/been hit nw0001.png:Green Zombie/been hit nw0002.png:Green Zombie/been hit nw0003.png:Green Zombie/been hit nw0004.png:Green Zombie/been hit nw0005.png:Green Zombie/been hit nw0006.png:Green Zombie/been hit nw0007.png
+GREENZOMBIE_FALLING_UP:Green Zombie/disintegrate n0000.png:Green Zombie/disintegrate n0001.png:Green Zombie/disintegrate n0002.png:Green Zombie/disintegrate n0003.png:Green Zombie/disintegrate n0004.png:Green Zombie/disintegrate n0005.png:Green Zombie/disintegrate n0006.png:Green Zombie/disintegrate n0007.png
+GREENZOMBIE_FALLING_UPRIGHT:Green Zombie/disintegrate ne0000.png:Green Zombie/disintegrate ne0001.png:Green Zombie/disintegrate ne0002.png:Green Zombie/disintegrate ne0003.png:Green Zombie/disintegrate ne0004.png:Green Zombie/disintegrate ne0005.png:Green Zombie/disintegrate ne0006.png:Green Zombie/disintegrate ne0007.png
+GREENZOMBIE_FALLING_RIGHT:Green Zombie/disintegrate e0000.png:Green Zombie/disintegrate e0001.png:Green Zombie/disintegrate e0002.png:Green Zombie/disintegrate e0003.png:Green Zombie/disintegrate e0004.png:Green Zombie/disintegrate e0005.png:Green Zombie/disintegrate e0006.png:Green Zombie/disintegrate e0007.png
+GREENZOMBIE_FALLING_DOWNRIGHT:Green Zombie/disintegrate se0000.png:Green Zombie/disintegrate se0001.png:Green Zombie/disintegrate se0002.png:Green Zombie/disintegrate se0003.png:Green Zombie/disintegrate se0004.png:Green Zombie/disintegrate se0005.png:Green Zombie/disintegrate se0006.png:Green Zombie/disintegrate se0007.png
+GREENZOMBIE_FALLING_DOWN:Green Zombie/disintegrate s0000.png:Green Zombie/disintegrate s0001.png:Green Zombie/disintegrate s0002.png:Green Zombie/disintegrate s0003.png:Green Zombie/disintegrate s0004.png:Green Zombie/disintegrate s0005.png:Green Zombie/disintegrate s0006.png:Green Zombie/disintegrate s0007.png
+GREENZOMBIE_FALLING_DOWNLEFT:Green Zombie/disintegrate sw0000.png:Green Zombie/disintegrate sw0001.png:Green Zombie/disintegrate sw0002.png:Green Zombie/disintegrate sw0003.png:Green Zombie/disintegrate sw0004.png:Green Zombie/disintegrate sw0005.png:Green Zombie/disintegrate sw0006.png:Green Zombie/disintegrate sw0007.png
+GREENZOMBIE_FALLING_LEFT:Green Zombie/disintegrate w0000.png:Green Zombie/disintegrate w0001.png:Green Zombie/disintegrate w0002.png:Green Zombie/disintegrate w0003.png:Green Zombie/disintegrate w0004.png:Green Zombie/disintegrate w0005.png:Green Zombie/disintegrate w0006.png:Green Zombie/disintegrate w0007.png
+GREENZOMBIE_FALLING_UPLEFT:Green Zombie/disintegrate nw0000.png:Green Zombie/disintegrate nw0001.png:Green Zombie/disintegrate nw0002.png:Green Zombie/disintegrate nw0003.png:Green Zombie/disintegrate nw0004.png:Green Zombie/disintegrate nw0005.png:Green Zombie/disintegrate nw0006.png:Green Zombie/disintegrate nw0007.png

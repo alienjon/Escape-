@@ -1,0 +1,22 @@
+##
+# This file defines templates for the game entities.
+#
+# {string}:{string}:{int}:{int}:{unsigned int}:{unsigned int}
+# The first parameter is a string that represents a custom keyword to refer to this template when instantiating
+# a new entity.  The second string is the animation keyword.  The next two integers are the position
+# of the collision offset and the final two unsigned integers are the width and height of the collision area.
+
+# Objects
+OFFICE_DOOR:CLOSED_DOOR:0:90:128:6
+DESK:DESK:21:47:115:21
+DESK_CHAIR:DESK_CHAIR:0:19:17:5
+
+# Items
+PACKAGE:PACKAGE:0:0:25:21
+FLASHLIGHT:FLASHLIGHT:0:0:20:14
+
+# Creatures
+GREEN_ZOMBIE:GREENZOMBIE:0:0:30:30
+
+# TODO
+#NEED: {Other Office stuff?}

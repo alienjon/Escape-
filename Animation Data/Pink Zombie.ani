@@ -1,0 +1,39 @@
+##
+# Pink Zombie.ani - This file describes the various animations for the player.
+#
+# A definition begins with a user defined-keyword for the specified animation followed by parameters which define that animation.
+# Note: Creature are required to have animations for the following: walking, standing, getting hurt, falling down. In each of the
+# 8 directions: up, upright, right, downright, down, downleft, left, upleft
+##
+PINK_ZOMBIE_WALKING_UP:Pink Zombie/walking n0000.png:Pink Zombie/walking n0001.png:Pink Zombie/walking n0002.png:Pink Zombie/walking n0003.png:Pink Zombie/walking n0004.png:Pink Zombie/walking n0005.png:Pink Zombie/walking n0006.png:Pink Zombie/walking n0007.png
+PINK_ZOMBIE_WALKING_UPRIGHT:Pink Zombie/walking ne0000.png:Pink Zombie/walking ne0001.png:Pink Zombie/walking ne0002.png:Pink Zombie/walking ne0003.png:Pink Zombie/walking ne0004.png:Pink Zombie/walking ne0005.png:Pink Zombie/walking ne0006.png:Pink Zombie/walking ne0007.png
+PINK_ZOMBIE_WALKING_RIGHT:Pink Zombie/walking e0000.png:Pink Zombie/walking e0001.png:Pink Zombie/walking e0002.png:Pink Zombie/walking e0003.png:Pink Zombie/walking e0004.png:Pink Zombie/walking e0005.png:Pink Zombie/walking e0006.png:Pink Zombie/walking e0007.png
+PINK_ZOMBIE_WALKING_DOWNRIGHT:Pink Zombie/walking se0000.png:Pink Zombie/walking se0001.png:Pink Zombie/walking se0002.png:Pink Zombie/walking se0003.png:Pink Zombie/walking se0004.png:Pink Zombie/walking se0005.png:Pink Zombie/walking se0006.png:Pink Zombie/walking se0007.png
+PINK_ZOMBIE_WALKING_DOWN:Pink Zombie/walking s0000.png:Pink Zombie/walking s0001.png:Pink Zombie/walking s0002.png:Pink Zombie/walking s0003.png:Pink Zombie/walking s0004.png:Pink Zombie/walking s0005.png:Pink Zombie/walking s0006.png:Pink Zombie/walking s0007.png
+PINK_ZOMBIE_WALKING_DOWNLEFT:Pink Zombie/walking sw0000.png:Pink Zombie/walking sw0001.png:Pink Zombie/walking sw0002.png:Pink Zombie/walking sw0003.png:Pink Zombie/walking sw0004.png:Pink Zombie/walking sw0005.png:Pink Zombie/walking sw0006.png:Pink Zombie/walking sw0007.png
+PINK_ZOMBIE_WALKING_LEFT:Pink Zombie/walking w0000.png:Pink Zombie/walking w0001.png:Pink Zombie/walking w0002.png:Pink Zombie/walking w0003.png:Pink Zombie/walking w0004.png:Pink Zombie/walking w0005.png:Pink Zombie/walking w0006.png:Pink Zombie/walking w0007.png
+PINK_ZOMBIE_WALKING_UPLEFT:Pink Zombie/walking nw0000.png:Pink Zombie/walking nw0001.png:Pink Zombie/walking nw0002.png:Pink Zombie/walking nw0003.png:Pink Zombie/walking nw0004.png:Pink Zombie/walking nw0005.png:Pink Zombie/walking nw0006.png:Pink Zombie/walking nw0007.png
+PINK_ZOMBIE_STANDING_UP:Pink Zombie/stopped0004.png
+PINK_ZOMBIE_STANDING_UPRIGHT:Pink Zombie/stopped0005.png
+PINK_ZOMBIE_STANDING_RIGHT:Pink Zombie/stopped0006.png
+PINK_ZOMBIE_STANDING_DOWNRIGHT:Pink Zombie/stopped0007.png
+PINK_ZOMBIE_STANDING_DOWN:Pink Zombie/stopped0000.png
+PINK_ZOMBIE_STANDING_DOWNLEFT:Pink Zombie/stopped0001.png
+PINK_ZOMBIE_STANDING_LEFT:Pink Zombie/stopped0002.png
+PINK_ZOMBIE_STANDING_UPLEFT:Pink Zombie/stopped0003.png
+PINK_ZOMBIE_HURT_UP:Pink Zombie/been hit n0000.png:Pink Zombie/been hit n0001.png:Pink Zombie/been hit n0002.png:Pink Zombie/been hit n0003.png:Pink Zombie/been hit n0004.png:Pink Zombie/been hit n0005.png:Pink Zombie/been hit n0006.png:Pink Zombie/been hit n0007.png
+PINK_ZOMBIE_HURT_UPRIGHT:Pink Zombie/been hit ne0000.png:Pink Zombie/been hit ne0001.png:Pink Zombie/been hit ne0002.png:Pink Zombie/been hit ne0003.png:Pink Zombie/been hit ne0004.png:Pink Zombie/been hit ne0005.png:Pink Zombie/been hit ne0006.png:Pink Zombie/been hit ne0007.png
+PINK_ZOMBIE_HURT_RIGHT:Pink Zombie/been hit e0000.png:Pink Zombie/been hit e0001.png:Pink Zombie/been hit e0002.png:Pink Zombie/been hit e0003.png:Pink Zombie/been hit e0004.png:Pink Zombie/been hit e0005.png:Pink Zombie/been hit e0006.png:Pink Zombie/been hit e0007.png
+PINK_ZOMBIE_HURT_DOWNRIGHT:Pink Zombie/been hit se0000.png:Pink Zombie/been hit se0001.png:Pink Zombie/been hit se0002.png:Pink Zombie/been hit se0003.png:Pink Zombie/been hit se0004.png:Pink Zombie/been hit se0005.png:Pink Zombie/been hit se0006.png:Pink Zombie/been hit se0007.png
+PINK_ZOMBIE_HURT_DOWN:Pink Zombie/been hit s0000.png:Pink Zombie/been hit s0001.png:Pink Zombie/been hit s0002.png:Pink Zombie/been hit s0003.png:Pink Zombie/been hit s0004.png:Pink Zombie/been hit s0005.png:Pink Zombie/been hit s0006.png:Pink Zombie/been hit s0007.png
+PINK_ZOMBIE_HURT_DOWNLEFT:Pink Zombie/been hit sw0000.png:Pink Zombie/been hit sw0001.png:Pink Zombie/been hit sw0002.png:Pink Zombie/been hit sw0003.png:Pink Zombie/been hit sw0004.png:Pink Zombie/been hit sw0005.png:Pink Zombie/been hit sw0006.png:Pink Zombie/been hit sw0007.png
+PINK_ZOMBIE_HURT_LEFT:Pink Zombie/been hit w0000.png:Pink Zombie/been hit w0001.png:Pink Zombie/been hit w0002.png:Pink Zombie/been hit w0003.png:Pink Zombie/been hit w0004.png:Pink Zombie/been hit w0005.png:Pink Zombie/been hit w0006.png:Pink Zombie/been hit w0007.png
+PINK_ZOMBIE_HURT_UPLEFT:Pink Zombie/been hit nw0000.png:Pink Zombie/been hit nw0001.png:Pink Zombie/been hit nw0002.png:Pink Zombie/been hit nw0003.png:Pink Zombie/been hit nw0004.png:Pink Zombie/been hit nw0005.png:Pink Zombie/been hit nw0006.png:Pink Zombie/been hit nw0007.png
+PINK_ZOMBIE_FALLING_UP:Pink Zombie/disintegrate n0000.png:Pink Zombie/disintegrate n0001.png:Pink Zombie/disintegrate n0002.png:Pink Zombie/disintegrate n0003.png:Pink Zombie/disintegrate n0004.png:Pink Zombie/disintegrate n0005.png:Pink Zombie/disintegrate n0006.png:Pink Zombie/disintegrate n0007.png
+PINK_ZOMBIE_FALLING_UPRIGHT:Pink Zombie/disintegrate ne0000.png:Pink Zombie/disintegrate ne0001.png:Pink Zombie/disintegrate ne0002.png:Pink Zombie/disintegrate ne0003.png:Pink Zombie/disintegrate ne0004.png:Pink Zombie/disintegrate ne0005.png:Pink Zombie/disintegrate ne0006.png:Pink Zombie/disintegrate ne0007.png
+PINK_ZOMBIE_FALLING_RIGHT:Pink Zombie/disintegrate e0000.png:Pink Zombie/disintegrate e0001.png:Pink Zombie/disintegrate e0002.png:Pink Zombie/disintegrate e0003.png:Pink Zombie/disintegrate e0004.png:Pink Zombie/disintegrate e0005.png:Pink Zombie/disintegrate e0006.png:Pink Zombie/disintegrate e0007.png
+PINK_ZOMBIE_FALLING_DOWNRIGHT:Pink Zombie/disintegrate se0000.png:Pink Zombie/disintegrate se0001.png:Pink Zombie/disintegrate se0002.png:Pink Zombie/disintegrate se0003.png:Pink Zombie/disintegrate se0004.png:Pink Zombie/disintegrate se0005.png:Pink Zombie/disintegrate se0006.png:Pink Zombie/disintegrate se0007.png
+PINK_ZOMBIE_FALLING_DOWN:Pink Zombie/disintegrate s0000.png:Pink Zombie/disintegrate s0001.png:Pink Zombie/disintegrate s0002.png:Pink Zombie/disintegrate s0003.png:Pink Zombie/disintegrate s0004.png:Pink Zombie/disintegrate s0005.png:Pink Zombie/disintegrate s0006.png:Pink Zombie/disintegrate s0007.png
+PINK_ZOMBIE_FALLING_DOWNLEFT:Pink Zombie/disintegrate sw0000.png:Pink Zombie/disintegrate sw0001.png:Pink Zombie/disintegrate sw0002.png:Pink Zombie/disintegrate sw0003.png:Pink Zombie/disintegrate sw0004.png:Pink Zombie/disintegrate sw0005.png:Pink Zombie/disintegrate sw0006.png:Pink Zombie/disintegrate sw0007.png
+PINK_ZOMBIE_FALLING_LEFT:Pink Zombie/disintegrate w0000.png:Pink Zombie/disintegrate w0001.png:Pink Zombie/disintegrate w0002.png:Pink Zombie/disintegrate w0003.png:Pink Zombie/disintegrate w0004.png:Pink Zombie/disintegrate w0005.png:Pink Zombie/disintegrate w0006.png:Pink Zombie/disintegrate w0007.png
+PINK_ZOMBIE_FALLING_UPLEFT:Pink Zombie/disintegrate nw0000.png:Pink Zombie/disintegrate nw0001.png:Pink Zombie/disintegrate nw0002.png:Pink Zombie/disintegrate nw0003.png:Pink Zombie/disintegrate nw0004.png:Pink Zombie/disintegrate nw0005.png:Pink Zombie/disintegrate nw0006.png:Pink Zombie/disintegrate nw0007.png

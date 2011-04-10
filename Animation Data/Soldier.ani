@@ -1,0 +1,39 @@
+##
+# Soldier.ani - This file describes the various animations for the player.
+#
+# A definition begins with a user defined-keyword for the specified animation followed by parameters which define that animation.
+# Note: Creature are required to have animations for the following: walking, standing, getting hurt, falling down. In each of the
+# 8 directions: up, upright, right, downright, down, downleft, left, upleft
+##
+SOLDIER_WALKING_UP:Soldier/walking n0000.png:Soldier/walking n0001.png:Soldier/walking n0002.png:Soldier/walking n0003.png:Soldier/walking n0004.png:Soldier/walking n0005.png:Soldier/walking n0006.png:Soldier/walking n0007.png
+SOLDIER_WALKING_UPRIGHT:Soldier/walking ne0000.png:Soldier/walking ne0001.png:Soldier/walking ne0002.png:Soldier/walking ne0003.png:Soldier/walking ne0004.png:Soldier/walking ne0005.png:Soldier/walking ne0006.png:Soldier/walking ne0007.png
+SOLDIER_WALKING_RIGHT:Soldier/walking e0000.png:Soldier/walking e0001.png:Soldier/walking e0002.png:Soldier/walking e0003.png:Soldier/walking e0004.png:Soldier/walking e0005.png:Soldier/walking e0006.png:Soldier/walking e0007.png
+SOLDIER_WALKING_DOWNRIGHT:Soldier/walking se0000.png:Soldier/walking se0001.png:Soldier/walking se0002.png:Soldier/walking se0003.png:Soldier/walking se0004.png:Soldier/walking se0005.png:Soldier/walking se0006.png:Soldier/walking se0007.png
+SOLDIER_WALKING_DOWN:Soldier/walking s0000.png:Soldier/walking s0001.png:Soldier/walking s0002.png:Soldier/walking s0003.png:Soldier/walking s0004.png:Soldier/walking s0005.png:Soldier/walking s0006.png:Soldier/walking s0007.png
+SOLDIER_WALKING_DOWNLEFT:Soldier/walking sw0000.png:Soldier/walking sw0001.png:Soldier/walking sw0002.png:Soldier/walking sw0003.png:Soldier/walking sw0004.png:Soldier/walking sw0005.png:Soldier/walking sw0006.png:Soldier/walking sw0007.png
+SOLDIER_WALKING_LEFT:Soldier/walking w0000.png:Soldier/walking w0001.png:Soldier/walking w0002.png:Soldier/walking w0003.png:Soldier/walking w0004.png:Soldier/walking w0005.png:Soldier/walking w0006.png:Soldier/walking w0007.png
+SOLDIER_WALKING_UPLEFT:Soldier/walking nw0000.png:Soldier/walking nw0001.png:Soldier/walking nw0002.png:Soldier/walking nw0003.png:Soldier/walking nw0004.png:Soldier/walking nw0005.png:Soldier/walking nw0006.png:Soldier/walking nw0007.png
+SOLDIER_STANDING_UP:Soldier/stopped0004.png
+SOLDIER_STANDING_UPRIGHT:Soldier/stopped0005.png
+SOLDIER_STANDING_RIGHT:Soldier/stopped0006.png
+SOLDIER_STANDING_DOWNRIGHT:Soldier/stopped0007.png
+SOLDIER_STANDING_DOWN:Soldier/stopped0000.png
+SOLDIER_STANDING_DOWNLEFT:Soldier/stopped0001.png
+SOLDIER_STANDING_LEFT:Soldier/stopped0002.png
+SOLDIER_STANDING_UPLEFT:Soldier/stopped0003.png
+SOLDIER_HURT_UP:Soldier/been hit n0000.png:Soldier/been hit n0001.png:Soldier/been hit n0002.png:Soldier/been hit n0003.png:Soldier/been hit n0004.png:Soldier/been hit n0005.png:Soldier/been hit n0006.png:Soldier/been hit n0007.png
+SOLDIER_HURT_UPRIGHT:Soldier/been hit ne0000.png:Soldier/been hit ne0001.png:Soldier/been hit ne0002.png:Soldier/been hit ne0003.png:Soldier/been hit ne0004.png:Soldier/been hit ne0005.png:Soldier/been hit ne0006.png:Soldier/been hit ne0007.png
+SOLDIER_HURT_RIGHT:Soldier/been hit e0000.png:Soldier/been hit e0001.png:Soldier/been hit e0002.png:Soldier/been hit e0003.png:Soldier/been hit e0004.png:Soldier/been hit e0005.png:Soldier/been hit e0006.png:Soldier/been hit e0007.png
+SOLDIER_HURT_DOWNRIGHT:Soldier/been hit se0000.png:Soldier/been hit se0001.png:Soldier/been hit se0002.png:Soldier/been hit se0003.png:Soldier/been hit se0004.png:Soldier/been hit se0005.png:Soldier/been hit se0006.png:Soldier/been hit se0007.png
+SOLDIER_HURT_DOWN:Soldier/been hit s0000.png:Soldier/been hit s0001.png:Soldier/been hit s0002.png:Soldier/been hit s0003.png:Soldier/been hit s0004.png:Soldier/been hit s0005.png:Soldier/been hit s0006.png:Soldier/been hit s0007.png
+SOLDIER_HURT_DOWNLEFT:Soldier/been hit sw0000.png:Soldier/been hit sw0001.png:Soldier/been hit sw0002.png:Soldier/been hit sw0003.png:Soldier/been hit sw0004.png:Soldier/been hit sw0005.png:Soldier/been hit sw0006.png:Soldier/been hit sw0007.png
+SOLDIER_HURT_LEFT:Soldier/been hit w0000.png:Soldier/been hit w0001.png:Soldier/been hit w0002.png:Soldier/been hit w0003.png:Soldier/been hit w0004.png:Soldier/been hit w0005.png:Soldier/been hit w0006.png:Soldier/been hit w0007.png
+SOLDIER_HURT_UPLEFT:Soldier/been hit nw0000.png:Soldier/been hit nw0001.png:Soldier/been hit nw0002.png:Soldier/been hit nw0003.png:Soldier/been hit nw0004.png:Soldier/been hit nw0005.png:Soldier/been hit nw0006.png:Soldier/been hit nw0007.png
+SOLDIER_FALLING_UP:Soldier/tipping over n0000.png:Soldier/tipping over n0001.png:Soldier/tipping over n0002.png:Soldier/tipping over n0003.png:Soldier/tipping over n0004.png:Soldier/tipping over n0005.png:Soldier/tipping over n0006.png:Soldier/tipping over n0007.png
+SOLDIER_FALLING_UPRIGHT:Soldier/tipping over ne0000.png:Soldier/tipping over ne0001.png:Soldier/tipping over ne0002.png:Soldier/tipping over ne0003.png:Soldier/tipping over ne0004.png:Soldier/tipping over ne0005.png:Soldier/tipping over ne0006.png:Soldier/tipping over ne0007.png
+SOLDIER_FALLING_RIGHT:Soldier/tipping over e0000.png:Soldier/tipping over e0001.png:Soldier/tipping over e0002.png:Soldier/tipping over e0003.png:Soldier/tipping over e0004.png:Soldier/tipping over e0005.png:Soldier/tipping over e0006.png:Soldier/tipping over e0007.png
+SOLDIER_FALLING_DOWNRIGHT:Soldier/tipping over se0000.png:Soldier/tipping over se0001.png:Soldier/tipping over se0002.png:Soldier/tipping over se0003.png:Soldier/tipping over se0004.png:Soldier/tipping over se0005.png:Soldier/tipping over se0006.png:Soldier/tipping over se0007.png
+SOLDIER_FALLING_DOWN:Soldier/tipping over s0000.png:Soldier/tipping over s0001.png:Soldier/tipping over s0002.png:Soldier/tipping over s0003.png:Soldier/tipping over s0004.png:Soldier/tipping over s0005.png:Soldier/tipping over s0006.png:Soldier/tipping over s0007.png
+SOLDIER_FALLING_DOWNLEFT:Soldier/tipping over sw0000.png:Soldier/tipping over sw0001.png:Soldier/tipping over sw0002.png:Soldier/tipping over sw0003.png:Soldier/tipping over sw0004.png:Soldier/tipping over sw0005.png:Soldier/tipping over sw0006.png:Soldier/tipping over sw0007.png
+SOLDIER_FALLING_LEFT:Soldier/tipping over w0000.png:Soldier/tipping over w0001.png:Soldier/tipping over w0002.png:Soldier/tipping over w0003.png:Soldier/tipping over w0004.png:Soldier/tipping over w0005.png:Soldier/tipping over w0006.png:Soldier/tipping over w0007.png
+SOLDIER_FALLING_UPLEFT:Soldier/tipping over nw0000.png:Soldier/tipping over nw0001.png:Soldier/tipping over nw0002.png:Soldier/tipping over nw0003.png:Soldier/tipping over nw0004.png:Soldier/tipping over nw0005.png:Soldier/tipping over nw0006.png:Soldier/tipping over nw0007.png

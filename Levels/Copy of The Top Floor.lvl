@@ -1,0 +1,111 @@
+##
+# Each line begins with a keyword in all caps.  The keyword and each parameter are separated by a colon
+# as a delimiter.  As usual, comments ('#') are ignored.  The only information required is the MAP keyword.
+# For all keywords that require an ID (a user-identified string that allows connection with events and other
+# fun stuff) a blank string can be provided (nothing is placed between the preceeding and subsequent colons:
+# ex: AREA::100:100:50:50 (note how the first parameter (the ID) is blank, leaving two colons next to each
+# other).
+#
+# AREA:{string}:{int}:{int}:{unsigned int}:{unsigned int}
+# This keyword denotes a physical area in the game that can be connected to other keywords/events.  The first
+# parameter, a character string, is a user-defined name of the area for later reference.  The two following
+# integers are the location of the area on the map.  The final two unsigned integers (meaning
+# positive numbers only) is the dimension of the area.  An area can be connected with a PORTAL, for example,
+# to create an area which, if the player interacts with, will be transported to another area or another map!
+#
+# PORTAL:{string}:{string}:{string}
+# A portal is a one-way connection between two areas and/or maps.  If a player enters the area of a
+# portal (whose name is identified by the first string) and activates it, then the player is
+# transferred to the level specified by the second string at the portal specified by the third string.
+#
+# MAP:{base64 string}
+# A base64 encoded string that details the physical map.  The decoded string follows the following format:
+# {tileset name}:{map_width}:{map_height}:{base64 encoded map data}
+#
+# CREATURE:{string}:{int}:{int}:{string}:{string}:{unsigned int}:{unsigned int}
+# This adds a creature to the map.  The first parameter (the string) is the unique name for this creature.
+# If you leave this field blank, then the creature is generic and cannot be used in specific scripting.
+# The next two parameters (ints) indicate the initial x and y position (respectively) of the creature in
+# this level.  The second string is the animation template keyword this creature will use to display itself.
+# The keywords and their animations are defined in EntityTemplates.dat (along with other Entities, such as objects).
+# The third string is the alignment of the creature.  If the alignment is 'NEUTRAL' then the creature will
+# not attack anything (although it can be provided actions to do otherwise).  If anything else is provided
+# as the alignment then that creature will attack ALL other creatures WITHOUT that same alignment (it is case
+# sensitive) AND they will NOT attack NEUTRAL aligned creatures.  The next two parameters (unsigned ints) are
+# the health and defense values of the creature.  The health is the amount of life the creature has left and
+# the defense is the amount of strength the creature has to defend itself before its health is compromised.
+# If either of these are set to zero then they act as 'infinite' for that attribute (ie: Infinite defense
+# means that the creature can always protect itself (the player cannot harm it via conventional means, but
+# maybe through an action or something similar).  Infinite health means the creature cannot die at all.).
+#
+# OBJECT:{string}:{string}:{int}:{int}
+# Non-creature static objects to place on the map. The first string is the object-specific ID.  The second
+# string is the template keyword (this is a custom keyword set in 'EntityTemplates.dat').  The final two integers
+# are the starting position of the object on the map.  Note that both CREATUREs and OBJECTs are of the same
+# base type and therefore a unique name for either counts for both.  In other words, if a CREATURE has a name
+# of MY_UNIQUE_NAME then a later OBJECT cannot have the same name (or vice versa).
+#
+# ITEM:{string}:{string}:{int}:{int}
+# A non-creature dynamic object that can be picked up by the player.  The first string is the object-specific ID.  The second
+# string is the template keyword (this is a custom keyword set in 'EntityTemplates.dat').  The final two integers
+# are the starting position of the object on the map.  Note that both CREATUREs and OBJECTs are of the same
+# base type and therefore a unique name for either counts for both.  In other words, if a CREATURE has a name
+# of MY_UNIQUE_NAME then a later OBJECT cannot have the same name (or vice versa).
+#
+# FLASHLIGHT:{string}:{string}:{unsigned int}:{unsigned int}
+# NEED TO FILL OUT DETAILS
+#
+# Right now lights are static and cannot move.
+#
+# LIGHT_RECT:{string}:{int}:{int}:{unsigned int}:{unsigned int}
+# A rectangular light that will reside at coordinate x,y (defined by the two integers) with a dimension
+# defined by width,height (defined by the two unsigned integers).
+#
+# LIGHT_QUAD:{string}:{int}:{int}:{int}:{int}:{int}:{int}:{int}:{int}
+# A quadrilateral light to place on the map that does not necessarily have to be rectangular.  It is
+# defined by 4 x,y pairs: the first integer is the first point's x, the second integer is the first
+# points y, the third integer is the second point's x, and so on for a total of 8 integers.
+#
+# LIGHT_ELIP:{string}:{int}:{int}:{unsigned int}:{unsigned int}
+# An elliptical light to place on the map at location x,y (defined by the two integers) and with a width
+# (the third parameter, the first unsigned integer) and with a height (defined by the final parameter,
+# the second unsigned integer).
+##
+OBJECT:CHAIR_A_1:DESK_CHAIR:1442:216
+OBJECT:CHAIR_A_2:DESK_CHAIR:1385:294
+OBJECT:CHAIR_B_1:DESK_CHAIR:1589:535
+OBJECT:CHAIR_B_2:DESK_CHAIR:1666:444
+OBJECT:CHAIR_C_1:DESK_CHAIR:1427:700
+OBJECT:CHAIR_C_2:DESK_CHAIR:1496:635
+OBJECT:CHAIR_D_1:DESK_CHAIR:1580:908
+OBJECT:CHAIR_D_2:DESK_CHAIR:1636:842
+OBJECT:CHAIR_E_1:DESK_CHAIR:1273:963
+OBJECT:CHAIR_E_2:DESK_CHAIR:1321:894
+OBJECT:CHAIR_F_1:DESK_CHAIR:1830:483
+OBJECT:CHAIR_F_2:DESK_CHAIR:1690:546
+
+OBJECT:DESK_A:DESK:1362:248
+OBJECT:DESK_B:DESK:1579:487
+OBJECT:DESK_C:DESK:1418:668
+OBJECT:DESK_D:DESK:1561:876
+OBJECT:DESK_E:DESK:1247:930
+OBJECT:DESK_F:DESK:1710:515
+
+OBJECT:DOOR_1:OFFICE_DOOR:512:1194
+OBJECT:DOOR_2:OFFICE_DOOR:384:666
+OBJECT:DOOR_3:OFFICE_DOOR:1024:474
+OBJECT:DOOR_4:OFFICE_DOOR:1024:666
+
+OBJECT:DOOR_TO_ENDOFGAME:OFFICE_DOOR:384:474
+OBJECT:DOOR_TO_OFFICE:OFFICE_DOOR:1408:1194
+
+# The window lights.
+LIGHT_QUAD:light_window_1:1855:965:1724:1020:1724:970:1855:915
+LIGHT_QUAD:light_window_2:1855:865:1724:920:1724:870:1855:815
+LIGHT_QUAD:light_window_3:1855:765:1724:820:1724:770:1855:715
+LIGHT_QUAD:light_window_4:1855:665:1724:720:1724:670:1855:615
+LIGHT_QUAD:light_window_5:1855:565:1724:620:1724:570:1855:515
+LIGHT_QUAD:light_window_6:1855:465:1724:520:1724:470:1855:415
+
+# The map file.
+MAP:Top Floor.map

@@ -1,0 +1,60 @@
+The numbering system for Escape! follows that the right most number is for bug fixes,
+the middle number is for minor releases and bugfixes and the left number is for major
+releases, minor release content and bugfixes.
+
+Current controls:
+F1: toggle debug mode (displays debug info, such as search areas, collision areas, etc...)
+F2: Video info
+F3: Clear any current search markers set via an enemy spotting a target while debug mode is on
+CTRL+s Save the current game state.
+CTRL+l Load the previously saved game state.
+escape: Display game options
+p: pause
+m: in-game menu
+(some others are described in the gamescreen)
+
+Version 0.0.0 - Construction release: The game will remain in 0.0.0 until it is at least partially playable.
+-------------
+Maps are reconstructed to be built off of mathematical properties
+	Construct maps to contain rooms
+	Collision detecting is performed based on the room math NOT on sprite collision
+Clean up input
+	Make input solid (feels comfortable, good response)
+	Implement button system (buttons for all actions)
+		Make sure that the action button is pressed by the player and will interact with the world (world object)
+	Determine and FINALLY implement whether player moves and looks simultaneously (press left, move and look left) or asynchroniously (movement and looking is independent)
+GUI system
+	Implement pop up text boxes for when people talk and to display information (tutorial, level number/name, timer, etc...)
+Clean up Logic
+	Do I want to use state system for creature logic? (walking, running, talking, standing, other?)
+	Implement environmental object to pass to logic
+		This object should be able to check for collisions, allow entities to interact with other entities, allow entities to tell the environment that they are giving off light
+?Reimplement quadrilateral math (collision detection)
+
+Creatures should have the option to be given waypoints
+	Static waypoints will move a creature to the next point and then the next and then the next.  When they reach the final point they stop.
+	Looped waypoints will move a creature through a series of waypoints and after the final point the creature will move to the first point again and repeat until told otherwise
+Look into removing many of the interfaces and listeners.  I should be able to only use the Event structure for most of them (lighting shouldn't be needed, for example)
+Implement 'text scrolling' in the MessageDisplayWidget
+	By 'text scrolling' I mean that messages are displayed one letter at a time until the whole message is displayed
+	If the activate key is pressed before the letters have completed displaying, then it skips the rest of the scrolling and just displays the entire message
+	Once the message is completely displayed then pressing the activate key will close the message and send a signal that it has been read
+Implement a way to combine several plot devices for repetition later (ie: turn light off/on/off/on)
+Plot device conditionals:
+	*There is currently a '+' conditional where:
+		activation -> for the activation to occur this additional keyword must have already occurred
+		deactivation -> for the deactivation to occur, this additional keyword must have already occurred
+		If the keyword has not become present, then the de/activation can simply occur later, once it has occurred.
+	Also implement a '-' conditional where:
+		activation -> for the activation to occur, this keyword MUST NOT have already occurred
+		deactivation -> for the deactivation to occur, this keyword MUST NOT have already occurred
+		If a node has an activating negative conditional keyword that DID occur, then the node can never activate
+		If a node has a deactivating negative conditional keyword that DID occur, then the node can never deactivate
+Currently, the SET plot device can allow forcing a creature to look in a cardinal direction and at an entity.  Also allow for looking at a point and FOLLOWING an entity (if following, will other input be allowed?)
+Player movement controls are pretty much set (sans tweaking/bug testing/etc...) but NPC movement needs to be cleaned up (it's very clunky right now!)
+	Consider an 'NPC' class which will perform certain movement operations.  See Creature::logic() for additional notes, but need to implement some form of AI for creature movement.
+There's also an issue with NPC's and making sure the proper movement animation is being displayed.  Check this 
+
+Version 0.0.1 - Gameplay development: Start personal play testing and implement story, etc...
+------------------------------------
+Re-evaluate current progress and determine where to go at this point, now that the engine is basically developed

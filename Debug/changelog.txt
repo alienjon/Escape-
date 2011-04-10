@@ -1,0 +1,79 @@
+The numbering system for Escape! follows that the right most number is for bug fixes,
+the middle number is for minor releases and bugfixes and the left number is for major
+releases, minor release content and bugfixes.
+
+Current controls:
+F1: toggle debug mode (displays debug info, such as search areas, collision areas, etc...)
+F2: Video info
+F3: Clear any current search markers set via an enemy spotting a target while debug mode is on
+CTRL+s Save the current game state.
+CTRL+l Load the previously saved game state.
+escape: Display game options
+p: pause
+m: in-game menu
+(some others are described in the gamescreen)
+
+Version 0.0.0 - Construction release: The game will remain in 0.0.0 until it is at least partially playable.
+-------------
+*Game engine constructed (albeit without thorough bug testing)
+	*Implemented framerate cap to monitor game speed
+*Basic gameplay introduced
+	*Player on screen and can move around
+	*Enemies on screen and will chase
+	*Allow the user to see the enemy search area (for debugging)
+	*When a zombie spots the player and collides with him, the player is attacked
+		*The player loses health the longer it is in combat with a zombie
+		*If the player loses all health, it dies and the game is over.
+	*Player can push a zombie
+	*Fix varying movement speed issues
+*Menu system implemented
+*Audio system is implemented
+	*Implement initial music in the game
+	*Implement initial sounds in the game
+	*Audio widgets to play both music and sounds
+	*Add sounds for when a player dies
+	*Have zombies make sounds randomly
+	*Have zombies make sounds when they are pushed
+	*Have zombies make sounds when they run towards the player
+	*Have zombies make sounds when they die
+*Logging system is implemented
+*Saving and loading is fully implemented
+	*Beings and their locations are stored (managed via level)
+	*Triggers and their states can be saved/loaded (managed via level)
+	*Maps save themselves
+*Basic Collectables
+	*Create code for 'letters' to contain a subject line and a message
+	*Implement the player being able to pick up these letters.
+	*Implement a way to have the player see when a letter's been picked up
+	*Implement a way to have the player read the letters that have been picked up
+*Trigger system
+	*Triggers define how they are tripped and can be used for meta-game (ie: changing level) and in game (explosive barrels)
+	*Implement Level change triggers (next and previous)
+	*Create at least 1 trap that can be used in-game.
+Maps are reconstructed to be built off of mathematical properties
+	Construct maps to contain rooms
+	Collision detecting is performed based on the room math NOT on sprite collision
+*Fix Creature collision areas
+	*Go back to using the original animations but determine (and have specific creatures individually calculate) the collision area's and the image offsets
+	*(Mainly just make sure the images aren't getting cutoff anywhere)
+Clean up input
+	Make input solid (feels comfortable, good response)
+	Implement button system (buttons for all actions)
+		Make sure that the action button is pressed by the player and will interact with the world (world object)
+	Determine and FINALLY implement whether player moves and looks simultaneously (press left, move and look left) or asynchroniously (movement and looking is independent)
+GUI system
+	Implement pop up text boxes for when people talk and to display information (tutorial, level number/name, timer, etc...)
+Clean up Logic
+	Do I want to use state system for creature logic? (walking, running, talking, standing, other?)
+	Implement environmental object to pass to logic
+		This object should be able to check for collisions, allow entities to interact with other entities, allow entities to tell the environment that they are giving off light
+?Reimplement quadrilateral math
+	
+	
+Version 0.0.1 - Gameplay development: Start personal play testing and implement story, etc...
+------------------------------------
+Re-evaluate current progress and determine where to go at this point, now that the engine is basically developed
+
+NOTES
+-----
+Image font used is based off of "It wasn't me" from The GIMP
