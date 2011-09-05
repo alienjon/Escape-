@@ -88,7 +88,9 @@ Widgets/GameOptions/MessageWidget.d Widgets/GameOptions/MessageWidget.o: \
  ../Widgets/GameOptions/../../Guichan/platform.hpp \
  ../Widgets/GameOptions/../../Engine/Timer.hpp \
  ../Widgets/GameOptions/../../Engine/Colors.hpp \
+ ../Widgets/GameOptions/../../Engine/../guichan.hpp \
  ../Widgets/GameOptions/../../Managers/FontManager.hpp \
+ ../Widgets/GameOptions/../../Managers/../guichan.hpp \
  ../Widgets/GameOptions/../../main.hpp \
  ../Widgets/GameOptions/../../Game/Direction.hpp \
  ../Widgets/GameOptions/../../Game/../Math/Vector.hpp \
@@ -271,7 +273,11 @@ Widgets/GameOptions/MessageWidget.d Widgets/GameOptions/MessageWidget.o: \
 
 ../Widgets/GameOptions/../../Engine/Colors.hpp:
 
+../Widgets/GameOptions/../../Engine/../guichan.hpp:
+
 ../Widgets/GameOptions/../../Managers/FontManager.hpp:
+
+../Widgets/GameOptions/../../Managers/../guichan.hpp:
 
 ../Widgets/GameOptions/../../main.hpp:
 

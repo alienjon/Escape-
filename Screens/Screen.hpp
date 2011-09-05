@@ -13,7 +13,7 @@
 
 #include "SDL/SDL.h"
 
-#include "guichan.hpp"
+#include "../guichan.hpp"
 
 #include "../Game/Game.hpp"
 #include "../Game/GUI.hpp"

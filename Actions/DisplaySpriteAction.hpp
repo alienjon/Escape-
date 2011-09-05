@@ -10,7 +10,7 @@
 
 #include "Action.hpp"
 
-#include <guichan.hpp>
+#include "../guichan.hpp"
 
 #include "../Listeners/AnimationCycleListener.hpp"
 #include "../Engine/Sprite.hpp"

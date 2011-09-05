@@ -113,6 +113,7 @@ Game/GameData.d Game/GameData.o: ../Game/GameData.cpp \
  ../Game/../Game/../Engine/../Engine/../Guichan/sdl/../mouseinput.hpp \
  ../Game/../Game/../Engine/../Engine/../Guichan/platform.hpp \
  ../Game/../Game/../Engine/../Engine/Sprite.hpp \
+ ../Game/../Game/../Engine/../Engine/../guichan.hpp \
  ../Game/../Game/../Engine/../Engine/../Listeners/AnimationCycleListener.hpp \
  ../Game/../Game/../Engine/../Engine/../Math/Rectangle.hpp \
  ../Game/../Game/../Engine/../Engine/../Engine/Renderer.hpp \
@@ -210,6 +211,7 @@ Game/GameData.d Game/GameData.o: ../Game/GameData.cpp \
  ../Game/../LevelInfo/../LevelInfo/../Math/Vector.hpp \
  ../Game/../LevelInfo/../MapInfo/Map.hpp \
  ../Game/../LevelInfo/../Managers/MarkersManager.hpp \
+ ../Game/../LevelInfo/../Managers/../guichan.hpp \
  ../Game/../LevelInfo/../Managers/../Engine/Renderer.hpp \
  ../Game/../LevelInfo/../Managers/../Engine/Sprite.hpp \
  ../Game/../LevelInfo/../Managers/../Math/Vector.hpp \
@@ -484,6 +486,8 @@ Game/GameData.d Game/GameData.o: ../Game/GameData.cpp \
 
 ../Game/../Game/../Engine/../Engine/Sprite.hpp:
 
+../Game/../Game/../Engine/../Engine/../guichan.hpp:
+
 ../Game/../Game/../Engine/../Engine/../Listeners/AnimationCycleListener.hpp:
 
 ../Game/../Game/../Engine/../Engine/../Math/Rectangle.hpp:
@@ -681,6 +685,8 @@ Game/GameData.d Game/GameData.o: ../Game/GameData.cpp \
 ../Game/../LevelInfo/../MapInfo/Map.hpp:
 
 ../Game/../LevelInfo/../Managers/MarkersManager.hpp:
+
+../Game/../LevelInfo/../Managers/../guichan.hpp:
 
 ../Game/../LevelInfo/../Managers/../Engine/Renderer.hpp:
 

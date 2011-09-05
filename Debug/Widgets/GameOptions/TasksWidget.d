@@ -91,6 +91,7 @@ Widgets/GameOptions/TasksWidget.d Widgets/GameOptions/TasksWidget.o: \
  ../Widgets/GameOptions/../../Widgets/GameOptions/../../Widgets/GameOptions/TaskWidget.hpp \
  ../Widgets/GameOptions/../../Widgets/GameOptions/../../Widgets/GameOptions/../../guichan.hpp \
  ../Widgets/GameOptions/../../Managers/FontManager.hpp \
+ ../Widgets/GameOptions/../../Managers/../guichan.hpp \
  ../Widgets/GameOptions/../../Engine/Logger.hpp \
  ../Widgets/GameOptions/../../Engine/../guichan.hpp \
  ../Widgets/GameOptions/../../main.hpp \
@@ -281,6 +282,8 @@ Widgets/GameOptions/TasksWidget.d Widgets/GameOptions/TasksWidget.o: \
 ../Widgets/GameOptions/../../Widgets/GameOptions/../../Widgets/GameOptions/../../guichan.hpp:
 
 ../Widgets/GameOptions/../../Managers/FontManager.hpp:
+
+../Widgets/GameOptions/../../Managers/../guichan.hpp:
 
 ../Widgets/GameOptions/../../Engine/Logger.hpp:
 

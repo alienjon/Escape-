@@ -10,7 +10,7 @@
 
 #include <list>
 
-#include <guichan.hpp>
+#include "../guichan.hpp"
 
 #include "../Engine/Renderer.hpp"
 #include "../Engine/Sprite.hpp"

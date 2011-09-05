@@ -149,10 +149,12 @@ Managers/TriggerManager.d Managers/TriggerManager.o: \
  ../Managers/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Math/Rectangle.hpp \
  ../Managers/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/Renderer.hpp \
  ../Managers/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/Sprite.hpp \
+ ../Managers/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../guichan.hpp \
  ../Managers/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Listeners/AnimationCycleListener.hpp \
  ../Managers/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Math/Rectangle.hpp \
  ../Managers/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Engine/Renderer.hpp \
  ../Managers/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/Surface.hpp \
+ ../Managers/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Guichan/sdl.hpp \
  ../Managers/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/Timer.hpp \
  ../Managers/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Math/Vector.hpp \
  ../Managers/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/Timer.hpp \
@@ -173,6 +175,7 @@ Managers/TriggerManager.d Managers/TriggerManager.o: \
  ../Managers/../Game/../Math/Vector.hpp \
  ../Managers/../Game/ExtractionImplementer.hpp \
  ../Managers/../Engine/Renderer.hpp ../Managers/../Triggers/Trigger.hpp \
+ ../Managers/../Triggers/../guichan.hpp \
  ../Managers/../Triggers/../Actions/Action.hpp \
  ../Managers/../Triggers/../Game/EnvironmentData.hpp \
  ../Managers/../Triggers/../Game/ExtractionImplementer.hpp \
@@ -489,6 +492,8 @@ Managers/TriggerManager.d Managers/TriggerManager.o: \
 
 ../Managers/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/Sprite.hpp:
 
+../Managers/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../guichan.hpp:
+
 ../Managers/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Listeners/AnimationCycleListener.hpp:
 
 ../Managers/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Math/Rectangle.hpp:
@@ -496,6 +501,8 @@ Managers/TriggerManager.d Managers/TriggerManager.o: \
 ../Managers/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Engine/Renderer.hpp:
 
 ../Managers/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/Surface.hpp:
+
+../Managers/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Guichan/sdl.hpp:
 
 ../Managers/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/Timer.hpp:
 
@@ -538,6 +545,8 @@ Managers/TriggerManager.d Managers/TriggerManager.o: \
 ../Managers/../Engine/Renderer.hpp:
 
 ../Managers/../Triggers/Trigger.hpp:
+
+../Managers/../Triggers/../guichan.hpp:
 
 ../Managers/../Triggers/../Actions/Action.hpp:
 

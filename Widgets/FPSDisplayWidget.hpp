@@ -8,7 +8,7 @@
 #ifndef FPSDISPLAYWIDGET_HPP_
 #define FPSDISPLAYWIDGET_HPP_
 
-#include <guichan.hpp>
+#include "../guichan.hpp"
 
 #include "../main.hpp"
 #include "../Engine/Timer.hpp"

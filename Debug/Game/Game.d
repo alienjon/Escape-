@@ -108,6 +108,7 @@ Game/Game.d Game/Game.o: ../Game/Game.cpp ../Game/Game.hpp \
  ../Game/../Engine/../Engine/../Guichan/sdl/../mouseinput.hpp \
  ../Game/../Engine/../Engine/../Guichan/platform.hpp \
  ../Game/../Engine/../Engine/Sprite.hpp \
+ ../Game/../Engine/../Engine/../guichan.hpp \
  ../Game/../Engine/../Engine/../Listeners/AnimationCycleListener.hpp \
  ../Game/../Engine/../Engine/../Math/Rectangle.hpp \
  ../Game/../Engine/../Engine/../Engine/Renderer.hpp \
@@ -120,8 +121,10 @@ Game/Game.d Game/Game.o: ../Game/Game.cpp ../Game/Game.hpp \
  ../Game/../Listeners/../Game/Event.hpp ../Game/../guichan.hpp \
  ../Game/../Game/Input.hpp ../Game/../Game/../Math/Vector.hpp \
  ../Game/../Engine/Renderer.hpp ../Game/../Engine/Timer.hpp \
- ../Game/GUI.hpp ../Game/../Widgets/FPSDisplayWidget.hpp \
- ../Game/../Widgets/../main.hpp ../Game/../Widgets/../Game/Direction.hpp \
+ ../Game/GUI.hpp ../Game/../Guichan/sdl.hpp \
+ ../Game/../Widgets/FPSDisplayWidget.hpp \
+ ../Game/../Widgets/../guichan.hpp ../Game/../Widgets/../main.hpp \
+ ../Game/../Widgets/../Game/Direction.hpp \
  ../Game/../Widgets/../Game/../Math/Vector.hpp \
  ../Game/../Widgets/../guichan.hpp ../Game/../Widgets/../Math/Vector.hpp \
  ../Game/../Widgets/../Engine/Timer.hpp ../Game/../Engine/Surface.hpp \
@@ -208,6 +211,7 @@ Game/Game.d Game/Game.o: ../Game/Game.cpp ../Game/Game.hpp \
  ../Game/../LevelInfo/../LevelInfo/../Math/Vector.hpp \
  ../Game/../LevelInfo/../MapInfo/Map.hpp \
  ../Game/../LevelInfo/../Managers/MarkersManager.hpp \
+ ../Game/../LevelInfo/../Managers/../guichan.hpp \
  ../Game/../LevelInfo/../Managers/../Engine/Renderer.hpp \
  ../Game/../LevelInfo/../Managers/../Engine/Sprite.hpp \
  ../Game/../LevelInfo/../Managers/../Math/Vector.hpp \
@@ -221,7 +225,8 @@ Game/Game.d Game/Game.o: ../Game/Game.cpp ../Game/Game.hpp \
  ../Game/../Managers/../Engine/Sprite.hpp \
  ../Game/../Managers/AudioManager.hpp \
  ../Game/../Managers/../Listeners/SoundStoppedListener.hpp \
- ../Game/../Managers/FontManager.hpp ../Game/../Screens/GameScreen.hpp \
+ ../Game/../Managers/FontManager.hpp ../Game/../Managers/../guichan.hpp \
+ ../Game/../Screens/GameScreen.hpp \
  ../Game/../Screens/../Listeners/CreatureMovedToPointListener.hpp \
  ../Game/../Screens/../Game/Event.hpp \
  ../Game/../Screens/../Game/GameData.hpp \
@@ -300,6 +305,7 @@ Game/Game.d Game/Game.o: ../Game/Game.cpp ../Game/Game.hpp \
  ../Game/../Screens/../Interfaces/EventInterface.hpp \
  ../Game/../Screens/../Listeners/EventListener.hpp \
  ../Game/../Screens/../Managers/VideoManager.hpp \
+ ../Game/../Screens/../Managers/../guichan.hpp \
  ../Game/../Screens/../Managers/../Math/Rectangle.hpp \
  ../Game/../Screens/../Managers/../Engine/Surface.hpp \
  ../Game/../Screens/../Engine/Viewport.hpp \
@@ -316,10 +322,12 @@ Game/Game.d Game/Game.o: ../Game/Game.cpp ../Game/Game.hpp \
  ../Game/../Screens/MenuScreenWidgets/../../Widgets/MenuButton.hpp \
  ../Game/../Screens/MenuScreenWidgets/MenuWidget.hpp \
  ../Game/../Screens/MenuScreenWidgets/../../Engine/Colors.hpp \
+ ../Game/../Screens/MenuScreenWidgets/../../Engine/../guichan.hpp \
  ../Game/../Screens/MenuScreenWidgets/../../Listeners/EventListener.hpp \
  ../Game/../Screens/MenuScreenWidgets/../../Managers/VideoManager.hpp \
  ../Game/../Screens/MenuScreenWidgets/LoadGameMenu.hpp \
  ../Game/../Screens/MenuScreenWidgets/LoadGame/LoadGameListModel.hpp \
+ ../Game/../Screens/MenuScreenWidgets/LoadGame/../../../guichan.hpp \
  ../Game/../Screens/MenuScreenWidgets/MainMenu.hpp \
  ../Game/../Screens/../MapInfo/Map.hpp \
  ../Game/../Screens/MenuScreenWidgets/NewGameMenu.hpp \
@@ -552,6 +560,8 @@ Game/Game.d Game/Game.o: ../Game/Game.cpp ../Game/Game.hpp \
 
 ../Game/../Engine/../Engine/Sprite.hpp:
 
+../Game/../Engine/../Engine/../guichan.hpp:
+
 ../Game/../Engine/../Engine/../Listeners/AnimationCycleListener.hpp:
 
 ../Game/../Engine/../Engine/../Math/Rectangle.hpp:
@@ -584,7 +594,11 @@ Game/Game.d Game/Game.o: ../Game/Game.cpp ../Game/Game.hpp \
 
 ../Game/GUI.hpp:
 
+../Game/../Guichan/sdl.hpp:
+
 ../Game/../Widgets/FPSDisplayWidget.hpp:
+
+../Game/../Widgets/../guichan.hpp:
 
 ../Game/../Widgets/../main.hpp:
 
@@ -766,6 +780,8 @@ Game/Game.d Game/Game.o: ../Game/Game.cpp ../Game/Game.hpp \
 
 ../Game/../LevelInfo/../Managers/MarkersManager.hpp:
 
+../Game/../LevelInfo/../Managers/../guichan.hpp:
+
 ../Game/../LevelInfo/../Managers/../Engine/Renderer.hpp:
 
 ../Game/../LevelInfo/../Managers/../Engine/Sprite.hpp:
@@ -795,6 +811,8 @@ Game/Game.d Game/Game.o: ../Game/Game.cpp ../Game/Game.hpp \
 ../Game/../Managers/../Listeners/SoundStoppedListener.hpp:
 
 ../Game/../Managers/FontManager.hpp:
+
+../Game/../Managers/../guichan.hpp:
 
 ../Game/../Screens/GameScreen.hpp:
 
@@ -958,6 +976,8 @@ Game/Game.d Game/Game.o: ../Game/Game.cpp ../Game/Game.hpp \
 
 ../Game/../Screens/../Managers/VideoManager.hpp:
 
+../Game/../Screens/../Managers/../guichan.hpp:
+
 ../Game/../Screens/../Managers/../Math/Rectangle.hpp:
 
 ../Game/../Screens/../Managers/../Engine/Surface.hpp:
@@ -992,6 +1012,8 @@ Game/Game.d Game/Game.o: ../Game/Game.cpp ../Game/Game.hpp \
 
 ../Game/../Screens/MenuScreenWidgets/../../Engine/Colors.hpp:
 
+../Game/../Screens/MenuScreenWidgets/../../Engine/../guichan.hpp:
+
 ../Game/../Screens/MenuScreenWidgets/../../Listeners/EventListener.hpp:
 
 ../Game/../Screens/MenuScreenWidgets/../../Managers/VideoManager.hpp:
@@ -999,6 +1021,8 @@ Game/Game.d Game/Game.o: ../Game/Game.cpp ../Game/Game.hpp \
 ../Game/../Screens/MenuScreenWidgets/LoadGameMenu.hpp:
 
 ../Game/../Screens/MenuScreenWidgets/LoadGame/LoadGameListModel.hpp:
+
+../Game/../Screens/MenuScreenWidgets/LoadGame/../../../guichan.hpp:
 
 ../Game/../Screens/MenuScreenWidgets/MainMenu.hpp:
 

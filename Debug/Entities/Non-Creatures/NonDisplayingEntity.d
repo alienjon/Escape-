@@ -132,6 +132,7 @@ Entities/Non-Creatures/NonDisplayingEntity.d \
  ../Entities/Non-Creatures/../../Engine/../Guichan/sdl/../mouseinput.hpp \
  ../Entities/Non-Creatures/../../Engine/../Guichan/platform.hpp \
  ../Entities/Non-Creatures/../../Engine/Sprite.hpp \
+ ../Entities/Non-Creatures/../../Engine/../guichan.hpp \
  ../Entities/Non-Creatures/../../Engine/../Listeners/AnimationCycleListener.hpp \
  ../Entities/Non-Creatures/../../Engine/../Math/Rectangle.hpp \
  ../Entities/Non-Creatures/../../Engine/../Engine/Renderer.hpp \
@@ -449,6 +450,8 @@ Entities/Non-Creatures/NonDisplayingEntity.d \
 ../Entities/Non-Creatures/../../Engine/../Guichan/platform.hpp:
 
 ../Entities/Non-Creatures/../../Engine/Sprite.hpp:
+
+../Entities/Non-Creatures/../../Engine/../guichan.hpp:
 
 ../Entities/Non-Creatures/../../Engine/../Listeners/AnimationCycleListener.hpp:
 

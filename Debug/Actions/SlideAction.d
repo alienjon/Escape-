@@ -130,6 +130,7 @@ Actions/SlideAction.d Actions/SlideAction.o: ../Actions/SlideAction.cpp \
  ../Actions/../Entities/../Engine/../Guichan/sdl/../mouseinput.hpp \
  ../Actions/../Entities/../Engine/../Guichan/platform.hpp \
  ../Actions/../Entities/../Engine/Sprite.hpp \
+ ../Actions/../Entities/../Engine/../guichan.hpp \
  ../Actions/../Entities/../Engine/../Listeners/AnimationCycleListener.hpp \
  ../Actions/../Entities/../Engine/../Math/Rectangle.hpp \
  ../Actions/../Entities/../Engine/../Engine/Renderer.hpp \
@@ -436,6 +437,8 @@ Actions/SlideAction.d Actions/SlideAction.o: ../Actions/SlideAction.cpp \
 ../Actions/../Entities/../Engine/../Guichan/platform.hpp:
 
 ../Actions/../Entities/../Engine/Sprite.hpp:
+
+../Actions/../Entities/../Engine/../guichan.hpp:
 
 ../Actions/../Entities/../Engine/../Listeners/AnimationCycleListener.hpp:
 

@@ -8,7 +8,7 @@
 #ifndef SPRITEWIDGET_HPP_
 #define SPRITEWIDGET_HPP_
 
-#include "guichan.hpp"
+#include "../guichan.hpp"
 
 #include "../Listeners/AnimationCycleListener.hpp"
 #include "../Engine/Sprite.hpp"

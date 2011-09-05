@@ -5,6 +5,91 @@ Entities/Creatures/Zombies/GreenZombie.d \
  ../Entities/Creatures/Zombies/../Creature.hpp \
  ../Entities/Creatures/Zombies/../../../Managers/AnimationManager.hpp \
  ../Entities/Creatures/Zombies/../../../Managers/../Engine/Sprite.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../guichan.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/actionevent.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/event.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/platform.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/actionlistener.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/actionevent.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/cliprectangle.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/rectangle.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/color.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/deathlistener.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/event.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/exception.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/focushandler.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/focuslistener.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/font.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/genericinput.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/input.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/keyinput.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/key.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/mouseinput.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/graphics.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/cliprectangle.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/gui.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/keyevent.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/inputevent.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/mouseevent.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/image.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/imagefont.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/font.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/imageloader.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/input.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/inputevent.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/key.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/keyevent.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/keyinput.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/keylistener.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/listmodel.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/mouseevent.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/mouseinput.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/mouselistener.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/rectangle.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/selectionevent.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/selectionlistener.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/selectionevent.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widget.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/color.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgetlistener.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/button.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/../focuslistener.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/../graphics.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/../keylistener.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/../mouseevent.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/../mouselistener.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/../platform.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/../widget.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/checkbox.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/container.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/../basiccontainer.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/../deathlistener.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/../platform.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/../widget.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/dropdown.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/../actionlistener.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/../deathlistener.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/../focushandler.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/../listmodel.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/../selectionlistener.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/listbox.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/scrollarea.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/icon.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/../image.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/imagebutton.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/button.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/label.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/listbox.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/scrollarea.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/slider.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/radiobutton.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/tab.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/tabbedarea.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/textbox.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/textfield.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/window.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/container.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/platform.hpp \
  ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Listeners/AnimationCycleListener.hpp \
  ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Math/Rectangle.hpp \
  ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Math/../guichan.hpp \
@@ -32,6 +117,7 @@ Entities/Creatures/Zombies/GreenZombie.d \
  ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Engine/../Guichan/sdl/../mouseinput.hpp \
  ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Engine/../Guichan/platform.hpp \
  ../Entities/Creatures/Zombies/../../../Managers/../Engine/Surface.hpp \
+ ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/sdl.hpp \
  ../Entities/Creatures/Zombies/../../../Managers/../Engine/Timer.hpp \
  ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Math/Vector.hpp \
  ../Entities/Creatures/Zombies/../../../Entities/Creatures/CreatureAnimationState.hpp \
@@ -90,6 +176,176 @@ Entities/Creatures/Zombies/GreenZombie.d \
 
 ../Entities/Creatures/Zombies/../../../Managers/../Engine/Sprite.hpp:
 
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../guichan.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/actionevent.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/event.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/platform.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/actionlistener.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/actionevent.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/cliprectangle.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/rectangle.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/color.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/deathlistener.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/event.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/exception.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/focushandler.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/focuslistener.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/font.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/genericinput.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/input.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/keyinput.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/key.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/mouseinput.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/graphics.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/cliprectangle.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/gui.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/keyevent.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/inputevent.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/mouseevent.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/image.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/imagefont.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/font.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/imageloader.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/input.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/inputevent.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/key.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/keyevent.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/keyinput.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/keylistener.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/listmodel.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/mouseevent.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/mouseinput.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/mouselistener.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/rectangle.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/selectionevent.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/selectionlistener.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/selectionevent.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widget.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/color.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgetlistener.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/button.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/../focuslistener.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/../graphics.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/../keylistener.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/../mouseevent.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/../mouselistener.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/../platform.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/../widget.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/checkbox.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/container.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/../basiccontainer.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/../deathlistener.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/../platform.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/../widget.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/dropdown.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/../actionlistener.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/../deathlistener.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/../focushandler.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/../listmodel.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/../selectionlistener.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/listbox.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/scrollarea.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/icon.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/../image.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/imagebutton.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/button.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/label.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/listbox.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/scrollarea.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/slider.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/radiobutton.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/tab.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/tabbedarea.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/textbox.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/textfield.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/window.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/widgets/container.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/platform.hpp:
+
 ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Listeners/AnimationCycleListener.hpp:
 
 ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Math/Rectangle.hpp:
@@ -143,6 +399,8 @@ Entities/Creatures/Zombies/GreenZombie.d \
 ../Entities/Creatures/Zombies/../../../Managers/../Engine/../Engine/../Guichan/platform.hpp:
 
 ../Entities/Creatures/Zombies/../../../Managers/../Engine/Surface.hpp:
+
+../Entities/Creatures/Zombies/../../../Managers/../Engine/../Guichan/sdl.hpp:
 
 ../Entities/Creatures/Zombies/../../../Managers/../Engine/Timer.hpp:
 

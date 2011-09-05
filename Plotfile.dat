@@ -144,10 +144,10 @@ CON:dialog_endofgame_1:post_player_death_pause:NULL:Tutorial:Tutorial:Wow, good 
 MUS:play_initial_song:NULL:NULL:Human Drums.mp3:0:3000:2000
 
 # Start with the lights off until the conversation has ended.
-#ENV:lighting_1:NULL:tutorial_17:LIGHTING:OFF
+ENV:lighting_1:NULL:tutorial_17:LIGHTING:OFF
 
 # Have the introductory conversation.
-#CON:tutorial_1:NULL:tutorial_1:Tutorial:Tutorial:Welcome to the Escape! presentation demo!
+CON:tutorial_1:NULL:tutorial_1:Tutorial:Tutorial:Welcome to the Escape! presentation demo!
 CON:tutorial_2_1:tutorial_1:NULL:Tutorial:Tutorial:This demonstration will present the alpha 1.0 state of the game.  To me, this means that although many features are implemented there are many more which need to/could be added, testing that needs to be done, and performance improvements (not to mention bug fixes!).
 CON:tutorial_2_2:tutorial_2_1:NULL:Tutorial Sprite:Tutorial:I apologize ahead of time for several 'obvious' issues with the game (notably the haphazardly selected graphics, sounds, and collision issues: unable to walk into certain areas near walls even though you aren't next to the wall).  A more final version will hopefully have all of these concerns addressed.  Also, if pressing 'spacebar' doesn't seem to close the message box, try pressing tab once and then spacebar again.
 CON:tutorial_3:tutorial_2_2:NULL:Tutorial:Tutorial:Basic Controls 1\n\nPress the directional arrows to move the player.

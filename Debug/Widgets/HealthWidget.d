@@ -114,6 +114,7 @@ Widgets/HealthWidget.d Widgets/HealthWidget.o: \
  ../Widgets/../Entities/../Engine/../Guichan/sdl/../mouseinput.hpp \
  ../Widgets/../Entities/../Engine/../Guichan/platform.hpp \
  ../Widgets/../Entities/../Engine/Sprite.hpp \
+ ../Widgets/../Entities/../Engine/../guichan.hpp \
  ../Widgets/../Entities/../Engine/../Listeners/AnimationCycleListener.hpp \
  ../Widgets/../Entities/../Engine/../Math/Rectangle.hpp \
  ../Widgets/../Entities/../Engine/../Engine/Renderer.hpp \
@@ -385,6 +386,8 @@ Widgets/HealthWidget.d Widgets/HealthWidget.o: \
 ../Widgets/../Entities/../Engine/../Guichan/platform.hpp:
 
 ../Widgets/../Entities/../Engine/Sprite.hpp:
+
+../Widgets/../Entities/../Engine/../guichan.hpp:
 
 ../Widgets/../Entities/../Engine/../Listeners/AnimationCycleListener.hpp:
 

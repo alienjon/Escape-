@@ -1,5 +1,22 @@
 Engine/Surface.d Engine/Surface.o: ../Engine/Surface.cpp \
- ../Engine/Surface.hpp ../Engine/../Math/Rectangle.hpp \
+ ../Engine/Surface.hpp ../Engine/../Guichan/sdl.hpp \
+ ../Engine/../Guichan/sdl/sdlgraphics.hpp \
+ ../Engine/../Guichan/sdl/../color.hpp \
+ ../Engine/../Guichan/sdl/../platform.hpp \
+ ../Engine/../Guichan/sdl/../graphics.hpp \
+ ../Engine/../Guichan/sdl/../cliprectangle.hpp \
+ ../Engine/../Guichan/sdl/../rectangle.hpp \
+ ../Engine/../Guichan/sdl/../platform.hpp \
+ ../Engine/../Guichan/sdl/sdlimage.hpp \
+ ../Engine/../Guichan/sdl/../image.hpp \
+ ../Engine/../Guichan/sdl/sdlimageloader.hpp \
+ ../Engine/../Guichan/sdl/../imageloader.hpp \
+ ../Engine/../Guichan/sdl/sdlinput.hpp \
+ ../Engine/../Guichan/sdl/../input.hpp \
+ ../Engine/../Guichan/sdl/../keyinput.hpp \
+ ../Engine/../Guichan/sdl/../key.hpp \
+ ../Engine/../Guichan/sdl/../mouseinput.hpp \
+ ../Engine/../Guichan/platform.hpp ../Engine/../Math/Rectangle.hpp \
  ../Engine/../Math/../guichan.hpp \
  ../Engine/../Math/../Guichan/actionevent.hpp \
  ../Engine/../Math/../Guichan/event.hpp \
@@ -89,6 +106,42 @@ Engine/Surface.d Engine/Surface.o: ../Engine/Surface.cpp \
  ../Engine/../Math/../Math/Vector.hpp
 
 ../Engine/Surface.hpp:
+
+../Engine/../Guichan/sdl.hpp:
+
+../Engine/../Guichan/sdl/sdlgraphics.hpp:
+
+../Engine/../Guichan/sdl/../color.hpp:
+
+../Engine/../Guichan/sdl/../platform.hpp:
+
+../Engine/../Guichan/sdl/../graphics.hpp:
+
+../Engine/../Guichan/sdl/../cliprectangle.hpp:
+
+../Engine/../Guichan/sdl/../rectangle.hpp:
+
+../Engine/../Guichan/sdl/../platform.hpp:
+
+../Engine/../Guichan/sdl/sdlimage.hpp:
+
+../Engine/../Guichan/sdl/../image.hpp:
+
+../Engine/../Guichan/sdl/sdlimageloader.hpp:
+
+../Engine/../Guichan/sdl/../imageloader.hpp:
+
+../Engine/../Guichan/sdl/sdlinput.hpp:
+
+../Engine/../Guichan/sdl/../input.hpp:
+
+../Engine/../Guichan/sdl/../keyinput.hpp:
+
+../Engine/../Guichan/sdl/../key.hpp:
+
+../Engine/../Guichan/sdl/../mouseinput.hpp:
+
+../Engine/../Guichan/platform.hpp:
 
 ../Engine/../Math/Rectangle.hpp:
 

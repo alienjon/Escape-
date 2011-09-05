@@ -14,7 +14,7 @@
 
 #include "SDL/SDL.h"
 
-#include <guichan.hpp>
+#include "../guichan.hpp"
 
 #include "../Math/Rectangle.hpp"
 #include "../Engine/Surface.hpp"

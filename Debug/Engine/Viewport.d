@@ -129,6 +129,7 @@ Engine/Viewport.d Engine/Viewport.o: ../Engine/Viewport.cpp \
  ../Engine/../Entities/../Engine/../Guichan/sdl/../mouseinput.hpp \
  ../Engine/../Entities/../Engine/../Guichan/platform.hpp \
  ../Engine/../Entities/../Engine/Sprite.hpp \
+ ../Engine/../Entities/../Engine/../guichan.hpp \
  ../Engine/../Entities/../Engine/../Listeners/AnimationCycleListener.hpp \
  ../Engine/../Entities/../Engine/../Math/Rectangle.hpp \
  ../Engine/../Entities/../Engine/../Engine/Renderer.hpp \
@@ -138,6 +139,7 @@ Engine/Viewport.d Engine/Viewport.o: ../Engine/Viewport.cpp \
  ../Engine/../Entities/../Engine/Timer.hpp ../Engine/../main.hpp \
  ../Engine/../Game/Direction.hpp ../Engine/../guichan.hpp \
  ../Engine/../Math/Vector.hpp ../Engine/../Managers/VideoManager.hpp \
+ ../Engine/../Managers/../guichan.hpp \
  ../Engine/../Managers/../Math/Rectangle.hpp \
  ../Engine/../Managers/../Engine/Surface.hpp
 
@@ -407,6 +409,8 @@ Engine/Viewport.d Engine/Viewport.o: ../Engine/Viewport.cpp \
 
 ../Engine/../Entities/../Engine/Sprite.hpp:
 
+../Engine/../Entities/../Engine/../guichan.hpp:
+
 ../Engine/../Entities/../Engine/../Listeners/AnimationCycleListener.hpp:
 
 ../Engine/../Entities/../Engine/../Math/Rectangle.hpp:
@@ -430,6 +434,8 @@ Engine/Viewport.d Engine/Viewport.o: ../Engine/Viewport.cpp \
 ../Engine/../Math/Vector.hpp:
 
 ../Engine/../Managers/VideoManager.hpp:
+
+../Engine/../Managers/../guichan.hpp:
 
 ../Engine/../Managers/../Math/Rectangle.hpp:
 

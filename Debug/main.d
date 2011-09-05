@@ -109,6 +109,7 @@ main.d main.o: ../main.cpp ../Game/Direction.hpp \
  ../Game/../Engine/../Engine/../Guichan/sdl/../mouseinput.hpp \
  ../Game/../Engine/../Engine/../Guichan/platform.hpp \
  ../Game/../Engine/../Engine/Sprite.hpp \
+ ../Game/../Engine/../Engine/../guichan.hpp \
  ../Game/../Engine/../Engine/../Listeners/AnimationCycleListener.hpp \
  ../Game/../Engine/../Engine/../Math/Rectangle.hpp \
  ../Game/../Engine/../Engine/../Engine/Renderer.hpp \
@@ -351,6 +352,8 @@ main.d main.o: ../main.cpp ../Game/Direction.hpp \
 ../Game/../Engine/../Engine/../Guichan/platform.hpp:
 
 ../Game/../Engine/../Engine/Sprite.hpp:
+
+../Game/../Engine/../Engine/../guichan.hpp:
 
 ../Game/../Engine/../Engine/../Listeners/AnimationCycleListener.hpp:
 

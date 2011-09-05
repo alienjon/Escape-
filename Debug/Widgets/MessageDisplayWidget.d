@@ -68,6 +68,7 @@ Widgets/MessageDisplayWidget.d Widgets/MessageDisplayWidget.o: \
  ../Widgets/../Guichan/widgets/window.hpp \
  ../Widgets/../Guichan/widgets/container.hpp \
  ../Widgets/../Guichan/platform.hpp ../Widgets/../Engine/Sprite.hpp \
+ ../Widgets/../Engine/../guichan.hpp \
  ../Widgets/../Engine/../Listeners/AnimationCycleListener.hpp \
  ../Widgets/../Engine/../Math/Rectangle.hpp \
  ../Widgets/../Engine/../Math/../guichan.hpp \
@@ -94,13 +95,15 @@ Widgets/MessageDisplayWidget.d Widgets/MessageDisplayWidget.o: \
  ../Widgets/../Engine/../Engine/../Guichan/sdl/../keyinput.hpp \
  ../Widgets/../Engine/../Engine/../Guichan/sdl/../mouseinput.hpp \
  ../Widgets/../Engine/../Engine/../Guichan/platform.hpp \
- ../Widgets/../Engine/Surface.hpp ../Widgets/../Engine/Timer.hpp \
- ../Widgets/../Engine/../Math/Vector.hpp \
+ ../Widgets/../Engine/Surface.hpp ../Widgets/../Engine/../Guichan/sdl.hpp \
+ ../Widgets/../Engine/Timer.hpp ../Widgets/../Engine/../Math/Vector.hpp \
  ../Widgets/../Widgets/SpriteWidget.hpp \
+ ../Widgets/../Widgets/../guichan.hpp \
  ../Widgets/../Widgets/../Listeners/AnimationCycleListener.hpp \
  ../Widgets/../Widgets/../Engine/Sprite.hpp \
  ../Widgets/../Engine/Timer.hpp ../Widgets/../Engine/Colors.hpp \
- ../Widgets/../Managers/FontManager.hpp ../Widgets/../Game/Keywords.hpp \
+ ../Widgets/../Managers/FontManager.hpp \
+ ../Widgets/../Managers/../guichan.hpp ../Widgets/../Game/Keywords.hpp \
  ../Widgets/../main.hpp ../Widgets/../Game/Direction.hpp \
  ../Widgets/../Game/../Math/Vector.hpp ../Widgets/../guichan.hpp \
  ../Widgets/../Math/Vector.hpp
@@ -279,6 +282,8 @@ Widgets/MessageDisplayWidget.d Widgets/MessageDisplayWidget.o: \
 
 ../Widgets/../Engine/Sprite.hpp:
 
+../Widgets/../Engine/../guichan.hpp:
+
 ../Widgets/../Engine/../Listeners/AnimationCycleListener.hpp:
 
 ../Widgets/../Engine/../Math/Rectangle.hpp:
@@ -333,11 +338,15 @@ Widgets/MessageDisplayWidget.d Widgets/MessageDisplayWidget.o: \
 
 ../Widgets/../Engine/Surface.hpp:
 
+../Widgets/../Engine/../Guichan/sdl.hpp:
+
 ../Widgets/../Engine/Timer.hpp:
 
 ../Widgets/../Engine/../Math/Vector.hpp:
 
 ../Widgets/../Widgets/SpriteWidget.hpp:
+
+../Widgets/../Widgets/../guichan.hpp:
 
 ../Widgets/../Widgets/../Listeners/AnimationCycleListener.hpp:
 
@@ -348,6 +357,8 @@ Widgets/MessageDisplayWidget.d Widgets/MessageDisplayWidget.o: \
 ../Widgets/../Engine/Colors.hpp:
 
 ../Widgets/../Managers/FontManager.hpp:
+
+../Widgets/../Managers/../guichan.hpp:
 
 ../Widgets/../Game/Keywords.hpp:
 

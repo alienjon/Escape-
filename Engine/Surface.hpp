@@ -22,7 +22,7 @@
 
 #include "SDL/SDL.h"
 
-#include <guichan/sdl.hpp>
+#include "../Guichan/sdl.hpp"
 
 #include "../Math/Rectangle.hpp"
 

@@ -152,10 +152,12 @@ LevelInfo/Level.d LevelInfo/Level.o: ../LevelInfo/Level.cpp \
  ../LevelInfo/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Math/Rectangle.hpp \
  ../LevelInfo/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/Renderer.hpp \
  ../LevelInfo/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/Sprite.hpp \
+ ../LevelInfo/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../guichan.hpp \
  ../LevelInfo/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Listeners/AnimationCycleListener.hpp \
  ../LevelInfo/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Math/Rectangle.hpp \
  ../LevelInfo/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Engine/Renderer.hpp \
  ../LevelInfo/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/Surface.hpp \
+ ../LevelInfo/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Guichan/sdl.hpp \
  ../LevelInfo/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/Timer.hpp \
  ../LevelInfo/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Math/Vector.hpp \
  ../LevelInfo/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/Timer.hpp \
@@ -204,6 +206,7 @@ LevelInfo/Level.d LevelInfo/Level.o: ../LevelInfo/Level.cpp \
  ../LevelInfo/../LevelInfo/../Math/Vector.hpp \
  ../LevelInfo/../MapInfo/Map.hpp \
  ../LevelInfo/../Managers/MarkersManager.hpp \
+ ../LevelInfo/../Managers/../guichan.hpp \
  ../LevelInfo/../Managers/../Engine/Renderer.hpp \
  ../LevelInfo/../Managers/../Engine/Sprite.hpp \
  ../LevelInfo/../Managers/../Math/Vector.hpp \
@@ -211,7 +214,7 @@ LevelInfo/Level.d LevelInfo/Level.o: ../LevelInfo/Level.cpp \
  ../LevelInfo/../LevelInfo/QuadData.hpp \
  ../LevelInfo/../Math/Quadrilateral.hpp ../LevelInfo/../Math/Vector.hpp \
  ../LevelInfo/../Math/Base64Functions.hpp \
- ../LevelInfo/../Engine/Colors.hpp \
+ ../LevelInfo/../Engine/Colors.hpp ../LevelInfo/../Engine/../guichan.hpp \
  ../LevelInfo/../Entities/Creatures/Creature.hpp \
  ../LevelInfo/../Entities/Creatures/../../Managers/AnimationManager.hpp \
  ../LevelInfo/../Entities/Creatures/../../Managers/../Engine/Sprite.hpp \
@@ -264,7 +267,10 @@ LevelInfo/Level.d LevelInfo/Level.o: ../LevelInfo/Level.cpp \
  ../LevelInfo/../Screens/../Widgets/../Game/Event.hpp \
  ../LevelInfo/../Screens/../Widgets/../Listeners/EventListener.hpp \
  ../LevelInfo/../Screens/../Game/GUI.hpp \
+ ../LevelInfo/../Screens/../Game/../guichan.hpp \
+ ../LevelInfo/../Screens/../Game/../Guichan/sdl.hpp \
  ../LevelInfo/../Screens/../Game/../Widgets/FPSDisplayWidget.hpp \
+ ../LevelInfo/../Screens/../Game/../Widgets/../guichan.hpp \
  ../LevelInfo/../Screens/../Game/../Widgets/../main.hpp \
  ../LevelInfo/../Screens/../Game/../Widgets/../Game/Direction.hpp \
  ../LevelInfo/../Screens/../Game/../Widgets/../guichan.hpp \
@@ -308,6 +314,7 @@ LevelInfo/Level.d LevelInfo/Level.o: ../LevelInfo/Level.cpp \
  ../LevelInfo/../Screens/../Interfaces/EventInterface.hpp \
  ../LevelInfo/../Screens/../Listeners/EventListener.hpp \
  ../LevelInfo/../Screens/../Managers/VideoManager.hpp \
+ ../LevelInfo/../Screens/../Managers/../guichan.hpp \
  ../LevelInfo/../Screens/../Managers/../Math/Rectangle.hpp \
  ../LevelInfo/../Screens/../Managers/../Engine/Surface.hpp \
  ../LevelInfo/../Screens/../Engine/Viewport.hpp \
@@ -318,7 +325,7 @@ LevelInfo/Level.d LevelInfo/Level.o: ../LevelInfo/Level.cpp \
  ../LevelInfo/../Screens/../Engine/Timer.hpp \
  ../LevelInfo/../Screens/../Math/Vector.hpp \
  ../LevelInfo/../Game/Keywords.hpp ../LevelInfo/../Engine/Logger.hpp \
- ../LevelInfo/../Engine/../guichan.hpp ../LevelInfo/../main.hpp
+ ../LevelInfo/../main.hpp
 
 ../LevelInfo/Level.hpp:
 
@@ -628,6 +635,8 @@ LevelInfo/Level.d LevelInfo/Level.o: ../LevelInfo/Level.cpp \
 
 ../LevelInfo/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/Sprite.hpp:
 
+../LevelInfo/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../guichan.hpp:
+
 ../LevelInfo/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Listeners/AnimationCycleListener.hpp:
 
 ../LevelInfo/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Math/Rectangle.hpp:
@@ -635,6 +644,8 @@ LevelInfo/Level.d LevelInfo/Level.o: ../LevelInfo/Level.cpp \
 ../LevelInfo/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Engine/Renderer.hpp:
 
 ../LevelInfo/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/Surface.hpp:
+
+../LevelInfo/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Guichan/sdl.hpp:
 
 ../LevelInfo/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/Timer.hpp:
 
@@ -736,6 +747,8 @@ LevelInfo/Level.d LevelInfo/Level.o: ../LevelInfo/Level.cpp \
 
 ../LevelInfo/../Managers/MarkersManager.hpp:
 
+../LevelInfo/../Managers/../guichan.hpp:
+
 ../LevelInfo/../Managers/../Engine/Renderer.hpp:
 
 ../LevelInfo/../Managers/../Engine/Sprite.hpp:
@@ -755,6 +768,8 @@ LevelInfo/Level.d LevelInfo/Level.o: ../LevelInfo/Level.cpp \
 ../LevelInfo/../Math/Base64Functions.hpp:
 
 ../LevelInfo/../Engine/Colors.hpp:
+
+../LevelInfo/../Engine/../guichan.hpp:
 
 ../LevelInfo/../Entities/Creatures/Creature.hpp:
 
@@ -860,7 +875,13 @@ LevelInfo/Level.d LevelInfo/Level.o: ../LevelInfo/Level.cpp \
 
 ../LevelInfo/../Screens/../Game/GUI.hpp:
 
+../LevelInfo/../Screens/../Game/../guichan.hpp:
+
+../LevelInfo/../Screens/../Game/../Guichan/sdl.hpp:
+
 ../LevelInfo/../Screens/../Game/../Widgets/FPSDisplayWidget.hpp:
+
+../LevelInfo/../Screens/../Game/../Widgets/../guichan.hpp:
 
 ../LevelInfo/../Screens/../Game/../Widgets/../main.hpp:
 
@@ -948,6 +969,8 @@ LevelInfo/Level.d LevelInfo/Level.o: ../LevelInfo/Level.cpp \
 
 ../LevelInfo/../Screens/../Managers/VideoManager.hpp:
 
+../LevelInfo/../Screens/../Managers/../guichan.hpp:
+
 ../LevelInfo/../Screens/../Managers/../Math/Rectangle.hpp:
 
 ../LevelInfo/../Screens/../Managers/../Engine/Surface.hpp:
@@ -969,7 +992,5 @@ LevelInfo/Level.d LevelInfo/Level.o: ../LevelInfo/Level.cpp \
 ../LevelInfo/../Game/Keywords.hpp:
 
 ../LevelInfo/../Engine/Logger.hpp:
-
-../LevelInfo/../Engine/../guichan.hpp:
 
 ../LevelInfo/../main.hpp:

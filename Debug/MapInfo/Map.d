@@ -131,10 +131,12 @@ MapInfo/Map.d MapInfo/Map.o: ../MapInfo/Map.cpp ../MapInfo/Map.hpp \
  ../MapInfo/../Entities/Non-Creatures/../../Entities/../Math/Rectangle.hpp \
  ../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/Renderer.hpp \
  ../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/Sprite.hpp \
+ ../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../guichan.hpp \
  ../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Listeners/AnimationCycleListener.hpp \
  ../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Math/Rectangle.hpp \
  ../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Engine/Renderer.hpp \
  ../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/Surface.hpp \
+ ../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Guichan/sdl.hpp \
  ../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/Timer.hpp \
  ../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Math/Vector.hpp \
  ../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/Timer.hpp \
@@ -437,6 +439,8 @@ MapInfo/Map.d MapInfo/Map.o: ../MapInfo/Map.cpp ../MapInfo/Map.hpp \
 
 ../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/Sprite.hpp:
 
+../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../guichan.hpp:
+
 ../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Listeners/AnimationCycleListener.hpp:
 
 ../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Math/Rectangle.hpp:
@@ -444,6 +448,8 @@ MapInfo/Map.d MapInfo/Map.o: ../MapInfo/Map.cpp ../MapInfo/Map.hpp \
 ../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Engine/Renderer.hpp:
 
 ../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/Surface.hpp:
+
+../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Guichan/sdl.hpp:
 
 ../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/Timer.hpp:
 

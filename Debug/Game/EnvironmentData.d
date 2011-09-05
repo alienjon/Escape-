@@ -143,10 +143,12 @@ Game/EnvironmentData.d Game/EnvironmentData.o: \
  ../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Math/Rectangle.hpp \
  ../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/Renderer.hpp \
  ../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/Sprite.hpp \
+ ../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../guichan.hpp \
  ../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Listeners/AnimationCycleListener.hpp \
  ../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Math/Rectangle.hpp \
  ../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Engine/Renderer.hpp \
  ../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/Surface.hpp \
+ ../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Guichan/sdl.hpp \
  ../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/Timer.hpp \
  ../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Math/Vector.hpp \
  ../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/Timer.hpp \
@@ -216,6 +218,7 @@ Game/EnvironmentData.d Game/EnvironmentData.o: \
  ../Game/../LevelInfo/../LevelInfo/../Math/Vector.hpp \
  ../Game/../LevelInfo/../MapInfo/Map.hpp \
  ../Game/../LevelInfo/../Managers/MarkersManager.hpp \
+ ../Game/../LevelInfo/../Managers/../guichan.hpp \
  ../Game/../LevelInfo/../Managers/../Engine/Renderer.hpp \
  ../Game/../LevelInfo/../Managers/../Engine/Sprite.hpp \
  ../Game/../LevelInfo/../Managers/../Math/Vector.hpp \
@@ -544,6 +547,8 @@ Game/EnvironmentData.d Game/EnvironmentData.o: \
 
 ../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/Sprite.hpp:
 
+../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../guichan.hpp:
+
 ../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Listeners/AnimationCycleListener.hpp:
 
 ../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Math/Rectangle.hpp:
@@ -551,6 +556,8 @@ Game/EnvironmentData.d Game/EnvironmentData.o: \
 ../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Engine/Renderer.hpp:
 
 ../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/Surface.hpp:
+
+../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Guichan/sdl.hpp:
 
 ../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/Timer.hpp:
 
@@ -701,6 +708,8 @@ Game/EnvironmentData.d Game/EnvironmentData.o: \
 ../Game/../LevelInfo/../MapInfo/Map.hpp:
 
 ../Game/../LevelInfo/../Managers/MarkersManager.hpp:
+
+../Game/../LevelInfo/../Managers/../guichan.hpp:
 
 ../Game/../LevelInfo/../Managers/../Engine/Renderer.hpp:
 

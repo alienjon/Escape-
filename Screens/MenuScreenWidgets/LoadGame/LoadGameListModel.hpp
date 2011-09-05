@@ -12,7 +12,7 @@
 #include <string>
 #include <vector>
 
-#include <guichan.hpp>
+#include "../../../guichan.hpp"
 
 /**
  * @brief A list model for the load game menu widget.

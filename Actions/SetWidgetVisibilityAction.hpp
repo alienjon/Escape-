@@ -8,7 +8,7 @@
 #ifndef SETWIDGETVISIBILITYACTION_HPP_
 #define SETWIDGETVISIBILITYACTION_HPP_
 
-#include <guichan.hpp>
+#include "../guichan.hpp"
 
 #include "Action.hpp"
 

@@ -3,8 +3,8 @@
 
 #include "SDL/SDL.h" // @note Needed for guichan/sdl.hpp
 
-#include "guichan.hpp"
-#include "guichan/sdl.hpp"
+#include "../guichan.hpp"
+#include "../Guichan/sdl.hpp"
 
 #include "../Widgets/FPSDisplayWidget.hpp"
 #include "../Engine/Renderer.hpp"

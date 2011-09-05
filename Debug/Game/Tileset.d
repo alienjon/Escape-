@@ -129,6 +129,7 @@ Game/Tileset.d Game/Tileset.o: ../Game/Tileset.cpp ../Game/Tileset.hpp \
  ../Game/../Entities/Non-Creatures/../../Entities/../Engine/../Guichan/sdl/../mouseinput.hpp \
  ../Game/../Entities/Non-Creatures/../../Entities/../Engine/../Guichan/platform.hpp \
  ../Game/../Entities/Non-Creatures/../../Entities/../Engine/Sprite.hpp \
+ ../Game/../Entities/Non-Creatures/../../Entities/../Engine/../guichan.hpp \
  ../Game/../Entities/Non-Creatures/../../Entities/../Engine/../Listeners/AnimationCycleListener.hpp \
  ../Game/../Entities/Non-Creatures/../../Entities/../Engine/../Math/Rectangle.hpp \
  ../Game/../Entities/Non-Creatures/../../Entities/../Engine/../Engine/Renderer.hpp \
@@ -406,6 +407,8 @@ Game/Tileset.d Game/Tileset.o: ../Game/Tileset.cpp ../Game/Tileset.hpp \
 ../Game/../Entities/Non-Creatures/../../Entities/../Engine/../Guichan/platform.hpp:
 
 ../Game/../Entities/Non-Creatures/../../Entities/../Engine/Sprite.hpp:
+
+../Game/../Entities/Non-Creatures/../../Entities/../Engine/../guichan.hpp:
 
 ../Game/../Entities/Non-Creatures/../../Entities/../Engine/../Listeners/AnimationCycleListener.hpp:
 

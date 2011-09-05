@@ -97,8 +97,9 @@ Widgets/GameOptionsWidget.d Widgets/GameOptionsWidget.o: \
  ../Widgets/../Widgets/GameOptions/../../Widgets/GameOptions/TasksContainerWidget.hpp \
  ../Widgets/../Widgets/GameOptions/../../Widgets/GameOptions/../../Widgets/GameOptions/TaskWidget.hpp \
  ../Widgets/../Widgets/GameOptions/../../Widgets/GameOptions/../../Widgets/GameOptions/../../guichan.hpp \
- ../Widgets/../Engine/Colors.hpp ../Widgets/../Managers/FontManager.hpp \
- ../Widgets/../Engine/Logger.hpp ../Widgets/../Engine/../guichan.hpp
+ ../Widgets/../Engine/Colors.hpp ../Widgets/../Engine/../guichan.hpp \
+ ../Widgets/../Managers/FontManager.hpp \
+ ../Widgets/../Managers/../guichan.hpp ../Widgets/../Engine/Logger.hpp
 
 ../Widgets/GameOptionsWidget.hpp:
 
@@ -298,8 +299,10 @@ Widgets/GameOptionsWidget.d Widgets/GameOptionsWidget.o: \
 
 ../Widgets/../Engine/Colors.hpp:
 
+../Widgets/../Engine/../guichan.hpp:
+
 ../Widgets/../Managers/FontManager.hpp:
 
-../Widgets/../Engine/Logger.hpp:
+../Widgets/../Managers/../guichan.hpp:
 
-../Widgets/../Engine/../guichan.hpp:
+../Widgets/../Engine/Logger.hpp:

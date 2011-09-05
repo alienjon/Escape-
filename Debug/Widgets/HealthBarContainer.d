@@ -72,6 +72,7 @@ Widgets/HealthBarContainer.d Widgets/HealthBarContainer.o: \
  ../Widgets/../Entities/Creatures/Creature.hpp \
  ../Widgets/../Entities/Creatures/../../Managers/AnimationManager.hpp \
  ../Widgets/../Entities/Creatures/../../Managers/../Engine/Sprite.hpp \
+ ../Widgets/../Entities/Creatures/../../Managers/../Engine/../guichan.hpp \
  ../Widgets/../Entities/Creatures/../../Managers/../Engine/../Listeners/AnimationCycleListener.hpp \
  ../Widgets/../Entities/Creatures/../../Managers/../Engine/../Math/Rectangle.hpp \
  ../Widgets/../Entities/Creatures/../../Managers/../Engine/../Math/../guichan.hpp \
@@ -99,6 +100,7 @@ Widgets/HealthBarContainer.d Widgets/HealthBarContainer.o: \
  ../Widgets/../Entities/Creatures/../../Managers/../Engine/../Engine/../Guichan/sdl/../mouseinput.hpp \
  ../Widgets/../Entities/Creatures/../../Managers/../Engine/../Engine/../Guichan/platform.hpp \
  ../Widgets/../Entities/Creatures/../../Managers/../Engine/Surface.hpp \
+ ../Widgets/../Entities/Creatures/../../Managers/../Engine/../Guichan/sdl.hpp \
  ../Widgets/../Entities/Creatures/../../Managers/../Engine/Timer.hpp \
  ../Widgets/../Entities/Creatures/../../Managers/../Engine/../Math/Vector.hpp \
  ../Widgets/../Entities/Creatures/../../Entities/Creatures/CreatureAnimationState.hpp \
@@ -315,6 +317,8 @@ Widgets/HealthBarContainer.d Widgets/HealthBarContainer.o: \
 
 ../Widgets/../Entities/Creatures/../../Managers/../Engine/Sprite.hpp:
 
+../Widgets/../Entities/Creatures/../../Managers/../Engine/../guichan.hpp:
+
 ../Widgets/../Entities/Creatures/../../Managers/../Engine/../Listeners/AnimationCycleListener.hpp:
 
 ../Widgets/../Entities/Creatures/../../Managers/../Engine/../Math/Rectangle.hpp:
@@ -368,6 +372,8 @@ Widgets/HealthBarContainer.d Widgets/HealthBarContainer.o: \
 ../Widgets/../Entities/Creatures/../../Managers/../Engine/../Engine/../Guichan/platform.hpp:
 
 ../Widgets/../Entities/Creatures/../../Managers/../Engine/Surface.hpp:
+
+../Widgets/../Entities/Creatures/../../Managers/../Engine/../Guichan/sdl.hpp:
 
 ../Widgets/../Entities/Creatures/../../Managers/../Engine/Timer.hpp:
 

@@ -13,6 +13,91 @@ PlotInfo/WalkToNode.d PlotInfo/WalkToNode.o: ../PlotInfo/WalkToNode.cpp \
  ../PlotInfo/../Entities/Creatures/Creature.hpp \
  ../PlotInfo/../Entities/Creatures/../../Managers/AnimationManager.hpp \
  ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/Sprite.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../guichan.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/actionevent.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/event.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/platform.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/actionlistener.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/actionevent.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/cliprectangle.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/rectangle.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/color.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/deathlistener.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/event.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/exception.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/focushandler.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/focuslistener.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/font.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/genericinput.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/input.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/keyinput.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/key.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/mouseinput.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/graphics.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/cliprectangle.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/gui.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/keyevent.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/inputevent.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/mouseevent.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/image.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/imagefont.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/font.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/imageloader.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/input.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/inputevent.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/key.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/keyevent.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/keyinput.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/keylistener.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/listmodel.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/mouseevent.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/mouseinput.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/mouselistener.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/rectangle.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/selectionevent.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/selectionlistener.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/selectionevent.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widget.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/color.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgetlistener.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/button.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/../focuslistener.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/../graphics.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/../keylistener.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/../mouseevent.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/../mouselistener.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/../platform.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/../widget.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/checkbox.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/container.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/../basiccontainer.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/../deathlistener.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/../platform.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/../widget.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/dropdown.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/../actionlistener.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/../deathlistener.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/../focushandler.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/../listmodel.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/../selectionlistener.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/listbox.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/scrollarea.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/icon.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/../image.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/imagebutton.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/button.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/label.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/listbox.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/scrollarea.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/slider.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/radiobutton.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/tab.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/tabbedarea.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/textbox.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/textfield.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/window.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/container.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/platform.hpp \
  ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Listeners/AnimationCycleListener.hpp \
  ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Math/Rectangle.hpp \
  ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Math/../guichan.hpp \
@@ -40,6 +125,7 @@ PlotInfo/WalkToNode.d PlotInfo/WalkToNode.o: ../PlotInfo/WalkToNode.cpp \
  ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Engine/../Guichan/sdl/../mouseinput.hpp \
  ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Engine/../Guichan/platform.hpp \
  ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/Surface.hpp \
+ ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/sdl.hpp \
  ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/Timer.hpp \
  ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Math/Vector.hpp \
  ../PlotInfo/../Entities/Creatures/../../Entities/Creatures/CreatureAnimationState.hpp \
@@ -102,6 +188,176 @@ PlotInfo/WalkToNode.d PlotInfo/WalkToNode.o: ../PlotInfo/WalkToNode.cpp \
 
 ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/Sprite.hpp:
 
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../guichan.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/actionevent.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/event.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/platform.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/actionlistener.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/actionevent.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/cliprectangle.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/rectangle.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/color.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/deathlistener.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/event.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/exception.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/focushandler.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/focuslistener.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/font.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/genericinput.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/input.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/keyinput.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/key.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/mouseinput.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/graphics.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/cliprectangle.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/gui.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/keyevent.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/inputevent.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/mouseevent.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/image.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/imagefont.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/font.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/imageloader.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/input.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/inputevent.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/key.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/keyevent.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/keyinput.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/keylistener.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/listmodel.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/mouseevent.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/mouseinput.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/mouselistener.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/rectangle.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/selectionevent.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/selectionlistener.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/selectionevent.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widget.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/color.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgetlistener.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/button.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/../focuslistener.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/../graphics.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/../keylistener.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/../mouseevent.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/../mouselistener.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/../platform.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/../widget.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/checkbox.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/container.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/../basiccontainer.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/../deathlistener.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/../platform.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/../widget.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/dropdown.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/../actionlistener.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/../deathlistener.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/../focushandler.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/../listmodel.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/../selectionlistener.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/listbox.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/scrollarea.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/icon.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/../image.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/imagebutton.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/button.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/label.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/listbox.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/scrollarea.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/slider.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/radiobutton.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/tab.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/tabbedarea.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/textbox.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/textfield.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/window.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/widgets/container.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/platform.hpp:
+
 ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Listeners/AnimationCycleListener.hpp:
 
 ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Math/Rectangle.hpp:
@@ -155,6 +411,8 @@ PlotInfo/WalkToNode.d PlotInfo/WalkToNode.o: ../PlotInfo/WalkToNode.cpp \
 ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Engine/../Guichan/platform.hpp:
 
 ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/Surface.hpp:
+
+../PlotInfo/../Entities/Creatures/../../Managers/../Engine/../Guichan/sdl.hpp:
 
 ../PlotInfo/../Entities/Creatures/../../Managers/../Engine/Timer.hpp:
 

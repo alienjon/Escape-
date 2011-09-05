@@ -133,10 +133,12 @@ MapInfo/MapData.d MapInfo/MapData.o: ../MapInfo/MapData.cpp \
  ../MapInfo/../MapInfo/../Entities/Non-Creatures/../../Entities/../Math/Rectangle.hpp \
  ../MapInfo/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/Renderer.hpp \
  ../MapInfo/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/Sprite.hpp \
+ ../MapInfo/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../guichan.hpp \
  ../MapInfo/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Listeners/AnimationCycleListener.hpp \
  ../MapInfo/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Math/Rectangle.hpp \
  ../MapInfo/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Engine/Renderer.hpp \
  ../MapInfo/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/Surface.hpp \
+ ../MapInfo/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Guichan/sdl.hpp \
  ../MapInfo/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/Timer.hpp \
  ../MapInfo/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Math/Vector.hpp \
  ../MapInfo/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/Timer.hpp \
@@ -422,6 +424,8 @@ MapInfo/MapData.d MapInfo/MapData.o: ../MapInfo/MapData.cpp \
 
 ../MapInfo/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/Sprite.hpp:
 
+../MapInfo/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../guichan.hpp:
+
 ../MapInfo/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Listeners/AnimationCycleListener.hpp:
 
 ../MapInfo/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Math/Rectangle.hpp:
@@ -429,6 +433,8 @@ MapInfo/MapData.d MapInfo/MapData.o: ../MapInfo/MapData.cpp \
 ../MapInfo/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Engine/Renderer.hpp:
 
 ../MapInfo/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/Surface.hpp:
+
+../MapInfo/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Guichan/sdl.hpp:
 
 ../MapInfo/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/Timer.hpp:
 

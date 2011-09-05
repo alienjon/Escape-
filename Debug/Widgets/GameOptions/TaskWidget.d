@@ -87,6 +87,7 @@ Widgets/GameOptions/TaskWidget.d Widgets/GameOptions/TaskWidget.o: \
  ../Widgets/GameOptions/../../Guichan/widgets/container.hpp \
  ../Widgets/GameOptions/../../Guichan/platform.hpp \
  ../Widgets/GameOptions/../../Managers/FontManager.hpp \
+ ../Widgets/GameOptions/../../Managers/../guichan.hpp \
  ../Widgets/GameOptions/../../main.hpp \
  ../Widgets/GameOptions/../../Game/Direction.hpp \
  ../Widgets/GameOptions/../../Game/../Math/Vector.hpp \
@@ -266,6 +267,8 @@ Widgets/GameOptions/TaskWidget.d Widgets/GameOptions/TaskWidget.o: \
 ../Widgets/GameOptions/../../Guichan/platform.hpp:
 
 ../Widgets/GameOptions/../../Managers/FontManager.hpp:
+
+../Widgets/GameOptions/../../Managers/../guichan.hpp:
 
 ../Widgets/GameOptions/../../main.hpp:
 

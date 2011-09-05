@@ -11,7 +11,7 @@
 #include <list>
 #include <string>
 
-#include <guichan.hpp>
+#include "../guichan.hpp"
 
 #include "../Game/Event.hpp"
 #include "../Listeners/EventListener.hpp"

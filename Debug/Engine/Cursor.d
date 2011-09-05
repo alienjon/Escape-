@@ -106,7 +106,7 @@ Engine/Cursor.d Engine/Cursor.o: ../Engine/Cursor.cpp \
  ../Engine/../Engine/../Guichan/sdl/../keyinput.hpp \
  ../Engine/../Engine/../Guichan/sdl/../mouseinput.hpp \
  ../Engine/../Engine/../Guichan/platform.hpp \
- ../Engine/../Engine/Sprite.hpp \
+ ../Engine/../Engine/Sprite.hpp ../Engine/../Engine/../guichan.hpp \
  ../Engine/../Engine/../Listeners/AnimationCycleListener.hpp \
  ../Engine/../Engine/../Math/Rectangle.hpp \
  ../Engine/../Engine/../Engine/Renderer.hpp \
@@ -332,6 +332,8 @@ Engine/Cursor.d Engine/Cursor.o: ../Engine/Cursor.cpp \
 ../Engine/../Engine/../Guichan/platform.hpp:
 
 ../Engine/../Engine/Sprite.hpp:
+
+../Engine/../Engine/../guichan.hpp:
 
 ../Engine/../Engine/../Listeners/AnimationCycleListener.hpp:
 

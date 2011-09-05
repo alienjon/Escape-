@@ -8,7 +8,7 @@
 #ifndef FONTMANAGER_HPP_
 #define FONTMANAGER_HPP_
 
-#include <guichan.hpp>
+#include "../guichan.hpp"
 
 enum FontType
 {

@@ -1,0 +1,6 @@
+Debug/
+Release/
+EscapeToolkit
+.git
+*.d
+*.o

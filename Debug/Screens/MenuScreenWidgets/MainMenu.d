@@ -89,20 +89,37 @@ Screens/MenuScreenWidgets/MainMenu.d Screens/MenuScreenWidgets/MainMenu.o: \
  ../Screens/MenuScreenWidgets/../../Guichan/widgets/container.hpp \
  ../Screens/MenuScreenWidgets/../../Guichan/platform.hpp \
  ../Screens/MenuScreenWidgets/../../Widgets/MenuButton.hpp \
+ ../Screens/MenuScreenWidgets/../../Widgets/../guichan.hpp \
  ../Screens/MenuScreenWidgets/../../Widgets/../Game/Event.hpp \
  ../Screens/MenuScreenWidgets/../../Widgets/../Listeners/EventListener.hpp \
  ../Screens/MenuScreenWidgets/../../Widgets/../Listeners/../Listeners/CreatureMovedToPointListener.hpp \
  ../Screens/MenuScreenWidgets/../../Widgets/../Listeners/../Game/Event.hpp \
  ../Screens/MenuScreenWidgets/MenuWidget.hpp \
  ../Screens/MenuScreenWidgets/../../Engine/Colors.hpp \
+ ../Screens/MenuScreenWidgets/../../Engine/../guichan.hpp \
  ../Screens/MenuScreenWidgets/../../Listeners/EventListener.hpp \
  ../Screens/MenuScreenWidgets/../../Managers/VideoManager.hpp \
+ ../Screens/MenuScreenWidgets/../../Managers/../guichan.hpp \
  ../Screens/MenuScreenWidgets/../../Managers/../Math/Rectangle.hpp \
  ../Screens/MenuScreenWidgets/../../Managers/../Math/../guichan.hpp \
  ../Screens/MenuScreenWidgets/../../Managers/../Math/../Math/Polygon.hpp \
  ../Screens/MenuScreenWidgets/../../Managers/../Math/../Math/../Math/Vector.hpp \
  ../Screens/MenuScreenWidgets/../../Managers/../Math/../Math/Vector.hpp \
  ../Screens/MenuScreenWidgets/../../Managers/../Engine/Surface.hpp \
+ ../Screens/MenuScreenWidgets/../../Managers/../Engine/../Guichan/sdl.hpp \
+ ../Screens/MenuScreenWidgets/../../Managers/../Engine/../Guichan/sdl/sdlgraphics.hpp \
+ ../Screens/MenuScreenWidgets/../../Managers/../Engine/../Guichan/sdl/../color.hpp \
+ ../Screens/MenuScreenWidgets/../../Managers/../Engine/../Guichan/sdl/../graphics.hpp \
+ ../Screens/MenuScreenWidgets/../../Managers/../Engine/../Guichan/sdl/../platform.hpp \
+ ../Screens/MenuScreenWidgets/../../Managers/../Engine/../Guichan/sdl/sdlimage.hpp \
+ ../Screens/MenuScreenWidgets/../../Managers/../Engine/../Guichan/sdl/../image.hpp \
+ ../Screens/MenuScreenWidgets/../../Managers/../Engine/../Guichan/sdl/sdlimageloader.hpp \
+ ../Screens/MenuScreenWidgets/../../Managers/../Engine/../Guichan/sdl/../imageloader.hpp \
+ ../Screens/MenuScreenWidgets/../../Managers/../Engine/../Guichan/sdl/sdlinput.hpp \
+ ../Screens/MenuScreenWidgets/../../Managers/../Engine/../Guichan/sdl/../input.hpp \
+ ../Screens/MenuScreenWidgets/../../Managers/../Engine/../Guichan/sdl/../keyinput.hpp \
+ ../Screens/MenuScreenWidgets/../../Managers/../Engine/../Guichan/sdl/../mouseinput.hpp \
+ ../Screens/MenuScreenWidgets/../../Managers/../Engine/../Guichan/platform.hpp \
  ../Screens/MenuScreenWidgets/../../Managers/../Engine/../Math/Rectangle.hpp \
  ../Screens/MenuScreenWidgets/../MenuScreen.hpp \
  ../Screens/MenuScreenWidgets/../../Listeners/CreatureMovedToPointListener.hpp \
@@ -116,6 +133,7 @@ Screens/MenuScreenWidgets/MainMenu.d Screens/MenuScreenWidgets/MainMenu.o: \
  ../Screens/MenuScreenWidgets/../../guichan.hpp \
  ../Screens/MenuScreenWidgets/../MenuScreenWidgets/LoadGameMenu.hpp \
  ../Screens/MenuScreenWidgets/../MenuScreenWidgets/LoadGame/LoadGameListModel.hpp \
+ ../Screens/MenuScreenWidgets/../MenuScreenWidgets/LoadGame/../../../guichan.hpp \
  ../Screens/MenuScreenWidgets/../MenuScreenWidgets/MainMenu.hpp \
  ../Screens/MenuScreenWidgets/../../MapInfo/Map.hpp \
  ../Screens/MenuScreenWidgets/../../MapInfo/MapData.hpp \
@@ -151,6 +169,7 @@ Screens/MenuScreenWidgets/MainMenu.d Screens/MenuScreenWidgets/MainMenu.o: \
  ../Screens/MenuScreenWidgets/../../MapInfo/../Entities/Non-Creatures/../../Entities/../Math/Rectangle.hpp \
  ../Screens/MenuScreenWidgets/../../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/Renderer.hpp \
  ../Screens/MenuScreenWidgets/../../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/Sprite.hpp \
+ ../Screens/MenuScreenWidgets/../../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../guichan.hpp \
  ../Screens/MenuScreenWidgets/../../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Listeners/AnimationCycleListener.hpp \
  ../Screens/MenuScreenWidgets/../../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Math/Rectangle.hpp \
  ../Screens/MenuScreenWidgets/../../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Engine/Renderer.hpp \
@@ -182,7 +201,9 @@ Screens/MenuScreenWidgets/MainMenu.d Screens/MenuScreenWidgets/MainMenu.o: \
  ../Screens/MenuScreenWidgets/../../Game/../Engine/Renderer.hpp \
  ../Screens/MenuScreenWidgets/../../Game/../Engine/Timer.hpp \
  ../Screens/MenuScreenWidgets/../../Game/GUI.hpp \
+ ../Screens/MenuScreenWidgets/../../Game/../Guichan/sdl.hpp \
  ../Screens/MenuScreenWidgets/../../Game/../Widgets/FPSDisplayWidget.hpp \
+ ../Screens/MenuScreenWidgets/../../Game/../Widgets/../guichan.hpp \
  ../Screens/MenuScreenWidgets/../../Game/../Widgets/../main.hpp \
  ../Screens/MenuScreenWidgets/../../Game/../Widgets/../Game/Direction.hpp \
  ../Screens/MenuScreenWidgets/../../Game/../Widgets/../guichan.hpp \
@@ -376,6 +397,8 @@ Screens/MenuScreenWidgets/MainMenu.d Screens/MenuScreenWidgets/MainMenu.o: \
 
 ../Screens/MenuScreenWidgets/../../Widgets/MenuButton.hpp:
 
+../Screens/MenuScreenWidgets/../../Widgets/../guichan.hpp:
+
 ../Screens/MenuScreenWidgets/../../Widgets/../Game/Event.hpp:
 
 ../Screens/MenuScreenWidgets/../../Widgets/../Listeners/EventListener.hpp:
@@ -388,9 +411,13 @@ Screens/MenuScreenWidgets/MainMenu.d Screens/MenuScreenWidgets/MainMenu.o: \
 
 ../Screens/MenuScreenWidgets/../../Engine/Colors.hpp:
 
+../Screens/MenuScreenWidgets/../../Engine/../guichan.hpp:
+
 ../Screens/MenuScreenWidgets/../../Listeners/EventListener.hpp:
 
 ../Screens/MenuScreenWidgets/../../Managers/VideoManager.hpp:
+
+../Screens/MenuScreenWidgets/../../Managers/../guichan.hpp:
 
 ../Screens/MenuScreenWidgets/../../Managers/../Math/Rectangle.hpp:
 
@@ -403,6 +430,34 @@ Screens/MenuScreenWidgets/MainMenu.d Screens/MenuScreenWidgets/MainMenu.o: \
 ../Screens/MenuScreenWidgets/../../Managers/../Math/../Math/Vector.hpp:
 
 ../Screens/MenuScreenWidgets/../../Managers/../Engine/Surface.hpp:
+
+../Screens/MenuScreenWidgets/../../Managers/../Engine/../Guichan/sdl.hpp:
+
+../Screens/MenuScreenWidgets/../../Managers/../Engine/../Guichan/sdl/sdlgraphics.hpp:
+
+../Screens/MenuScreenWidgets/../../Managers/../Engine/../Guichan/sdl/../color.hpp:
+
+../Screens/MenuScreenWidgets/../../Managers/../Engine/../Guichan/sdl/../graphics.hpp:
+
+../Screens/MenuScreenWidgets/../../Managers/../Engine/../Guichan/sdl/../platform.hpp:
+
+../Screens/MenuScreenWidgets/../../Managers/../Engine/../Guichan/sdl/sdlimage.hpp:
+
+../Screens/MenuScreenWidgets/../../Managers/../Engine/../Guichan/sdl/../image.hpp:
+
+../Screens/MenuScreenWidgets/../../Managers/../Engine/../Guichan/sdl/sdlimageloader.hpp:
+
+../Screens/MenuScreenWidgets/../../Managers/../Engine/../Guichan/sdl/../imageloader.hpp:
+
+../Screens/MenuScreenWidgets/../../Managers/../Engine/../Guichan/sdl/sdlinput.hpp:
+
+../Screens/MenuScreenWidgets/../../Managers/../Engine/../Guichan/sdl/../input.hpp:
+
+../Screens/MenuScreenWidgets/../../Managers/../Engine/../Guichan/sdl/../keyinput.hpp:
+
+../Screens/MenuScreenWidgets/../../Managers/../Engine/../Guichan/sdl/../mouseinput.hpp:
+
+../Screens/MenuScreenWidgets/../../Managers/../Engine/../Guichan/platform.hpp:
 
 ../Screens/MenuScreenWidgets/../../Managers/../Engine/../Math/Rectangle.hpp:
 
@@ -429,6 +484,8 @@ Screens/MenuScreenWidgets/MainMenu.d Screens/MenuScreenWidgets/MainMenu.o: \
 ../Screens/MenuScreenWidgets/../MenuScreenWidgets/LoadGameMenu.hpp:
 
 ../Screens/MenuScreenWidgets/../MenuScreenWidgets/LoadGame/LoadGameListModel.hpp:
+
+../Screens/MenuScreenWidgets/../MenuScreenWidgets/LoadGame/../../../guichan.hpp:
 
 ../Screens/MenuScreenWidgets/../MenuScreenWidgets/MainMenu.hpp:
 
@@ -500,6 +557,8 @@ Screens/MenuScreenWidgets/MainMenu.d Screens/MenuScreenWidgets/MainMenu.o: \
 
 ../Screens/MenuScreenWidgets/../../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/Sprite.hpp:
 
+../Screens/MenuScreenWidgets/../../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../guichan.hpp:
+
 ../Screens/MenuScreenWidgets/../../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Listeners/AnimationCycleListener.hpp:
 
 ../Screens/MenuScreenWidgets/../../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Math/Rectangle.hpp:
@@ -562,7 +621,11 @@ Screens/MenuScreenWidgets/MainMenu.d Screens/MenuScreenWidgets/MainMenu.o: \
 
 ../Screens/MenuScreenWidgets/../../Game/GUI.hpp:
 
+../Screens/MenuScreenWidgets/../../Game/../Guichan/sdl.hpp:
+
 ../Screens/MenuScreenWidgets/../../Game/../Widgets/FPSDisplayWidget.hpp:
+
+../Screens/MenuScreenWidgets/../../Game/../Widgets/../guichan.hpp:
 
 ../Screens/MenuScreenWidgets/../../Game/../Widgets/../main.hpp:
 

@@ -116,6 +116,7 @@ Screens/GameScreen.d Screens/GameScreen.o: ../Screens/GameScreen.cpp \
  ../Screens/../Game/../Game/../Engine/../Engine/../Guichan/sdl/../mouseinput.hpp \
  ../Screens/../Game/../Game/../Engine/../Engine/../Guichan/platform.hpp \
  ../Screens/../Game/../Game/../Engine/../Engine/Sprite.hpp \
+ ../Screens/../Game/../Game/../Engine/../Engine/../guichan.hpp \
  ../Screens/../Game/../Game/../Engine/../Engine/../Listeners/AnimationCycleListener.hpp \
  ../Screens/../Game/../Game/../Engine/../Engine/../Math/Rectangle.hpp \
  ../Screens/../Game/../Game/../Engine/../Engine/../Engine/Renderer.hpp \
@@ -215,6 +216,7 @@ Screens/GameScreen.d Screens/GameScreen.o: ../Screens/GameScreen.cpp \
  ../Screens/../Game/../LevelInfo/../LevelInfo/../Math/Vector.hpp \
  ../Screens/../Game/../LevelInfo/../MapInfo/Map.hpp \
  ../Screens/../Game/../LevelInfo/../Managers/MarkersManager.hpp \
+ ../Screens/../Game/../LevelInfo/../Managers/../guichan.hpp \
  ../Screens/../Game/../LevelInfo/../Managers/../Engine/Renderer.hpp \
  ../Screens/../Game/../LevelInfo/../Managers/../Engine/Sprite.hpp \
  ../Screens/../Game/../LevelInfo/../Managers/../Math/Vector.hpp \
@@ -261,8 +263,10 @@ Screens/GameScreen.d Screens/GameScreen.o: ../Screens/GameScreen.cpp \
  ../Screens/../Widgets/MenuButton.hpp \
  ../Screens/../Widgets/../Game/Event.hpp \
  ../Screens/../Widgets/../Listeners/EventListener.hpp \
- ../Screens/../Game/GUI.hpp \
+ ../Screens/../Game/GUI.hpp ../Screens/../Game/../guichan.hpp \
+ ../Screens/../Game/../Guichan/sdl.hpp \
  ../Screens/../Game/../Widgets/FPSDisplayWidget.hpp \
+ ../Screens/../Game/../Widgets/../guichan.hpp \
  ../Screens/../Game/../Widgets/../main.hpp \
  ../Screens/../Game/../Widgets/../Game/Direction.hpp \
  ../Screens/../Game/../Widgets/../guichan.hpp \
@@ -303,6 +307,7 @@ Screens/GameScreen.d Screens/GameScreen.o: ../Screens/GameScreen.cpp \
  ../Screens/../Game/Game.hpp ../Screens/../Interfaces/EventInterface.hpp \
  ../Screens/../Listeners/EventListener.hpp \
  ../Screens/../Managers/VideoManager.hpp \
+ ../Screens/../Managers/../guichan.hpp \
  ../Screens/../Managers/../Math/Rectangle.hpp \
  ../Screens/../Managers/../Engine/Surface.hpp \
  ../Screens/../Engine/Viewport.hpp \
@@ -566,6 +571,8 @@ Screens/GameScreen.d Screens/GameScreen.o: ../Screens/GameScreen.cpp \
 
 ../Screens/../Game/../Game/../Engine/../Engine/Sprite.hpp:
 
+../Screens/../Game/../Game/../Engine/../Engine/../guichan.hpp:
+
 ../Screens/../Game/../Game/../Engine/../Engine/../Listeners/AnimationCycleListener.hpp:
 
 ../Screens/../Game/../Game/../Engine/../Engine/../Math/Rectangle.hpp:
@@ -764,6 +771,8 @@ Screens/GameScreen.d Screens/GameScreen.o: ../Screens/GameScreen.cpp \
 
 ../Screens/../Game/../LevelInfo/../Managers/MarkersManager.hpp:
 
+../Screens/../Game/../LevelInfo/../Managers/../guichan.hpp:
+
 ../Screens/../Game/../LevelInfo/../Managers/../Engine/Renderer.hpp:
 
 ../Screens/../Game/../LevelInfo/../Managers/../Engine/Sprite.hpp:
@@ -858,7 +867,13 @@ Screens/GameScreen.d Screens/GameScreen.o: ../Screens/GameScreen.cpp \
 
 ../Screens/../Game/GUI.hpp:
 
+../Screens/../Game/../guichan.hpp:
+
+../Screens/../Game/../Guichan/sdl.hpp:
+
 ../Screens/../Game/../Widgets/FPSDisplayWidget.hpp:
+
+../Screens/../Game/../Widgets/../guichan.hpp:
 
 ../Screens/../Game/../Widgets/../main.hpp:
 
@@ -945,6 +960,8 @@ Screens/GameScreen.d Screens/GameScreen.o: ../Screens/GameScreen.cpp \
 ../Screens/../Listeners/EventListener.hpp:
 
 ../Screens/../Managers/VideoManager.hpp:
+
+../Screens/../Managers/../guichan.hpp:
 
 ../Screens/../Managers/../Math/Rectangle.hpp:
 

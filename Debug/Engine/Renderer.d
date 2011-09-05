@@ -107,10 +107,12 @@ Engine/Renderer.d Engine/Renderer.o: ../Engine/Renderer.cpp \
  ../Engine/../Game/../Engine/Cursor.hpp \
  ../Engine/../Game/../Engine/../Engine/Renderer.hpp \
  ../Engine/../Game/../Engine/../Engine/Sprite.hpp \
+ ../Engine/../Game/../Engine/../Engine/../guichan.hpp \
  ../Engine/../Game/../Engine/../Engine/../Listeners/AnimationCycleListener.hpp \
  ../Engine/../Game/../Engine/../Engine/../Math/Rectangle.hpp \
  ../Engine/../Game/../Engine/../Engine/../Engine/Renderer.hpp \
  ../Engine/../Game/../Engine/../Engine/Surface.hpp \
+ ../Engine/../Game/../Engine/../Engine/../Guichan/sdl.hpp \
  ../Engine/../Game/../Engine/../Engine/Timer.hpp \
  ../Engine/../Game/../Engine/../Engine/../Math/Vector.hpp \
  ../Engine/../Game/../Engine/../Math/Vector.hpp \
@@ -125,6 +127,7 @@ Engine/Renderer.d Engine/Renderer.o: ../Engine/Renderer.cpp \
  ../Engine/../Game/Direction.hpp ../Engine/../Game/../Math/Vector.hpp \
  ../Engine/../guichan.hpp ../Engine/../Math/Vector.hpp \
  ../Engine/Surface.hpp ../Engine/../Managers/VideoManager.hpp \
+ ../Engine/../Managers/../guichan.hpp \
  ../Engine/../Managers/../Math/Rectangle.hpp \
  ../Engine/../Managers/../Engine/Surface.hpp
 
@@ -352,6 +355,8 @@ Engine/Renderer.d Engine/Renderer.o: ../Engine/Renderer.cpp \
 
 ../Engine/../Game/../Engine/../Engine/Sprite.hpp:
 
+../Engine/../Game/../Engine/../Engine/../guichan.hpp:
+
 ../Engine/../Game/../Engine/../Engine/../Listeners/AnimationCycleListener.hpp:
 
 ../Engine/../Game/../Engine/../Engine/../Math/Rectangle.hpp:
@@ -359,6 +364,8 @@ Engine/Renderer.d Engine/Renderer.o: ../Engine/Renderer.cpp \
 ../Engine/../Game/../Engine/../Engine/../Engine/Renderer.hpp:
 
 ../Engine/../Game/../Engine/../Engine/Surface.hpp:
+
+../Engine/../Game/../Engine/../Engine/../Guichan/sdl.hpp:
 
 ../Engine/../Game/../Engine/../Engine/Timer.hpp:
 
@@ -399,6 +406,8 @@ Engine/Renderer.d Engine/Renderer.o: ../Engine/Renderer.cpp \
 ../Engine/Surface.hpp:
 
 ../Engine/../Managers/VideoManager.hpp:
+
+../Engine/../Managers/../guichan.hpp:
 
 ../Engine/../Managers/../Math/Rectangle.hpp:
 

@@ -131,6 +131,7 @@ Managers/TilesetManager.d Managers/TilesetManager.o: \
  ../Managers/../Game/../Entities/Non-Creatures/../../Entities/../Engine/../Guichan/sdl/../mouseinput.hpp \
  ../Managers/../Game/../Entities/Non-Creatures/../../Entities/../Engine/../Guichan/platform.hpp \
  ../Managers/../Game/../Entities/Non-Creatures/../../Entities/../Engine/Sprite.hpp \
+ ../Managers/../Game/../Entities/Non-Creatures/../../Entities/../Engine/../guichan.hpp \
  ../Managers/../Game/../Entities/Non-Creatures/../../Entities/../Engine/../Listeners/AnimationCycleListener.hpp \
  ../Managers/../Game/../Entities/Non-Creatures/../../Entities/../Engine/../Math/Rectangle.hpp \
  ../Managers/../Game/../Entities/Non-Creatures/../../Entities/../Engine/../Engine/Renderer.hpp \
@@ -144,8 +145,8 @@ Managers/TilesetManager.d Managers/TilesetManager.o: \
  ../Managers/../Game/../Game/TileData.hpp \
  ../Managers/../Game/TileType.hpp \
  ../Managers/../Game/../Engine/Surface.hpp ../Managers/VideoManager.hpp \
- ../Managers/../Math/Rectangle.hpp ../Managers/../Engine/Surface.hpp \
- ../Managers/../Game/Game.hpp \
+ ../Managers/../guichan.hpp ../Managers/../Math/Rectangle.hpp \
+ ../Managers/../Engine/Surface.hpp ../Managers/../Game/Game.hpp \
  ../Managers/../Game/../Listeners/CreatureMovedToPointListener.hpp \
  ../Managers/../Game/../Engine/Cursor.hpp \
  ../Managers/../Game/../Engine/../Engine/Renderer.hpp \
@@ -423,6 +424,8 @@ Managers/TilesetManager.d Managers/TilesetManager.o: \
 
 ../Managers/../Game/../Entities/Non-Creatures/../../Entities/../Engine/Sprite.hpp:
 
+../Managers/../Game/../Entities/Non-Creatures/../../Entities/../Engine/../guichan.hpp:
+
 ../Managers/../Game/../Entities/Non-Creatures/../../Entities/../Engine/../Listeners/AnimationCycleListener.hpp:
 
 ../Managers/../Game/../Entities/Non-Creatures/../../Entities/../Engine/../Math/Rectangle.hpp:
@@ -450,6 +453,8 @@ Managers/TilesetManager.d Managers/TilesetManager.o: \
 ../Managers/../Game/../Engine/Surface.hpp:
 
 ../Managers/VideoManager.hpp:
+
+../Managers/../guichan.hpp:
 
 ../Managers/../Math/Rectangle.hpp:
 

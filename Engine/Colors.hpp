@@ -8,7 +8,7 @@
 #ifndef COLORS_HPP_
 #define COLORS_HPP_
 
-#include <guichan.hpp>
+#include "../guichan.hpp"
 
 /*
  * Various pre-defined colors.

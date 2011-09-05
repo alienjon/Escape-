@@ -123,7 +123,7 @@ Entities/Entity.d Entities/Entity.o: ../Entities/Entity.cpp \
  ../Entities/../Engine/../Guichan/sdl/../keyinput.hpp \
  ../Entities/../Engine/../Guichan/sdl/../mouseinput.hpp \
  ../Entities/../Engine/../Guichan/platform.hpp \
- ../Entities/../Engine/Sprite.hpp \
+ ../Entities/../Engine/Sprite.hpp ../Entities/../Engine/../guichan.hpp \
  ../Entities/../Engine/../Listeners/AnimationCycleListener.hpp \
  ../Entities/../Engine/../Math/Rectangle.hpp \
  ../Entities/../Engine/../Engine/Renderer.hpp \
@@ -446,6 +446,8 @@ Entities/Entity.d Entities/Entity.o: ../Entities/Entity.cpp \
 ../Entities/../Engine/../Guichan/platform.hpp:
 
 ../Entities/../Engine/Sprite.hpp:
+
+../Entities/../Engine/../guichan.hpp:
 
 ../Entities/../Engine/../Listeners/AnimationCycleListener.hpp:
 

@@ -149,10 +149,12 @@ Actions/DisplayMessageAction.d Actions/DisplayMessageAction.o: \
  ../Actions/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Math/Rectangle.hpp \
  ../Actions/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/Renderer.hpp \
  ../Actions/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/Sprite.hpp \
+ ../Actions/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../guichan.hpp \
  ../Actions/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Listeners/AnimationCycleListener.hpp \
  ../Actions/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Math/Rectangle.hpp \
  ../Actions/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Engine/Renderer.hpp \
  ../Actions/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/Surface.hpp \
+ ../Actions/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Guichan/sdl.hpp \
  ../Actions/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/Timer.hpp \
  ../Actions/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Math/Vector.hpp \
  ../Actions/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/Timer.hpp \
@@ -219,6 +221,7 @@ Actions/DisplayMessageAction.d Actions/DisplayMessageAction.o: \
  ../Actions/../Screens/../Game/../LevelInfo/../LevelInfo/../Math/Vector.hpp \
  ../Actions/../Screens/../Game/../LevelInfo/../MapInfo/Map.hpp \
  ../Actions/../Screens/../Game/../LevelInfo/../Managers/MarkersManager.hpp \
+ ../Actions/../Screens/../Game/../LevelInfo/../Managers/../guichan.hpp \
  ../Actions/../Screens/../Game/../LevelInfo/../Managers/../Engine/Renderer.hpp \
  ../Actions/../Screens/../Game/../LevelInfo/../Managers/../Engine/Sprite.hpp \
  ../Actions/../Screens/../Game/../LevelInfo/../Managers/../Math/Vector.hpp \
@@ -266,7 +269,10 @@ Actions/DisplayMessageAction.d Actions/DisplayMessageAction.o: \
  ../Actions/../Screens/../Widgets/../Game/Event.hpp \
  ../Actions/../Screens/../Widgets/../Listeners/EventListener.hpp \
  ../Actions/../Screens/../Game/GUI.hpp \
+ ../Actions/../Screens/../Game/../guichan.hpp \
+ ../Actions/../Screens/../Game/../Guichan/sdl.hpp \
  ../Actions/../Screens/../Game/../Widgets/FPSDisplayWidget.hpp \
+ ../Actions/../Screens/../Game/../Widgets/../guichan.hpp \
  ../Actions/../Screens/../Game/../Widgets/../main.hpp \
  ../Actions/../Screens/../Game/../Widgets/../Game/Direction.hpp \
  ../Actions/../Screens/../Game/../Widgets/../guichan.hpp \
@@ -309,6 +315,7 @@ Actions/DisplayMessageAction.d Actions/DisplayMessageAction.o: \
  ../Actions/../Screens/../Interfaces/EventInterface.hpp \
  ../Actions/../Screens/../Listeners/EventListener.hpp \
  ../Actions/../Screens/../Managers/VideoManager.hpp \
+ ../Actions/../Screens/../Managers/../guichan.hpp \
  ../Actions/../Screens/../Managers/../Math/Rectangle.hpp \
  ../Actions/../Screens/../Managers/../Engine/Surface.hpp \
  ../Actions/../Screens/../Engine/Viewport.hpp \
@@ -621,6 +628,8 @@ Actions/DisplayMessageAction.d Actions/DisplayMessageAction.o: \
 
 ../Actions/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/Sprite.hpp:
 
+../Actions/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../guichan.hpp:
+
 ../Actions/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Listeners/AnimationCycleListener.hpp:
 
 ../Actions/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Math/Rectangle.hpp:
@@ -628,6 +637,8 @@ Actions/DisplayMessageAction.d Actions/DisplayMessageAction.o: \
 ../Actions/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Engine/Renderer.hpp:
 
 ../Actions/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/Surface.hpp:
+
+../Actions/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/../Guichan/sdl.hpp:
 
 ../Actions/../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/../Engine/Timer.hpp:
 
@@ -761,6 +772,8 @@ Actions/DisplayMessageAction.d Actions/DisplayMessageAction.o: \
 
 ../Actions/../Screens/../Game/../LevelInfo/../Managers/MarkersManager.hpp:
 
+../Actions/../Screens/../Game/../LevelInfo/../Managers/../guichan.hpp:
+
 ../Actions/../Screens/../Game/../LevelInfo/../Managers/../Engine/Renderer.hpp:
 
 ../Actions/../Screens/../Game/../LevelInfo/../Managers/../Engine/Sprite.hpp:
@@ -855,7 +868,13 @@ Actions/DisplayMessageAction.d Actions/DisplayMessageAction.o: \
 
 ../Actions/../Screens/../Game/GUI.hpp:
 
+../Actions/../Screens/../Game/../guichan.hpp:
+
+../Actions/../Screens/../Game/../Guichan/sdl.hpp:
+
 ../Actions/../Screens/../Game/../Widgets/FPSDisplayWidget.hpp:
+
+../Actions/../Screens/../Game/../Widgets/../guichan.hpp:
 
 ../Actions/../Screens/../Game/../Widgets/../main.hpp:
 
@@ -942,6 +961,8 @@ Actions/DisplayMessageAction.d Actions/DisplayMessageAction.o: \
 ../Actions/../Screens/../Listeners/EventListener.hpp:
 
 ../Actions/../Screens/../Managers/VideoManager.hpp:
+
+../Actions/../Screens/../Managers/../guichan.hpp:
 
 ../Actions/../Screens/../Managers/../Math/Rectangle.hpp:
 

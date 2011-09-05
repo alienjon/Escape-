@@ -91,6 +91,7 @@ Engine/Logger.d Engine/Logger.o: ../Engine/Logger.cpp \
  ../Engine/../Game/../Engine/../Engine/../Guichan/sdl/../mouseinput.hpp \
  ../Engine/../Game/../Engine/../Engine/../Guichan/platform.hpp \
  ../Engine/../Game/../Engine/../Engine/Sprite.hpp \
+ ../Engine/../Game/../Engine/../Engine/../guichan.hpp \
  ../Engine/../Game/../Engine/../Engine/../Listeners/AnimationCycleListener.hpp \
  ../Engine/../Game/../Engine/../Engine/../Math/Rectangle.hpp \
  ../Engine/../Game/../Engine/../Engine/../Engine/Renderer.hpp \
@@ -333,6 +334,8 @@ Engine/Logger.d Engine/Logger.o: ../Engine/Logger.cpp \
 ../Engine/../Game/../Engine/../Engine/../Guichan/platform.hpp:
 
 ../Engine/../Game/../Engine/../Engine/Sprite.hpp:
+
+../Engine/../Game/../Engine/../Engine/../guichan.hpp:
 
 ../Engine/../Game/../Engine/../Engine/../Listeners/AnimationCycleListener.hpp:
 

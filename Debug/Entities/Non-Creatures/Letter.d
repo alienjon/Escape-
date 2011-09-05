@@ -136,6 +136,7 @@ Entities/Non-Creatures/Letter.d Entities/Non-Creatures/Letter.o: \
  ../Entities/Non-Creatures/../../Entities/Non-Creatures/../../Entities/../Engine/../Guichan/sdl/../mouseinput.hpp \
  ../Entities/Non-Creatures/../../Entities/Non-Creatures/../../Entities/../Engine/../Guichan/platform.hpp \
  ../Entities/Non-Creatures/../../Entities/Non-Creatures/../../Entities/../Engine/Sprite.hpp \
+ ../Entities/Non-Creatures/../../Entities/Non-Creatures/../../Entities/../Engine/../guichan.hpp \
  ../Entities/Non-Creatures/../../Entities/Non-Creatures/../../Entities/../Engine/../Listeners/AnimationCycleListener.hpp \
  ../Entities/Non-Creatures/../../Entities/Non-Creatures/../../Entities/../Engine/../Math/Rectangle.hpp \
  ../Entities/Non-Creatures/../../Entities/Non-Creatures/../../Entities/../Engine/../Engine/Renderer.hpp \
@@ -221,6 +222,7 @@ Entities/Non-Creatures/Letter.d Entities/Non-Creatures/Letter.o: \
  ../Entities/Non-Creatures/../../LevelInfo/../LevelInfo/../Math/Vector.hpp \
  ../Entities/Non-Creatures/../../LevelInfo/../MapInfo/Map.hpp \
  ../Entities/Non-Creatures/../../LevelInfo/../Managers/MarkersManager.hpp \
+ ../Entities/Non-Creatures/../../LevelInfo/../Managers/../guichan.hpp \
  ../Entities/Non-Creatures/../../LevelInfo/../Managers/../Engine/Renderer.hpp \
  ../Entities/Non-Creatures/../../LevelInfo/../Managers/../Engine/Sprite.hpp \
  ../Entities/Non-Creatures/../../LevelInfo/../Managers/../Math/Vector.hpp \
@@ -519,6 +521,8 @@ Entities/Non-Creatures/Letter.d Entities/Non-Creatures/Letter.o: \
 
 ../Entities/Non-Creatures/../../Entities/Non-Creatures/../../Entities/../Engine/Sprite.hpp:
 
+../Entities/Non-Creatures/../../Entities/Non-Creatures/../../Entities/../Engine/../guichan.hpp:
+
 ../Entities/Non-Creatures/../../Entities/Non-Creatures/../../Entities/../Engine/../Listeners/AnimationCycleListener.hpp:
 
 ../Entities/Non-Creatures/../../Entities/Non-Creatures/../../Entities/../Engine/../Math/Rectangle.hpp:
@@ -688,6 +692,8 @@ Entities/Non-Creatures/Letter.d Entities/Non-Creatures/Letter.o: \
 ../Entities/Non-Creatures/../../LevelInfo/../MapInfo/Map.hpp:
 
 ../Entities/Non-Creatures/../../LevelInfo/../Managers/MarkersManager.hpp:
+
+../Entities/Non-Creatures/../../LevelInfo/../Managers/../guichan.hpp:
 
 ../Entities/Non-Creatures/../../LevelInfo/../Managers/../Engine/Renderer.hpp:
 

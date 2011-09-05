@@ -10,7 +10,7 @@
 
 #include <string>
 
-#include <guichan.hpp>
+#include "../guichan.hpp"
 
 #include "../Engine/Timer.hpp"
 
