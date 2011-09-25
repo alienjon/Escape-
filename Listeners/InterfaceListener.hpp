@@ -13,7 +13,6 @@
 #include "../Math/Rectangle.hpp"
 #include "../Math/Vector.hpp"
 
-class Creature;
 class Entity;
 
 /**
@@ -25,33 +24,6 @@ class InterfaceListener
 {
 	public:
     /**
-     * @brief Add creature info to the GUI.
-     * @param creature The creature whose info is to be displayed.
-     */
-    virtual void addCreatureDisplay(Creature* creature) = 0;
-
-    /**
-     * @brief Add a message to the messages section of the options menu.
-     * @param title The message's title.
-     * @param message The message itself.
-     */
-    virtual void addMessage(const std::string& title, const std::string& message) = 0;
-
-    /**
-     * @brief Add a task for the player to complete.
-     * @param title The title for the task.
-     * @param message A detailed message for the task.
-     * @return The ID of the task.
-     */
-    virtual unsigned int addTask(const std::string& title, const std::string& message) = 0;
-
-    /**
-     * @brief Complete a task.
-     * @param id The ID of the task that is now completed.
-     */
-    virtual void completeTask(unsigned int id) = 0;
-
-    /**
      * @brief Messages can be things like tutorials or even conversations.
      * @param caption The caption.
      * @param message The message to display.
@@ -60,12 +32,6 @@ class InterfaceListener
      * @note The image can be an empty string and a default image will display.
      */
     virtual void displayMessage(const std::string& caption, const std::string& message, const std::string& sprite, const std::string& keyword) = 0;
-
-    /**
-     * @brief Remove a creature's health display from the GUI.
-     * @param creature The creature whose display is to be removed.
-     */
-    virtual void removeCreatureDisplay(Creature* creature) = 0;
 
     /**
      * @brief Get the viewport's offset.
@@ -91,11 +57,6 @@ class InterfaceListener
 	 * @param y The y position.
 	 */
 	virtual void setViewportFocus(int x, int y) = 0;
-
-    /**
-     * @brief Signal the letter indicator.
-     */
-    virtual void signalLetterIndicator() = 0;
 };
 
 #endif /* INTERFACELISTENER_HPP_ */

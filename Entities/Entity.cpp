@@ -9,11 +9,9 @@
 #include "../Entities/Alignment.hpp"
 #include "../Engine/Colors.hpp"
 #include "../Entities/Creatures/Creature.hpp"
-#include "../Game/EnvironmentData.hpp"
 #include "../Game/Game.hpp"
 #include "../Game/Keywords.hpp"
 #include "../main.hpp"
-#include "../Actions/SlideAction.hpp"
 
 using std::list;
 using std::string;
@@ -45,8 +43,8 @@ Entity::~Entity()
 }
 
 void Entity::mCollision(Entity& collider)
-{
-	pushEvent(EVENT_PLOTOCCURRENCE, KEYWORD_COLLISION_ENTITY + CHAR_DELIMITER + getName() + CHAR_DELIMITER + collider.getName());
+{//@todo need a new way of letting the game know (if it needs to) that 2 entities collided
+//	pushEvent(EVENT_PLOTOCCURRENCE, KEYWORD_COLLISION_ENTITY + CHAR_DELIMITER + getName() + CHAR_DELIMITER + collider.getName());
 }
 
 void Entity::mDie()
@@ -64,8 +62,8 @@ void Entity::mDie()
         (*it)->deathOccurred(*this);
     }
 
-    // Also call it as a plot event.
-    pushEvent(EVENT_PLOTOCCURRENCE, KEYWORD_DEATH + CHAR_DELIMITER_ALTERNATE + getName());
+    // Also call it as a plot event.//@todo need a new way to tell the game an entity died.
+//    pushEvent(EVENT_PLOTOCCURRENCE, KEYWORD_DEATH + CHAR_DELIMITER_ALTERNATE + getName());
 }
 
 const Rectangle& Entity::mGetCollisionArea() const
@@ -159,8 +157,8 @@ void Entity::damage(unsigned int value)
         (*it)->healthChanged(this);
     }
 
-    // Also push a plot event.
-    pushEvent(EVENT_PLOTOCCURRENCE, KEYWORD_DAMAGE + CHAR_DELIMITER_ALTERNATE + getName());
+    // Also push a plot event.//@todo need a new way for the game to know that damage was taken by an entity.
+//    pushEvent(EVENT_PLOTOCCURRENCE, KEYWORD_DAMAGE + CHAR_DELIMITER_ALTERNATE + getName());
 }
 
 void Entity::draw(Renderer& renderer)
@@ -281,43 +279,33 @@ bool Entity::isIntersecting(const Quadrilateral& area) const
 	return mCollidable && area.isIntersecting(getDimension());
 }
 
-void Entity::logic(EnvironmentData& eData)
-{
-    // Update the being's display.
-    mSprite.logic();
-
-    // Update the action logic.
-    ActionInterface::logic(eData);
-
-    // If the defense timer has hit its interval, increase the defense value.
-    if(!isDead() && mDefense != (int)mMaxDefense && mDefenseRegenerationTimer.getTime() >= ENTITY_DEFENSEREGENERATION_INTERVAL)
-    {
-    	// Increase the value and restart the timer.
-    	unsigned int newValue = (mDefense + mDefenseRegenerationRate > 0) ? mDefense + mDefenseRegenerationRate : 0; // Just in case the defense regen rate is a negative number.
-    	mDefense = (newValue < mMaxDefense) ? newValue : mMaxDefense;
-    	mDefenseRegenerationTimer.start();
-
-        // Tell the listeners the health has changed.
-        for(list<HealthChangedListener*>::iterator it = mHealthChangedListener.begin(); it != mHealthChangedListener.end(); ++it)
-        {
-            (*it)->healthChanged(this);
-        }
-    }
-}
+//void Entity::logic(EnvironmentData& eData)//@todo review
+//{
+//    // Update the being's display.
+//    mSprite.logic();
+//
+//    // Update the action logic.
+//    ActionInterface::logic(eData);
+//
+//    // If the defense timer has hit its interval, increase the defense value.
+//    if(!isDead() && mDefense != (int)mMaxDefense && mDefenseRegenerationTimer.getTime() >= ENTITY_DEFENSEREGENERATION_INTERVAL)
+//    {
+//    	// Increase the value and restart the timer.
+//    	unsigned int newValue = (mDefense + mDefenseRegenerationRate > 0) ? mDefense + mDefenseRegenerationRate : 0; // Just in case the defense regen rate is a negative number.
+//    	mDefense = (newValue < mMaxDefense) ? newValue : mMaxDefense;
+//    	mDefenseRegenerationTimer.start();
+//
+//        // Tell the listeners the health has changed.
+//        for(list<HealthChangedListener*>::iterator it = mHealthChangedListener.begin(); it != mHealthChangedListener.end(); ++it)
+//        {
+//            (*it)->healthChanged(this);
+//        }
+//    }
+//}
 
 void Entity::lookAt(const Vector& point)
 {
 	// Entities aren't capable of looking.  This is for creatures.
-}
-
-void Entity::push(const Vector& destPt, unsigned int force)
-{
-	// Stop everything and move the entity in the indicated direction.
-	clearActions();
-	addAction(new SlideAction(*this, destPt, force)); // @todo how far should an entity be pushed?  It should probably be based on type/weight * force
-
-	// The entity was pushed, TELL EVERYONE! AAAHHHH!!!
-	pushEvent(EVENT_PLOTOCCURRENCE, KEYWORD_ENTITY_PUSHED + CHAR_DELIMITER_ALTERNATE + getName());
 }
 
 void Entity::release(Creature* creature)

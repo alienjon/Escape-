@@ -29,10 +29,7 @@ Widgets/GameOptions \
 Triggers \
 Screens \
 Screens/MenuScreenWidgets \
-Screens/MenuScreenWidgets/LoadGame \
-PlotInfo \
 Math \
-MapInfo \
 Managers \
 LevelInfo \
 Interfaces \

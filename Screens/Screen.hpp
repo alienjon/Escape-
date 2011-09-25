@@ -64,7 +64,7 @@ class Screen : public EventListener, public EventInterface
      * @brief Perform anything necessary to prepare this screen for displaying what it needs to.
      * @param gui The gui is provided for screen GUI management.
      */
-    virtual void load(GUI* gui) = 0;
+    virtual void load(GUI* gui){};
 
     /**
      * @brief Perform logic.
@@ -74,7 +74,7 @@ class Screen : public EventListener, public EventInterface
     /**
      * @brief This unloads the screen and finalizes any further actions to allow the screen to be safetly deleted.
      */
-    virtual void unload() = 0;
+    virtual void unload(){};
 
     protected:
     Screen() :

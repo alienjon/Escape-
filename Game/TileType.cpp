@@ -8,10 +8,7 @@
 
 using std::string;
 
-const string TILETYPE_FLOOR_A = "FLOOR_A";
-const string TILETYPE_FLOOR_B = "FLOOR_B";
-const string TILETYPE_FLOOR_C = "FLOOR_C";
-const string TILETYPE_FLOOR_D = "FLOOR_D";
+const string TILETYPE_EMPTYFLOOR = "EMPTY_FLOOR";
 const string TILETYPE_WEST = "WEST";
 const string TILETYPE_NORTH = "NORTH";
 const string TILETYPE_EAST = "EAST";
@@ -36,126 +33,77 @@ const string TILETYPE_SOUTHEAST_DOORLEFT = "SOUTHEAST_DOORLEFT";
 const string TILETYPE_SOUTHEAST_DOORRIGHT = "SOUTHEAST_DOORRIGHT";
 const string TILETYPE_SOUTHWEST_DOORLEFT = "SOUTHWEST_DOORLEFT";
 const string TILETYPE_SOUTHWEST_DOORRIGHT = "SOUTHWEST_DOORRIGHT";
+const string TILETYPE_CLOSEDDOOR_WEST = "CLOSEDDOOR_WEST";
+const string TILETYPE_CLOSEDDOOR_EAST = "CLOSEDDOOR_EAST";
+const string TILETYPE_OPENDOOR_WEST = "OPENDOOR_WEST";
+const string TILETYPE_OPENDOOR_EAST = "OPENDOOR_EAST";
 const string TILETYPE_NULL = "NULL";
+const string TILETYPE_NPOS = "NPOS";
 
 TileType toTileType(const std::string& type)
 {
 	if(type == TILETYPE_WEST)
-	{
 		return TILE_WEST;
-	}
 	else if(type == TILETYPE_NORTH)
-	{
 		return TILE_NORTH;
-	}
 	else if(type == TILETYPE_EAST)
-	{
 		return TILE_EAST;
-	}
 	else if(type == TILETYPE_SOUTH)
-	{
 		return TILE_SOUTH;
-	}
 	else if(type == TILETYPE_CORNER_NORTHWEST)
-	{
 		return TILE_CORNER_NORTHWEST;
-	}
 	else if(type == TILETYPE_CORNER_NORTHEAST)
-	{
 		return TILE_CORNER_NORTHEAST;
-	}
 	else if(type == TILETYPE_CORNER_SOUTHWEST)
-	{
 		return TILE_CORNER_SOUTHWEST;
-	}
 	else if(type == TILETYPE_CORNER_SOUTHEAST)
-	{
 		return TILE_CORNER_SOUTHEAST;
-	}
 	else if(type == TILETYPE_NORTHWEST)
-	{
 		return TILE_NORTHWEST;
-	}
 	else if(type == TILETYPE_NORTHEAST)
-	{
 		return TILE_NORTHEAST;
-	}
 	else if(type == TILETYPE_SOUTHWEST)
-	{
 		return TILE_SOUTHWEST;
-	}
 	else if(type == TILETYPE_SOUTHEAST)
-	{
 		return TILE_SOUTHEAST;
-	}
 	else if(type == TILETYPE_CORNER_WEST)
-	{
 		return TILE_CORNER_WEST;
-	}
 	else if(type == TILETYPE_CORNER_NORTH)
-	{
 		return TILE_CORNER_NORTH;
-	}
 	else if(type == TILETYPE_CORNER_EAST)
-	{
 		return TILE_CORNER_EAST;
-	}
 	else if(type == TILETYPE_CORNER_SOUTH)
-	{
 		return TILE_CORNER_SOUTH;
-	}
 	else if(type == TILETYPE_NORTHWEST_DOORLEFT)
-	{
 		return TILE_NORTHWEST_DOORLEFT;
-	}
 	else if(type == TILETYPE_NORTHWEST_DOORRIGHT)
-	{
 		return TILE_NORTHWEST_DOORRIGHT;
-	}
 	else if(type == TILETYPE_NORTHEAST_DOORLEFT)
-	{
 		return TILE_NORTHEAST_DOORLEFT;
-	}
 	else if(type == TILETYPE_NORTHEAST_DOORRIGHT)
-	{
 		return TILE_NORTHEAST_DOORRIGHT;
-	}
 	else if(type == TILETYPE_SOUTHEAST_DOORLEFT)
-	{
 		return TILE_SOUTHEAST_DOORLEFT;
-	}
 	else if(type == TILETYPE_SOUTHEAST_DOORRIGHT)
-	{
 		return TILE_SOUTHEAST_DOORRIGHT;
-	}
 	else if(type == TILETYPE_SOUTHWEST_DOORLEFT)
-	{
 		return TILE_SOUTHWEST_DOORLEFT;
-	}
 	else if(type == TILETYPE_SOUTHWEST_DOORRIGHT)
-	{
 		return TILE_SOUTHWEST_DOORRIGHT;
-	}
-	else if(type == TILETYPE_FLOOR_A)
-	{
-		return TILE_FLOOR_A;
-	}
-	else if(type == TILETYPE_FLOOR_B)
-	{
-		return TILE_FLOOR_B;
-	}
-	else if(type == TILETYPE_FLOOR_C)
-	{
-		return TILE_FLOOR_C;
-	}
-	else if(type == TILETYPE_FLOOR_D)
-	{
-		return TILE_FLOOR_D;
-	}
+	else if(type == TILETYPE_EMPTYFLOOR)
+		return TILE_EMPTYFLOOR;
+	else if(type == TILETYPE_CLOSEDDOOR_WEST)
+		return TILE_CLOSEDDOOR_WEST;
+	else if(type == TILETYPE_CLOSEDDOOR_EAST)
+		return TILE_CLOSEDDOOR_EAST;
+	else if(type == TILETYPE_OPENDOOR_WEST)
+		return TILE_OPENDOOR_WEST;
+	else if(type == TILETYPE_OPENDOOR_EAST)
+		return TILE_OPENDOOR_EAST;
+	else if(type == TILETYPE_NPOS)
+		return TILE_NPOS;
 	else
-	{
 		return TILE_NULL;
-	}
 }
 
 const std::string& toTileType(TileType type)
@@ -186,10 +134,12 @@ const std::string& toTileType(TileType type)
 		case TILE_SOUTHEAST_DOORRIGHT: return TILETYPE_SOUTHEAST_DOORRIGHT;
 		case TILE_SOUTHWEST_DOORLEFT: return TILETYPE_SOUTHWEST_DOORLEFT;
 		case TILE_SOUTHWEST_DOORRIGHT: return TILETYPE_SOUTHWEST_DOORRIGHT;
-		case TILE_FLOOR_A: return TILETYPE_FLOOR_A;
-		case TILE_FLOOR_B: return TILETYPE_FLOOR_B;
-		case TILE_FLOOR_C: return TILETYPE_FLOOR_C;
-		case TILE_FLOOR_D: return TILETYPE_FLOOR_D;
+		case TILE_EMPTYFLOOR: return TILETYPE_EMPTYFLOOR;
+		case TILE_CLOSEDDOOR_WEST: return TILETYPE_CLOSEDDOOR_WEST;
+		case TILE_CLOSEDDOOR_EAST: return TILETYPE_CLOSEDDOOR_EAST;
+		case TILE_OPENDOOR_WEST: return TILETYPE_OPENDOOR_WEST;
+		case TILE_OPENDOOR_EAST: return TILETYPE_OPENDOOR_EAST;
+		case TILE_NPOS: return TILETYPE_NPOS;
 		default: return TILETYPE_NULL;
 	}
 }

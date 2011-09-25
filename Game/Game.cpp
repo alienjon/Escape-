@@ -301,18 +301,12 @@ void Game::eventOccurred(Event event, const string& content, CreatureMovedToPoin
 {
     switch(event)
     {
-        case EVENT_START:
+        case EVENT_STARTEASY:
+        case EVENT_STARTNORMAL:
+        case EVENT_STARTHARD:
         {
             // Start a new game.
-        	mScreens.push_back(new GameScreen());
-            break;
-        }
-        case EVENT_LOAD:
-        {
-        	// Load a game.
-        	// @todo need to implement game loading.
-        	Logger::log("Need to implement loading games.  Starting a new one for now.");
-        	mScreens.push_back(new GameScreen());
+        	mScreens.push_back(new GameScreen(event));
             break;
         }
         case EVENT_QUIT:
@@ -355,7 +349,7 @@ void Game::run()
     // If the game is being debugged, then skip to the game screen.
     if(Game::isDebug())
     {
-    	mScreens.push_back(new GameScreen());
+    	mScreens.push_back(new GameScreen(EVENT_STARTNORMAL));
     }
     else
     {
@@ -364,8 +358,8 @@ void Game::run()
 		//  2) Game credits.
 		//  3) Loading screen.
 		//  4) Main menu.
-		mScreens.push_back(new SpriteCreditScreen(VideoManager::loadSurface(FILE_THETRUSTCREDIT_IMAGE), 2000, 750, 750));
-		mScreens.push_back(new SpriteCreditScreen(VideoManager::loadSurface(FILE_ESCAPECREDIT_IMAGE), 2000));
+//		mScreens.push_back(new SpriteCreditScreen(VideoManager::loadSurface(FILE_THETRUSTCREDIT_IMAGE), 2000, 750, 750));@todo remove when done testing
+//		mScreens.push_back(new SpriteCreditScreen(VideoManager::loadSurface(FILE_ESCAPECREDIT_IMAGE), 2000));
 		mScreens.push_back(new MenuScreen());
     }
 

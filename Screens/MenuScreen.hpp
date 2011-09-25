@@ -14,9 +14,8 @@
 #include "MenuScreenWidgets/CreditsMenu.hpp"
 #include "../Game/Event.hpp"
 #include "../guichan.hpp"
-#include "MenuScreenWidgets/LoadGameMenu.hpp"
 #include "MenuScreenWidgets/MainMenu.hpp"
-#include "../MapInfo/Map.hpp"
+#include "../Game/Map.hpp"
 #include "MenuScreenWidgets/NewGameMenu.hpp"
 #include "MenuScreenWidgets/OptionsMenu.hpp"
 #include "../Engine/Renderer.hpp"
@@ -30,7 +29,7 @@
  * |---|---|---|
  * |-1-|-2-|-3-|    2) New Game Menu :
  * |---|---|---|
- * -------------    4) Options Menu :
+ * -------------    4) @todo Empty area? :
  * |---|---|---|
  * |-4-|-5-|-6-|    5) Main Menu : goes to other screens: start a new game; load a saved game; options; credits; quit
  * |---|---|---|
@@ -53,7 +52,6 @@ class MenuScreen : public Screen
     {
         MAINMENUSCREEN_NULL,
         MAINMENUSCREEN_CREDITS,
-        MAINMENUSCREEN_LOADING,
         MAINMENUSCREEN_MAIN,
         MAINMENUSCREEN_NEW,
         MAINMENUSCREEN_OPTIONS
@@ -144,7 +142,6 @@ class MenuScreen : public Screen
      */
     gcn::Container mMenus;
     CreditsMenu mCreditsMenu;
-    LoadGameMenu mLoadGameMenu;
     MainMenu mMainMenu;
     NewGameMenu mNewGameMenu;
     OptionsMenu mOptionsMenu;
@@ -172,10 +169,11 @@ class MenuScreen : public Screen
 
 extern const char* FILE_MENUSCREEN_TITLEIMAGE;
 
+extern const char* FILE_MENUSCREEN_BACKGROUND_AUDIO;
+
 extern const char* DIR_SAVEDGAME;
 
 extern const char* ID_MAINMENU_BUTTON_START;
-extern const char* ID_MAINMENU_BUTTON_LOAD;
 extern const char* ID_MAINMENU_BUTTON_OPTIONS;
 extern const char* ID_MAINMENU_BUTTON_CREDITS;
 extern const char* ID_MAINMENU_BUTTON_MAIN;

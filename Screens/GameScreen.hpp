@@ -12,21 +12,16 @@
 
 #include "SDL/SDL.h"
 
-#include "../Listeners/CreatureMovedToPointListener.hpp"
 #include "../Game/Event.hpp"
-#include "../Game/GameData.hpp"
 #include "../Widgets/GameOptionsWidget.hpp"
 #include "../Widgets/GameOverWidget.hpp"
 #include "../Game/GUI.hpp"
 #include "../guichan.hpp"
-#include "../Widgets/GUIMessageWidget.hpp"
-#include "../Widgets/HealthBarContainer.hpp"
 #include "../Game/Input.hpp"
 #include "../Listeners/InterfaceListener.hpp"
-#include "../Widgets/LetterGUIWidget.hpp"
 #include "../LevelInfo/Level.hpp"
 #include "../Widgets/MessageDisplayWidget.hpp"
-#include "../Managers/PlotManager.hpp"
+#include "../Entities/Creatures/Player.hpp"
 #include "../Engine/Renderer.hpp"
 #include "Screen.hpp"
 #include "../Engine/Sprite.hpp"
@@ -34,7 +29,6 @@
 #include "../Math/Vector.hpp"
 #include "../Engine/Viewport.hpp"
 
-class Creature;
 class Entity;
 
 /**
@@ -44,9 +38,10 @@ class GameScreen : public gcn::ActionListener, public InterfaceListener, public 
 {
     public:
     /**
-     * @brief Construct a game screen.
+     * @brief Construct a game screen and start a new game.
+     * @param difficulty The difficulty of the game.
      */
-    GameScreen();
+    GameScreen(Event difficulty);
     virtual ~GameScreen();
 
     /**
@@ -54,33 +49,6 @@ class GameScreen : public gcn::ActionListener, public InterfaceListener, public 
      * @param event The action event.
      */
     virtual void action(const gcn::ActionEvent& event);
-
-    /**
-     * @brief Add creature info to the GUI.
-     * @param creature The creature whose info is to be displayed.
-     */
-    virtual void addCreatureDisplay(Creature* creature);
-
-    /**
-     * @brief Add a message to the messages section of the options menu.
-     * @param title The message's title.
-     * @param message The message itself.
-     */
-    virtual void addMessage(const std::string& title, const std::string& message);
-
-    /**
-     * @brief Add a task for the user to complete.
-     * @param title The task's title.
-     * @param message A detailed message of how to complete the task.
-     * @return The id of the task.
-     */
-    virtual unsigned int addTask(const std::string& title, const std::string& message);
-
-    /**
-     * @brief Complete the task with the indicated ID.
-     * @param id The id of the newly completed task.
-     */
-    virtual void completeTask(unsigned int);
 
     /**
      * @brief Messages can be things like tutorials or even conversations.
@@ -129,17 +97,6 @@ class GameScreen : public gcn::ActionListener, public InterfaceListener, public 
      */
     virtual void logic();
 
-    /**
-     * @brief Remove a creature's health display from the GUI.
-     * @param creature The creature whose display is to be removed.
-     */
-    virtual void removeCreatureDisplay(Creature* creature);
-
-	/**
-	 * @brief Save the game.
-	 */
-	virtual void saveGame();
-
 	/**
 	 * @brief Set the viewport's bounds.
 	 * @param bounds The bounds to set.
@@ -159,87 +116,31 @@ class GameScreen : public gcn::ActionListener, public InterfaceListener, public 
 	 */
 	virtual void setViewportFocus(int x, int y);
 
-    /**
-     * @brief Signal the letter indicator.
-     */
-    virtual void signalLetterIndicator();
-
-    /**
-     * @brief The unload method.
-     */
-    virtual void unload();
-
-    protected:
-    /**
-     * @brief Add a creature.
-     * @param data The data needed to find a created creature or to create one.
-     */
-    void mAddCreature(const std::string& data);
-
-    /**
-     * @brief Add a flashlight.
-     * @param data The data needed to add a flashlight.
-     */
-    void mAddFlashlight(const std::string& data);
-
-    /**
-     * @brief Add an object to the screen.
-     * @param data The data needed to add an object to the screen.
-     */
-    void mAddObject(const std::string& data);
-
-    /**
-     * @brief Configure a creature.
-     * @param data The data needed to configure a creature.
-     */
-    void mCreatureConfig(const std::string& data);
-
-    /**
-     * @brief Tell a creature to walk to a certain position.
-     * @param data The data needed to tell a creature to walk to a position.
-     * @param listener A possible listener for when the creature has finished moving to a position.
-     */
-    void mCreatureWalkTo(const std::string& data, CreatureMovedToPointListener* listener);
-
-    /**
-     * @brief Display a simple message.
-     * @param message The message to display.
-     * @param duration The time the message should be shown on the screen.
-     * @note Simple messages should probably only be shown by the gamescreen, hence this is protected.
-     */
-    void mDisplaySimpleMessage(const std::string& message, unsigned int duration);
-
-    /**
-     * @brief Remove an entity from the level.
-     * @param data The data needed to remove an entity from the level.
-     */
-    void mRemoveEntity(const std::string& data);
-
     private:
+    /**
+     * If true, then load the next level.
+     */
+    bool mLoadLevel;
+
+    /**
+     * The player.
+     */
+    Player mPlayer;
+
+    /**
+     * The game's initial difficulty.
+     */
+    unsigned int mDifficulty;
+
     /**
      * True if the game is paused.
      */
     bool mIsPaused;
 
     /**
-     * The object to store this game's information.
-     */
-    GameData mGameData;
-
-    /**
-     * This is the plot device manager.
-     */
-    PlotManager mPlotManager;
-
-    /**
      * The current level.
      */
     Level* mLevel;
-
-    /**
-     * Data for the next level (if the next level exists, then the current level needs to be unloaded after its logic is called).
-     */
-    std::string mNextLevel;
 
     /**
      * The game over widget.
@@ -252,24 +153,9 @@ class GameScreen : public gcn::ActionListener, public InterfaceListener, public 
     GameOptionsWidget mOptionsMenu;
 
     /**
-     * The creature display bar container.
-     */
-    HealthBarContainer mHealthBarContainer;
-
-    /**
-     * A widget to inform the user a letter was received or removed
-     */
-    LetterGUIWidget mLetterOSD;
-
-    /**
      * A widget to show the user any collected messages (tutorial info, speech, etc...)
      */
     MessageDisplayWidget mMessageOSD;
-
-    /**
-     * The GUI message OSD (for simple messages)
-     */
-    GUIMessageWidget mSimpleMessageOSD;
 
     /**
      * The game screen's input timer.

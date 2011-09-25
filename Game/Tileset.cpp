@@ -4,122 +4,18 @@
  *  Created on: May 25, 2009
  *      Author: alienjon
  */
-
 #include "Tileset.hpp"
 
 #include <stdexcept>
 
-#include "../Managers/AnimationManager.hpp"
 #include "../main.hpp"
-#include "../Math/Rectangle.hpp"
+#include "../Managers/VideoManager.hpp"
 
 using std::range_error;
 using std::runtime_error;
 using std::string;
 
-// The Null tile.
-const Tile TILESET_NULLTILE;
-
-TilesetData::TilesetData()
-{
-}
-
-void TilesetData::setTileData(TileType type, uint l, uint m, uint u1, uint u2, uint u3)
-{
-	switch(type)
-	{
-		case TILE_WEST: _west.set(l, m, u1, u2, u3); break;
-		case TILE_NORTH: _north.set(l, m, u1, u2, u3); break;
-		case TILE_EAST: _east.set(l, m, u1, u2, u3); break;
-		case TILE_SOUTH: _south.set(l, m, u1, u2, u3); break;
-		case TILE_CORNER_NORTHWEST: _corner_northwest.set(l, m, u1, u2, u3); break;
-		case TILE_CORNER_NORTHEAST: _corner_northeast.set(l, m, u1, u2, u3); break;
-		case TILE_CORNER_SOUTHEAST: _corner_southeast.set(l, m, u1, u2, u3); break;
-		case TILE_CORNER_SOUTHWEST: _corner_southwest.set(l, m, u1, u2, u3); break;
-		case TILE_NORTHWEST: _northwest.set(l, m, u1, u2, u3); break;
-		case TILE_NORTHEAST: _northeast.set(l, m, u1, u2, u3); break;
-		case TILE_SOUTHEAST: _southeast.set(l, m, u1, u2, u3); break;
-		case TILE_SOUTHWEST: _southwest.set(l, m, u1, u2, u3); break;
-		case TILE_CORNER_WEST: _corner_west.set(l, m, u1, u2, u3); break;
-		case TILE_CORNER_NORTH: _corner_north.set(l, m, u1, u2, u3); break;
-		case TILE_CORNER_EAST: _corner_east.set(l, m, u1, u2, u3); break;
-		case TILE_CORNER_SOUTH: _corner_south.set(l, m, u1, u2, u3); break;
-		case TILE_NORTHWEST_DOORLEFT: _northwest_doorleft.set(l, m, u1, u2, u3); break;
-		case TILE_NORTHWEST_DOORRIGHT: _northwest_doorright.set(l, m, u1, u2, u3); break;
-		case TILE_NORTHEAST_DOORLEFT: _northeast_doorleft.set(l, m, u1, u2, u3); break;
-		case TILE_NORTHEAST_DOORRIGHT: _northeast_doorright.set(l, m, u1, u2, u3); break;
-		case TILE_SOUTHEAST_DOORLEFT: _southeast_doorleft.set(l, m, u1, u2, u3); break;
-		case TILE_SOUTHEAST_DOORRIGHT: _southeast_doorright.set(l, m, u1, u2, u3); break;
-		case TILE_SOUTHWEST_DOORLEFT: _southwest_doorleft.set(l, m, u1, u2, u3); break;
-		case TILE_SOUTHWEST_DOORRIGHT: _southwest_doorright.set(l, m, u1, u2, u3); break;
-		case TILE_FLOOR_A: _floor_a.set(l, m, u1, u2, u3); break;
-		case TILE_FLOOR_B: _floor_b.set(l, m, u1, u2, u3); break;
-		case TILE_FLOOR_C: _floor_c.set(l, m, u1, u2, u3); break;
-		case TILE_FLOOR_D: _floor_d.set(l, m, u1, u2, u3); break;
-		default: throw runtime_error("TilesetData::setTileData() -> Invalid type: " + toString(type));
-	}
-}
-
-Tileset::Tileset(Surface* meta, const string& name, uint width, uint height) : mName(name),
-                                                                               mWidth(width),
-                                                                               mHeight(height)
-{
-    if(!meta)
-    {
-        throw runtime_error("Tileset::Tileset() -> No meta surface provided.");
-    }
-
-    // Ensure that the width and height are valid.
-    if(mWidth < 1 || mHeight < 1)
-    {
-        throw range_error("Tileset::Tileset() -> Invalid width or height specified for tileset: w("
-                          + toString(mWidth)
-                          + "), h("
-                          + toString(mHeight)
-                          + ")");
-    }
-
-    // Break up the surface into separate surfaces for each tile.
-    for(uint h = 0; h != meta->getHeight() / mHeight; ++h)
-    {
-    	for(uint w = 0; w != meta->getWidth() / mWidth; ++w)
-    	{
-			// Place each tile into a collection.
-			mTiles.push_back(Tile(meta, Rectangle((w * mWidth), (h * mHeight), mWidth, mHeight)));
-		}
-    }
-}
-
-const Tile& Tileset::at(uint id) const
-{
-    // Get the requested tile.
-    if(id >= mTiles.size())
-    {
-        throw range_error("Tileset::at() -> Cannot retrieve tile with id '" + toString(id) +
-                          "'.  Tileset size is '" + toString(mTiles.size()) + "'");
-    }
-
-    // If the ID is zero, then return the null tile.
-    if(id == 0)
-    {
-    	return TILESET_NULLTILE;
-    }
-
-    // Return the requested tile.
-    return mTiles[id - 1];
-}
-
-const uint Tileset::getHeight() const
-{
-    return mHeight;
-}
-
-const string& Tileset::getName() const
-{
-    return mName;
-}
-
-const TileData& Tileset::getTileData(TileType type) const
+const TileData& TilesetData::get(TileType type) const
 {
 	switch(type)
 	{
@@ -147,15 +43,132 @@ const TileData& Tileset::getTileData(TileType type) const
 		case TILE_SOUTHEAST_DOORRIGHT: return _southeast_doorright;
 		case TILE_SOUTHWEST_DOORLEFT: return _southwest_doorleft;
 		case TILE_SOUTHWEST_DOORRIGHT: return _southwest_doorright;
-		case TILE_FLOOR_A: return _floor_a;
-		case TILE_FLOOR_B: return _floor_b;
-		case TILE_FLOOR_C: return _floor_c;
-		case TILE_FLOOR_D: return _floor_d;
-		default: throw runtime_error("Tileset::getTileData() -> Invalid type provided: " + toString(type));
+		case TILE_CLOSEDDOOR_WEST: return _closeddoor_west;
+		case TILE_CLOSEDDOOR_EAST: return _closeddoor_east;
+		case TILE_OPENDOOR_WEST: return _opendoor_west;
+		case TILE_OPENDOOR_EAST: return _opendoor_east;
+		case TILE_EMPTYFLOOR: return _emptyfloor;
+		default: throw range_error("Tileset::getTile() -> Invalid type provided: " + toString(type));
 	}
 }
 
-const uint Tileset::getWidth() const
+void TilesetData::setTileData(TileType type, unsigned int l, unsigned int m, unsigned int u1, unsigned int u2, unsigned int u3, const Quadrilateral& quad)
 {
-    return mWidth;
+	switch(type)
+	{
+		case TILE_WEST: _west.set(l, m, u1, u2, u3, quad); break;
+		case TILE_NORTH: _north.set(l, m, u1, u2, u3, quad); break;
+		case TILE_EAST: _east.set(l, m, u1, u2, u3, quad); break;
+		case TILE_SOUTH: _south.set(l, m, u1, u2, u3, quad); break;
+		case TILE_CORNER_NORTHWEST: _corner_northwest.set(l, m, u1, u2, u3, quad); break;
+		case TILE_CORNER_NORTHEAST: _corner_northeast.set(l, m, u1, u2, u3, quad); break;
+		case TILE_CORNER_SOUTHEAST: _corner_southeast.set(l, m, u1, u2, u3, quad); break;
+		case TILE_CORNER_SOUTHWEST: _corner_southwest.set(l, m, u1, u2, u3, quad); break;
+		case TILE_NORTHWEST: _northwest.set(l, m, u1, u2, u3, quad); break;
+		case TILE_NORTHEAST: _northeast.set(l, m, u1, u2, u3, quad); break;
+		case TILE_SOUTHEAST: _southeast.set(l, m, u1, u2, u3, quad); break;
+		case TILE_SOUTHWEST: _southwest.set(l, m, u1, u2, u3, quad); break;
+		case TILE_CORNER_WEST: _corner_west.set(l, m, u1, u2, u3, quad); break;
+		case TILE_CORNER_NORTH: _corner_north.set(l, m, u1, u2, u3, quad); break;
+		case TILE_CORNER_EAST: _corner_east.set(l, m, u1, u2, u3, quad); break;
+		case TILE_CORNER_SOUTH: _corner_south.set(l, m, u1, u2, u3, quad); break;
+		case TILE_NORTHWEST_DOORLEFT: _northwest_doorleft.set(l, m, u1, u2, u3, quad); break;
+		case TILE_NORTHWEST_DOORRIGHT: _northwest_doorright.set(l, m, u1, u2, u3, quad); break;
+		case TILE_NORTHEAST_DOORLEFT: _northeast_doorleft.set(l, m, u1, u2, u3, quad); break;
+		case TILE_NORTHEAST_DOORRIGHT: _northeast_doorright.set(l, m, u1, u2, u3, quad); break;
+		case TILE_SOUTHEAST_DOORLEFT: _southeast_doorleft.set(l, m, u1, u2, u3, quad); break;
+		case TILE_SOUTHEAST_DOORRIGHT: _southeast_doorright.set(l, m, u1, u2, u3, quad); break;
+		case TILE_SOUTHWEST_DOORLEFT: _southwest_doorleft.set(l, m, u1, u2, u3, quad); break;
+		case TILE_SOUTHWEST_DOORRIGHT: _southwest_doorright.set(l, m, u1, u2, u3, quad); break;
+		case TILE_CLOSEDDOOR_WEST: _closeddoor_west.set(l, m, u1, u2, u3, quad); break;
+		case TILE_CLOSEDDOOR_EAST: _closeddoor_east.set(l, m, u1, u2, u3, quad); break;
+		case TILE_OPENDOOR_WEST: _opendoor_west.set(l, m, u1, u2, u3, quad); break;
+		case TILE_OPENDOOR_EAST: _opendoor_east.set(l, m, u1, u2, u3, quad); break;
+		case TILE_EMPTYFLOOR: _emptyfloor.set(l, m, u1, u2, u3, quad); break;
+		default: throw range_error("TilesetData::setTileData() -> Invalid type: " + toString(type));
+	}
+}
+
+Tileset::Tileset(const TilesetData& data) :
+	mSurface(VideoManager::loadSurface(data.metaFilename)),
+	mName(data.name),
+	mWidth(data.width),
+	mHeight(data.height)
+{
+    // Ensure that the width and height are valid.
+    if(mWidth < 1 || mHeight < 1)
+    {
+        throw range_error("Tileset::Tileset() -> Invalid width or height specified for tileset: w("
+                          + toString(mWidth) + "), h(" + toString(mHeight) + ")");
+    }
+
+    // For each type of tile calculate and store the various levels and the collision area.
+    int tile_width = mSurface->getWidth() / mWidth;
+    for(int i = TILE_NULL + 1; i != TILE_NPOS; ++i)
+    {
+    	if(data.get((TileType)i).l < 1)
+    		throw runtime_error("Tileset::Tileset() -> The lower level of all tiles must be specified.");
+    	mLowerTiles[(TileType)i] = Rectangle(((data.get((TileType)i).l - 1) % tile_width) * mWidth, ((data.get((TileType)i).l - 1)/ tile_width) * mHeight, mWidth, mHeight);
+
+    	if(data.get((TileType)i).m > 0)
+    		mMiddleTiles[(TileType)i] = Rectangle(((data.get((TileType)i).m  - 1) % tile_width) * mWidth, ((data.get((TileType)i).m - 1) / tile_width) * mHeight, mWidth, mHeight);
+    	else
+    		mMiddleTiles[(TileType)i] = Rectangle(0, 0, 0, 0);
+
+    	if(data.get((TileType)i).u1 > 0)
+    		mUpper1Tiles[(TileType)i] = Rectangle(((data.get((TileType)i).u1 - 1) % tile_width) * mWidth, ((data.get((TileType)i).u1 - 1) / tile_width) * mHeight, mWidth, mHeight);
+    	else
+    		mUpper1Tiles[(TileType)i] = Rectangle(0, 0, 0, 0);
+
+    	if(data.get((TileType)i).u2 > 0)
+    		mUpper2Tiles[(TileType)i] = Rectangle(((data.get((TileType)i).u2 - 1) % tile_width) * mWidth, ((data.get((TileType)i).u2 - 1) / tile_width) * mHeight, mWidth, mHeight);
+    	else
+    		mUpper2Tiles[(TileType)i] = Rectangle(0, 0, 0, 0);
+
+    	if(data.get((TileType)i).u3 > 0)
+    		mUpper3Tiles[(TileType)i] = Rectangle(((data.get((TileType)i).u3 - 1) % tile_width) * mWidth, ((data.get((TileType)i).u3 - 1) / tile_width) * mHeight, mWidth, mHeight);
+    	else
+    		mUpper3Tiles[(TileType)i] = Rectangle(0, 0, 0, 0);
+
+    	mCollisionAreas[(TileType)i] = data.get((TileType)i).collision;
+    }
+
+}
+
+const Quadrilateral& Tileset::getTileCollision(TileType type) const
+{
+	// Get the tile collision area for the requested level.
+	return mCollisionAreas.find(type)->second;
+}
+
+const Rectangle& Tileset::getTile(TileType type, TileLevel level) const
+{
+	// Get the tile id for the requested level.
+	switch(level)
+	{
+		case TILELEVEL_LOWER:
+		{
+			return mLowerTiles.find(type)->second;
+		}
+		case TILELEVEL_MIDDLE:
+		{
+			return mMiddleTiles.find(type)->second;
+		}
+		case TILELEVEL_UPPER1:
+		{
+			return mUpper1Tiles.find(type)->second;
+		}
+		case TILELEVEL_UPPER2:
+		{
+			return mUpper2Tiles.find(type)->second;
+		}
+		case TILELEVEL_UPPER3:
+		{
+			return mUpper3Tiles.find(type)->second;
+		}
+		default:
+		{
+			throw runtime_error("Tileset::getTile() -> Invalid tile level request.");
+		}
+	}
 }

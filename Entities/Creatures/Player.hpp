@@ -15,7 +15,6 @@
 #include "../../Engine/Timer.hpp"
 #include "../../Math/Vector.hpp"
 
-class EnvironmentData;
 class ObjectManager;
 
 /**
@@ -33,19 +32,7 @@ class Player : public Creature
      * @brief Construct a new player.
      */
     Player();
-
-    /**
-     * @brief Construct the entity from the data string.
-     * @param data The data string with which to create the entity.
-     */
-    Player(const std::string& data);
     virtual ~Player();
-
-    /**
-     * @brief Convert the state of the entity to a string to save.
-     * @return A string representation of the entity.
-     */
-    virtual std::string extract() const;
 
 	/**
 	 * @brief Handle player input.
@@ -57,7 +44,7 @@ class Player : public Creature
      * @brief Perform internal logic.
      * @param eData The level environment in which this entity resides.
      */
-    virtual void logic(EnvironmentData& eData);
+//    virtual void logic(EnvironmentData& eData);@todo review
 
     /**
      * @brief Interact with the provided entity.
@@ -115,12 +102,6 @@ class Player : public Creature
 	 */
 	Timer mInteractingTimer;
 };
-
-/**
- * The force with which the player pushes things.
- * @note The force used here is the 'other creature is unawares' force.
- */
-extern const int PLAYER_PUSH_FORCE;
 
 /**
  * The action key.

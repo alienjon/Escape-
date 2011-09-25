@@ -4,7 +4,6 @@
  *  Created on: May 24, 2010
  *      Author: the-saint
  */
-
 #include "DisplayMessageAction.hpp"
 
 #include <stdexcept>
@@ -29,11 +28,11 @@ DisplayMessageAction::~DisplayMessageAction()
 {
 }
 
-void DisplayMessageAction::activate(EnvironmentData& eData)
-{
-	// Display the message.
-	mScreen->displayMessage(mCaption, mMessage, mImage, "");
-
-	// Done.
-	mPerformed = true;
-}
+//void DisplayMessageAction::activate(EnvironmentData& eData)@todo review
+//{
+//	// Display the message.
+//	mScreen->displayMessage(mCaption, mMessage, mImage, "");
+//
+//	// Done.
+//	mPerformed = true;
+//}

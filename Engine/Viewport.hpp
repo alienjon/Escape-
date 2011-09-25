@@ -78,21 +78,21 @@ class Viewport
 	 * @param area The area to check.
 	 * @return True if the area is on screen (in the view of the viewport)
 	 */
-	virtual bool isOnScreen(const Rectangle& area);
+	virtual bool isOnScreen(const Rectangle& area) const;
 
     /**
      * @brief Checks of an area is on screen.
      * @param area The area to check.
      * @return True if the area is on screen (in the view of the viewport)
      */
-    virtual bool isOnScreen(const SDL_Rect& area);
+    virtual bool isOnScreen(const SDL_Rect& area) const;
 
     /**
      * @brief Checks of an area is on screen.
      * @param area The area to check.
      * @return True if the area is on screen (in the view of the viewport)
      */
-    virtual bool isOnScreen(const Quadrilateral& area);
+    virtual bool isOnScreen(const Quadrilateral& area) const;
 
     /**
      * @brief Checks if an area is on screen.
@@ -101,7 +101,7 @@ class Viewport
      * @param w The width of the area.
      * @param h The height of the area.
      */
-    virtual bool isOnScreen(int x, int y, int w, int h);
+    virtual bool isOnScreen(int x, int y, int w, int h) const;
 
 	/**
 	 * @brief Perform viewport logic.

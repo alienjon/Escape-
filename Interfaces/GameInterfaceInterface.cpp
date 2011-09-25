@@ -16,41 +16,6 @@ using std::list;
 using std::runtime_error;
 using std::string;
 
-void GameInterfaceInterface::mAddCreatureDisplay(Creature* creature)
-{
-	if(mInterfaceListener)
-	{
-		mInterfaceListener->addCreatureDisplay(creature);
-	}
-}
-
-void GameInterfaceInterface::mAddMessage(const string& title, const string& message)
-{
-	if(mInterfaceListener)
-	{
-		mInterfaceListener->addMessage(title, message);
-	}
-}
-
-unsigned int GameInterfaceInterface::mAddTask(const std::string& title, const std::string& message)
-{
-	if(mInterfaceListener)
-	{
-		return mInterfaceListener->addTask(title, message);
-	}
-
-	Logger::error("Cannot add task.  No interface listener set.");
-	return 0;
-}
-
-void GameInterfaceInterface::mCompleteTask(unsigned int id)
-{
-	if(mInterfaceListener)
-	{
-		mInterfaceListener->completeTask(id);
-	}
-}
-
 void GameInterfaceInterface::mDisplayMessage(const string& caption, const string& message, const string& sprite, const string& keyword)
 {
 	if(mInterfaceListener)
@@ -87,27 +52,11 @@ Vector GameInterfaceInterface::mGetViewportOffset()
 	return Vector();
 }
 
-void GameInterfaceInterface::mRemoveCreatureDisplay(Creature* creature)
-{
-	if(mInterfaceListener)
-	{
-		mInterfaceListener->removeCreatureDisplay(creature);
-	}
-}
-
 void GameInterfaceInterface::mSetViewportBounds(const Rectangle& bounds)
 {
 	if(mInterfaceListener)
 	{
 		mInterfaceListener->setViewportBounds(bounds);
-	}
-}
-
-void GameInterfaceInterface::mSignalLetter()
-{
-	if(mInterfaceListener)
-	{
-		mInterfaceListener->signalLetterIndicator();
 	}
 }
 

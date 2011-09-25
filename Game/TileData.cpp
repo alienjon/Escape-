@@ -16,13 +16,14 @@ TileData::TileData() :
 	u3(0)
 {}
 
-void TileData::set(unsigned int _l, unsigned int _m, unsigned int _u1, unsigned int _u2, unsigned int _u3)
+void TileData::set(unsigned int _l, unsigned int _m, unsigned int _u1, unsigned int _u2, unsigned int _u3, const Quadrilateral& quad)
 {
 	l  = _l;
 	m  = _m;
 	u1 = _u1;
 	u2 = _u2;
 	u3 = _u3;
+	collision = quad;
 }
 
 ostream& operator<<(ostream& os, const TileData& data)

@@ -49,15 +49,9 @@ void Viewport::center(const Entity* entity)
 		mEntity = entity;
 	}
 
-	// If the camera isn't tied to any object, set the camera to 0, 0.
-	if(!mEntity)
-	{
-		center(0, 0);
-	}
 	// There is an object to center to.
-	else
+	if(mEntity)
 	{
-	    // Center the camera on the tied object.
 	    center(int(mEntity->getWidth() / 2) - int(mDimension.width / 2) + mEntity->getX(),
 	           int(mEntity->getHeight() / 2) - int(mDimension.height / 2) + mEntity->getY());
 	}
@@ -98,22 +92,22 @@ int Viewport::getY() const
 	return mDimension.vector.y;
 }
 
-bool Viewport::isOnScreen(const Rectangle& area)
+bool Viewport::isOnScreen(const Rectangle& area) const
 {
     return isOnScreen(area.vector.x, area.vector.y, area.width, area.height);
 }
 
-bool Viewport::isOnScreen(const SDL_Rect& area)
+bool Viewport::isOnScreen(const SDL_Rect& area) const
 {
     return isOnScreen(area.x, area.y, area.w, area.h);
 }
 
-bool Viewport::isOnScreen(const Quadrilateral& area)
+bool Viewport::isOnScreen(const Quadrilateral& area) const
 {
     return area.isIntersecting(mDimension);
 }
 
-bool Viewport::isOnScreen(int _x, int _y, int _w, int _h)
+bool Viewport::isOnScreen(int _x, int _y, int _w, int _h) const
 {
     // Get the current area of the screen.
     int x = mDimension.vector.x;

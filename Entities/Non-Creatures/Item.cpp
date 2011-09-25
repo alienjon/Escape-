@@ -8,7 +8,6 @@
 #include "Item.hpp"
 
 #include "../../Managers/AnimationManager.hpp"
-#include "../../Game/EnvironmentData.hpp"
 #include "../../Math/Rectangle.hpp"
 
 Item::Item(const std::string& name, const EntityTemplate& temp) : Entity(name, 0, 0, temp.collisionArea)
@@ -31,10 +30,10 @@ void Item::damage(unsigned int damage)
 {
 }
 
-void Item::heldLogic(EnvironmentData& eData, Creature& holder)
-{
-	// Nada, for the default item.
-}
+//void Item::heldLogic(EnvironmentData& eData, Creature& holder)@todo review
+//{
+//	// Nada, for the default item.
+//}
 
 void Item::push(Direction dir, unsigned int force)
 {

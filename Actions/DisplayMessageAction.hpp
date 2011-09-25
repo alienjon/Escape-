@@ -11,7 +11,6 @@
 #include <string>
 
 #include "../Actions/Action.hpp"
-#include "../Game/EnvironmentData.hpp"
 #include "../Screens/GameScreen.hpp"
 #include "../guichan.hpp"
 
@@ -34,7 +33,7 @@ class DisplayMessageAction : public Action
 	/**
 	 * @brief Activate the action.
 	 */
-	virtual void activate(EnvironmentData& eData);
+//	virtual void activate(EnvironmentData& eData);//@todo review
 
 	private:
 	/**

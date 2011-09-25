@@ -41,7 +41,6 @@ class MainMenu : public MenuWidget
      * The buttons to traverse to the various menus.
      */
     MenuButton mStartButton;
-    MenuButton mLoadButton;
     MenuButton mOptionsButton;
     MenuButton mCreditsButton;
     MenuButton mQuitButton;

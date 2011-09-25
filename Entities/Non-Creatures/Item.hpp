@@ -13,7 +13,6 @@
 #include "../../Entities/Templates/EntityTemplate.hpp"
 
 class Creature;
-class EnvironmentData;
 
 /*
  * @brief An item that can be picked up by a creature.
@@ -39,7 +38,7 @@ class Item : public Entity
      * @param eData The environment data the item is in.
      * @param holder The creature holding the item.
      */
-    virtual void heldLogic(EnvironmentData& eData, Creature& holder);
+//    virtual void heldLogic(EnvironmentData& eData, Creature& holder);//@todo review
 
     /**
      * @brief Collectable items aren't pushed but, rather, are picked up as they are walked into.

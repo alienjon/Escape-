@@ -12,7 +12,6 @@
 #include "../../Managers/AnimationManager.hpp"
 #include "../../Entities/Non-Creatures/Item.hpp"
 #include "../../Actions/DisplayCreatureAnimationAction.hpp"
-#include "../../Game/EnvironmentData.hpp"
 #include "../../Game/Keywords.hpp"
 #include "../../main.hpp"
 #include "../../Actions/MoveToAction.hpp"
@@ -20,7 +19,6 @@
 #include "../../Actions/PauseAction.hpp"
 #include "../../Actions/PlaySoundAction.hpp"
 #include "../../Actions/SetSearchingAction.hpp"
-#include "../../Actions/SlideAction.hpp"
 #include "../../Managers/VideoManager.hpp"
 #include "../../Actions/WanderAction.hpp"
 
@@ -143,9 +141,6 @@ void Creature::mDie()
 
 	// Show the death animation.
 	addAction(new DisplayCreatureAnimationAction(*this, CREATUREANIMATION_FALLING, 1));
-
-	// Push an event that the creature has died.
-	pushEvent(EVENT_PLOTOCCURRENCE, KEYWORD_PUSHED + CHAR_DELIMITER_ALTERNATE + getName(), 0);
 }
 
 const string& Creature::mGetAnimationKeyword(CreatureAnimationState animation)
@@ -367,193 +362,193 @@ void Creature::kill()
 	mDie();
 }
 
-void Creature::logic(EnvironmentData& eData)
-{
-	// Only do most logic if the creature isn't dead.
-	if(!isDead())
-	{
-		// Search if the creature is searching and has not found a victim.
-		if(!mVictim && isSearching())
-		{
-			set<Entity*> e_set;
-			e_set.insert(this);
-			set<Entity*> spotted = eData.checkCollision(getIsoscelesTrapezoid(getVisibleArea().getCenter(), getFacingVector(), 175, (getWidth() + getHeight()) / 2, 275), e_set);
-			if(!spotted.empty())
-			{
-				// This is a set of victims.
-				set<Entity*> victims;
-
-				for(set<Entity*>::iterator it = spotted.begin(); it != spotted.end(); ++it)
-				{
-					// If this is an enemy (not NEUTRAL and not of the same alignment, then attack!
-					if((*it)->getAlignment() != "NEUTRAL" && (*it)->getAlignment() != getAlignment())
-					{
-						// Store the victims.
-						victims.insert(*it);
-					}
-				}
-
-				// If there weren't any victims, then continue on.  Otherwise run over to the closest victim.
-				if(!victims.empty())
-				{
-					// Stop moving and doing stuff.
-					mSoftStop();
-					clearActions();
-
-					// Stop searching, look at the victim, move to where the entity is, and continue searching.
-					// @todo Improve the 'following a victim' code.
-					const Vector& vic_loc = getClosestEntity(victims, *this)->getDimension().getCenter();
-					lookAt(vic_loc);
-					setSearching(false);
-					addAction(new MoveToAction(*this, vic_loc));
-					addAction(new SetSearchingAction(*this, true));
-				}
-			}
-		}
-
-		// If the creature is attacking, then do so before the movement (this way there will be a logic call between fighting and moving).
-		if(mVictim && mAttackTimer.getTime() >= CREATURE_ATTACK_INTERVAL)
-		{
-			// Do damage.
-			mVictim->damage(35);// @todo How much damage? how should it be incremented
-
-			// Restart the attack timer.
-			mAttackTimer.start();
-		}
-
-		// If the creature is moving in at least one direction and there arne't any creatures holding this one, then move.
-		if((mXVelocity != 0 || mYVelocity != 0) && mHoldingAttackers.empty())
-		{
-			bool xCollide = false,
-				 yCollide = false;
-
-			// If the non-player creature has moved within range of the waypoint, then set to that waypoint's position.
-			if(getType() != ENTITY_PLAYER)
-			{
-				// If the creature has moved to the correct X axis point (or within +- mSpeed range) then stop movement on the X axis.
-				if(mXVelocity && (getX() >= mWaypoint.x - CREATURE_MOVEMENT_DISTANCE && getX() <= mWaypoint.x + CREATURE_MOVEMENT_DISTANCE))
-				{
-					mXVelocity = 0;
-					setX(mWaypoint.x);
-				}
-
-				// If the creature has moved to the correct Y axis point (or within +- mSpeed range) then stop movement on the Y axis.
-				if(mYVelocity && (getY() >= mWaypoint.y - CREATURE_MOVEMENT_DISTANCE && getY() <= mWaypoint.y + CREATURE_MOVEMENT_DISTANCE))
-				{
-					mYVelocity = 0;
-					setY(mWaypoint.y);
-				}
-			}
-
-			// If we're moving, then do the generic stuff.
-			if(mMovementTimer.getTime() > (25 - (getSpeed() * 10)))
-			{
-				// Restart the timer.
-				mMovementTimer.start();
-
-				// Now do generic movement stuff.
-				if(mXVelocity)
-				{
-					// Update the X position and check for a collision.
-					setX(getX() + (mXVelocity * CREATURE_MOVEMENT_DISTANCE));
-					set<Entity*> e_set = eData.checkCollision(*this);
-					if(!e_set.empty())
-					{
-						// Return to the previous X position.
-						setX(getX() - (mXVelocity * CREATURE_MOVEMENT_DISTANCE));
-
-						// Hit the X side.
-						xCollide = true;
-
-						// Check and handle collisions.
-						for(set<Entity*>::iterator it = e_set.begin(); it != e_set.end(); ++it)
-						{
-							mCollision(*(*it));
-						}
-					}
-				}
-				if(mYVelocity)
-				{
-					// Update the Y position and check for a collision.
-					setY(getY() + (mYVelocity * CREATURE_MOVEMENT_DISTANCE));
-					set<Entity*> e_set = eData.checkCollision(*this);
-					if(!e_set.empty())
-					{
-						// Return to the previous Y position.
-						setY(getY() - (mYVelocity * CREATURE_MOVEMENT_DISTANCE));
-
-						// Hit the Y side.
-						yCollide = true;
-
-						// Check and handle collisions.
-						for(set<Entity*>::iterator it = e_set.begin(); it != e_set.end(); ++it)
-						{
-							mCollision(*(*it));
-						}
-					}
-				}
-
-				// If both x and y collisions have occurred (and this is NOT the player) then consider this to be a corner.
-				// @todo I might be able to separate this code into a more defined 'NPC' class that focuses on movement logic.
-				//		 What I might want to do is that if an NPC hits an X or Y collision, to then move left or right until
-				//		 the NPC can continue moving the the original direction.  If that NPC then hits a collision on the
-				//		 other axis to switch directions on the second axis.  If a second collision then occurs, then the
-				//		 creature should stop.
-				if((xCollide && yCollide) && getType() != ENTITY_PLAYER)
-				{
-					mSoftStop();
-				}
-				// If either an X collision or a Y collision did NOT occur and the creature is moving then tell the listeners of a movement event.
-				else if(!xCollide && !yCollide && (mXVelocity || mYVelocity))
-				{
-					// Tell the movement listeners.
-					mPushMovementEvent();
-				}
-			}
-
-			// If the creature was moving at the beginning of this logic call but isn't now, then it has stopped.
-			if(mXVelocity == 0 && mYVelocity == 0)
-			{
-				mSoftStop();
-			}
-		}
-
-		// If the creature is looking at something different, then change the currently facing direction animation.
-		// @note The creature should only be able to change directions if it's walking or standing.
-		Direction new_dir = directionToPoint(getVisibleArea().getCenter(), mLookingAt);
-		if(new_dir != mFacingDirection && (mCreatureAnimationState == CREATUREANIMATION_WALKING || mCreatureAnimationState == CREATUREANIMATION_STANDING))
-		{
-			// Set the newly facing direction for the current animation state.
-			mFacingDirection = new_dir;
-			mSetAnimation(mCreatureAnimationState);
-		}
-
-		// @fixme I shouldn't need this blank if statement...  Creature movement states seems to be tricky for me.
-		//		  look into changing it when an NPC class is implemented.
-		if(mCreatureAnimationState == CREATUREANIMATION_HURT || mCreatureAnimationState == CREATUREANIMATION_FALLING)
-		{
-			// hmm...
-		}
-		// If the creature moving differently now than it was in the last logic call, then either walk or stop walking.
-		else if((mXVelocity != 0 || mYVelocity != 0) && mCreatureAnimationState != CREATUREANIMATION_WALKING)
-		{
-			mSetAnimation(CREATUREANIMATION_WALKING);
-		}
-		else if((mXVelocity == 0 && mYVelocity == 0) && mCreatureAnimationState != CREATUREANIMATION_STANDING)
-		{
-			mSetAnimation(CREATUREANIMATION_STANDING);
-		}
-	}
-
-	// Perform logic for any held items.
-	for(list<Item*>::iterator it = mHeldItems.begin(); it != mHeldItems.end(); ++it)
-	{
-		(*it)->heldLogic(eData, *this);
-	}
-
-    // Call the entity's logic.
-    Entity::logic(eData);
-}
+//void Creature::logic(EnvironmentData& eData)//@todo review
+//{
+//	// Only do most logic if the creature isn't dead.
+//	if(!isDead())
+//	{
+//		// Search if the creature is searching and has not found a victim.
+//		if(!mVictim && isSearching())
+//		{
+//			set<Entity*> e_set;
+//			e_set.insert(this);
+//			set<Entity*> spotted = eData.checkCollision(getIsoscelesTrapezoid(getVisibleArea().getCenter(), getFacingVector(), 175, (getWidth() + getHeight()) / 2, 275), e_set);
+//			if(!spotted.empty())
+//			{
+//				// This is a set of victims.
+//				set<Entity*> victims;
+//
+//				for(set<Entity*>::iterator it = spotted.begin(); it != spotted.end(); ++it)
+//				{
+//					// If this is an enemy (not NEUTRAL and not of the same alignment, then attack!
+//					if((*it)->getAlignment() != "NEUTRAL" && (*it)->getAlignment() != getAlignment())
+//					{
+//						// Store the victims.
+//						victims.insert(*it);
+//					}
+//				}
+//
+//				// If there weren't any victims, then continue on.  Otherwise run over to the closest victim.
+//				if(!victims.empty())
+//				{
+//					// Stop moving and doing stuff.
+//					mSoftStop();
+//					clearActions();
+//
+//					// Stop searching, look at the victim, move to where the entity is, and continue searching.
+//					// @todo Improve the 'following a victim' code.
+//					const Vector& vic_loc = getClosestEntity(victims, *this)->getDimension().getCenter();
+//					lookAt(vic_loc);
+//					setSearching(false);
+//					addAction(new MoveToAction(*this, vic_loc));
+//					addAction(new SetSearchingAction(*this, true));
+//				}
+//			}
+//		}
+//
+//		// If the creature is attacking, then do so before the movement (this way there will be a logic call between fighting and moving).
+//		if(mVictim && mAttackTimer.getTime() >= CREATURE_ATTACK_INTERVAL)
+//		{
+//			// Do damage.
+//			mVictim->damage(35);// @todo How much damage? how should it be incremented
+//
+//			// Restart the attack timer.
+//			mAttackTimer.start();
+//		}
+//
+//		// If the creature is moving in at least one direction and there arne't any creatures holding this one, then move.
+//		if((mXVelocity != 0 || mYVelocity != 0) && mHoldingAttackers.empty())
+//		{
+//			bool xCollide = false,
+//				 yCollide = false;
+//
+//			// If the non-player creature has moved within range of the waypoint, then set to that waypoint's position.
+//			if(getType() != ENTITY_PLAYER)
+//			{
+//				// If the creature has moved to the correct X axis point (or within +- mSpeed range) then stop movement on the X axis.
+//				if(mXVelocity && (getX() >= mWaypoint.x - CREATURE_MOVEMENT_DISTANCE && getX() <= mWaypoint.x + CREATURE_MOVEMENT_DISTANCE))
+//				{
+//					mXVelocity = 0;
+//					setX(mWaypoint.x);
+//				}
+//
+//				// If the creature has moved to the correct Y axis point (or within +- mSpeed range) then stop movement on the Y axis.
+//				if(mYVelocity && (getY() >= mWaypoint.y - CREATURE_MOVEMENT_DISTANCE && getY() <= mWaypoint.y + CREATURE_MOVEMENT_DISTANCE))
+//				{
+//					mYVelocity = 0;
+//					setY(mWaypoint.y);
+//				}
+//			}
+//
+//			// If we're moving, then do the generic stuff.
+//			if(mMovementTimer.getTime() > (25 - (getSpeed() * 10)))
+//			{
+//				// Restart the timer.
+//				mMovementTimer.start();
+//
+//				// Now do generic movement stuff.
+//				if(mXVelocity)
+//				{
+//					// Update the X position and check for a collision.
+//					setX(getX() + (mXVelocity * CREATURE_MOVEMENT_DISTANCE));
+//					set<Entity*> e_set = eData.checkCollision(*this);
+//					if(!e_set.empty())
+//					{
+//						// Return to the previous X position.
+//						setX(getX() - (mXVelocity * CREATURE_MOVEMENT_DISTANCE));
+//
+//						// Hit the X side.
+//						xCollide = true;
+//
+//						// Check and handle collisions.
+//						for(set<Entity*>::iterator it = e_set.begin(); it != e_set.end(); ++it)
+//						{
+//							mCollision(*(*it));
+//						}
+//					}
+//				}
+//				if(mYVelocity)
+//				{
+//					// Update the Y position and check for a collision.
+//					setY(getY() + (mYVelocity * CREATURE_MOVEMENT_DISTANCE));
+//					set<Entity*> e_set = eData.checkCollision(*this);
+//					if(!e_set.empty())
+//					{
+//						// Return to the previous Y position.
+//						setY(getY() - (mYVelocity * CREATURE_MOVEMENT_DISTANCE));
+//
+//						// Hit the Y side.
+//						yCollide = true;
+//
+//						// Check and handle collisions.
+//						for(set<Entity*>::iterator it = e_set.begin(); it != e_set.end(); ++it)
+//						{
+//							mCollision(*(*it));
+//						}
+//					}
+//				}
+//
+//				// If both x and y collisions have occurred (and this is NOT the player) then consider this to be a corner.
+//				// @todo I might be able to separate this code into a more defined 'NPC' class that focuses on movement logic.
+//				//		 What I might want to do is that if an NPC hits an X or Y collision, to then move left or right until
+//				//		 the NPC can continue moving the the original direction.  If that NPC then hits a collision on the
+//				//		 other axis to switch directions on the second axis.  If a second collision then occurs, then the
+//				//		 creature should stop.
+//				if((xCollide && yCollide) && getType() != ENTITY_PLAYER)
+//				{
+//					mSoftStop();
+//				}
+//				// If either an X collision or a Y collision did NOT occur and the creature is moving then tell the listeners of a movement event.
+//				else if(!xCollide && !yCollide && (mXVelocity || mYVelocity))
+//				{
+//					// Tell the movement listeners.
+//					mPushMovementEvent();
+//				}
+//			}
+//
+//			// If the creature was moving at the beginning of this logic call but isn't now, then it has stopped.
+//			if(mXVelocity == 0 && mYVelocity == 0)
+//			{
+//				mSoftStop();
+//			}
+//		}
+//
+//		// If the creature is looking at something different, then change the currently facing direction animation.
+//		// @note The creature should only be able to change directions if it's walking or standing.
+//		Direction new_dir = directionToPoint(getVisibleArea().getCenter(), mLookingAt);
+//		if(new_dir != mFacingDirection && (mCreatureAnimationState == CREATUREANIMATION_WALKING || mCreatureAnimationState == CREATUREANIMATION_STANDING))
+//		{
+//			// Set the newly facing direction for the current animation state.
+//			mFacingDirection = new_dir;
+//			mSetAnimation(mCreatureAnimationState);
+//		}
+//
+//		// @fixme I shouldn't need this blank if statement...  Creature movement states seems to be tricky for me.
+//		//		  look into changing it when an NPC class is implemented.
+//		if(mCreatureAnimationState == CREATUREANIMATION_HURT || mCreatureAnimationState == CREATUREANIMATION_FALLING)
+//		{
+//			// hmm...
+//		}
+//		// If the creature moving differently now than it was in the last logic call, then either walk or stop walking.
+//		else if((mXVelocity != 0 || mYVelocity != 0) && mCreatureAnimationState != CREATUREANIMATION_WALKING)
+//		{
+//			mSetAnimation(CREATUREANIMATION_WALKING);
+//		}
+//		else if((mXVelocity == 0 && mYVelocity == 0) && mCreatureAnimationState != CREATUREANIMATION_STANDING)
+//		{
+//			mSetAnimation(CREATUREANIMATION_STANDING);
+//		}
+//	}
+//
+//	// Perform logic for any held items.
+//	for(list<Item*>::iterator it = mHeldItems.begin(); it != mHeldItems.end(); ++it)
+//	{
+//		(*it)->heldLogic(eData, *this);
+//	}
+//
+//    // Call the entity's logic.
+//    Entity::logic(eData);
+//}
 
 void Creature::lookAt(const Vector& point)
 {
@@ -580,65 +575,6 @@ void Creature::moveTo(int x, int y)
 void Creature::pickupItem(Item& item)
 {
 	mHeldItems.push_back(&item);
-}
-
-/**
- * This method completely overrides Entity::push() because it includes actions other than Slide.  The entity version
- * shouldn't be called here either, as it will otherwise push the plot event twice.
- */
-void Creature::push(const Vector& destPt, unsigned int force)
-{
-    // Decrease the sprite's defense by the amount of the force.
-    mDefense -= force;
-
-    // If the defense is broke (smaller than 0), push this creature backwards.
-    if(mDefense <= 0)
-    {
-    	// As the creature will be stunned for a moment, reset the defense.
-        mDefense = mMaxDefense;
-
-        // If the creature is currently searching, it should continue when it's finished being pushed back.
-        // Note: the subsequent call to stop() will automatically stop searching, so this is done here.
-        bool is_searching = isSearching();
-
-        // Stop the creature from moving.
-        stop();
-
-	    // In order to have the slide, sound, and animation play at the same time, clear the current actions and start clean here.
-        clearActions();
-	    ActionList* list = new ActionList;
-	    list->push_back(new SlideAction(*this, destPt, 100/*PUSH_DISTANCE*/)); // @todo how far should things be pushed?
-	    list->push_back(new PlaySoundAction("grunt.wav", 0)); // @todo need a way to set sounds for creature to make.
-	    list->push_back(new DisplayCreatureAnimationAction(*this, CREATUREANIMATION_HURT, 1));
-	    addAction(new MultipleActionsAction(list));
-
-	    // Just show the stopped animation after sliding back.
-	    addAction(new DisplayCreatureAnimationAction(*this, CREATUREANIMATION_STANDING, 0));
-
-	    // After this creature has stabilized itself, if it is currently searching then continue searching.
-	    if(is_searching)
-	    {
-	    	// Stop searching for now, but continue searching when done.
-	    	setSearching(false);
-	    	addAction(new SetSearchingAction(*this, true));
-	    }
-
-	    // If this creature is attacking someone, then stop attacking when they are pushed.
-	    if(mVictim)
-	    {
-	    	// Stop listening to the victim for it to die.
-	    	mVictim->removeDeathListener(this);
-
-	    	// Release the victim.
-	    	mVictim->release(this);
-
-	    	// Stop attacking the victim.
-	    	mVictim = 0;
-	    }
-
-	    // Push an event that the creature has been pushed back.
-	    pushEvent(EVENT_PLOTOCCURRENCE, KEYWORD_PUSHED + CHAR_DELIMITER_ALTERNATE + getName(), 0);
-    }
 }
 
 void Creature::removeCreatureMovedToPointListener(CreatureMovedToPointListener* listener)

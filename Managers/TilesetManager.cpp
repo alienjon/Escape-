@@ -10,8 +10,6 @@
 #include <stdexcept>
 #include <vector>
 
-#include "VideoManager.hpp"
-
 #include "../Game/Game.hpp"
 #include "../Engine/Logger.hpp"
 #include "../main.hpp"
@@ -112,7 +110,49 @@ TilesetManager::TilesetManager()
 				Logger::log("Warning: Problem parsing line " + toString(line_num) + " in " + FILE_TILESET_DATA + ": not enough layers specified.");
 			}
     		uint u3 = toInt(extractDataLine(line, pos, ':'));
-    		data.setTileData(type, l, m, u1, u2, u3);
+    		Vector p1, p2, p3, p4;
+    		if(pos == line.size())
+			{
+				Logger::log("Warning: Problem parsing line " + toString(line_num) + " in " + FILE_TILESET_DATA + ": not enough layers specified.");
+			}
+    		p1.x = toInt(extractDataLine(line, pos, ':'));
+    		if(pos == line.size())
+			{
+				Logger::log("Warning: Problem parsing line " + toString(line_num) + " in " + FILE_TILESET_DATA + ": not enough layers specified.");
+			}
+    		p1.y = toInt(extractDataLine(line, pos, ':'));
+    		if(pos == line.size())
+			{
+				Logger::log("Warning: Problem parsing line " + toString(line_num) + " in " + FILE_TILESET_DATA + ": not enough layers specified.");
+			}
+    		p2.x = toInt(extractDataLine(line, pos, ':'));
+    		if(pos == line.size())
+			{
+				Logger::log("Warning: Problem parsing line " + toString(line_num) + " in " + FILE_TILESET_DATA + ": not enough layers specified.");
+			}
+    		p2.y = toInt(extractDataLine(line, pos, ':'));
+    		if(pos == line.size())
+			{
+				Logger::log("Warning: Problem parsing line " + toString(line_num) + " in " + FILE_TILESET_DATA + ": not enough layers specified.");
+			}
+    		p3.x = toInt(extractDataLine(line, pos, ':'));
+    		if(pos == line.size())
+			{
+				Logger::log("Warning: Problem parsing line " + toString(line_num) + " in " + FILE_TILESET_DATA + ": not enough layers specified.");
+			}
+    		p3.y = toInt(extractDataLine(line, pos, ':'));
+    		if(pos == line.size())
+			{
+				Logger::log("Warning: Problem parsing line " + toString(line_num) + " in " + FILE_TILESET_DATA + ": not enough layers specified.");
+			}
+    		p4.x = toInt(extractDataLine(line, pos, ':'));
+    		if(pos == line.size())
+			{
+				Logger::log("Warning: Problem parsing line " + toString(line_num) + " in " + FILE_TILESET_DATA + ": not enough layers specified.");
+			}
+    		p4.y = toInt(extractDataLine(line, pos, ':'));
+
+    		data.setTileData(type, l, m, u1, u2, u3, Quadrilateral(p1, p2, p3, p4));
     	}
     }
 
@@ -163,38 +203,7 @@ bool TilesetManager::loadResource()
     list<TilesetData>::iterator it = mManager->mData.begin();
 
     // Create and configure the new tileset.
-    Tileset* tmp = new Tileset(VideoManager::loadSurface((*it).metaFilename),
-												  (*it).name,
-												  toInt((*it).width),
-												  toInt((*it).height));
-	tmp->_west = (*it)._west; // @todo cleanup?
-	tmp->_north = (*it)._north;
-	tmp->_east = (*it)._east;
-	tmp->_south = (*it)._south;
-	tmp->_corner_northwest = (*it)._corner_northwest;
-	tmp->_corner_northeast = (*it)._corner_northeast;
-	tmp->_corner_southwest = (*it)._corner_southwest;
-	tmp->_corner_southeast = (*it)._corner_southeast;
-	tmp->_northwest = (*it)._northwest;
-	tmp->_northeast = (*it)._northeast;
-	tmp->_southwest = (*it)._southwest;
-	tmp->_southeast = (*it)._southeast;
-	tmp->_corner_west = (*it)._corner_west;
-	tmp->_corner_north = (*it)._corner_north;
-	tmp->_corner_east = (*it)._corner_east;
-	tmp->_corner_south = (*it)._corner_south;
-	tmp->_northwest_doorleft = (*it)._northwest_doorleft;
-	tmp->_northwest_doorright = (*it)._northwest_doorright;
-	tmp->_northeast_doorleft = (*it)._northeast_doorleft;
-	tmp->_northeast_doorright = (*it)._northeast_doorright;
-	tmp->_southeast_doorleft = (*it)._southeast_doorleft;
-	tmp->_southeast_doorright = (*it)._southeast_doorright;
-	tmp->_southwest_doorleft = (*it)._southwest_doorleft;
-	tmp->_southwest_doorright = (*it)._southwest_doorright;
-	tmp->_floor_a = (*it)._floor_a;
-	tmp->_floor_b = (*it)._floor_b;
-	tmp->_floor_c = (*it)._floor_c;
-	tmp->_floor_d = (*it)._floor_d;
+    Tileset* tmp = new Tileset(*it);
 
 	// Add the new tileset.
 	mManager->mTilesets[(*it).name] = tmp;

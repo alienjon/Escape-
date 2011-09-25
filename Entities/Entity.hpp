@@ -227,7 +227,7 @@ class Entity : public ActionInterface, public EventInterface
      * @brief Perform internal logic.
      * @param eData The level environment in which this entity resides.
      */
-    virtual void logic(EnvironmentData& eData);
+//    virtual void logic(EnvironmentData& eData);@todo review
 
     /**
      * @brief Look at the provided point.
@@ -236,14 +236,6 @@ class Entity : public ActionInterface, public EventInterface
      * @note This is unimplemented in Entity.
      */
     virtual void lookAt(const Vector& point);
-
-    /**
-     * @brief Push the entity in a direction.
-     * @param destPt The a point in the direction to be pushed.
-     * @param force The force with which to push the entity.
-     * @note Being pushed clears all actions for the entity.  If a child class inherits this method, then add actions after passing to this function.
-     */
-    virtual void push(const Vector& destPt, unsigned int force);
 
     /**
      * @brief A creature is releasing it's grasp of this entity.

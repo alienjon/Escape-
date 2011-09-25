@@ -18,7 +18,6 @@ string getEntityType(EntityType type)
     	case ENTITY_EXPLOSION: return "ENTITY_EXPLOSION";
     	case ENTITY_OBJECT: return "ENTITY_OBJECT";
     	case ENTITY_ITEM: return "ENTITY_ITEM";
-    	case ENTITY_TILE: return "ENTITY_TILE";
         default: return "NULL ENTITY TYPE";
     }
 }
@@ -46,10 +45,6 @@ EntityType getEntityType(const string& type)
     	return ENTITY_OBJECT;
     }
     else if(type == "ENTITY_ITEM")
-    {
-    	return ENTITY_ITEM;
-    }
-    else if(type == "ENTITY_TILE")
     {
     	return ENTITY_ITEM;
     }

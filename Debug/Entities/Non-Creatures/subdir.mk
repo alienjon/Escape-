@@ -6,26 +6,20 @@
 CPP_SRCS += \
 ../Entities/Non-Creatures/Flashlight.cpp \
 ../Entities/Non-Creatures/Item.cpp \
-../Entities/Non-Creatures/Letter.cpp \
 ../Entities/Non-Creatures/NonDisplayingEntity.cpp \
-../Entities/Non-Creatures/Object.cpp \
-../Entities/Non-Creatures/Tile.cpp 
+../Entities/Non-Creatures/Object.cpp 
 
 OBJS += \
 ./Entities/Non-Creatures/Flashlight.o \
 ./Entities/Non-Creatures/Item.o \
-./Entities/Non-Creatures/Letter.o \
 ./Entities/Non-Creatures/NonDisplayingEntity.o \
-./Entities/Non-Creatures/Object.o \
-./Entities/Non-Creatures/Tile.o 
+./Entities/Non-Creatures/Object.o 
 
 CPP_DEPS += \
 ./Entities/Non-Creatures/Flashlight.d \
 ./Entities/Non-Creatures/Item.d \
-./Entities/Non-Creatures/Letter.d \
 ./Entities/Non-Creatures/NonDisplayingEntity.d \
-./Entities/Non-Creatures/Object.d \
-./Entities/Non-Creatures/Tile.d 
+./Entities/Non-Creatures/Object.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

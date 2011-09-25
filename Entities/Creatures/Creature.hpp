@@ -19,7 +19,6 @@
 #include "../../Math/Quadrilateral.hpp"
 #include "../../Engine/Timer.hpp"
 
-class EnvironmentData;
 class Item;
 
 /**
@@ -104,7 +103,7 @@ class Creature : public DeathListener, public Entity
      * @brief Perform internal logic.
      * @param eData The level environment in which this entity resides.
      */
-    virtual void logic(EnvironmentData& eData);
+//    virtual void logic(EnvironmentData& eData);@todo review
 
     /**
      * @brief Look at the provided point.
@@ -124,13 +123,6 @@ class Creature : public DeathListener, public Entity
      * @param item The item to pick up.
      */
     virtual void pickupItem(Item& item);
-
-    /**
-     * @brief Push the creature in a direction.
-     * @param destPt A point on the direction to be pushed.
-     * @param force The force with which to push the creature.
-     */
-    virtual void push(const Vector& destPt, unsigned int force);
 
     /**
      * @brief Remove a moved to point listener.

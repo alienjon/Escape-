@@ -14,12 +14,9 @@
 using std::string;
 
 NewGameMenu::NewGameMenu() :
-//	mEasyButton(ID_STARTGAME_EASY, EVENT_STARTEASY), // @todo I removed difficulty, so this screen may not even be needed.
-//	mNormalButton(ID_STARTGAME_NORMAL, EVENT_STARTNORMAL),
-//	mHardButton(ID_STARTGAME_HARD, EVENT_STARTHARD),
-	mEasyButton(ID_STARTGAME_EASY, EVENT_START),
-	mNormalButton(ID_STARTGAME_NORMAL, EVENT_START),
-	mHardButton(ID_STARTGAME_HARD, EVENT_START),
+	mEasyButton(ID_STARTGAME_EASY, EVENT_STARTEASY),
+	mNormalButton(ID_STARTGAME_NORMAL, EVENT_STARTNORMAL),
+	mHardButton(ID_STARTGAME_HARD, EVENT_STARTHARD),
 	mUsernameLabel("Player Name: "),
 	mUsernameTextbox("Bob the mailman"),
 	mBackButton(ID_MAINMENU_BUTTON_MAIN, EVENT_SLIDE_MAINMENU)
@@ -66,19 +63,19 @@ NewGameMenu::~NewGameMenu()
 }
 
 void NewGameMenu::eventOccurred(Event event, const string& content, CreatureMovedToPointListener* creatureMovedToPointListener)
-{Logger::error("NewGameMenu is currently deprecated - or at least as long as there aren't difficulties.  You shouldn't be here.");
+{
     // If we are going to start a new game but no name was provided, then warn the player but don't do anything.
     Event ev;
     string con;
-//    if((event == EVENT_STARTEASY   ||
-//        event == EVENT_STARTNORMAL ||
-//        event == EVENT_STARTHARD)  &&
-//       mUsernameTextbox.getText().empty())
-//    {
-//        ev = EVENT_DISPLAYMESSAGE;
-//        con = "Need to provide a name.";
-//    }
-//    else
+    if((event == EVENT_STARTEASY   ||
+        event == EVENT_STARTNORMAL ||
+        event == EVENT_STARTHARD)  &&
+       mUsernameTextbox.getText().empty())
+    {
+        ev = EVENT_DISPLAYMESSAGE;
+        con = "Need to provide a name.";
+    }
+    else
     {
         ev = event;
         con = mUsernameTextbox.getText();

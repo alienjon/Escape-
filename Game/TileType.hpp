@@ -4,17 +4,13 @@
  *  Created on: Sep 5, 2009
  *      Author: alienjon
  */
-
 #ifndef TILETYPE_HPP_
 #define TILETYPE_HPP_
 
 #include <string>
 
 // The string representations of the tile types.
-extern const std::string TILETYPE_FLOOR_A;
-extern const std::string TILETYPE_FLOOR_B;
-extern const std::string TILETYPE_FLOOR_C;
-extern const std::string TILETYPE_FLOOR_D;
+extern const std::string TILETYPE_EMPTYFLOOR;
 extern const std::string TILETYPE_WEST;
 extern const std::string TILETYPE_NORTH;
 extern const std::string TILETYPE_EAST;
@@ -39,7 +35,12 @@ extern const std::string TILETYPE_SOUTHEAST_DOORLEFT;
 extern const std::string TILETYPE_SOUTHEAST_DOORRIGHT;
 extern const std::string TILETYPE_SOUTHWEST_DOORLEFT;
 extern const std::string TILETYPE_SOUTHWEST_DOORRIGHT;
+extern const std::string TILETYPE_CLOSEDDOOR_WEST;
+extern const std::string TILETYPE_CLOSEDDOOR_EAST;
+extern const std::string TILETYPE_OPENDOOR_WEST;
+extern const std::string TILETYPE_OPENDOOR_EAST;
 extern const std::string TILETYPE_NULL;
+extern const std::string TILETYPE_NPOS;
 
 /**
  * @brief These are the different types of wall tiles.
@@ -71,10 +72,12 @@ typedef enum
     TILE_SOUTHEAST_DOORRIGHT = 22,
     TILE_SOUTHWEST_DOORLEFT  = 23,
     TILE_SOUTHWEST_DOORRIGHT = 24,
-    TILE_FLOOR_A			 = 25, // @note ALL floor tiles must come after this tile.
-    TILE_FLOOR_B			 = 26,
-    TILE_FLOOR_C			 = 27,
-    TILE_FLOOR_D			 = 28
+    TILE_EMPTYFLOOR			 = 25,
+    TILE_CLOSEDDOOR_WEST	 = 26,
+    TILE_CLOSEDDOOR_EAST	 = 27,
+    TILE_OPENDOOR_WEST		 = 28,
+    TILE_OPENDOOR_EAST		 = 29,
+    TILE_NPOS // Don't give this a value, it represents the end of the enumeration.
 } TileType;
 
 /**

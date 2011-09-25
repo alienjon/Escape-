@@ -13,8 +13,6 @@
 #include "../../Math/Rectangle.hpp"
 #include "../../Engine/Renderer.hpp"
 
-class EnvironmentData;
-
 /**
  * @brief A non-displaying entity is an entity that exists but is not seen.
  *
@@ -31,11 +29,6 @@ class NonDisplayingEntity : public Entity
      */
     NonDisplayingEntity(const std::string& name, const Rectangle& area);
 
-    /**
-     * @brief Construct the entity from the data string.
-     * @param data The data string with which to create the entity.
-     */
-//    NonDisplayingEntity(const std::string& data); @todo implement
 
     /**
      * @brief Cannot damage a basic non-displaying being.
@@ -52,17 +45,10 @@ class NonDisplayingEntity : public Entity
     virtual void draw(Renderer& renderer);
 
     /**
-     * @brief Convert the state of the entity to a string to save.
-     * @return A string representation of the entity.
-     * @todo need to implement
-     */
-    virtual std::string extract() const;
-
-    /**
      * @brief Perform internal logic.
      * @param eData The level environment in which this entity resides.
      */
-    virtual void logic(EnvironmentData& eData);
+//    virtual void logic(EnvironmentData& eData);//@todo review
 };
 
 #endif /* NONDISPLAYINGENTITY_HPP_ */

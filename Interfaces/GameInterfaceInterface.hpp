@@ -15,7 +15,6 @@
 #include "../Math/Rectangle.hpp"
 #include "../Math/Vector.hpp"
 
-class Creature;
 class Entity;
 
 /**
@@ -29,34 +28,6 @@ class GameInterfaceInterface
      * @param listener The listener to set.
      */
     void setInterfaceListener(InterfaceListener* listener);
-
-	protected:
-    /**
-     * @brief Add a creature display.
-     * @param creature The creature whose info is to be displayed.
-     */
-    static void mAddCreatureDisplay(Creature* creature);
-
-    /**
-     * @brief Add a message for the user to read.
-     * @param title The message's title.
-     * @param message The message itself.
-     */
-    static void mAddMessage(const std::string& title, const std::string& message);
-
-    /**
-     * @brief Add a task.
-     * @param title The title of the task to add.
-     * @param message The detailed message of the task to add.
-     * @return The ID of the new task.
-     */
-    static unsigned int mAddTask(const std::string& title, const std::string& message);
-
-    /**
-     * @brief Complete a task.
-     * @param id The ID of the task to complete.
-     */
-    static void mCompleteTask(unsigned int id);
 
     /**
      * @brief Request a message display.
@@ -87,21 +58,10 @@ class GameInterfaceInterface
     static Vector mGetViewportOffset();
 
     /**
-     * @brief Remove a creature display
-     * @param creature The creature whose display is to be removed.
-     */
-    static void mRemoveCreatureDisplay(Creature* creature);
-
-    /**
      * @brief Set the viewport bounds.
      * @param bounds The bounds to set.
      */
     static void mSetViewportBounds(const Rectangle& bounds);
-
-    /**
-     * @brief Indicate that a letter was received.
-     */
-    static void mSignalLetter();
 
 	private:
     /**

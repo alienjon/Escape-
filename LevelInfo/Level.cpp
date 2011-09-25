@@ -9,7 +9,6 @@
 #include <cctype>
 #include <stdexcept>
 
-#include "../Math/Base64Functions.hpp"
 #include "../Engine/Colors.hpp"
 #include "../Entities/Creatures/Creature.hpp"
 #include "../Entities/Entity.hpp"
@@ -18,6 +17,8 @@
 #include "../Game/Keywords.hpp"
 #include "../Engine/Logger.hpp"
 #include "../main.hpp"
+#include "../Entities/Creatures/Player.hpp"
+#include "../Managers/TilesetManager.hpp"
 
 using std::invalid_argument;
 using std::list;
@@ -25,46 +26,37 @@ using std::map;
 using std::runtime_error;
 using std::string;
 
-//Level::Level(const MapRule& rule, Difficulty difficulty) :
-//														   mMap(rule),
-//														   mEData(mMap)
-//{
-//    // @todo need to implement auto-generated levels?
-//}
-
-Level::Level(const LevelData& levelData) :
-	mName(levelData.name),
-	mInitialPositions(levelData.entry_points),
-	mMap(levelData.mapData),
-	mEData(mMap, levelData.entities, levelData.area_data),
-	mLightsQuad(levelData.light_quad_data),
-	mLightsElip(levelData.light_elip_data)
+/**
+ * The map's size is random based on the difficulty of the game.
+ * The width and height is at least 5 + a range between the difficulty level
+ * and 150% of the difficulty level.
+ */
+Level::Level(unsigned int difficulty, Player& player) :
+	mPlayer(&player),
+	mMap(random<unsigned int>(5 + random<unsigned int>(difficulty, difficulty * 1.5),
+							  5 + random<unsigned int>(difficulty, difficulty * 1.5)),
+		 random<unsigned int>(5 + random<unsigned int>(difficulty, difficulty * 1.5),
+							  5 + random<unsigned int>(difficulty, difficulty * 1.5)),
+		 TilesetManager::get("office"))// @todo will there be other tilesets?  How should they be loaded?
 {
-	// Set the listeners.
-	mEData.addEventListener(this);
+	// Place the player in the entrance.
+//@todo place the player
 
-	// Set the viewport bounds.
-	mSetViewportBounds(Rectangle(0, 0, mMap.getWidth(), mMap.getHeight()));
+	// Populate the map with traps/weapons/etc, but not within a 3 cell range of the player.
+//@todo populate the map with traps/weapons/etc... - add this level as an event listener for the stuff (addEventListener(this))
 
-	// @todo Need to be able to focus the viewport on an entity as a plot device.  Remove this once this is done.
-	Entity* player = 0;
-	for(list<Entity*>::const_iterator it = levelData.entities.begin(); it != levelData.entities.end(); ++it)
-	{
-		if((*it)->getName() == "Player")
-		{
-			player = *it;
-			break;
-		}
-	}
-	if(player)
-	{
-		mFocusViewport(player);
-	}
-	else
-	{
-		Logger::warn("Player not found.  Unable to focus the viewport on him.");
-	}
+	// Populate the map with enemies, but not within 3 cells of the player.
+//@todo populate the map with enemies - add this level as an event listener for the enemies (addEventListener(this))
+
+	// Focus the viewport on the player.
+	mFocusViewport(&player);
 }
+
+//Level::Level() :
+//	mEData(mMap, levelData.entities, levelData.area_data),
+//	mLightsQuad(levelData.light_quad_data),
+//	mLightsElip(levelData.light_elip_data)
+//{}
 
 Level::~Level()
 {
@@ -72,17 +64,7 @@ Level::~Level()
     clearActions();
 }
 
-void Level::addEntity(Entity* entity)
-{
-	mEData.addEntity(entity);
-}
-
-void Level::addMarker(const Vector& loc)
-{
-    mMarkersManager.addMarker(loc);
-}
-
-void Level::draw(Renderer& renderer)
+void Level::draw(Renderer& renderer, const Viewport& viewport)
 {
 	// If the map is smaller than the screen, then draw a black background.
 	if(mMap.getWidth() < SCREEN_WIDTH || mMap.getHeight() < SCREEN_HEIGHT)
@@ -92,19 +74,19 @@ void Level::draw(Renderer& renderer)
 	}
 
     // Draw the lower map.
-    mMap.drawLower(renderer);
+    mMap.drawLower(renderer, viewport);
+
+    // Draw the middle map.
+    mMap.drawMiddle(renderer, viewport);
 
     // Draw the objects.
-    mEData.draw(renderer);
+//    mEData.draw(renderer);
 
     // Draw the middle and upper map.
-    mMap.drawUpper(renderer);
+    mMap.drawUpper(renderer, viewport);
 
     // Draw the lighting.
-    mEData.drawLighting(renderer);
-
-    // Draw the markers.
-//    mMarkersManager.draw(renderer); @todo review
+//    mEData.drawLighting(renderer);
 }
 
 void Level::eventOccurred(Event event, const std::string& content, CreatureMovedToPointListener* creatureMovedToPointListener)
@@ -114,98 +96,47 @@ void Level::eventOccurred(Event event, const std::string& content, CreatureMoved
 	pushEvent(event, content, creatureMovedToPointListener);
 }
 
-string Level::extractData() const
-{
-//    // Return the decoded information.
-//	// @todo need to review loading and saving code.
-//    return encodeBase64(mMap.extract()) + CHAR_DELIMITER + encodeBase64((mEData.extract())) +
-//           CHAR_DELIMITER + encodeBase64(mTriggerManager.extract());
-	return "";
-}
-
-const string& Level::getName() const
-{
-	return mName;
-}
-
 void Level::handleInput(const Input& input)
 {
-    // Check for level input.
-	if(input.isKeyPressed(SDLK_F3))
+	// Pass input to each entity.
+	for(list<Entity*>::iterator it = mEntities.begin(); it != mEntities.end(); ++it)
 	{
-		mMarkersManager.clearMarkers();
-		return;
-    }
-
-	// Pass input.
-	mEData.handleInput(input);
+		(*it)->handleInput(input);
+	}
 }
 
 void Level::levelFinished(bool next)
 {
 }
 
-void Level::load(const Vector& playerPos)
+void Level::load()
 {
-	// Set all the positions.
-	for(map<unsigned int, Vector>::iterator it = mInitialPositions.begin(); it != mInitialPositions.end(); ++it)
-	{
-		Entity* entity = mEData.getEntity(it->first);
-		if(entity)
-		{
-			entity->setPosition(it->second.x, it->second.y);
-		}
-		else
-		{
-			Logger::log("Entity with ID '" + toString(it->first) + "' not found.");
-		}
-	}
-
-	// Set the player's position.
-	Entity* player = mEData.getEntity("Player");
-	if(!player)
-	{
-		Logger::error("Cannot find the player when loading the level.");
-	}
-	else
-	{
-		player->setPosition(playerPos.x, playerPos.y);
-	}
-
-	// Push an 'area entered' plot event.
-	pushEvent(EVENT_PLOTOCCURRENCE, KEYWORD_AREA_ENTERED + CHAR_DELIMITER_ALTERNATE + getName());
+	// Set the viewport bounds.
+	mSetViewportBounds(Rectangle(0, 0, mMap.getWidth(), mMap.getHeight()));
 }
 
 void Level::logic()
 {
     // Check for actions: If there is a current action set then activate it.
-    ActionInterface::logic(mEData);
+//    ActionInterface::logic(mEData); @todo review
 
 	// Update the environment data before passing it to anything else.
-	Vector offset = mGetViewportOffset();
-	mEData.setOffset(offset);
+//	Vector offset = mGetViewportOffset(); @todo review
+//	mEData.setOffset(offset); @todo review
 
-    // Perform object logic.
-    mEData.logic();
+    // Perform all being logic.
+    for(list<Entity*>::iterator it = mEntities.begin(); it != mEntities.end(); ++it)
+    {
+//        (*it)->logic(*this);@todo Should the entities access the level in this way?
+    }
 
-    // Draw any static lights.
-	for(list<QuadData>::iterator it = mLightsQuad.begin(); it != mLightsQuad.end(); ++it)
-	{
-		mEData.addLight(it->area - offset);
-	}
-	for(list<ElipData>::iterator it = mLightsElip.begin(); it != mLightsElip.end(); ++it)
-	{
-		mEData.addLight(it->area - offset);
-	}
-}
-
-void Level::removeEntity(const string& name)
-{
-	mEData.removeEntity(name);
-}
-
-void Level::unload()
-{
-	// Push an 'area exited' plot event.
-	pushEvent(EVENT_PLOTOCCURRENCE, KEYWORD_AREA_EXITED + CHAR_DELIMITER_ALTERNATE + getName());
+//    // Draw any static lights. @todo review
+//	for(list<QuadData>::iterator it = mLightsQuad.begin(); it != mLightsQuad.end(); ++it)
+//	{
+//		mEData.addLight(it->area - offset);
+//	}
+//	for(list<ElipData>::iterator it = mLightsElip.begin(); it != mLightsElip.end(); ++it)
+//	{
+//		mEData.addLight(it->area - offset);
+//	}
 }

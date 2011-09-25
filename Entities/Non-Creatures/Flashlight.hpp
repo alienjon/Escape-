@@ -13,7 +13,6 @@
 #include "../../Entities/Non-Creatures/Item.hpp"
 
 class Creature;
-class EnvironmentData;
 
 /**
  * @brief A flashlight shines light when is is being held.  They can possess a number of parameters.
@@ -35,7 +34,7 @@ class Flashlight : public Item
 	 * @param eData The environment data.
 	 * @param holder The creature holding the item.
 	 */
-	virtual void heldLogic(EnvironmentData& eData, Creature& holder);
+//	virtual void heldLogic(EnvironmentData& eData, Creature& holder);//@todo review
 
 	private:
 	/**

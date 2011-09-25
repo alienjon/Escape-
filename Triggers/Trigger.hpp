@@ -13,8 +13,6 @@
 #include "../guichan.hpp"
 
 #include "../Actions/Action.hpp"
-#include "../Game/EnvironmentData.hpp"
-#include "../Game/ExtractionImplementer.hpp"
 #include "../Engine/Renderer.hpp"
 
 class EnvironmentData;
@@ -48,7 +46,7 @@ TriggerType getTriggerType(const std::string& str);
  * to see when certain conditions are met and will then add some actions to a certain action implementer.
  * (The conditions and the actions are based on derived classes.
  */
-class Trigger : public ExtractionImplementer
+class Trigger
 {
     public:
     virtual ~Trigger();

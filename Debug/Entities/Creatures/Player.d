@@ -165,44 +165,12 @@ Entities/Creatures/Player.d Entities/Creatures/Player.o: \
  ../Entities/Creatures/../../Actions/Action.hpp \
  ../Entities/Creatures/../../Managers/AudioManager.hpp \
  ../Entities/Creatures/../../Managers/../Listeners/SoundStoppedListener.hpp \
- ../Entities/Creatures/../../Math/Base64Functions.hpp \
  ../Entities/Creatures/../../Game/Direction.hpp \
  ../Entities/Creatures/../../Actions/DisplayAnimationAction.hpp \
  ../Entities/Creatures/../../Actions/Action.hpp \
  ../Entities/Creatures/../../Actions/../Listeners/AnimationCycleListener.hpp \
  ../Entities/Creatures/../../Actions/../Engine/Sprite.hpp \
  ../Entities/Creatures/../../Math/Ellipse.hpp \
- ../Entities/Creatures/../../Game/EnvironmentData.hpp \
- ../Entities/Creatures/../../Game/../Listeners/DeathListener.hpp \
- ../Entities/Creatures/../../Game/../Math/Ellipse.hpp \
- ../Entities/Creatures/../../Game/../Entities/EntityData.hpp \
- ../Entities/Creatures/../../Game/../Entities/../Math/Vector.hpp \
- ../Entities/Creatures/../../Game/../Entities/EntityType.hpp \
- ../Entities/Creatures/../../Game/../Listeners/EnvironmentRequestListener.hpp \
- ../Entities/Creatures/../../Game/../Interfaces/EventInterface.hpp \
- ../Entities/Creatures/../../Game/../MapInfo/Map.hpp \
- ../Entities/Creatures/../../Game/../MapInfo/MapData.hpp \
- ../Entities/Creatures/../../Game/../MapInfo/../MapInfo/Map.hpp \
- ../Entities/Creatures/../../Game/../MapInfo/../Game/TileType.hpp \
- ../Entities/Creatures/../../Game/../MapInfo/MapRule.hpp \
- ../Entities/Creatures/../../Game/../MapInfo/../Math/Rectangle.hpp \
- ../Entities/Creatures/../../Game/../MapInfo/../Engine/Renderer.hpp \
- ../Entities/Creatures/../../Game/../MapInfo/../Entities/Non-Creatures/Tile.hpp \
- ../Entities/Creatures/../../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/Entity.hpp \
- ../Entities/Creatures/../../Game/../MapInfo/../Entities/Non-Creatures/../../Math/Rectangle.hpp \
- ../Entities/Creatures/../../Game/../MapInfo/../Entities/Non-Creatures/../../Engine/Renderer.hpp \
- ../Entities/Creatures/../../Game/../MapInfo/../Entities/Non-Creatures/../../Engine/Surface.hpp \
- ../Entities/Creatures/../../Game/../MapInfo/../Game/Tileset.hpp \
- ../Entities/Creatures/../../Game/../MapInfo/../Game/../Entities/Non-Creatures/Tile.hpp \
- ../Entities/Creatures/../../Game/../MapInfo/../Game/../Game/TileData.hpp \
- ../Entities/Creatures/../../Game/../MapInfo/../Game/TileType.hpp \
- ../Entities/Creatures/../../Game/../MapInfo/../Game/../Engine/Surface.hpp \
- ../Entities/Creatures/../../Game/../Listeners/MovementListener.hpp \
- ../Entities/Creatures/../../Game/../Math/Quadrilateral.hpp \
- ../Entities/Creatures/../../Game/../LevelInfo/RectData.hpp \
- ../Entities/Creatures/../../Game/../LevelInfo/../Math/Rectangle.hpp \
- ../Entities/Creatures/../../Game/../Math/Rectangle.hpp \
- ../Entities/Creatures/../../Game/../Math/Vector.hpp \
  ../Entities/Creatures/../../Entities/Non-Creatures/Item.hpp \
  ../Entities/Creatures/../../Entities/Non-Creatures/../../Game/Direction.hpp \
  ../Entities/Creatures/../../Entities/Non-Creatures/../../Entities/Entity.hpp \
@@ -218,10 +186,6 @@ Entities/Creatures/Player.d Entities/Creatures/Player.o: \
  ../Entities/Creatures/../../Actions/../Actions/Action.hpp \
  ../Entities/Creatures/../../Actions/PlaySoundAction.hpp \
  ../Entities/Creatures/../../Actions/../Managers/AudioManager.hpp \
- ../Entities/Creatures/../../Actions/SlideAction.hpp \
- ../Entities/Creatures/../../Actions/../Game/Direction.hpp \
- ../Entities/Creatures/../../Actions/../Entities/Entity.hpp \
- ../Entities/Creatures/../../Actions/../Math/Vector.hpp \
  ../Entities/Creatures/../../Engine/Surface.hpp
 
 ../Entities/Creatures/Player.hpp:
@@ -556,8 +520,6 @@ Entities/Creatures/Player.d Entities/Creatures/Player.o: \
 
 ../Entities/Creatures/../../Managers/../Listeners/SoundStoppedListener.hpp:
 
-../Entities/Creatures/../../Math/Base64Functions.hpp:
-
 ../Entities/Creatures/../../Game/Direction.hpp:
 
 ../Entities/Creatures/../../Actions/DisplayAnimationAction.hpp:
@@ -569,68 +531,6 @@ Entities/Creatures/Player.d Entities/Creatures/Player.o: \
 ../Entities/Creatures/../../Actions/../Engine/Sprite.hpp:
 
 ../Entities/Creatures/../../Math/Ellipse.hpp:
-
-../Entities/Creatures/../../Game/EnvironmentData.hpp:
-
-../Entities/Creatures/../../Game/../Listeners/DeathListener.hpp:
-
-../Entities/Creatures/../../Game/../Math/Ellipse.hpp:
-
-../Entities/Creatures/../../Game/../Entities/EntityData.hpp:
-
-../Entities/Creatures/../../Game/../Entities/../Math/Vector.hpp:
-
-../Entities/Creatures/../../Game/../Entities/EntityType.hpp:
-
-../Entities/Creatures/../../Game/../Listeners/EnvironmentRequestListener.hpp:
-
-../Entities/Creatures/../../Game/../Interfaces/EventInterface.hpp:
-
-../Entities/Creatures/../../Game/../MapInfo/Map.hpp:
-
-../Entities/Creatures/../../Game/../MapInfo/MapData.hpp:
-
-../Entities/Creatures/../../Game/../MapInfo/../MapInfo/Map.hpp:
-
-../Entities/Creatures/../../Game/../MapInfo/../Game/TileType.hpp:
-
-../Entities/Creatures/../../Game/../MapInfo/MapRule.hpp:
-
-../Entities/Creatures/../../Game/../MapInfo/../Math/Rectangle.hpp:
-
-../Entities/Creatures/../../Game/../MapInfo/../Engine/Renderer.hpp:
-
-../Entities/Creatures/../../Game/../MapInfo/../Entities/Non-Creatures/Tile.hpp:
-
-../Entities/Creatures/../../Game/../MapInfo/../Entities/Non-Creatures/../../Entities/Entity.hpp:
-
-../Entities/Creatures/../../Game/../MapInfo/../Entities/Non-Creatures/../../Math/Rectangle.hpp:
-
-../Entities/Creatures/../../Game/../MapInfo/../Entities/Non-Creatures/../../Engine/Renderer.hpp:
-
-../Entities/Creatures/../../Game/../MapInfo/../Entities/Non-Creatures/../../Engine/Surface.hpp:
-
-../Entities/Creatures/../../Game/../MapInfo/../Game/Tileset.hpp:
-
-../Entities/Creatures/../../Game/../MapInfo/../Game/../Entities/Non-Creatures/Tile.hpp:
-
-../Entities/Creatures/../../Game/../MapInfo/../Game/../Game/TileData.hpp:
-
-../Entities/Creatures/../../Game/../MapInfo/../Game/TileType.hpp:
-
-../Entities/Creatures/../../Game/../MapInfo/../Game/../Engine/Surface.hpp:
-
-../Entities/Creatures/../../Game/../Listeners/MovementListener.hpp:
-
-../Entities/Creatures/../../Game/../Math/Quadrilateral.hpp:
-
-../Entities/Creatures/../../Game/../LevelInfo/RectData.hpp:
-
-../Entities/Creatures/../../Game/../LevelInfo/../Math/Rectangle.hpp:
-
-../Entities/Creatures/../../Game/../Math/Rectangle.hpp:
-
-../Entities/Creatures/../../Game/../Math/Vector.hpp:
 
 ../Entities/Creatures/../../Entities/Non-Creatures/Item.hpp:
 
@@ -661,13 +561,5 @@ Entities/Creatures/Player.d Entities/Creatures/Player.o: \
 ../Entities/Creatures/../../Actions/PlaySoundAction.hpp:
 
 ../Entities/Creatures/../../Actions/../Managers/AudioManager.hpp:
-
-../Entities/Creatures/../../Actions/SlideAction.hpp:
-
-../Entities/Creatures/../../Actions/../Game/Direction.hpp:
-
-../Entities/Creatures/../../Actions/../Entities/Entity.hpp:
-
-../Entities/Creatures/../../Actions/../Math/Vector.hpp:
 
 ../Entities/Creatures/../../Engine/Surface.hpp:

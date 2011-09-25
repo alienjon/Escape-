@@ -4,3 +4,4 @@ EscapeToolkit
 .git
 *.d
 *.o
+/mapfile.txt

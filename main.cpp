@@ -18,19 +18,10 @@
 
 using std::clog;
 using std::cout;
-using std::domain_error;
 using std::endl;
 using std::exception;
-using std::invalid_argument;
-using std::length_error;
 using std::list;
-using std::logic_error;
-using std::out_of_range;
-using std::overflow_error;
-using std::range_error;
-using std::runtime_error;
 using std::string;
-using std::underflow_error;
 
 const char CHAR_DELIMITER			= ':';
 const char CHAR_DELIMITER_ALTERNATE = '~';
@@ -144,7 +135,7 @@ string formatStringToFit(string str, gcn::Font* font, const int width)
 	// Double check the provided font.
 	if(!font)
 	{
-		throw runtime_error("formatStringToFit() -> No font provided.");
+		throw std::runtime_error("formatStringToFit() -> No font provided.");
 	}
 
 	// If no width was provided, just return.
@@ -289,54 +280,9 @@ int main(int args, const char** pArgs)
     	Logger::error(e);
         return 1;
     }
-    catch(domain_error& e)
-    {
-        Logger::error(e);
-        return 1;
-    }
-    catch(invalid_argument& e)
-    {
-    	Logger::error(e);
-        return 1;
-    }
-    catch(length_error& e)
-    {
-    	Logger::error(e);
-        return 1;
-    }
-    catch(out_of_range& e)
-    {
-    	Logger::error(e);
-        return 1;
-    }
-    catch(logic_error& e)
-    {
-    	Logger::error(e);
-        return 1;
-    }
-    catch(range_error& e)
-    {
-    	Logger::error(e);
-        return 1;
-    }
-    catch(overflow_error& e)
-    {
-    	Logger::error(e);
-        return 1;
-    }
-    catch(underflow_error& e)
-    {
-    	Logger::error(e);
-        return 1;
-    }
-    catch(runtime_error& e)
-    {
-    	Logger::error(e);
-        return 1;
-    }
     catch(exception& e)
     {
-    	Logger::error(e);
+        Logger::error(e);
         return 1;
     }
     catch(...)

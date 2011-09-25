@@ -4,11 +4,12 @@
  *  Created on: Jul 13, 2010
  *      Author: the-saint
  */
-
 #ifndef TILEDATA_HPP_
 #define TILEDATA_HPP_
 
 #include <ostream>
+
+#include "../Math/Quadrilateral.hpp"
 
 /**
  * @brief A TileData holds the meta image's UID position for a single tile.
@@ -27,8 +28,9 @@ struct TileData
 	 * @param _u1 u1
 	 * @param _u2 u2
 	 * @param _u3 u3
+	 * @param quad The collision area.
 	 */
-	void set(unsigned int _l, unsigned int _m, unsigned int _u1, unsigned int _u2, unsigned int _u3);
+	void set(unsigned int _l, unsigned int _m, unsigned int _u1, unsigned int _u2, unsigned int _u3, const Quadrilateral& quad);
 
 	/**
 	 * The UIDs for a single tile.
@@ -39,6 +41,11 @@ struct TileData
 	 * u3 = top-most UID
 	 */
 	unsigned int l, m, u1, u2, u3;
+
+	/**
+	 * The collision area for the tile.
+	 */
+	Quadrilateral collision;
 };
 
 /**

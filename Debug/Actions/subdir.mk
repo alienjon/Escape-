@@ -19,7 +19,6 @@ CPP_SRCS += \
 ../Actions/SetSpeedAction.cpp \
 ../Actions/SetWanderAction.cpp \
 ../Actions/SetWidgetVisibilityAction.cpp \
-../Actions/SlideAction.cpp \
 ../Actions/WanderAction.cpp 
 
 OBJS += \
@@ -38,7 +37,6 @@ OBJS += \
 ./Actions/SetSpeedAction.o \
 ./Actions/SetWanderAction.o \
 ./Actions/SetWidgetVisibilityAction.o \
-./Actions/SlideAction.o \
 ./Actions/WanderAction.o 
 
 CPP_DEPS += \
@@ -57,7 +55,6 @@ CPP_DEPS += \
 ./Actions/SetSpeedAction.d \
 ./Actions/SetWanderAction.d \
 ./Actions/SetWidgetVisibilityAction.d \
-./Actions/SlideAction.d \
 ./Actions/WanderAction.d 
 
 

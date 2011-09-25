@@ -1,78 +1,63 @@
-Key Terms
----------
-User - The actual person playing the game
-Player - The main character - the user's in-game self.
-Enemy - Generic term for any bad-guy the player comes across
-Zombie - A specific enemy that wanders around aimlessly and attacks the player on sight
-Trap - A generic term for an in-game object that the player can interact with that produces some effect (usually to damage an enemy)
+Concept
+-------
+Each level is a randomly generated maze.  The goal of the game is for the player to navigate each level to reach
+the exit.  Upon reaching the exit the player enters a new level and repeats for a predetermined/unlimited number of levels.
+Within each level are a random number of zombies who spawn at in certain areas and will run at the player if the player walks within
+that zombies line of sight.  If a zombie touches the player, the player is infected and the game is over.  The player can pick up
+different weapons (that are also randomly placed throughout the levels) and attack the zombies.  Different colored zombies have
+different vulnerabilities, but all may be damaged by standard bullets (though some are resistant and do not take as much damage).
+Each time a zombie dies the player is awarded points.  Each zombies point value is calculated based on its health, speed, vision,
+and weakness type (and maybe if it was killed with a weapon other than it's vulnerable to?)  When the player dies the score is saved
+with the time it took to get that score and the player can try to beat that time/score later.  Ranking is scored with a higher rank going
+to the player with higher score AND lower time (so player A with a score of 1500 in 60 minutes will come in second place to player B
+who got 1500 points in 45 minutes).  The scores are also split up into different game difficulties (so easy ranks are not compared to hard
+ranks).  Harder games produce more zombies with better stats, and fewer weapons around the map.  Only one weapon may be held at any given time,
+with the old weapon dropped on the ground as soon as the player picks up a new one.  There is unlimited ammo for all weapons.
 
-Basic Gameplay
---------------
-The user's goal is to move the player around the level from whatever point the player starts at to an ending point. A level is a
-randomly generated mapped out area(SEE 'Levels') that consists of a pattern of walls and obstacles that form rooms and hallways (for
-example).  Spread throughout each level are both enemies (SEE 'Enemies') and traps (SEE 'Traps').  Some areas of the level will be
-'well lit', in that the user can see everything within their line of sight(SEE 'The Problem with Lighting'), but a substantial
-portion of gameplay will be played 'in the dark', where the player must find/use a flashlight to navigate the level.  The game is
-viewed from an isometric angle, so the camera (SEE 'Camera') is not directly above the scene, but rather at an angle.  Controls are
-simple and only need the four directionals (up, down, left and right) but are able to move the player in all cardinal directions
-(up, upleft, upright, left, right, downleft, downright, down) (SEE 'Controls').  A single button will be used to perform other
-actions, such as opening doors or activating traps (SEE 'Controls').
+
+
+Elements of a zombie
+health - number of hits the zombie can take before it dies
+speed - some zombies move faster than others
+vision - some zombies can see farther than others (their line of sight is longer; ie: they can see the player from farther away)
+point value - Each zombie has a different point value that is based on their health/speed/vision scores
+weakness type - Different colored zombies are affected by different types of weapons (all are vulnerable to standard bullets, but some are more so than others)
+
+
 
 Controls
 --------
-Basic controls are as follows:
-Directional buttons (arrow keys) - move in that direction
-Spacebar - Action key
-f - Flashlight key
+w/up - move up
+s/down - move down
+a/left - move left
+d/right - move right
+left ctrl/left mouse button - fire weapon
+escape - open in-game menu
 
-The player moves when the user presses and holds a directional key.  As only basic directions are provided, combinations are also
-used to move the player.  By this, I mean that if the user holds the left arrow key then the player moves left.  If the user, then
-presses the up key in addition to the left key, the player now moves up, left.  In this manner each button should be weighed so that
-direct opposites cancel each other out - if the user, having pressed the up and left keys, now presses the right key (which is,
-of course, directly opposite the left key) then the left and right directionals cancel out and the player moves upwards only.
 
-When the buttons are let go, the player should still be facing whatever direction was lasted used.
 
-If the user presses the action key then the player 'acts' in whatever way is appropriate.  First and foremost, if there is nothing
-in front of the player (or if nothing that can be acted upon is in front of the player) then the player doesn't do anything.  If,
-however, upon pressing the action button there is an interactable object in front of the player (not a 1px distance, but maybe
-5-10px) then the player interacts with that object based on whatever that object is (uses a trap, pushes an enemy, etc...)
 
-Camera
-------
-The camera displays whatever is on the screen.  It should be a means to show the current level, the player as well as any
-calculations needed for drawing (what areas are lit).  Additionally, the camera acts as a 'top level widget' where GUI objects
-can be displayed.  Framerate display, menus and in-game GUI objects are shown through the camera.
 
-Enemies
--------
-A basic enemy is a creature that naturally wanders around the environment or otherwise follows a scripted set of routines (such
-as to walk to a certain spot if the player moves into a certain area).  By default an enemy will be searching for the player to
-attack.  This can be disabled for scripted things.  An enemy spots the player if the player lays within the 'search area' of
-the enemy.  This search area is defined by a search distance and span.  The search distance is simply the point farthest in
-front of the enemy that is being used to search.  The search span is the width of that distance (so the search area is either
-a triangle (of sorts) or an area of a circle (called a sector).  This area is clipped by walls but not by objects or other
-enemies.  Therefore, if the player is standing around the corner of a hallway from the enemy, then the enemy cannot see the
-player (as a wall is blocking the player).  If, however, the player is on the opposite side of an obstacle (like a chair)
-from the enemy, then the enemy will spot the player.  Enemy's can move through any open environment but cannot open doors
-and will *likely not walk into traps.  Enemies have a certain amount of health which, as with the player, if they run out of
-they will die as well (as the player doesn't directly perform damage against enemies, this will likely be as a result of a trap
-of some sort)
-
-* Normally an enemy will not walk into a trap by itself (it could be pushed into a trap by the player, on the other hand) but
-depending on the intelligence of the enemy there is a chance that they could walk into a trap themselves, triggering whatever
-effects it produces (for example, the enemy may walk into a 'pit' by themselves, but normally will avoid it as if it were a
-wall or obstacle)
 
 
 Levels
 ------
-Levels (or areas or maps) should be defined by a set width and height and can be explained by a simple alpha-numeric string
-algorithm.  Levels are generated randomly when the game is first started and stored (as the alpha-numeric string) when the game
-is saved.  Each individual level follows certain rules based on its tileset (for example, if it is in an office building, then
-the rules would include areas for offices, cubicles, windows, desks, etc...)  This layout is what is stored in the alpha-numeric
-string.  Each level also defines enemy and trap placement.  When the game is saved the current (not initial) position and states
-of enemies and traps are saved.  The player can move from one level to the next and back, if they so desire.
+Each level is a randomly generated maze.  Construction of the maze only requires a predefined width/height in number of cells. A
+cell is a single 'room' of the maze, although several maybe lined up together in order to make a hallway, of sorts.  In reality a cell
+is larger than a single tile, but will be a collection of tiles (the width and height of a cell is defined in tiles).  A cell consists of
+four sides that (at least initially) displays a wall.  {detail basics of map building}
+
+
+
+Traps
+-----
+Portals - transport the player (and only the player) to another portal on the map
+Pits - if a zombie or the player walks into one they die immediately
+fire - if a zombie or the player walks into one, they receive damage, fire also produces light to see
+
+
+
+
 
 Traps
 -----
