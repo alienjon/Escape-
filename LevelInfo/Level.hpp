@@ -32,6 +32,7 @@
 #include "../Engine/Viewport.hpp"
 
 class Entity;
+class GameScreen;
 class Player;
 
 /**
@@ -47,16 +48,30 @@ class Level : public ActionInterface, public EnvironmentInterface, public EventI
      * @brief Construct a new level.
      * @param Difficulty The difficulty of the level to create.
      * @param player The player object.
+     * @param parent The parent gamescreen.
      */
-    Level(unsigned int difficulty, Player& player);
+    Level(unsigned int difficulty, Player& player, GameScreen* parent);
     virtual ~Level();
+
+    /**
+     * @brief Check if the provided entity collides with anything in the map.
+     * @param entity The entity to check collisions against.
+     * @return The entity that was collided against, or null if no collisions detected.
+     */
+    virtual Entity* checkEntityCollision(const Entity& entity) const;
+
+    /**
+     * @brief Check if the provided entity collides with the map.
+     * @param entity The entity to check collisions against.
+     * @return True if a collision was found.
+     */
+    virtual bool checkMapCollision(const Entity& entity) const;
 
     /**
      * @brief Draw the map to the screen.
      * @param renderer The graphics object to draw with.
-     * @param viewport The viewport within which to draw.
      */
-    virtual void draw(Renderer& renderer, const Viewport& viewport);
+    virtual void draw(Renderer& renderer);
 
     /**
      * @brief An event occurred.
@@ -67,28 +82,50 @@ class Level : public ActionInterface, public EnvironmentInterface, public EventI
     virtual void eventOccurred(Event event, const std::string& content = "", CreatureMovedToPointListener* creatureMovedToVectorListener = 0);
 
     /**
+     * @brief Return the exit area.
+     * @return The exit area of this map.
+     */
+    const Rectangle& getExitArea() const;
+
+    /**
+     * @brief Return the viewport's offset.
+     * @return The viewport offset.
+     */
+    const Vector getViewportOffset() const;
+
+    /**
      * @brief Handle input.
      * @param event The input.
      */
     void handleInput(const Input& input);
 
     /**
-     * @brief Called when the level has completed.
-     * @todo Need to implement a way of determining when the level is finished, what to do next (load the next level, quit the game, etc...), and passing information to a next level
+     * @brief Checks whether the level has completed.
+     * @return True if the level has completed.
      */
-    virtual void levelFinished(bool next);
-
-    /**
-     * Load the level.
-     */
-    virtual void load();
+    virtual bool isDone() const;
 
     /**
      * @brief Calling logic for a level will call logic for all map tiles (if necessary), creatures and objects.
      */
     virtual void logic();
 
+    /**
+     * @brief Called when the player finds the exit.
+     */
+    virtual void playerFoundExit();
+
     private:
+    /**
+     * True if the level has completed.
+     */
+    bool mIsDone;
+
+    /**
+     * The viewport for this level.
+     */
+    Viewport mViewport;
+
     /**
      * The player handle.
      */
@@ -109,6 +146,11 @@ class Level : public ActionInterface, public EnvironmentInterface, public EventI
      */
     std::list<QuadData> mLightsQuad;
     std::list<ElipData> mLightsElip;
+
+    /**
+     * The parent gamescreen.
+     */
+    GameScreen* mGameScreen;
 };
 
 #endif /* LEVEL_HPP_ */

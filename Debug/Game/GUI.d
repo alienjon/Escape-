@@ -114,7 +114,6 @@ Game/GUI.d Game/GUI.o: ../Game/GUI.cpp ../Game/GUI.hpp \
  ../Game/../Entities/Creatures/../../Entities/../Interfaces/../Listeners/EventListener.hpp \
  ../Game/../Entities/Creatures/../../Entities/../Interfaces/../Listeners/../Listeners/CreatureMovedToPointListener.hpp \
  ../Game/../Entities/Creatures/../../Entities/../Interfaces/../Listeners/../Game/Event.hpp \
- ../Game/../Entities/Creatures/../../Entities/../Listeners/HealthChangedListener.hpp \
  ../Game/../Entities/Creatures/../../Entities/../Game/Input.hpp \
  ../Game/../Entities/Creatures/../../Entities/../Game/../Math/Vector.hpp \
  ../Game/../Entities/Creatures/../../Entities/../Listeners/InteractionListener.hpp \
@@ -445,8 +444,6 @@ Game/GUI.d Game/GUI.o: ../Game/GUI.cpp ../Game/GUI.hpp \
 ../Game/../Entities/Creatures/../../Entities/../Interfaces/../Listeners/../Listeners/CreatureMovedToPointListener.hpp:
 
 ../Game/../Entities/Creatures/../../Entities/../Interfaces/../Listeners/../Game/Event.hpp:
-
-../Game/../Entities/Creatures/../../Entities/../Listeners/HealthChangedListener.hpp:
 
 ../Game/../Entities/Creatures/../../Entities/../Game/Input.hpp:
 

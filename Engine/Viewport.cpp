@@ -42,19 +42,8 @@ void Viewport::mCheckBounds()
 
 void Viewport::center(const Entity* entity)
 {
-	// If a sprite is provided, set that object to the tied object and then center onto it.
-	if(entity)
-	{
-		// Tie the object.
-		mEntity = entity;
-	}
-
-	// There is an object to center to.
-	if(mEntity)
-	{
-	    center(int(mEntity->getWidth() / 2) - int(mDimension.width / 2) + mEntity->getX(),
-	           int(mEntity->getHeight() / 2) - int(mDimension.height / 2) + mEntity->getY());
-	}
+	// Tie the object.
+	mEntity = entity;
 }
 
 void Viewport::center(int x, int y)
@@ -117,10 +106,19 @@ bool Viewport::isOnScreen(int _x, int _y, int _w, int _h) const
     return !((_x + _w) < x || _x >  (x + w) || (_y + _h) < y || _y > (y + h));
 }
 
+bool Viewport::isTracking() const
+{
+	return mEntity;
+}
+
 void Viewport::logic()
 {
 	// Center the camera on the current object.
-	center();
+	if(mEntity)
+	{
+	    center(int(mEntity->getWidth() / 2) - int(mDimension.width / 2) + mEntity->getX(),
+	           int(mEntity->getHeight() / 2) - int(mDimension.height / 2) + mEntity->getY());
+	}
 }
 
 void Viewport::setBounds(const Rectangle& bounds)

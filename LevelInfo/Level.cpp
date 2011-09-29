@@ -31,16 +31,23 @@ using std::string;
  * The width and height is at least 5 + a range between the difficulty level
  * and 150% of the difficulty level.
  */
-Level::Level(unsigned int difficulty, Player& player) :
+Level::Level(unsigned int difficulty, Player& player, GameScreen* parent) :
+	mIsDone(false),
 	mPlayer(&player),
 	mMap(random<unsigned int>(5 + random<unsigned int>(difficulty, difficulty * 1.5),
 							  5 + random<unsigned int>(difficulty, difficulty * 1.5)),
 		 random<unsigned int>(5 + random<unsigned int>(difficulty, difficulty * 1.5),
 							  5 + random<unsigned int>(difficulty, difficulty * 1.5)),
-		 TilesetManager::get("office"))// @todo will there be other tilesets?  How should they be loaded?
+		 TilesetManager::get("office")),// @todo will there be other tilesets?  How should they be loaded?
+	mGameScreen(parent)
 {
-	// Place the player in the entrance.
-//@todo place the player
+	// Configure the viewport.
+	mViewport.setBounds(Rectangle(0, 0, mMap.getWidth(), mMap.getHeight()));
+	mViewport.center(mPlayer);
+
+	// Configure and setup the player.
+	mPlayer->setPosition(mMap.getEntrance().x, mMap.getEntrance().y);
+	mEntities.push_back(mPlayer);
 
 	// Populate the map with traps/weapons/etc, but not within a 3 cell range of the player.
 //@todo populate the map with traps/weapons/etc... - add this level as an event listener for the stuff (addEventListener(this))
@@ -62,10 +69,33 @@ Level::~Level()
 {
     // Delete any remaining actions.
     clearActions();
+
+    // Remove the player from the entities list.
+    mEntities.remove(mPlayer);
+
+    // Now go through and delete the remaining level entities.
+    for(list<Entity*>::const_iterator it = mEntities.begin(); it != mEntities.end(); it++)
+    	delete *it;
 }
 
-void Level::draw(Renderer& renderer, const Viewport& viewport)
+Entity* Level::checkEntityCollision(const Entity& entity) const
 {
+	for(list<Entity*>::const_iterator it = mEntities.begin(); it != mEntities.end(); it++)
+		if((*it)->getDimension().isIntersecting(entity.getDimension()))
+			return *it;
+	return 0;
+}
+
+bool Level::checkMapCollision(const Entity& entity) const
+{
+	return mMap.checkCollision(entity.getDimension());
+}
+
+void Level::draw(Renderer& renderer)
+{
+    // Everything on the level is relative to the viewport.
+	renderer.pushClipArea(gcn::Rectangle(-mViewport.getX(), -mViewport.getY(), mViewport.getWidth(), mViewport.getHeight()));
+
 	// If the map is smaller than the screen, then draw a black background.
 	if(mMap.getWidth() < SCREEN_WIDTH || mMap.getHeight() < SCREEN_HEIGHT)
 	{
@@ -74,19 +104,26 @@ void Level::draw(Renderer& renderer, const Viewport& viewport)
 	}
 
     // Draw the lower map.
-    mMap.drawLower(renderer, viewport);
+    mMap.drawLower(renderer, mViewport);
 
     // Draw the middle map.
-    mMap.drawMiddle(renderer, viewport);
+    mMap.drawMiddle(renderer, mViewport);
 
-    // Draw the objects.
-//    mEData.draw(renderer);
+    // Draw the entities.
+    for(list<Entity*>::const_iterator it = mEntities.begin(); it != mEntities.end(); it++)
+    	(*it)->draw(renderer);
 
     // Draw the middle and upper map.
-    mMap.drawUpper(renderer, viewport);
+    mMap.drawUpper(renderer, mViewport);
 
     // Draw the lighting.
 //    mEData.drawLighting(renderer);
+
+    // Pop the drawing area.
+    renderer.popClipArea();
+
+    // Apply the layers.
+//    renderer.applyLayers();@todo review lighting
 }
 
 void Level::eventOccurred(Event event, const std::string& content, CreatureMovedToPointListener* creatureMovedToPointListener)
@@ -96,23 +133,63 @@ void Level::eventOccurred(Event event, const std::string& content, CreatureMoved
 	pushEvent(event, content, creatureMovedToPointListener);
 }
 
+const Rectangle& Level::getExitArea() const
+{
+	return mMap.getExit();
+}
+
+const Vector Level::getViewportOffset() const
+{
+	return mViewport.getOffset();
+}
+
 void Level::handleInput(const Input& input)
 {
-	// Pass input to each entity.
-	for(list<Entity*>::iterator it = mEntities.begin(); it != mEntities.end(); ++it)
+	if(Game::isDebug())
 	{
-		(*it)->handleInput(input);
+		if(input.isKeyPressed(SDLK_t))
+		{
+			if(mViewport.isTracking())
+			{
+				mViewport.center(0);
+				Logger::log("Player tracking deactivated");
+			}
+			else
+			{
+				mViewport.center(mPlayer);
+				Logger::log("Player tracking activated");
+			}
+		}
+
+		if(!mViewport.isTracking())
+		{
+			int step = 25;
+			if(input.isKeyPressed(SDLK_UP))
+			{
+				mViewport.setY(mViewport.getY() - step);
+			}
+			if(input.isKeyPressed(SDLK_DOWN))
+			{
+				mViewport.setY(mViewport.getY() + step);
+			}
+			if(input.isKeyPressed(SDLK_LEFT))
+			{
+				mViewport.setX(mViewport.getX() - step);
+			}
+			if(input.isKeyPressed(SDLK_RIGHT))
+			{
+				mViewport.setX(mViewport.getX() + step);
+			}
+		}
 	}
+
+	// Pass input to the player.
+	mPlayer->handleInput(input);
 }
 
-void Level::levelFinished(bool next)
+bool Level::isDone() const
 {
-}
-
-void Level::load()
-{
-	// Set the viewport bounds.
-	mSetViewportBounds(Rectangle(0, 0, mMap.getWidth(), mMap.getHeight()));
+	return mIsDone;
 }
 
 void Level::logic()
@@ -120,14 +197,10 @@ void Level::logic()
     // Check for actions: If there is a current action set then activate it.
 //    ActionInterface::logic(mEData); @todo review
 
-	// Update the environment data before passing it to anything else.
-//	Vector offset = mGetViewportOffset(); @todo review
-//	mEData.setOffset(offset); @todo review
-
     // Perform all being logic.
     for(list<Entity*>::iterator it = mEntities.begin(); it != mEntities.end(); ++it)
     {
-//        (*it)->logic(*this);@todo Should the entities access the level in this way?
+        (*it)->logic(*this);
     }
 
 //    // Draw any static lights. @todo review
@@ -139,4 +212,12 @@ void Level::logic()
 //	{
 //		mEData.addLight(it->area - offset);
 //	}
+
+	// Perform viewport logic last.
+	mViewport.logic();
+}
+
+void Level::playerFoundExit()
+{
+	mIsDone = true;
 }

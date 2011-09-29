@@ -69,7 +69,7 @@ void Map::mDrawLevel(Renderer& renderer, const Viewport& viewport, vector<pair<P
 
 	for(unsigned int y = 0; y != mHeight * MAP_CELL_SIDE + 1; ++y) // The +1 compensates for the first Y layer of floor tiles.
 	{
-		for(unsigned int x = 0; x != mWidth * MAP_CELL_SIDE; ++x)
+		for(unsigned int x = 0; x != mWidth * MAP_CELL_SIDE; ++x)//@todo can I clean this up?
 		{
 			Rectangle src = tiles.at(x + y * width_in_tiles).second;
 			Point dest = tiles.at(x + y * width_in_tiles).first;
@@ -228,6 +228,8 @@ Map::Map(unsigned int width, unsigned int height, const Tileset* tileset) :
 	Point entrance(random<int>(0, mWidth - 1), random<int>(0, mHeight - 1)), exit(random<int>(0, mWidth - 1), random<int>(0, mHeight - 1));
 	while(!cells[entrance.y][entrance.x].northWall)
 		entrance = Point(random<int>(0, mWidth - 1), random<int>(0, mHeight - 1));
+	mEntranceLocation.x = (entrance.x * MAP_CELL_SIDE * tile_width) + (tile_width * 2);
+	mEntranceLocation.y = (entrance.y * MAP_CELL_SIDE * tile_height)+ (2.5 * tile_height); //@todo review
 
 //@todo need to make sure that the entrance and exit are not within 1/3 of the map from each other
 //		int third_width = mWidth / 3, third_height = mHeight / 3;
@@ -235,6 +237,11 @@ Map::Map(unsigned int width, unsigned int height, const Tileset* tileset) :
 //		  (exit.y > entrance.y - third_height) && (exit.y < entrance.y + third_height) &&
 	while(!cells[exit.y][exit.x].northWall)
 		exit = Point(random<int>(0, mWidth - 1), random<int>(0, mHeight - 1));
+	int exitareaheight = 4;
+	mExitArea.vector.x = (exit.x * MAP_CELL_SIDE * tile_width) + (tile_width);
+	mExitArea.vector.y = (exit.y * MAP_CELL_SIDE * tile_height)+ (2 * tile_height - exitareaheight);//@todo review
+	mExitArea.width	   = tile_width * 2;
+	mExitArea.height   = exitareaheight;
 
 cout << "entrance->" << entrance << " - " << "exit->" << exit << endl;
 	// First add a layer of floor tiles to go underneath the actual top tiles upper layers.
@@ -291,7 +298,7 @@ cout << "entrance->" << entrance << " - " << "exit->" << exit << endl;
 					TileType tile = TILE_EMPTYFLOOR;
 
 					// If this cell is the entrance or exit, and if this is the second or third tile in those cells, put in the door.
-					if(((cell_x == entrance.x && cell_y == entrance.y) || (cell_x == exit.x && cell_y == exit.y)) && (int)y == 0 && (x == 1 || x == 2))
+					if(((cell_x == entrance.x && cell_y == entrance.y) || (cell_x == exit.x && cell_y == exit.y)) && y == 0 && (x == 1 || x == 2))
 					{
 						if(x == 1)
 						{
@@ -409,8 +416,6 @@ cout << "entrance->" << entrance << " - " << "exit->" << exit << endl;
 			}
 		}
 	}
-
-	//@todo Identify locations for the entrance and exit.
 }
 
 bool Map::checkCollision(const Quadrilateral& area) const
@@ -418,9 +423,12 @@ bool Map::checkCollision(const Quadrilateral& area) const
 	return checkCollision(area.getBoundingBox());
 }
 
-bool Map::checkCollision(const Rectangle& area) const
+bool Map::checkCollision(const Rectangle& area) const//@fixme Rewrite so it only checks quads in the area of the provided area.
 {
-	return false;//@todo implement
+	for(vector<Quadrilateral>::const_iterator it = mCollisionAreas.begin(); it != mCollisionAreas.end(); it++)
+		if(it->isIntersecting(area))
+			return true;
+	return false;
 }
 
 void Map::drawLower(Renderer& renderer, const Viewport& viewport)
@@ -432,22 +440,34 @@ void Map::drawMiddle(Renderer& renderer, const Viewport& viewport)
 {
 	mDrawLevel(renderer, viewport, mMMap);
 }
-
+#include "../Engine/Colors.hpp"
 void Map::drawUpper(Renderer& renderer, const Viewport& viewport)
 {
 	mDrawLevel(renderer, viewport, mU1Map);
+	renderer.setColor(COLOR_RED);//@todo remove when done
+	renderer.fillRectangle(mExitArea);
 //	mDrawLevel(renderer, viewport, mU2Map);
 //	mDrawLevel(renderer, viewport, mU3Map);
 }
 
-int Map::getWidth() const
+const Vector& Map::getEntrance() const
 {
-    return mWidth * mTileset->getWidth() * MAP_CELL_SIDE;
+	return mEntranceLocation;
+}
+
+const Rectangle& Map::getExit() const
+{
+	return mExitArea;
 }
 
 int Map::getHeight() const
 {
     return (mHeight * MAP_CELL_SIDE + 1) * mTileset->getHeight();
+}
+
+int Map::getWidth() const
+{
+    return mWidth * mTileset->getWidth() * MAP_CELL_SIDE;
 }
 
 bool Map::isOnMap(int x, int y, int width, int height) const

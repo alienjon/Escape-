@@ -20,6 +20,7 @@
 #include "../../Game/Game.hpp"
 #include "../../Entities/Non-Creatures/Item.hpp"
 #include "../../Game/Keywords.hpp"
+#include "../../LevelInfo/Level.hpp"
 #include "../../Engine/Logger.hpp"
 #include "../../main.hpp"
 #include "../../Actions/MultipleActionsAction.hpp"
@@ -38,7 +39,7 @@ const string PLAYER_PREFIX = "PLAYER";
 const EntityTemplate PLAYERTEMPLATE("", PLAYER_PREFIX, Rectangle(0, 0, 30, 30));// @todo how to handle game-alignments? ie: set values of NEUTRAL, FRIENDLY, ENEMY?
 
 // @todo Check to make sure the provided collision area's are correct.
-Player::Player() : Creature("Player", PLAYERTEMPLATE, "FRIENDLY", 100, 100), // @todo should these be defined in a configuration file somewhere? also, what about the name of the player?
+Player::Player() : Creature("Player", PLAYERTEMPLATE, "FRIENDLY", 100), // @todo should these be defined in a configuration file somewhere? also, what about the name of the player?
 	mAllowInput(true),
 	mIsStaringAtPoint(false),
 	mIsInteracting(false)
@@ -82,6 +83,9 @@ void Player::handleInput(const Input& input)
 	// Reset the velocity.
 	mXVelocity = mYVelocity = 0;
 
+	// Unset the interaction.
+	mIsInteracting = false;
+
 	// Check for allowing input.
     if(!mAllowInput)
     {
@@ -89,22 +93,22 @@ void Player::handleInput(const Input& input)
     }
 
     // Calculate the velocity.
-    if(input.isKeyPressed(SDLK_UP) || input.isKeyPressed(SDLK_w))
+    if(input.isKeyPressed(SDLK_w))
     {
     	mYVelocity--;
     }
 
-    if(input.isKeyPressed(SDLK_DOWN) || input.isKeyPressed(SDLK_s))
+    if(input.isKeyPressed(SDLK_s))
     {
     	mYVelocity++;
     }
 
-    if(input.isKeyPressed(SDLK_LEFT) || input.isKeyPressed(SDLK_a))
+    if(input.isKeyPressed(SDLK_a))
     {
     	mXVelocity--;
     }
 
-    if(input.isKeyPressed(SDLK_RIGHT) || input.isKeyPressed(SDLK_d))
+    if(input.isKeyPressed(SDLK_d))
     {
     	mXVelocity++;
     }
@@ -145,19 +149,37 @@ void Player::interact(Entity& entity)//@todo review
 	}
 }
 
-//void Player::logic(EnvironmentData& eData)//@todo review
-//{
-//	// Update the looking at position if not staring and if the player is accepting input.
-//	if(!mIsStaringAtPoint && mAllowInput)
-//	{
-//		mLookingAt.x += eData.getXOffset();
-//		mLookingAt.y += eData.getYOffset();
-//	}
-//
-//	// If interacting, then interact with the environment.
-//	if(mIsInteracting)
-//	{
-//		// Interact.
+void Player::logic(Level& level)//@todo review
+{
+	// Update the looking at position if not staring and if the player is accepting input.
+	if(!mIsStaringAtPoint && mAllowInput)
+	{
+		mLookingAt.x += level.getViewportOffset().x;
+		mLookingAt.y += level.getViewportOffset().y;
+	}
+#include <iostream>
+using namespace std;
+	// If interacting, then interact with the environment. @todo review
+	if(mIsInteracting)
+	{
+		// First check to see if the player is interacting with the exit.
+		Rectangle dimension = getDimension();
+		dimension.vector.x -= 3;
+		dimension.vector.y -= 3;
+		dimension.width    += 6;
+		dimension.height   += 6;
+cout << "exit: " << level.getExitArea() << endl;
+cout << "player: " << dimension << endl;
+cout << "----------" << endl;
+		if(level.getExitArea().isIntersecting(dimension))
+		{
+			// Tell the level that the exit was found.
+			level.playerFoundExit();
+
+			// Quit the logic call.
+			return;
+		}
+
 //		set<Entity*> e_set;
 //		e_set.insert(this);
 //		Entity* closest_entity = getClosestEntity(eData.checkCollision(mGetAreaInFront((getWidth() + getHeight()) / 2, 0, 0), e_set), *this);
@@ -167,14 +189,11 @@ void Player::interact(Entity& entity)//@todo review
 //		{
 //			interact(*closest_entity);
 //		}
-//
-//		// Not interacting anymore.
-//		mIsInteracting = false;
-//	}
-//
-//    // Perform creature logic.
-//    Creature::logic(eData);
-//}
+	}
+
+    // Perform creature logic.
+    Creature::logic(level);
+}
 
 void Player::setInputState(bool state)
 {

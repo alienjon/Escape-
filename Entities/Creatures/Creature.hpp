@@ -20,6 +20,7 @@
 #include "../../Engine/Timer.hpp"
 
 class Item;
+class Level;
 
 /**
  * @brief A base class for all creatures.
@@ -37,7 +38,7 @@ class Creature : public DeathListener, public Entity
      * @param health The creature's maximum health.
      * @param defense The creature's maximum defense.
      */
-    Creature(const std::string& name, const EntityTemplate& temp, const std::string& alig, unsigned int health, unsigned int defense);
+    Creature(const std::string& name, const EntityTemplate& temp, const std::string& alig, unsigned int health);
 
     /**
      * @brief Construct a previously constructed creature based on provided data.
@@ -101,9 +102,9 @@ class Creature : public DeathListener, public Entity
 
     /**
      * @brief Perform internal logic.
-     * @param eData The level environment in which this entity resides.
+     * @param level The level within which the creature is residing.
      */
-//    virtual void logic(EnvironmentData& eData);@todo review
+    virtual void logic(Level& level);
 
     /**
      * @brief Look at the provided point.
@@ -274,11 +275,6 @@ class Creature : public DeathListener, public Entity
 	 * Vector being looked at.
 	 */
 	Vector mLookingAt;
-
-	/**
-	 * This is the current victim.
-	 */
-	Entity* mVictim;
 
     private:
     /**

@@ -8,9 +8,9 @@
 
 #include "../Entities/Alignment.hpp"
 #include "../Engine/Colors.hpp"
-#include "../Entities/Creatures/Creature.hpp"
 #include "../Game/Game.hpp"
 #include "../Game/Keywords.hpp"
+#include "../LevelInfo/Level.hpp"
 #include "../main.hpp"
 
 using std::list;
@@ -18,11 +18,8 @@ using std::string;
 
 const unsigned int ENTITY_DEFENSEREGENERATION_INTERVAL = 80;
 
-Entity::Entity(const string& name, unsigned int maxHealth, unsigned int maxDefense, const Rectangle& collisionArea) :
+Entity::Entity(const string& name, unsigned int maxHealth, const Rectangle& collisionArea) :
 	mId(mIdCounter++),
-	mDefense(maxDefense),
-	mMaxDefense(maxDefense),
-	mDefenseRegenerationRate(1),
 	mHealth(maxHealth),
 	mMaxHealth(maxHealth),
 	mCollidable(true),
@@ -32,8 +29,6 @@ Entity::Entity(const string& name, unsigned int maxHealth, unsigned int maxDefen
 	mCollisionArea(collisionArea),
 	mIsDead(false)
 {
-	// Start the defense regeneration timer.
-	mDefenseRegenerationTimer.start();
 }
 
 Entity::~Entity()
@@ -54,7 +49,7 @@ void Entity::mDie()
 
 	// The entity is dead.
 	mIsDead = true;
-	mHealth = mDefense = 0;
+	mHealth = 0;
 
     // Tell any listeners.
     for(list<DeathListener*>::iterator it = mDeathListeners.begin(); it != mDeathListeners.end(); ++it)
@@ -111,11 +106,6 @@ void Entity::addDeathListener(DeathListener* listener)
     mDeathListeners.push_back(listener);
 }
 
-void Entity::addHealthChangedListener(HealthChangedListener* listener)
-{
-    mHealthChangedListener.push_back(listener);
-}
-
 void Entity::addInteractionListener(InteractionListener* listener)
 {
     mInteractionListeners.push_back(listener);
@@ -134,27 +124,13 @@ void Entity::damage(unsigned int value)
 		return;
 	}
 
-	// Damage the strength first.
-	mDefense -= value;
-
-	// If the defense went below zero, then set it to zero and subtract from health.
-	if(mDefense < 0)
-	{
-		mHealth -= 0 - mDefense;
-		mDefense = 0;
-	}
+	mHealth -= value;
 
     // If the health falls below zero, null it to zero and inform that the creature died.
     if(mHealth <= 0)
     {
         mHealth = 0;
         mDie();
-    }
-
-    // Tell the listeners the health has changed.
-    for(list<HealthChangedListener*>::iterator it = mHealthChangedListener.begin(); it != mHealthChangedListener.end(); ++it)
-    {
-        (*it)->healthChanged(this);
     }
 
     // Also push a plot event.//@todo need a new way for the game to know that damage was taken by an entity.
@@ -168,19 +144,9 @@ void Entity::draw(Renderer& renderer)
     mSprite.draw(renderer, pos);
 }
 
-string Entity::extract() const
-{
-	return "";
-}
-
 const string& Entity::getAlignment() const
 {
     return mAlignment;
-}
-
-const int Entity::getDefense() const
-{
-    return mDefense;
 }
 
 const Rectangle Entity::getDimension() const
@@ -201,11 +167,6 @@ unsigned int Entity::getHeight() const
 unsigned int Entity::getId() const
 {
     return mId;
-}
-
-const int Entity::getMaxDefense() const
-{
-    return mMaxDefense;
 }
 
 unsigned int Entity::getMaxHealth() const
@@ -248,11 +209,6 @@ const double& Entity::getY() const
     return mPosition.y;
 }
 
-void Entity::grab(Creature* creature)
-{
-	mHoldingAttackers.insert(creature);
-}
-
 void Entity::handleInput(const Input& input)
 {
 	// Most entities don't do input.
@@ -279,38 +235,18 @@ bool Entity::isIntersecting(const Quadrilateral& area) const
 	return mCollidable && area.isIntersecting(getDimension());
 }
 
-//void Entity::logic(EnvironmentData& eData)//@todo review
-//{
-//    // Update the being's display.
-//    mSprite.logic();
-//
-//    // Update the action logic.
-//    ActionInterface::logic(eData);
-//
-//    // If the defense timer has hit its interval, increase the defense value.
-//    if(!isDead() && mDefense != (int)mMaxDefense && mDefenseRegenerationTimer.getTime() >= ENTITY_DEFENSEREGENERATION_INTERVAL)
-//    {
-//    	// Increase the value and restart the timer.
-//    	unsigned int newValue = (mDefense + mDefenseRegenerationRate > 0) ? mDefense + mDefenseRegenerationRate : 0; // Just in case the defense regen rate is a negative number.
-//    	mDefense = (newValue < mMaxDefense) ? newValue : mMaxDefense;
-//    	mDefenseRegenerationTimer.start();
-//
-//        // Tell the listeners the health has changed.
-//        for(list<HealthChangedListener*>::iterator it = mHealthChangedListener.begin(); it != mHealthChangedListener.end(); ++it)
-//        {
-//            (*it)->healthChanged(this);
-//        }
-//    }
-//}
+void Entity::logic(Level& level)
+{
+    // Update the being's display.
+    mSprite.logic();
+
+    // Update the action logic.
+//    ActionInterface::logic(eData); @todo review.
+}
 
 void Entity::lookAt(const Vector& point)
 {
 	// Entities aren't capable of looking.  This is for creatures.
-}
-
-void Entity::release(Creature* creature)
-{
-	mHoldingAttackers.erase(creature);
 }
 
 void Entity::removeAnimationCycleListener(AnimationCycleListener* listener)
@@ -321,11 +257,6 @@ void Entity::removeAnimationCycleListener(AnimationCycleListener* listener)
 void Entity::removeDeathListener(DeathListener* listener)
 {
     mDeathListeners.remove(listener);
-}
-
-void Entity::removeHealthChangedListener(HealthChangedListener* listener)
-{
-    mHealthChangedListener.remove(listener);
 }
 
 void Entity::removeInteractionListener(InteractionListener* listener)

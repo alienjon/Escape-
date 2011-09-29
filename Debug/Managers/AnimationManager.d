@@ -132,7 +132,6 @@ Managers/AnimationManager.d Managers/AnimationManager.o: \
  ../Managers/../Entities/Creatures/../../Entities/../Interfaces/../Listeners/EventListener.hpp \
  ../Managers/../Entities/Creatures/../../Entities/../Interfaces/../Listeners/../Listeners/CreatureMovedToPointListener.hpp \
  ../Managers/../Entities/Creatures/../../Entities/../Interfaces/../Listeners/../Game/Event.hpp \
- ../Managers/../Entities/Creatures/../../Entities/../Listeners/HealthChangedListener.hpp \
  ../Managers/../Entities/Creatures/../../Entities/../Game/Input.hpp \
  ../Managers/../Entities/Creatures/../../Entities/../Listeners/InteractionListener.hpp \
  ../Managers/../Entities/Creatures/../../Entities/../Listeners/MovementListener.hpp \
@@ -431,8 +430,6 @@ Managers/AnimationManager.d Managers/AnimationManager.o: \
 ../Managers/../Entities/Creatures/../../Entities/../Interfaces/../Listeners/../Listeners/CreatureMovedToPointListener.hpp:
 
 ../Managers/../Entities/Creatures/../../Entities/../Interfaces/../Listeners/../Game/Event.hpp:
-
-../Managers/../Entities/Creatures/../../Entities/../Listeners/HealthChangedListener.hpp:
 
 ../Managers/../Entities/Creatures/../../Entities/../Game/Input.hpp:
 

@@ -136,7 +136,6 @@ Entities/Creatures/Zombies/GreenZombie.d \
  ../Entities/Creatures/Zombies/../../../Entities/../Interfaces/../Listeners/EventListener.hpp \
  ../Entities/Creatures/Zombies/../../../Entities/../Interfaces/../Listeners/../Listeners/CreatureMovedToPointListener.hpp \
  ../Entities/Creatures/Zombies/../../../Entities/../Interfaces/../Listeners/../Game/Event.hpp \
- ../Entities/Creatures/Zombies/../../../Entities/../Listeners/HealthChangedListener.hpp \
  ../Entities/Creatures/Zombies/../../../Entities/../Game/Input.hpp \
  ../Entities/Creatures/Zombies/../../../Entities/../Listeners/InteractionListener.hpp \
  ../Entities/Creatures/Zombies/../../../Entities/../Listeners/MovementListener.hpp \
@@ -437,8 +436,6 @@ Entities/Creatures/Zombies/GreenZombie.d \
 ../Entities/Creatures/Zombies/../../../Entities/../Interfaces/../Listeners/../Listeners/CreatureMovedToPointListener.hpp:
 
 ../Entities/Creatures/Zombies/../../../Entities/../Interfaces/../Listeners/../Game/Event.hpp:
-
-../Entities/Creatures/Zombies/../../../Entities/../Listeners/HealthChangedListener.hpp:
 
 ../Entities/Creatures/Zombies/../../../Entities/../Game/Input.hpp:
 

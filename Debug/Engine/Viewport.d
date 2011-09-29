@@ -103,7 +103,6 @@ Engine/Viewport.d Engine/Viewport.o: ../Engine/Viewport.cpp \
  ../Engine/../Entities/../Interfaces/../Listeners/EventListener.hpp \
  ../Engine/../Entities/../Interfaces/../Listeners/../Listeners/CreatureMovedToPointListener.hpp \
  ../Engine/../Entities/../Interfaces/../Listeners/../Game/Event.hpp \
- ../Engine/../Entities/../Listeners/HealthChangedListener.hpp \
  ../Engine/../Entities/../Game/Input.hpp \
  ../Engine/../Entities/../Listeners/InteractionListener.hpp \
  ../Engine/../Entities/../Listeners/MovementListener.hpp \
@@ -356,8 +355,6 @@ Engine/Viewport.d Engine/Viewport.o: ../Engine/Viewport.cpp \
 ../Engine/../Entities/../Interfaces/../Listeners/../Listeners/CreatureMovedToPointListener.hpp:
 
 ../Engine/../Entities/../Interfaces/../Listeners/../Game/Event.hpp:
-
-../Engine/../Entities/../Listeners/HealthChangedListener.hpp:
 
 ../Engine/../Entities/../Game/Input.hpp:
 

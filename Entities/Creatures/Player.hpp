@@ -15,7 +15,7 @@
 #include "../../Engine/Timer.hpp"
 #include "../../Math/Vector.hpp"
 
-class ObjectManager;
+class Level;
 
 /**
  * @brief The player class.
@@ -42,9 +42,9 @@ class Player : public Creature
 
     /**
      * @brief Perform internal logic.
-     * @param eData The level environment in which this entity resides.
+     * @param level The level environment in which this entity resides.
      */
-//    virtual void logic(EnvironmentData& eData);@todo review
+    virtual void logic(Level& level);
 
     /**
      * @brief Interact with the provided entity.

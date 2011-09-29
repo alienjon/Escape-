@@ -66,16 +66,28 @@ class Map
     virtual void drawUpper(Renderer& renderer, const Viewport& viewport);
 
     /**
-     * @brief Returns the pixel width of the map.
-     * @return The width of the map.
+     * @brief Get the location on the map that is the entrance for the player.
+     * @return The entrance location.
      */
-    virtual int getWidth() const;
+    const Vector& getEntrance() const;
+
+    /**
+     * @brief Get the exit area that the player must activate to go to the next level.
+     * @return The exit area.
+     */
+    const Rectangle& getExit() const;
 
     /**
      * @brief Returns the pixel height of the map.
      * @return The height of the map.
      */
     virtual int getHeight() const;
+
+    /**
+     * @brief Returns the pixel width of the map.
+     * @return The width of the map.
+     */
+    virtual int getWidth() const;
 
     /**
      * @brief Checks if an area is on the map.
@@ -114,6 +126,16 @@ class Map
      * This map's tileset.
      */
     const Tileset* mTileset;
+
+    /**
+     * This is the entrance location.
+     */
+    Vector mEntranceLocation;
+
+    /**
+     * This is the exit area.
+     */
+    Rectangle mExitArea;
 
     private:
     /**

@@ -142,9 +142,6 @@ Screens/GameScreen.d Screens/GameScreen.o: ../Screens/GameScreen.cpp \
  ../Screens/../Game/../Engine/../Math/Rectangle.hpp \
  ../Screens/../Game/../Engine/Timer.hpp ../Screens/../guichan.hpp \
  ../Screens/../Game/Input.hpp ../Screens/../Game/../Math/Vector.hpp \
- ../Screens/../Listeners/InterfaceListener.hpp \
- ../Screens/../Listeners/../Math/Rectangle.hpp \
- ../Screens/../Listeners/../Math/Vector.hpp \
  ../Screens/../LevelInfo/Level.hpp \
  ../Screens/../LevelInfo/../Interfaces/ActionInterface.hpp \
  ../Screens/../LevelInfo/../Interfaces/../Actions/Action.hpp \
@@ -177,6 +174,8 @@ Screens/GameScreen.d Screens/GameScreen.o: ../Screens/GameScreen.cpp \
  ../Screens/../LevelInfo/../Game/../Engine/Timer.hpp \
  ../Screens/../LevelInfo/../Interfaces/GameInterfaceInterface.hpp \
  ../Screens/../LevelInfo/../Interfaces/../Listeners/InterfaceListener.hpp \
+ ../Screens/../LevelInfo/../Interfaces/../Listeners/../Math/Rectangle.hpp \
+ ../Screens/../LevelInfo/../Interfaces/../Listeners/../Math/Vector.hpp \
  ../Screens/../LevelInfo/../Interfaces/../Math/Rectangle.hpp \
  ../Screens/../LevelInfo/../Interfaces/../Math/Vector.hpp \
  ../Screens/../LevelInfo/../Game/Input.hpp \
@@ -234,7 +233,6 @@ Screens/GameScreen.d Screens/GameScreen.o: ../Screens/GameScreen.cpp \
  ../Screens/../Entities/Creatures/../../Entities/../Game/Direction.hpp \
  ../Screens/../Entities/Creatures/../../Entities/../Entities/EntityType.hpp \
  ../Screens/../Entities/Creatures/../../Entities/../Interfaces/EventInterface.hpp \
- ../Screens/../Entities/Creatures/../../Entities/../Listeners/HealthChangedListener.hpp \
  ../Screens/../Entities/Creatures/../../Entities/../Game/Input.hpp \
  ../Screens/../Entities/Creatures/../../Entities/../Listeners/InteractionListener.hpp \
  ../Screens/../Entities/Creatures/../../Entities/../Listeners/MovementListener.hpp \
@@ -558,12 +556,6 @@ Screens/GameScreen.d Screens/GameScreen.o: ../Screens/GameScreen.cpp \
 
 ../Screens/../Game/../Math/Vector.hpp:
 
-../Screens/../Listeners/InterfaceListener.hpp:
-
-../Screens/../Listeners/../Math/Rectangle.hpp:
-
-../Screens/../Listeners/../Math/Vector.hpp:
-
 ../Screens/../LevelInfo/Level.hpp:
 
 ../Screens/../LevelInfo/../Interfaces/ActionInterface.hpp:
@@ -627,6 +619,10 @@ Screens/GameScreen.d Screens/GameScreen.o: ../Screens/GameScreen.cpp \
 ../Screens/../LevelInfo/../Interfaces/GameInterfaceInterface.hpp:
 
 ../Screens/../LevelInfo/../Interfaces/../Listeners/InterfaceListener.hpp:
+
+../Screens/../LevelInfo/../Interfaces/../Listeners/../Math/Rectangle.hpp:
+
+../Screens/../LevelInfo/../Interfaces/../Listeners/../Math/Vector.hpp:
 
 ../Screens/../LevelInfo/../Interfaces/../Math/Rectangle.hpp:
 
@@ -741,8 +737,6 @@ Screens/GameScreen.d Screens/GameScreen.o: ../Screens/GameScreen.cpp \
 ../Screens/../Entities/Creatures/../../Entities/../Entities/EntityType.hpp:
 
 ../Screens/../Entities/Creatures/../../Entities/../Interfaces/EventInterface.hpp:
-
-../Screens/../Entities/Creatures/../../Entities/../Listeners/HealthChangedListener.hpp:
 
 ../Screens/../Entities/Creatures/../../Entities/../Game/Input.hpp:
 

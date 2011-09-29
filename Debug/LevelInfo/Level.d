@@ -190,7 +190,6 @@ LevelInfo/Level.d LevelInfo/Level.o: ../LevelInfo/Level.cpp \
  ../LevelInfo/../Entities/Creatures/../../Entities/../Game/../Math/Vector.hpp \
  ../LevelInfo/../Entities/Creatures/../../Entities/../Entities/EntityType.hpp \
  ../LevelInfo/../Entities/Creatures/../../Entities/../Interfaces/EventInterface.hpp \
- ../LevelInfo/../Entities/Creatures/../../Entities/../Listeners/HealthChangedListener.hpp \
  ../LevelInfo/../Entities/Creatures/../../Entities/../Game/Input.hpp \
  ../LevelInfo/../Entities/Creatures/../../Entities/../Listeners/InteractionListener.hpp \
  ../LevelInfo/../Entities/Creatures/../../Entities/../Listeners/MovementListener.hpp \
@@ -243,7 +242,6 @@ LevelInfo/Level.d LevelInfo/Level.o: ../LevelInfo/Level.cpp \
  ../LevelInfo/../Screens/../Game/../Engine/Timer.hpp \
  ../LevelInfo/../Screens/../guichan.hpp \
  ../LevelInfo/../Screens/../Game/Input.hpp \
- ../LevelInfo/../Screens/../Listeners/InterfaceListener.hpp \
  ../LevelInfo/../Screens/../LevelInfo/Level.hpp \
  ../LevelInfo/../Screens/../Widgets/MessageDisplayWidget.hpp \
  ../LevelInfo/../Screens/../Widgets/../Engine/Sprite.hpp \
@@ -669,8 +667,6 @@ LevelInfo/Level.d LevelInfo/Level.o: ../LevelInfo/Level.cpp \
 
 ../LevelInfo/../Entities/Creatures/../../Entities/../Interfaces/EventInterface.hpp:
 
-../LevelInfo/../Entities/Creatures/../../Entities/../Listeners/HealthChangedListener.hpp:
-
 ../LevelInfo/../Entities/Creatures/../../Entities/../Game/Input.hpp:
 
 ../LevelInfo/../Entities/Creatures/../../Entities/../Listeners/InteractionListener.hpp:
@@ -774,8 +770,6 @@ LevelInfo/Level.d LevelInfo/Level.o: ../LevelInfo/Level.cpp \
 ../LevelInfo/../Screens/../guichan.hpp:
 
 ../LevelInfo/../Screens/../Game/Input.hpp:
-
-../LevelInfo/../Screens/../Listeners/InterfaceListener.hpp:
 
 ../LevelInfo/../Screens/../LevelInfo/Level.hpp:
 

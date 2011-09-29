@@ -19,7 +19,7 @@ const string GREENZOMBIE_PREFIX = "GREENZOMBIE";
 const EntityTemplate GREENZOMBIETEMPLATE("", GREENZOMBIE_PREFIX, Rectangle(0, 0, 30, 30));
 
 //@todo make sure the collision area is correct
-GreenZombie::GreenZombie() : Creature("Green Zombie", GREENZOMBIETEMPLATE, "ZOMBIE", 100, 100) // @todo should these be defined in a configuration file somewhere? Also, what about the name?
+GreenZombie::GreenZombie() : Creature("Green Zombie", GREENZOMBIETEMPLATE, "ZOMBIE", 100) // @todo should these be defined in a configuration file somewhere? Also, what about the name?
 {
     // Randomize the initial facing direction.
     switch(random(1, 4))

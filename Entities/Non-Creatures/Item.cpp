@@ -10,7 +10,7 @@
 #include "../../Managers/AnimationManager.hpp"
 #include "../../Math/Rectangle.hpp"
 
-Item::Item(const std::string& name, const EntityTemplate& temp) : Entity(name, 0, 0, temp.collisionArea)
+Item::Item(const std::string& name, const EntityTemplate& temp) : Entity(name, 0, temp.collisionArea)
 {
 	// This is an item.
 	mType = ENTITY_ITEM;

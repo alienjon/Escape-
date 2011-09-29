@@ -18,7 +18,7 @@ using std::string;
 
 // @note The provided area describes the initial position of the entity as the x,y position and the collision area as the widthxheight.
 //		 The collision area offset (the collision area's x,y) is zero because the entire nondisplayingentity is collidable, potentially.
-NonDisplayingEntity::NonDisplayingEntity(const string& name, const Rectangle& area) : Entity(name, 0, 0, Rectangle(0, 0, area.width, area.height))
+NonDisplayingEntity::NonDisplayingEntity(const string& name, const Rectangle& area) : Entity(name, 0, Rectangle(0, 0, area.width, area.height))
 {
     mType = ENTITY_NONDISPLAYING;
     setPosition(area.vector.x, area.vector.y);

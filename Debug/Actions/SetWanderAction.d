@@ -134,7 +134,6 @@ Actions/SetWanderAction.d Actions/SetWanderAction.o: \
  ../Actions/../Entities/Creatures/../../Entities/../Interfaces/../Listeners/EventListener.hpp \
  ../Actions/../Entities/Creatures/../../Entities/../Interfaces/../Listeners/../Listeners/CreatureMovedToPointListener.hpp \
  ../Actions/../Entities/Creatures/../../Entities/../Interfaces/../Listeners/../Game/Event.hpp \
- ../Actions/../Entities/Creatures/../../Entities/../Listeners/HealthChangedListener.hpp \
  ../Actions/../Entities/Creatures/../../Entities/../Game/Input.hpp \
  ../Actions/../Entities/Creatures/../../Entities/../Listeners/InteractionListener.hpp \
  ../Actions/../Entities/Creatures/../../Entities/../Listeners/MovementListener.hpp \
@@ -421,8 +420,6 @@ Actions/SetWanderAction.d Actions/SetWanderAction.o: \
 ../Actions/../Entities/Creatures/../../Entities/../Interfaces/../Listeners/../Listeners/CreatureMovedToPointListener.hpp:
 
 ../Actions/../Entities/Creatures/../../Entities/../Interfaces/../Listeners/../Game/Event.hpp:
-
-../Actions/../Entities/Creatures/../../Entities/../Listeners/HealthChangedListener.hpp:
 
 ../Actions/../Entities/Creatures/../../Entities/../Game/Input.hpp:
 

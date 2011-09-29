@@ -18,7 +18,6 @@
 #include "../Game/GUI.hpp"
 #include "../guichan.hpp"
 #include "../Game/Input.hpp"
-#include "../Listeners/InterfaceListener.hpp"
 #include "../LevelInfo/Level.hpp"
 #include "../Widgets/MessageDisplayWidget.hpp"
 #include "../Entities/Creatures/Player.hpp"
@@ -27,14 +26,13 @@
 #include "../Engine/Sprite.hpp"
 #include "../Engine/Timer.hpp"
 #include "../Math/Vector.hpp"
-#include "../Engine/Viewport.hpp"
 
 class Entity;
 
 /**
  * @brief The game screen is a means to display the game itself.
  */
-class GameScreen : public gcn::ActionListener, public InterfaceListener, public Screen
+class GameScreen : public gcn::ActionListener, public Screen
 {
     public:
     /**
@@ -75,12 +73,6 @@ class GameScreen : public gcn::ActionListener, public InterfaceListener, public 
     virtual void eventOccurred(Event event, const std::string& content = "", CreatureMovedToPointListener* creaturedMovedToPointListener = 0);
 
     /**
-     * @brief Get the viewport's offset.
-     * @return The offset.
-     */
-    Vector getViewportOffset() const;
-
-    /**
      * @brief Handle input.
      * @param input The input.
      */
@@ -97,31 +89,7 @@ class GameScreen : public gcn::ActionListener, public InterfaceListener, public 
      */
     virtual void logic();
 
-	/**
-	 * @brief Set the viewport's bounds.
-	 * @param bounds The bounds to set.
-	 */
-	virtual void setViewportBounds(const Rectangle& bounds);
-
-	/**
-	 * @brief Set the viewport's focus.
-	 * @param entity The entity onto which to set focus.
-	 */
-	virtual void setViewportFocus(const Entity* entity);
-
-	/**
-	 * @brief Set the viewport's focus.
-	 * @param x The x position.
-	 * @param y The y position.
-	 */
-	virtual void setViewportFocus(int x, int y);
-
     private:
-    /**
-     * If true, then load the next level.
-     */
-    bool mLoadLevel;
-
     /**
      * The player.
      */

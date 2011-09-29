@@ -128,7 +128,6 @@ Actions/DisplayAnimationAction.d Actions/DisplayAnimationAction.o: \
  ../Actions/../Entities/../Interfaces/../Listeners/EventListener.hpp \
  ../Actions/../Entities/../Interfaces/../Listeners/../Listeners/CreatureMovedToPointListener.hpp \
  ../Actions/../Entities/../Interfaces/../Listeners/../Game/Event.hpp \
- ../Actions/../Entities/../Listeners/HealthChangedListener.hpp \
  ../Actions/../Entities/../Game/Input.hpp \
  ../Actions/../Entities/../Listeners/InteractionListener.hpp \
  ../Actions/../Entities/../Listeners/MovementListener.hpp \
@@ -402,8 +401,6 @@ Actions/DisplayAnimationAction.d Actions/DisplayAnimationAction.o: \
 ../Actions/../Entities/../Interfaces/../Listeners/../Listeners/CreatureMovedToPointListener.hpp:
 
 ../Actions/../Entities/../Interfaces/../Listeners/../Game/Event.hpp:
-
-../Actions/../Entities/../Listeners/HealthChangedListener.hpp:
 
 ../Actions/../Entities/../Game/Input.hpp:
 

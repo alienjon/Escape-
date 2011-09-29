@@ -147,9 +147,6 @@ Actions/DisplayMessageAction.d Actions/DisplayMessageAction.o: \
  ../Actions/../Screens/../guichan.hpp \
  ../Actions/../Screens/../Game/Input.hpp \
  ../Actions/../Screens/../Game/../Math/Vector.hpp \
- ../Actions/../Screens/../Listeners/InterfaceListener.hpp \
- ../Actions/../Screens/../Listeners/../Math/Rectangle.hpp \
- ../Actions/../Screens/../Listeners/../Math/Vector.hpp \
  ../Actions/../Screens/../LevelInfo/Level.hpp \
  ../Actions/../Screens/../LevelInfo/../Interfaces/ActionInterface.hpp \
  ../Actions/../Screens/../LevelInfo/../Interfaces/../Actions/Action.hpp \
@@ -182,6 +179,8 @@ Actions/DisplayMessageAction.d Actions/DisplayMessageAction.o: \
  ../Actions/../Screens/../LevelInfo/../Game/../Engine/Timer.hpp \
  ../Actions/../Screens/../LevelInfo/../Interfaces/GameInterfaceInterface.hpp \
  ../Actions/../Screens/../LevelInfo/../Interfaces/../Listeners/InterfaceListener.hpp \
+ ../Actions/../Screens/../LevelInfo/../Interfaces/../Listeners/../Math/Rectangle.hpp \
+ ../Actions/../Screens/../LevelInfo/../Interfaces/../Listeners/../Math/Vector.hpp \
  ../Actions/../Screens/../LevelInfo/../Interfaces/../Math/Rectangle.hpp \
  ../Actions/../Screens/../LevelInfo/../Interfaces/../Math/Vector.hpp \
  ../Actions/../Screens/../LevelInfo/../Game/Input.hpp \
@@ -239,7 +238,6 @@ Actions/DisplayMessageAction.d Actions/DisplayMessageAction.o: \
  ../Actions/../Screens/../Entities/Creatures/../../Entities/../Game/Direction.hpp \
  ../Actions/../Screens/../Entities/Creatures/../../Entities/../Entities/EntityType.hpp \
  ../Actions/../Screens/../Entities/Creatures/../../Entities/../Interfaces/EventInterface.hpp \
- ../Actions/../Screens/../Entities/Creatures/../../Entities/../Listeners/HealthChangedListener.hpp \
  ../Actions/../Screens/../Entities/Creatures/../../Entities/../Game/Input.hpp \
  ../Actions/../Screens/../Entities/Creatures/../../Entities/../Listeners/InteractionListener.hpp \
  ../Actions/../Screens/../Entities/Creatures/../../Entities/../Listeners/MovementListener.hpp \
@@ -567,12 +565,6 @@ Actions/DisplayMessageAction.d Actions/DisplayMessageAction.o: \
 
 ../Actions/../Screens/../Game/../Math/Vector.hpp:
 
-../Actions/../Screens/../Listeners/InterfaceListener.hpp:
-
-../Actions/../Screens/../Listeners/../Math/Rectangle.hpp:
-
-../Actions/../Screens/../Listeners/../Math/Vector.hpp:
-
 ../Actions/../Screens/../LevelInfo/Level.hpp:
 
 ../Actions/../Screens/../LevelInfo/../Interfaces/ActionInterface.hpp:
@@ -636,6 +628,10 @@ Actions/DisplayMessageAction.d Actions/DisplayMessageAction.o: \
 ../Actions/../Screens/../LevelInfo/../Interfaces/GameInterfaceInterface.hpp:
 
 ../Actions/../Screens/../LevelInfo/../Interfaces/../Listeners/InterfaceListener.hpp:
+
+../Actions/../Screens/../LevelInfo/../Interfaces/../Listeners/../Math/Rectangle.hpp:
+
+../Actions/../Screens/../LevelInfo/../Interfaces/../Listeners/../Math/Vector.hpp:
 
 ../Actions/../Screens/../LevelInfo/../Interfaces/../Math/Rectangle.hpp:
 
@@ -750,8 +746,6 @@ Actions/DisplayMessageAction.d Actions/DisplayMessageAction.o: \
 ../Actions/../Screens/../Entities/Creatures/../../Entities/../Entities/EntityType.hpp:
 
 ../Actions/../Screens/../Entities/Creatures/../../Entities/../Interfaces/EventInterface.hpp:
-
-../Actions/../Screens/../Entities/Creatures/../../Entities/../Listeners/HealthChangedListener.hpp:
 
 ../Actions/../Screens/../Entities/Creatures/../../Entities/../Game/Input.hpp:
 

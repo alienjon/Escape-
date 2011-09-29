@@ -212,7 +212,6 @@ Game/Game.d Game/Game.o: ../Game/Game.cpp ../Game/Game.hpp \
  ../Game/../Screens/../Widgets/../Listeners/EventListener.hpp \
  ../Game/../Screens/../Game/GUI.hpp ../Game/../Screens/../guichan.hpp \
  ../Game/../Screens/../Game/Input.hpp \
- ../Game/../Screens/../Listeners/InterfaceListener.hpp \
  ../Game/../Screens/../LevelInfo/Level.hpp \
  ../Game/../Screens/../Widgets/MessageDisplayWidget.hpp \
  ../Game/../Screens/../Widgets/../Engine/Sprite.hpp \
@@ -233,7 +232,6 @@ Game/Game.d Game/Game.o: ../Game/Game.cpp ../Game/Game.hpp \
  ../Game/../Screens/../Entities/Creatures/../../Entities/../Game/Direction.hpp \
  ../Game/../Screens/../Entities/Creatures/../../Entities/../Entities/EntityType.hpp \
  ../Game/../Screens/../Entities/Creatures/../../Entities/../Interfaces/EventInterface.hpp \
- ../Game/../Screens/../Entities/Creatures/../../Entities/../Listeners/HealthChangedListener.hpp \
  ../Game/../Screens/../Entities/Creatures/../../Entities/../Game/Input.hpp \
  ../Game/../Screens/../Entities/Creatures/../../Entities/../Listeners/InteractionListener.hpp \
  ../Game/../Screens/../Entities/Creatures/../../Entities/../Listeners/MovementListener.hpp \
@@ -735,8 +733,6 @@ Game/Game.d Game/Game.o: ../Game/Game.cpp ../Game/Game.hpp \
 
 ../Game/../Screens/../Game/Input.hpp:
 
-../Game/../Screens/../Listeners/InterfaceListener.hpp:
-
 ../Game/../Screens/../LevelInfo/Level.hpp:
 
 ../Game/../Screens/../Widgets/MessageDisplayWidget.hpp:
@@ -776,8 +772,6 @@ Game/Game.d Game/Game.o: ../Game/Game.cpp ../Game/Game.hpp \
 ../Game/../Screens/../Entities/Creatures/../../Entities/../Entities/EntityType.hpp:
 
 ../Game/../Screens/../Entities/Creatures/../../Entities/../Interfaces/EventInterface.hpp:
-
-../Game/../Screens/../Entities/Creatures/../../Entities/../Listeners/HealthChangedListener.hpp:
 
 ../Game/../Screens/../Entities/Creatures/../../Entities/../Game/Input.hpp:
 

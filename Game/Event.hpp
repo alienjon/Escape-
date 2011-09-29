@@ -25,7 +25,6 @@ enum Event
     EVENT_STARTHARD,        	// Start a new game on hard.
     EVENT_MAINMENU,         	// Load the main menu as the next screen.
     EVENT_DISPLAYMESSAGE,   	// Display a message to the user.
-    EVENT_NEXTLEVEL,        	// Go to the next level.
     EVENT_INPUT_ACTIVATE,		// Activate input.
     EVENT_INPUT_DEACTIVATE,		// Deactivate input.
     EVENT_QUIT,             	// Quit the game.

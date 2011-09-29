@@ -106,7 +106,6 @@ Entities/Non-Creatures/Flashlight.d Entities/Non-Creatures/Flashlight.o: \
  ../Entities/Non-Creatures/../../Entities/Non-Creatures/../../Entities/../Interfaces/../Listeners/EventListener.hpp \
  ../Entities/Non-Creatures/../../Entities/Non-Creatures/../../Entities/../Interfaces/../Listeners/../Listeners/CreatureMovedToPointListener.hpp \
  ../Entities/Non-Creatures/../../Entities/Non-Creatures/../../Entities/../Interfaces/../Listeners/../Game/Event.hpp \
- ../Entities/Non-Creatures/../../Entities/Non-Creatures/../../Entities/../Listeners/HealthChangedListener.hpp \
  ../Entities/Non-Creatures/../../Entities/Non-Creatures/../../Entities/../Game/Input.hpp \
  ../Entities/Non-Creatures/../../Entities/Non-Creatures/../../Entities/../Game/../Math/Vector.hpp \
  ../Entities/Non-Creatures/../../Entities/Non-Creatures/../../Entities/../Listeners/InteractionListener.hpp \
@@ -369,8 +368,6 @@ Entities/Non-Creatures/Flashlight.d Entities/Non-Creatures/Flashlight.o: \
 ../Entities/Non-Creatures/../../Entities/Non-Creatures/../../Entities/../Interfaces/../Listeners/../Listeners/CreatureMovedToPointListener.hpp:
 
 ../Entities/Non-Creatures/../../Entities/Non-Creatures/../../Entities/../Interfaces/../Listeners/../Game/Event.hpp:
-
-../Entities/Non-Creatures/../../Entities/Non-Creatures/../../Entities/../Listeners/HealthChangedListener.hpp:
 
 ../Entities/Non-Creatures/../../Entities/Non-Creatures/../../Entities/../Game/Input.hpp:
 

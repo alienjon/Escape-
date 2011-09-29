@@ -17,7 +17,6 @@ using std::runtime_error;
 using std::string;
 
 GameScreen::GameScreen(Event difficulty) :
-	mLoadLevel(false),
 	mDifficulty(0),
 	mIsPaused(false),
 	mLevel(0)
@@ -106,17 +105,8 @@ void GameScreen::displayMessage(const string& caption, const string& message, co
 
 void GameScreen::draw(Renderer& renderer)
 {
-    // Set the drawing area based on the viewport.
-	renderer.pushClipArea(gcn::Rectangle(-mViewport.getX(), -mViewport.getY(), mViewport.getWidth(), mViewport.getHeight()));
-
     // Draw any screen objects.
-    mLevel->draw(renderer, mViewport);
-
-    // Pop the drawing area.
-    renderer.popClipArea();
-
-    // Apply the layers before drawing the cursor.
-//    renderer.applyLayers();@todo review lighting
+    mLevel->draw(renderer);
 }
 
 void GameScreen::eventOccurred(Event event, const std::string& content, CreatureMovedToPointListener* creatureMovedToVectorListener)
@@ -143,11 +133,6 @@ void GameScreen::eventOccurred(Event event, const std::string& content, Creature
         case EVENT_INPUT_DEACTIVATE:
         {
         	mPlayer.setInputState(false);
-        	break;
-        }
-        case EVENT_NEXTLEVEL:
-        {
-        	mLoadLevel = true;
         	break;
         }
         case EVENT_MAINMENU:
@@ -181,11 +166,6 @@ void GameScreen::eventOccurred(Event event, const std::string& content, Creature
     pushEvent(event, content);
 }
 
-Vector GameScreen::getViewportOffset() const
-{
-	return mViewport.getOffset();
-}
-
 void GameScreen::handleInput(const Input& input)
 {
 	/*  As in the Game object, each conditional will return to avoid repetition of commands. */
@@ -209,27 +189,6 @@ void GameScreen::handleInput(const Input& input)
 				mOptionsMenu.setVisible(true);
 			}
 			return;
-		}
-
-		if(Game::isDebug())//@todo move the viewport around FOR TESTING ONLY
-		{
-			int step = 25;
-			if(input.isKeyPressed(SDLK_UP))
-			{
-				mViewport.setY(mViewport.getY() - step);
-			}
-			if(input.isKeyPressed(SDLK_DOWN))
-			{
-				mViewport.setY(mViewport.getY() + step);
-			}
-			if(input.isKeyPressed(SDLK_LEFT))
-			{
-				mViewport.setX(mViewport.getX() - step);
-			}
-			if(input.isKeyPressed(SDLK_RIGHT))
-			{
-				mViewport.setX(mViewport.getX() + step);
-			}
 		}
 	}
 
@@ -262,56 +221,34 @@ void GameScreen::load(GUI* gui)
     mBase.add(&mMessageOSD);
 
     // Load the level at the current difficulty.
-    mLevel = new Level(mDifficulty, mPlayer);
+    mLevel = new Level(mDifficulty, mPlayer, this);
 
     // Set level listeners.
-    mLevel->setInterfaceListener(this);
     mLevel->addEventListener(this);
-
-    // After the listeners are set, load the level. (this must be done after setting the listeners)
-    mLevel->load();
 }
 
 void GameScreen::logic()
 {
 	// Before any logic has been done, check if the next level should be loaded.
-	if(mLoadLevel)
+	if(mLevel->isDone())//@todo display score, do a little dance, and maybe some other graphical stuff prior to loading the next level, for now the next level just loads.
 	{
 		// Unload the current level.
 		mLevel->removeEventListener(this);
 		delete mLevel;
 
 		// Increase the difficulty and go to the next level.
-		mLevel = new Level(++mDifficulty, mPlayer);
+		mLevel = new Level(++mDifficulty, mPlayer, this);
 		mLevel->addEventListener(this);
-		mLevel->setInterfaceListener(this);
-		mLevel->load(); // This must be done after setting the listeners.
 
-		// The next level is loaded.
-		mLoadLevel = false;
+		// @todo remove when done testing
+		Logger::log("Player Found Exit");
+		mDone = true;
 	}
 
     // Only do game logic if the game is not paused and neither the options menu or
 	// the message display widget is being shown.
     if(!mIsPaused && !mMessageOSD.isVisible() && !mOptionsMenu.isVisible())
     {
-		// Perform logic.
 		mLevel->logic();
-		mViewport.logic();
     }
-}
-
-void GameScreen::setViewportBounds(const Rectangle& bounds)
-{
-	mViewport.setBounds(bounds);
-}
-
-void GameScreen::setViewportFocus(const Entity* entity)
-{
-	mViewport.center(entity);
-}
-
-void GameScreen::setViewportFocus(int x, int y)
-{
-	mViewport.center(x, y);
 }

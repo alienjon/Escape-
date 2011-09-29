@@ -103,6 +103,12 @@ class Viewport
      */
     virtual bool isOnScreen(int x, int y, int w, int h) const;
 
+    /**
+     * @brief Returns true if the viewport is tracking the movement of an entity.
+     * @return True if the viewport is tracking an entity.
+     */
+    virtual bool isTracking() const;
+
 	/**
 	 * @brief Perform viewport logic.
 	 */

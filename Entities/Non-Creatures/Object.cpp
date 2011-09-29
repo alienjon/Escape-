@@ -12,7 +12,7 @@
 
 using std::string;
 
-Object::Object(const string& name, const EntityTemplate& temp) : Entity(name, 100, 100, temp.collisionArea) // @todo need to implement adding health/defense to objects
+Object::Object(const string& name, const EntityTemplate& temp) : Entity(name, 100, temp.collisionArea) // @todo need to implement adding health/defense to objects
 {
 	// Set the type.
 	mType = ENTITY_OBJECT;
@@ -24,7 +24,7 @@ Object::Object(const string& name, const EntityTemplate& temp) : Entity(name, 10
 	mSetAnimation(AnimationManager::get(temp.animation));
 }
 
-Object::Object(const string& data) : Entity("LOADED OBJECT", 0, 0, Rectangle(0, 0, 0, 0)) // @todo name of a loaded object?
+Object::Object(const string& data) : Entity("LOADED OBJECT", 0, Rectangle(0, 0, 0, 0)) // @todo name of a loaded object?
 {
 // @todo configure a loaded object
 }

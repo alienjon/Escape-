@@ -47,7 +47,7 @@ bool Polygon::isIntersecting(const Polygon& poly) const
 		projectPolygonOnSingleAxis(axis, *this, minA, maxA);
 		projectPolygonOnSingleAxis(axis, poly,  minB, maxB);
 
-		if(distanceBetweenTwoLineSegments(minA, maxA, minB, maxB) > 0)
+		if(distanceBetweenTwoLineSegments(minA, maxA, minB, maxB) >= 0)
 		{
 			return false;
 		}

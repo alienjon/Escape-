@@ -20,7 +20,7 @@ class Entity;
  * As such, these methods affect the GUI and other 'meta-game' elements (such as the
  * journalling/note system).
  */
-class InterfaceListener
+class InterfaceListener//@fixme needed?
 {
 	public:
     /**

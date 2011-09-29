@@ -16,7 +16,6 @@ Entities/Non-Creatures/NonDisplayingEntity.d \
  ../Entities/Non-Creatures/../../Interfaces/../Listeners/EventListener.hpp \
  ../Entities/Non-Creatures/../../Interfaces/../Listeners/../Listeners/CreatureMovedToPointListener.hpp \
  ../Entities/Non-Creatures/../../Interfaces/../Listeners/../Game/Event.hpp \
- ../Entities/Non-Creatures/../../Listeners/HealthChangedListener.hpp \
  ../Entities/Non-Creatures/../../Game/Input.hpp \
  ../Entities/Non-Creatures/../../Listeners/InteractionListener.hpp \
  ../Entities/Non-Creatures/../../Listeners/MovementListener.hpp \
@@ -188,8 +187,6 @@ Entities/Non-Creatures/NonDisplayingEntity.d \
 ../Entities/Non-Creatures/../../Interfaces/../Listeners/../Listeners/CreatureMovedToPointListener.hpp:
 
 ../Entities/Non-Creatures/../../Interfaces/../Listeners/../Game/Event.hpp:
-
-../Entities/Non-Creatures/../../Listeners/HealthChangedListener.hpp:
 
 ../Entities/Non-Creatures/../../Game/Input.hpp:
 

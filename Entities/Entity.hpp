@@ -16,7 +16,6 @@
 #include "../Game/Direction.hpp"
 #include "../Entities/EntityType.hpp"
 #include "../Interfaces/EventInterface.hpp"
-#include "../Listeners/HealthChangedListener.hpp"
 #include "../Game/Input.hpp"
 #include "../Listeners/InteractionListener.hpp"
 #include "../Listeners/MovementListener.hpp"
@@ -27,8 +26,7 @@
 #include "../Engine/Sprite.hpp"
 #include "../Engine/Timer.hpp"
 
-class Creature;
-class EnvironmentData;
+class Level;
 
 /**
  * @brief A being is a single, tangible game object.
@@ -59,12 +57,6 @@ class Entity : public ActionInterface, public EventInterface
     void addDeathListener(DeathListener* listener);
 
     /**
-     * @brief Add a health changed listener.
-     * @param listener The listener to add.
-     */
-    void addHealthChangedListener(HealthChangedListener* listener);
-
-    /**
      * @brief Add an interaction listener.
      * @param listener The listener to add.
      */
@@ -89,23 +81,11 @@ class Entity : public ActionInterface, public EventInterface
     virtual void draw(Renderer& renderer);
 
     /**
-     * @brief Convert the state of the entity to a string to save.
-     * @return A string representation of the entity.
-     */
-    virtual std::string extract() const;
-
-    /**
      * @brief Each being has an alignment to which they are a member.
      * @return This being's alignment.
      * @see alignment
      */
     virtual const std::string& getAlignment() const;
-
-    /**
-     * @brief Get the current defense.
-     * @return The current defense value.
-     */
-    const int getDefense() const;
 
     /**
      * @brief Get the collision area of this being.
@@ -130,12 +110,6 @@ class Entity : public ActionInterface, public EventInterface
      * @return The unique ID number for this creature.
      */
     unsigned int getId() const;
-
-    /**
-     * @brief Get the current maximum possible defense.
-     * @return The maximum possible defense.
-     */
-    const int getMaxDefense() const;
 
     /**
      * @brief Get the maximum possible health value for this creature.
@@ -186,12 +160,6 @@ class Entity : public ActionInterface, public EventInterface
     const double& getY() const;
 
     /**
-     * @brief A creature is grabbing this entity.
-     * @param creature The creature.
-     */
-    virtual void grab(Creature* creature);
-
-    /**
      * @brief Handle input.
      * @param input The current input state.
      */
@@ -225,9 +193,9 @@ class Entity : public ActionInterface, public EventInterface
 
     /**
      * @brief Perform internal logic.
-     * @param eData The level environment in which this entity resides.
+     * @param level The level within which the entity is currently residing.
      */
-//    virtual void logic(EnvironmentData& eData);@todo review
+    virtual void logic(Level& level);
 
     /**
      * @brief Look at the provided point.
@@ -236,12 +204,6 @@ class Entity : public ActionInterface, public EventInterface
      * @note This is unimplemented in Entity.
      */
     virtual void lookAt(const Vector& point);
-
-    /**
-     * @brief A creature is releasing it's grasp of this entity.
-     * @param creature The creature.
-     */
-    virtual void release(Creature* creature);
 
     /**
      * @brief Remove an animation cycle listener.
@@ -254,12 +216,6 @@ class Entity : public ActionInterface, public EventInterface
      * @param listener The listener to add.
      */
     void removeDeathListener(DeathListener* listener);
-
-    /**
-     * @brief Remove a health changed listener.
-     * @param listener The listener to add.
-     */
-    void removeHealthChangedListener(HealthChangedListener* listener);
 
     /**
      * @brief Add an interaction listener.
@@ -315,12 +271,11 @@ class Entity : public ActionInterface, public EventInterface
      * @brief A being is a 'sprite of substance' for gameplay.  Creatures are beings, GUI animations are sprites.
      * @param name The name of the entity.
      * @param maxHealth The maximum health for this entity.
-     * @param maxDefense The maximum defense value for this entity.
      * @param collisionArea The collision area.
      *
      * @see mCollisionArea
      */
-    Entity(const std::string& name, unsigned int maxHealth, unsigned int maxDefense, const Rectangle& collisionArea);
+    Entity(const std::string& name, unsigned int maxHealth, const Rectangle& collisionArea);
 
     /**
      * @brief This entity collided with the collidee
@@ -370,15 +325,6 @@ class Entity : public ActionInterface, public EventInterface
     unsigned int mId;
 
     /**
-     * The entity's defense value represents how much force has been placed against them if they have been pushed.
-     * It regenerates (through the regeneration rate) 10 times / second.
-     */
-    int mDefense;
-    unsigned int mMaxDefense;
-    int mDefenseRegenerationRate;
-    Timer mDefenseRegenerationTimer;
-
-    /**
      * An entity is 'dead' when its health has reached zero or below.
      */
     int mHealth;
@@ -398,11 +344,6 @@ class Entity : public ActionInterface, public EventInterface
      * The being type.
      */
     EntityType mType;
-
-    /**
-     * This is a set of creatures currently holding onto this entity.
-     */
-    std::set<Creature*> mHoldingAttackers;
 
     /**
      * The displaying sprite for this being.
@@ -436,7 +377,6 @@ class Entity : public ActionInterface, public EventInterface
      * The listeners.
      */
     std::list<DeathListener*> mDeathListeners;
-    std::list<HealthChangedListener*> mHealthChangedListener;
     std::list<InteractionListener*> mInteractionListeners;
     std::list<MovementListener*> mMovementListeners;
 
