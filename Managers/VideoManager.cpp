@@ -269,7 +269,7 @@ void VideoManager::terminate()
 
 VideoManager* VideoManager::mVideoManager = 0;
 
-const int SCREEN_HEIGHT = 600;
-const int SCREEN_WIDTH = 800;
+const unsigned int SCREEN_HEIGHT = 600;
+const unsigned int SCREEN_WIDTH = 800;
 
 const char* FILE_GAME_ICON = "Images/icon.png";

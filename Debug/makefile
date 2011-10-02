@@ -10,7 +10,6 @@ RM := rm -rf
 -include sources.mk
 -include subdir.mk
 -include Widgets/subdir.mk
--include Widgets/GameOptions/subdir.mk
 -include Triggers/subdir.mk
 -include Screens/subdir.mk
 -include Screens/MenuScreenWidgets/subdir.mk

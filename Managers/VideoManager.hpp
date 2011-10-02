@@ -127,8 +127,8 @@ class VideoManager : public gcn::SDLImageLoader
 };
 
 // The screen dimension.
-extern const int SCREEN_HEIGHT;
-extern const int SCREEN_WIDTH;
+extern const unsigned int SCREEN_HEIGHT;
+extern const unsigned int SCREEN_WIDTH;
 
 //The game icon.
 extern const char* FILE_GAME_ICON;

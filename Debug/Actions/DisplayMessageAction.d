@@ -3,103 +3,91 @@ Actions/DisplayMessageAction.d Actions/DisplayMessageAction.o: \
  ../Actions/../Actions/Action.hpp ../Actions/../Screens/GameScreen.hpp \
  ../Actions/../Screens/../Game/Event.hpp \
  ../Actions/../Screens/../Widgets/GameOptionsWidget.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/GameOptionsListModel.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../guichan.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/actionevent.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/event.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/platform.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/actionlistener.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/actionevent.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/cliprectangle.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/rectangle.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/color.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/deathlistener.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/event.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/exception.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/focushandler.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/focuslistener.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/font.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/genericinput.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/input.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/keyinput.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/key.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/mouseinput.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/graphics.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/cliprectangle.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/gui.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/keyevent.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/inputevent.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/mouseevent.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/image.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/imagefont.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/font.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/imageloader.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/input.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/inputevent.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/key.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/keyevent.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/keyinput.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/keylistener.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/listmodel.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/mouseevent.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/mouseinput.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/mouselistener.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/rectangle.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/selectionevent.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/selectionlistener.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/selectionevent.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/widget.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/color.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgetlistener.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/button.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/../focuslistener.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/../graphics.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/../keylistener.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/../mouseevent.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/../mouselistener.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/../platform.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/../widget.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/checkbox.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/container.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/../basiccontainer.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/../deathlistener.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/../platform.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/../widget.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/dropdown.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/../actionlistener.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/../deathlistener.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/../focushandler.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/../listmodel.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/../selectionlistener.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/listbox.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/scrollarea.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/icon.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/../image.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/imagebutton.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/button.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/label.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/listbox.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/scrollarea.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/slider.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/radiobutton.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/tab.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/tabbedarea.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/textbox.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/textfield.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/window.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/container.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/../Guichan/platform.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/GameOptions/GameSettingsWidget.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/GameOptions/../../guichan.hpp \
  ../Actions/../Screens/../Widgets/../guichan.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/GameOptions/MessagesWidget.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/GameOptions/../../Widgets/GameOptions/MessageWidget.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/GameOptions/../../Widgets/GameOptions/../../guichan.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/GameOptions/../../Widgets/GameOptions/../../Engine/Timer.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/GameOptions/TasksWidget.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/GameOptions/../../Widgets/GameOptions/TasksContainerWidget.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/GameOptions/../../Widgets/GameOptions/../../Widgets/GameOptions/TaskWidget.hpp \
- ../Actions/../Screens/../Widgets/../Widgets/GameOptions/../../Widgets/GameOptions/../../Widgets/GameOptions/../../guichan.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/actionevent.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/event.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/platform.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/actionlistener.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/actionevent.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/cliprectangle.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/rectangle.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/color.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/deathlistener.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/event.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/exception.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/focushandler.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/focuslistener.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/font.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/genericinput.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/input.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/keyinput.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/key.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/mouseinput.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/graphics.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/cliprectangle.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/gui.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/keyevent.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/inputevent.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/mouseevent.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/image.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/imagefont.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/font.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/imageloader.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/input.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/inputevent.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/key.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/keyevent.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/keyinput.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/keylistener.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/listmodel.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/mouseevent.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/mouseinput.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/mouselistener.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/rectangle.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/selectionevent.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/selectionlistener.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/selectionevent.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/widget.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/color.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/widgetlistener.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/widgets/button.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/widgets/../focuslistener.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/widgets/../graphics.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/widgets/../keylistener.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/widgets/../mouseevent.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/widgets/../mouselistener.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/widgets/../platform.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/widgets/../widget.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/widgets/checkbox.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/widgets/container.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/widgets/../basiccontainer.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/widgets/../deathlistener.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/widgets/../platform.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/widgets/../widget.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/widgets/dropdown.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/widgets/../actionlistener.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/widgets/../deathlistener.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/widgets/../focushandler.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/widgets/../listmodel.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/widgets/../selectionlistener.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/widgets/listbox.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/widgets/scrollarea.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/widgets/icon.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/widgets/../image.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/widgets/imagebutton.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/widgets/button.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/widgets/label.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/widgets/listbox.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/widgets/scrollarea.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/widgets/slider.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/widgets/radiobutton.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/widgets/tab.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/widgets/tabbedarea.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/widgets/textbox.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/widgets/textfield.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/widgets/window.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/widgets/container.hpp \
+ ../Actions/../Screens/../Widgets/../Guichan/platform.hpp \
  ../Actions/../Screens/../Widgets/GameOverWidget.hpp \
  ../Actions/../Screens/../Widgets/../Listeners/CreatureMovedToPointListener.hpp \
  ../Actions/../Screens/../Widgets/MenuButton.hpp \
@@ -221,6 +209,7 @@ Actions/DisplayMessageAction.d Actions/DisplayMessageAction.o: \
  ../Actions/../Screens/../Widgets/MessageDisplayWidget.hpp \
  ../Actions/../Screens/../Widgets/../Engine/Sprite.hpp \
  ../Actions/../Screens/../Widgets/../Widgets/SpriteWidget.hpp \
+ ../Actions/../Screens/../Widgets/../Widgets/../guichan.hpp \
  ../Actions/../Screens/../Widgets/../Widgets/../Listeners/AnimationCycleListener.hpp \
  ../Actions/../Screens/../Widgets/../Widgets/../Engine/Sprite.hpp \
  ../Actions/../Screens/../Widgets/../Engine/Timer.hpp \
@@ -277,199 +266,175 @@ Actions/DisplayMessageAction.d Actions/DisplayMessageAction.o: \
 
 ../Actions/../Screens/../Widgets/GameOptionsWidget.hpp:
 
-../Actions/../Screens/../Widgets/../Widgets/GameOptionsListModel.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../guichan.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/actionevent.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/event.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/platform.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/actionlistener.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/actionevent.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/cliprectangle.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/rectangle.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/color.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/deathlistener.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/event.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/exception.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/focushandler.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/focuslistener.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/font.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/genericinput.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/input.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/keyinput.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/key.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/mouseinput.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/graphics.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/cliprectangle.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/gui.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/keyevent.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/inputevent.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/mouseevent.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/image.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/imagefont.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/font.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/imageloader.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/input.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/inputevent.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/key.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/keyevent.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/keyinput.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/keylistener.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/listmodel.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/mouseevent.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/mouseinput.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/mouselistener.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/rectangle.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/selectionevent.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/selectionlistener.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/selectionevent.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/widget.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/color.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgetlistener.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/button.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/../focuslistener.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/../graphics.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/../keylistener.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/../mouseevent.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/../mouselistener.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/../platform.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/../widget.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/checkbox.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/container.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/../basiccontainer.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/../deathlistener.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/../platform.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/../widget.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/dropdown.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/../actionlistener.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/../deathlistener.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/../focushandler.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/../listmodel.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/../selectionlistener.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/listbox.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/scrollarea.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/icon.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/../image.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/imagebutton.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/button.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/label.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/listbox.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/scrollarea.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/slider.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/radiobutton.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/tab.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/tabbedarea.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/textbox.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/textfield.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/window.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/widgets/container.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/../Guichan/platform.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/GameOptions/GameSettingsWidget.hpp:
-
-../Actions/../Screens/../Widgets/../Widgets/GameOptions/../../guichan.hpp:
-
 ../Actions/../Screens/../Widgets/../guichan.hpp:
 
-../Actions/../Screens/../Widgets/../Widgets/GameOptions/MessagesWidget.hpp:
+../Actions/../Screens/../Widgets/../Guichan/actionevent.hpp:
 
-../Actions/../Screens/../Widgets/../Widgets/GameOptions/../../Widgets/GameOptions/MessageWidget.hpp:
+../Actions/../Screens/../Widgets/../Guichan/event.hpp:
 
-../Actions/../Screens/../Widgets/../Widgets/GameOptions/../../Widgets/GameOptions/../../guichan.hpp:
+../Actions/../Screens/../Widgets/../Guichan/platform.hpp:
 
-../Actions/../Screens/../Widgets/../Widgets/GameOptions/../../Widgets/GameOptions/../../Engine/Timer.hpp:
+../Actions/../Screens/../Widgets/../Guichan/actionlistener.hpp:
 
-../Actions/../Screens/../Widgets/../Widgets/GameOptions/TasksWidget.hpp:
+../Actions/../Screens/../Widgets/../Guichan/actionevent.hpp:
 
-../Actions/../Screens/../Widgets/../Widgets/GameOptions/../../Widgets/GameOptions/TasksContainerWidget.hpp:
+../Actions/../Screens/../Widgets/../Guichan/cliprectangle.hpp:
 
-../Actions/../Screens/../Widgets/../Widgets/GameOptions/../../Widgets/GameOptions/../../Widgets/GameOptions/TaskWidget.hpp:
+../Actions/../Screens/../Widgets/../Guichan/rectangle.hpp:
 
-../Actions/../Screens/../Widgets/../Widgets/GameOptions/../../Widgets/GameOptions/../../Widgets/GameOptions/../../guichan.hpp:
+../Actions/../Screens/../Widgets/../Guichan/color.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/deathlistener.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/event.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/exception.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/focushandler.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/focuslistener.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/font.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/genericinput.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/input.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/keyinput.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/key.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/mouseinput.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/graphics.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/cliprectangle.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/gui.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/keyevent.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/inputevent.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/mouseevent.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/image.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/imagefont.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/font.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/imageloader.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/input.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/inputevent.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/key.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/keyevent.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/keyinput.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/keylistener.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/listmodel.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/mouseevent.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/mouseinput.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/mouselistener.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/rectangle.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/selectionevent.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/selectionlistener.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/selectionevent.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/widget.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/color.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/widgetlistener.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/widgets/button.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/widgets/../focuslistener.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/widgets/../graphics.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/widgets/../keylistener.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/widgets/../mouseevent.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/widgets/../mouselistener.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/widgets/../platform.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/widgets/../widget.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/widgets/checkbox.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/widgets/container.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/widgets/../basiccontainer.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/widgets/../deathlistener.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/widgets/../platform.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/widgets/../widget.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/widgets/dropdown.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/widgets/../actionlistener.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/widgets/../deathlistener.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/widgets/../focushandler.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/widgets/../listmodel.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/widgets/../selectionlistener.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/widgets/listbox.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/widgets/scrollarea.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/widgets/icon.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/widgets/../image.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/widgets/imagebutton.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/widgets/button.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/widgets/label.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/widgets/listbox.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/widgets/scrollarea.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/widgets/slider.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/widgets/radiobutton.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/widgets/tab.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/widgets/tabbedarea.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/widgets/textbox.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/widgets/textfield.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/widgets/window.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/widgets/container.hpp:
+
+../Actions/../Screens/../Widgets/../Guichan/platform.hpp:
 
 ../Actions/../Screens/../Widgets/GameOverWidget.hpp:
 
@@ -712,6 +677,8 @@ Actions/DisplayMessageAction.d Actions/DisplayMessageAction.o: \
 ../Actions/../Screens/../Widgets/../Engine/Sprite.hpp:
 
 ../Actions/../Screens/../Widgets/../Widgets/SpriteWidget.hpp:
+
+../Actions/../Screens/../Widgets/../Widgets/../guichan.hpp:
 
 ../Actions/../Screens/../Widgets/../Widgets/../Listeners/AnimationCycleListener.hpp:
 

@@ -386,7 +386,7 @@ void Game::run()
         }
 
 		// Add a frame cap to avoid excessive CPU usage.
-		if(!isDebug() && (SDL_GetTicks() - current_tick) < (1000 / FRAMERATE))
+		if((SDL_GetTicks() - current_tick) < (1000 / FRAMERATE))
 		{
 			SDL_Delay((1000 / FRAMERATE) - (SDL_GetTicks() - current_tick));
 		}
@@ -413,7 +413,7 @@ const string GAME_VERSION = "0.0.0";
 
 int gFPSCounter = 0;
 
-const unsigned int FRAMERATE = 60;
+const unsigned int FRAMERATE = 100;
 
 const char* FILE_THETRUSTCREDIT_IMAGE = "Images/TrustCredit.png";
 const char* FILE_ESCAPECREDIT_IMAGE = "Images/EscapeCredit.png";

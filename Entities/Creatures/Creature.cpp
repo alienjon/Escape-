@@ -28,7 +28,7 @@ using std::runtime_error;
 using std::set;
 using std::string;
 
-const unsigned int CREATURE_MOVEMENT_DISTANCE = 2;
+const unsigned int CREATURE_MOVEMENT_DISTANCE = 4;
 
 const unsigned int CREATURE_ATTACK_INTERVAL = 1000;
 

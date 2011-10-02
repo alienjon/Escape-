@@ -25,7 +25,6 @@ C_UPPER_DEPS :=
 SUBDIRS := \
 . \
 Widgets \
-Widgets/GameOptions \
 Triggers \
 Screens \
 Screens/MenuScreenWidgets \

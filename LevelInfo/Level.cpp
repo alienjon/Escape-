@@ -96,27 +96,33 @@ void Level::draw(Renderer& renderer)
     // Everything on the level is relative to the viewport.
 	renderer.pushClipArea(gcn::Rectangle(-mViewport.getX(), -mViewport.getY(), mViewport.getWidth(), mViewport.getHeight()));
 
-	// If the map is smaller than the screen, then draw a black background.
-	if(mMap.getWidth() < SCREEN_WIDTH || mMap.getHeight() < SCREEN_HEIGHT)
-	{
-		renderer.setColor(COLOR_BLACK);
-		renderer.fillRectangle(Rectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT));
-	}
-
     // Draw the lower map.
     mMap.drawLower(renderer, mViewport);
 
-    // Draw the middle map.
-    mMap.drawMiddle(renderer, mViewport);
+    /* For the middle layer... */
+    // First sort all entities based on their Z value (entities higher up (smaller y) come first).
+    mEntities.sort(sortByZIndex);
+    list<Entity*>::iterator current_entity = mEntities.begin();
 
-    // Draw the entities.
-    for(list<Entity*>::const_iterator it = mEntities.begin(); it != mEntities.end(); it++)
-    	(*it)->draw(renderer);
+    // Then draw the entities in a tile-y layer and then that tile-y layer itself.  Continue until all tile-y layers are drawn.
+    unsigned int tile_height = mMap.getTileset().getHeight();
+    for(unsigned int y = 0; y * tile_height != mMap.getHeight(); ++y)
+    {
+    	// Draw the map layer first.
+    	mMap.drawMiddle(renderer, mViewport, (int)y);
+
+    	// Then continue drawing any entities until we either reach the end of entities list or
+    	// have drawn all entities between the current tile (y * tile_height) and the next ((y + 1) * tile_height).
+    	for(; current_entity != mEntities.end() &&
+    	      (*current_entity)->getDimension().vector.y + (*current_entity)->getDimension().height < (y + 1) * tile_height;
+			  current_entity++)
+    		(*current_entity)->draw(renderer);
+    }
 
     // Draw the middle and upper map.
     mMap.drawUpper(renderer, mViewport);
 
-    // Draw the lighting.
+    // Draw the lighting. @todo review lighting
 //    mEData.drawLighting(renderer);
 
     // Pop the drawing area.

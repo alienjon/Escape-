@@ -206,7 +206,6 @@ void GameScreen::load(GUI* gui)
 
     // Setup the in-game options menu.
     mOptionsMenu.setVisible(false);
-    mOptionsMenu.adjustSize(); // This MUST be done upon level loading (several internal sizes depend on the fonts having been loaded)
     mBase.add(&mOptionsMenu, (mBase.getWidth() / 2) - (mOptionsMenu.getWidth() / 2), (mBase.getHeight() / 2) - (mOptionsMenu.getHeight() / 2));
 
     // Setup the game over widget.

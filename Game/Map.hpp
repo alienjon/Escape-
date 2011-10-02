@@ -55,8 +55,9 @@ class Map
      * @brief Draw the middle map (objects on the ground, but still below the creatures)
      * @param renderer The graphics object.
      * @param viewport The visible area on the screen.
+     * @param end_y The tile-y level to draw.
      */
-    virtual void drawMiddle(Renderer& renderer, const Viewport& viewport);
+    virtual void drawMiddle(Renderer& renderer, const Viewport& viewport, int end_y = -1);
 
     /**
      * @brief Draw the upper map (stuff above the creatures)
@@ -81,13 +82,19 @@ class Map
      * @brief Returns the pixel height of the map.
      * @return The height of the map.
      */
-    virtual int getHeight() const;
+    virtual unsigned int getHeight() const;
+
+    /**
+     * @brief Get this map's tileset.
+     * @return The map's tileset.
+     */
+    virtual const Tileset& getTileset() const;
 
     /**
      * @brief Returns the pixel width of the map.
      * @return The width of the map.
      */
-    virtual int getWidth() const;
+    virtual unsigned int getWidth() const;
 
     /**
      * @brief Checks if an area is on the map.
@@ -141,7 +148,7 @@ class Map
     /**
      * Draw a level.
      */
-    void mDrawLevel(Renderer& renderer, const Viewport& viewport, std::vector<std::pair<Point, Rectangle> >& tiles);
+    void mDrawLevel(Renderer& renderer, const Viewport& viewport, std::vector<std::pair<Point, Rectangle> >& tiles, int end_y = -1);
 };
 
 extern const unsigned int MAP_CELL_SIDE;

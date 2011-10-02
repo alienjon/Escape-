@@ -209,19 +209,7 @@ LevelInfo/Level.d LevelInfo/Level.o: ../LevelInfo/Level.cpp \
  ../LevelInfo/../Screens/GameScreen.hpp \
  ../LevelInfo/../Screens/../Game/Event.hpp \
  ../LevelInfo/../Screens/../Widgets/GameOptionsWidget.hpp \
- ../LevelInfo/../Screens/../Widgets/../Widgets/GameOptionsListModel.hpp \
- ../LevelInfo/../Screens/../Widgets/../Widgets/../guichan.hpp \
- ../LevelInfo/../Screens/../Widgets/../Widgets/GameOptions/GameSettingsWidget.hpp \
- ../LevelInfo/../Screens/../Widgets/../Widgets/GameOptions/../../guichan.hpp \
  ../LevelInfo/../Screens/../Widgets/../guichan.hpp \
- ../LevelInfo/../Screens/../Widgets/../Widgets/GameOptions/MessagesWidget.hpp \
- ../LevelInfo/../Screens/../Widgets/../Widgets/GameOptions/../../Widgets/GameOptions/MessageWidget.hpp \
- ../LevelInfo/../Screens/../Widgets/../Widgets/GameOptions/../../Widgets/GameOptions/../../guichan.hpp \
- ../LevelInfo/../Screens/../Widgets/../Widgets/GameOptions/../../Widgets/GameOptions/../../Engine/Timer.hpp \
- ../LevelInfo/../Screens/../Widgets/../Widgets/GameOptions/TasksWidget.hpp \
- ../LevelInfo/../Screens/../Widgets/../Widgets/GameOptions/../../Widgets/GameOptions/TasksContainerWidget.hpp \
- ../LevelInfo/../Screens/../Widgets/../Widgets/GameOptions/../../Widgets/GameOptions/../../Widgets/GameOptions/TaskWidget.hpp \
- ../LevelInfo/../Screens/../Widgets/../Widgets/GameOptions/../../Widgets/GameOptions/../../Widgets/GameOptions/../../guichan.hpp \
  ../LevelInfo/../Screens/../Widgets/GameOverWidget.hpp \
  ../LevelInfo/../Screens/../Widgets/../Listeners/CreatureMovedToPointListener.hpp \
  ../LevelInfo/../Screens/../Widgets/MenuButton.hpp \
@@ -246,6 +234,7 @@ LevelInfo/Level.d LevelInfo/Level.o: ../LevelInfo/Level.cpp \
  ../LevelInfo/../Screens/../Widgets/MessageDisplayWidget.hpp \
  ../LevelInfo/../Screens/../Widgets/../Engine/Sprite.hpp \
  ../LevelInfo/../Screens/../Widgets/../Widgets/SpriteWidget.hpp \
+ ../LevelInfo/../Screens/../Widgets/../Widgets/../guichan.hpp \
  ../LevelInfo/../Screens/../Widgets/../Widgets/../Listeners/AnimationCycleListener.hpp \
  ../LevelInfo/../Screens/../Widgets/../Widgets/../Engine/Sprite.hpp \
  ../LevelInfo/../Screens/../Widgets/../Engine/Timer.hpp \
@@ -705,31 +694,7 @@ LevelInfo/Level.d LevelInfo/Level.o: ../LevelInfo/Level.cpp \
 
 ../LevelInfo/../Screens/../Widgets/GameOptionsWidget.hpp:
 
-../LevelInfo/../Screens/../Widgets/../Widgets/GameOptionsListModel.hpp:
-
-../LevelInfo/../Screens/../Widgets/../Widgets/../guichan.hpp:
-
-../LevelInfo/../Screens/../Widgets/../Widgets/GameOptions/GameSettingsWidget.hpp:
-
-../LevelInfo/../Screens/../Widgets/../Widgets/GameOptions/../../guichan.hpp:
-
 ../LevelInfo/../Screens/../Widgets/../guichan.hpp:
-
-../LevelInfo/../Screens/../Widgets/../Widgets/GameOptions/MessagesWidget.hpp:
-
-../LevelInfo/../Screens/../Widgets/../Widgets/GameOptions/../../Widgets/GameOptions/MessageWidget.hpp:
-
-../LevelInfo/../Screens/../Widgets/../Widgets/GameOptions/../../Widgets/GameOptions/../../guichan.hpp:
-
-../LevelInfo/../Screens/../Widgets/../Widgets/GameOptions/../../Widgets/GameOptions/../../Engine/Timer.hpp:
-
-../LevelInfo/../Screens/../Widgets/../Widgets/GameOptions/TasksWidget.hpp:
-
-../LevelInfo/../Screens/../Widgets/../Widgets/GameOptions/../../Widgets/GameOptions/TasksContainerWidget.hpp:
-
-../LevelInfo/../Screens/../Widgets/../Widgets/GameOptions/../../Widgets/GameOptions/../../Widgets/GameOptions/TaskWidget.hpp:
-
-../LevelInfo/../Screens/../Widgets/../Widgets/GameOptions/../../Widgets/GameOptions/../../Widgets/GameOptions/../../guichan.hpp:
 
 ../LevelInfo/../Screens/../Widgets/GameOverWidget.hpp:
 
@@ -778,6 +743,8 @@ LevelInfo/Level.d LevelInfo/Level.o: ../LevelInfo/Level.cpp \
 ../LevelInfo/../Screens/../Widgets/../Engine/Sprite.hpp:
 
 ../LevelInfo/../Screens/../Widgets/../Widgets/SpriteWidget.hpp:
+
+../LevelInfo/../Screens/../Widgets/../Widgets/../guichan.hpp:
 
 ../LevelInfo/../Screens/../Widgets/../Widgets/../Listeners/AnimationCycleListener.hpp:
 

@@ -5,7 +5,6 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
 ../Widgets/FPSDisplayWidget.cpp \
-../Widgets/GameOptionsListModel.cpp \
 ../Widgets/GameOptionsWidget.cpp \
 ../Widgets/GameOverWidget.cpp \
 ../Widgets/MenuButton.cpp \
@@ -14,7 +13,6 @@ CPP_SRCS += \
 
 OBJS += \
 ./Widgets/FPSDisplayWidget.o \
-./Widgets/GameOptionsListModel.o \
 ./Widgets/GameOptionsWidget.o \
 ./Widgets/GameOverWidget.o \
 ./Widgets/MenuButton.o \
@@ -23,7 +21,6 @@ OBJS += \
 
 CPP_DEPS += \
 ./Widgets/FPSDisplayWidget.d \
-./Widgets/GameOptionsListModel.d \
 ./Widgets/GameOptionsWidget.d \
 ./Widgets/GameOverWidget.d \
 ./Widgets/MenuButton.d \
