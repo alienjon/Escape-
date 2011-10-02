@@ -254,6 +254,7 @@ Actions/DisplayMessageAction.d Actions/DisplayMessageAction.o: \
  ../Actions/../Screens/../Engine/Viewport.hpp \
  ../Actions/../Screens/../Engine/Sprite.hpp \
  ../Actions/../Screens/../Engine/Timer.hpp \
+ ../Actions/../Screens/../Widgets/TimerWidget.hpp \
  ../Actions/../Screens/../Math/Vector.hpp ../Actions/../guichan.hpp
 
 ../Actions/DisplayMessageAction.hpp:
@@ -769,6 +770,8 @@ Actions/DisplayMessageAction.d Actions/DisplayMessageAction.o: \
 ../Actions/../Screens/../Engine/Sprite.hpp:
 
 ../Actions/../Screens/../Engine/Timer.hpp:
+
+../Actions/../Screens/../Widgets/TimerWidget.hpp:
 
 ../Actions/../Screens/../Math/Vector.hpp:
 

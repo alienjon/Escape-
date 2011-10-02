@@ -20,10 +20,9 @@ class FPSDisplayWidget : public gcn::Label
 {
 	public:
 	/**
-	 * @brief A widget that displays the current framerate.
+	 * @brief A widget that displays the current frame rate.
 	 */
 	FPSDisplayWidget();
-	virtual ~FPSDisplayWidget();
 
 	/**
 	 * @brief Perform internal logic.

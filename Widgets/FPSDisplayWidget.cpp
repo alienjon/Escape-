@@ -4,7 +4,6 @@
  *  Created on: Mar 30, 2009
  *      Author: alienjon
  */
-
 #include "FPSDisplayWidget.hpp"
 
 #include "../Game/Game.hpp"
@@ -17,10 +16,6 @@ FPSDisplayWidget::FPSDisplayWidget() : gcn::Label()
 
 	// Set the font.
 	setFont(FontManager::get(FONT_DEFAULT));
-}
-
-FPSDisplayWidget::~FPSDisplayWidget()
-{
 }
 
 void FPSDisplayWidget::logic()

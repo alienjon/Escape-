@@ -246,7 +246,8 @@ Screens/GameScreen.d Screens/GameScreen.o: ../Screens/GameScreen.cpp \
  ../Screens/../Managers/../Math/Rectangle.hpp \
  ../Screens/../Managers/../Engine/Surface.hpp \
  ../Screens/../Engine/Viewport.hpp ../Screens/../Engine/Sprite.hpp \
- ../Screens/../Engine/Timer.hpp ../Screens/../Math/Vector.hpp \
+ ../Screens/../Engine/Timer.hpp ../Screens/../Widgets/TimerWidget.hpp \
+ ../Screens/../Math/Vector.hpp \
  ../Screens/../Managers/AnimationManager.hpp \
  ../Screens/../Entities/Entity.hpp ../Screens/../Game/Keywords.hpp \
  ../Screens/../Engine/Logger.hpp ../Screens/../Engine/../guichan.hpp
@@ -760,6 +761,8 @@ Screens/GameScreen.d Screens/GameScreen.o: ../Screens/GameScreen.cpp \
 ../Screens/../Engine/Sprite.hpp:
 
 ../Screens/../Engine/Timer.hpp:
+
+../Screens/../Widgets/TimerWidget.hpp:
 
 ../Screens/../Math/Vector.hpp:
 

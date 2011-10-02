@@ -256,6 +256,7 @@ LevelInfo/Level.d LevelInfo/Level.o: ../LevelInfo/Level.cpp \
  ../LevelInfo/../Screens/../Engine/Viewport.hpp \
  ../LevelInfo/../Screens/../Engine/Sprite.hpp \
  ../LevelInfo/../Screens/../Engine/Timer.hpp \
+ ../LevelInfo/../Screens/../Widgets/TimerWidget.hpp \
  ../LevelInfo/../Screens/../Math/Vector.hpp \
  ../LevelInfo/../Game/Keywords.hpp ../LevelInfo/../Engine/Logger.hpp \
  ../LevelInfo/../main.hpp ../LevelInfo/../Entities/Creatures/Player.hpp \
@@ -787,6 +788,8 @@ LevelInfo/Level.d LevelInfo/Level.o: ../LevelInfo/Level.cpp \
 ../LevelInfo/../Screens/../Engine/Sprite.hpp:
 
 ../LevelInfo/../Screens/../Engine/Timer.hpp:
+
+../LevelInfo/../Screens/../Widgets/TimerWidget.hpp:
 
 ../LevelInfo/../Screens/../Math/Vector.hpp:
 

@@ -219,11 +219,17 @@ void GameScreen::load(GUI* gui)
     // Add the OSDs to the screen.
     mBase.add(&mMessageOSD);
 
+    // Add the timer widget.
+    mBase.add(&mTimerWidget);
+
     // Load the level at the current difficulty.
     mLevel = new Level(mDifficulty, mPlayer, this);
 
     // Set level listeners.
     mLevel->addEventListener(this);
+
+    // Start the timer.
+    mTimerWidget.start();
 }
 
 void GameScreen::logic()
@@ -231,6 +237,9 @@ void GameScreen::logic()
 	// Before any logic has been done, check if the next level should be loaded.
 	if(mLevel->isDone())//@todo display score, do a little dance, and maybe some other graphical stuff prior to loading the next level, for now the next level just loads.
 	{
+		// Stop the timer.
+		mTimerWidget.stop();
+
 		// Unload the current level.
 		mLevel->removeEventListener(this);
 		delete mLevel;
@@ -250,4 +259,7 @@ void GameScreen::logic()
     {
 		mLevel->logic();
     }
+
+    // Update the position of the timer.
+    mTimerWidget.setPosition((mBase.getWidth() / 2) - (mTimerWidget.getWidth() / 2), 0);
 }

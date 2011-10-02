@@ -25,6 +25,7 @@
 #include "Screen.hpp"
 #include "../Engine/Sprite.hpp"
 #include "../Engine/Timer.hpp"
+#include "../Widgets/TimerWidget.hpp"
 #include "../Math/Vector.hpp"
 
 class Entity;
@@ -129,6 +130,11 @@ class GameScreen : public gcn::ActionListener, public Screen
      * The game screen's input timer.
      */
     Timer mInputTimer;
+
+    /**
+     * The timer widget.
+     */
+    TimerWidget mTimerWidget;
 };
 
 #endif /* GAMESCREEN_HPP_ */

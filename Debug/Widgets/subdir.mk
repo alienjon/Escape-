@@ -9,7 +9,8 @@ CPP_SRCS += \
 ../Widgets/GameOverWidget.cpp \
 ../Widgets/MenuButton.cpp \
 ../Widgets/MessageDisplayWidget.cpp \
-../Widgets/SpriteWidget.cpp 
+../Widgets/SpriteWidget.cpp \
+../Widgets/TimerWidget.cpp 
 
 OBJS += \
 ./Widgets/FPSDisplayWidget.o \
@@ -17,7 +18,8 @@ OBJS += \
 ./Widgets/GameOverWidget.o \
 ./Widgets/MenuButton.o \
 ./Widgets/MessageDisplayWidget.o \
-./Widgets/SpriteWidget.o 
+./Widgets/SpriteWidget.o \
+./Widgets/TimerWidget.o 
 
 CPP_DEPS += \
 ./Widgets/FPSDisplayWidget.d \
@@ -25,7 +27,8 @@ CPP_DEPS += \
 ./Widgets/GameOverWidget.d \
 ./Widgets/MenuButton.d \
 ./Widgets/MessageDisplayWidget.d \
-./Widgets/SpriteWidget.d 
+./Widgets/SpriteWidget.d \
+./Widgets/TimerWidget.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

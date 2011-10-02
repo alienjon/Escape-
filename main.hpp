@@ -208,4 +208,20 @@ std::string formatStringToFit(std::string str, gcn::Font* font, const int width)
  */
 bool isPointInTriangle(const Vector& a, const Vector& b, const Vector& c, const Vector& p);
 
+/**
+ * @brief Essentially takes the provided string and returns a new string that contains only the first two numbers.
+ * @param time The time to convert.
+ * @return The converted string to a time-comfortable format.
+ * @note This function essentially takes the first two digits of the provided time.
+ */
+std::string convertToTimeFormat(const std::string& time);
+
+/**
+ * @brief Convert the provided value into a string that represents the time.
+ * @param time The time, in ms.
+ * @return The string value of the time.
+ */
+std::string convertToTime(unsigned int time);
+
+
 #endif /* MAIN_HPP_ */

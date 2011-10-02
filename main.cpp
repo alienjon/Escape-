@@ -230,6 +230,31 @@ bool isVectorInTriangle(const Vector& a, const Vector& b, const Vector& c, const
     return (u > 0) && (v > 0) && (u + v < 1);
 }
 
+string convertToTimeFormat(const string& time)
+{
+    if(time.size() > 1)
+        return time.substr(0, 2);
+    else if(!time.empty())
+        return "0" + time.substr(0, 1);
+    else
+        return "00";
+}
+
+string convertToTime(unsigned int time)
+{
+    // Convert the time, damnit!
+    string milliseconds = toString(time);
+    if(time >= 1000)
+    {
+        milliseconds = milliseconds.substr(milliseconds.size() - 3);
+    }
+    unsigned int seconds = time / 1000;
+    int seconds_formatted = (seconds < 60) ? seconds : seconds % 60;
+    unsigned int minutes = seconds / 60;
+    return convertToTimeFormat(toString(minutes)) + ":" + convertToTimeFormat(toString(seconds_formatted)) + ":" + convertToTimeFormat(milliseconds);
+}
+
+
 void displayVersion()
 {
     clog << GAME_NAME << ": v." << GAME_VERSION << endl;

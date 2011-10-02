@@ -248,6 +248,7 @@ Game/Game.d Game/Game.o: ../Game/Game.cpp ../Game/Game.hpp \
  ../Game/../Screens/../Engine/Viewport.hpp \
  ../Game/../Screens/../Engine/Sprite.hpp \
  ../Game/../Screens/../Engine/Timer.hpp \
+ ../Game/../Screens/../Widgets/TimerWidget.hpp \
  ../Game/../Screens/../Math/Vector.hpp ../Game/../Screens/MenuScreen.hpp \
  ../Game/../Screens/../Listeners/CreatureMovedToPointListener.hpp \
  ../Game/../Screens/MenuScreenWidgets/CreditsMenu.hpp \
@@ -795,6 +796,8 @@ Game/Game.d Game/Game.o: ../Game/Game.cpp ../Game/Game.hpp \
 ../Game/../Screens/../Engine/Sprite.hpp:
 
 ../Game/../Screens/../Engine/Timer.hpp:
+
+../Game/../Screens/../Widgets/TimerWidget.hpp:
 
 ../Game/../Screens/../Math/Vector.hpp:
 
