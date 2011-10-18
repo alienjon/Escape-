@@ -1,4 +1,4 @@
-Engine/Timer.d Engine/Timer.o: ../Engine/Timer.cpp ../Engine/Timer.hpp \
+Engine/Timer.d: ../Engine/Timer.cpp ../Engine/Timer.hpp \
  ../Engine/../main.hpp ../Engine/../Game/Direction.hpp \
  ../Engine/../Game/../Math/Vector.hpp ../Engine/../guichan.hpp \
  ../Engine/../Guichan/actionevent.hpp ../Engine/../Guichan/event.hpp \

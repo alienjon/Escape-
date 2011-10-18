@@ -1,6 +1,5 @@
-Engine/Surface.d Engine/Surface.o: ../Engine/Surface.cpp \
- ../Engine/Surface.hpp ../Engine/../Guichan/sdl.hpp \
- ../Engine/../Guichan/sdl/sdlgraphics.hpp \
+Engine/Surface.d: ../Engine/Surface.cpp ../Engine/Surface.hpp \
+ ../Engine/../Guichan/sdl.hpp ../Engine/../Guichan/sdl/sdlgraphics.hpp \
  ../Engine/../Guichan/sdl/../color.hpp \
  ../Engine/../Guichan/sdl/../platform.hpp \
  ../Engine/../Guichan/sdl/../graphics.hpp \

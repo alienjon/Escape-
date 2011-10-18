@@ -1,5 +1,5 @@
-Entities/Non-Creatures/Item.d Entities/Non-Creatures/Item.o: \
- ../Entities/Non-Creatures/Item.cpp ../Entities/Non-Creatures/Item.hpp \
+Entities/Non-Creatures/Item.d: ../Entities/Non-Creatures/Item.cpp \
+ ../Entities/Non-Creatures/Item.hpp \
  ../Entities/Non-Creatures/../../Game/Direction.hpp \
  ../Entities/Non-Creatures/../../Game/../Math/Vector.hpp \
  ../Entities/Non-Creatures/../../Entities/Entity.hpp \

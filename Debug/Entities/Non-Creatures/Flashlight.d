@@ -1,4 +1,4 @@
-Entities/Non-Creatures/Flashlight.d Entities/Non-Creatures/Flashlight.o: \
+Entities/Non-Creatures/Flashlight.d: \
  ../Entities/Non-Creatures/Flashlight.cpp \
  ../Entities/Non-Creatures/Flashlight.hpp \
  ../Entities/Non-Creatures/../../Entities/Templates/EntityTemplate.hpp \

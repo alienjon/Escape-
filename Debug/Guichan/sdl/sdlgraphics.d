@@ -1,6 +1,6 @@
-Guichan/sdl/sdlgraphics.d Guichan/sdl/sdlgraphics.o: \
- ../Guichan/sdl/sdlgraphics.cpp ../Guichan/sdl/../sdl/sdlgraphics.hpp \
- ../Guichan/sdl/../sdl/../color.hpp ../Guichan/sdl/../sdl/../platform.hpp \
+Guichan/sdl/sdlgraphics.d: ../Guichan/sdl/sdlgraphics.cpp \
+ ../Guichan/sdl/../sdl/sdlgraphics.hpp ../Guichan/sdl/../sdl/../color.hpp \
+ ../Guichan/sdl/../sdl/../platform.hpp \
  ../Guichan/sdl/../sdl/../graphics.hpp \
  ../Guichan/sdl/../sdl/../cliprectangle.hpp \
  ../Guichan/sdl/../sdl/../rectangle.hpp \

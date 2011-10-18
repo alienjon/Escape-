@@ -1,6 +1,6 @@
-Guichan/sdl/sdl.d Guichan/sdl/sdl.o: ../Guichan/sdl/sdl.cpp \
- ../Guichan/sdl/../sdl.hpp ../Guichan/sdl/../sdl/sdlgraphics.hpp \
- ../Guichan/sdl/../sdl/../color.hpp ../Guichan/sdl/../sdl/../platform.hpp \
+Guichan/sdl/sdl.d: ../Guichan/sdl/sdl.cpp ../Guichan/sdl/../sdl.hpp \
+ ../Guichan/sdl/../sdl/sdlgraphics.hpp ../Guichan/sdl/../sdl/../color.hpp \
+ ../Guichan/sdl/../sdl/../platform.hpp \
  ../Guichan/sdl/../sdl/../graphics.hpp \
  ../Guichan/sdl/../sdl/../cliprectangle.hpp \
  ../Guichan/sdl/../sdl/../rectangle.hpp \

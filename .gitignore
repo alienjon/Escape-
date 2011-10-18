@@ -5,3 +5,4 @@ EscapeToolkit
 *.d
 *.o
 /mapfile.txt
+/minimap.bmp

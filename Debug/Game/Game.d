@@ -1,4 +1,4 @@
-Game/Game.d Game/Game.o: ../Game/Game.cpp ../Game/Game.hpp \
+Game/Game.d: ../Game/Game.cpp ../Game/Game.hpp \
  ../Game/../Listeners/CreatureMovedToPointListener.hpp \
  ../Game/../Engine/Cursor.hpp ../Game/../Engine/../Engine/Renderer.hpp \
  ../Game/../Engine/../Engine/../Math/Ellipse.hpp \
@@ -131,6 +131,7 @@ Game/Game.d Game/Game.o: ../Game/Game.cpp ../Game/Game.hpp \
  ../Game/../LevelInfo/Level.hpp \
  ../Game/../LevelInfo/../Interfaces/ActionInterface.hpp \
  ../Game/../LevelInfo/../Interfaces/../Actions/Action.hpp \
+ ../Game/../LevelInfo/../Listeners/ChangeScoreListener.hpp \
  ../Game/../LevelInfo/../Listeners/CreatureMovedToPointListener.hpp \
  ../Game/../LevelInfo/../LevelInfo/ElipData.hpp \
  ../Game/../LevelInfo/../LevelInfo/../Math/Ellipse.hpp \
@@ -190,7 +191,9 @@ Game/Game.d Game/Game.o: ../Game/Game.cpp ../Game/Game.hpp \
  ../Game/../Managers/AudioManager.hpp \
  ../Game/../Managers/../Listeners/SoundStoppedListener.hpp \
  ../Game/../Managers/FontManager.hpp ../Game/../Managers/../guichan.hpp \
- ../Game/../Screens/GameScreen.hpp ../Game/../Screens/../Game/Event.hpp \
+ ../Game/../Screens/GameScreen.hpp \
+ ../Game/../Screens/../Listeners/ChangeScoreListener.hpp \
+ ../Game/../Screens/../Game/Event.hpp \
  ../Game/../Screens/../Widgets/GameOptionsWidget.hpp \
  ../Game/../Screens/../Widgets/../guichan.hpp \
  ../Game/../Screens/../Widgets/GameOverWidget.hpp \
@@ -200,14 +203,24 @@ Game/Game.d Game/Game.o: ../Game/Game.cpp ../Game/Game.hpp \
  ../Game/../Screens/../Widgets/../Listeners/EventListener.hpp \
  ../Game/../Screens/../Game/GUI.hpp ../Game/../Screens/../guichan.hpp \
  ../Game/../Screens/../Game/Input.hpp \
+ ../Game/../Screens/../Widgets/GameScreenMenuBar.hpp \
+ ../Game/../Screens/../Widgets/../Widgets/MiniMap.hpp \
+ ../Game/../Screens/../Widgets/../Widgets/../guichan.hpp \
+ ../Game/../Screens/../Widgets/../Widgets/../Math/Rectangle.hpp \
+ ../Game/../Screens/../Widgets/../Widgets/../Engine/Surface.hpp \
+ ../Game/../Screens/../Widgets/../Widgets/../Engine/Viewport.hpp \
+ ../Game/../Screens/../Widgets/../Math/Rectangle.hpp \
+ ../Game/../Screens/../Widgets/../Engine/Surface.hpp \
+ ../Game/../Screens/../Widgets/../Widgets/TimerWidget.hpp \
+ ../Game/../Screens/../Widgets/../Widgets/../Engine/Timer.hpp \
  ../Game/../Screens/../LevelInfo/Level.hpp \
+ ../Game/../Screens/../Widgets/LevelCompleteWidget.hpp \
+ ../Game/../Screens/../Widgets/../Engine/Timer.hpp \
  ../Game/../Screens/../Widgets/MessageDisplayWidget.hpp \
  ../Game/../Screens/../Widgets/../Engine/Sprite.hpp \
  ../Game/../Screens/../Widgets/../Widgets/SpriteWidget.hpp \
- ../Game/../Screens/../Widgets/../Widgets/../guichan.hpp \
  ../Game/../Screens/../Widgets/../Widgets/../Listeners/AnimationCycleListener.hpp \
  ../Game/../Screens/../Widgets/../Widgets/../Engine/Sprite.hpp \
- ../Game/../Screens/../Widgets/../Engine/Timer.hpp \
  ../Game/../Screens/../Entities/Creatures/Player.hpp \
  ../Game/../Screens/../Entities/Creatures/Creature.hpp \
  ../Game/../Screens/../Entities/Creatures/../../Managers/AnimationManager.hpp \
@@ -248,7 +261,6 @@ Game/Game.d Game/Game.o: ../Game/Game.cpp ../Game/Game.hpp \
  ../Game/../Screens/../Engine/Viewport.hpp \
  ../Game/../Screens/../Engine/Sprite.hpp \
  ../Game/../Screens/../Engine/Timer.hpp \
- ../Game/../Screens/../Widgets/TimerWidget.hpp \
  ../Game/../Screens/../Math/Vector.hpp ../Game/../Screens/MenuScreen.hpp \
  ../Game/../Screens/../Listeners/CreatureMovedToPointListener.hpp \
  ../Game/../Screens/MenuScreenWidgets/CreditsMenu.hpp \
@@ -553,6 +565,8 @@ Game/Game.d Game/Game.o: ../Game/Game.cpp ../Game/Game.hpp \
 
 ../Game/../LevelInfo/../Interfaces/../Actions/Action.hpp:
 
+../Game/../LevelInfo/../Listeners/ChangeScoreListener.hpp:
+
 ../Game/../LevelInfo/../Listeners/CreatureMovedToPointListener.hpp:
 
 ../Game/../LevelInfo/../LevelInfo/ElipData.hpp:
@@ -677,6 +691,8 @@ Game/Game.d Game/Game.o: ../Game/Game.cpp ../Game/Game.hpp \
 
 ../Game/../Screens/GameScreen.hpp:
 
+../Game/../Screens/../Listeners/ChangeScoreListener.hpp:
+
 ../Game/../Screens/../Game/Event.hpp:
 
 ../Game/../Screens/../Widgets/GameOptionsWidget.hpp:
@@ -699,7 +715,31 @@ Game/Game.d Game/Game.o: ../Game/Game.cpp ../Game/Game.hpp \
 
 ../Game/../Screens/../Game/Input.hpp:
 
+../Game/../Screens/../Widgets/GameScreenMenuBar.hpp:
+
+../Game/../Screens/../Widgets/../Widgets/MiniMap.hpp:
+
+../Game/../Screens/../Widgets/../Widgets/../guichan.hpp:
+
+../Game/../Screens/../Widgets/../Widgets/../Math/Rectangle.hpp:
+
+../Game/../Screens/../Widgets/../Widgets/../Engine/Surface.hpp:
+
+../Game/../Screens/../Widgets/../Widgets/../Engine/Viewport.hpp:
+
+../Game/../Screens/../Widgets/../Math/Rectangle.hpp:
+
+../Game/../Screens/../Widgets/../Engine/Surface.hpp:
+
+../Game/../Screens/../Widgets/../Widgets/TimerWidget.hpp:
+
+../Game/../Screens/../Widgets/../Widgets/../Engine/Timer.hpp:
+
 ../Game/../Screens/../LevelInfo/Level.hpp:
+
+../Game/../Screens/../Widgets/LevelCompleteWidget.hpp:
+
+../Game/../Screens/../Widgets/../Engine/Timer.hpp:
 
 ../Game/../Screens/../Widgets/MessageDisplayWidget.hpp:
 
@@ -707,13 +747,9 @@ Game/Game.d Game/Game.o: ../Game/Game.cpp ../Game/Game.hpp \
 
 ../Game/../Screens/../Widgets/../Widgets/SpriteWidget.hpp:
 
-../Game/../Screens/../Widgets/../Widgets/../guichan.hpp:
-
 ../Game/../Screens/../Widgets/../Widgets/../Listeners/AnimationCycleListener.hpp:
 
 ../Game/../Screens/../Widgets/../Widgets/../Engine/Sprite.hpp:
-
-../Game/../Screens/../Widgets/../Engine/Timer.hpp:
 
 ../Game/../Screens/../Entities/Creatures/Player.hpp:
 
@@ -796,8 +832,6 @@ Game/Game.d Game/Game.o: ../Game/Game.cpp ../Game/Game.hpp \
 ../Game/../Screens/../Engine/Sprite.hpp:
 
 ../Game/../Screens/../Engine/Timer.hpp:
-
-../Game/../Screens/../Widgets/TimerWidget.hpp:
 
 ../Game/../Screens/../Math/Vector.hpp:
 

@@ -1,2 +1,1 @@
-Actions/FastSearchAction.d Actions/FastSearchAction.o: \
- ../Actions/FastSearchAction.cpp
+Actions/FastSearchAction.d: ../Actions/FastSearchAction.cpp

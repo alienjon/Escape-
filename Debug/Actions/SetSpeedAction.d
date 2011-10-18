@@ -1,6 +1,6 @@
-Actions/SetSpeedAction.d Actions/SetSpeedAction.o: \
- ../Actions/SetSpeedAction.cpp ../Actions/SetSpeedAction.hpp \
- ../Actions/Action.hpp ../Actions/../Entities/Creatures/Creature.hpp \
+Actions/SetSpeedAction.d: ../Actions/SetSpeedAction.cpp \
+ ../Actions/SetSpeedAction.hpp ../Actions/Action.hpp \
+ ../Actions/../Entities/Creatures/Creature.hpp \
  ../Actions/../Entities/Creatures/../../Managers/AnimationManager.hpp \
  ../Actions/../Entities/Creatures/../../Managers/../Engine/Sprite.hpp \
  ../Actions/../Entities/Creatures/../../Managers/../Engine/../guichan.hpp \

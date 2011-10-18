@@ -1,7 +1,7 @@
-Widgets/FPSDisplayWidget.d Widgets/FPSDisplayWidget.o: \
- ../Widgets/FPSDisplayWidget.cpp ../Widgets/FPSDisplayWidget.hpp \
- ../Widgets/../guichan.hpp ../Widgets/../Guichan/actionevent.hpp \
- ../Widgets/../Guichan/event.hpp ../Widgets/../Guichan/platform.hpp \
+Widgets/FPSDisplayWidget.d: ../Widgets/FPSDisplayWidget.cpp \
+ ../Widgets/FPSDisplayWidget.hpp ../Widgets/../guichan.hpp \
+ ../Widgets/../Guichan/actionevent.hpp ../Widgets/../Guichan/event.hpp \
+ ../Widgets/../Guichan/platform.hpp \
  ../Widgets/../Guichan/actionlistener.hpp \
  ../Widgets/../Guichan/actionevent.hpp \
  ../Widgets/../Guichan/cliprectangle.hpp \

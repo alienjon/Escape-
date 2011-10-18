@@ -23,6 +23,12 @@ class TimerWidget : public gcn::Label
 	TimerWidget();
 
 	/**
+	 * @brief Get the current timer's time.
+	 * @return The timer's current time.
+	 */
+	virtual unsigned int getTime() const;
+
+	/**
 	 * @brief Perform logic.
 	 */
 	virtual void logic();

@@ -1,8 +1,8 @@
-Guichan/widgets/imagebutton.d Guichan/widgets/imagebutton.o: \
- ../Guichan/widgets/imagebutton.cpp ../Guichan/widgets/imagebutton.hpp \
- ../Guichan/widgets/../platform.hpp ../Guichan/widgets/button.hpp \
- ../Guichan/widgets/../focuslistener.hpp ../Guichan/widgets/../event.hpp \
- ../Guichan/widgets/../platform.hpp ../Guichan/widgets/../graphics.hpp \
+Guichan/widgets/imagebutton.d: ../Guichan/widgets/imagebutton.cpp \
+ ../Guichan/widgets/imagebutton.hpp ../Guichan/widgets/../platform.hpp \
+ ../Guichan/widgets/button.hpp ../Guichan/widgets/../focuslistener.hpp \
+ ../Guichan/widgets/../event.hpp ../Guichan/widgets/../platform.hpp \
+ ../Guichan/widgets/../graphics.hpp \
  ../Guichan/widgets/../cliprectangle.hpp \
  ../Guichan/widgets/../rectangle.hpp \
  ../Guichan/widgets/../keylistener.hpp ../Guichan/widgets/../keyevent.hpp \

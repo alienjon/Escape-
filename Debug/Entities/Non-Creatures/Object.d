@@ -1,5 +1,4 @@
-Entities/Non-Creatures/Object.d Entities/Non-Creatures/Object.o: \
- ../Entities/Non-Creatures/Object.cpp \
+Entities/Non-Creatures/Object.d: ../Entities/Non-Creatures/Object.cpp \
  ../Entities/Non-Creatures/Object.hpp \
  ../Entities/Non-Creatures/../../Entities/Entity.hpp \
  ../Entities/Non-Creatures/../../Entities/../Interfaces/ActionInterface.hpp \

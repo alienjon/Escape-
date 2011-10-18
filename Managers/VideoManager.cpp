@@ -10,6 +10,7 @@
 #include <stdexcept>
 
 #include "SDL/SDL_image.h"
+#include "SDL/SDL_rotozoom.h"
 
 #include "../Engine/Logger.hpp"
 #include "../main.hpp"
@@ -118,6 +119,17 @@ Surface* VideoManager::mCreateImage(const string& filename, const Rectangle& are
 	return image;
 }
 
+string VideoManager::mFindFilename(const Surface* surface)
+{
+	for(map<string, SDL_Surface*>::iterator it = mLoadedSurfaces.begin(); it != mLoadedSurfaces.end(); it++)
+	{
+		if(it->second == surface->getSurface())
+			return it->first;
+	}
+
+	return "";
+}
+
 SDL_Surface* VideoManager::mFindSurface(const string& filename)
 {
 	// If the surface is already loaded, then create a new image with that surface.
@@ -143,8 +155,7 @@ SDL_Surface* VideoManager::mGenerateSurface(const string& filename, bool convert
 		 * they are all (at least right now all) static images, in that alterations
 		 * are not made to the physical image itself.  It is in these cases that RLE
 		 * can greatly improve performance.  In any case, I'm keeping this information here
-		 * only until I hear back from the Gentoo forums and determine if there is a
-		 * better/faster way of loading/optimizing surfaces.
+		 * only until I determine if there is a better/faster way of loading/optimizing surfaces.
 		 */
 //		SDL_Surface* loadedSurface = IMG_Load(filename.c_str());
 //		if(!loadedSurface)
@@ -211,6 +222,32 @@ void VideoManager::create()
     }
 }
 
+Surface* VideoManager::createSDL_Surface(unsigned int width, unsigned int height)
+{
+	static unsigned int i = 0;
+	if(mVideoManager)
+	{
+		// Create a new SDL_Surface*.
+		SDL_Surface* sdlSurface = SDL_CreateRGBSurface(SDL_SWSURFACE, width, height, 32, 0, 0, 0, SDL_ALPHA_OPAQUE);
+		SDL_Surface* sdlSurface2 = mVideoManager->mConvertSurface(sdlSurface);
+		SDL_FreeSurface(sdlSurface);
+	    mVideoManager->mLoadedSurfaces["autoimage_" + toString(i++)] = sdlSurface2;
+
+		// Create the image.
+		Surface* image = new Surface(sdlSurface2);
+
+		// Store the image.
+		mVideoManager->mLoadedImages.push_back(image);
+
+		// Return the created image.
+		return image;
+	}
+	else
+	{
+		throw runtime_error("VideoManager::createSDL_Surface() -> VideoManager not created.");
+	}
+}
+
 void VideoManager::displayVideoInfo()
 {
     char videoDriverName[64];
@@ -260,6 +297,38 @@ gcn::Image* VideoManager::load(const string& filename, bool convert)
 
 	// Create an image.
 	return mCreateImage(filename, NULL_RECTANGLE, convert);
+}
+
+Surface* VideoManager::zoom(const Surface* surface, double zoomX, double zoomY)
+{
+	// Make sure the video manager is loaded.
+	if(!mVideoManager)
+	{
+		throw runtime_error("VideoManager::zoomSurface() -> Video manager not created.");
+	}
+
+	// First see if the surface exists.
+	string name = mVideoManager->mFindFilename(surface);
+
+	// If the filename was not found, then enter a warning.
+	if(name.empty())
+	{
+		Logger::warn("Zooming surface, but original filename not found.");
+		name = "zoomedsurface_";
+	}
+
+	// Increment the counter for zoomed surfaces.
+	static int i = 0;
+	name += toString(i++);
+
+	// Get the scaled image.
+	SDL_Surface* scaled = zoomSurface(surface->getSurface(), zoomX, zoomY, SMOOTHING_OFF);
+	SDL_Surface* scaled2= mVideoManager->mConvertSurface(scaled);
+	SDL_FreeSurface(scaled);
+	Surface* ret = new Surface(scaled2);
+	mVideoManager->mLoadedSurfaces[name] = scaled2;
+	mVideoManager->mLoadedImages.push_back(ret);
+	return ret;
 }
 
 void VideoManager::terminate()

@@ -1,5 +1,5 @@
-Engine/Viewport.d Engine/Viewport.o: ../Engine/Viewport.cpp \
- ../Engine/Viewport.hpp ../Engine/../Math/Quadrilateral.hpp \
+Engine/Viewport.d: ../Engine/Viewport.cpp ../Engine/Viewport.hpp \
+ ../Engine/../Math/Quadrilateral.hpp \
  ../Engine/../Math/../Math/Polygon.hpp \
  ../Engine/../Math/../Math/../Math/Vector.hpp \
  ../Engine/../Math/../Math/Rectangle.hpp \

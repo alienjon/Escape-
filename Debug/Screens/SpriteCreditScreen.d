@@ -1,5 +1,5 @@
-Screens/SpriteCreditScreen.d Screens/SpriteCreditScreen.o: \
- ../Screens/SpriteCreditScreen.cpp ../Screens/SpriteCreditScreen.hpp \
+Screens/SpriteCreditScreen.d: ../Screens/SpriteCreditScreen.cpp \
+ ../Screens/SpriteCreditScreen.hpp \
  ../Screens/../Listeners/CreatureMovedToPointListener.hpp \
  ../Screens/../Game/Event.hpp ../Screens/../Game/GUI.hpp \
  ../Screens/../Game/../guichan.hpp \

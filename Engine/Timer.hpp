@@ -1,8 +1,6 @@
 #ifndef TIMER_HPP
 #define TIMER_HPP
 
-typedef unsigned int uint;
-
 /**
  * @brief A basic timer class that utilizes SDL to keep track of time.
  *
@@ -54,27 +52,19 @@ class Timer
 	 * @brief Returns the current time since this timer was started or reset.
 	 * @return The time (in milliseconds) since the timer was started or reset.
 	 */
-	uint getTime();
+	unsigned int getTime() const;
 
 	private:
-	/**
-	 * The current time.
-	 */
-	uint mCurrentTime;
+	// The current time.
+	unsigned int mCurrentTime;
 
-	/**
-	 * The time the timer was paused.
-	 */
-	uint mPausedTime;
+	// The time the timer was paused.
+	unsigned int mPausedTime;
 
-	/**
-	 * True if the timer was running.
-	 */
+	// True if the timer was running
 	bool mRunning;
 
-	/**
-	 * True if the timer is paused.
-	 */
+	// True if the timer is paused.
 	bool mPaused;
 };
 

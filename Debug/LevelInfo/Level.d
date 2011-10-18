@@ -1,6 +1,7 @@
-LevelInfo/Level.d LevelInfo/Level.o: ../LevelInfo/Level.cpp \
- ../LevelInfo/Level.hpp ../LevelInfo/../Interfaces/ActionInterface.hpp \
+LevelInfo/Level.d: ../LevelInfo/Level.cpp ../LevelInfo/Level.hpp \
+ ../LevelInfo/../Interfaces/ActionInterface.hpp \
  ../LevelInfo/../Interfaces/../Actions/Action.hpp \
+ ../LevelInfo/../Listeners/ChangeScoreListener.hpp \
  ../LevelInfo/../Listeners/CreatureMovedToPointListener.hpp \
  ../LevelInfo/../LevelInfo/ElipData.hpp \
  ../LevelInfo/../LevelInfo/../Math/Ellipse.hpp \
@@ -206,60 +207,13 @@ LevelInfo/Level.d LevelInfo/Level.o: ../LevelInfo/Level.cpp \
  ../LevelInfo/../Entities/Creatures/../../Engine/Timer.hpp \
  ../LevelInfo/../Entities/Entity.hpp \
  ../LevelInfo/../Entities/EntityData.hpp \
- ../LevelInfo/../Screens/GameScreen.hpp \
- ../LevelInfo/../Screens/../Game/Event.hpp \
- ../LevelInfo/../Screens/../Widgets/GameOptionsWidget.hpp \
- ../LevelInfo/../Screens/../Widgets/../guichan.hpp \
- ../LevelInfo/../Screens/../Widgets/GameOverWidget.hpp \
- ../LevelInfo/../Screens/../Widgets/../Listeners/CreatureMovedToPointListener.hpp \
- ../LevelInfo/../Screens/../Widgets/MenuButton.hpp \
- ../LevelInfo/../Screens/../Widgets/../Game/Event.hpp \
- ../LevelInfo/../Screens/../Widgets/../Listeners/EventListener.hpp \
- ../LevelInfo/../Screens/../Game/GUI.hpp \
- ../LevelInfo/../Screens/../Game/../guichan.hpp \
- ../LevelInfo/../Screens/../Game/../Guichan/sdl.hpp \
- ../LevelInfo/../Screens/../Game/../Widgets/FPSDisplayWidget.hpp \
- ../LevelInfo/../Screens/../Game/../Widgets/../guichan.hpp \
- ../LevelInfo/../Screens/../Game/../Widgets/../main.hpp \
- ../LevelInfo/../Screens/../Game/../Widgets/../Game/Direction.hpp \
- ../LevelInfo/../Screens/../Game/../Widgets/../guichan.hpp \
- ../LevelInfo/../Screens/../Game/../Widgets/../Math/Vector.hpp \
- ../LevelInfo/../Screens/../Game/../Widgets/../Engine/Timer.hpp \
- ../LevelInfo/../Screens/../Game/../Engine/Renderer.hpp \
- ../LevelInfo/../Screens/../Game/../Engine/Surface.hpp \
- ../LevelInfo/../Screens/../Game/../Engine/Timer.hpp \
- ../LevelInfo/../Screens/../guichan.hpp \
- ../LevelInfo/../Screens/../Game/Input.hpp \
- ../LevelInfo/../Screens/../LevelInfo/Level.hpp \
- ../LevelInfo/../Screens/../Widgets/MessageDisplayWidget.hpp \
- ../LevelInfo/../Screens/../Widgets/../Engine/Sprite.hpp \
- ../LevelInfo/../Screens/../Widgets/../Widgets/SpriteWidget.hpp \
- ../LevelInfo/../Screens/../Widgets/../Widgets/../guichan.hpp \
- ../LevelInfo/../Screens/../Widgets/../Widgets/../Listeners/AnimationCycleListener.hpp \
- ../LevelInfo/../Screens/../Widgets/../Widgets/../Engine/Sprite.hpp \
- ../LevelInfo/../Screens/../Widgets/../Engine/Timer.hpp \
- ../LevelInfo/../Screens/../Entities/Creatures/Player.hpp \
- ../LevelInfo/../Screens/../Entities/Creatures/Creature.hpp \
- ../LevelInfo/../Screens/../Entities/Creatures/../../Game/Game.hpp \
- ../LevelInfo/../Screens/../Entities/Creatures/../../Game/Input.hpp \
- ../LevelInfo/../Screens/../Entities/Creatures/../../Engine/Timer.hpp \
- ../LevelInfo/../Screens/../Entities/Creatures/../../Math/Vector.hpp \
- ../LevelInfo/../Screens/../Engine/Renderer.hpp \
- ../LevelInfo/../Screens/Screen.hpp \
- ../LevelInfo/../Screens/../Game/Game.hpp \
- ../LevelInfo/../Screens/../Interfaces/EventInterface.hpp \
- ../LevelInfo/../Screens/../Listeners/EventListener.hpp \
- ../LevelInfo/../Screens/../Managers/VideoManager.hpp \
- ../LevelInfo/../Screens/../Managers/../guichan.hpp \
- ../LevelInfo/../Screens/../Managers/../Math/Rectangle.hpp \
- ../LevelInfo/../Screens/../Managers/../Engine/Surface.hpp \
- ../LevelInfo/../Screens/../Engine/Viewport.hpp \
- ../LevelInfo/../Screens/../Engine/Sprite.hpp \
- ../LevelInfo/../Screens/../Engine/Timer.hpp \
- ../LevelInfo/../Screens/../Widgets/TimerWidget.hpp \
- ../LevelInfo/../Screens/../Math/Vector.hpp \
  ../LevelInfo/../Game/Keywords.hpp ../LevelInfo/../Engine/Logger.hpp \
- ../LevelInfo/../main.hpp ../LevelInfo/../Entities/Creatures/Player.hpp \
+ ../LevelInfo/../main.hpp ../LevelInfo/../Game/Direction.hpp \
+ ../LevelInfo/../guichan.hpp ../LevelInfo/../Math/Vector.hpp \
+ ../LevelInfo/../Entities/Creatures/Player.hpp \
+ ../LevelInfo/../Entities/Creatures/Creature.hpp \
+ ../LevelInfo/../Entities/Creatures/../../Game/Game.hpp \
+ ../LevelInfo/../Entities/Creatures/../../Game/Input.hpp \
  ../LevelInfo/../Managers/TilesetManager.hpp \
  ../LevelInfo/../Managers/../Game/Tileset.hpp
 
@@ -268,6 +222,8 @@ LevelInfo/Level.d LevelInfo/Level.o: ../LevelInfo/Level.cpp \
 ../LevelInfo/../Interfaces/ActionInterface.hpp:
 
 ../LevelInfo/../Interfaces/../Actions/Action.hpp:
+
+../LevelInfo/../Listeners/ChangeScoreListener.hpp:
 
 ../LevelInfo/../Listeners/CreatureMovedToPointListener.hpp:
 
@@ -689,117 +645,25 @@ LevelInfo/Level.d LevelInfo/Level.o: ../LevelInfo/Level.cpp \
 
 ../LevelInfo/../Entities/EntityData.hpp:
 
-../LevelInfo/../Screens/GameScreen.hpp:
-
-../LevelInfo/../Screens/../Game/Event.hpp:
-
-../LevelInfo/../Screens/../Widgets/GameOptionsWidget.hpp:
-
-../LevelInfo/../Screens/../Widgets/../guichan.hpp:
-
-../LevelInfo/../Screens/../Widgets/GameOverWidget.hpp:
-
-../LevelInfo/../Screens/../Widgets/../Listeners/CreatureMovedToPointListener.hpp:
-
-../LevelInfo/../Screens/../Widgets/MenuButton.hpp:
-
-../LevelInfo/../Screens/../Widgets/../Game/Event.hpp:
-
-../LevelInfo/../Screens/../Widgets/../Listeners/EventListener.hpp:
-
-../LevelInfo/../Screens/../Game/GUI.hpp:
-
-../LevelInfo/../Screens/../Game/../guichan.hpp:
-
-../LevelInfo/../Screens/../Game/../Guichan/sdl.hpp:
-
-../LevelInfo/../Screens/../Game/../Widgets/FPSDisplayWidget.hpp:
-
-../LevelInfo/../Screens/../Game/../Widgets/../guichan.hpp:
-
-../LevelInfo/../Screens/../Game/../Widgets/../main.hpp:
-
-../LevelInfo/../Screens/../Game/../Widgets/../Game/Direction.hpp:
-
-../LevelInfo/../Screens/../Game/../Widgets/../guichan.hpp:
-
-../LevelInfo/../Screens/../Game/../Widgets/../Math/Vector.hpp:
-
-../LevelInfo/../Screens/../Game/../Widgets/../Engine/Timer.hpp:
-
-../LevelInfo/../Screens/../Game/../Engine/Renderer.hpp:
-
-../LevelInfo/../Screens/../Game/../Engine/Surface.hpp:
-
-../LevelInfo/../Screens/../Game/../Engine/Timer.hpp:
-
-../LevelInfo/../Screens/../guichan.hpp:
-
-../LevelInfo/../Screens/../Game/Input.hpp:
-
-../LevelInfo/../Screens/../LevelInfo/Level.hpp:
-
-../LevelInfo/../Screens/../Widgets/MessageDisplayWidget.hpp:
-
-../LevelInfo/../Screens/../Widgets/../Engine/Sprite.hpp:
-
-../LevelInfo/../Screens/../Widgets/../Widgets/SpriteWidget.hpp:
-
-../LevelInfo/../Screens/../Widgets/../Widgets/../guichan.hpp:
-
-../LevelInfo/../Screens/../Widgets/../Widgets/../Listeners/AnimationCycleListener.hpp:
-
-../LevelInfo/../Screens/../Widgets/../Widgets/../Engine/Sprite.hpp:
-
-../LevelInfo/../Screens/../Widgets/../Engine/Timer.hpp:
-
-../LevelInfo/../Screens/../Entities/Creatures/Player.hpp:
-
-../LevelInfo/../Screens/../Entities/Creatures/Creature.hpp:
-
-../LevelInfo/../Screens/../Entities/Creatures/../../Game/Game.hpp:
-
-../LevelInfo/../Screens/../Entities/Creatures/../../Game/Input.hpp:
-
-../LevelInfo/../Screens/../Entities/Creatures/../../Engine/Timer.hpp:
-
-../LevelInfo/../Screens/../Entities/Creatures/../../Math/Vector.hpp:
-
-../LevelInfo/../Screens/../Engine/Renderer.hpp:
-
-../LevelInfo/../Screens/Screen.hpp:
-
-../LevelInfo/../Screens/../Game/Game.hpp:
-
-../LevelInfo/../Screens/../Interfaces/EventInterface.hpp:
-
-../LevelInfo/../Screens/../Listeners/EventListener.hpp:
-
-../LevelInfo/../Screens/../Managers/VideoManager.hpp:
-
-../LevelInfo/../Screens/../Managers/../guichan.hpp:
-
-../LevelInfo/../Screens/../Managers/../Math/Rectangle.hpp:
-
-../LevelInfo/../Screens/../Managers/../Engine/Surface.hpp:
-
-../LevelInfo/../Screens/../Engine/Viewport.hpp:
-
-../LevelInfo/../Screens/../Engine/Sprite.hpp:
-
-../LevelInfo/../Screens/../Engine/Timer.hpp:
-
-../LevelInfo/../Screens/../Widgets/TimerWidget.hpp:
-
-../LevelInfo/../Screens/../Math/Vector.hpp:
-
 ../LevelInfo/../Game/Keywords.hpp:
 
 ../LevelInfo/../Engine/Logger.hpp:
 
 ../LevelInfo/../main.hpp:
 
+../LevelInfo/../Game/Direction.hpp:
+
+../LevelInfo/../guichan.hpp:
+
+../LevelInfo/../Math/Vector.hpp:
+
 ../LevelInfo/../Entities/Creatures/Player.hpp:
+
+../LevelInfo/../Entities/Creatures/Creature.hpp:
+
+../LevelInfo/../Entities/Creatures/../../Game/Game.hpp:
+
+../LevelInfo/../Entities/Creatures/../../Game/Input.hpp:
 
 ../LevelInfo/../Managers/TilesetManager.hpp:
 

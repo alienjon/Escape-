@@ -45,6 +45,12 @@ class Map
     virtual bool checkCollision(const Rectangle& area) const;
 
     /**
+     * @brief Make a copy of the map image.
+     * @return A copy of the map image.
+     */
+    virtual Surface* copyMapImage() const;
+
+    /**
      * @brief Draw the lower map (probably just the ground)
      * @param renderer The graphics object.
      * @param viewport The visible area on the screen.
@@ -67,6 +73,12 @@ class Map
     virtual void drawUpper(Renderer& renderer, const Viewport& viewport);
 
     /**
+     * @brief Get the complexity of the map.
+     * @return The complexity of the map (cellsWidth * cellsHeight)
+     */
+    virtual unsigned int getComplexity() const;
+
+    /**
      * @brief Get the location on the map that is the entrance for the player.
      * @return The entrance location.
      */
@@ -83,6 +95,7 @@ class Map
      * @return The height of the map.
      */
     virtual unsigned int getHeight() const;
+
 
     /**
      * @brief Get this map's tileset.

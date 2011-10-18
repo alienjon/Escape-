@@ -1,4 +1,4 @@
-Actions/SetWidgetVisibilityAction.d Actions/SetWidgetVisibilityAction.o: \
+Actions/SetWidgetVisibilityAction.d: \
  ../Actions/SetWidgetVisibilityAction.cpp \
  ../Actions/SetWidgetVisibilityAction.hpp ../Actions/../guichan.hpp \
  ../Actions/../Guichan/actionevent.hpp ../Actions/../Guichan/event.hpp \

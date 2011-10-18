@@ -1,5 +1,4 @@
-Screens/MenuScreenWidgets/OptionsMenu.d \
- Screens/MenuScreenWidgets/OptionsMenu.o: \
+Screens/MenuScreenWidgets/OptionsMenu.d: \
  ../Screens/MenuScreenWidgets/OptionsMenu.cpp \
  ../Screens/MenuScreenWidgets/OptionsMenu.hpp \
  ../Screens/MenuScreenWidgets/../../Listeners/CreatureMovedToPointListener.hpp \

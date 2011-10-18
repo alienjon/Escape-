@@ -69,7 +69,7 @@ void GUI::setBase(gcn::Container* container)
     {
     	try
     	{
-    		mFocusHandler->releaseModalFocus(mBase);
+//    		mFocusHandler->releaseModalFocus(mBase);@todo why is this here?
     		remove(mBase);
     	}
     	catch(gcn::Exception e)

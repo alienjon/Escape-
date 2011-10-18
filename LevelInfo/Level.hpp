@@ -14,6 +14,7 @@
 #include <string>
 
 #include "../Interfaces/ActionInterface.hpp"
+#include "../Listeners/ChangeScoreListener.hpp"
 #include "../Listeners/CreatureMovedToPointListener.hpp"
 #include "../LevelInfo/ElipData.hpp"
 #include "../Interfaces/EnvironmentInterface.hpp"
@@ -32,7 +33,6 @@
 #include "../Engine/Viewport.hpp"
 
 class Entity;
-class GameScreen;
 class Player;
 
 /**
@@ -48,10 +48,16 @@ class Level : public ActionInterface, public EnvironmentInterface, public EventI
      * @brief Construct a new level.
      * @param Difficulty The difficulty of the level to create.
      * @param player The player object.
-     * @param parent The parent gamescreen.
+     * @param viewport The screen's viewport.
      */
-    Level(unsigned int difficulty, Player& player, GameScreen* parent);
+    Level(unsigned int difficulty, Player& player, Viewport& viewport);
     virtual ~Level();
+
+    /**
+     * @brief Add a change score listener.
+     * @param listener The listener to add.
+     */
+    virtual void addChangeScoreListener(ChangeScoreListener* listener);
 
     /**
      * @brief Check if the provided entity collides with anything in the map.
@@ -88,10 +94,16 @@ class Level : public ActionInterface, public EnvironmentInterface, public EventI
     const Rectangle& getExitArea() const;
 
     /**
-     * @brief Return the viewport's offset.
-     * @return The viewport offset.
+     * @brief Get the map.
+     * @return The map.
      */
-    const Vector getViewportOffset() const;
+    const Map& getMap() const;
+
+    /**
+     * @brief Returns the viewport.
+     * @return The level's viewport.
+     */
+    const Viewport& getViewport() const;
 
     /**
      * @brief Handle input.
@@ -115,16 +127,17 @@ class Level : public ActionInterface, public EnvironmentInterface, public EventI
      */
     virtual void playerFoundExit();
 
+    /**
+     * @brief Remove a change score listener.
+     * @param listener The listener to remove.
+     */
+    virtual void removeChangeScoreListener(ChangeScoreListener* listener);
+
     private:
     /**
      * True if the level has completed.
      */
     bool mIsDone;
-
-    /**
-     * The viewport for this level.
-     */
-    Viewport mViewport;
 
     /**
      * The player handle.
@@ -142,15 +155,16 @@ class Level : public ActionInterface, public EnvironmentInterface, public EventI
     Map mMap;
 
     /**
-     * The level-based lights.
+     * The viewport for this level.
      */
+    Viewport& mViewport;
+
+    // The level-based lights.
     std::list<QuadData> mLightsQuad;
     std::list<ElipData> mLightsElip;
 
-    /**
-     * The parent gamescreen.
-     */
-    GameScreen* mGameScreen;
+    // A list of change score listeners.
+    std::list<ChangeScoreListener*> mChangeScoreListeners;
 };
 
 #endif /* LEVEL_HPP_ */

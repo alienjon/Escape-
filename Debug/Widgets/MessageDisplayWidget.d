@@ -1,7 +1,7 @@
-Widgets/MessageDisplayWidget.d Widgets/MessageDisplayWidget.o: \
- ../Widgets/MessageDisplayWidget.cpp ../Widgets/MessageDisplayWidget.hpp \
- ../Widgets/../guichan.hpp ../Widgets/../Guichan/actionevent.hpp \
- ../Widgets/../Guichan/event.hpp ../Widgets/../Guichan/platform.hpp \
+Widgets/MessageDisplayWidget.d: ../Widgets/MessageDisplayWidget.cpp \
+ ../Widgets/MessageDisplayWidget.hpp ../Widgets/../guichan.hpp \
+ ../Widgets/../Guichan/actionevent.hpp ../Widgets/../Guichan/event.hpp \
+ ../Widgets/../Guichan/platform.hpp \
  ../Widgets/../Guichan/actionlistener.hpp \
  ../Widgets/../Guichan/actionevent.hpp \
  ../Widgets/../Guichan/cliprectangle.hpp \

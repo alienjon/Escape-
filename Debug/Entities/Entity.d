@@ -1,5 +1,5 @@
-Entities/Entity.d Entities/Entity.o: ../Entities/Entity.cpp \
- ../Entities/Entity.hpp ../Entities/../Interfaces/ActionInterface.hpp \
+Entities/Entity.d: ../Entities/Entity.cpp ../Entities/Entity.hpp \
+ ../Entities/../Interfaces/ActionInterface.hpp \
  ../Entities/../Interfaces/../Actions/Action.hpp \
  ../Entities/../Listeners/AnimationCycleListener.hpp \
  ../Entities/../Listeners/DeathListener.hpp \
@@ -141,6 +141,7 @@ Entities/Entity.d Entities/Entity.o: ../Entities/Entity.cpp \
  ../Entities/../Game/../Engine/Timer.hpp ../Entities/../Game/Keywords.hpp \
  ../Entities/../LevelInfo/Level.hpp \
  ../Entities/../LevelInfo/../Interfaces/ActionInterface.hpp \
+ ../Entities/../LevelInfo/../Listeners/ChangeScoreListener.hpp \
  ../Entities/../LevelInfo/../Listeners/CreatureMovedToPointListener.hpp \
  ../Entities/../LevelInfo/../LevelInfo/ElipData.hpp \
  ../Entities/../LevelInfo/../LevelInfo/../Math/Ellipse.hpp \
@@ -498,6 +499,8 @@ Entities/Entity.d Entities/Entity.o: ../Entities/Entity.cpp \
 ../Entities/../LevelInfo/Level.hpp:
 
 ../Entities/../LevelInfo/../Interfaces/ActionInterface.hpp:
+
+../Entities/../LevelInfo/../Listeners/ChangeScoreListener.hpp:
 
 ../Entities/../LevelInfo/../Listeners/CreatureMovedToPointListener.hpp:
 

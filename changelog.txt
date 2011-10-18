@@ -1,3 +1,13 @@
+::::WHAT NEXT::::
+CREATE BAD GUYS
+	CREATE THE BASIC ZOMBIE THAT WANDERS AROUND AND RUNS AT THE PLAYER WHEN HE IS SEEN (WITHIN RANGE)
+	IF THE PLAYER IS TOUCHED BY THE ZOMBIE, THE PLAYER DIES (OR IS THERE HEALTH?)
+	THE ZOMBIES SHOULD BE RANDOMLY CREATED THROUGHOUT THE MAP AT A RANDOM INTERVAL (UP TO A MAXIMUM AMOUNT DETERMINED PER LEVEL, ETC...)
+CREATE WEAPONS
+	...
+
+
+
 The numbering system for Escape! follows that the right most number is for bug fixes,
 the middle number is for minor releases and bugfixes and the left number is for major
 releases, minor release content and bugfixes.

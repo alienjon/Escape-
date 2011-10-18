@@ -10,6 +10,8 @@
 #include <stdexcept>
 #include <stack>
 
+#include "SDL/SDL.h"
+
 #include "../Engine/Colors.hpp"
 #include "../Game/Game.hpp"
 #include "../Engine/Logger.hpp"
@@ -17,6 +19,7 @@
 #include "../Math/Point.hpp"
 #include "../Game/TileLevel.hpp"
 #include "../Game/TileType.hpp"
+#include "../Managers/VideoManager.hpp"
 
 using std::ostream;
 using std::pair;
@@ -256,24 +259,25 @@ Map::Map(unsigned int width, unsigned int height, const Tileset* tileset) :
 	mExitArea.width	   = tile_width * 2;
 	mExitArea.height   = exitareaheight;
 
-cout << "entrance->" << entrance << " - " << "exit->" << exit << endl;//@todo remove when done
+	if(Game::isDebug())
+		Logger::log("Entrance(" + toString(entrance.x) + ", " + toString(entrance.y) + ") - Exit(" + toString(exit.x) + ", " + toString(exit.y) + ")");
 
 	// Now create the rest of the tiles.
-	for(unsigned int cell_y = 0; cell_y != mHeight; ++cell_y)
+	for(int cell_y = 0; cell_y != (int)mHeight; ++cell_y)
 	{
-		for(unsigned int cell_x = 0; cell_x != mWidth; ++cell_x)
+		for(int cell_x = 0; cell_x != (int)mWidth; ++cell_x)
 		{
 			// Single cells are square collections of tiles.
-			for(unsigned int y = 0; y != MAP_CELL_SIDE; ++y)
+			for(int y = 0; y != (int)MAP_CELL_SIDE; ++y)
 			{
-				for(unsigned int x = 0; x != MAP_CELL_SIDE; ++x)
+				for(int x = 0; x != (int)MAP_CELL_SIDE; ++x)
 				{
 					// The current cell and the tile type.
 					Cell cell = cells[cell_y][cell_x];
 					TileType tile = TILE_EMPTYFLOOR;
 
 					// If this cell is the entrance or exit, and if this is the second or third tile in those cells, put in the door.
-					if((((int)cell_x == entrance.x && (int)cell_y == entrance.y) || ((int)cell_x == exit.x && (int)cell_y == exit.y)) && y == 0 && (x == 1 || x == 2))
+					if(((cell_x == entrance.x && cell_y == entrance.y) || (cell_x == exit.x && cell_y == exit.y)) && y == 0 && (x == 1 || x == 2))
 					{
 						if(x == 1)
 						{
@@ -398,15 +402,63 @@ bool Map::checkCollision(const Rectangle& area) const
 	return false;
 }
 
+Surface* Map::copyMapImage() const
+{
+	// Create a blank surface.
+	Surface* destSurface = VideoManager::createSDL_Surface(getWidth(), getHeight());
+
+	// Copy the map to the surface.
+	unsigned int width_in_tiles = mWidth * MAP_CELL_SIDE;
+	const Surface* srcSurface = mTileset->getTilesetSurface();
+	SDL_Rect destArea, lArea, mArea, uArea, topRow;
+	destArea.w = (Uint16)mTileset->getWidth();
+	destArea.h = (Uint16)mTileset->getHeight();
+	topRow.x = 0;
+	topRow.y = 0;
+	topRow.w = (Uint16)(getWidth() / mTileset->getWidth());
+	topRow.h = (Uint16)(mTileset->getHeight());
+	Uint16 color = 0x000000;
+
+	// Draw a blank area in the top row.
+	SDL_FillRect(destSurface->getSurface(), &topRow, color);
+
+	for(int y = 0; y != (int)(getHeight() / mTileset->getHeight());  ++y)
+	{
+		for(int x = 0; x != (int)(getWidth() / mTileset->getWidth()); ++x)
+		{
+			destArea.x = (Uint16)x * mTileset->getWidth();
+			destArea.y = (Uint16)y * mTileset->getHeight();
+
+			destArea.y += mTileset->getHeight();
+			lArea.x = mLMap.at(y * width_in_tiles + x).second.vector.x;
+			lArea.y = mLMap.at(y * width_in_tiles + x).second.vector.y;
+			lArea.w = mLMap.at(y * width_in_tiles + x).second.width;
+			lArea.h = mLMap.at(y * width_in_tiles + x).second.height;
+			mArea.x = mMMap.at(y * width_in_tiles + x).second.vector.x;
+			mArea.y = mMMap.at(y * width_in_tiles + x).second.vector.y;
+			mArea.w = mMMap.at(y * width_in_tiles + x).second.width;
+			mArea.h = mMMap.at(y * width_in_tiles + x).second.height;
+			uArea.x = mU1Map.at(y * width_in_tiles + x).second.vector.x;
+			uArea.y = mU1Map.at(y * width_in_tiles + x).second.vector.y;
+			uArea.w = mU1Map.at(y * width_in_tiles + x).second.width;
+			uArea.h = mU1Map.at(y * width_in_tiles + x).second.height;
+
+			SDL_BlitSurface(srcSurface->getSurface(), &lArea, destSurface->getSurface(), &destArea);
+			SDL_BlitSurface(srcSurface->getSurface(), &mArea, destSurface->getSurface(), &destArea);
+			destArea.y -= mTileset->getHeight();
+			SDL_BlitSurface(srcSurface->getSurface(), &uArea, destSurface->getSurface(), &destArea);
+		}
+	}
+
+	if(Game::isDebug())
+		SDL_SaveBMP(destSurface->getSurface(), "minimap.bmp");
+	return destSurface;
+}
+
 void Map::drawLower(Renderer& renderer, const Viewport& viewport)
 {
-	// The map is shifted down to see the upper layers of the top Y level.  This leaves a blank 'dead' space
-	//  in the top Y level that needs to be covered up.  If the upper part of the viewport is in this area, draw that area.
-	if((int)mTileset->getHeight() > viewport.getY())
-	{
-		renderer.setColor(COLOR_BLACK);
-		renderer.fillRectangle(Rectangle(0, 0, viewport.getWidth() + viewport.getX(), mTileset->getHeight() - viewport.getY()));
-	}
+	if(viewport.getY() < (int)mTileset->getHeight())
+		renderer.fillRectangle(Rectangle(0, viewport.getY(), viewport.getX() + viewport.getWidth(), mTileset->getHeight() - viewport.getY()));
 
 	mDrawLevel(renderer, viewport, mLMap);
 }
@@ -423,6 +475,10 @@ void Map::drawUpper(Renderer& renderer, const Viewport& viewport)
 	renderer.fillRectangle(mExitArea);
 //	mDrawLevel(renderer, viewport, mU2Map);
 //	mDrawLevel(renderer, viewport, mU3Map);
+}
+unsigned int Map::getComplexity() const
+{
+	return mWidth * mHeight;
 }
 
 const Vector& Map::getEntrance() const

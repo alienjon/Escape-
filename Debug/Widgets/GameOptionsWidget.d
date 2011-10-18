@@ -1,7 +1,7 @@
-Widgets/GameOptionsWidget.d Widgets/GameOptionsWidget.o: \
- ../Widgets/GameOptionsWidget.cpp ../Widgets/GameOptionsWidget.hpp \
- ../Widgets/../guichan.hpp ../Widgets/../Guichan/actionevent.hpp \
- ../Widgets/../Guichan/event.hpp ../Widgets/../Guichan/platform.hpp \
+Widgets/GameOptionsWidget.d: ../Widgets/GameOptionsWidget.cpp \
+ ../Widgets/GameOptionsWidget.hpp ../Widgets/../guichan.hpp \
+ ../Widgets/../Guichan/actionevent.hpp ../Widgets/../Guichan/event.hpp \
+ ../Widgets/../Guichan/platform.hpp \
  ../Widgets/../Guichan/actionlistener.hpp \
  ../Widgets/../Guichan/actionevent.hpp \
  ../Widgets/../Guichan/cliprectangle.hpp \

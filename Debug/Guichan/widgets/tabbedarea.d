@@ -1,5 +1,5 @@
-Guichan/widgets/tabbedarea.d Guichan/widgets/tabbedarea.o: \
- ../Guichan/widgets/tabbedarea.cpp ../Guichan/widgets/tabbedarea.hpp \
+Guichan/widgets/tabbedarea.d: ../Guichan/widgets/tabbedarea.cpp \
+ ../Guichan/widgets/tabbedarea.hpp \
  ../Guichan/widgets/../actionlistener.hpp \
  ../Guichan/widgets/../actionevent.hpp ../Guichan/widgets/../event.hpp \
  ../Guichan/widgets/../platform.hpp \

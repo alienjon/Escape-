@@ -1,8 +1,7 @@
-Actions/DisplaySpriteAction.d Actions/DisplaySpriteAction.o: \
- ../Actions/DisplaySpriteAction.cpp ../Actions/DisplaySpriteAction.hpp \
- ../Actions/Action.hpp ../Actions/../guichan.hpp \
- ../Actions/../Guichan/actionevent.hpp ../Actions/../Guichan/event.hpp \
- ../Actions/../Guichan/platform.hpp \
+Actions/DisplaySpriteAction.d: ../Actions/DisplaySpriteAction.cpp \
+ ../Actions/DisplaySpriteAction.hpp ../Actions/Action.hpp \
+ ../Actions/../guichan.hpp ../Actions/../Guichan/actionevent.hpp \
+ ../Actions/../Guichan/event.hpp ../Actions/../Guichan/platform.hpp \
  ../Actions/../Guichan/actionlistener.hpp \
  ../Actions/../Guichan/actionevent.hpp \
  ../Actions/../Guichan/cliprectangle.hpp \

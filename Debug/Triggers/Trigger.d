@@ -1,7 +1,6 @@
-Triggers/Trigger.d Triggers/Trigger.o: ../Triggers/Trigger.cpp \
- ../Triggers/Trigger.hpp ../Triggers/../guichan.hpp \
- ../Triggers/../Guichan/actionevent.hpp ../Triggers/../Guichan/event.hpp \
- ../Triggers/../Guichan/platform.hpp \
+Triggers/Trigger.d: ../Triggers/Trigger.cpp ../Triggers/Trigger.hpp \
+ ../Triggers/../guichan.hpp ../Triggers/../Guichan/actionevent.hpp \
+ ../Triggers/../Guichan/event.hpp ../Triggers/../Guichan/platform.hpp \
  ../Triggers/../Guichan/actionlistener.hpp \
  ../Triggers/../Guichan/actionevent.hpp \
  ../Triggers/../Guichan/cliprectangle.hpp \

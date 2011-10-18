@@ -1,4 +1,4 @@
-Actions/DebugAction.d Actions/DebugAction.o: ../Actions/DebugAction.cpp \
+Actions/DebugAction.d: ../Actions/DebugAction.cpp \
  ../Actions/DebugAction.hpp ../Actions/Action.hpp \
  ../Actions/../Engine/Logger.hpp ../Actions/../Engine/../guichan.hpp \
  ../Actions/../Engine/../Guichan/actionevent.hpp \

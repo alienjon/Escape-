@@ -1,5 +1,5 @@
-Guichan/widgets/scrollarea.d Guichan/widgets/scrollarea.o: \
- ../Guichan/widgets/scrollarea.cpp ../Guichan/widgets/scrollarea.hpp \
+Guichan/widgets/scrollarea.d: ../Guichan/widgets/scrollarea.cpp \
+ ../Guichan/widgets/scrollarea.hpp \
  ../Guichan/widgets/../basiccontainer.hpp \
  ../Guichan/widgets/../deathlistener.hpp ../Guichan/widgets/../event.hpp \
  ../Guichan/widgets/../platform.hpp ../Guichan/widgets/../widget.hpp \

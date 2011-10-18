@@ -1,6 +1,6 @@
-Actions/SetWanderAction.d Actions/SetWanderAction.o: \
- ../Actions/SetWanderAction.cpp ../Actions/SetWanderAction.hpp \
- ../Actions/Action.hpp ../Actions/../Entities/Creatures/Creature.hpp \
+Actions/SetWanderAction.d: ../Actions/SetWanderAction.cpp \
+ ../Actions/SetWanderAction.hpp ../Actions/Action.hpp \
+ ../Actions/../Entities/Creatures/Creature.hpp \
  ../Actions/../Entities/Creatures/../../Managers/AnimationManager.hpp \
  ../Actions/../Entities/Creatures/../../Managers/../Engine/Sprite.hpp \
  ../Actions/../Entities/Creatures/../../Managers/../Engine/../guichan.hpp \

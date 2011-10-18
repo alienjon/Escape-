@@ -1,7 +1,6 @@
-Engine/Logger.d Engine/Logger.o: ../Engine/Logger.cpp \
- ../Engine/Logger.hpp ../Engine/../guichan.hpp \
- ../Engine/../Guichan/actionevent.hpp ../Engine/../Guichan/event.hpp \
- ../Engine/../Guichan/platform.hpp \
+Engine/Logger.d: ../Engine/Logger.cpp ../Engine/Logger.hpp \
+ ../Engine/../guichan.hpp ../Engine/../Guichan/actionevent.hpp \
+ ../Engine/../Guichan/event.hpp ../Engine/../Guichan/platform.hpp \
  ../Engine/../Guichan/actionlistener.hpp \
  ../Engine/../Guichan/actionevent.hpp \
  ../Engine/../Guichan/cliprectangle.hpp \

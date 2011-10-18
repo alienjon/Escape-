@@ -1,6 +1,5 @@
-Engine/Cursor.d Engine/Cursor.o: ../Engine/Cursor.cpp \
- ../Engine/Cursor.hpp ../Engine/../Engine/Renderer.hpp \
- ../Engine/../Engine/../Math/Ellipse.hpp \
+Engine/Cursor.d: ../Engine/Cursor.cpp ../Engine/Cursor.hpp \
+ ../Engine/../Engine/Renderer.hpp ../Engine/../Engine/../Math/Ellipse.hpp \
  ../Engine/../Engine/../Math/../Math/Vector.hpp \
  ../Engine/../Engine/../Math/Quadrilateral.hpp \
  ../Engine/../Engine/../Math/../Math/Polygon.hpp \

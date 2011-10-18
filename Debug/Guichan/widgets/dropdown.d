@@ -1,6 +1,5 @@
-Guichan/widgets/dropdown.d Guichan/widgets/dropdown.o: \
- ../Guichan/widgets/dropdown.cpp ../Guichan/widgets/dropdown.hpp \
- ../Guichan/widgets/../actionlistener.hpp \
+Guichan/widgets/dropdown.d: ../Guichan/widgets/dropdown.cpp \
+ ../Guichan/widgets/dropdown.hpp ../Guichan/widgets/../actionlistener.hpp \
  ../Guichan/widgets/../actionevent.hpp ../Guichan/widgets/../event.hpp \
  ../Guichan/widgets/../platform.hpp \
  ../Guichan/widgets/../basiccontainer.hpp \

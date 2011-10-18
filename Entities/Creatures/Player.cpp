@@ -154,11 +154,10 @@ void Player::logic(Level& level)//@todo review
 	// Update the looking at position if not staring and if the player is accepting input.
 	if(!mIsStaringAtPoint && mAllowInput)
 	{
-		mLookingAt.x += level.getViewportOffset().x;
-		mLookingAt.y += level.getViewportOffset().y;
+		mLookingAt.x += level.getViewport().getX();
+		mLookingAt.y += level.getViewport().getY() - level.getViewport().getYOffset();
 	}
-#include <iostream>
-using namespace std;
+
 	// If interacting, then interact with the environment. @todo review
 	if(mIsInteracting)
 	{
@@ -168,9 +167,6 @@ using namespace std;
 		dimension.vector.y -= 3;
 		dimension.width    += 6;
 		dimension.height   += 6;
-cout << "exit: " << level.getExitArea() << endl;
-cout << "player: " << dimension << endl;
-cout << "----------" << endl;
 		if(level.getExitArea().isIntersecting(dimension))
 		{
 			// Tell the level that the exit was found.

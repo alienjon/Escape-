@@ -1,7 +1,7 @@
-Managers/VideoManager.d Managers/VideoManager.o: \
- ../Managers/VideoManager.cpp ../Managers/VideoManager.hpp \
- ../Managers/../guichan.hpp ../Managers/../Guichan/actionevent.hpp \
- ../Managers/../Guichan/event.hpp ../Managers/../Guichan/platform.hpp \
+Managers/VideoManager.d: ../Managers/VideoManager.cpp \
+ ../Managers/VideoManager.hpp ../Managers/../guichan.hpp \
+ ../Managers/../Guichan/actionevent.hpp ../Managers/../Guichan/event.hpp \
+ ../Managers/../Guichan/platform.hpp \
  ../Managers/../Guichan/actionlistener.hpp \
  ../Managers/../Guichan/actionevent.hpp \
  ../Managers/../Guichan/cliprectangle.hpp \

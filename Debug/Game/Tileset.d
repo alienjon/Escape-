@@ -1,4 +1,4 @@
-Game/Tileset.d Game/Tileset.o: ../Game/Tileset.cpp ../Game/Tileset.hpp \
+Game/Tileset.d: ../Game/Tileset.cpp ../Game/Tileset.hpp \
  ../Game/../Math/Quadrilateral.hpp ../Game/../Math/../Math/Polygon.hpp \
  ../Game/../Math/../Math/../Math/Vector.hpp \
  ../Game/../Math/../Math/Rectangle.hpp \

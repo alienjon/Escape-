@@ -50,12 +50,6 @@ class Viewport
     virtual int getHeight() const;
 
     /**
-     * @brief Get the offset.
-     * @return The offset.
-     */
-    virtual Vector getOffset() const;
-
-    /**
      * @brief Get the width of the viewport's area.
      * @return The viewport's width.
      */
@@ -68,10 +62,22 @@ class Viewport
 	virtual int getX() const;
 
 	/**
+	 * @brief Get the viewport's X offset.
+	 * @return The x offset.
+	 */
+	virtual int getXOffset() const;
+
+	/**
 	 * @brief Get the viewport's current Y coordinate.
 	 * @return The current Y coordinate.
 	 */
 	virtual int getY() const;
+
+	/**
+	 * @brief Get the viewport's Y offset.
+	 * @return The y offset.
+	 */
+	virtual int getYOffset() const;
 
 	/**
 	 * @brief Checks of an area is on screen.
@@ -121,11 +127,23 @@ class Viewport
 	virtual void setBounds(const Rectangle& bounds);
 
 	/**
+	 * @brief Set the height of the viewport.
+	 * @param height The new height.
+	 */
+	virtual void setHeight(unsigned int height);
+
+	/**
 	 * @brief Set the viewport's position.
 	 * @param x The new x position.
 	 * @param y The new y position.
 	 */
 	virtual void setPosition(int x, int y);
+
+	/**
+	 * @brief Set the viewport's width.
+	 * @param width The new width.
+	 */
+	virtual void setWidth(unsigned int width);
 
 	/**
 	 * @brief Set the X position.
@@ -134,26 +152,46 @@ class Viewport
 	virtual void setX(int x);
 
 	/**
+	 * @brief Set the X offset.
+	 * @param xOffset The X offset.
+	 */
+	virtual void setXOffset(int xOffset);
+
+	/**
 	 * @brief Set the Y position.
 	 * @param y The new Y position.
 	 */
 	virtual void setY(int y);
 
-	protected:
-	/*
-	 * The dimension of the viewport.
+	/**
+	 * @brief Set the Y offset.
+	 * @param xOffset The Y offset.
 	 */
+	virtual void setYOffset(int yOffset);
+
+	/**
+	 * @brief Set the zoom factor, in the event that the viewport display is a different ratio than the physical map.
+	 * @param zoomX The x zoom factor.
+	 * @param zoomY The y zoom factor.
+	 * @note Used for the mini map and other areas where the viewport shows a zoomed/factored display compared to the physical layout.
+	 */
+	virtual void setZoom(double zoomX, double zoomY);
+
+	protected:
+	// The dimension of the viewport.
 	Rectangle mDimension;
 
-	/**
-	 * The bounds the viewport will look within.
-	 */
+	// The bounds the viewport will look within.
 	Rectangle mBounds;
 
-	/**
-	 * @brief The currently focused-upon being.
-	 */
+	// The currently focused-upon being.
 	const Entity* mEntity;
+
+	// The zoom factor.
+	double mZoomX, mZoomY;
+
+	// The offset.
+	int mXOffset, mYOffset;
 
 	private:
 	/**

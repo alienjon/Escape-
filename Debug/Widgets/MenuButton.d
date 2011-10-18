@@ -1,7 +1,6 @@
-Widgets/MenuButton.d Widgets/MenuButton.o: ../Widgets/MenuButton.cpp \
- ../Widgets/MenuButton.hpp ../Widgets/../guichan.hpp \
- ../Widgets/../Guichan/actionevent.hpp ../Widgets/../Guichan/event.hpp \
- ../Widgets/../Guichan/platform.hpp \
+Widgets/MenuButton.d: ../Widgets/MenuButton.cpp ../Widgets/MenuButton.hpp \
+ ../Widgets/../guichan.hpp ../Widgets/../Guichan/actionevent.hpp \
+ ../Widgets/../Guichan/event.hpp ../Widgets/../Guichan/platform.hpp \
  ../Widgets/../Guichan/actionlistener.hpp \
  ../Widgets/../Guichan/actionevent.hpp \
  ../Widgets/../Guichan/cliprectangle.hpp \

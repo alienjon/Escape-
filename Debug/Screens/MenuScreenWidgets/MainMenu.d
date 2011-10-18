@@ -1,4 +1,4 @@
-Screens/MenuScreenWidgets/MainMenu.d Screens/MenuScreenWidgets/MainMenu.o: \
+Screens/MenuScreenWidgets/MainMenu.d: \
  ../Screens/MenuScreenWidgets/MainMenu.cpp \
  ../Screens/MenuScreenWidgets/MainMenu.hpp \
  ../Screens/MenuScreenWidgets/../../Listeners/CreatureMovedToPointListener.hpp \

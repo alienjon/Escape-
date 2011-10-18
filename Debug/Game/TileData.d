@@ -1,6 +1,5 @@
-Game/TileData.d Game/TileData.o: ../Game/TileData.cpp \
- ../Game/TileData.hpp ../Game/../Math/Quadrilateral.hpp \
- ../Game/../Math/../Math/Polygon.hpp \
+Game/TileData.d: ../Game/TileData.cpp ../Game/TileData.hpp \
+ ../Game/../Math/Quadrilateral.hpp ../Game/../Math/../Math/Polygon.hpp \
  ../Game/../Math/../Math/../Math/Vector.hpp \
  ../Game/../Math/../Math/Rectangle.hpp \
  ../Game/../Math/../Math/../guichan.hpp \

@@ -1,7 +1,7 @@
-Managers/FontManager.d Managers/FontManager.o: \
- ../Managers/FontManager.cpp ../Managers/FontManager.hpp \
- ../Managers/../guichan.hpp ../Managers/../Guichan/actionevent.hpp \
- ../Managers/../Guichan/event.hpp ../Managers/../Guichan/platform.hpp \
+Managers/FontManager.d: ../Managers/FontManager.cpp \
+ ../Managers/FontManager.hpp ../Managers/../guichan.hpp \
+ ../Managers/../Guichan/actionevent.hpp ../Managers/../Guichan/event.hpp \
+ ../Managers/../Guichan/platform.hpp \
  ../Managers/../Guichan/actionlistener.hpp \
  ../Managers/../Guichan/actionevent.hpp \
  ../Managers/../Guichan/cliprectangle.hpp \

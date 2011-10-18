@@ -4,5 +4,4 @@ Logging to error.log
 Log: Setting video driver to x11
 Log: Video initialization successful.
 Log: Audio initialization successful.
-Log: Player Found Exit
-General STD error: Game::mLoadNextScreen() -> No screens loaded.
+Log: Entrance(9, 7) - Exit(7, 5)

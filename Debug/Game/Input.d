@@ -1,4 +1,4 @@
-Game/Input.d Game/Input.o: ../Game/Input.cpp ../Game/Input.hpp \
+Game/Input.d: ../Game/Input.cpp ../Game/Input.hpp \
  ../Game/../Math/Vector.hpp ../Game/../Game/GUI.hpp \
  ../Game/../Game/../guichan.hpp \
  ../Game/../Game/../Guichan/actionevent.hpp \

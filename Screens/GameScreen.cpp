@@ -6,21 +6,32 @@
  */
 #include "GameScreen.hpp"
 
+#include <cmath>
 #include <stdexcept>
 
 #include "../Managers/AnimationManager.hpp"
 #include "../Entities/Entity.hpp"
 #include "../Game/Keywords.hpp"
 #include "../Engine/Logger.hpp"
+#include "../main.hpp"
 
+using std::abs;
 using std::runtime_error;
 using std::string;
+
+const unsigned int SCORE_COUNTER_INTERVAL = 25;
+
+unsigned int convertTimeToBonus(unsigned int time)
+{
+	return time / 1000;//@todo how should time bonus be calculated?
+}
 
 GameScreen::GameScreen(Event difficulty) :
 	mDifficulty(0),
 	mIsPaused(false),
-	mLevel(0)
-
+	mLevel(0),
+	mScore(0),
+	mCounter(0)
 {
 	// Determine the game's difficulty value based on the difficulty level.
 	switch(difficulty)//@todo review difficulty in testing
@@ -53,9 +64,11 @@ GameScreen::GameScreen(Event difficulty) :
 	// Configure the action listeners.
 	mMessageOSD.addActionListener(this);
 	mBase.addKeyListener(&mMessageOSD);
+	mLevelCompleteWidget.addActionListener(this);
 
-	// Start the input timer.
+	// Start the timers.
 	mInputTimer.start();
+	mScoreTimer.start();
 }
 
 GameScreen::~GameScreen()
@@ -67,6 +80,7 @@ GameScreen::~GameScreen()
 
 	// The level should stop listening for events.
 	mLevel->removeEventListener(this);
+	mLevel->removeChangeScoreListener(this);
 	mLevel->setInterfaceListener(0);
 
     // Delete and unset the level.
@@ -81,6 +95,34 @@ void GameScreen::action(const gcn::ActionEvent& event)
 		// The message box is to be closed.
 		mMessageOSD.setVisible(false);
 	}
+	// If the level complete widget sends a signal, then load the next level.
+	if(event.getSource() == &mLevelCompleteWidget)
+	{
+		// Hide the level complete widget.
+		mLevelCompleteWidget.setVisible(false);
+
+		// Unload the current level.
+		mLevel->removeEventListener(this);
+		mLevel->removeChangeScoreListener(this);
+		delete mLevel;
+
+		// Increase the difficulty and go to the next level.
+		mLevel = new Level(++mDifficulty, mPlayer, mViewport);
+		mLevel->addEventListener(this);
+		mLevel->addChangeScoreListener(this);
+
+		// Make sure the game is not paused.
+		mMenuBar.stop();
+		mMenuBar.start();
+		mIsPaused = false;
+
+// @todo need to find a way to quit the game normally		mDone = true;
+	}
+}
+
+void GameScreen::changeScore(int change)
+{
+	mCounter += change;
 }
 
 void GameScreen::displayMessage(const string& caption, const string& message, const string& sprite, const string& keyword)
@@ -105,8 +147,19 @@ void GameScreen::displayMessage(const string& caption, const string& message, co
 
 void GameScreen::draw(Renderer& renderer)
 {
+	// Everything on the level is relative to the viewport.
+	renderer.pushClipArea(gcn::Rectangle(0, mMenuBar.getY() + mMenuBar.getHeight(), SCREEN_WIDTH, SCREEN_HEIGHT));
+	renderer.pushClipArea(gcn::Rectangle(-mViewport.getX(), -mViewport.getY(), mViewport.getWidth(), mViewport.getHeight()));
+
     // Draw any screen objects.
     mLevel->draw(renderer);
+
+    // Pop the drawing area.
+    renderer.popClipArea();
+    renderer.popClipArea();
+
+    // Apply the layers.
+//    renderer.applyLayers();@todo review lighting
 }
 
 void GameScreen::eventOccurred(Event event, const std::string& content, CreatureMovedToPointListener* creatureMovedToVectorListener)
@@ -219,38 +272,74 @@ void GameScreen::load(GUI* gui)
     // Add the OSDs to the screen.
     mBase.add(&mMessageOSD);
 
-    // Add the timer widget.
-    mBase.add(&mTimerWidget);
+    // Add the menu bar.
+    mMenuBar.setSize(SCREEN_WIDTH, SCREEN_HEIGHT * 0.15);
+    mMenuBar.adjustInternals();
+    mViewport.setHeight(mViewport.getHeight() - mMenuBar.getHeight());
+    mViewport.setYOffset(mMenuBar.getHeight());
+    mBase.add(&mMenuBar);
+
+    // Add the level complete widget.
+    mLevelCompleteWidget.setVisible(false);
+    mBase.add(&mLevelCompleteWidget);
 
     // Load the level at the current difficulty.
-    mLevel = new Level(mDifficulty, mPlayer, this);
+    mLevel = new Level(mDifficulty, mPlayer, mViewport);
 
     // Set level listeners.
     mLevel->addEventListener(this);
+    mLevel->addChangeScoreListener(this);
+
+    // Configure the mini map.
+    mMenuBar.configureMiniMap(mLevel->getMap().copyMapImage(), &mPlayer);
 
     // Start the timer.
-    mTimerWidget.start();
+    mMenuBar.stop();
+    mMenuBar.start();
 }
 
 void GameScreen::logic()
 {
+	// Update the counter if time has run up.
+	if(mCounter != 0 && mScoreTimer.getTime() >= SCORE_COUNTER_INTERVAL)
+	{
+		// Only increment the score by 1, but determine the direction.
+		int sign = (mCounter != 0) ? mCounter / abs(mCounter) : 0;
+
+		// Increment the score.
+		mScore = (sign < 0 && mScore == 0) ? 0 : mScore + sign;
+
+		// Set the score.
+		mMenuBar.setScore(mScore);
+
+		// Update the counter.
+		mCounter -= sign;
+
+		// Reset the timer.
+		mScoreTimer.start();
+	}
+
 	// Before any logic has been done, check if the next level should be loaded.
-	if(mLevel->isDone())//@todo display score, do a little dance, and maybe some other graphical stuff prior to loading the next level, for now the next level just loads.
+	if(mLevel->isDone() && !mLevelCompleteWidget.isVisible())
 	{
 		// Stop the timer.
-		mTimerWidget.stop();
+		mMenuBar.pause();
 
-		// Unload the current level.
-		mLevel->removeEventListener(this);
-		delete mLevel;
+		// Pause the game itself.
+		mIsPaused = true;
 
-		// Increase the difficulty and go to the next level.
-		mLevel = new Level(++mDifficulty, mPlayer, this);
-		mLevel->addEventListener(this);
+		// Add the rest of the counter to the score and set the final score.
+		mScore = (mScore + mCounter < 0) ? 0 : mScore + mCounter;
+		mCounter = 0;
+		mMenuBar.setScore(mScore);
 
-		// @todo remove when done testing
-		Logger::log("Player Found Exit");
-		mDone = true;
+		// Display the level complete widget.
+		mLevelCompleteWidget.setPosition(mBase.getWidth() / 2 - mLevelCompleteWidget.getWidth() / 2, mBase.getHeight() / 2 - mLevelCompleteWidget.getHeight() / 2);
+		double bonusMod = (mDifficulty / 10.0) + 1;
+		unsigned int bonus = (convertTimeToBonus(mMenuBar.getTime()) + mLevel->getMap().getComplexity()) * bonusMod; // @todo review scoring
+		mLevelCompleteWidget.display(mMenuBar.getTime()/100, convertTimeToBonus(mMenuBar.getTime()), mLevel->getMap().getComplexity(), mLevel->getMap().getComplexity(), mDifficulty, (double)bonusMod, mScore, bonus, mScore + bonus);
+		mScore += bonus;
+		mLevelCompleteWidget.setPosition(mBase.getWidth() / 2 - mLevelCompleteWidget.getWidth() / 2, mBase.getHeight() / 2 - mLevelCompleteWidget.getHeight() / 2);
 	}
 
     // Only do game logic if the game is not paused and neither the options menu or
@@ -259,7 +348,4 @@ void GameScreen::logic()
     {
 		mLevel->logic();
     }
-
-    // Update the position of the timer.
-    mTimerWidget.setPosition((mBase.getWidth() / 2) - (mTimerWidget.getWidth() / 2), 0);
 }

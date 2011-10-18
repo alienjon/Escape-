@@ -1,5 +1,5 @@
-Widgets/GameOverWidget.d Widgets/GameOverWidget.o: \
- ../Widgets/GameOverWidget.cpp ../Widgets/GameOverWidget.hpp \
+Widgets/GameOverWidget.d: ../Widgets/GameOverWidget.cpp \
+ ../Widgets/GameOverWidget.hpp \
  ../Widgets/../Listeners/CreatureMovedToPointListener.hpp \
  ../Widgets/../guichan.hpp ../Widgets/../Guichan/actionevent.hpp \
  ../Widgets/../Guichan/event.hpp ../Widgets/../Guichan/platform.hpp \

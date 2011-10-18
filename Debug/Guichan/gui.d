@@ -1,4 +1,4 @@
-Guichan/gui.d Guichan/gui.o: ../Guichan/gui.cpp ../Guichan/gui.hpp \
+Guichan/gui.d: ../Guichan/gui.cpp ../Guichan/gui.hpp \
  ../Guichan/keyevent.hpp ../Guichan/inputevent.hpp ../Guichan/event.hpp \
  ../Guichan/platform.hpp ../Guichan/key.hpp ../Guichan/mouseevent.hpp \
  ../Guichan/mouseinput.hpp ../Guichan/basiccontainer.hpp \

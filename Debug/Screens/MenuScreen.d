@@ -1,5 +1,4 @@
-Screens/MenuScreen.d Screens/MenuScreen.o: ../Screens/MenuScreen.cpp \
- ../Screens/MenuScreen.hpp \
+Screens/MenuScreen.d: ../Screens/MenuScreen.cpp ../Screens/MenuScreen.hpp \
  ../Screens/../Listeners/CreatureMovedToPointListener.hpp \
  ../Screens/MenuScreenWidgets/CreditsMenu.hpp \
  ../Screens/MenuScreenWidgets/../../Listeners/CreatureMovedToPointListener.hpp \

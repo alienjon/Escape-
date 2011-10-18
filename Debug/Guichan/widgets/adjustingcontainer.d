@@ -1,4 +1,4 @@
-Guichan/widgets/adjustingcontainer.d Guichan/widgets/adjustingcontainer.o: \
+Guichan/widgets/adjustingcontainer.d: \
  ../Guichan/widgets/adjustingcontainer.cpp \
  ../Guichan/widgets/adjustingcontainer.hpp \
  ../Guichan/widgets/container.hpp \

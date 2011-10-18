@@ -1,4 +1,4 @@
-Entities/EntityType.d Entities/EntityType.o: ../Entities/EntityType.cpp \
+Entities/EntityType.d: ../Entities/EntityType.cpp \
  ../Entities/EntityType.hpp
 
 ../Entities/EntityType.hpp:

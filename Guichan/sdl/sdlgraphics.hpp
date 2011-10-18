@@ -97,7 +97,6 @@ namespace gcn
                                     SDL_Rect source,
                                     SDL_Rect destination);
 
-
         // Inherited from Graphics
 
         virtual void _beginDraw();

@@ -13,7 +13,6 @@
 #include "../Entities/Creatures/Creature.hpp"
 #include "../Entities/Entity.hpp"
 #include "../Entities/EntityData.hpp"
-#include "../Screens/GameScreen.hpp"
 #include "../Game/Keywords.hpp"
 #include "../Engine/Logger.hpp"
 #include "../main.hpp"
@@ -31,7 +30,7 @@ using std::string;
  * The width and height is at least 5 + a range between the difficulty level
  * and 150% of the difficulty level.
  */
-Level::Level(unsigned int difficulty, Player& player, GameScreen* parent) :
+Level::Level(unsigned int difficulty, Player& player, Viewport& viewport) :
 	mIsDone(false),
 	mPlayer(&player),
 	mMap(random<unsigned int>(5 + random<unsigned int>(difficulty, difficulty * 1.5),
@@ -39,7 +38,7 @@ Level::Level(unsigned int difficulty, Player& player, GameScreen* parent) :
 		 random<unsigned int>(5 + random<unsigned int>(difficulty, difficulty * 1.5),
 							  5 + random<unsigned int>(difficulty, difficulty * 1.5)),
 		 TilesetManager::get("office")),// @todo will there be other tilesets?  How should they be loaded?
-	mGameScreen(parent)
+	mViewport(viewport)
 {
 	// Configure the viewport.
 	mViewport.setBounds(Rectangle(0, 0, mMap.getWidth(), mMap.getHeight()));
@@ -56,7 +55,7 @@ Level::Level(unsigned int difficulty, Player& player, GameScreen* parent) :
 //@todo populate the map with enemies - add this level as an event listener for the enemies (addEventListener(this))
 
 	// Focus the viewport on the player.
-	mFocusViewport(&player);
+//	mFocusViewport(&player);@todo needed?
 }
 
 //Level::Level() :
@@ -78,6 +77,11 @@ Level::~Level()
     	delete *it;
 }
 
+void Level::addChangeScoreListener(ChangeScoreListener* listener)
+{
+	mChangeScoreListeners.push_back(listener);
+}
+
 Entity* Level::checkEntityCollision(const Entity& entity) const
 {
 	for(list<Entity*>::const_iterator it = mEntities.begin(); it != mEntities.end(); it++)
@@ -93,9 +97,6 @@ bool Level::checkMapCollision(const Entity& entity) const
 
 void Level::draw(Renderer& renderer)
 {
-    // Everything on the level is relative to the viewport.
-	renderer.pushClipArea(gcn::Rectangle(-mViewport.getX(), -mViewport.getY(), mViewport.getWidth(), mViewport.getHeight()));
-
     // Draw the lower map.
     mMap.drawLower(renderer, mViewport);
 
@@ -124,12 +125,6 @@ void Level::draw(Renderer& renderer)
 
     // Draw the lighting. @todo review lighting
 //    mEData.drawLighting(renderer);
-
-    // Pop the drawing area.
-    renderer.popClipArea();
-
-    // Apply the layers.
-//    renderer.applyLayers();@todo review lighting
 }
 
 void Level::eventOccurred(Event event, const std::string& content, CreatureMovedToPointListener* creatureMovedToPointListener)
@@ -144,9 +139,14 @@ const Rectangle& Level::getExitArea() const
 	return mMap.getExit();
 }
 
-const Vector Level::getViewportOffset() const
+const Map& Level::getMap() const
 {
-	return mViewport.getOffset();
+	return mMap;
+}
+
+const Viewport& Level::getViewport() const
+{
+	return mViewport;
 }
 
 void Level::handleInput(const Input& input)
@@ -171,22 +171,30 @@ void Level::handleInput(const Input& input)
 		{
 			int step = 25;
 			if(input.isKeyPressed(SDLK_UP))
-			{
 				mViewport.setY(mViewport.getY() - step);
-			}
 			if(input.isKeyPressed(SDLK_DOWN))
-			{
 				mViewport.setY(mViewport.getY() + step);
-			}
 			if(input.isKeyPressed(SDLK_LEFT))
-			{
 				mViewport.setX(mViewport.getX() - step);
-			}
 			if(input.isKeyPressed(SDLK_RIGHT))
-			{
 				mViewport.setX(mViewport.getX() + step);
-			}
 		}
+
+		//@todo remove when done.
+		if(input.isKeyPressed(SDLK_p))
+		{
+			for(list<ChangeScoreListener*>::iterator it = mChangeScoreListeners.begin(); it != mChangeScoreListeners.end(); it++)
+				(*it)->changeScore(20);
+		}
+
+		if(input.isKeyPressed(SDLK_m))
+		{
+			for(list<ChangeScoreListener*>::iterator it = mChangeScoreListeners.begin(); it != mChangeScoreListeners.end(); it++)
+				(*it)->changeScore(-5);
+		}
+
+		if(input.isKeyPressed(SDLK_b))
+			mIsDone = true;
 	}
 
 	// Pass input to the player.
@@ -226,4 +234,9 @@ void Level::logic()
 void Level::playerFoundExit()
 {
 	mIsDone = true;
+}
+
+void Level::removeChangeScoreListener(ChangeScoreListener* listener)
+{
+	mChangeScoreListeners.remove(listener);
 }

@@ -1,6 +1,6 @@
-Managers/AnimationManager.d Managers/AnimationManager.o: \
- ../Managers/AnimationManager.cpp ../Managers/AnimationManager.hpp \
- ../Managers/../Engine/Sprite.hpp ../Managers/../Engine/../guichan.hpp \
+Managers/AnimationManager.d: ../Managers/AnimationManager.cpp \
+ ../Managers/AnimationManager.hpp ../Managers/../Engine/Sprite.hpp \
+ ../Managers/../Engine/../guichan.hpp \
  ../Managers/../Engine/../Guichan/actionevent.hpp \
  ../Managers/../Engine/../Guichan/event.hpp \
  ../Managers/../Engine/../Guichan/platform.hpp \

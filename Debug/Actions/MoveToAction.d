@@ -1,6 +1,5 @@
-Actions/MoveToAction.d Actions/MoveToAction.o: \
- ../Actions/MoveToAction.cpp ../Actions/MoveToAction.hpp \
- ../Actions/../Actions/Action.hpp \
+Actions/MoveToAction.d: ../Actions/MoveToAction.cpp \
+ ../Actions/MoveToAction.hpp ../Actions/../Actions/Action.hpp \
  ../Actions/../Listeners/CreatureMovedToPointListener.hpp \
  ../Actions/../Math/Vector.hpp \
  ../Actions/../Entities/Creatures/Creature.hpp \

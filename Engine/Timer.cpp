@@ -76,7 +76,7 @@ bool Timer::isPaused() const
 	return mPaused;
 }
 
-uint Timer::getTime()
+unsigned int Timer::getTime() const
 {
 	// If the timer is running, return a determined time.
 	if(mRunning)

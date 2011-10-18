@@ -36,6 +36,15 @@ class VideoManager : public gcn::SDLImageLoader
     static void create();
 
     /**
+     * @brief Create a blank SDL_Surface* of the requested size.
+     * @param width The width.
+     * @param height The height.
+     * @return The blank SDL_Surface* of the requested size.
+     * @note The surface is added to the surface manager.
+     */
+    static Surface* createSDL_Surface(unsigned int width, unsigned int height);
+
+    /**
      * @brief Log the available video information.
      */
     static void displayVideoInfo();
@@ -60,6 +69,15 @@ class VideoManager : public gcn::SDLImageLoader
      * creates a new gcn::Image (technically, a Surface).
      */
     virtual gcn::Image* load(const std::string& filename, bool convert = true);
+
+    /**
+     * @brief Scales a requested surface.
+	 * @param surface The surface to scale.
+	 * @param zoomX The x factor to zoom.
+	 * @param zoomY The y factor to zoom.
+	 * @return The zoomed surface (it has been added to the manager).
+     */
+    static Surface* zoom(const Surface* surface, double zoomX, double zoomY);
 
     /**
      * @brief Delete the video manager.
@@ -91,6 +109,13 @@ class VideoManager : public gcn::SDLImageLoader
 	 * @return The created/converted image.
 	 */
 	Surface* mCreateImage(const std::string& filename, const Rectangle& area, bool convert = true);
+
+	/**
+	 * @brief Find a filename by its surface.
+	 * @param surface The surface to search.
+	 * @return The filename for the searched surface, or an empty string if not found.
+	 */
+	std::string mFindFilename(const Surface* surface);
 
 	/**
 	 * @brief Finds a surface.

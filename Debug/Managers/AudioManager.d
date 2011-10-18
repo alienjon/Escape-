@@ -1,5 +1,5 @@
-Managers/AudioManager.d Managers/AudioManager.o: \
- ../Managers/AudioManager.cpp ../Managers/AudioManager.hpp \
+Managers/AudioManager.d: ../Managers/AudioManager.cpp \
+ ../Managers/AudioManager.hpp \
  ../Managers/../Listeners/SoundStoppedListener.hpp \
  ../Managers/../Engine/Logger.hpp ../Managers/../Engine/../guichan.hpp \
  ../Managers/../Engine/../Guichan/actionevent.hpp \

@@ -1,7 +1,6 @@
-Math/Quadrilateral.d Math/Quadrilateral.o: ../Math/Quadrilateral.cpp \
- ../Math/Quadrilateral.hpp ../Math/../Math/Polygon.hpp \
- ../Math/../Math/../Math/Vector.hpp ../Math/../Math/Rectangle.hpp \
- ../Math/../Math/../guichan.hpp \
+Math/Quadrilateral.d: ../Math/Quadrilateral.cpp ../Math/Quadrilateral.hpp \
+ ../Math/../Math/Polygon.hpp ../Math/../Math/../Math/Vector.hpp \
+ ../Math/../Math/Rectangle.hpp ../Math/../Math/../guichan.hpp \
  ../Math/../Math/../Guichan/actionevent.hpp \
  ../Math/../Math/../Guichan/event.hpp \
  ../Math/../Math/../Guichan/platform.hpp \

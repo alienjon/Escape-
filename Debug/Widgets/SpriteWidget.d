@@ -1,7 +1,7 @@
-Widgets/SpriteWidget.d Widgets/SpriteWidget.o: \
- ../Widgets/SpriteWidget.cpp ../Widgets/SpriteWidget.hpp \
- ../Widgets/../guichan.hpp ../Widgets/../Guichan/actionevent.hpp \
- ../Widgets/../Guichan/event.hpp ../Widgets/../Guichan/platform.hpp \
+Widgets/SpriteWidget.d: ../Widgets/SpriteWidget.cpp \
+ ../Widgets/SpriteWidget.hpp ../Widgets/../guichan.hpp \
+ ../Widgets/../Guichan/actionevent.hpp ../Widgets/../Guichan/event.hpp \
+ ../Widgets/../Guichan/platform.hpp \
  ../Widgets/../Guichan/actionlistener.hpp \
  ../Widgets/../Guichan/actionevent.hpp \
  ../Widgets/../Guichan/cliprectangle.hpp \

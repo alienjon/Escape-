@@ -1,6 +1,5 @@
-Managers/TilesetManager.d Managers/TilesetManager.o: \
- ../Managers/TilesetManager.cpp ../Managers/TilesetManager.hpp \
- ../Managers/../Game/Tileset.hpp \
+Managers/TilesetManager.d: ../Managers/TilesetManager.cpp \
+ ../Managers/TilesetManager.hpp ../Managers/../Game/Tileset.hpp \
  ../Managers/../Game/../Math/Quadrilateral.hpp \
  ../Managers/../Game/../Math/../Math/Polygon.hpp \
  ../Managers/../Game/../Math/../Math/../Math/Vector.hpp \

@@ -1,5 +1,4 @@
-Actions/DisplayCreatureAnimationAction.d \
- Actions/DisplayCreatureAnimationAction.o: \
+Actions/DisplayCreatureAnimationAction.d: \
  ../Actions/DisplayCreatureAnimationAction.cpp \
  ../Actions/DisplayCreatureAnimationAction.hpp ../Actions/Action.hpp \
  ../Actions/../Listeners/AnimationCycleListener.hpp \

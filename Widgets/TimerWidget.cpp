@@ -18,6 +18,11 @@ TimerWidget::TimerWidget()
 	setFont(FontManager::get(FONT_DEFAULT));//@todo identify a timer widget font
 }
 
+unsigned int TimerWidget::getTime() const
+{
+	return mTimer.getTime();
+}
+
 void TimerWidget::logic()
 {
 	// Perform GCN logic.

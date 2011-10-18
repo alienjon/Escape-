@@ -1,7 +1,6 @@
-Engine/Colors.d Engine/Colors.o: ../Engine/Colors.cpp \
- ../Engine/Colors.hpp ../Engine/../guichan.hpp \
- ../Engine/../Guichan/actionevent.hpp ../Engine/../Guichan/event.hpp \
- ../Engine/../Guichan/platform.hpp \
+Engine/Colors.d: ../Engine/Colors.cpp ../Engine/Colors.hpp \
+ ../Engine/../guichan.hpp ../Engine/../Guichan/actionevent.hpp \
+ ../Engine/../Guichan/event.hpp ../Engine/../Guichan/platform.hpp \
  ../Engine/../Guichan/actionlistener.hpp \
  ../Engine/../Guichan/actionevent.hpp \
  ../Engine/../Guichan/cliprectangle.hpp \

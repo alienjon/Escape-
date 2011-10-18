@@ -1,6 +1,6 @@
-Guichan/widget.d Guichan/widget.o: ../Guichan/widget.cpp \
- ../Guichan/widget.hpp ../Guichan/color.hpp ../Guichan/platform.hpp \
- ../Guichan/rectangle.hpp ../Guichan/actionevent.hpp ../Guichan/event.hpp \
+Guichan/widget.d: ../Guichan/widget.cpp ../Guichan/widget.hpp \
+ ../Guichan/color.hpp ../Guichan/platform.hpp ../Guichan/rectangle.hpp \
+ ../Guichan/actionevent.hpp ../Guichan/event.hpp \
  ../Guichan/actionlistener.hpp ../Guichan/basiccontainer.hpp \
  ../Guichan/deathlistener.hpp ../Guichan/defaultfont.hpp \
  ../Guichan/font.hpp ../Guichan/exception.hpp ../Guichan/focushandler.hpp \

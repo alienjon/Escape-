@@ -37,6 +37,12 @@ struct Rectangle : public Polygon
 
     /**
      * @brief For conversions.
+     * @note This will discard the offsets.
+     */
+    Rectangle(const gcn::ClipRectangle& rect);
+
+    /**
+     * @brief For conversions.
      */
     Rectangle(const SDL_Rect& rect);
 

@@ -25,6 +25,12 @@ Rectangle::Rectangle(const gcn::Rectangle& rect) :
 	height(rect.height)
 {}
 
+Rectangle::Rectangle(const gcn::ClipRectangle& rect) :
+	vector(rect.x, rect.y),
+	width(rect.width),
+	height(rect.height)
+{}
+
 Rectangle::Rectangle(const SDL_Rect& rect) :
 	vector(rect.x, rect.y),
 	width(rect.w),

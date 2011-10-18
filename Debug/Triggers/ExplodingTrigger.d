@@ -1,2 +1,1 @@
-Triggers/ExplodingTrigger.d Triggers/ExplodingTrigger.o: \
- ../Triggers/ExplodingTrigger.cpp
+Triggers/ExplodingTrigger.d: ../Triggers/ExplodingTrigger.cpp

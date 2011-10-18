@@ -1,6 +1,5 @@
-Guichan/widgets/window.d Guichan/widgets/window.o: \
- ../Guichan/widgets/window.cpp ../Guichan/widgets/window.hpp \
- ../Guichan/widgets/../mouselistener.hpp \
+Guichan/widgets/window.d: ../Guichan/widgets/window.cpp \
+ ../Guichan/widgets/window.hpp ../Guichan/widgets/../mouselistener.hpp \
  ../Guichan/widgets/../mouseevent.hpp \
  ../Guichan/widgets/../inputevent.hpp ../Guichan/widgets/../event.hpp \
  ../Guichan/widgets/../platform.hpp ../Guichan/widgets/../platform.hpp \

@@ -1,5 +1,4 @@
-Entities/Creatures/Zombies/GreenZombie.d \
- Entities/Creatures/Zombies/GreenZombie.o: \
+Entities/Creatures/Zombies/GreenZombie.d: \
  ../Entities/Creatures/Zombies/GreenZombie.cpp \
  ../Entities/Creatures/Zombies/GreenZombie.hpp \
  ../Entities/Creatures/Zombies/../Creature.hpp \

@@ -1,5 +1,4 @@
-Actions/DisplayAnimationAction.d Actions/DisplayAnimationAction.o: \
- ../Actions/DisplayAnimationAction.cpp \
+Actions/DisplayAnimationAction.d: ../Actions/DisplayAnimationAction.cpp \
  ../Actions/DisplayAnimationAction.hpp ../Actions/Action.hpp \
  ../Actions/../Listeners/AnimationCycleListener.hpp \
  ../Actions/../Engine/Sprite.hpp ../Actions/../Engine/../guichan.hpp \

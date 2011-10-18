@@ -1,9 +1,8 @@
-Guichan/widgets/listbox.d Guichan/widgets/listbox.o: \
- ../Guichan/widgets/listbox.cpp ../Guichan/widgets/listbox.hpp \
- ../Guichan/widgets/../keylistener.hpp ../Guichan/widgets/../keyevent.hpp \
- ../Guichan/widgets/../inputevent.hpp ../Guichan/widgets/../event.hpp \
- ../Guichan/widgets/../platform.hpp ../Guichan/widgets/../key.hpp \
- ../Guichan/widgets/../listmodel.hpp \
+Guichan/widgets/listbox.d: ../Guichan/widgets/listbox.cpp \
+ ../Guichan/widgets/listbox.hpp ../Guichan/widgets/../keylistener.hpp \
+ ../Guichan/widgets/../keyevent.hpp ../Guichan/widgets/../inputevent.hpp \
+ ../Guichan/widgets/../event.hpp ../Guichan/widgets/../platform.hpp \
+ ../Guichan/widgets/../key.hpp ../Guichan/widgets/../listmodel.hpp \
  ../Guichan/widgets/../mouselistener.hpp \
  ../Guichan/widgets/../mouseevent.hpp ../Guichan/widgets/../platform.hpp \
  ../Guichan/widgets/../widget.hpp ../Guichan/widgets/../color.hpp \

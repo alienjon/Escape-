@@ -1,5 +1,5 @@
-main.d main.o: ../main.cpp ../Game/Direction.hpp \
- ../Game/../Math/Vector.hpp ../Game/Event.hpp ../Game/Game.hpp \
+main.d: ../main.cpp ../Game/Direction.hpp ../Game/../Math/Vector.hpp \
+ ../Game/Event.hpp ../Game/Game.hpp \
  ../Game/../Listeners/CreatureMovedToPointListener.hpp \
  ../Game/../Engine/Cursor.hpp ../Game/../Engine/../Engine/Renderer.hpp \
  ../Game/../Engine/../Engine/../Math/Ellipse.hpp \

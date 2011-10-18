@@ -1,25 +1,25 @@
-Game/GUI.d Game/GUI.o: ../Game/GUI.cpp ../Game/GUI.hpp \
- ../Game/../guichan.hpp ../Game/../Guichan/actionevent.hpp \
- ../Game/../Guichan/event.hpp ../Game/../Guichan/platform.hpp \
- ../Game/../Guichan/actionlistener.hpp ../Game/../Guichan/actionevent.hpp \
- ../Game/../Guichan/cliprectangle.hpp ../Game/../Guichan/rectangle.hpp \
- ../Game/../Guichan/color.hpp ../Game/../Guichan/deathlistener.hpp \
- ../Game/../Guichan/event.hpp ../Game/../Guichan/exception.hpp \
- ../Game/../Guichan/focushandler.hpp ../Game/../Guichan/focuslistener.hpp \
- ../Game/../Guichan/font.hpp ../Game/../Guichan/genericinput.hpp \
- ../Game/../Guichan/input.hpp ../Game/../Guichan/keyinput.hpp \
- ../Game/../Guichan/key.hpp ../Game/../Guichan/mouseinput.hpp \
- ../Game/../Guichan/graphics.hpp ../Game/../Guichan/cliprectangle.hpp \
- ../Game/../Guichan/gui.hpp ../Game/../Guichan/keyevent.hpp \
- ../Game/../Guichan/inputevent.hpp ../Game/../Guichan/mouseevent.hpp \
- ../Game/../Guichan/image.hpp ../Game/../Guichan/imagefont.hpp \
- ../Game/../Guichan/font.hpp ../Game/../Guichan/imageloader.hpp \
- ../Game/../Guichan/input.hpp ../Game/../Guichan/inputevent.hpp \
- ../Game/../Guichan/key.hpp ../Game/../Guichan/keyevent.hpp \
- ../Game/../Guichan/keyinput.hpp ../Game/../Guichan/keylistener.hpp \
- ../Game/../Guichan/listmodel.hpp ../Game/../Guichan/mouseevent.hpp \
- ../Game/../Guichan/mouseinput.hpp ../Game/../Guichan/mouselistener.hpp \
- ../Game/../Guichan/rectangle.hpp ../Game/../Guichan/selectionevent.hpp \
+Game/GUI.d: ../Game/GUI.cpp ../Game/GUI.hpp ../Game/../guichan.hpp \
+ ../Game/../Guichan/actionevent.hpp ../Game/../Guichan/event.hpp \
+ ../Game/../Guichan/platform.hpp ../Game/../Guichan/actionlistener.hpp \
+ ../Game/../Guichan/actionevent.hpp ../Game/../Guichan/cliprectangle.hpp \
+ ../Game/../Guichan/rectangle.hpp ../Game/../Guichan/color.hpp \
+ ../Game/../Guichan/deathlistener.hpp ../Game/../Guichan/event.hpp \
+ ../Game/../Guichan/exception.hpp ../Game/../Guichan/focushandler.hpp \
+ ../Game/../Guichan/focuslistener.hpp ../Game/../Guichan/font.hpp \
+ ../Game/../Guichan/genericinput.hpp ../Game/../Guichan/input.hpp \
+ ../Game/../Guichan/keyinput.hpp ../Game/../Guichan/key.hpp \
+ ../Game/../Guichan/mouseinput.hpp ../Game/../Guichan/graphics.hpp \
+ ../Game/../Guichan/cliprectangle.hpp ../Game/../Guichan/gui.hpp \
+ ../Game/../Guichan/keyevent.hpp ../Game/../Guichan/inputevent.hpp \
+ ../Game/../Guichan/mouseevent.hpp ../Game/../Guichan/image.hpp \
+ ../Game/../Guichan/imagefont.hpp ../Game/../Guichan/font.hpp \
+ ../Game/../Guichan/imageloader.hpp ../Game/../Guichan/input.hpp \
+ ../Game/../Guichan/inputevent.hpp ../Game/../Guichan/key.hpp \
+ ../Game/../Guichan/keyevent.hpp ../Game/../Guichan/keyinput.hpp \
+ ../Game/../Guichan/keylistener.hpp ../Game/../Guichan/listmodel.hpp \
+ ../Game/../Guichan/mouseevent.hpp ../Game/../Guichan/mouseinput.hpp \
+ ../Game/../Guichan/mouselistener.hpp ../Game/../Guichan/rectangle.hpp \
+ ../Game/../Guichan/selectionevent.hpp \
  ../Game/../Guichan/selectionlistener.hpp \
  ../Game/../Guichan/selectionevent.hpp ../Game/../Guichan/widget.hpp \
  ../Game/../Guichan/color.hpp ../Game/../Guichan/widgetlistener.hpp \

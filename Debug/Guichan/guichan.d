@@ -1,1 +1,1 @@
-Guichan/guichan.d Guichan/guichan.o: ../Guichan/guichan.cpp
+Guichan/guichan.d: ../Guichan/guichan.cpp

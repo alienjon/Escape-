@@ -1,5 +1,4 @@
-Screens/MenuScreenWidgets/NewGameMenu.d \
- Screens/MenuScreenWidgets/NewGameMenu.o: \
+Screens/MenuScreenWidgets/NewGameMenu.d: \
  ../Screens/MenuScreenWidgets/NewGameMenu.cpp \
  ../Screens/MenuScreenWidgets/NewGameMenu.hpp \
  ../Screens/MenuScreenWidgets/../../Listeners/CreatureMovedToPointListener.hpp \

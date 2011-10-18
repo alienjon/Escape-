@@ -1,6 +1,5 @@
-Entities/Creatures/Player.d Entities/Creatures/Player.o: \
- ../Entities/Creatures/Player.cpp ../Entities/Creatures/Player.hpp \
- ../Entities/Creatures/Creature.hpp \
+Entities/Creatures/Player.d: ../Entities/Creatures/Player.cpp \
+ ../Entities/Creatures/Player.hpp ../Entities/Creatures/Creature.hpp \
  ../Entities/Creatures/../../Managers/AnimationManager.hpp \
  ../Entities/Creatures/../../Managers/../Engine/Sprite.hpp \
  ../Entities/Creatures/../../Managers/../Engine/../guichan.hpp \
@@ -177,6 +176,7 @@ Entities/Creatures/Player.d Entities/Creatures/Player.o: \
  ../Entities/Creatures/../../Game/Keywords.hpp \
  ../Entities/Creatures/../../LevelInfo/Level.hpp \
  ../Entities/Creatures/../../LevelInfo/../Interfaces/ActionInterface.hpp \
+ ../Entities/Creatures/../../LevelInfo/../Listeners/ChangeScoreListener.hpp \
  ../Entities/Creatures/../../LevelInfo/../Listeners/CreatureMovedToPointListener.hpp \
  ../Entities/Creatures/../../LevelInfo/../LevelInfo/ElipData.hpp \
  ../Entities/Creatures/../../LevelInfo/../LevelInfo/../Math/Ellipse.hpp \
@@ -595,6 +595,8 @@ Entities/Creatures/Player.d Entities/Creatures/Player.o: \
 ../Entities/Creatures/../../LevelInfo/Level.hpp:
 
 ../Entities/Creatures/../../LevelInfo/../Interfaces/ActionInterface.hpp:
+
+../Entities/Creatures/../../LevelInfo/../Listeners/ChangeScoreListener.hpp:
 
 ../Entities/Creatures/../../LevelInfo/../Listeners/CreatureMovedToPointListener.hpp:
 

@@ -1,5 +1,5 @@
-Guichan/widgets/container.d Guichan/widgets/container.o: \
- ../Guichan/widgets/container.cpp ../Guichan/widgets/container.hpp \
+Guichan/widgets/container.d: ../Guichan/widgets/container.cpp \
+ ../Guichan/widgets/container.hpp \
  ../Guichan/widgets/../basiccontainer.hpp \
  ../Guichan/widgets/../deathlistener.hpp ../Guichan/widgets/../event.hpp \
  ../Guichan/widgets/../platform.hpp ../Guichan/widgets/../widget.hpp \

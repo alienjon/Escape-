@@ -1,5 +1,4 @@
-Interfaces/EnvironmentInterface.d Interfaces/EnvironmentInterface.o: \
- ../Interfaces/EnvironmentInterface.cpp \
+Interfaces/EnvironmentInterface.d: ../Interfaces/EnvironmentInterface.cpp \
  ../Interfaces/EnvironmentInterface.hpp \
  ../Interfaces/../Listeners/EnvironmentRequestListener.hpp \
  ../Interfaces/../Engine/Logger.hpp \

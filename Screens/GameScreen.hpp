@@ -10,30 +10,31 @@
 #include <list>
 #include <string>
 
-#include "SDL/SDL.h"
-
+#include "../Listeners/ChangeScoreListener.hpp"
 #include "../Game/Event.hpp"
 #include "../Widgets/GameOptionsWidget.hpp"
 #include "../Widgets/GameOverWidget.hpp"
 #include "../Game/GUI.hpp"
 #include "../guichan.hpp"
 #include "../Game/Input.hpp"
+#include "../Widgets/GameScreenMenuBar.hpp"
 #include "../LevelInfo/Level.hpp"
+#include "../Widgets/LevelCompleteWidget.hpp"
 #include "../Widgets/MessageDisplayWidget.hpp"
 #include "../Entities/Creatures/Player.hpp"
 #include "../Engine/Renderer.hpp"
 #include "Screen.hpp"
 #include "../Engine/Sprite.hpp"
 #include "../Engine/Timer.hpp"
-#include "../Widgets/TimerWidget.hpp"
 #include "../Math/Vector.hpp"
+#include "../Engine/Viewport.hpp"
 
 class Entity;
 
 /**
  * @brief The game screen is a means to display the game itself.
  */
-class GameScreen : public gcn::ActionListener, public Screen
+class GameScreen : public gcn::ActionListener, public ChangeScoreListener, public Screen
 {
     public:
     /**
@@ -48,6 +49,12 @@ class GameScreen : public gcn::ActionListener, public Screen
      * @param event The action event.
      */
     virtual void action(const gcn::ActionEvent& event);
+
+	/**
+	 * @brief Change the score by the provided amount.
+	 * @param change The amount to change the score.
+	 */
+	virtual void changeScore(int change);
 
     /**
      * @brief Messages can be things like tutorials or even conversations.
@@ -91,50 +98,47 @@ class GameScreen : public gcn::ActionListener, public Screen
     virtual void logic();
 
     private:
-    /**
-     * The player.
-     */
+    // The player.
     Player mPlayer;
 
-    /**
-     * The game's initial difficulty.
-     */
+    // The game's initial difficulty.
     unsigned int mDifficulty;
 
-    /**
-     * True if the game is paused.
-     */
+    // True if the game is paused.
     bool mIsPaused;
 
-    /**
-     * The current level.
-     */
+    // The current level.
     Level* mLevel;
 
-    /**
-     * The game over widget.
-     */
+    // The game over widget.
     GameOverWidget mGameOverWidget;
 
-    /**
-     * The game options menu.
-     */
+    // The game options menu.
     GameOptionsWidget mOptionsMenu;
 
-    /**
-     * A widget to show the user any collected messages (tutorial info, speech, etc...)
-     */
+    // A widget to show the user any collected messages (tutorial info, speech, etc...)
     MessageDisplayWidget mMessageOSD;
 
-    /**
-     * The game screen's input timer.
-     */
+    // The game screen's input timer.
     Timer mInputTimer;
 
-    /**
-     * The timer widget.
-     */
-    TimerWidget mTimerWidget;
+    // The menu bar.
+    GameScreenMenuBar mMenuBar;
+
+    // The level complete widget.
+    LevelCompleteWidget mLevelCompleteWidget;
+
+    // The viewport.
+    Viewport mViewport;
+
+	// This is the score.
+	unsigned int mScore;
+
+	// This is the amount to add to the scure.
+	int mCounter;
+
+	// This is the score timer.
+	Timer mScoreTimer;
 };
 
 #endif /* GAMESCREEN_HPP_ */

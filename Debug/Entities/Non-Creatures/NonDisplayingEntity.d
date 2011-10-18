@@ -1,5 +1,4 @@
-Entities/Non-Creatures/NonDisplayingEntity.d \
- Entities/Non-Creatures/NonDisplayingEntity.o: \
+Entities/Non-Creatures/NonDisplayingEntity.d: \
  ../Entities/Non-Creatures/NonDisplayingEntity.cpp \
  ../Entities/Non-Creatures/NonDisplayingEntity.hpp \
  ../Entities/Non-Creatures/../../Game/Direction.hpp \

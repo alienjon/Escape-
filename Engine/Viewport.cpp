@@ -4,40 +4,32 @@
  *  Created on: Mar 30, 2009
  *      Author: alienjon
  */
-
 #include "Viewport.hpp"
 
 #include "../Entities/Entity.hpp"
 #include "../main.hpp"
 #include "../Managers/VideoManager.hpp"
 
-Viewport::Viewport() : mEntity(0)
+Viewport::Viewport() :
+	mDimension(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT),
+	mEntity(0),
+	mZoomX(1.0),
+	mZoomY(1.0),
+	mXOffset(0),
+	mYOffset(0)
 {
-	// Set the size of the camera to the size of the screen.
-	mDimension.vector.x = 0;
-	mDimension.vector.y = 0;
-	mDimension.width = SCREEN_WIDTH;
-	mDimension.height = SCREEN_HEIGHT;
 }
 
 void Viewport::mCheckBounds()
 {
     if(mDimension.vector.x < 0)
-    {
         mDimension.vector.x = 0;
-    }
     if(mDimension.vector.y < 0 )
-    {
         mDimension.vector.y = 0;
-    }
-    if(mDimension.vector.x > mBounds.width - mDimension.width)
-    {
+    if(mDimension.vector.x > (int)(mBounds.width - mDimension.width))
         mDimension.vector.x = mBounds.width - mDimension.width;
-    }
-    if(mDimension.vector.y > mBounds.height - mDimension.height)
-    {
+    if(mDimension.vector.y > (int)(mBounds.height - mDimension.height))
         mDimension.vector.y = mBounds.height - mDimension.height;
-    }
 }
 
 void Viewport::center(const Entity* entity)
@@ -61,11 +53,6 @@ int Viewport::getHeight() const
 	return mDimension.height;
 }
 
-Vector Viewport::getOffset() const
-{
-	return Vector(mDimension.vector.x, mDimension.vector.y);
-}
-
 int Viewport::getWidth() const
 {
 	return mDimension.width;
@@ -76,9 +63,19 @@ int Viewport::getX() const
 	return mDimension.vector.x;
 }
 
+int Viewport::getXOffset() const
+{
+	return mXOffset;
+}
+
 int Viewport::getY() const
 {
 	return mDimension.vector.y;
+}
+
+int Viewport::getYOffset() const
+{
+	return mYOffset;
 }
 
 bool Viewport::isOnScreen(const Rectangle& area) const
@@ -114,16 +111,22 @@ bool Viewport::isTracking() const
 void Viewport::logic()
 {
 	// Center the camera on the current object.
+	// @note All non-viewport aspects must be ratios via the zoom (in this case the entity)
 	if(mEntity)
 	{
-	    center(int(mEntity->getWidth() / 2) - int(mDimension.width / 2) + mEntity->getX(),
-	           int(mEntity->getHeight() / 2) - int(mDimension.height / 2) + mEntity->getY());
+	    center(((int(mEntity->getWidth() / 2) * mZoomX) - int(mDimension.width / 2) + (mEntity->getX() * mZoomX)),
+	           ((int(mEntity->getHeight() / 2) * mZoomY) - int(mDimension.height / 2) + (mEntity->getY() * mZoomY)));
 	}
 }
 
 void Viewport::setBounds(const Rectangle& bounds)
 {
     mBounds = bounds;
+}
+
+void Viewport::setHeight(unsigned int height)
+{
+	mDimension.height = height;
 }
 
 void Viewport::setPosition(int x, int y)
@@ -133,14 +136,35 @@ void Viewport::setPosition(int x, int y)
     mCheckBounds();
 }
 
+void Viewport::setWidth(unsigned int width)
+{
+	mDimension.width = width;
+}
+
 void Viewport::setX(int x)
 {
     mDimension.vector.x = x;
     mCheckBounds();
 }
 
+void Viewport::setXOffset(int xOffset)
+{
+	mXOffset = xOffset;
+}
+
 void Viewport::setY(int y)
 {
     mDimension.vector.y = y;
     mCheckBounds();
+}
+
+void Viewport::setYOffset(int yOffset)
+{
+	mYOffset = yOffset;
+}
+
+void Viewport::setZoom(double zoomX, double zoomY)
+{
+	mZoomX = zoomX;
+	mZoomY = zoomY;
 }

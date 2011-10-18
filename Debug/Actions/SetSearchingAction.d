@@ -1,6 +1,6 @@
-Actions/SetSearchingAction.d Actions/SetSearchingAction.o: \
- ../Actions/SetSearchingAction.cpp ../Actions/SetSearchingAction.hpp \
- ../Actions/Action.hpp ../Actions/../Entities/Creatures/Creature.hpp \
+Actions/SetSearchingAction.d: ../Actions/SetSearchingAction.cpp \
+ ../Actions/SetSearchingAction.hpp ../Actions/Action.hpp \
+ ../Actions/../Entities/Creatures/Creature.hpp \
  ../Actions/../Entities/Creatures/../../Managers/AnimationManager.hpp \
  ../Actions/../Entities/Creatures/../../Managers/../Engine/Sprite.hpp \
  ../Actions/../Entities/Creatures/../../Managers/../Engine/../guichan.hpp \

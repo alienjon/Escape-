@@ -1,4 +1,4 @@
-Interfaces/GameInterfaceInterface.d Interfaces/GameInterfaceInterface.o: \
+Interfaces/GameInterfaceInterface.d: \
  ../Interfaces/GameInterfaceInterface.cpp \
  ../Interfaces/GameInterfaceInterface.hpp \
  ../Interfaces/../Listeners/InterfaceListener.hpp \
