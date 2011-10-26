@@ -141,13 +141,6 @@ void Renderer::drawImage(const Surface* image, int srcX, int srcY, int dstX, int
 	SDL_BlitSurface(image->mSurface, &src, mTarget, &dst);
 }
 
-void Renderer::fillEllipse(const Ellipse& ellipse)
-{
-	// Get the color and draw the ellipse.
-	const gcn::Color& c = getColor();
-	filledEllipseRGBA(mTarget, ellipse.center.x, ellipse.center.y, ellipse.xRad, ellipse.yRad, c.r, c.g, c.b, c.a);
-}
-
 void Renderer::fillQuadrilateral(const Quadrilateral& quad)
 {
     // The lists of X and Y points.

@@ -4,7 +4,7 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
-../Math/Ellipse.cpp \
+../Math/CollisionArea.cpp \
 ../Math/Math.cpp \
 ../Math/Point.cpp \
 ../Math/Polygon.cpp \
@@ -13,7 +13,7 @@ CPP_SRCS += \
 ../Math/Vector.cpp 
 
 OBJS += \
-./Math/Ellipse.o \
+./Math/CollisionArea.o \
 ./Math/Math.o \
 ./Math/Point.o \
 ./Math/Polygon.o \
@@ -22,7 +22,7 @@ OBJS += \
 ./Math/Vector.o 
 
 CPP_DEPS += \
-./Math/Ellipse.d \
+./Math/CollisionArea.d \
 ./Math/Math.d \
 ./Math/Point.d \
 ./Math/Polygon.d \

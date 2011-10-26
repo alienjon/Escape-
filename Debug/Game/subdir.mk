@@ -10,9 +10,8 @@ CPP_SRCS += \
 ../Game/Game.cpp \
 ../Game/Input.cpp \
 ../Game/Keywords.cpp \
+../Game/Level.cpp \
 ../Game/Map.cpp \
-../Game/TileData.cpp \
-../Game/TileType.cpp \
 ../Game/Tileset.cpp 
 
 OBJS += \
@@ -22,9 +21,8 @@ OBJS += \
 ./Game/Game.o \
 ./Game/Input.o \
 ./Game/Keywords.o \
+./Game/Level.o \
 ./Game/Map.o \
-./Game/TileData.o \
-./Game/TileType.o \
 ./Game/Tileset.o 
 
 CPP_DEPS += \
@@ -34,9 +32,8 @@ CPP_DEPS += \
 ./Game/Game.d \
 ./Game/Input.d \
 ./Game/Keywords.d \
+./Game/Level.d \
 ./Game/Map.d \
-./Game/TileData.d \
-./Game/TileType.d \
 ./Game/Tileset.d 
 
 

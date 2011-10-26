@@ -1,8 +1,6 @@
 Managers/TilesetManager.d: ../Managers/TilesetManager.cpp \
  ../Managers/TilesetManager.hpp ../Managers/../Game/Tileset.hpp \
- ../Managers/../Game/../Math/Quadrilateral.hpp \
- ../Managers/../Game/../Math/../Math/Polygon.hpp \
- ../Managers/../Game/../Math/../Math/../Math/Vector.hpp \
+ ../Managers/../Game/../Math/CollisionArea.hpp \
  ../Managers/../Game/../Math/../Math/Rectangle.hpp \
  ../Managers/../Game/../Math/../Math/../guichan.hpp \
  ../Managers/../Game/../Math/../Math/../Guichan/actionevent.hpp \
@@ -90,35 +88,35 @@ Managers/TilesetManager.d: ../Managers/TilesetManager.cpp \
  ../Managers/../Game/../Math/../Math/../Guichan/widgets/container.hpp \
  ../Managers/../Game/../Math/../Math/../Guichan/platform.hpp \
  ../Managers/../Game/../Math/../Math/../Math/Polygon.hpp \
- ../Managers/../Game/../Math/../Math/Vector.hpp \
+ ../Managers/../Game/../Math/../Math/../Math/../Math/Vector.hpp \
+ ../Managers/../Game/../Math/../Math/../Math/Vector.hpp \
+ ../Managers/../Game/../Math/../Engine/Renderer.hpp \
+ ../Managers/../Game/../Math/../Engine/../Math/Quadrilateral.hpp \
+ ../Managers/../Game/../Math/../Engine/../Math/../Math/Polygon.hpp \
+ ../Managers/../Game/../Math/../Engine/../Math/../Math/Rectangle.hpp \
+ ../Managers/../Game/../Math/../Engine/../Math/../Math/Vector.hpp \
+ ../Managers/../Game/../Math/../Engine/../Guichan/sdl.hpp \
+ ../Managers/../Game/../Math/../Engine/../Guichan/sdl/sdlgraphics.hpp \
+ ../Managers/../Game/../Math/../Engine/../Guichan/sdl/../color.hpp \
+ ../Managers/../Game/../Math/../Engine/../Guichan/sdl/../graphics.hpp \
+ ../Managers/../Game/../Math/../Engine/../Guichan/sdl/../platform.hpp \
+ ../Managers/../Game/../Math/../Engine/../Guichan/sdl/sdlimage.hpp \
+ ../Managers/../Game/../Math/../Engine/../Guichan/sdl/../image.hpp \
+ ../Managers/../Game/../Math/../Engine/../Guichan/sdl/sdlimageloader.hpp \
+ ../Managers/../Game/../Math/../Engine/../Guichan/sdl/../imageloader.hpp \
+ ../Managers/../Game/../Math/../Engine/../Guichan/sdl/sdlinput.hpp \
+ ../Managers/../Game/../Math/../Engine/../Guichan/sdl/../input.hpp \
+ ../Managers/../Game/../Math/../Engine/../Guichan/sdl/../keyinput.hpp \
+ ../Managers/../Game/../Math/../Engine/../Guichan/sdl/../mouseinput.hpp \
+ ../Managers/../Game/../Math/../Engine/../Guichan/platform.hpp \
  ../Managers/../Game/../Math/Rectangle.hpp \
  ../Managers/../Game/../Engine/Surface.hpp \
  ../Managers/../Game/../Engine/../Guichan/sdl.hpp \
- ../Managers/../Game/../Engine/../Guichan/sdl/sdlgraphics.hpp \
- ../Managers/../Game/../Engine/../Guichan/sdl/../color.hpp \
- ../Managers/../Game/../Engine/../Guichan/sdl/../graphics.hpp \
- ../Managers/../Game/../Engine/../Guichan/sdl/../platform.hpp \
- ../Managers/../Game/../Engine/../Guichan/sdl/sdlimage.hpp \
- ../Managers/../Game/../Engine/../Guichan/sdl/../image.hpp \
- ../Managers/../Game/../Engine/../Guichan/sdl/sdlimageloader.hpp \
- ../Managers/../Game/../Engine/../Guichan/sdl/../imageloader.hpp \
- ../Managers/../Game/../Engine/../Guichan/sdl/sdlinput.hpp \
- ../Managers/../Game/../Engine/../Guichan/sdl/../input.hpp \
- ../Managers/../Game/../Engine/../Guichan/sdl/../keyinput.hpp \
- ../Managers/../Game/../Engine/../Guichan/sdl/../mouseinput.hpp \
- ../Managers/../Game/../Engine/../Guichan/platform.hpp \
  ../Managers/../Game/../Engine/../Math/Rectangle.hpp \
- ../Managers/../Game/../Game/TileData.hpp \
- ../Managers/../Game/../Game/../Math/Quadrilateral.hpp \
- ../Managers/../Game/../Game/TileLevel.hpp \
- ../Managers/../Game/TileType.hpp ../Managers/../Game/Game.hpp \
+ ../Managers/../Game/Game.hpp \
  ../Managers/../Game/../Listeners/CreatureMovedToPointListener.hpp \
  ../Managers/../Game/../Engine/Cursor.hpp \
  ../Managers/../Game/../Engine/../Engine/Renderer.hpp \
- ../Managers/../Game/../Engine/../Engine/../Math/Ellipse.hpp \
- ../Managers/../Game/../Engine/../Engine/../Math/../Math/Vector.hpp \
- ../Managers/../Game/../Engine/../Engine/../Math/Quadrilateral.hpp \
- ../Managers/../Game/../Engine/../Engine/../Guichan/sdl.hpp \
  ../Managers/../Game/../Engine/../Engine/Sprite.hpp \
  ../Managers/../Game/../Engine/../Engine/../guichan.hpp \
  ../Managers/../Game/../Engine/../Engine/../Listeners/AnimationCycleListener.hpp \
@@ -143,11 +141,7 @@ Managers/TilesetManager.d: ../Managers/TilesetManager.cpp \
 
 ../Managers/../Game/Tileset.hpp:
 
-../Managers/../Game/../Math/Quadrilateral.hpp:
-
-../Managers/../Game/../Math/../Math/Polygon.hpp:
-
-../Managers/../Game/../Math/../Math/../Math/Vector.hpp:
+../Managers/../Game/../Math/CollisionArea.hpp:
 
 ../Managers/../Game/../Math/../Math/Rectangle.hpp:
 
@@ -323,7 +317,47 @@ Managers/TilesetManager.d: ../Managers/TilesetManager.cpp \
 
 ../Managers/../Game/../Math/../Math/../Math/Polygon.hpp:
 
-../Managers/../Game/../Math/../Math/Vector.hpp:
+../Managers/../Game/../Math/../Math/../Math/../Math/Vector.hpp:
+
+../Managers/../Game/../Math/../Math/../Math/Vector.hpp:
+
+../Managers/../Game/../Math/../Engine/Renderer.hpp:
+
+../Managers/../Game/../Math/../Engine/../Math/Quadrilateral.hpp:
+
+../Managers/../Game/../Math/../Engine/../Math/../Math/Polygon.hpp:
+
+../Managers/../Game/../Math/../Engine/../Math/../Math/Rectangle.hpp:
+
+../Managers/../Game/../Math/../Engine/../Math/../Math/Vector.hpp:
+
+../Managers/../Game/../Math/../Engine/../Guichan/sdl.hpp:
+
+../Managers/../Game/../Math/../Engine/../Guichan/sdl/sdlgraphics.hpp:
+
+../Managers/../Game/../Math/../Engine/../Guichan/sdl/../color.hpp:
+
+../Managers/../Game/../Math/../Engine/../Guichan/sdl/../graphics.hpp:
+
+../Managers/../Game/../Math/../Engine/../Guichan/sdl/../platform.hpp:
+
+../Managers/../Game/../Math/../Engine/../Guichan/sdl/sdlimage.hpp:
+
+../Managers/../Game/../Math/../Engine/../Guichan/sdl/../image.hpp:
+
+../Managers/../Game/../Math/../Engine/../Guichan/sdl/sdlimageloader.hpp:
+
+../Managers/../Game/../Math/../Engine/../Guichan/sdl/../imageloader.hpp:
+
+../Managers/../Game/../Math/../Engine/../Guichan/sdl/sdlinput.hpp:
+
+../Managers/../Game/../Math/../Engine/../Guichan/sdl/../input.hpp:
+
+../Managers/../Game/../Math/../Engine/../Guichan/sdl/../keyinput.hpp:
+
+../Managers/../Game/../Math/../Engine/../Guichan/sdl/../mouseinput.hpp:
+
+../Managers/../Game/../Math/../Engine/../Guichan/platform.hpp:
 
 ../Managers/../Game/../Math/Rectangle.hpp:
 
@@ -331,41 +365,7 @@ Managers/TilesetManager.d: ../Managers/TilesetManager.cpp \
 
 ../Managers/../Game/../Engine/../Guichan/sdl.hpp:
 
-../Managers/../Game/../Engine/../Guichan/sdl/sdlgraphics.hpp:
-
-../Managers/../Game/../Engine/../Guichan/sdl/../color.hpp:
-
-../Managers/../Game/../Engine/../Guichan/sdl/../graphics.hpp:
-
-../Managers/../Game/../Engine/../Guichan/sdl/../platform.hpp:
-
-../Managers/../Game/../Engine/../Guichan/sdl/sdlimage.hpp:
-
-../Managers/../Game/../Engine/../Guichan/sdl/../image.hpp:
-
-../Managers/../Game/../Engine/../Guichan/sdl/sdlimageloader.hpp:
-
-../Managers/../Game/../Engine/../Guichan/sdl/../imageloader.hpp:
-
-../Managers/../Game/../Engine/../Guichan/sdl/sdlinput.hpp:
-
-../Managers/../Game/../Engine/../Guichan/sdl/../input.hpp:
-
-../Managers/../Game/../Engine/../Guichan/sdl/../keyinput.hpp:
-
-../Managers/../Game/../Engine/../Guichan/sdl/../mouseinput.hpp:
-
-../Managers/../Game/../Engine/../Guichan/platform.hpp:
-
 ../Managers/../Game/../Engine/../Math/Rectangle.hpp:
-
-../Managers/../Game/../Game/TileData.hpp:
-
-../Managers/../Game/../Game/../Math/Quadrilateral.hpp:
-
-../Managers/../Game/../Game/TileLevel.hpp:
-
-../Managers/../Game/TileType.hpp:
 
 ../Managers/../Game/Game.hpp:
 
@@ -374,14 +374,6 @@ Managers/TilesetManager.d: ../Managers/TilesetManager.cpp \
 ../Managers/../Game/../Engine/Cursor.hpp:
 
 ../Managers/../Game/../Engine/../Engine/Renderer.hpp:
-
-../Managers/../Game/../Engine/../Engine/../Math/Ellipse.hpp:
-
-../Managers/../Game/../Engine/../Engine/../Math/../Math/Vector.hpp:
-
-../Managers/../Game/../Engine/../Engine/../Math/Quadrilateral.hpp:
-
-../Managers/../Game/../Engine/../Engine/../Guichan/sdl.hpp:
 
 ../Managers/../Game/../Engine/../Engine/Sprite.hpp:
 

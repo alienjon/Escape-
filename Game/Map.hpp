@@ -9,6 +9,7 @@
 
 #include <vector>
 
+#include "../Math/CollisionArea.hpp"
 #include "../Math/Point.hpp"
 #include "../Math/Quadrilateral.hpp"
 #include "../Math/Rectangle.hpp"
@@ -28,13 +29,13 @@ class Map
      * @param height The height of the map grid.
      * @param tileset The tileset for the map to use.
      */
-    Map(unsigned int width, unsigned int height, const Tileset* tileset);
+	Map(unsigned int width, unsigned int height);
 
     /**
      * @brief Check an area vs. map collisions (hitting a wall, for example)
      * @param area The area to check.
      * @return True if a collision occurred.
-     */
+     *///@todo remove quadrilaterals, just use rectangles
     virtual bool checkCollision(const Quadrilateral& area) const;
 
     /**
@@ -51,26 +52,11 @@ class Map
     virtual Surface* copyMapImage() const;
 
     /**
-     * @brief Draw the lower map (probably just the ground)
+     * @brief Draw the map.
      * @param renderer The graphics object.
      * @param viewport The visible area on the screen.
      */
-    virtual void drawLower(Renderer& renderer, const Viewport& viewport);
-
-    /**
-     * @brief Draw the middle map (objects on the ground, but still below the creatures)
-     * @param renderer The graphics object.
-     * @param viewport The visible area on the screen.
-     * @param end_y The tile-y level to draw.
-     */
-    virtual void drawMiddle(Renderer& renderer, const Viewport& viewport, int end_y = -1);
-
-    /**
-     * @brief Draw the upper map (stuff above the creatures)
-     * @param renderer The graphics object.
-     * @param viewport The visible area on the screen.
-     */
-    virtual void drawUpper(Renderer& renderer, const Viewport& viewport);
+    virtual void draw(Renderer& renderer, const Viewport& viewport);
 
     /**
      * @brief Get the complexity of the map.
@@ -79,16 +65,10 @@ class Map
     virtual unsigned int getComplexity() const;
 
     /**
-     * @brief Get the location on the map that is the entrance for the player.
-     * @return The entrance location.
+     * @brief Get the location on the map that is the entrance/exit for the player.
+     * @return The portal location.
      */
-    const Vector& getEntrance() const;
-
-    /**
-     * @brief Get the exit area that the player must activate to go to the next level.
-     * @return The exit area.
-     */
-    const Rectangle& getExit() const;
+    const Vector& getPortal() const;
 
     /**
      * @brief Returns the pixel height of the map.
@@ -126,42 +106,20 @@ class Map
      */
     virtual bool isOutOfBounds(const Rectangle& area) const;
 
-    protected:
-    /**
-     * The upper, middle and lower maps.
-     */
-    std::vector<std::pair<Point, Rectangle> > mLMap, mMMap, mU1Map, mU2Map, mU3Map;
+    private:
 
-    /**
-     * The collision areas.
-     */
-    std::vector<Quadrilateral> mCollisionAreas;
+    // The walls and collisions.
+    std::vector<std::pair<Point, Rectangle> > mMap;
+    std::vector<CollisionArea> mCollisions;
 
-    /**
-     * The width and height of the map in tiles.
-     */
+    // The width and height of the map in tiles.
     unsigned int mWidth, mHeight;
 
-    /**
-     * This map's tileset.
-     */
+    // This map's tileset.
     const Tileset* mTileset;
 
-    /**
-     * This is the entrance location.
-     */
-    Vector mEntranceLocation;
-
-    /**
-     * This is the exit area.
-     */
-    Rectangle mExitArea;
-
-    private:
-    /**
-     * Draw a level.
-     */
-    void mDrawLevel(Renderer& renderer, const Viewport& viewport, std::vector<std::pair<Point, Rectangle> >& tiles, int end_y = -1);
+    // This is the entrance location.
+    Vector mPortal;
 };
 
 extern const unsigned int MAP_CELL_SIDE;

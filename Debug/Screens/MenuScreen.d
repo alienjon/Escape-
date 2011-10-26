@@ -123,26 +123,24 @@ Screens/MenuScreen.d: ../Screens/MenuScreen.cpp ../Screens/MenuScreen.hpp \
  ../Screens/MenuScreenWidgets/../../Managers/../Engine/../Math/Rectangle.hpp \
  ../Screens/../Game/Event.hpp ../Screens/../guichan.hpp \
  ../Screens/MenuScreenWidgets/MainMenu.hpp ../Screens/../Game/Map.hpp \
+ ../Screens/../Game/../Math/CollisionArea.hpp \
+ ../Screens/../Game/../Math/../Math/Rectangle.hpp \
+ ../Screens/../Game/../Math/../Engine/Renderer.hpp \
+ ../Screens/../Game/../Math/../Engine/../Math/Quadrilateral.hpp \
+ ../Screens/../Game/../Math/../Engine/../Math/../Math/Polygon.hpp \
+ ../Screens/../Game/../Math/../Engine/../Math/../Math/Rectangle.hpp \
+ ../Screens/../Game/../Math/../Engine/../Math/../Math/Vector.hpp \
+ ../Screens/../Game/../Math/../Engine/../Guichan/sdl.hpp \
  ../Screens/../Game/../Math/Point.hpp \
  ../Screens/../Game/../Math/Quadrilateral.hpp \
- ../Screens/../Game/../Math/../Math/Polygon.hpp \
- ../Screens/../Game/../Math/../Math/Rectangle.hpp \
- ../Screens/../Game/../Math/../Math/Vector.hpp \
  ../Screens/../Game/../Math/Rectangle.hpp \
  ../Screens/../Game/../Engine/Renderer.hpp \
- ../Screens/../Game/../Engine/../Math/Ellipse.hpp \
- ../Screens/../Game/../Engine/../Math/../Math/Vector.hpp \
- ../Screens/../Game/../Engine/../Math/Quadrilateral.hpp \
- ../Screens/../Game/../Engine/../Guichan/sdl.hpp \
  ../Screens/../Game/../Game/Tileset.hpp \
- ../Screens/../Game/../Game/../Math/Quadrilateral.hpp \
+ ../Screens/../Game/../Game/../Math/CollisionArea.hpp \
  ../Screens/../Game/../Game/../Math/Rectangle.hpp \
  ../Screens/../Game/../Game/../Engine/Surface.hpp \
- ../Screens/../Game/../Game/../Game/TileData.hpp \
- ../Screens/../Game/../Game/../Game/../Math/Quadrilateral.hpp \
- ../Screens/../Game/../Game/../Game/TileLevel.hpp \
- ../Screens/../Game/../Game/TileType.hpp \
  ../Screens/../Game/../Engine/Viewport.hpp \
+ ../Screens/../Game/../Engine/../Math/Quadrilateral.hpp \
  ../Screens/../Game/../Engine/../Math/Rectangle.hpp \
  ../Screens/../Game/../Engine/../Math/Vector.hpp \
  ../Screens/MenuScreenWidgets/NewGameMenu.hpp \
@@ -441,45 +439,41 @@ Screens/MenuScreen.d: ../Screens/MenuScreen.cpp ../Screens/MenuScreen.hpp \
 
 ../Screens/../Game/Map.hpp:
 
-../Screens/../Game/../Math/Point.hpp:
-
-../Screens/../Game/../Math/Quadrilateral.hpp:
-
-../Screens/../Game/../Math/../Math/Polygon.hpp:
+../Screens/../Game/../Math/CollisionArea.hpp:
 
 ../Screens/../Game/../Math/../Math/Rectangle.hpp:
 
-../Screens/../Game/../Math/../Math/Vector.hpp:
+../Screens/../Game/../Math/../Engine/Renderer.hpp:
+
+../Screens/../Game/../Math/../Engine/../Math/Quadrilateral.hpp:
+
+../Screens/../Game/../Math/../Engine/../Math/../Math/Polygon.hpp:
+
+../Screens/../Game/../Math/../Engine/../Math/../Math/Rectangle.hpp:
+
+../Screens/../Game/../Math/../Engine/../Math/../Math/Vector.hpp:
+
+../Screens/../Game/../Math/../Engine/../Guichan/sdl.hpp:
+
+../Screens/../Game/../Math/Point.hpp:
+
+../Screens/../Game/../Math/Quadrilateral.hpp:
 
 ../Screens/../Game/../Math/Rectangle.hpp:
 
 ../Screens/../Game/../Engine/Renderer.hpp:
 
-../Screens/../Game/../Engine/../Math/Ellipse.hpp:
-
-../Screens/../Game/../Engine/../Math/../Math/Vector.hpp:
-
-../Screens/../Game/../Engine/../Math/Quadrilateral.hpp:
-
-../Screens/../Game/../Engine/../Guichan/sdl.hpp:
-
 ../Screens/../Game/../Game/Tileset.hpp:
 
-../Screens/../Game/../Game/../Math/Quadrilateral.hpp:
+../Screens/../Game/../Game/../Math/CollisionArea.hpp:
 
 ../Screens/../Game/../Game/../Math/Rectangle.hpp:
 
 ../Screens/../Game/../Game/../Engine/Surface.hpp:
 
-../Screens/../Game/../Game/../Game/TileData.hpp:
-
-../Screens/../Game/../Game/../Game/../Math/Quadrilateral.hpp:
-
-../Screens/../Game/../Game/../Game/TileLevel.hpp:
-
-../Screens/../Game/../Game/TileType.hpp:
-
 ../Screens/../Game/../Engine/Viewport.hpp:
+
+../Screens/../Game/../Engine/../Math/Quadrilateral.hpp:
 
 ../Screens/../Game/../Engine/../Math/Rectangle.hpp:
 

@@ -25,21 +25,17 @@ C_UPPER_DEPS :=
 SUBDIRS := \
 . \
 Widgets \
-Triggers \
 Screens \
 Screens/MenuScreenWidgets \
 Math \
 Managers \
-LevelInfo \
 Interfaces \
 Guichan/widgets \
 Guichan \
 Guichan/sdl \
 Guichan/opengl \
 Game \
-Entities/Non-Creatures \
 Entities \
-Entities/Creatures/Zombies \
 Entities/Creatures \
 Engine \
 Actions \

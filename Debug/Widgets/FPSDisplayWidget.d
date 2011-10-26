@@ -74,14 +74,13 @@ Widgets/FPSDisplayWidget.d: ../Widgets/FPSDisplayWidget.cpp \
  ../Widgets/../Game/../Listeners/CreatureMovedToPointListener.hpp \
  ../Widgets/../Game/../Engine/Cursor.hpp \
  ../Widgets/../Game/../Engine/../Engine/Renderer.hpp \
- ../Widgets/../Game/../Engine/../Engine/../Math/Ellipse.hpp \
- ../Widgets/../Game/../Engine/../Engine/../Math/../Math/Vector.hpp \
  ../Widgets/../Game/../Engine/../Engine/../Math/Quadrilateral.hpp \
  ../Widgets/../Game/../Engine/../Engine/../Math/../Math/Polygon.hpp \
  ../Widgets/../Game/../Engine/../Engine/../Math/../Math/../Math/Vector.hpp \
  ../Widgets/../Game/../Engine/../Engine/../Math/../Math/Rectangle.hpp \
  ../Widgets/../Game/../Engine/../Engine/../Math/../Math/../guichan.hpp \
  ../Widgets/../Game/../Engine/../Engine/../Math/../Math/../Math/Polygon.hpp \
+ ../Widgets/../Game/../Engine/../Engine/../Math/../Math/Vector.hpp \
  ../Widgets/../Game/../Engine/../Engine/../Guichan/sdl.hpp \
  ../Widgets/../Game/../Engine/../Engine/../Guichan/sdl/sdlgraphics.hpp \
  ../Widgets/../Game/../Engine/../Engine/../Guichan/sdl/../color.hpp \
@@ -307,10 +306,6 @@ Widgets/FPSDisplayWidget.d: ../Widgets/FPSDisplayWidget.cpp \
 
 ../Widgets/../Game/../Engine/../Engine/Renderer.hpp:
 
-../Widgets/../Game/../Engine/../Engine/../Math/Ellipse.hpp:
-
-../Widgets/../Game/../Engine/../Engine/../Math/../Math/Vector.hpp:
-
 ../Widgets/../Game/../Engine/../Engine/../Math/Quadrilateral.hpp:
 
 ../Widgets/../Game/../Engine/../Engine/../Math/../Math/Polygon.hpp:
@@ -322,6 +317,8 @@ Widgets/FPSDisplayWidget.d: ../Widgets/FPSDisplayWidget.cpp \
 ../Widgets/../Game/../Engine/../Engine/../Math/../Math/../guichan.hpp:
 
 ../Widgets/../Game/../Engine/../Engine/../Math/../Math/../Math/Polygon.hpp:
+
+../Widgets/../Game/../Engine/../Engine/../Math/../Math/Vector.hpp:
 
 ../Widgets/../Game/../Engine/../Engine/../Guichan/sdl.hpp:
 

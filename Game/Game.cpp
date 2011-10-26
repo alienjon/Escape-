@@ -12,7 +12,7 @@
 #include <string>
 
 #include "GUI.hpp"
-#include "../LevelInfo/Level.hpp"
+#include "../Game/Level.hpp"
 #include "../Engine/Logger.hpp"
 #include "../Engine/Renderer.hpp"
 #include "../Engine/Timer.hpp"

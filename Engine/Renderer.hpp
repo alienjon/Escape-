@@ -25,7 +25,6 @@
 
 #include "SDL/SDL.h" // @note Needs to be placed before guichan/sdl.hpp
 
-#include "../Math/Ellipse.hpp"
 #include "../Math/Quadrilateral.hpp"
 #include "../Guichan/sdl.hpp"
 
@@ -75,12 +74,6 @@ class Renderer : public gcn::SDLGraphics
      * @param height The height.
      */
     virtual void drawImage(const Surface* image, int srcX, int srcY, int dstX, int dstY, int width, int height);
-
-    /**
-     * @brief Draw a filled ellipse onto the current layer.
-     * @param ellipse The ellipse to fill.
-     */
-    virtual void fillEllipse(const Ellipse& ellipse);
 
 	/**
 	 * @brief Draw a filled quadrilateral onto the current layer.

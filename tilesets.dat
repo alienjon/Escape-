@@ -1,66 +1,8 @@
-# Lines starting with a '#' are comments.  Blanks lines are also skipped.
+# Lines starting with a '#' are comments.  Blanks lines are skipped.
 #
-# Each tileset begins with a definition to identify the name of the tileset,
-# the tileset image, and the size of a single tile in the set. Each value is
-# delimited with a colon (:).  For example:
-# <forest:Data/Tilesets/forest.png:32:32>
-#
-# Following a definition is a list of tile types with the UID (universal
-# identification) for each layer of the tile.  Since the tileset's image is
-# simply a collection of each tile's image, the UID is the numbered position
-# of that specific tile's image in the larger collection; such that 0 is the
-# tile in the upper-left of the meta-image (of the size specified in the
-# definition), 1 is the area immediately to the right of 0, 2 is to the right
-# of 1, and so on.  At the end of a row, the next number continues on the
-# next row down at the position all the way to the left.  The possible tile
-# types are:
-# FLOOR_A FLOOR_B FLOOR_C FLOOR_D NORTH SOUTH EAST WEST NORTHEAST NORTHWEST
-# SOUTHEAST SOUTHWEST CORNER_NORTHWEST CORNER_NORTHEAST CORNER_SOUTHWEST
-# CORNER_SOUTHEASY CORNER_NORTH CORNER_SOUTH CORNER_EAST CORNER_WEST
-# NORTHWEST_DOORLEFT NORTHWEST_DOORRIGHT NORTHEAST_DOORLEFT NORTHEAST_DOORRIGHT
-# SOUTHEAST_DOORLEFT SOUTHEAST_DOORRIGHT SOUTHWEST_DOORLEFT SOUTHWEST_DOORRIGHT
-#
-# After the tile type is a colon-separated list of 5 numbers, representing
-# (in order) the lower-level image, the middle-level image, the
-# lower-upper-level image, the middle-upper-level image, and the upper image.
-# Each entry needs to be on a separate line.
-#
-# The next 8 colon-separated integers represent the collision area for that tile.
-#
-# Each entry can be prefixed with as many or as few whitespace as preferred.
-# Note, however, that the definition MUST begin with a '<' and end with a '>'.
-#
-# Here's a full working example (well, working if you have the correct tileset
-# image in the correct directory hierarchy.
-
-# The office tileset.
-<office:Tilesets/office.png:64:48>
-	EMPTY_FLOOR:6:0:0:0:0:0:0:0:0:0:0:0:0
-	WEST:6:11:0:0:0:29:0:29:47:34:47:34:0
-	NORTH:6:25:13:0:0:0:42:63:42:63:47:0:47
-	EAST:6:11:0:0:0:29:0:29:47:34:47:34:0
-	SOUTH:6:25:13:0:0:0:0:63:0:63:47:0:47
-	CORNER_NORTHWEST:6:33:21:0:0:29:0:63:0:63:47:29:47
-	CORNER_NORTHEAST:6:34:22:0:0:0:0:34:0:34:47:0:47
-	CORNER_SOUTHWEST:6:32:20:0:0:29:0:63:0:63:47:29:47
-	CORNER_SOUTHEAST:6:30:18:0:0:0:0:34:0:34:47:0:47
-	NORTHWEST:6:112:100:88:76:0:0:32:0:16:12:0:24
-	SOUTHEAST:6:112:100:88:76:0:0:32:0:16:12:0:24
-	NORTHEAST:6:111:99:87:75:32:0:63:0:63:23:47:12
-	SOUTHWEST:6:111:99:87:75:32:0:63:0:63:23:47:12
-	CORNER_NORTH:6:67:55:43:0:0:0:63:0:63:24:0:24
-	CORNER_SOUTH:6:70:58:46:0:0:0:63:0:63:47:0:47
-	CORNER_WEST:6:113:101:89:77:32:0:63:0:63:24:46:11
-	CORNER_EAST:6:114:102:90:78:0:0:32:0:16:12:0:24
-	NORTHWEST_DOORLEFT:6:98:86:74:0:0:0:96:0:0:24:0:0
-	NORTHWEST_DOORRIGHT:6:69:57:45:0:27:0:63:0:63:47:27:47
-	NORTHEAST_DOORLEFT:6:68:56:44:0:0:0:36:0:36:47:0:47
-	NORTHEAST_DOORRIGHT:6:97:85:73:0:0:0:32:0:17:11:0:24
-	SOUTHEAST_DOORLEFT:6:69:57:45:0:27:0:63:0:63:47:27:47
-	SOUTHEAST_DOORRIGHT:6:98:86:74:0:31:0:63:0:63:24:47:12
-	SOUTHWEST_DOORLEFT:6:97:85:73:0:0:0:32:0:17:11:0:24	
-	SOUTHWEST_DOORRIGHT:6:68:56:44:0:0:0:36:0:36:47:0:47
-	CLOSEDDOOR_WEST:6:91:79:0:0:0:43:64:43:64:48:0:48
-	CLOSEDDOOR_EAST:6:92:80:0:0:0:43:64:43:64:48:0:48
-	OPENDOOR_WEST:6:115:103:0:0:0:43:64:43:64:48:0:48
-	OPENDOOR_EAST:6:116:104:0:0:0:43:64:43:64:48:0:48
+# Each entry is the filename for the tileset located in Tilesets/. A tileset
+# could realistically be of any image type (supported by SDL_image) that
+# resembles a closed box. Entries below for an example:
+NeonGreen.png
+NeonRed.png
+NeonCyan.png

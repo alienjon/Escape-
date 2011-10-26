@@ -109,14 +109,13 @@ Screens/SpriteCreditScreen.d: ../Screens/SpriteCreditScreen.cpp \
  ../Screens/../Game/../Widgets/../Math/Vector.hpp \
  ../Screens/../Game/../Widgets/../Engine/Timer.hpp \
  ../Screens/../Game/../Engine/Renderer.hpp \
- ../Screens/../Game/../Engine/../Math/Ellipse.hpp \
- ../Screens/../Game/../Engine/../Math/../Math/Vector.hpp \
  ../Screens/../Game/../Engine/../Math/Quadrilateral.hpp \
  ../Screens/../Game/../Engine/../Math/../Math/Polygon.hpp \
  ../Screens/../Game/../Engine/../Math/../Math/../Math/Vector.hpp \
  ../Screens/../Game/../Engine/../Math/../Math/Rectangle.hpp \
  ../Screens/../Game/../Engine/../Math/../Math/../guichan.hpp \
  ../Screens/../Game/../Engine/../Math/../Math/../Math/Polygon.hpp \
+ ../Screens/../Game/../Engine/../Math/../Math/Vector.hpp \
  ../Screens/../Game/../Engine/../Guichan/sdl.hpp \
  ../Screens/../Game/../Engine/Surface.hpp \
  ../Screens/../Game/../Engine/../Math/Rectangle.hpp \
@@ -376,10 +375,6 @@ Screens/SpriteCreditScreen.d: ../Screens/SpriteCreditScreen.cpp \
 
 ../Screens/../Game/../Engine/Renderer.hpp:
 
-../Screens/../Game/../Engine/../Math/Ellipse.hpp:
-
-../Screens/../Game/../Engine/../Math/../Math/Vector.hpp:
-
 ../Screens/../Game/../Engine/../Math/Quadrilateral.hpp:
 
 ../Screens/../Game/../Engine/../Math/../Math/Polygon.hpp:
@@ -391,6 +386,8 @@ Screens/SpriteCreditScreen.d: ../Screens/SpriteCreditScreen.cpp \
 ../Screens/../Game/../Engine/../Math/../Math/../guichan.hpp:
 
 ../Screens/../Game/../Engine/../Math/../Math/../Math/Polygon.hpp:
+
+../Screens/../Game/../Engine/../Math/../Math/Vector.hpp:
 
 ../Screens/../Game/../Engine/../Guichan/sdl.hpp:
 

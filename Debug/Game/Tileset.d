@@ -1,7 +1,5 @@
 Game/Tileset.d: ../Game/Tileset.cpp ../Game/Tileset.hpp \
- ../Game/../Math/Quadrilateral.hpp ../Game/../Math/../Math/Polygon.hpp \
- ../Game/../Math/../Math/../Math/Vector.hpp \
- ../Game/../Math/../Math/Rectangle.hpp \
+ ../Game/../Math/CollisionArea.hpp ../Game/../Math/../Math/Rectangle.hpp \
  ../Game/../Math/../Math/../guichan.hpp \
  ../Game/../Math/../Math/../Guichan/actionevent.hpp \
  ../Game/../Math/../Math/../Guichan/event.hpp \
@@ -88,37 +86,39 @@ Game/Tileset.d: ../Game/Tileset.cpp ../Game/Tileset.hpp \
  ../Game/../Math/../Math/../Guichan/widgets/container.hpp \
  ../Game/../Math/../Math/../Guichan/platform.hpp \
  ../Game/../Math/../Math/../Math/Polygon.hpp \
- ../Game/../Math/../Math/Vector.hpp ../Game/../Math/Rectangle.hpp \
- ../Game/../Engine/Surface.hpp ../Game/../Engine/../Guichan/sdl.hpp \
- ../Game/../Engine/../Guichan/sdl/sdlgraphics.hpp \
- ../Game/../Engine/../Guichan/sdl/../color.hpp \
- ../Game/../Engine/../Guichan/sdl/../graphics.hpp \
- ../Game/../Engine/../Guichan/sdl/../platform.hpp \
- ../Game/../Engine/../Guichan/sdl/sdlimage.hpp \
- ../Game/../Engine/../Guichan/sdl/../image.hpp \
- ../Game/../Engine/../Guichan/sdl/sdlimageloader.hpp \
- ../Game/../Engine/../Guichan/sdl/../imageloader.hpp \
- ../Game/../Engine/../Guichan/sdl/sdlinput.hpp \
- ../Game/../Engine/../Guichan/sdl/../input.hpp \
- ../Game/../Engine/../Guichan/sdl/../keyinput.hpp \
- ../Game/../Engine/../Guichan/sdl/../mouseinput.hpp \
- ../Game/../Engine/../Guichan/platform.hpp \
- ../Game/../Engine/../Math/Rectangle.hpp ../Game/../Game/TileData.hpp \
- ../Game/../Game/../Math/Quadrilateral.hpp ../Game/../Game/TileLevel.hpp \
- ../Game/TileType.hpp ../Game/../main.hpp ../Game/../Game/Direction.hpp \
- ../Game/../Game/../Math/Vector.hpp ../Game/../guichan.hpp \
- ../Game/../Math/Vector.hpp ../Game/../Managers/VideoManager.hpp \
- ../Game/../Managers/../guichan.hpp \
+ ../Game/../Math/../Math/../Math/../Math/Vector.hpp \
+ ../Game/../Math/../Math/../Math/Vector.hpp \
+ ../Game/../Math/../Engine/Renderer.hpp \
+ ../Game/../Math/../Engine/../Math/Quadrilateral.hpp \
+ ../Game/../Math/../Engine/../Math/../Math/Polygon.hpp \
+ ../Game/../Math/../Engine/../Math/../Math/Rectangle.hpp \
+ ../Game/../Math/../Engine/../Math/../Math/Vector.hpp \
+ ../Game/../Math/../Engine/../Guichan/sdl.hpp \
+ ../Game/../Math/../Engine/../Guichan/sdl/sdlgraphics.hpp \
+ ../Game/../Math/../Engine/../Guichan/sdl/../color.hpp \
+ ../Game/../Math/../Engine/../Guichan/sdl/../graphics.hpp \
+ ../Game/../Math/../Engine/../Guichan/sdl/../platform.hpp \
+ ../Game/../Math/../Engine/../Guichan/sdl/sdlimage.hpp \
+ ../Game/../Math/../Engine/../Guichan/sdl/../image.hpp \
+ ../Game/../Math/../Engine/../Guichan/sdl/sdlimageloader.hpp \
+ ../Game/../Math/../Engine/../Guichan/sdl/../imageloader.hpp \
+ ../Game/../Math/../Engine/../Guichan/sdl/sdlinput.hpp \
+ ../Game/../Math/../Engine/../Guichan/sdl/../input.hpp \
+ ../Game/../Math/../Engine/../Guichan/sdl/../keyinput.hpp \
+ ../Game/../Math/../Engine/../Guichan/sdl/../mouseinput.hpp \
+ ../Game/../Math/../Engine/../Guichan/platform.hpp \
+ ../Game/../Math/Rectangle.hpp ../Game/../Engine/Surface.hpp \
+ ../Game/../Engine/../Guichan/sdl.hpp \
+ ../Game/../Engine/../Math/Rectangle.hpp ../Game/../main.hpp \
+ ../Game/../Game/Direction.hpp ../Game/../Game/../Math/Vector.hpp \
+ ../Game/../guichan.hpp ../Game/../Math/Vector.hpp \
+ ../Game/../Managers/VideoManager.hpp ../Game/../Managers/../guichan.hpp \
  ../Game/../Managers/../Math/Rectangle.hpp \
  ../Game/../Managers/../Engine/Surface.hpp
 
 ../Game/Tileset.hpp:
 
-../Game/../Math/Quadrilateral.hpp:
-
-../Game/../Math/../Math/Polygon.hpp:
-
-../Game/../Math/../Math/../Math/Vector.hpp:
+../Game/../Math/CollisionArea.hpp:
 
 ../Game/../Math/../Math/Rectangle.hpp:
 
@@ -294,7 +294,47 @@ Game/Tileset.d: ../Game/Tileset.cpp ../Game/Tileset.hpp \
 
 ../Game/../Math/../Math/../Math/Polygon.hpp:
 
-../Game/../Math/../Math/Vector.hpp:
+../Game/../Math/../Math/../Math/../Math/Vector.hpp:
+
+../Game/../Math/../Math/../Math/Vector.hpp:
+
+../Game/../Math/../Engine/Renderer.hpp:
+
+../Game/../Math/../Engine/../Math/Quadrilateral.hpp:
+
+../Game/../Math/../Engine/../Math/../Math/Polygon.hpp:
+
+../Game/../Math/../Engine/../Math/../Math/Rectangle.hpp:
+
+../Game/../Math/../Engine/../Math/../Math/Vector.hpp:
+
+../Game/../Math/../Engine/../Guichan/sdl.hpp:
+
+../Game/../Math/../Engine/../Guichan/sdl/sdlgraphics.hpp:
+
+../Game/../Math/../Engine/../Guichan/sdl/../color.hpp:
+
+../Game/../Math/../Engine/../Guichan/sdl/../graphics.hpp:
+
+../Game/../Math/../Engine/../Guichan/sdl/../platform.hpp:
+
+../Game/../Math/../Engine/../Guichan/sdl/sdlimage.hpp:
+
+../Game/../Math/../Engine/../Guichan/sdl/../image.hpp:
+
+../Game/../Math/../Engine/../Guichan/sdl/sdlimageloader.hpp:
+
+../Game/../Math/../Engine/../Guichan/sdl/../imageloader.hpp:
+
+../Game/../Math/../Engine/../Guichan/sdl/sdlinput.hpp:
+
+../Game/../Math/../Engine/../Guichan/sdl/../input.hpp:
+
+../Game/../Math/../Engine/../Guichan/sdl/../keyinput.hpp:
+
+../Game/../Math/../Engine/../Guichan/sdl/../mouseinput.hpp:
+
+../Game/../Math/../Engine/../Guichan/platform.hpp:
 
 ../Game/../Math/Rectangle.hpp:
 
@@ -302,41 +342,7 @@ Game/Tileset.d: ../Game/Tileset.cpp ../Game/Tileset.hpp \
 
 ../Game/../Engine/../Guichan/sdl.hpp:
 
-../Game/../Engine/../Guichan/sdl/sdlgraphics.hpp:
-
-../Game/../Engine/../Guichan/sdl/../color.hpp:
-
-../Game/../Engine/../Guichan/sdl/../graphics.hpp:
-
-../Game/../Engine/../Guichan/sdl/../platform.hpp:
-
-../Game/../Engine/../Guichan/sdl/sdlimage.hpp:
-
-../Game/../Engine/../Guichan/sdl/../image.hpp:
-
-../Game/../Engine/../Guichan/sdl/sdlimageloader.hpp:
-
-../Game/../Engine/../Guichan/sdl/../imageloader.hpp:
-
-../Game/../Engine/../Guichan/sdl/sdlinput.hpp:
-
-../Game/../Engine/../Guichan/sdl/../input.hpp:
-
-../Game/../Engine/../Guichan/sdl/../keyinput.hpp:
-
-../Game/../Engine/../Guichan/sdl/../mouseinput.hpp:
-
-../Game/../Engine/../Guichan/platform.hpp:
-
 ../Game/../Engine/../Math/Rectangle.hpp:
-
-../Game/../Game/TileData.hpp:
-
-../Game/../Game/../Math/Quadrilateral.hpp:
-
-../Game/../Game/TileLevel.hpp:
-
-../Game/TileType.hpp:
 
 ../Game/../main.hpp:
 

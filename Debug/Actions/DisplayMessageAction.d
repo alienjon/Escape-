@@ -121,14 +121,13 @@ Actions/DisplayMessageAction.d: ../Actions/DisplayMessageAction.cpp \
  ../Actions/../Screens/../Game/../Widgets/../Math/Vector.hpp \
  ../Actions/../Screens/../Game/../Widgets/../Engine/Timer.hpp \
  ../Actions/../Screens/../Game/../Engine/Renderer.hpp \
- ../Actions/../Screens/../Game/../Engine/../Math/Ellipse.hpp \
- ../Actions/../Screens/../Game/../Engine/../Math/../Math/Vector.hpp \
  ../Actions/../Screens/../Game/../Engine/../Math/Quadrilateral.hpp \
  ../Actions/../Screens/../Game/../Engine/../Math/../Math/Polygon.hpp \
  ../Actions/../Screens/../Game/../Engine/../Math/../Math/../Math/Vector.hpp \
  ../Actions/../Screens/../Game/../Engine/../Math/../Math/Rectangle.hpp \
  ../Actions/../Screens/../Game/../Engine/../Math/../Math/../guichan.hpp \
  ../Actions/../Screens/../Game/../Engine/../Math/../Math/../Math/Polygon.hpp \
+ ../Actions/../Screens/../Game/../Engine/../Math/../Math/Vector.hpp \
  ../Actions/../Screens/../Game/../Engine/../Guichan/sdl.hpp \
  ../Actions/../Screens/../Game/../Engine/Surface.hpp \
  ../Actions/../Screens/../Game/../Engine/../Math/Rectangle.hpp \
@@ -149,76 +148,57 @@ Actions/DisplayMessageAction.d: ../Actions/DisplayMessageAction.cpp \
  ../Actions/../Screens/../Widgets/../Engine/Surface.hpp \
  ../Actions/../Screens/../Widgets/../Widgets/TimerWidget.hpp \
  ../Actions/../Screens/../Widgets/../Widgets/../Engine/Timer.hpp \
- ../Actions/../Screens/../LevelInfo/Level.hpp \
- ../Actions/../Screens/../LevelInfo/../Interfaces/ActionInterface.hpp \
- ../Actions/../Screens/../LevelInfo/../Interfaces/../Actions/Action.hpp \
- ../Actions/../Screens/../LevelInfo/../Listeners/ChangeScoreListener.hpp \
- ../Actions/../Screens/../LevelInfo/../Listeners/CreatureMovedToPointListener.hpp \
- ../Actions/../Screens/../LevelInfo/../LevelInfo/ElipData.hpp \
- ../Actions/../Screens/../LevelInfo/../LevelInfo/../Math/Ellipse.hpp \
- ../Actions/../Screens/../LevelInfo/../Interfaces/EnvironmentInterface.hpp \
- ../Actions/../Screens/../LevelInfo/../Interfaces/../Listeners/EnvironmentRequestListener.hpp \
- ../Actions/../Screens/../LevelInfo/../Interfaces/EventInterface.hpp \
- ../Actions/../Screens/../LevelInfo/../Interfaces/../Listeners/CreatureMovedToPointListener.hpp \
- ../Actions/../Screens/../LevelInfo/../Interfaces/../Listeners/EventListener.hpp \
- ../Actions/../Screens/../LevelInfo/../Listeners/EventListener.hpp \
- ../Actions/../Screens/../LevelInfo/../Game/Game.hpp \
- ../Actions/../Screens/../LevelInfo/../Game/../Listeners/CreatureMovedToPointListener.hpp \
- ../Actions/../Screens/../LevelInfo/../Game/../Engine/Cursor.hpp \
- ../Actions/../Screens/../LevelInfo/../Game/../Engine/../Engine/Renderer.hpp \
- ../Actions/../Screens/../LevelInfo/../Game/../Engine/../Engine/Sprite.hpp \
- ../Actions/../Screens/../LevelInfo/../Game/../Engine/../Engine/../guichan.hpp \
- ../Actions/../Screens/../LevelInfo/../Game/../Engine/../Engine/../Listeners/AnimationCycleListener.hpp \
- ../Actions/../Screens/../LevelInfo/../Game/../Engine/../Engine/../Math/Rectangle.hpp \
- ../Actions/../Screens/../LevelInfo/../Game/../Engine/../Engine/../Engine/Renderer.hpp \
- ../Actions/../Screens/../LevelInfo/../Game/../Engine/../Engine/Surface.hpp \
- ../Actions/../Screens/../LevelInfo/../Game/../Engine/../Engine/Timer.hpp \
- ../Actions/../Screens/../LevelInfo/../Game/../Engine/../Engine/../Math/Vector.hpp \
- ../Actions/../Screens/../LevelInfo/../Game/../Engine/../Math/Vector.hpp \
- ../Actions/../Screens/../LevelInfo/../Game/../Listeners/EventListener.hpp \
- ../Actions/../Screens/../LevelInfo/../Game/../guichan.hpp \
- ../Actions/../Screens/../LevelInfo/../Game/../Game/Input.hpp \
- ../Actions/../Screens/../LevelInfo/../Game/../Engine/Renderer.hpp \
- ../Actions/../Screens/../LevelInfo/../Game/../Engine/Timer.hpp \
- ../Actions/../Screens/../LevelInfo/../Interfaces/GameInterfaceInterface.hpp \
- ../Actions/../Screens/../LevelInfo/../Interfaces/../Listeners/InterfaceListener.hpp \
- ../Actions/../Screens/../LevelInfo/../Interfaces/../Listeners/../Math/Rectangle.hpp \
- ../Actions/../Screens/../LevelInfo/../Interfaces/../Listeners/../Math/Vector.hpp \
- ../Actions/../Screens/../LevelInfo/../Interfaces/../Math/Rectangle.hpp \
- ../Actions/../Screens/../LevelInfo/../Interfaces/../Math/Vector.hpp \
- ../Actions/../Screens/../LevelInfo/../Game/Input.hpp \
- ../Actions/../Screens/../LevelInfo/../LevelInfo/LevelData.hpp \
- ../Actions/../Screens/../LevelInfo/../LevelInfo/../Entities/Alignment.hpp \
- ../Actions/../Screens/../LevelInfo/../LevelInfo/../LevelInfo/ElipData.hpp \
- ../Actions/../Screens/../LevelInfo/../LevelInfo/../Entities/EntityData.hpp \
- ../Actions/../Screens/../LevelInfo/../LevelInfo/../Entities/../Math/Vector.hpp \
- ../Actions/../Screens/../LevelInfo/../LevelInfo/../LevelInfo/QuadData.hpp \
- ../Actions/../Screens/../LevelInfo/../LevelInfo/../LevelInfo/../Math/Quadrilateral.hpp \
- ../Actions/../Screens/../LevelInfo/../LevelInfo/../Math/Quadrilateral.hpp \
- ../Actions/../Screens/../LevelInfo/../LevelInfo/../Math/Rectangle.hpp \
- ../Actions/../Screens/../LevelInfo/../LevelInfo/../LevelInfo/RectData.hpp \
- ../Actions/../Screens/../LevelInfo/../LevelInfo/../LevelInfo/../Math/Rectangle.hpp \
- ../Actions/../Screens/../LevelInfo/../LevelInfo/../LevelInfo/PortalData.hpp \
- ../Actions/../Screens/../LevelInfo/../LevelInfo/../Math/Vector.hpp \
- ../Actions/../Screens/../LevelInfo/../Game/Map.hpp \
- ../Actions/../Screens/../LevelInfo/../Game/../Math/Point.hpp \
- ../Actions/../Screens/../LevelInfo/../Game/../Math/Quadrilateral.hpp \
- ../Actions/../Screens/../LevelInfo/../Game/../Math/Rectangle.hpp \
- ../Actions/../Screens/../LevelInfo/../Game/../Game/Tileset.hpp \
- ../Actions/../Screens/../LevelInfo/../Game/../Game/../Math/Quadrilateral.hpp \
- ../Actions/../Screens/../LevelInfo/../Game/../Game/../Math/Rectangle.hpp \
- ../Actions/../Screens/../LevelInfo/../Game/../Game/../Engine/Surface.hpp \
- ../Actions/../Screens/../LevelInfo/../Game/../Game/../Game/TileData.hpp \
- ../Actions/../Screens/../LevelInfo/../Game/../Game/../Game/../Math/Quadrilateral.hpp \
- ../Actions/../Screens/../LevelInfo/../Game/../Game/../Game/TileLevel.hpp \
- ../Actions/../Screens/../LevelInfo/../Game/../Game/TileType.hpp \
- ../Actions/../Screens/../LevelInfo/../Game/../Engine/Viewport.hpp \
- ../Actions/../Screens/../LevelInfo/../Math/Rectangle.hpp \
- ../Actions/../Screens/../LevelInfo/../Engine/Renderer.hpp \
- ../Actions/../Screens/../LevelInfo/../LevelInfo/QuadData.hpp \
- ../Actions/../Screens/../LevelInfo/../Math/Quadrilateral.hpp \
- ../Actions/../Screens/../LevelInfo/../Math/Vector.hpp \
- ../Actions/../Screens/../LevelInfo/../Engine/Viewport.hpp \
+ ../Actions/../Screens/../Game/Level.hpp \
+ ../Actions/../Screens/../Game/../Interfaces/ActionInterface.hpp \
+ ../Actions/../Screens/../Game/../Interfaces/../Actions/Action.hpp \
+ ../Actions/../Screens/../Game/../Listeners/ChangeScoreListener.hpp \
+ ../Actions/../Screens/../Game/../Listeners/CreatureMovedToPointListener.hpp \
+ ../Actions/../Screens/../Game/../Interfaces/EnvironmentInterface.hpp \
+ ../Actions/../Screens/../Game/../Interfaces/../Listeners/EnvironmentRequestListener.hpp \
+ ../Actions/../Screens/../Game/../Interfaces/EventInterface.hpp \
+ ../Actions/../Screens/../Game/../Interfaces/../Listeners/CreatureMovedToPointListener.hpp \
+ ../Actions/../Screens/../Game/../Interfaces/../Listeners/EventListener.hpp \
+ ../Actions/../Screens/../Game/../Listeners/EventListener.hpp \
+ ../Actions/../Screens/../Game/../Game/Game.hpp \
+ ../Actions/../Screens/../Game/../Game/../Listeners/CreatureMovedToPointListener.hpp \
+ ../Actions/../Screens/../Game/../Game/../Engine/Cursor.hpp \
+ ../Actions/../Screens/../Game/../Game/../Engine/../Engine/Renderer.hpp \
+ ../Actions/../Screens/../Game/../Game/../Engine/../Engine/Sprite.hpp \
+ ../Actions/../Screens/../Game/../Game/../Engine/../Engine/../guichan.hpp \
+ ../Actions/../Screens/../Game/../Game/../Engine/../Engine/../Listeners/AnimationCycleListener.hpp \
+ ../Actions/../Screens/../Game/../Game/../Engine/../Engine/../Math/Rectangle.hpp \
+ ../Actions/../Screens/../Game/../Game/../Engine/../Engine/../Engine/Renderer.hpp \
+ ../Actions/../Screens/../Game/../Game/../Engine/../Engine/Surface.hpp \
+ ../Actions/../Screens/../Game/../Game/../Engine/../Engine/Timer.hpp \
+ ../Actions/../Screens/../Game/../Game/../Engine/../Engine/../Math/Vector.hpp \
+ ../Actions/../Screens/../Game/../Game/../Engine/../Math/Vector.hpp \
+ ../Actions/../Screens/../Game/../Game/../Listeners/EventListener.hpp \
+ ../Actions/../Screens/../Game/../Game/../guichan.hpp \
+ ../Actions/../Screens/../Game/../Game/../Game/Input.hpp \
+ ../Actions/../Screens/../Game/../Game/../Engine/Renderer.hpp \
+ ../Actions/../Screens/../Game/../Game/../Engine/Timer.hpp \
+ ../Actions/../Screens/../Game/../Interfaces/GameInterfaceInterface.hpp \
+ ../Actions/../Screens/../Game/../Interfaces/../Listeners/InterfaceListener.hpp \
+ ../Actions/../Screens/../Game/../Interfaces/../Listeners/../Math/Rectangle.hpp \
+ ../Actions/../Screens/../Game/../Interfaces/../Listeners/../Math/Vector.hpp \
+ ../Actions/../Screens/../Game/../Interfaces/../Math/Rectangle.hpp \
+ ../Actions/../Screens/../Game/../Interfaces/../Math/Vector.hpp \
+ ../Actions/../Screens/../Game/../Game/Input.hpp \
+ ../Actions/../Screens/../Game/../Game/Map.hpp \
+ ../Actions/../Screens/../Game/../Game/../Math/CollisionArea.hpp \
+ ../Actions/../Screens/../Game/../Game/../Math/../Math/Rectangle.hpp \
+ ../Actions/../Screens/../Game/../Game/../Math/../Engine/Renderer.hpp \
+ ../Actions/../Screens/../Game/../Game/../Math/Point.hpp \
+ ../Actions/../Screens/../Game/../Game/../Math/Quadrilateral.hpp \
+ ../Actions/../Screens/../Game/../Game/../Math/Rectangle.hpp \
+ ../Actions/../Screens/../Game/../Game/../Game/Tileset.hpp \
+ ../Actions/../Screens/../Game/../Game/../Game/../Math/CollisionArea.hpp \
+ ../Actions/../Screens/../Game/../Game/../Game/../Math/Rectangle.hpp \
+ ../Actions/../Screens/../Game/../Game/../Game/../Engine/Surface.hpp \
+ ../Actions/../Screens/../Game/../Game/../Engine/Viewport.hpp \
+ ../Actions/../Screens/../Game/../Math/Rectangle.hpp \
+ ../Actions/../Screens/../Game/../Math/Quadrilateral.hpp \
+ ../Actions/../Screens/../Game/../Engine/Viewport.hpp \
  ../Actions/../Screens/../Widgets/LevelCompleteWidget.hpp \
  ../Actions/../Screens/../Widgets/../Engine/Timer.hpp \
  ../Actions/../Screens/../Widgets/MessageDisplayWidget.hpp \
@@ -515,10 +495,6 @@ Actions/DisplayMessageAction.d: ../Actions/DisplayMessageAction.cpp \
 
 ../Actions/../Screens/../Game/../Engine/Renderer.hpp:
 
-../Actions/../Screens/../Game/../Engine/../Math/Ellipse.hpp:
-
-../Actions/../Screens/../Game/../Engine/../Math/../Math/Vector.hpp:
-
 ../Actions/../Screens/../Game/../Engine/../Math/Quadrilateral.hpp:
 
 ../Actions/../Screens/../Game/../Engine/../Math/../Math/Polygon.hpp:
@@ -530,6 +506,8 @@ Actions/DisplayMessageAction.d: ../Actions/DisplayMessageAction.cpp \
 ../Actions/../Screens/../Game/../Engine/../Math/../Math/../guichan.hpp:
 
 ../Actions/../Screens/../Game/../Engine/../Math/../Math/../Math/Polygon.hpp:
+
+../Actions/../Screens/../Game/../Engine/../Math/../Math/Vector.hpp:
 
 ../Actions/../Screens/../Game/../Engine/../Guichan/sdl.hpp:
 
@@ -571,145 +549,107 @@ Actions/DisplayMessageAction.d: ../Actions/DisplayMessageAction.cpp \
 
 ../Actions/../Screens/../Widgets/../Widgets/../Engine/Timer.hpp:
 
-../Actions/../Screens/../LevelInfo/Level.hpp:
+../Actions/../Screens/../Game/Level.hpp:
 
-../Actions/../Screens/../LevelInfo/../Interfaces/ActionInterface.hpp:
+../Actions/../Screens/../Game/../Interfaces/ActionInterface.hpp:
 
-../Actions/../Screens/../LevelInfo/../Interfaces/../Actions/Action.hpp:
+../Actions/../Screens/../Game/../Interfaces/../Actions/Action.hpp:
 
-../Actions/../Screens/../LevelInfo/../Listeners/ChangeScoreListener.hpp:
+../Actions/../Screens/../Game/../Listeners/ChangeScoreListener.hpp:
 
-../Actions/../Screens/../LevelInfo/../Listeners/CreatureMovedToPointListener.hpp:
+../Actions/../Screens/../Game/../Listeners/CreatureMovedToPointListener.hpp:
 
-../Actions/../Screens/../LevelInfo/../LevelInfo/ElipData.hpp:
+../Actions/../Screens/../Game/../Interfaces/EnvironmentInterface.hpp:
 
-../Actions/../Screens/../LevelInfo/../LevelInfo/../Math/Ellipse.hpp:
+../Actions/../Screens/../Game/../Interfaces/../Listeners/EnvironmentRequestListener.hpp:
 
-../Actions/../Screens/../LevelInfo/../Interfaces/EnvironmentInterface.hpp:
+../Actions/../Screens/../Game/../Interfaces/EventInterface.hpp:
 
-../Actions/../Screens/../LevelInfo/../Interfaces/../Listeners/EnvironmentRequestListener.hpp:
+../Actions/../Screens/../Game/../Interfaces/../Listeners/CreatureMovedToPointListener.hpp:
 
-../Actions/../Screens/../LevelInfo/../Interfaces/EventInterface.hpp:
+../Actions/../Screens/../Game/../Interfaces/../Listeners/EventListener.hpp:
 
-../Actions/../Screens/../LevelInfo/../Interfaces/../Listeners/CreatureMovedToPointListener.hpp:
+../Actions/../Screens/../Game/../Listeners/EventListener.hpp:
 
-../Actions/../Screens/../LevelInfo/../Interfaces/../Listeners/EventListener.hpp:
+../Actions/../Screens/../Game/../Game/Game.hpp:
 
-../Actions/../Screens/../LevelInfo/../Listeners/EventListener.hpp:
+../Actions/../Screens/../Game/../Game/../Listeners/CreatureMovedToPointListener.hpp:
 
-../Actions/../Screens/../LevelInfo/../Game/Game.hpp:
+../Actions/../Screens/../Game/../Game/../Engine/Cursor.hpp:
 
-../Actions/../Screens/../LevelInfo/../Game/../Listeners/CreatureMovedToPointListener.hpp:
+../Actions/../Screens/../Game/../Game/../Engine/../Engine/Renderer.hpp:
 
-../Actions/../Screens/../LevelInfo/../Game/../Engine/Cursor.hpp:
+../Actions/../Screens/../Game/../Game/../Engine/../Engine/Sprite.hpp:
 
-../Actions/../Screens/../LevelInfo/../Game/../Engine/../Engine/Renderer.hpp:
+../Actions/../Screens/../Game/../Game/../Engine/../Engine/../guichan.hpp:
 
-../Actions/../Screens/../LevelInfo/../Game/../Engine/../Engine/Sprite.hpp:
+../Actions/../Screens/../Game/../Game/../Engine/../Engine/../Listeners/AnimationCycleListener.hpp:
 
-../Actions/../Screens/../LevelInfo/../Game/../Engine/../Engine/../guichan.hpp:
+../Actions/../Screens/../Game/../Game/../Engine/../Engine/../Math/Rectangle.hpp:
 
-../Actions/../Screens/../LevelInfo/../Game/../Engine/../Engine/../Listeners/AnimationCycleListener.hpp:
+../Actions/../Screens/../Game/../Game/../Engine/../Engine/../Engine/Renderer.hpp:
 
-../Actions/../Screens/../LevelInfo/../Game/../Engine/../Engine/../Math/Rectangle.hpp:
+../Actions/../Screens/../Game/../Game/../Engine/../Engine/Surface.hpp:
 
-../Actions/../Screens/../LevelInfo/../Game/../Engine/../Engine/../Engine/Renderer.hpp:
+../Actions/../Screens/../Game/../Game/../Engine/../Engine/Timer.hpp:
 
-../Actions/../Screens/../LevelInfo/../Game/../Engine/../Engine/Surface.hpp:
+../Actions/../Screens/../Game/../Game/../Engine/../Engine/../Math/Vector.hpp:
 
-../Actions/../Screens/../LevelInfo/../Game/../Engine/../Engine/Timer.hpp:
+../Actions/../Screens/../Game/../Game/../Engine/../Math/Vector.hpp:
 
-../Actions/../Screens/../LevelInfo/../Game/../Engine/../Engine/../Math/Vector.hpp:
+../Actions/../Screens/../Game/../Game/../Listeners/EventListener.hpp:
 
-../Actions/../Screens/../LevelInfo/../Game/../Engine/../Math/Vector.hpp:
+../Actions/../Screens/../Game/../Game/../guichan.hpp:
 
-../Actions/../Screens/../LevelInfo/../Game/../Listeners/EventListener.hpp:
+../Actions/../Screens/../Game/../Game/../Game/Input.hpp:
 
-../Actions/../Screens/../LevelInfo/../Game/../guichan.hpp:
+../Actions/../Screens/../Game/../Game/../Engine/Renderer.hpp:
 
-../Actions/../Screens/../LevelInfo/../Game/../Game/Input.hpp:
+../Actions/../Screens/../Game/../Game/../Engine/Timer.hpp:
 
-../Actions/../Screens/../LevelInfo/../Game/../Engine/Renderer.hpp:
+../Actions/../Screens/../Game/../Interfaces/GameInterfaceInterface.hpp:
 
-../Actions/../Screens/../LevelInfo/../Game/../Engine/Timer.hpp:
+../Actions/../Screens/../Game/../Interfaces/../Listeners/InterfaceListener.hpp:
 
-../Actions/../Screens/../LevelInfo/../Interfaces/GameInterfaceInterface.hpp:
+../Actions/../Screens/../Game/../Interfaces/../Listeners/../Math/Rectangle.hpp:
 
-../Actions/../Screens/../LevelInfo/../Interfaces/../Listeners/InterfaceListener.hpp:
+../Actions/../Screens/../Game/../Interfaces/../Listeners/../Math/Vector.hpp:
 
-../Actions/../Screens/../LevelInfo/../Interfaces/../Listeners/../Math/Rectangle.hpp:
+../Actions/../Screens/../Game/../Interfaces/../Math/Rectangle.hpp:
 
-../Actions/../Screens/../LevelInfo/../Interfaces/../Listeners/../Math/Vector.hpp:
+../Actions/../Screens/../Game/../Interfaces/../Math/Vector.hpp:
 
-../Actions/../Screens/../LevelInfo/../Interfaces/../Math/Rectangle.hpp:
+../Actions/../Screens/../Game/../Game/Input.hpp:
 
-../Actions/../Screens/../LevelInfo/../Interfaces/../Math/Vector.hpp:
+../Actions/../Screens/../Game/../Game/Map.hpp:
 
-../Actions/../Screens/../LevelInfo/../Game/Input.hpp:
+../Actions/../Screens/../Game/../Game/../Math/CollisionArea.hpp:
 
-../Actions/../Screens/../LevelInfo/../LevelInfo/LevelData.hpp:
+../Actions/../Screens/../Game/../Game/../Math/../Math/Rectangle.hpp:
 
-../Actions/../Screens/../LevelInfo/../LevelInfo/../Entities/Alignment.hpp:
+../Actions/../Screens/../Game/../Game/../Math/../Engine/Renderer.hpp:
 
-../Actions/../Screens/../LevelInfo/../LevelInfo/../LevelInfo/ElipData.hpp:
+../Actions/../Screens/../Game/../Game/../Math/Point.hpp:
 
-../Actions/../Screens/../LevelInfo/../LevelInfo/../Entities/EntityData.hpp:
+../Actions/../Screens/../Game/../Game/../Math/Quadrilateral.hpp:
 
-../Actions/../Screens/../LevelInfo/../LevelInfo/../Entities/../Math/Vector.hpp:
+../Actions/../Screens/../Game/../Game/../Math/Rectangle.hpp:
 
-../Actions/../Screens/../LevelInfo/../LevelInfo/../LevelInfo/QuadData.hpp:
+../Actions/../Screens/../Game/../Game/../Game/Tileset.hpp:
 
-../Actions/../Screens/../LevelInfo/../LevelInfo/../LevelInfo/../Math/Quadrilateral.hpp:
+../Actions/../Screens/../Game/../Game/../Game/../Math/CollisionArea.hpp:
 
-../Actions/../Screens/../LevelInfo/../LevelInfo/../Math/Quadrilateral.hpp:
+../Actions/../Screens/../Game/../Game/../Game/../Math/Rectangle.hpp:
 
-../Actions/../Screens/../LevelInfo/../LevelInfo/../Math/Rectangle.hpp:
+../Actions/../Screens/../Game/../Game/../Game/../Engine/Surface.hpp:
 
-../Actions/../Screens/../LevelInfo/../LevelInfo/../LevelInfo/RectData.hpp:
+../Actions/../Screens/../Game/../Game/../Engine/Viewport.hpp:
 
-../Actions/../Screens/../LevelInfo/../LevelInfo/../LevelInfo/../Math/Rectangle.hpp:
+../Actions/../Screens/../Game/../Math/Rectangle.hpp:
 
-../Actions/../Screens/../LevelInfo/../LevelInfo/../LevelInfo/PortalData.hpp:
+../Actions/../Screens/../Game/../Math/Quadrilateral.hpp:
 
-../Actions/../Screens/../LevelInfo/../LevelInfo/../Math/Vector.hpp:
-
-../Actions/../Screens/../LevelInfo/../Game/Map.hpp:
-
-../Actions/../Screens/../LevelInfo/../Game/../Math/Point.hpp:
-
-../Actions/../Screens/../LevelInfo/../Game/../Math/Quadrilateral.hpp:
-
-../Actions/../Screens/../LevelInfo/../Game/../Math/Rectangle.hpp:
-
-../Actions/../Screens/../LevelInfo/../Game/../Game/Tileset.hpp:
-
-../Actions/../Screens/../LevelInfo/../Game/../Game/../Math/Quadrilateral.hpp:
-
-../Actions/../Screens/../LevelInfo/../Game/../Game/../Math/Rectangle.hpp:
-
-../Actions/../Screens/../LevelInfo/../Game/../Game/../Engine/Surface.hpp:
-
-../Actions/../Screens/../LevelInfo/../Game/../Game/../Game/TileData.hpp:
-
-../Actions/../Screens/../LevelInfo/../Game/../Game/../Game/../Math/Quadrilateral.hpp:
-
-../Actions/../Screens/../LevelInfo/../Game/../Game/../Game/TileLevel.hpp:
-
-../Actions/../Screens/../LevelInfo/../Game/../Game/TileType.hpp:
-
-../Actions/../Screens/../LevelInfo/../Game/../Engine/Viewport.hpp:
-
-../Actions/../Screens/../LevelInfo/../Math/Rectangle.hpp:
-
-../Actions/../Screens/../LevelInfo/../Engine/Renderer.hpp:
-
-../Actions/../Screens/../LevelInfo/../LevelInfo/QuadData.hpp:
-
-../Actions/../Screens/../LevelInfo/../Math/Quadrilateral.hpp:
-
-../Actions/../Screens/../LevelInfo/../Math/Vector.hpp:
-
-../Actions/../Screens/../LevelInfo/../Engine/Viewport.hpp:
+../Actions/../Screens/../Game/../Engine/Viewport.hpp:
 
 ../Actions/../Screens/../Widgets/LevelCompleteWidget.hpp:
 

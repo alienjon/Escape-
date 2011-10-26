@@ -94,11 +94,10 @@ Entities/Creatures/Creature.d: ../Entities/Creatures/Creature.cpp \
  ../Entities/Creatures/../../Managers/../Engine/../Math/../Math/../Math/Vector.hpp \
  ../Entities/Creatures/../../Managers/../Engine/../Math/../Math/Vector.hpp \
  ../Entities/Creatures/../../Managers/../Engine/../Engine/Renderer.hpp \
- ../Entities/Creatures/../../Managers/../Engine/../Engine/../Math/Ellipse.hpp \
- ../Entities/Creatures/../../Managers/../Engine/../Engine/../Math/../Math/Vector.hpp \
  ../Entities/Creatures/../../Managers/../Engine/../Engine/../Math/Quadrilateral.hpp \
  ../Entities/Creatures/../../Managers/../Engine/../Engine/../Math/../Math/Polygon.hpp \
  ../Entities/Creatures/../../Managers/../Engine/../Engine/../Math/../Math/Rectangle.hpp \
+ ../Entities/Creatures/../../Managers/../Engine/../Engine/../Math/../Math/Vector.hpp \
  ../Entities/Creatures/../../Managers/../Engine/../Engine/../Guichan/sdl.hpp \
  ../Entities/Creatures/../../Managers/../Engine/../Engine/../Guichan/sdl/sdlgraphics.hpp \
  ../Entities/Creatures/../../Managers/../Engine/../Engine/../Guichan/sdl/../color.hpp \
@@ -147,77 +146,56 @@ Entities/Creatures/Creature.d: ../Entities/Creatures/Creature.cpp \
  ../Entities/Creatures/../../Math/Vector.hpp \
  ../Entities/Creatures/../../Math/Quadrilateral.hpp \
  ../Entities/Creatures/../../Engine/Timer.hpp \
- ../Entities/Creatures/../../Entities/Non-Creatures/Item.hpp \
- ../Entities/Creatures/../../Entities/Non-Creatures/../../Game/Direction.hpp \
- ../Entities/Creatures/../../Entities/Non-Creatures/../../Entities/Entity.hpp \
- ../Entities/Creatures/../../Entities/Non-Creatures/../../Entities/Templates/EntityTemplate.hpp \
  ../Entities/Creatures/../../Actions/DisplayCreatureAnimationAction.hpp \
  ../Entities/Creatures/../../Actions/Action.hpp \
  ../Entities/Creatures/../../Actions/../Listeners/AnimationCycleListener.hpp \
  ../Entities/Creatures/../../Actions/../Entities/Creatures/CreatureAnimationState.hpp \
  ../Entities/Creatures/../../Game/Keywords.hpp \
- ../Entities/Creatures/../../LevelInfo/Level.hpp \
- ../Entities/Creatures/../../LevelInfo/../Interfaces/ActionInterface.hpp \
- ../Entities/Creatures/../../LevelInfo/../Listeners/ChangeScoreListener.hpp \
- ../Entities/Creatures/../../LevelInfo/../Listeners/CreatureMovedToPointListener.hpp \
- ../Entities/Creatures/../../LevelInfo/../LevelInfo/ElipData.hpp \
- ../Entities/Creatures/../../LevelInfo/../LevelInfo/../Math/Ellipse.hpp \
- ../Entities/Creatures/../../LevelInfo/../Interfaces/EnvironmentInterface.hpp \
- ../Entities/Creatures/../../LevelInfo/../Interfaces/../Listeners/EnvironmentRequestListener.hpp \
- ../Entities/Creatures/../../LevelInfo/../Interfaces/EventInterface.hpp \
- ../Entities/Creatures/../../LevelInfo/../Listeners/EventListener.hpp \
- ../Entities/Creatures/../../LevelInfo/../Game/Game.hpp \
- ../Entities/Creatures/../../LevelInfo/../Game/../Listeners/CreatureMovedToPointListener.hpp \
- ../Entities/Creatures/../../LevelInfo/../Game/../Engine/Cursor.hpp \
- ../Entities/Creatures/../../LevelInfo/../Game/../Engine/../Engine/Renderer.hpp \
- ../Entities/Creatures/../../LevelInfo/../Game/../Engine/../Engine/Sprite.hpp \
- ../Entities/Creatures/../../LevelInfo/../Game/../Engine/../Math/Vector.hpp \
- ../Entities/Creatures/../../LevelInfo/../Game/../Listeners/EventListener.hpp \
- ../Entities/Creatures/../../LevelInfo/../Game/../guichan.hpp \
- ../Entities/Creatures/../../LevelInfo/../Game/../Game/Input.hpp \
- ../Entities/Creatures/../../LevelInfo/../Game/../Engine/Renderer.hpp \
- ../Entities/Creatures/../../LevelInfo/../Game/../Engine/Timer.hpp \
- ../Entities/Creatures/../../LevelInfo/../Interfaces/GameInterfaceInterface.hpp \
- ../Entities/Creatures/../../LevelInfo/../Interfaces/../Listeners/InterfaceListener.hpp \
- ../Entities/Creatures/../../LevelInfo/../Interfaces/../Listeners/../Math/Rectangle.hpp \
- ../Entities/Creatures/../../LevelInfo/../Interfaces/../Listeners/../Math/Vector.hpp \
- ../Entities/Creatures/../../LevelInfo/../Interfaces/../Math/Rectangle.hpp \
- ../Entities/Creatures/../../LevelInfo/../Interfaces/../Math/Vector.hpp \
- ../Entities/Creatures/../../LevelInfo/../Game/Input.hpp \
- ../Entities/Creatures/../../LevelInfo/../LevelInfo/LevelData.hpp \
- ../Entities/Creatures/../../LevelInfo/../LevelInfo/../Entities/Alignment.hpp \
- ../Entities/Creatures/../../LevelInfo/../LevelInfo/../LevelInfo/ElipData.hpp \
- ../Entities/Creatures/../../LevelInfo/../LevelInfo/../Entities/EntityData.hpp \
- ../Entities/Creatures/../../LevelInfo/../LevelInfo/../Entities/../Math/Vector.hpp \
- ../Entities/Creatures/../../LevelInfo/../LevelInfo/../LevelInfo/QuadData.hpp \
- ../Entities/Creatures/../../LevelInfo/../LevelInfo/../LevelInfo/../Math/Quadrilateral.hpp \
- ../Entities/Creatures/../../LevelInfo/../LevelInfo/../Math/Quadrilateral.hpp \
- ../Entities/Creatures/../../LevelInfo/../LevelInfo/../Math/Rectangle.hpp \
- ../Entities/Creatures/../../LevelInfo/../LevelInfo/../LevelInfo/RectData.hpp \
- ../Entities/Creatures/../../LevelInfo/../LevelInfo/../LevelInfo/../Math/Rectangle.hpp \
- ../Entities/Creatures/../../LevelInfo/../LevelInfo/../LevelInfo/PortalData.hpp \
- ../Entities/Creatures/../../LevelInfo/../LevelInfo/../Math/Vector.hpp \
- ../Entities/Creatures/../../LevelInfo/../Game/Map.hpp \
- ../Entities/Creatures/../../LevelInfo/../Game/../Math/Point.hpp \
- ../Entities/Creatures/../../LevelInfo/../Game/../Math/Quadrilateral.hpp \
- ../Entities/Creatures/../../LevelInfo/../Game/../Math/Rectangle.hpp \
- ../Entities/Creatures/../../LevelInfo/../Game/../Game/Tileset.hpp \
- ../Entities/Creatures/../../LevelInfo/../Game/../Game/../Math/Quadrilateral.hpp \
- ../Entities/Creatures/../../LevelInfo/../Game/../Game/../Math/Rectangle.hpp \
- ../Entities/Creatures/../../LevelInfo/../Game/../Game/../Engine/Surface.hpp \
- ../Entities/Creatures/../../LevelInfo/../Game/../Game/../Game/TileData.hpp \
- ../Entities/Creatures/../../LevelInfo/../Game/../Game/../Game/../Math/Quadrilateral.hpp \
- ../Entities/Creatures/../../LevelInfo/../Game/../Game/../Game/TileLevel.hpp \
- ../Entities/Creatures/../../LevelInfo/../Game/../Game/TileType.hpp \
- ../Entities/Creatures/../../LevelInfo/../Game/../Engine/Viewport.hpp \
- ../Entities/Creatures/../../LevelInfo/../Game/../Engine/../Math/Quadrilateral.hpp \
- ../Entities/Creatures/../../LevelInfo/../Game/../Engine/../Math/Rectangle.hpp \
- ../Entities/Creatures/../../LevelInfo/../Math/Rectangle.hpp \
- ../Entities/Creatures/../../LevelInfo/../Engine/Renderer.hpp \
- ../Entities/Creatures/../../LevelInfo/../LevelInfo/QuadData.hpp \
- ../Entities/Creatures/../../LevelInfo/../Math/Quadrilateral.hpp \
- ../Entities/Creatures/../../LevelInfo/../Math/Vector.hpp \
- ../Entities/Creatures/../../LevelInfo/../Engine/Viewport.hpp \
+ ../Entities/Creatures/../../Game/Level.hpp \
+ ../Entities/Creatures/../../Game/../Interfaces/ActionInterface.hpp \
+ ../Entities/Creatures/../../Game/../Listeners/ChangeScoreListener.hpp \
+ ../Entities/Creatures/../../Game/../Listeners/CreatureMovedToPointListener.hpp \
+ ../Entities/Creatures/../../Game/../Interfaces/EnvironmentInterface.hpp \
+ ../Entities/Creatures/../../Game/../Interfaces/../Listeners/EnvironmentRequestListener.hpp \
+ ../Entities/Creatures/../../Game/../Interfaces/EventInterface.hpp \
+ ../Entities/Creatures/../../Game/../Listeners/EventListener.hpp \
+ ../Entities/Creatures/../../Game/../Game/Game.hpp \
+ ../Entities/Creatures/../../Game/../Game/../Listeners/CreatureMovedToPointListener.hpp \
+ ../Entities/Creatures/../../Game/../Game/../Engine/Cursor.hpp \
+ ../Entities/Creatures/../../Game/../Game/../Engine/../Engine/Renderer.hpp \
+ ../Entities/Creatures/../../Game/../Game/../Engine/../Engine/Sprite.hpp \
+ ../Entities/Creatures/../../Game/../Game/../Engine/../Math/Vector.hpp \
+ ../Entities/Creatures/../../Game/../Game/../Listeners/EventListener.hpp \
+ ../Entities/Creatures/../../Game/../Game/../guichan.hpp \
+ ../Entities/Creatures/../../Game/../Game/../Game/Input.hpp \
+ ../Entities/Creatures/../../Game/../Game/../Engine/Renderer.hpp \
+ ../Entities/Creatures/../../Game/../Game/../Engine/Timer.hpp \
+ ../Entities/Creatures/../../Game/../Interfaces/GameInterfaceInterface.hpp \
+ ../Entities/Creatures/../../Game/../Interfaces/../Listeners/InterfaceListener.hpp \
+ ../Entities/Creatures/../../Game/../Interfaces/../Listeners/../Math/Rectangle.hpp \
+ ../Entities/Creatures/../../Game/../Interfaces/../Listeners/../Math/Vector.hpp \
+ ../Entities/Creatures/../../Game/../Interfaces/../Math/Rectangle.hpp \
+ ../Entities/Creatures/../../Game/../Interfaces/../Math/Vector.hpp \
+ ../Entities/Creatures/../../Game/../Game/Input.hpp \
+ ../Entities/Creatures/../../Game/../Game/Map.hpp \
+ ../Entities/Creatures/../../Game/../Game/../Math/CollisionArea.hpp \
+ ../Entities/Creatures/../../Game/../Game/../Math/../Math/Rectangle.hpp \
+ ../Entities/Creatures/../../Game/../Game/../Math/../Engine/Renderer.hpp \
+ ../Entities/Creatures/../../Game/../Game/../Math/Point.hpp \
+ ../Entities/Creatures/../../Game/../Game/../Math/Quadrilateral.hpp \
+ ../Entities/Creatures/../../Game/../Game/../Math/Rectangle.hpp \
+ ../Entities/Creatures/../../Game/../Game/../Game/Tileset.hpp \
+ ../Entities/Creatures/../../Game/../Game/../Game/../Math/CollisionArea.hpp \
+ ../Entities/Creatures/../../Game/../Game/../Game/../Math/Rectangle.hpp \
+ ../Entities/Creatures/../../Game/../Game/../Game/../Engine/Surface.hpp \
+ ../Entities/Creatures/../../Game/../Game/../Engine/Viewport.hpp \
+ ../Entities/Creatures/../../Game/../Game/../Engine/../Math/Quadrilateral.hpp \
+ ../Entities/Creatures/../../Game/../Game/../Engine/../Math/Rectangle.hpp \
+ ../Entities/Creatures/../../Game/../Math/Rectangle.hpp \
+ ../Entities/Creatures/../../Game/../Engine/Renderer.hpp \
+ ../Entities/Creatures/../../Game/../Math/Quadrilateral.hpp \
+ ../Entities/Creatures/../../Game/../Math/Vector.hpp \
+ ../Entities/Creatures/../../Game/../Engine/Viewport.hpp \
  ../Entities/Creatures/../../main.hpp \
  ../Entities/Creatures/../../Game/Direction.hpp \
  ../Entities/Creatures/../../guichan.hpp \
@@ -429,15 +407,13 @@ Entities/Creatures/Creature.d: ../Entities/Creatures/Creature.cpp \
 
 ../Entities/Creatures/../../Managers/../Engine/../Engine/Renderer.hpp:
 
-../Entities/Creatures/../../Managers/../Engine/../Engine/../Math/Ellipse.hpp:
-
-../Entities/Creatures/../../Managers/../Engine/../Engine/../Math/../Math/Vector.hpp:
-
 ../Entities/Creatures/../../Managers/../Engine/../Engine/../Math/Quadrilateral.hpp:
 
 ../Entities/Creatures/../../Managers/../Engine/../Engine/../Math/../Math/Polygon.hpp:
 
 ../Entities/Creatures/../../Managers/../Engine/../Engine/../Math/../Math/Rectangle.hpp:
+
+../Entities/Creatures/../../Managers/../Engine/../Engine/../Math/../Math/Vector.hpp:
 
 ../Entities/Creatures/../../Managers/../Engine/../Engine/../Guichan/sdl.hpp:
 
@@ -535,14 +511,6 @@ Entities/Creatures/Creature.d: ../Entities/Creatures/Creature.cpp \
 
 ../Entities/Creatures/../../Engine/Timer.hpp:
 
-../Entities/Creatures/../../Entities/Non-Creatures/Item.hpp:
-
-../Entities/Creatures/../../Entities/Non-Creatures/../../Game/Direction.hpp:
-
-../Entities/Creatures/../../Entities/Non-Creatures/../../Entities/Entity.hpp:
-
-../Entities/Creatures/../../Entities/Non-Creatures/../../Entities/Templates/EntityTemplate.hpp:
-
 ../Entities/Creatures/../../Actions/DisplayCreatureAnimationAction.hpp:
 
 ../Entities/Creatures/../../Actions/Action.hpp:
@@ -553,129 +521,95 @@ Entities/Creatures/Creature.d: ../Entities/Creatures/Creature.cpp \
 
 ../Entities/Creatures/../../Game/Keywords.hpp:
 
-../Entities/Creatures/../../LevelInfo/Level.hpp:
+../Entities/Creatures/../../Game/Level.hpp:
 
-../Entities/Creatures/../../LevelInfo/../Interfaces/ActionInterface.hpp:
+../Entities/Creatures/../../Game/../Interfaces/ActionInterface.hpp:
 
-../Entities/Creatures/../../LevelInfo/../Listeners/ChangeScoreListener.hpp:
+../Entities/Creatures/../../Game/../Listeners/ChangeScoreListener.hpp:
 
-../Entities/Creatures/../../LevelInfo/../Listeners/CreatureMovedToPointListener.hpp:
+../Entities/Creatures/../../Game/../Listeners/CreatureMovedToPointListener.hpp:
 
-../Entities/Creatures/../../LevelInfo/../LevelInfo/ElipData.hpp:
+../Entities/Creatures/../../Game/../Interfaces/EnvironmentInterface.hpp:
 
-../Entities/Creatures/../../LevelInfo/../LevelInfo/../Math/Ellipse.hpp:
+../Entities/Creatures/../../Game/../Interfaces/../Listeners/EnvironmentRequestListener.hpp:
 
-../Entities/Creatures/../../LevelInfo/../Interfaces/EnvironmentInterface.hpp:
+../Entities/Creatures/../../Game/../Interfaces/EventInterface.hpp:
 
-../Entities/Creatures/../../LevelInfo/../Interfaces/../Listeners/EnvironmentRequestListener.hpp:
+../Entities/Creatures/../../Game/../Listeners/EventListener.hpp:
 
-../Entities/Creatures/../../LevelInfo/../Interfaces/EventInterface.hpp:
+../Entities/Creatures/../../Game/../Game/Game.hpp:
 
-../Entities/Creatures/../../LevelInfo/../Listeners/EventListener.hpp:
+../Entities/Creatures/../../Game/../Game/../Listeners/CreatureMovedToPointListener.hpp:
 
-../Entities/Creatures/../../LevelInfo/../Game/Game.hpp:
+../Entities/Creatures/../../Game/../Game/../Engine/Cursor.hpp:
 
-../Entities/Creatures/../../LevelInfo/../Game/../Listeners/CreatureMovedToPointListener.hpp:
+../Entities/Creatures/../../Game/../Game/../Engine/../Engine/Renderer.hpp:
 
-../Entities/Creatures/../../LevelInfo/../Game/../Engine/Cursor.hpp:
+../Entities/Creatures/../../Game/../Game/../Engine/../Engine/Sprite.hpp:
 
-../Entities/Creatures/../../LevelInfo/../Game/../Engine/../Engine/Renderer.hpp:
+../Entities/Creatures/../../Game/../Game/../Engine/../Math/Vector.hpp:
 
-../Entities/Creatures/../../LevelInfo/../Game/../Engine/../Engine/Sprite.hpp:
+../Entities/Creatures/../../Game/../Game/../Listeners/EventListener.hpp:
 
-../Entities/Creatures/../../LevelInfo/../Game/../Engine/../Math/Vector.hpp:
+../Entities/Creatures/../../Game/../Game/../guichan.hpp:
 
-../Entities/Creatures/../../LevelInfo/../Game/../Listeners/EventListener.hpp:
+../Entities/Creatures/../../Game/../Game/../Game/Input.hpp:
 
-../Entities/Creatures/../../LevelInfo/../Game/../guichan.hpp:
+../Entities/Creatures/../../Game/../Game/../Engine/Renderer.hpp:
 
-../Entities/Creatures/../../LevelInfo/../Game/../Game/Input.hpp:
+../Entities/Creatures/../../Game/../Game/../Engine/Timer.hpp:
 
-../Entities/Creatures/../../LevelInfo/../Game/../Engine/Renderer.hpp:
+../Entities/Creatures/../../Game/../Interfaces/GameInterfaceInterface.hpp:
 
-../Entities/Creatures/../../LevelInfo/../Game/../Engine/Timer.hpp:
+../Entities/Creatures/../../Game/../Interfaces/../Listeners/InterfaceListener.hpp:
 
-../Entities/Creatures/../../LevelInfo/../Interfaces/GameInterfaceInterface.hpp:
+../Entities/Creatures/../../Game/../Interfaces/../Listeners/../Math/Rectangle.hpp:
 
-../Entities/Creatures/../../LevelInfo/../Interfaces/../Listeners/InterfaceListener.hpp:
+../Entities/Creatures/../../Game/../Interfaces/../Listeners/../Math/Vector.hpp:
 
-../Entities/Creatures/../../LevelInfo/../Interfaces/../Listeners/../Math/Rectangle.hpp:
+../Entities/Creatures/../../Game/../Interfaces/../Math/Rectangle.hpp:
 
-../Entities/Creatures/../../LevelInfo/../Interfaces/../Listeners/../Math/Vector.hpp:
+../Entities/Creatures/../../Game/../Interfaces/../Math/Vector.hpp:
 
-../Entities/Creatures/../../LevelInfo/../Interfaces/../Math/Rectangle.hpp:
+../Entities/Creatures/../../Game/../Game/Input.hpp:
 
-../Entities/Creatures/../../LevelInfo/../Interfaces/../Math/Vector.hpp:
+../Entities/Creatures/../../Game/../Game/Map.hpp:
 
-../Entities/Creatures/../../LevelInfo/../Game/Input.hpp:
+../Entities/Creatures/../../Game/../Game/../Math/CollisionArea.hpp:
 
-../Entities/Creatures/../../LevelInfo/../LevelInfo/LevelData.hpp:
+../Entities/Creatures/../../Game/../Game/../Math/../Math/Rectangle.hpp:
 
-../Entities/Creatures/../../LevelInfo/../LevelInfo/../Entities/Alignment.hpp:
+../Entities/Creatures/../../Game/../Game/../Math/../Engine/Renderer.hpp:
 
-../Entities/Creatures/../../LevelInfo/../LevelInfo/../LevelInfo/ElipData.hpp:
+../Entities/Creatures/../../Game/../Game/../Math/Point.hpp:
 
-../Entities/Creatures/../../LevelInfo/../LevelInfo/../Entities/EntityData.hpp:
+../Entities/Creatures/../../Game/../Game/../Math/Quadrilateral.hpp:
 
-../Entities/Creatures/../../LevelInfo/../LevelInfo/../Entities/../Math/Vector.hpp:
+../Entities/Creatures/../../Game/../Game/../Math/Rectangle.hpp:
 
-../Entities/Creatures/../../LevelInfo/../LevelInfo/../LevelInfo/QuadData.hpp:
+../Entities/Creatures/../../Game/../Game/../Game/Tileset.hpp:
 
-../Entities/Creatures/../../LevelInfo/../LevelInfo/../LevelInfo/../Math/Quadrilateral.hpp:
+../Entities/Creatures/../../Game/../Game/../Game/../Math/CollisionArea.hpp:
 
-../Entities/Creatures/../../LevelInfo/../LevelInfo/../Math/Quadrilateral.hpp:
+../Entities/Creatures/../../Game/../Game/../Game/../Math/Rectangle.hpp:
 
-../Entities/Creatures/../../LevelInfo/../LevelInfo/../Math/Rectangle.hpp:
+../Entities/Creatures/../../Game/../Game/../Game/../Engine/Surface.hpp:
 
-../Entities/Creatures/../../LevelInfo/../LevelInfo/../LevelInfo/RectData.hpp:
+../Entities/Creatures/../../Game/../Game/../Engine/Viewport.hpp:
 
-../Entities/Creatures/../../LevelInfo/../LevelInfo/../LevelInfo/../Math/Rectangle.hpp:
+../Entities/Creatures/../../Game/../Game/../Engine/../Math/Quadrilateral.hpp:
 
-../Entities/Creatures/../../LevelInfo/../LevelInfo/../LevelInfo/PortalData.hpp:
+../Entities/Creatures/../../Game/../Game/../Engine/../Math/Rectangle.hpp:
 
-../Entities/Creatures/../../LevelInfo/../LevelInfo/../Math/Vector.hpp:
+../Entities/Creatures/../../Game/../Math/Rectangle.hpp:
 
-../Entities/Creatures/../../LevelInfo/../Game/Map.hpp:
+../Entities/Creatures/../../Game/../Engine/Renderer.hpp:
 
-../Entities/Creatures/../../LevelInfo/../Game/../Math/Point.hpp:
+../Entities/Creatures/../../Game/../Math/Quadrilateral.hpp:
 
-../Entities/Creatures/../../LevelInfo/../Game/../Math/Quadrilateral.hpp:
+../Entities/Creatures/../../Game/../Math/Vector.hpp:
 
-../Entities/Creatures/../../LevelInfo/../Game/../Math/Rectangle.hpp:
-
-../Entities/Creatures/../../LevelInfo/../Game/../Game/Tileset.hpp:
-
-../Entities/Creatures/../../LevelInfo/../Game/../Game/../Math/Quadrilateral.hpp:
-
-../Entities/Creatures/../../LevelInfo/../Game/../Game/../Math/Rectangle.hpp:
-
-../Entities/Creatures/../../LevelInfo/../Game/../Game/../Engine/Surface.hpp:
-
-../Entities/Creatures/../../LevelInfo/../Game/../Game/../Game/TileData.hpp:
-
-../Entities/Creatures/../../LevelInfo/../Game/../Game/../Game/../Math/Quadrilateral.hpp:
-
-../Entities/Creatures/../../LevelInfo/../Game/../Game/../Game/TileLevel.hpp:
-
-../Entities/Creatures/../../LevelInfo/../Game/../Game/TileType.hpp:
-
-../Entities/Creatures/../../LevelInfo/../Game/../Engine/Viewport.hpp:
-
-../Entities/Creatures/../../LevelInfo/../Game/../Engine/../Math/Quadrilateral.hpp:
-
-../Entities/Creatures/../../LevelInfo/../Game/../Engine/../Math/Rectangle.hpp:
-
-../Entities/Creatures/../../LevelInfo/../Math/Rectangle.hpp:
-
-../Entities/Creatures/../../LevelInfo/../Engine/Renderer.hpp:
-
-../Entities/Creatures/../../LevelInfo/../LevelInfo/QuadData.hpp:
-
-../Entities/Creatures/../../LevelInfo/../Math/Quadrilateral.hpp:
-
-../Entities/Creatures/../../LevelInfo/../Math/Vector.hpp:
-
-../Entities/Creatures/../../LevelInfo/../Engine/Viewport.hpp:
+../Entities/Creatures/../../Game/../Engine/Viewport.hpp:
 
 ../Entities/Creatures/../../main.hpp:
 

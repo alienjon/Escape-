@@ -20,7 +20,7 @@ using std::string;
 
 MenuScreen::MenuScreen() :
 		mTitle(VideoManager::loadSurface(FILE_MENUSCREEN_TITLEIMAGE)),
-		mMap(((800 * 3) / 64) / MAP_CELL_SIDE, ((600 * 3) / 48) / MAP_CELL_SIDE, TilesetManager::get("office")),
+		mMap(((800 * 3) / 64) / MAP_CELL_SIDE, ((600 * 3) / 48) / MAP_CELL_SIDE),//, TilesetManager::get("office")),@todo review
         mCurrentScreen(MAINMENUSCREEN_MAIN),
         mNextScreen(MAINMENUSCREEN_NULL),
         mSlideCounter(0)
@@ -85,7 +85,7 @@ void MenuScreen::mLogic_slideCamera()
         case MAINMENUSCREEN_CREDITS:
         {
             mViewport.setX(mViewport.getX() + distance);
-            if(mViewport.getX() >= SCREEN_WIDTH * 2)
+            if(mViewport.getX() >= (int)SCREEN_WIDTH * 2)
             {
                 mViewport.setX(SCREEN_WIDTH * 2);
                 mCurrentScreen = mNextScreen;
@@ -147,7 +147,7 @@ void MenuScreen::mLogic_slideToCenter(double distance)
         {
             mViewport.setX(mViewport.getX() - distance);
             mMenus.setX(mMenus.getX() - distance);
-            if(mViewport.getX() <= SCREEN_WIDTH)
+            if(mViewport.getX() <= (int)SCREEN_WIDTH)
             {
                 mViewport.setX(SCREEN_WIDTH);
                 mCurrentScreen = mNextScreen;
@@ -173,7 +173,7 @@ void MenuScreen::mLogic_slideToCenter(double distance)
         {
             mViewport.setY(mViewport.getY() + distance);
             mMenus.setY(mMenus.getY() + distance);
-            if(mViewport.getY() >= SCREEN_HEIGHT)
+            if(mViewport.getY() >= (int)SCREEN_HEIGHT)
             {
                 mViewport.setY(SCREEN_HEIGHT);
                 mCurrentScreen = mNextScreen;
@@ -186,7 +186,7 @@ void MenuScreen::mLogic_slideToCenter(double distance)
         {
             mViewport.setX(mViewport.getX() + distance);
             mMenus.setX(mMenus.getY() + distance);
-            if(mViewport.getX() >= SCREEN_WIDTH)
+            if(mViewport.getX() >= (int)SCREEN_WIDTH)
             {
                 mViewport.setX(SCREEN_WIDTH);
                 mCurrentScreen = mNextScreen;
@@ -244,10 +244,13 @@ void MenuScreen::draw(Renderer& renderer)
     // Set the drawing area based on the viewport.
 	renderer.pushClipArea(gcn::Rectangle(-mViewport.getX(), -mViewport.getY(), mViewport.getWidth(), mViewport.getHeight()));
 
-    // First draw the map.
-    mMap.drawLower(renderer, mViewport);
-    mMap.drawMiddle(renderer, mViewport);
-    mMap.drawUpper(renderer, mViewport);
+    // Draw the map.
+	renderer.setColor(COLOR_BLACK);
+	renderer.fillRectangle(gcn::Rectangle(0, 0, mViewport.getWidth(), mViewport.getHeight()));
+	mMap.draw(renderer, mViewport);
+//    mMap.drawLower(renderer, mViewport);
+//    mMap.drawMiddle(renderer, mViewport);
+//    mMap.drawUpper(renderer, mViewport);
 
     // Pop the drawing area.
     renderer.popClipArea();

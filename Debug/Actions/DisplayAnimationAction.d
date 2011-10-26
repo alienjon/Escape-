@@ -93,11 +93,10 @@ Actions/DisplayAnimationAction.d: ../Actions/DisplayAnimationAction.cpp \
  ../Actions/../Engine/../Math/../Math/../Math/Vector.hpp \
  ../Actions/../Engine/../Math/../Math/Vector.hpp \
  ../Actions/../Engine/../Engine/Renderer.hpp \
- ../Actions/../Engine/../Engine/../Math/Ellipse.hpp \
- ../Actions/../Engine/../Engine/../Math/../Math/Vector.hpp \
  ../Actions/../Engine/../Engine/../Math/Quadrilateral.hpp \
  ../Actions/../Engine/../Engine/../Math/../Math/Polygon.hpp \
  ../Actions/../Engine/../Engine/../Math/../Math/Rectangle.hpp \
+ ../Actions/../Engine/../Engine/../Math/../Math/Vector.hpp \
  ../Actions/../Engine/../Engine/../Guichan/sdl.hpp \
  ../Actions/../Engine/../Engine/../Guichan/sdl/sdlgraphics.hpp \
  ../Actions/../Engine/../Engine/../Guichan/sdl/../color.hpp \
@@ -329,15 +328,13 @@ Actions/DisplayAnimationAction.d: ../Actions/DisplayAnimationAction.cpp \
 
 ../Actions/../Engine/../Engine/Renderer.hpp:
 
-../Actions/../Engine/../Engine/../Math/Ellipse.hpp:
-
-../Actions/../Engine/../Engine/../Math/../Math/Vector.hpp:
-
 ../Actions/../Engine/../Engine/../Math/Quadrilateral.hpp:
 
 ../Actions/../Engine/../Engine/../Math/../Math/Polygon.hpp:
 
 ../Actions/../Engine/../Engine/../Math/../Math/Rectangle.hpp:
+
+../Actions/../Engine/../Engine/../Math/../Math/Vector.hpp:
 
 ../Actions/../Engine/../Engine/../Guichan/sdl.hpp:
 

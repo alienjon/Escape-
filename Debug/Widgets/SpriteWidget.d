@@ -77,11 +77,10 @@ Widgets/SpriteWidget.d: ../Widgets/SpriteWidget.cpp \
  ../Widgets/../Engine/../Math/../Math/../Math/Vector.hpp \
  ../Widgets/../Engine/../Math/../Math/Vector.hpp \
  ../Widgets/../Engine/../Engine/Renderer.hpp \
- ../Widgets/../Engine/../Engine/../Math/Ellipse.hpp \
- ../Widgets/../Engine/../Engine/../Math/../Math/Vector.hpp \
  ../Widgets/../Engine/../Engine/../Math/Quadrilateral.hpp \
  ../Widgets/../Engine/../Engine/../Math/../Math/Polygon.hpp \
  ../Widgets/../Engine/../Engine/../Math/../Math/Rectangle.hpp \
+ ../Widgets/../Engine/../Engine/../Math/../Math/Vector.hpp \
  ../Widgets/../Engine/../Engine/../Guichan/sdl.hpp \
  ../Widgets/../Engine/../Engine/../Guichan/sdl/sdlgraphics.hpp \
  ../Widgets/../Engine/../Engine/../Guichan/sdl/../color.hpp \
@@ -291,15 +290,13 @@ Widgets/SpriteWidget.d: ../Widgets/SpriteWidget.cpp \
 
 ../Widgets/../Engine/../Engine/Renderer.hpp:
 
-../Widgets/../Engine/../Engine/../Math/Ellipse.hpp:
-
-../Widgets/../Engine/../Engine/../Math/../Math/Vector.hpp:
-
 ../Widgets/../Engine/../Engine/../Math/Quadrilateral.hpp:
 
 ../Widgets/../Engine/../Engine/../Math/../Math/Polygon.hpp:
 
 ../Widgets/../Engine/../Engine/../Math/../Math/Rectangle.hpp:
+
+../Widgets/../Engine/../Engine/../Math/../Math/Vector.hpp:
 
 ../Widgets/../Engine/../Engine/../Guichan/sdl.hpp:
 

@@ -17,8 +17,7 @@
 #include "../Engine/Logger.hpp"
 #include "../main.hpp"
 #include "../Math/Point.hpp"
-#include "../Game/TileLevel.hpp"
-#include "../Game/TileType.hpp"
+#include "../Managers/TilesetManager.hpp"
 #include "../Managers/VideoManager.hpp"
 
 using std::ostream;
@@ -27,11 +26,9 @@ using std::runtime_error;
 using std::stack;
 using std::vector;
 
-#include <iostream>
-using namespace std;//@todo remove when done testing
-
 const unsigned int MAP_CELL_SIDE = 4; // The number of tiles on a single side of a cell - It has to be >= 3 and should be an even number (Because of the doors)
-
+#include <iostream>
+using namespace std; //@todo remove when done.
 struct Cell
 {
 	Cell() :
@@ -60,60 +57,23 @@ ostream& operator<<(ostream& os, const Cell& cell)
 	return os;
 }
 
-void Map::mDrawLevel(Renderer& renderer, const Viewport& viewport, vector<pair<Point, Rectangle> >& tiles, int end_y)
-{
-	/*
-	 * Based on the size of the viewport and its current location, calculate
-	 * which tiles in this level will be drawn. Calculate some values ahead
-	 * of time to save some time in the subsequent loop.
-	 */
-	const Surface* surface = mTileset->getTilesetSurface();
-	unsigned int width_in_tiles = mWidth * MAP_CELL_SIDE;
-
-	// Calculate the start and end x,y values.
-	int start_y = (end_y < 0) ? viewport.getY() / mTileset->getHeight() - 1 : end_y;
-	end_y = (end_y < 0) ? (viewport.getY() + viewport.getHeight()) / mTileset->getHeight() + 1: end_y + 1; // The +1 compensates for the first Y layer of floor tiles.
-	int start_x = viewport.getX() / mTileset->getWidth() - 1,
-		end_x   = (viewport.getX() + viewport.getWidth()) / mTileset->getWidth() + 1;
-
-	// Correct for min,max.
-	start_y = (start_y < 0) ? 0 : start_y;
-	end_y   = ((unsigned int)end_y >= mHeight * MAP_CELL_SIDE) ? mHeight * MAP_CELL_SIDE : end_y;
-	start_x = (start_x < 0) ? 0 : start_x;
-	end_x   = (end_x >= (int)(mWidth * MAP_CELL_SIDE)) ? (int)(mWidth * MAP_CELL_SIDE) : end_x;
-
-	for(int y = start_y; y != end_y; ++y)
-	{
-		for(int x = start_x; x != end_x; ++x)
-		{
-			Rectangle src = tiles.at(x + y * width_in_tiles).second;
-			Point dest = tiles.at(x + y * width_in_tiles).first;
-			Rectangle actual(dest.x, dest.y, src.width, src.height);
-			renderer.drawImage(surface, src.vector.x, src.vector.y, dest.x, dest.y, src.width, src.height);
-		}
-	}
-}
-
-Map::Map(unsigned int width, unsigned int height, const Tileset* tileset) :
+Map::Map(unsigned int width, unsigned int height) :
 	mWidth(width),
 	mHeight(height),
-	mTileset(tileset)
+	mTileset(TilesetManager::getRandom())
 {
-	// Make sure the tileset was provided.
-	if(!mTileset)
-	{
-		throw runtime_error("Map::Map() -> Null tileset provided.");
-	}
+	// Calculate the entrance position.
+	mPortal = Vector((((mWidth / 2) * MAP_CELL_SIDE) + (MAP_CELL_SIDE / 2)) * mTileset->getWidth(),
+					 (((mHeight/ 2) * MAP_CELL_SIDE) + (MAP_CELL_SIDE / 2)) * mTileset->getHeight());
+	if(Game::isDebug())
+		Logger::log("Portal(" + toString((mPortal.x * 2) / mTileset->getWidth() / MAP_CELL_SIDE) + ", " +
+					toString((mPortal.y * 2) / mTileset->getHeight() / MAP_CELL_SIDE) + ")");
 
 	// Begin by populating the map with closed cells.
 	Cell cells[mHeight][mWidth];
 	for(unsigned int y = 0; y != mHeight; y++)
-	{
 		for(unsigned int x = 0; x != mWidth; x++)
-		{
 			cells[y][x] = Cell();
-		}
-	}
 
 	// The stuff needed to create a random map.
 	unsigned int totalCells   = mWidth * mHeight,
@@ -218,49 +178,19 @@ Map::Map(unsigned int width, unsigned int height, const Tileset* tileset) :
 		mapfile.open("mapfile.txt", std::fstream::out | std::fstream::trunc);
 		mapfile << mWidth << ',' << mHeight << "," << 0 << "," << 0 << "," << 0 << "," << 0 << ",";
 		for(unsigned int y = 0; y != mHeight; ++y)
-		{
 			for(unsigned int x = 0; x != mWidth; ++x)
-			{
 				mapfile << cells[y][x];
-			}
-		}
 	}
 
 	// Populate the levels with the correct number of cells.
-	for(unsigned int i = 0; i != (mWidth * MAP_CELL_SIDE) * (mHeight * MAP_CELL_SIDE + 1); ++i)
+	for(unsigned int i = 0; i != (mWidth * MAP_CELL_SIDE) * (mHeight * MAP_CELL_SIDE); ++i)
 	{
-		mLMap.push_back(pair<Point, Rectangle>());
-		mMMap.push_back(pair<Point, Rectangle>());
-		mU1Map.push_back(pair<Point, Rectangle>());
-		mU2Map.push_back(pair<Point, Rectangle>());
-		mU3Map.push_back(pair<Point, Rectangle>());
-		mCollisionAreas.push_back(Quadrilateral());
+		mMap.push_back(pair<Point, Rectangle>());
+		mCollisions.push_back(CollisionArea());
 	}
 
 	int tile_width = mTileset->getWidth(), tile_height = mTileset->getHeight();
 	unsigned int width_in_tiles = mWidth * MAP_CELL_SIDE;
-
-	// These are the cell locations for the entrance and exit.
-	Point entrance(random<int>(0, mWidth - 1), random<int>(0, mHeight - 1)), exit(random<int>(0, mWidth - 1), random<int>(0, mHeight - 1));
-	while(!cells[entrance.y][entrance.x].northWall)
-		entrance = Point(random<int>(0, mWidth - 1), random<int>(0, mHeight - 1));
-	mEntranceLocation.x = (entrance.x * MAP_CELL_SIDE * tile_width) + (tile_width * 2);
-	mEntranceLocation.y = (entrance.y * MAP_CELL_SIDE * tile_height)+ (2.5 * tile_height); //@todo review
-
-//@todo need to make sure that the entrance and exit are not within 1/3 of the map from each other
-//		int third_width = mWidth / 3, third_height = mHeight / 3;
-//			(exit.x > entrance.x - third_width) && (exit.x < entrance.x + third_width) &&
-//		  (exit.y > entrance.y - third_height) && (exit.y < entrance.y + third_height) &&
-	while(!cells[exit.y][exit.x].northWall)
-		exit = Point(random<int>(0, mWidth - 1), random<int>(0, mHeight - 1));
-	int exitareaheight = 4;
-	mExitArea.vector.x = (exit.x * MAP_CELL_SIDE * tile_width) + (tile_width);
-	mExitArea.vector.y = (exit.y * MAP_CELL_SIDE * tile_height)+ (2 * tile_height - exitareaheight);//@todo review
-	mExitArea.width	   = tile_width * 2;
-	mExitArea.height   = exitareaheight;
-
-	if(Game::isDebug())
-		Logger::log("Entrance(" + toString(entrance.x) + ", " + toString(entrance.y) + ") - Exit(" + toString(exit.x) + ", " + toString(exit.y) + ")");
 
 	// Now create the rest of the tiles.
 	for(int cell_y = 0; cell_y != (int)mHeight; ++cell_y)
@@ -274,119 +204,99 @@ Map::Map(unsigned int width, unsigned int height, const Tileset* tileset) :
 				{
 					// The current cell and the tile type.
 					Cell cell = cells[cell_y][cell_x];
-					TileType tile = TILE_EMPTYFLOOR;
-
-					// If this cell is the entrance or exit, and if this is the second or third tile in those cells, put in the door.
-					if(((cell_x == entrance.x && cell_y == entrance.y) || (cell_x == exit.x && cell_y == exit.y)) && y == 0 && (x == 1 || x == 2))
-					{
-						if(x == 1)
-						{
-							tile = TILE_CLOSEDDOOR_WEST;
-						}
-						else if(x == 2)
-						{
-							tile = TILE_CLOSEDDOOR_EAST;
-						}
-					}
+					Tileset::TileType tile = Tileset::EMPTYFLOOR;
 
 					// This is the northwest corner of the cell.
-					else if(x == 0 && y == 0)
+					if(x == 0 && y == 0)
 					{
 						if(cell.northWall && cell.westWall)
-							tile = TILE_CORNER_NORTHWEST;
+							tile = Tileset::NORTHWEST;
 						else if(cell.northWall && !cell.westWall)
-							tile = TILE_NORTH;
+							tile = Tileset::NORTH;
 						else if(!cell.northWall && cell.westWall)
-							tile = TILE_WEST;
+							tile = Tileset::WEST;
 						else
-							tile = TILE_CORNER_SOUTHEAST;
+							tile = Tileset::SOUTHEAST;
 					}
 
 					// This is the northeast corner of the cell.
 					else if(x == MAP_CELL_SIDE - 1 && y == 0)
 					{
 						if(cell.northWall && cell.eastWall)
-							tile = TILE_CORNER_NORTHEAST;
+							tile = Tileset::NORTHEAST;
 						else if(cell.northWall && !cell.eastWall)
-							tile = TILE_NORTH;
+							tile = Tileset::NORTH;
 						else if(!cell.northWall && cell.eastWall)
-							tile = TILE_EAST;
+							tile = Tileset::EAST;
 						else
-							tile = TILE_CORNER_SOUTHWEST;
+							tile = Tileset::SOUTHWEST;
 					}
 
 					// This is the southwest corner of the cell.
 					else if(x == 0 && y == MAP_CELL_SIDE - 1)
 					{
 						if(cell.southWall && cell.westWall)
-							tile = TILE_CORNER_SOUTHWEST;
+							tile = Tileset::SOUTHWEST;
 						else if(cell.southWall && !cell.westWall)
-							tile = TILE_SOUTH;
+							tile = Tileset::SOUTH;
 						else if(!cell.southWall && cell.westWall)
-							tile = TILE_WEST;
+							tile = Tileset::WEST;
 						else
-							tile = TILE_CORNER_NORTHEAST;
+							tile = Tileset::NORTHEAST;
 					}
 
 					// This is the southeast corner of the cell.
 					else if(x == MAP_CELL_SIDE - 1 && y == MAP_CELL_SIDE - 1)
 					{
 						if(cell.southWall && cell.eastWall)
-							tile = TILE_CORNER_SOUTHEAST;
+							tile = Tileset::SOUTHEAST;
 						else if(cell.southWall && !cell.eastWall)
-							tile = TILE_SOUTH;
+							tile = Tileset::SOUTH;
 						else if(!cell.southWall && cell.eastWall)
-							tile = TILE_EAST;
+							tile = Tileset::EAST;
 						else
-							tile = TILE_CORNER_NORTHWEST;
+							tile = Tileset::NORTHWEST;
 					}
 
 					// This is the north side of the cell.
 					else if(y == 0 && cell.northWall)
-						tile = TILE_NORTH;
+						tile = Tileset::NORTH;
 
 					// This is the south side of the cell.
 					else if(y == MAP_CELL_SIDE - 1 && cell.southWall)
-						tile = TILE_SOUTH;
+						tile = Tileset::SOUTH;
 
 					// This is the west side of the cell.
 					else if(x == 0 && cell.westWall)
-						tile = TILE_WEST;
+						tile = Tileset::WEST;
 
 					// This is the east side of the cell.
 					else if(x == MAP_CELL_SIDE - 1 && cell.eastWall)
-						tile = TILE_EAST;
+						tile = Tileset::EAST;
 
 					// Configure the entries and collisions.
-					//                {this places the tile in the cell}  {this moves the tile over within the cell block}
-					mLMap.at((cell_y * MAP_CELL_SIDE + y) * width_in_tiles + (cell_x * MAP_CELL_SIDE + x)).first.x = (cell_x * MAP_CELL_SIDE * tile_width) + (x * tile_width);
-					mLMap.at((cell_y * MAP_CELL_SIDE + y) * width_in_tiles + (cell_x * MAP_CELL_SIDE + x)).first.y = (cell_y * MAP_CELL_SIDE * tile_height)+ (y * tile_height) +  (1 * tile_height);
-					mLMap.at((cell_y * MAP_CELL_SIDE + y) * width_in_tiles + (cell_x * MAP_CELL_SIDE + x)).second  = mTileset->getTile(tile, TILELEVEL_LOWER);
-					mMMap.at((cell_y * MAP_CELL_SIDE + y) * width_in_tiles + (cell_x * MAP_CELL_SIDE + x)).first.x = (cell_x * MAP_CELL_SIDE * tile_width) + (x * tile_width);
-					mMMap.at((cell_y * MAP_CELL_SIDE + y) * width_in_tiles + (cell_x * MAP_CELL_SIDE + x)).first.y = (cell_y * MAP_CELL_SIDE * tile_height)+ (y * tile_height) +  (1 * tile_height);
-					mMMap.at((cell_y * MAP_CELL_SIDE + y) * width_in_tiles + (cell_x * MAP_CELL_SIDE + x)).second  = mTileset->getTile(tile, TILELEVEL_MIDDLE);
-					mU1Map.at((cell_y * MAP_CELL_SIDE + y) * width_in_tiles + (cell_x * MAP_CELL_SIDE + x)).first.x = (cell_x * MAP_CELL_SIDE * tile_width) + (x * tile_width);
-					mU1Map.at((cell_y * MAP_CELL_SIDE + y) * width_in_tiles + (cell_x * MAP_CELL_SIDE + x)).first.y = (cell_y * MAP_CELL_SIDE * tile_height)+ (y * tile_height) + (0 * tile_height);
-					mU1Map.at((cell_y * MAP_CELL_SIDE + y) * width_in_tiles + (cell_x * MAP_CELL_SIDE + x)).second  = mTileset->getTile(tile, TILELEVEL_UPPER1);
-					mU2Map.at((cell_y * MAP_CELL_SIDE + y) * width_in_tiles + (cell_x * MAP_CELL_SIDE + x)).first.x = (cell_x * MAP_CELL_SIDE * tile_width) + (x * tile_width);
-					mU2Map.at((cell_y * MAP_CELL_SIDE + y) * width_in_tiles + (cell_x * MAP_CELL_SIDE + x)).first.y = (cell_y * MAP_CELL_SIDE * tile_height)+ (y * tile_height) - (1 * tile_height);
-					mU2Map.at((cell_y * MAP_CELL_SIDE + y) * width_in_tiles + (cell_x * MAP_CELL_SIDE + x)).second  = mTileset->getTile(tile, TILELEVEL_UPPER2);
-					mU3Map.at((cell_y * MAP_CELL_SIDE + y) * width_in_tiles + (cell_x * MAP_CELL_SIDE + x)).first.x = (cell_x * MAP_CELL_SIDE * tile_width) + (x * tile_width);
-					mU3Map.at((cell_y * MAP_CELL_SIDE + y) * width_in_tiles + (cell_x * MAP_CELL_SIDE + x)).first.y = (cell_y * MAP_CELL_SIDE * tile_height)+ (y * tile_height) - (2 * tile_height);
-					mU3Map.at((cell_y * MAP_CELL_SIDE + y) * width_in_tiles + (cell_x * MAP_CELL_SIDE + x)).second  = mTileset->getTile(tile, TILELEVEL_UPPER3);
-					mCollisionAreas.at((cell_y * MAP_CELL_SIDE + y) * width_in_tiles + (cell_x * MAP_CELL_SIDE + x)) = mTileset->getTileCollision(tile);
-					mCollisionAreas.at((cell_y * MAP_CELL_SIDE + y) * width_in_tiles + (cell_x * MAP_CELL_SIDE + x)).p1.x += mLMap.at((cell_y * MAP_CELL_SIDE + y) * width_in_tiles + (cell_x * MAP_CELL_SIDE + x)).first.x;
-					mCollisionAreas.at((cell_y * MAP_CELL_SIDE + y) * width_in_tiles + (cell_x * MAP_CELL_SIDE + x)).p1.y += mLMap.at((cell_y * MAP_CELL_SIDE + y) * width_in_tiles + (cell_x * MAP_CELL_SIDE + x)).first.y;
-					mCollisionAreas.at((cell_y * MAP_CELL_SIDE + y) * width_in_tiles + (cell_x * MAP_CELL_SIDE + x)).p2.x += mLMap.at((cell_y * MAP_CELL_SIDE + y) * width_in_tiles + (cell_x * MAP_CELL_SIDE + x)).first.x;
-					mCollisionAreas.at((cell_y * MAP_CELL_SIDE + y) * width_in_tiles + (cell_x * MAP_CELL_SIDE + x)).p2.y += mLMap.at((cell_y * MAP_CELL_SIDE + y) * width_in_tiles + (cell_x * MAP_CELL_SIDE + x)).first.y;
-					mCollisionAreas.at((cell_y * MAP_CELL_SIDE + y) * width_in_tiles + (cell_x * MAP_CELL_SIDE + x)).p3.x += mLMap.at((cell_y * MAP_CELL_SIDE + y) * width_in_tiles + (cell_x * MAP_CELL_SIDE + x)).first.x;
-					mCollisionAreas.at((cell_y * MAP_CELL_SIDE + y) * width_in_tiles + (cell_x * MAP_CELL_SIDE + x)).p3.y += mLMap.at((cell_y * MAP_CELL_SIDE + y) * width_in_tiles + (cell_x * MAP_CELL_SIDE + x)).first.y;
-					mCollisionAreas.at((cell_y * MAP_CELL_SIDE + y) * width_in_tiles + (cell_x * MAP_CELL_SIDE + x)).p4.x += mLMap.at((cell_y * MAP_CELL_SIDE + y) * width_in_tiles + (cell_x * MAP_CELL_SIDE + x)).first.x;
-					mCollisionAreas.at((cell_y * MAP_CELL_SIDE + y) * width_in_tiles + (cell_x * MAP_CELL_SIDE + x)).p4.y += mLMap.at((cell_y * MAP_CELL_SIDE + y) * width_in_tiles + (cell_x * MAP_CELL_SIDE + x)).first.y;
+                    //{this places the tile in the cell}  {this moves the tile over within the cell block}
+					unsigned int pos = (cell_y * MAP_CELL_SIDE + y) * width_in_tiles + (cell_x * MAP_CELL_SIDE + x);
+					mMap.at(pos).first.x = (cell_x * MAP_CELL_SIDE * tile_width) + (x * tile_width);
+					mMap.at(pos).first.y = (cell_y * MAP_CELL_SIDE * tile_height)+ (y * tile_height);
+					mMap.at(pos).second  = mTileset->getTile(tile);
+					mCollisions.at(pos) = mTileset->getTileCollision(tile);
+//					mCollisions.at(pos).vector.x = (cell_x * MAP_CELL_SIDE * tile_width) + (x * tile_width);
+//					mCollisions.at(pos).vector.y = (cell_y * MAP_CELL_SIDE * tile_height) + (y * tile_height);
+					mCollisions.at(pos).addX((cell_x * MAP_CELL_SIDE * tile_width) + (x * tile_width));
+					mCollisions.at(pos).addY((cell_y * MAP_CELL_SIDE * tile_height) + (y * tile_height));
 				}
 			}
 		}
 	}
+
+//	for(vector<Rectangle>::iterator it = mCollisions.begin(); it != mCollisions.end(); it++)
+//	{
+//		cout << "[";
+//		for(unsigned int i = 0; i != it->getNumberOfPoints(); ++i)
+//			cout << it->getPoint(i) << ", ";
+//		cout << "]" << endl;
+//	}
 }
 
 bool Map::checkCollision(const Quadrilateral& area) const
@@ -396,9 +306,25 @@ bool Map::checkCollision(const Quadrilateral& area) const
 
 bool Map::checkCollision(const Rectangle& area) const
 {
-	for(vector<Quadrilateral>::const_iterator it = mCollisionAreas.begin(); it != mCollisionAreas.end(); it++)
-		if(it->isIntersecting(area))
-			return true;
+	// The width of the map in tiles.
+	unsigned int width_in_tiles = mWidth * MAP_CELL_SIDE;
+
+	// Calculate the start and end x,y values.
+	int start_y = area.vector.y / mTileset->getHeight() - 1,
+		end_y   = (area.vector.y + area.height) / mTileset->getHeight() + 1,
+		start_x = area.vector.x / mTileset->getWidth() - 1,
+		end_x   = (area.vector.x + area.width) / mTileset->getWidth() + 1;
+
+	// Correct for min,max.
+	start_y = (start_y < 0) ? 0 : start_y;
+	end_y   = ((unsigned int)end_y >= mHeight * MAP_CELL_SIDE) ? mHeight * MAP_CELL_SIDE : end_y;
+	start_x = (start_x < 0) ? 0 : start_x;
+	end_x   = (end_x >= (int)(mWidth * MAP_CELL_SIDE)) ? (int)(mWidth * MAP_CELL_SIDE) : end_x;
+
+	for(int y = start_y; y != end_y; ++y)
+		for(int x = start_x; x != end_x; ++x)
+			if(mCollisions.at(x + y * width_in_tiles).isIntersecting(area))
+				return true;
 	return false;
 }
 
@@ -410,17 +336,9 @@ Surface* Map::copyMapImage() const
 	// Copy the map to the surface.
 	unsigned int width_in_tiles = mWidth * MAP_CELL_SIDE;
 	const Surface* srcSurface = mTileset->getTilesetSurface();
-	SDL_Rect destArea, lArea, mArea, uArea, topRow;
+	SDL_Rect destArea, area;
 	destArea.w = (Uint16)mTileset->getWidth();
 	destArea.h = (Uint16)mTileset->getHeight();
-	topRow.x = 0;
-	topRow.y = 0;
-	topRow.w = (Uint16)(getWidth() / mTileset->getWidth());
-	topRow.h = (Uint16)(mTileset->getHeight());
-	Uint16 color = 0x000000;
-
-	// Draw a blank area in the top row.
-	SDL_FillRect(destSurface->getSurface(), &topRow, color);
 
 	for(int y = 0; y != (int)(getHeight() / mTileset->getHeight());  ++y)
 	{
@@ -429,24 +347,11 @@ Surface* Map::copyMapImage() const
 			destArea.x = (Uint16)x * mTileset->getWidth();
 			destArea.y = (Uint16)y * mTileset->getHeight();
 
-			destArea.y += mTileset->getHeight();
-			lArea.x = mLMap.at(y * width_in_tiles + x).second.vector.x;
-			lArea.y = mLMap.at(y * width_in_tiles + x).second.vector.y;
-			lArea.w = mLMap.at(y * width_in_tiles + x).second.width;
-			lArea.h = mLMap.at(y * width_in_tiles + x).second.height;
-			mArea.x = mMMap.at(y * width_in_tiles + x).second.vector.x;
-			mArea.y = mMMap.at(y * width_in_tiles + x).second.vector.y;
-			mArea.w = mMMap.at(y * width_in_tiles + x).second.width;
-			mArea.h = mMMap.at(y * width_in_tiles + x).second.height;
-			uArea.x = mU1Map.at(y * width_in_tiles + x).second.vector.x;
-			uArea.y = mU1Map.at(y * width_in_tiles + x).second.vector.y;
-			uArea.w = mU1Map.at(y * width_in_tiles + x).second.width;
-			uArea.h = mU1Map.at(y * width_in_tiles + x).second.height;
-
-			SDL_BlitSurface(srcSurface->getSurface(), &lArea, destSurface->getSurface(), &destArea);
-			SDL_BlitSurface(srcSurface->getSurface(), &mArea, destSurface->getSurface(), &destArea);
-			destArea.y -= mTileset->getHeight();
-			SDL_BlitSurface(srcSurface->getSurface(), &uArea, destSurface->getSurface(), &destArea);
+			area.x = mMap.at(y * width_in_tiles + x).second.vector.x;
+			area.y = mMap.at(y * width_in_tiles + x).second.vector.y;
+			area.w = mMap.at(y * width_in_tiles + x).second.width;
+			area.h = mMap.at(y * width_in_tiles + x).second.height;
+			SDL_BlitSurface(srcSurface->getSurface(), &area, destSurface->getSurface(), &destArea);
 		}
 	}
 
@@ -455,35 +360,55 @@ Surface* Map::copyMapImage() const
 	return destSurface;
 }
 
-void Map::drawLower(Renderer& renderer, const Viewport& viewport)
+void Map::draw(Renderer& renderer, const Viewport& viewport)
 {
-	if(viewport.getY() < (int)mTileset->getHeight())
-		renderer.fillRectangle(Rectangle(0, viewport.getY(), viewport.getX() + viewport.getWidth(), mTileset->getHeight() - viewport.getY()));
+	/*
+	 * Based on the size of the viewport and its current location, calculate
+	 * which tiles in this level will be drawn. Calculate some values ahead
+	 * of time to save some time in the subsequent loop.
+	 */
+	const Surface* surface = mTileset->getTilesetSurface();
+	unsigned int width_in_tiles = mWidth * MAP_CELL_SIDE;
 
-	mDrawLevel(renderer, viewport, mLMap);
+	// Calculate the start and end x,y values.
+	int start_y = viewport.getY() / mTileset->getHeight() - 1,
+		end_y   = (viewport.getY() + viewport.getHeight()) / mTileset->getHeight() + 1,
+		start_x = viewport.getX() / mTileset->getWidth() - 1,
+		end_x   = (viewport.getX() + viewport.getWidth()) / mTileset->getWidth() + 1;
+
+	// Correct for min,max.
+	start_y = (start_y < 0) ? 0 : start_y;
+	end_y   = ((unsigned int)end_y >= mHeight * MAP_CELL_SIDE) ? mHeight * MAP_CELL_SIDE : end_y;
+	start_x = (start_x < 0) ? 0 : start_x;
+	end_x   = (end_x >= (int)(mWidth * MAP_CELL_SIDE)) ? (int)(mWidth * MAP_CELL_SIDE) : end_x;
+
+	for(int y = start_y; y != end_y; ++y)
+	{
+		for(int x = start_x; x != end_x; ++x)
+		{
+			Rectangle src = mMap.at(x + y * width_in_tiles).second;
+			Point dest = mMap.at(x + y * width_in_tiles).first;
+			Rectangle actual(dest.x, dest.y, src.width, src.height);
+			renderer.drawImage(surface, src.vector.x, src.vector.y, dest.x, dest.y, src.width, src.height);
+
+			// Draw the collision areas if testing.
+			if(Game::isDebug())
+			{
+				renderer.setColor(COLOR_ORANGE);
+				mCollisions.at(x + y * width_in_tiles).draw(renderer);
+			}
+		}
+	}
 }
 
-void Map::drawMiddle(Renderer& renderer, const Viewport& viewport, int end_y)
-{
-	mDrawLevel(renderer, viewport, mMMap, end_y);
-}
-
-void Map::drawUpper(Renderer& renderer, const Viewport& viewport)
-{
-	mDrawLevel(renderer, viewport, mU1Map);
-	renderer.setColor(COLOR_RED);//@todo remove when done
-	renderer.fillRectangle(mExitArea);
-//	mDrawLevel(renderer, viewport, mU2Map);
-//	mDrawLevel(renderer, viewport, mU3Map);
-}
 unsigned int Map::getComplexity() const
 {
 	return mWidth * mHeight;
 }
 
-const Vector& Map::getEntrance() const
+const Vector& Map::getPortal() const
 {
-	return mEntranceLocation;
+	return mPortal;
 }
 
 const Tileset& Map::getTileset() const
@@ -491,14 +416,9 @@ const Tileset& Map::getTileset() const
 	return *mTileset;
 }
 
-const Rectangle& Map::getExit() const
-{
-	return mExitArea;
-}
-
 unsigned int Map::getHeight() const
 {
-    return (mHeight * MAP_CELL_SIDE + 1) * mTileset->getHeight();
+	return mHeight * mTileset->getHeight() * MAP_CELL_SIDE;
 }
 
 unsigned int Map::getWidth() const

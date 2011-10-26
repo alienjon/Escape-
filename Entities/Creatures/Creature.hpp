@@ -19,7 +19,6 @@
 #include "../../Math/Quadrilateral.hpp"
 #include "../../Engine/Timer.hpp"
 
-class Item;
 class Level;
 
 /**
@@ -58,13 +57,6 @@ class Creature : public DeathListener, public Entity
      * @param entity The entity who died.
      */
     virtual void deathOccurred(Entity& entity);
-
-    /**
-     * @brief Drop an item.
-     * @param name The name of the item to drop.
-     * @return The item to be dropped, or null if not being held.
-     */
-    virtual Item* dropItem(const std::string& name);
 
     /**
      * @brief Get the currently facing direction.
@@ -118,12 +110,6 @@ class Creature : public DeathListener, public Entity
      * @param y The y position to move.
      */
     virtual void moveTo(int x, int y);
-
-    /**
-     * @brief Pick up an item.
-     * @param item The item to pick up.
-     */
-    virtual void pickupItem(Item& item);
 
     /**
      * @brief Remove a moved to point listener.
@@ -256,11 +242,6 @@ class Creature : public DeathListener, public Entity
      * The listener lists.
      */
     std::list<CreatureMovedToPointListener*> mMovedToPointListeners;
-
-    /**
-     * Currently held items.
-     */
-    std::list<Item*> mHeldItems;
 
     /**
      * These are the animation names for the various creature animations.

@@ -2,8 +2,6 @@ main.d: ../main.cpp ../Game/Direction.hpp ../Game/../Math/Vector.hpp \
  ../Game/Event.hpp ../Game/Game.hpp \
  ../Game/../Listeners/CreatureMovedToPointListener.hpp \
  ../Game/../Engine/Cursor.hpp ../Game/../Engine/../Engine/Renderer.hpp \
- ../Game/../Engine/../Engine/../Math/Ellipse.hpp \
- ../Game/../Engine/../Engine/../Math/../Math/Vector.hpp \
  ../Game/../Engine/../Engine/../Math/Quadrilateral.hpp \
  ../Game/../Engine/../Engine/../Math/../Math/Polygon.hpp \
  ../Game/../Engine/../Engine/../Math/../Math/../Math/Vector.hpp \
@@ -94,6 +92,7 @@ main.d: ../main.cpp ../Game/Direction.hpp ../Game/../Math/Vector.hpp \
  ../Game/../Engine/../Engine/../Math/../Math/../Guichan/widgets/container.hpp \
  ../Game/../Engine/../Engine/../Math/../Math/../Guichan/platform.hpp \
  ../Game/../Engine/../Engine/../Math/../Math/../Math/Polygon.hpp \
+ ../Game/../Engine/../Engine/../Math/../Math/Vector.hpp \
  ../Game/../Engine/../Engine/../Guichan/sdl.hpp \
  ../Game/../Engine/../Engine/../Guichan/sdl/sdlgraphics.hpp \
  ../Game/../Engine/../Engine/../Guichan/sdl/../color.hpp \
@@ -138,10 +137,6 @@ main.d: ../main.cpp ../Game/Direction.hpp ../Game/../Math/Vector.hpp \
 ../Game/../Engine/Cursor.hpp:
 
 ../Game/../Engine/../Engine/Renderer.hpp:
-
-../Game/../Engine/../Engine/../Math/Ellipse.hpp:
-
-../Game/../Engine/../Engine/../Math/../Math/Vector.hpp:
 
 ../Game/../Engine/../Engine/../Math/Quadrilateral.hpp:
 
@@ -322,6 +317,8 @@ main.d: ../main.cpp ../Game/Direction.hpp ../Game/../Math/Vector.hpp \
 ../Game/../Engine/../Engine/../Math/../Math/../Guichan/platform.hpp:
 
 ../Game/../Engine/../Engine/../Math/../Math/../Math/Polygon.hpp:
+
+../Game/../Engine/../Engine/../Math/../Math/Vector.hpp:
 
 ../Game/../Engine/../Engine/../Guichan/sdl.hpp:
 

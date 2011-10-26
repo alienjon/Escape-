@@ -76,14 +76,13 @@ Game/GUI.d: ../Game/GUI.cpp ../Game/GUI.hpp ../Game/../guichan.hpp \
  ../Game/../Widgets/../Game/../Math/Vector.hpp \
  ../Game/../Widgets/../guichan.hpp ../Game/../Widgets/../Math/Vector.hpp \
  ../Game/../Widgets/../Engine/Timer.hpp ../Game/../Engine/Renderer.hpp \
- ../Game/../Engine/../Math/Ellipse.hpp \
- ../Game/../Engine/../Math/../Math/Vector.hpp \
  ../Game/../Engine/../Math/Quadrilateral.hpp \
  ../Game/../Engine/../Math/../Math/Polygon.hpp \
  ../Game/../Engine/../Math/../Math/../Math/Vector.hpp \
  ../Game/../Engine/../Math/../Math/Rectangle.hpp \
  ../Game/../Engine/../Math/../Math/../guichan.hpp \
  ../Game/../Engine/../Math/../Math/../Math/Polygon.hpp \
+ ../Game/../Engine/../Math/../Math/Vector.hpp \
  ../Game/../Engine/../Guichan/sdl.hpp ../Game/../Engine/Surface.hpp \
  ../Game/../Engine/../Math/Rectangle.hpp ../Game/../Engine/Timer.hpp \
  ../Game/../Engine/Logger.hpp ../Game/../Engine/../guichan.hpp \
@@ -361,10 +360,6 @@ Game/GUI.d: ../Game/GUI.cpp ../Game/GUI.hpp ../Game/../guichan.hpp \
 
 ../Game/../Engine/Renderer.hpp:
 
-../Game/../Engine/../Math/Ellipse.hpp:
-
-../Game/../Engine/../Math/../Math/Vector.hpp:
-
 ../Game/../Engine/../Math/Quadrilateral.hpp:
 
 ../Game/../Engine/../Math/../Math/Polygon.hpp:
@@ -376,6 +371,8 @@ Game/GUI.d: ../Game/GUI.cpp ../Game/GUI.hpp ../Game/../guichan.hpp \
 ../Game/../Engine/../Math/../Math/../guichan.hpp:
 
 ../Game/../Engine/../Math/../Math/../Math/Polygon.hpp:
+
+../Game/../Engine/../Math/../Math/Vector.hpp:
 
 ../Game/../Engine/../Guichan/sdl.hpp:
 

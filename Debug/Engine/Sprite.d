@@ -69,11 +69,10 @@ Engine/Sprite.d: ../Engine/Sprite.cpp ../Engine/Sprite.hpp \
  ../Engine/../Math/../Math/Polygon.hpp \
  ../Engine/../Math/../Math/../Math/Vector.hpp \
  ../Engine/../Math/../Math/Vector.hpp ../Engine/../Engine/Renderer.hpp \
- ../Engine/../Engine/../Math/Ellipse.hpp \
- ../Engine/../Engine/../Math/../Math/Vector.hpp \
  ../Engine/../Engine/../Math/Quadrilateral.hpp \
  ../Engine/../Engine/../Math/../Math/Polygon.hpp \
  ../Engine/../Engine/../Math/../Math/Rectangle.hpp \
+ ../Engine/../Engine/../Math/../Math/Vector.hpp \
  ../Engine/../Engine/../Guichan/sdl.hpp \
  ../Engine/../Engine/../Guichan/sdl/sdlgraphics.hpp \
  ../Engine/../Engine/../Guichan/sdl/../color.hpp \
@@ -278,15 +277,13 @@ Engine/Sprite.d: ../Engine/Sprite.cpp ../Engine/Sprite.hpp \
 
 ../Engine/../Engine/Renderer.hpp:
 
-../Engine/../Engine/../Math/Ellipse.hpp:
-
-../Engine/../Engine/../Math/../Math/Vector.hpp:
-
 ../Engine/../Engine/../Math/Quadrilateral.hpp:
 
 ../Engine/../Engine/../Math/../Math/Polygon.hpp:
 
 ../Engine/../Engine/../Math/../Math/Rectangle.hpp:
+
+../Engine/../Engine/../Math/../Math/Vector.hpp:
 
 ../Engine/../Engine/../Guichan/sdl.hpp:
 

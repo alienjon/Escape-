@@ -10,7 +10,7 @@
 #include "../Engine/Colors.hpp"
 #include "../Game/Game.hpp"
 #include "../Game/Keywords.hpp"
-#include "../LevelInfo/Level.hpp"
+#include "../Game/Level.hpp"
 #include "../main.hpp"
 
 using std::list;
@@ -141,7 +141,9 @@ void Entity::draw(Renderer& renderer)
 {
     // Just need to draw ourselves.
 	Vector pos = mPosition - Vector(mCollisionArea.vector.x, mCollisionArea.vector.y);
-    mSprite.draw(renderer, pos);
+//    mSprite.draw(renderer, pos);
+	renderer.setColor(COLOR_WHITE);
+	renderer.fillRectangle(Rectangle(getDimension()));
 }
 
 const string& Entity::getAlignment() const

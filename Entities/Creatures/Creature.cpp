@@ -10,10 +10,9 @@
 #include <stdexcept>
 
 #include "../../Managers/AnimationManager.hpp"
-#include "../../Entities/Non-Creatures/Item.hpp"
 #include "../../Actions/DisplayCreatureAnimationAction.hpp"
 #include "../../Game/Keywords.hpp"
-#include "../../LevelInfo/Level.hpp"
+#include "../../Game/Level.hpp"
 #include "../../main.hpp"
 #include "../../Actions/MoveToAction.hpp"
 #include "../../Actions/MultipleActionsAction.hpp"
@@ -306,20 +305,6 @@ void Creature::deathOccurred(Entity& entity)
 	//@todo needed?
 }
 
-Item* Creature::dropItem(const string& name)
-{
-	for(list<Item*>::iterator it = mHeldItems.begin(); it != mHeldItems.end(); ++it)
-	{
-		if((*it)->getName() == name)
-		{
-			Item* item = *it;
-			mHeldItems.remove(item);
-			return item;
-		}
-	}
-	return 0;
-}
-
 Direction Creature::getFacingDirection() const
 {
     return mFacingDirection;
@@ -531,12 +516,6 @@ void Creature::logic(Level& level)
 		}
 	}
 
-//	// Perform logic for any held items. @todo review how guns/other 'held' items would work
-//	for(list<Item*>::iterator it = mHeldItems.begin(); it != mHeldItems.end(); ++it)
-//	{
-//		(*it)->heldLogic(eData, *this);
-//	}
-
     // Call the entity's logic.
     Entity::logic(level);
 }
@@ -561,11 +540,6 @@ void Creature::moveTo(int x, int y)
     // Update the velocities.
 	mXVelocity = (getX() < x) ? 1 : ((getX() == x) ? 0 : -1);
 	mYVelocity = (getY() < y) ? 1 : ((getY() == y) ? 0 : -1);
-}
-
-void Creature::pickupItem(Item& item)
-{
-	mHeldItems.push_back(&item);
 }
 
 void Creature::removeCreatureMovedToPointListener(CreatureMovedToPointListener* listener)

@@ -4,12 +4,12 @@
  *  Created on: May 26, 2009
  *      Author: alienjon
  */
-
 #ifndef TILESETMANAGER_HPP_
 #define TILESETMANAGER_HPP_
 
-#include <map>
+#include <list>
 #include <string>
+#include <vector>
 
 #include "../Game/Tileset.hpp"
 
@@ -49,12 +49,11 @@ class TilesetManager
      */
     static void terminate();
 
-    /**
-     * @brief Retrieve a tileset by a specified key.
-     * @param key The identifying key for the tileset.
-     * @return The requested tileset.
-     */
-    static const Tileset* get(const std::string& key);
+        /**
+         * @brief Retrieve a random tileset.
+         * @return A tileset.
+         */
+        static const Tileset* getRandom();
 
     private:
     /**
@@ -73,14 +72,14 @@ class TilesetManager
     TilesetManager();
 
     /**
-     * The tileset file data extracted into a list of vectors.
+     * The tileset file data extracted into a list.
      */
-    std::list<TilesetData> mData;
+    std::list<std::string> mData;
 
     /**
      * The collection of tilesets.
      */
-    std::map<std::string, Tileset*> mTilesets;
+    std::vector<Tileset*> mTilesets;
 };
 
 #endif /* TILESETMANAGER_HPP_ */

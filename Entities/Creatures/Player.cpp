@@ -15,12 +15,10 @@
 #include "../../Managers/AudioManager.hpp"
 #include "../../Game/Direction.hpp"
 #include "../../Actions/DisplayAnimationAction.hpp"
-#include "../../Math/Ellipse.hpp"
 #include "../../Entities/Templates/EntityTemplate.hpp"
 #include "../../Game/Game.hpp"
-#include "../../Entities/Non-Creatures/Item.hpp"
 #include "../../Game/Keywords.hpp"
-#include "../../LevelInfo/Level.hpp"
+#include "../../Game/Level.hpp"
 #include "../../Engine/Logger.hpp"
 #include "../../main.hpp"
 #include "../../Actions/MultipleActionsAction.hpp"
@@ -135,18 +133,6 @@ void Player::handleInput(const Input& input)
 
 void Player::interact(Entity& entity)//@todo review
 {
-	// If the entity is an item, then pick the item up.
-	if(entity.getType() == ENTITY_ITEM)
-	{
-
-		// Pick the item up.
-		Item* item = dynamic_cast<Item*>(&entity);
-		if(!item)
-		{
-			throw runtime_error("Player::interact() -> Error converting Entity* to Item*.");
-		}
-		pickupItem(*item);
-	}
 }
 
 void Player::logic(Level& level)//@todo review
@@ -167,7 +153,7 @@ void Player::logic(Level& level)//@todo review
 		dimension.vector.y -= 3;
 		dimension.width    += 6;
 		dimension.height   += 6;
-		if(level.getExitArea().isIntersecting(dimension))
+		if(dimension.isVectorInRect(level.getPortal()))//@todo This needs to be changed so that when the player has all 4 keys simply moving into the portal will complete the level
 		{
 			// Tell the level that the exit was found.
 			level.playerFoundExit();

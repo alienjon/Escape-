@@ -92,11 +92,10 @@ Managers/AnimationManager.d: ../Managers/AnimationManager.cpp \
  ../Managers/../Engine/../Math/../Math/../Math/Vector.hpp \
  ../Managers/../Engine/../Math/../Math/Vector.hpp \
  ../Managers/../Engine/../Engine/Renderer.hpp \
- ../Managers/../Engine/../Engine/../Math/Ellipse.hpp \
- ../Managers/../Engine/../Engine/../Math/../Math/Vector.hpp \
  ../Managers/../Engine/../Engine/../Math/Quadrilateral.hpp \
  ../Managers/../Engine/../Engine/../Math/../Math/Polygon.hpp \
  ../Managers/../Engine/../Engine/../Math/../Math/Rectangle.hpp \
+ ../Managers/../Engine/../Engine/../Math/../Math/Vector.hpp \
  ../Managers/../Engine/../Engine/../Guichan/sdl.hpp \
  ../Managers/../Engine/../Engine/../Guichan/sdl/sdlgraphics.hpp \
  ../Managers/../Engine/../Engine/../Guichan/sdl/../color.hpp \
@@ -349,15 +348,13 @@ Managers/AnimationManager.d: ../Managers/AnimationManager.cpp \
 
 ../Managers/../Engine/../Engine/Renderer.hpp:
 
-../Managers/../Engine/../Engine/../Math/Ellipse.hpp:
-
-../Managers/../Engine/../Engine/../Math/../Math/Vector.hpp:
-
 ../Managers/../Engine/../Engine/../Math/Quadrilateral.hpp:
 
 ../Managers/../Engine/../Engine/../Math/../Math/Polygon.hpp:
 
 ../Managers/../Engine/../Engine/../Math/../Math/Rectangle.hpp:
+
+../Managers/../Engine/../Engine/../Math/../Math/Vector.hpp:
 
 ../Managers/../Engine/../Engine/../Guichan/sdl.hpp:
 

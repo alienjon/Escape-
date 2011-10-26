@@ -1,5 +1,4 @@
 Engine/Renderer.d: ../Engine/Renderer.cpp ../Engine/Renderer.hpp \
- ../Engine/../Math/Ellipse.hpp ../Engine/../Math/../Math/Vector.hpp \
  ../Engine/../Math/Quadrilateral.hpp \
  ../Engine/../Math/../Math/Polygon.hpp \
  ../Engine/../Math/../Math/../Math/Vector.hpp \
@@ -90,7 +89,8 @@ Engine/Renderer.d: ../Engine/Renderer.cpp ../Engine/Renderer.hpp \
  ../Engine/../Math/../Math/../Guichan/widgets/container.hpp \
  ../Engine/../Math/../Math/../Guichan/platform.hpp \
  ../Engine/../Math/../Math/../Math/Polygon.hpp \
- ../Engine/../Guichan/sdl.hpp ../Engine/../Guichan/sdl/sdlgraphics.hpp \
+ ../Engine/../Math/../Math/Vector.hpp ../Engine/../Guichan/sdl.hpp \
+ ../Engine/../Guichan/sdl/sdlgraphics.hpp \
  ../Engine/../Guichan/sdl/../color.hpp \
  ../Engine/../Guichan/sdl/../graphics.hpp \
  ../Engine/../Guichan/sdl/../platform.hpp \
@@ -132,10 +132,6 @@ Engine/Renderer.d: ../Engine/Renderer.cpp ../Engine/Renderer.hpp \
  ../Engine/../Managers/../Engine/Surface.hpp
 
 ../Engine/Renderer.hpp:
-
-../Engine/../Math/Ellipse.hpp:
-
-../Engine/../Math/../Math/Vector.hpp:
 
 ../Engine/../Math/Quadrilateral.hpp:
 
@@ -316,6 +312,8 @@ Engine/Renderer.d: ../Engine/Renderer.cpp ../Engine/Renderer.hpp \
 ../Engine/../Math/../Math/../Guichan/platform.hpp:
 
 ../Engine/../Math/../Math/../Math/Polygon.hpp:
+
+../Engine/../Math/../Math/Vector.hpp:
 
 ../Engine/../Guichan/sdl.hpp:
 

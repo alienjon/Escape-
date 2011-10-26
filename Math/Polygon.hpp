@@ -4,7 +4,6 @@
  *  Created on: Apr 8, 2011
  *      Author: the-saint
  */
-
 #ifndef POLYGON_HPP_
 #define POLYGON_HPP_
 

@@ -95,11 +95,10 @@ Actions/SetWanderAction.d: ../Actions/SetWanderAction.cpp \
  ../Actions/../Entities/Creatures/../../Managers/../Engine/../Math/../Math/../Math/Vector.hpp \
  ../Actions/../Entities/Creatures/../../Managers/../Engine/../Math/../Math/Vector.hpp \
  ../Actions/../Entities/Creatures/../../Managers/../Engine/../Engine/Renderer.hpp \
- ../Actions/../Entities/Creatures/../../Managers/../Engine/../Engine/../Math/Ellipse.hpp \
- ../Actions/../Entities/Creatures/../../Managers/../Engine/../Engine/../Math/../Math/Vector.hpp \
  ../Actions/../Entities/Creatures/../../Managers/../Engine/../Engine/../Math/Quadrilateral.hpp \
  ../Actions/../Entities/Creatures/../../Managers/../Engine/../Engine/../Math/../Math/Polygon.hpp \
  ../Actions/../Entities/Creatures/../../Managers/../Engine/../Engine/../Math/../Math/Rectangle.hpp \
+ ../Actions/../Entities/Creatures/../../Managers/../Engine/../Engine/../Math/../Math/Vector.hpp \
  ../Actions/../Entities/Creatures/../../Managers/../Engine/../Engine/../Guichan/sdl.hpp \
  ../Actions/../Entities/Creatures/../../Managers/../Engine/../Engine/../Guichan/sdl/sdlgraphics.hpp \
  ../Actions/../Entities/Creatures/../../Managers/../Engine/../Engine/../Guichan/sdl/../color.hpp \
@@ -343,15 +342,13 @@ Actions/SetWanderAction.d: ../Actions/SetWanderAction.cpp \
 
 ../Actions/../Entities/Creatures/../../Managers/../Engine/../Engine/Renderer.hpp:
 
-../Actions/../Entities/Creatures/../../Managers/../Engine/../Engine/../Math/Ellipse.hpp:
-
-../Actions/../Entities/Creatures/../../Managers/../Engine/../Engine/../Math/../Math/Vector.hpp:
-
 ../Actions/../Entities/Creatures/../../Managers/../Engine/../Engine/../Math/Quadrilateral.hpp:
 
 ../Actions/../Entities/Creatures/../../Managers/../Engine/../Engine/../Math/../Math/Polygon.hpp:
 
 ../Actions/../Entities/Creatures/../../Managers/../Engine/../Engine/../Math/../Math/Rectangle.hpp:
+
+../Actions/../Entities/Creatures/../../Managers/../Engine/../Engine/../Math/../Math/Vector.hpp:
 
 ../Actions/../Entities/Creatures/../../Managers/../Engine/../Engine/../Guichan/sdl.hpp:
 

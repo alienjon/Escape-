@@ -7,15 +7,15 @@
 # required (ie: 'Player' will translate to 'Player.ani').
 ##
 Player
-Pink Zombie
-Red Zombie
-Green Zombie
-Soldier
-Desk
-Closed Door
-Open Door
-Desk Chair
-Conversation Images
-Package
-Flashlight
+#Pink Zombie
+#Red Zombie
+#Green Zombie
+#Soldier
+#Desk
+#Closed Door
+#Open Door
+#Desk Chair
+#Conversation Images
+#Package
+#Flashlight
 #Fire Explosion

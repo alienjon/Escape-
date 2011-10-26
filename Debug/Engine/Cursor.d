@@ -1,6 +1,5 @@
 Engine/Cursor.d: ../Engine/Cursor.cpp ../Engine/Cursor.hpp \
- ../Engine/../Engine/Renderer.hpp ../Engine/../Engine/../Math/Ellipse.hpp \
- ../Engine/../Engine/../Math/../Math/Vector.hpp \
+ ../Engine/../Engine/Renderer.hpp \
  ../Engine/../Engine/../Math/Quadrilateral.hpp \
  ../Engine/../Engine/../Math/../Math/Polygon.hpp \
  ../Engine/../Engine/../Math/../Math/../Math/Vector.hpp \
@@ -91,6 +90,7 @@ Engine/Cursor.d: ../Engine/Cursor.cpp ../Engine/Cursor.hpp \
  ../Engine/../Engine/../Math/../Math/../Guichan/widgets/container.hpp \
  ../Engine/../Engine/../Math/../Math/../Guichan/platform.hpp \
  ../Engine/../Engine/../Math/../Math/../Math/Polygon.hpp \
+ ../Engine/../Engine/../Math/../Math/Vector.hpp \
  ../Engine/../Engine/../Guichan/sdl.hpp \
  ../Engine/../Engine/../Guichan/sdl/sdlgraphics.hpp \
  ../Engine/../Engine/../Guichan/sdl/../color.hpp \
@@ -117,10 +117,6 @@ Engine/Cursor.d: ../Engine/Cursor.cpp ../Engine/Cursor.hpp \
 ../Engine/Cursor.hpp:
 
 ../Engine/../Engine/Renderer.hpp:
-
-../Engine/../Engine/../Math/Ellipse.hpp:
-
-../Engine/../Engine/../Math/../Math/Vector.hpp:
 
 ../Engine/../Engine/../Math/Quadrilateral.hpp:
 
@@ -301,6 +297,8 @@ Engine/Cursor.d: ../Engine/Cursor.cpp ../Engine/Cursor.hpp \
 ../Engine/../Engine/../Math/../Math/../Guichan/platform.hpp:
 
 ../Engine/../Engine/../Math/../Math/../Math/Polygon.hpp:
+
+../Engine/../Engine/../Math/../Math/Vector.hpp:
 
 ../Engine/../Engine/../Guichan/sdl.hpp:
 

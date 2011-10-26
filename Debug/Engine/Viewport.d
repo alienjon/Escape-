@@ -110,8 +110,6 @@ Engine/Viewport.d: ../Engine/Viewport.cpp ../Engine/Viewport.hpp \
  ../Engine/../Entities/../Math/Quadrilateral.hpp \
  ../Engine/../Entities/../Math/Rectangle.hpp \
  ../Engine/../Entities/../Engine/Renderer.hpp \
- ../Engine/../Entities/../Engine/../Math/Ellipse.hpp \
- ../Engine/../Entities/../Engine/../Math/../Math/Vector.hpp \
  ../Engine/../Entities/../Engine/../Math/Quadrilateral.hpp \
  ../Engine/../Entities/../Engine/../Guichan/sdl.hpp \
  ../Engine/../Entities/../Engine/../Guichan/sdl/sdlgraphics.hpp \
@@ -369,10 +367,6 @@ Engine/Viewport.d: ../Engine/Viewport.cpp ../Engine/Viewport.hpp \
 ../Engine/../Entities/../Math/Rectangle.hpp:
 
 ../Engine/../Entities/../Engine/Renderer.hpp:
-
-../Engine/../Entities/../Engine/../Math/Ellipse.hpp:
-
-../Engine/../Entities/../Engine/../Math/../Math/Vector.hpp:
 
 ../Engine/../Entities/../Engine/../Math/Quadrilateral.hpp:
 

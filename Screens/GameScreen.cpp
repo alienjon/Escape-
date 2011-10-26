@@ -78,13 +78,16 @@ GameScreen::~GameScreen()
 	mMessageOSD.removeActionListener(this);
 	mBase.removeKeyListener(&mMessageOSD);
 
-	// The level should stop listening for events.
-	mLevel->removeEventListener(this);
-	mLevel->removeChangeScoreListener(this);
-	mLevel->setInterfaceListener(0);
+	// In the event that the game crashes before a level is loaded, this will segfault without a check.
+	if(mLevel)
+	{
+		mLevel->removeEventListener(this);
+		mLevel->removeChangeScoreListener(this);
+		mLevel->setInterfaceListener(0);
 
-    // Delete and unset the level.
-	delete mLevel;
+		// Delete and unset the level.
+		delete mLevel;
+	}
 }
 
 void GameScreen::action(const gcn::ActionEvent& event)

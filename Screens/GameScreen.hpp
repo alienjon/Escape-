@@ -18,7 +18,7 @@
 #include "../guichan.hpp"
 #include "../Game/Input.hpp"
 #include "../Widgets/GameScreenMenuBar.hpp"
-#include "../LevelInfo/Level.hpp"
+#include "../Game/Level.hpp"
 #include "../Widgets/LevelCompleteWidget.hpp"
 #include "../Widgets/MessageDisplayWidget.hpp"
 #include "../Entities/Creatures/Player.hpp"
