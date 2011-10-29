@@ -6,7 +6,7 @@
  */
 #include "MoveToAction.hpp"
 
-#include "../Entities/Creatures/Creature.hpp"
+#include "../Entities/Creature.hpp"
 #include "../Engine/Logger.hpp"
 
 MoveToAction::MoveToAction(Creature& creature, const Vector& loc) : mCreature(creature),
@@ -39,7 +39,7 @@ void MoveToAction::activate(EnvironmentData& eData)
 
 void MoveToAction::creatureMoved(Creature& creature)
 {
-    if(creature.getId() == mCreature.getId())
+    if(&creature == &mCreature)//@fixme if something is weird with this, I might need to use pointers
     {
         // The creature finished moving to the point.
         mPerformed = true;

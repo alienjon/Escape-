@@ -6,7 +6,6 @@
 CPP_SRCS += \
 ../Actions/DebugAction.cpp \
 ../Actions/DisplayAnimationAction.cpp \
-../Actions/DisplayCreatureAnimationAction.cpp \
 ../Actions/DisplayMessageAction.cpp \
 ../Actions/DisplaySpriteAction.cpp \
 ../Actions/FastSearchAction.cpp \
@@ -15,7 +14,6 @@ CPP_SRCS += \
 ../Actions/PauseAction.cpp \
 ../Actions/PlayMusicAction.cpp \
 ../Actions/PlaySoundAction.cpp \
-../Actions/SetSearchingAction.cpp \
 ../Actions/SetSpeedAction.cpp \
 ../Actions/SetWanderAction.cpp \
 ../Actions/SetWidgetVisibilityAction.cpp \
@@ -24,7 +22,6 @@ CPP_SRCS += \
 OBJS += \
 ./Actions/DebugAction.o \
 ./Actions/DisplayAnimationAction.o \
-./Actions/DisplayCreatureAnimationAction.o \
 ./Actions/DisplayMessageAction.o \
 ./Actions/DisplaySpriteAction.o \
 ./Actions/FastSearchAction.o \
@@ -33,7 +30,6 @@ OBJS += \
 ./Actions/PauseAction.o \
 ./Actions/PlayMusicAction.o \
 ./Actions/PlaySoundAction.o \
-./Actions/SetSearchingAction.o \
 ./Actions/SetSpeedAction.o \
 ./Actions/SetWanderAction.o \
 ./Actions/SetWidgetVisibilityAction.o \
@@ -42,7 +38,6 @@ OBJS += \
 CPP_DEPS += \
 ./Actions/DebugAction.d \
 ./Actions/DisplayAnimationAction.d \
-./Actions/DisplayCreatureAnimationAction.d \
 ./Actions/DisplayMessageAction.d \
 ./Actions/DisplaySpriteAction.d \
 ./Actions/FastSearchAction.d \
@@ -51,7 +46,6 @@ CPP_DEPS += \
 ./Actions/PauseAction.d \
 ./Actions/PlayMusicAction.d \
 ./Actions/PlaySoundAction.d \
-./Actions/SetSearchingAction.d \
 ./Actions/SetSpeedAction.d \
 ./Actions/SetWanderAction.d \
 ./Actions/SetWidgetVisibilityAction.d \

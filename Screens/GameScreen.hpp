@@ -21,7 +21,7 @@
 #include "../Game/Level.hpp"
 #include "../Widgets/LevelCompleteWidget.hpp"
 #include "../Widgets/MessageDisplayWidget.hpp"
-#include "../Entities/Creatures/Player.hpp"
+#include "../Entities/Player.hpp"
 #include "../Engine/Renderer.hpp"
 #include "Screen.hpp"
 #include "../Engine/Sprite.hpp"

@@ -151,10 +151,11 @@ Actions/DisplayMessageAction.d: ../Actions/DisplayMessageAction.cpp \
  ../Actions/../Screens/../Game/Level.hpp \
  ../Actions/../Screens/../Game/../Interfaces/ActionInterface.hpp \
  ../Actions/../Screens/../Game/../Interfaces/../Actions/Action.hpp \
+ ../Actions/../Screens/../Game/../Interfaces/ChangeScoreInterface.hpp \
+ ../Actions/../Screens/../Game/../Interfaces/../Listeners/ChangeScoreListener.hpp \
  ../Actions/../Screens/../Game/../Listeners/ChangeScoreListener.hpp \
  ../Actions/../Screens/../Game/../Listeners/CreatureMovedToPointListener.hpp \
- ../Actions/../Screens/../Game/../Interfaces/EnvironmentInterface.hpp \
- ../Actions/../Screens/../Game/../Interfaces/../Listeners/EnvironmentRequestListener.hpp \
+ ../Actions/../Screens/../Game/../Listeners/DeathListener.hpp \
  ../Actions/../Screens/../Game/../Interfaces/EventInterface.hpp \
  ../Actions/../Screens/../Game/../Interfaces/../Listeners/CreatureMovedToPointListener.hpp \
  ../Actions/../Screens/../Game/../Interfaces/../Listeners/EventListener.hpp \
@@ -184,6 +185,7 @@ Actions/DisplayMessageAction.d: ../Actions/DisplayMessageAction.cpp \
  ../Actions/../Screens/../Game/../Interfaces/../Math/Rectangle.hpp \
  ../Actions/../Screens/../Game/../Interfaces/../Math/Vector.hpp \
  ../Actions/../Screens/../Game/../Game/Input.hpp \
+ ../Actions/../Screens/../Game/../Listeners/LevelCompleteListener.hpp \
  ../Actions/../Screens/../Game/../Game/Map.hpp \
  ../Actions/../Screens/../Game/../Game/../Math/CollisionArea.hpp \
  ../Actions/../Screens/../Game/../Game/../Math/../Math/Rectangle.hpp \
@@ -206,36 +208,32 @@ Actions/DisplayMessageAction.d: ../Actions/DisplayMessageAction.cpp \
  ../Actions/../Screens/../Widgets/../Widgets/SpriteWidget.hpp \
  ../Actions/../Screens/../Widgets/../Widgets/../Listeners/AnimationCycleListener.hpp \
  ../Actions/../Screens/../Widgets/../Widgets/../Engine/Sprite.hpp \
- ../Actions/../Screens/../Entities/Creatures/Player.hpp \
- ../Actions/../Screens/../Entities/Creatures/Creature.hpp \
- ../Actions/../Screens/../Entities/Creatures/../../Managers/AnimationManager.hpp \
- ../Actions/../Screens/../Entities/Creatures/../../Managers/../Engine/Sprite.hpp \
- ../Actions/../Screens/../Entities/Creatures/../../Entities/Creatures/CreatureAnimationState.hpp \
- ../Actions/../Screens/../Entities/Creatures/../../Listeners/CreatureMovedToPointListener.hpp \
- ../Actions/../Screens/../Entities/Creatures/../../Listeners/DeathListener.hpp \
- ../Actions/../Screens/../Entities/Creatures/../../Entities/Entity.hpp \
- ../Actions/../Screens/../Entities/Creatures/../../Entities/../Interfaces/ActionInterface.hpp \
- ../Actions/../Screens/../Entities/Creatures/../../Entities/../Listeners/AnimationCycleListener.hpp \
- ../Actions/../Screens/../Entities/Creatures/../../Entities/../Listeners/DeathListener.hpp \
- ../Actions/../Screens/../Entities/Creatures/../../Entities/../Game/Direction.hpp \
- ../Actions/../Screens/../Entities/Creatures/../../Entities/../Entities/EntityType.hpp \
- ../Actions/../Screens/../Entities/Creatures/../../Entities/../Interfaces/EventInterface.hpp \
- ../Actions/../Screens/../Entities/Creatures/../../Entities/../Game/Input.hpp \
- ../Actions/../Screens/../Entities/Creatures/../../Entities/../Listeners/InteractionListener.hpp \
- ../Actions/../Screens/../Entities/Creatures/../../Entities/../Listeners/MovementListener.hpp \
- ../Actions/../Screens/../Entities/Creatures/../../Entities/../Math/Vector.hpp \
- ../Actions/../Screens/../Entities/Creatures/../../Entities/../Math/Quadrilateral.hpp \
- ../Actions/../Screens/../Entities/Creatures/../../Entities/../Math/Rectangle.hpp \
- ../Actions/../Screens/../Entities/Creatures/../../Entities/../Engine/Renderer.hpp \
- ../Actions/../Screens/../Entities/Creatures/../../Entities/../Engine/Sprite.hpp \
- ../Actions/../Screens/../Entities/Creatures/../../Entities/../Engine/Timer.hpp \
- ../Actions/../Screens/../Entities/Creatures/../../Entities/Templates/EntityTemplate.hpp \
- ../Actions/../Screens/../Entities/Creatures/../../Entities/Templates/../../Math/Rectangle.hpp \
- ../Actions/../Screens/../Entities/Creatures/../../Math/Vector.hpp \
- ../Actions/../Screens/../Entities/Creatures/../../Math/Quadrilateral.hpp \
- ../Actions/../Screens/../Entities/Creatures/../../Engine/Timer.hpp \
- ../Actions/../Screens/../Entities/Creatures/../../Game/Game.hpp \
- ../Actions/../Screens/../Entities/Creatures/../../Game/Input.hpp \
+ ../Actions/../Screens/../Entities/Player.hpp \
+ ../Actions/../Screens/../Entities/../Entities/Creature.hpp \
+ ../Actions/../Screens/../Entities/../Entities/../Listeners/CreatureMovedToPointListener.hpp \
+ ../Actions/../Screens/../Entities/../Entities/../Entities/Entity.hpp \
+ ../Actions/../Screens/../Entities/../Entities/../Entities/../Interfaces/ActionInterface.hpp \
+ ../Actions/../Screens/../Entities/../Entities/../Entities/../Listeners/AnimationCycleListener.hpp \
+ ../Actions/../Screens/../Entities/../Entities/../Entities/../Interfaces/ChangeScoreInterface.hpp \
+ ../Actions/../Screens/../Entities/../Entities/../Entities/../Listeners/DeathListener.hpp \
+ ../Actions/../Screens/../Entities/../Entities/../Entities/../Game/Direction.hpp \
+ ../Actions/../Screens/../Entities/../Entities/../Entities/../Interfaces/EventInterface.hpp \
+ ../Actions/../Screens/../Entities/../Entities/../Entities/../Game/Input.hpp \
+ ../Actions/../Screens/../Entities/../Entities/../Entities/../Math/Vector.hpp \
+ ../Actions/../Screens/../Entities/../Entities/../Entities/../Math/Quadrilateral.hpp \
+ ../Actions/../Screens/../Entities/../Entities/../Entities/../Math/Rectangle.hpp \
+ ../Actions/../Screens/../Entities/../Entities/../Entities/../Interfaces/RemoveLockInterface.hpp \
+ ../Actions/../Screens/../Entities/../Entities/../Entities/../Interfaces/../guichan.hpp \
+ ../Actions/../Screens/../Entities/../Entities/../Entities/../Interfaces/../Listeners/RemoveLockListener.hpp \
+ ../Actions/../Screens/../Entities/../Entities/../Entities/../Interfaces/../Listeners/../guichan.hpp \
+ ../Actions/../Screens/../Entities/../Entities/../Entities/../Engine/Renderer.hpp \
+ ../Actions/../Screens/../Entities/../Entities/../Entities/../Engine/Sprite.hpp \
+ ../Actions/../Screens/../Entities/../Entities/../Entities/../Engine/Timer.hpp \
+ ../Actions/../Screens/../Entities/../Entities/../Math/Vector.hpp \
+ ../Actions/../Screens/../Entities/../Entities/../Engine/Timer.hpp \
+ ../Actions/../Screens/../Entities/../Game/Input.hpp \
+ ../Actions/../Screens/../Entities/../Interfaces/RemoveLockInterface.hpp \
+ ../Actions/../Screens/../Entities/../Engine/Timer.hpp \
  ../Actions/../Screens/../Engine/Renderer.hpp \
  ../Actions/../Screens/Screen.hpp ../Actions/../Screens/../Game/Game.hpp \
  ../Actions/../Screens/../Interfaces/EventInterface.hpp \
@@ -555,13 +553,15 @@ Actions/DisplayMessageAction.d: ../Actions/DisplayMessageAction.cpp \
 
 ../Actions/../Screens/../Game/../Interfaces/../Actions/Action.hpp:
 
+../Actions/../Screens/../Game/../Interfaces/ChangeScoreInterface.hpp:
+
+../Actions/../Screens/../Game/../Interfaces/../Listeners/ChangeScoreListener.hpp:
+
 ../Actions/../Screens/../Game/../Listeners/ChangeScoreListener.hpp:
 
 ../Actions/../Screens/../Game/../Listeners/CreatureMovedToPointListener.hpp:
 
-../Actions/../Screens/../Game/../Interfaces/EnvironmentInterface.hpp:
-
-../Actions/../Screens/../Game/../Interfaces/../Listeners/EnvironmentRequestListener.hpp:
+../Actions/../Screens/../Game/../Listeners/DeathListener.hpp:
 
 ../Actions/../Screens/../Game/../Interfaces/EventInterface.hpp:
 
@@ -621,6 +621,8 @@ Actions/DisplayMessageAction.d: ../Actions/DisplayMessageAction.cpp \
 
 ../Actions/../Screens/../Game/../Game/Input.hpp:
 
+../Actions/../Screens/../Game/../Listeners/LevelCompleteListener.hpp:
+
 ../Actions/../Screens/../Game/../Game/Map.hpp:
 
 ../Actions/../Screens/../Game/../Game/../Math/CollisionArea.hpp:
@@ -665,65 +667,57 @@ Actions/DisplayMessageAction.d: ../Actions/DisplayMessageAction.cpp \
 
 ../Actions/../Screens/../Widgets/../Widgets/../Engine/Sprite.hpp:
 
-../Actions/../Screens/../Entities/Creatures/Player.hpp:
+../Actions/../Screens/../Entities/Player.hpp:
 
-../Actions/../Screens/../Entities/Creatures/Creature.hpp:
+../Actions/../Screens/../Entities/../Entities/Creature.hpp:
 
-../Actions/../Screens/../Entities/Creatures/../../Managers/AnimationManager.hpp:
+../Actions/../Screens/../Entities/../Entities/../Listeners/CreatureMovedToPointListener.hpp:
 
-../Actions/../Screens/../Entities/Creatures/../../Managers/../Engine/Sprite.hpp:
+../Actions/../Screens/../Entities/../Entities/../Entities/Entity.hpp:
 
-../Actions/../Screens/../Entities/Creatures/../../Entities/Creatures/CreatureAnimationState.hpp:
+../Actions/../Screens/../Entities/../Entities/../Entities/../Interfaces/ActionInterface.hpp:
 
-../Actions/../Screens/../Entities/Creatures/../../Listeners/CreatureMovedToPointListener.hpp:
+../Actions/../Screens/../Entities/../Entities/../Entities/../Listeners/AnimationCycleListener.hpp:
 
-../Actions/../Screens/../Entities/Creatures/../../Listeners/DeathListener.hpp:
+../Actions/../Screens/../Entities/../Entities/../Entities/../Interfaces/ChangeScoreInterface.hpp:
 
-../Actions/../Screens/../Entities/Creatures/../../Entities/Entity.hpp:
+../Actions/../Screens/../Entities/../Entities/../Entities/../Listeners/DeathListener.hpp:
 
-../Actions/../Screens/../Entities/Creatures/../../Entities/../Interfaces/ActionInterface.hpp:
+../Actions/../Screens/../Entities/../Entities/../Entities/../Game/Direction.hpp:
 
-../Actions/../Screens/../Entities/Creatures/../../Entities/../Listeners/AnimationCycleListener.hpp:
+../Actions/../Screens/../Entities/../Entities/../Entities/../Interfaces/EventInterface.hpp:
 
-../Actions/../Screens/../Entities/Creatures/../../Entities/../Listeners/DeathListener.hpp:
+../Actions/../Screens/../Entities/../Entities/../Entities/../Game/Input.hpp:
 
-../Actions/../Screens/../Entities/Creatures/../../Entities/../Game/Direction.hpp:
+../Actions/../Screens/../Entities/../Entities/../Entities/../Math/Vector.hpp:
 
-../Actions/../Screens/../Entities/Creatures/../../Entities/../Entities/EntityType.hpp:
+../Actions/../Screens/../Entities/../Entities/../Entities/../Math/Quadrilateral.hpp:
 
-../Actions/../Screens/../Entities/Creatures/../../Entities/../Interfaces/EventInterface.hpp:
+../Actions/../Screens/../Entities/../Entities/../Entities/../Math/Rectangle.hpp:
 
-../Actions/../Screens/../Entities/Creatures/../../Entities/../Game/Input.hpp:
+../Actions/../Screens/../Entities/../Entities/../Entities/../Interfaces/RemoveLockInterface.hpp:
 
-../Actions/../Screens/../Entities/Creatures/../../Entities/../Listeners/InteractionListener.hpp:
+../Actions/../Screens/../Entities/../Entities/../Entities/../Interfaces/../guichan.hpp:
 
-../Actions/../Screens/../Entities/Creatures/../../Entities/../Listeners/MovementListener.hpp:
+../Actions/../Screens/../Entities/../Entities/../Entities/../Interfaces/../Listeners/RemoveLockListener.hpp:
 
-../Actions/../Screens/../Entities/Creatures/../../Entities/../Math/Vector.hpp:
+../Actions/../Screens/../Entities/../Entities/../Entities/../Interfaces/../Listeners/../guichan.hpp:
 
-../Actions/../Screens/../Entities/Creatures/../../Entities/../Math/Quadrilateral.hpp:
+../Actions/../Screens/../Entities/../Entities/../Entities/../Engine/Renderer.hpp:
 
-../Actions/../Screens/../Entities/Creatures/../../Entities/../Math/Rectangle.hpp:
+../Actions/../Screens/../Entities/../Entities/../Entities/../Engine/Sprite.hpp:
 
-../Actions/../Screens/../Entities/Creatures/../../Entities/../Engine/Renderer.hpp:
+../Actions/../Screens/../Entities/../Entities/../Entities/../Engine/Timer.hpp:
 
-../Actions/../Screens/../Entities/Creatures/../../Entities/../Engine/Sprite.hpp:
+../Actions/../Screens/../Entities/../Entities/../Math/Vector.hpp:
 
-../Actions/../Screens/../Entities/Creatures/../../Entities/../Engine/Timer.hpp:
+../Actions/../Screens/../Entities/../Entities/../Engine/Timer.hpp:
 
-../Actions/../Screens/../Entities/Creatures/../../Entities/Templates/EntityTemplate.hpp:
+../Actions/../Screens/../Entities/../Game/Input.hpp:
 
-../Actions/../Screens/../Entities/Creatures/../../Entities/Templates/../../Math/Rectangle.hpp:
+../Actions/../Screens/../Entities/../Interfaces/RemoveLockInterface.hpp:
 
-../Actions/../Screens/../Entities/Creatures/../../Math/Vector.hpp:
-
-../Actions/../Screens/../Entities/Creatures/../../Math/Quadrilateral.hpp:
-
-../Actions/../Screens/../Entities/Creatures/../../Engine/Timer.hpp:
-
-../Actions/../Screens/../Entities/Creatures/../../Game/Game.hpp:
-
-../Actions/../Screens/../Entities/Creatures/../../Game/Input.hpp:
+../Actions/../Screens/../Entities/../Engine/Timer.hpp:
 
 ../Actions/../Screens/../Engine/Renderer.hpp:
 

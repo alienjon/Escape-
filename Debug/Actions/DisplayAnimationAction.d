@@ -117,21 +117,24 @@ Actions/DisplayAnimationAction.d: ../Actions/DisplayAnimationAction.cpp \
  ../Actions/../Entities/../Interfaces/ActionInterface.hpp \
  ../Actions/../Entities/../Interfaces/../Actions/Action.hpp \
  ../Actions/../Entities/../Listeners/AnimationCycleListener.hpp \
+ ../Actions/../Entities/../Interfaces/ChangeScoreInterface.hpp \
+ ../Actions/../Entities/../Interfaces/../Listeners/ChangeScoreListener.hpp \
  ../Actions/../Entities/../Listeners/DeathListener.hpp \
  ../Actions/../Entities/../Game/Direction.hpp \
  ../Actions/../Entities/../Game/../Math/Vector.hpp \
- ../Actions/../Entities/../Entities/EntityType.hpp \
  ../Actions/../Entities/../Interfaces/EventInterface.hpp \
  ../Actions/../Entities/../Interfaces/../Listeners/CreatureMovedToPointListener.hpp \
  ../Actions/../Entities/../Interfaces/../Listeners/EventListener.hpp \
  ../Actions/../Entities/../Interfaces/../Listeners/../Listeners/CreatureMovedToPointListener.hpp \
  ../Actions/../Entities/../Interfaces/../Listeners/../Game/Event.hpp \
  ../Actions/../Entities/../Game/Input.hpp \
- ../Actions/../Entities/../Listeners/InteractionListener.hpp \
- ../Actions/../Entities/../Listeners/MovementListener.hpp \
  ../Actions/../Entities/../Math/Vector.hpp \
  ../Actions/../Entities/../Math/Quadrilateral.hpp \
  ../Actions/../Entities/../Math/Rectangle.hpp \
+ ../Actions/../Entities/../Interfaces/RemoveLockInterface.hpp \
+ ../Actions/../Entities/../Interfaces/../guichan.hpp \
+ ../Actions/../Entities/../Interfaces/../Listeners/RemoveLockListener.hpp \
+ ../Actions/../Entities/../Interfaces/../Listeners/../guichan.hpp \
  ../Actions/../Entities/../Engine/Renderer.hpp \
  ../Actions/../Entities/../Engine/Sprite.hpp \
  ../Actions/../Entities/../Engine/Timer.hpp
@@ -380,13 +383,15 @@ Actions/DisplayAnimationAction.d: ../Actions/DisplayAnimationAction.cpp \
 
 ../Actions/../Entities/../Listeners/AnimationCycleListener.hpp:
 
+../Actions/../Entities/../Interfaces/ChangeScoreInterface.hpp:
+
+../Actions/../Entities/../Interfaces/../Listeners/ChangeScoreListener.hpp:
+
 ../Actions/../Entities/../Listeners/DeathListener.hpp:
 
 ../Actions/../Entities/../Game/Direction.hpp:
 
 ../Actions/../Entities/../Game/../Math/Vector.hpp:
-
-../Actions/../Entities/../Entities/EntityType.hpp:
 
 ../Actions/../Entities/../Interfaces/EventInterface.hpp:
 
@@ -400,15 +405,19 @@ Actions/DisplayAnimationAction.d: ../Actions/DisplayAnimationAction.cpp \
 
 ../Actions/../Entities/../Game/Input.hpp:
 
-../Actions/../Entities/../Listeners/InteractionListener.hpp:
-
-../Actions/../Entities/../Listeners/MovementListener.hpp:
-
 ../Actions/../Entities/../Math/Vector.hpp:
 
 ../Actions/../Entities/../Math/Quadrilateral.hpp:
 
 ../Actions/../Entities/../Math/Rectangle.hpp:
+
+../Actions/../Entities/../Interfaces/RemoveLockInterface.hpp:
+
+../Actions/../Entities/../Interfaces/../guichan.hpp:
+
+../Actions/../Entities/../Interfaces/../Listeners/RemoveLockListener.hpp:
+
+../Actions/../Entities/../Interfaces/../Listeners/../guichan.hpp:
 
 ../Actions/../Entities/../Engine/Renderer.hpp:
 

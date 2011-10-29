@@ -21,7 +21,6 @@ RM := rm -rf
 -include Guichan/opengl/subdir.mk
 -include Game/subdir.mk
 -include Entities/subdir.mk
--include Entities/Creatures/subdir.mk
 -include Engine/subdir.mk
 -include Actions/subdir.mk
 -include objects.mk

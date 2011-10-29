@@ -22,7 +22,7 @@
 #include "../Managers/FontManager.hpp"
 #include "../Screens/GameScreen.hpp"
 #include "../Screens/MenuScreen.hpp"
-#include "../Entities/Creatures/Player.hpp"
+#include "../Entities/Player.hpp"
 #include "../Screens/Screen.hpp"
 #include "../Screens/SpriteCreditScreen.hpp"
 #include "../Managers/TilesetManager.hpp"

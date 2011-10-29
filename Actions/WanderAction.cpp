@@ -7,7 +7,7 @@
 
 #include "WanderAction.hpp"
 
-#include "../Entities/Creatures/Creature.hpp"
+#include "../Entities/Creature.hpp"
 #include "../Engine/Logger.hpp"
 
 WanderAction::WanderAction(Creature* creature) : mCreature(creature)

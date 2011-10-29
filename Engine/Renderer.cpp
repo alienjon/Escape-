@@ -33,6 +33,8 @@
 using std::runtime_error;
 using std::string;
 
+char __LINUX_VIDEO__[] = "SDL_VIDEODRIVER=x11";
+
 Renderer::Renderer() :
 	mIsFullscreen(false),
 	mLowerTarget(0),
@@ -40,7 +42,7 @@ Renderer::Renderer() :
 {
 	// Linux-specific code.
 #ifdef __linux__
-	putenv("SDL_VIDEODRIVER=x11");
+	putenv(__LINUX_VIDEO__);
 	Logger::log("Setting video driver to x11");
 	/*
 	 * Available options

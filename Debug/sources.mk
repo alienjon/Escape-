@@ -36,7 +36,6 @@ Guichan/sdl \
 Guichan/opengl \
 Game \
 Entities \
-Entities/Creatures \
 Engine \
 Actions \
 

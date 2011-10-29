@@ -94,21 +94,24 @@ Engine/Viewport.d: ../Engine/Viewport.cpp ../Engine/Viewport.hpp \
  ../Engine/../Entities/../Interfaces/ActionInterface.hpp \
  ../Engine/../Entities/../Interfaces/../Actions/Action.hpp \
  ../Engine/../Entities/../Listeners/AnimationCycleListener.hpp \
+ ../Engine/../Entities/../Interfaces/ChangeScoreInterface.hpp \
+ ../Engine/../Entities/../Interfaces/../Listeners/ChangeScoreListener.hpp \
  ../Engine/../Entities/../Listeners/DeathListener.hpp \
  ../Engine/../Entities/../Game/Direction.hpp \
  ../Engine/../Entities/../Game/../Math/Vector.hpp \
- ../Engine/../Entities/../Entities/EntityType.hpp \
  ../Engine/../Entities/../Interfaces/EventInterface.hpp \
  ../Engine/../Entities/../Interfaces/../Listeners/CreatureMovedToPointListener.hpp \
  ../Engine/../Entities/../Interfaces/../Listeners/EventListener.hpp \
  ../Engine/../Entities/../Interfaces/../Listeners/../Listeners/CreatureMovedToPointListener.hpp \
  ../Engine/../Entities/../Interfaces/../Listeners/../Game/Event.hpp \
  ../Engine/../Entities/../Game/Input.hpp \
- ../Engine/../Entities/../Listeners/InteractionListener.hpp \
- ../Engine/../Entities/../Listeners/MovementListener.hpp \
  ../Engine/../Entities/../Math/Vector.hpp \
  ../Engine/../Entities/../Math/Quadrilateral.hpp \
  ../Engine/../Entities/../Math/Rectangle.hpp \
+ ../Engine/../Entities/../Interfaces/RemoveLockInterface.hpp \
+ ../Engine/../Entities/../Interfaces/../guichan.hpp \
+ ../Engine/../Entities/../Interfaces/../Listeners/RemoveLockListener.hpp \
+ ../Engine/../Entities/../Interfaces/../Listeners/../guichan.hpp \
  ../Engine/../Entities/../Engine/Renderer.hpp \
  ../Engine/../Entities/../Engine/../Math/Quadrilateral.hpp \
  ../Engine/../Entities/../Engine/../Guichan/sdl.hpp \
@@ -336,13 +339,15 @@ Engine/Viewport.d: ../Engine/Viewport.cpp ../Engine/Viewport.hpp \
 
 ../Engine/../Entities/../Listeners/AnimationCycleListener.hpp:
 
+../Engine/../Entities/../Interfaces/ChangeScoreInterface.hpp:
+
+../Engine/../Entities/../Interfaces/../Listeners/ChangeScoreListener.hpp:
+
 ../Engine/../Entities/../Listeners/DeathListener.hpp:
 
 ../Engine/../Entities/../Game/Direction.hpp:
 
 ../Engine/../Entities/../Game/../Math/Vector.hpp:
-
-../Engine/../Entities/../Entities/EntityType.hpp:
 
 ../Engine/../Entities/../Interfaces/EventInterface.hpp:
 
@@ -356,15 +361,19 @@ Engine/Viewport.d: ../Engine/Viewport.cpp ../Engine/Viewport.hpp \
 
 ../Engine/../Entities/../Game/Input.hpp:
 
-../Engine/../Entities/../Listeners/InteractionListener.hpp:
-
-../Engine/../Entities/../Listeners/MovementListener.hpp:
-
 ../Engine/../Entities/../Math/Vector.hpp:
 
 ../Engine/../Entities/../Math/Quadrilateral.hpp:
 
 ../Engine/../Entities/../Math/Rectangle.hpp:
+
+../Engine/../Entities/../Interfaces/RemoveLockInterface.hpp:
+
+../Engine/../Entities/../Interfaces/../guichan.hpp:
+
+../Engine/../Entities/../Interfaces/../Listeners/RemoveLockListener.hpp:
+
+../Engine/../Entities/../Interfaces/../Listeners/../guichan.hpp:
 
 ../Engine/../Entities/../Engine/Renderer.hpp:
 

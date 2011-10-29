@@ -6,7 +6,7 @@
  */
 #include "SetWanderAction.hpp"
 
-#include "../Entities/Creatures/Creature.hpp"
+#include "../Entities/Creature.hpp"
 
 #include <stdexcept>
 

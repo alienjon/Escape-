@@ -4,11 +4,8 @@
  *  Created on: Aug 5, 2009
  *      Author: alienjon
  */
-
 #ifndef ANIMATIONCYCLELISTENER_HPP_
 #define ANIMATIONCYCLELISTENER_HPP_
-
-class Entity;
 
 /**
  * @brief An interface to listen for when a sprite has finished cycling an animation.

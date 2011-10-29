@@ -4,19 +4,25 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
-../Entities/Alignment.cpp \
+../Entities/Creature.cpp \
 ../Entities/Entity.cpp \
-../Entities/EntityType.cpp 
+../Entities/KeyEntity.cpp \
+../Entities/Player.cpp \
+../Entities/Portal.cpp 
 
 OBJS += \
-./Entities/Alignment.o \
+./Entities/Creature.o \
 ./Entities/Entity.o \
-./Entities/EntityType.o 
+./Entities/KeyEntity.o \
+./Entities/Player.o \
+./Entities/Portal.o 
 
 CPP_DEPS += \
-./Entities/Alignment.d \
+./Entities/Creature.d \
 ./Entities/Entity.d \
-./Entities/EntityType.d 
+./Entities/KeyEntity.d \
+./Entities/Player.d \
+./Entities/Portal.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

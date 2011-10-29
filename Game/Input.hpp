@@ -4,7 +4,6 @@
  *  Created on: Mar 23, 2010
  *      Author: alienjon
  */
-
 #ifndef INPUT_HPP_
 #define INPUT_HPP_
 

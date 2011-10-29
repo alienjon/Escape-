@@ -4,4 +4,5 @@ Logging to error.log
 Log: Setting video driver to x11
 Log: Video initialization successful.
 Log: Audio initialization successful.
-Log: Portal(11, 13)
+Log: Portal(7, 5)
+Log: Debugging disabled

@@ -87,59 +87,46 @@ Game/GUI.d: ../Game/GUI.cpp ../Game/GUI.hpp ../Game/../guichan.hpp \
  ../Game/../Engine/../Math/Rectangle.hpp ../Game/../Engine/Timer.hpp \
  ../Game/../Engine/Logger.hpp ../Game/../Engine/../guichan.hpp \
  ../Game/../Managers/FontManager.hpp ../Game/../Managers/../guichan.hpp \
- ../Game/../Entities/Creatures/Player.hpp \
- ../Game/../Entities/Creatures/Creature.hpp \
- ../Game/../Entities/Creatures/../../Managers/AnimationManager.hpp \
- ../Game/../Entities/Creatures/../../Managers/../Engine/Sprite.hpp \
- ../Game/../Entities/Creatures/../../Managers/../Engine/../guichan.hpp \
- ../Game/../Entities/Creatures/../../Managers/../Engine/../Listeners/AnimationCycleListener.hpp \
- ../Game/../Entities/Creatures/../../Managers/../Engine/../Math/Rectangle.hpp \
- ../Game/../Entities/Creatures/../../Managers/../Engine/../Engine/Renderer.hpp \
- ../Game/../Entities/Creatures/../../Managers/../Engine/Surface.hpp \
- ../Game/../Entities/Creatures/../../Managers/../Engine/Timer.hpp \
- ../Game/../Entities/Creatures/../../Managers/../Engine/../Math/Vector.hpp \
- ../Game/../Entities/Creatures/../../Entities/Creatures/CreatureAnimationState.hpp \
- ../Game/../Entities/Creatures/../../Listeners/CreatureMovedToPointListener.hpp \
- ../Game/../Entities/Creatures/../../Listeners/DeathListener.hpp \
- ../Game/../Entities/Creatures/../../Entities/Entity.hpp \
- ../Game/../Entities/Creatures/../../Entities/../Interfaces/ActionInterface.hpp \
- ../Game/../Entities/Creatures/../../Entities/../Interfaces/../Actions/Action.hpp \
- ../Game/../Entities/Creatures/../../Entities/../Listeners/AnimationCycleListener.hpp \
- ../Game/../Entities/Creatures/../../Entities/../Listeners/DeathListener.hpp \
- ../Game/../Entities/Creatures/../../Entities/../Game/Direction.hpp \
- ../Game/../Entities/Creatures/../../Entities/../Entities/EntityType.hpp \
- ../Game/../Entities/Creatures/../../Entities/../Interfaces/EventInterface.hpp \
- ../Game/../Entities/Creatures/../../Entities/../Interfaces/../Listeners/CreatureMovedToPointListener.hpp \
- ../Game/../Entities/Creatures/../../Entities/../Interfaces/../Listeners/EventListener.hpp \
- ../Game/../Entities/Creatures/../../Entities/../Interfaces/../Listeners/../Listeners/CreatureMovedToPointListener.hpp \
- ../Game/../Entities/Creatures/../../Entities/../Interfaces/../Listeners/../Game/Event.hpp \
- ../Game/../Entities/Creatures/../../Entities/../Game/Input.hpp \
- ../Game/../Entities/Creatures/../../Entities/../Game/../Math/Vector.hpp \
- ../Game/../Entities/Creatures/../../Entities/../Listeners/InteractionListener.hpp \
- ../Game/../Entities/Creatures/../../Entities/../Listeners/MovementListener.hpp \
- ../Game/../Entities/Creatures/../../Entities/../Math/Vector.hpp \
- ../Game/../Entities/Creatures/../../Entities/../Math/Quadrilateral.hpp \
- ../Game/../Entities/Creatures/../../Entities/../Math/Rectangle.hpp \
- ../Game/../Entities/Creatures/../../Entities/../Engine/Renderer.hpp \
- ../Game/../Entities/Creatures/../../Entities/../Engine/Sprite.hpp \
- ../Game/../Entities/Creatures/../../Entities/../Engine/Timer.hpp \
- ../Game/../Entities/Creatures/../../Entities/Templates/EntityTemplate.hpp \
- ../Game/../Entities/Creatures/../../Entities/Templates/../../Math/Rectangle.hpp \
- ../Game/../Entities/Creatures/../../Math/Vector.hpp \
- ../Game/../Entities/Creatures/../../Math/Quadrilateral.hpp \
- ../Game/../Entities/Creatures/../../Engine/Timer.hpp \
- ../Game/../Entities/Creatures/../../Game/Game.hpp \
- ../Game/../Entities/Creatures/../../Game/../Listeners/CreatureMovedToPointListener.hpp \
- ../Game/../Entities/Creatures/../../Game/../Engine/Cursor.hpp \
- ../Game/../Entities/Creatures/../../Game/../Engine/../Engine/Renderer.hpp \
- ../Game/../Entities/Creatures/../../Game/../Engine/../Engine/Sprite.hpp \
- ../Game/../Entities/Creatures/../../Game/../Engine/../Math/Vector.hpp \
- ../Game/../Entities/Creatures/../../Game/../Listeners/EventListener.hpp \
- ../Game/../Entities/Creatures/../../Game/../guichan.hpp \
- ../Game/../Entities/Creatures/../../Game/../Game/Input.hpp \
- ../Game/../Entities/Creatures/../../Game/../Engine/Renderer.hpp \
- ../Game/../Entities/Creatures/../../Game/../Engine/Timer.hpp \
- ../Game/../Entities/Creatures/../../Game/Input.hpp \
+ ../Game/../Entities/Player.hpp \
+ ../Game/../Entities/../Entities/Creature.hpp \
+ ../Game/../Entities/../Entities/../Listeners/CreatureMovedToPointListener.hpp \
+ ../Game/../Entities/../Entities/../Entities/Entity.hpp \
+ ../Game/../Entities/../Entities/../Entities/../Interfaces/ActionInterface.hpp \
+ ../Game/../Entities/../Entities/../Entities/../Interfaces/../Actions/Action.hpp \
+ ../Game/../Entities/../Entities/../Entities/../Listeners/AnimationCycleListener.hpp \
+ ../Game/../Entities/../Entities/../Entities/../Interfaces/ChangeScoreInterface.hpp \
+ ../Game/../Entities/../Entities/../Entities/../Interfaces/../Listeners/ChangeScoreListener.hpp \
+ ../Game/../Entities/../Entities/../Entities/../Listeners/DeathListener.hpp \
+ ../Game/../Entities/../Entities/../Entities/../Game/Direction.hpp \
+ ../Game/../Entities/../Entities/../Entities/../Interfaces/EventInterface.hpp \
+ ../Game/../Entities/../Entities/../Entities/../Interfaces/../Listeners/CreatureMovedToPointListener.hpp \
+ ../Game/../Entities/../Entities/../Entities/../Interfaces/../Listeners/EventListener.hpp \
+ ../Game/../Entities/../Entities/../Entities/../Interfaces/../Listeners/../Listeners/CreatureMovedToPointListener.hpp \
+ ../Game/../Entities/../Entities/../Entities/../Interfaces/../Listeners/../Game/Event.hpp \
+ ../Game/../Entities/../Entities/../Entities/../Game/Input.hpp \
+ ../Game/../Entities/../Entities/../Entities/../Game/../Math/Vector.hpp \
+ ../Game/../Entities/../Entities/../Entities/../Math/Vector.hpp \
+ ../Game/../Entities/../Entities/../Entities/../Math/Quadrilateral.hpp \
+ ../Game/../Entities/../Entities/../Entities/../Math/Rectangle.hpp \
+ ../Game/../Entities/../Entities/../Entities/../Interfaces/RemoveLockInterface.hpp \
+ ../Game/../Entities/../Entities/../Entities/../Interfaces/../guichan.hpp \
+ ../Game/../Entities/../Entities/../Entities/../Interfaces/../Listeners/RemoveLockListener.hpp \
+ ../Game/../Entities/../Entities/../Entities/../Interfaces/../Listeners/../guichan.hpp \
+ ../Game/../Entities/../Entities/../Entities/../Engine/Renderer.hpp \
+ ../Game/../Entities/../Entities/../Entities/../Engine/Sprite.hpp \
+ ../Game/../Entities/../Entities/../Entities/../Engine/../guichan.hpp \
+ ../Game/../Entities/../Entities/../Entities/../Engine/../Listeners/AnimationCycleListener.hpp \
+ ../Game/../Entities/../Entities/../Entities/../Engine/../Math/Rectangle.hpp \
+ ../Game/../Entities/../Entities/../Entities/../Engine/../Engine/Renderer.hpp \
+ ../Game/../Entities/../Entities/../Entities/../Engine/Surface.hpp \
+ ../Game/../Entities/../Entities/../Entities/../Engine/Timer.hpp \
+ ../Game/../Entities/../Entities/../Entities/../Engine/../Math/Vector.hpp \
+ ../Game/../Entities/../Entities/../Entities/../Engine/Timer.hpp \
+ ../Game/../Entities/../Entities/../Math/Vector.hpp \
+ ../Game/../Entities/../Entities/../Engine/Timer.hpp \
+ ../Game/../Entities/../Game/Input.hpp \
+ ../Game/../Entities/../Interfaces/RemoveLockInterface.hpp \
+ ../Game/../Entities/../Engine/Timer.hpp \
  ../Game/../Managers/VideoManager.hpp \
  ../Game/../Managers/../Math/Rectangle.hpp \
  ../Game/../Managers/../Engine/Surface.hpp
@@ -390,111 +377,85 @@ Game/GUI.d: ../Game/GUI.cpp ../Game/GUI.hpp ../Game/../guichan.hpp \
 
 ../Game/../Managers/../guichan.hpp:
 
-../Game/../Entities/Creatures/Player.hpp:
+../Game/../Entities/Player.hpp:
 
-../Game/../Entities/Creatures/Creature.hpp:
+../Game/../Entities/../Entities/Creature.hpp:
 
-../Game/../Entities/Creatures/../../Managers/AnimationManager.hpp:
+../Game/../Entities/../Entities/../Listeners/CreatureMovedToPointListener.hpp:
 
-../Game/../Entities/Creatures/../../Managers/../Engine/Sprite.hpp:
+../Game/../Entities/../Entities/../Entities/Entity.hpp:
 
-../Game/../Entities/Creatures/../../Managers/../Engine/../guichan.hpp:
+../Game/../Entities/../Entities/../Entities/../Interfaces/ActionInterface.hpp:
 
-../Game/../Entities/Creatures/../../Managers/../Engine/../Listeners/AnimationCycleListener.hpp:
+../Game/../Entities/../Entities/../Entities/../Interfaces/../Actions/Action.hpp:
 
-../Game/../Entities/Creatures/../../Managers/../Engine/../Math/Rectangle.hpp:
+../Game/../Entities/../Entities/../Entities/../Listeners/AnimationCycleListener.hpp:
 
-../Game/../Entities/Creatures/../../Managers/../Engine/../Engine/Renderer.hpp:
+../Game/../Entities/../Entities/../Entities/../Interfaces/ChangeScoreInterface.hpp:
 
-../Game/../Entities/Creatures/../../Managers/../Engine/Surface.hpp:
+../Game/../Entities/../Entities/../Entities/../Interfaces/../Listeners/ChangeScoreListener.hpp:
 
-../Game/../Entities/Creatures/../../Managers/../Engine/Timer.hpp:
+../Game/../Entities/../Entities/../Entities/../Listeners/DeathListener.hpp:
 
-../Game/../Entities/Creatures/../../Managers/../Engine/../Math/Vector.hpp:
+../Game/../Entities/../Entities/../Entities/../Game/Direction.hpp:
 
-../Game/../Entities/Creatures/../../Entities/Creatures/CreatureAnimationState.hpp:
+../Game/../Entities/../Entities/../Entities/../Interfaces/EventInterface.hpp:
 
-../Game/../Entities/Creatures/../../Listeners/CreatureMovedToPointListener.hpp:
+../Game/../Entities/../Entities/../Entities/../Interfaces/../Listeners/CreatureMovedToPointListener.hpp:
 
-../Game/../Entities/Creatures/../../Listeners/DeathListener.hpp:
+../Game/../Entities/../Entities/../Entities/../Interfaces/../Listeners/EventListener.hpp:
 
-../Game/../Entities/Creatures/../../Entities/Entity.hpp:
+../Game/../Entities/../Entities/../Entities/../Interfaces/../Listeners/../Listeners/CreatureMovedToPointListener.hpp:
 
-../Game/../Entities/Creatures/../../Entities/../Interfaces/ActionInterface.hpp:
+../Game/../Entities/../Entities/../Entities/../Interfaces/../Listeners/../Game/Event.hpp:
 
-../Game/../Entities/Creatures/../../Entities/../Interfaces/../Actions/Action.hpp:
+../Game/../Entities/../Entities/../Entities/../Game/Input.hpp:
 
-../Game/../Entities/Creatures/../../Entities/../Listeners/AnimationCycleListener.hpp:
+../Game/../Entities/../Entities/../Entities/../Game/../Math/Vector.hpp:
 
-../Game/../Entities/Creatures/../../Entities/../Listeners/DeathListener.hpp:
+../Game/../Entities/../Entities/../Entities/../Math/Vector.hpp:
 
-../Game/../Entities/Creatures/../../Entities/../Game/Direction.hpp:
+../Game/../Entities/../Entities/../Entities/../Math/Quadrilateral.hpp:
 
-../Game/../Entities/Creatures/../../Entities/../Entities/EntityType.hpp:
+../Game/../Entities/../Entities/../Entities/../Math/Rectangle.hpp:
 
-../Game/../Entities/Creatures/../../Entities/../Interfaces/EventInterface.hpp:
+../Game/../Entities/../Entities/../Entities/../Interfaces/RemoveLockInterface.hpp:
 
-../Game/../Entities/Creatures/../../Entities/../Interfaces/../Listeners/CreatureMovedToPointListener.hpp:
+../Game/../Entities/../Entities/../Entities/../Interfaces/../guichan.hpp:
 
-../Game/../Entities/Creatures/../../Entities/../Interfaces/../Listeners/EventListener.hpp:
+../Game/../Entities/../Entities/../Entities/../Interfaces/../Listeners/RemoveLockListener.hpp:
 
-../Game/../Entities/Creatures/../../Entities/../Interfaces/../Listeners/../Listeners/CreatureMovedToPointListener.hpp:
+../Game/../Entities/../Entities/../Entities/../Interfaces/../Listeners/../guichan.hpp:
 
-../Game/../Entities/Creatures/../../Entities/../Interfaces/../Listeners/../Game/Event.hpp:
+../Game/../Entities/../Entities/../Entities/../Engine/Renderer.hpp:
 
-../Game/../Entities/Creatures/../../Entities/../Game/Input.hpp:
+../Game/../Entities/../Entities/../Entities/../Engine/Sprite.hpp:
 
-../Game/../Entities/Creatures/../../Entities/../Game/../Math/Vector.hpp:
+../Game/../Entities/../Entities/../Entities/../Engine/../guichan.hpp:
 
-../Game/../Entities/Creatures/../../Entities/../Listeners/InteractionListener.hpp:
+../Game/../Entities/../Entities/../Entities/../Engine/../Listeners/AnimationCycleListener.hpp:
 
-../Game/../Entities/Creatures/../../Entities/../Listeners/MovementListener.hpp:
+../Game/../Entities/../Entities/../Entities/../Engine/../Math/Rectangle.hpp:
 
-../Game/../Entities/Creatures/../../Entities/../Math/Vector.hpp:
+../Game/../Entities/../Entities/../Entities/../Engine/../Engine/Renderer.hpp:
 
-../Game/../Entities/Creatures/../../Entities/../Math/Quadrilateral.hpp:
+../Game/../Entities/../Entities/../Entities/../Engine/Surface.hpp:
 
-../Game/../Entities/Creatures/../../Entities/../Math/Rectangle.hpp:
+../Game/../Entities/../Entities/../Entities/../Engine/Timer.hpp:
 
-../Game/../Entities/Creatures/../../Entities/../Engine/Renderer.hpp:
+../Game/../Entities/../Entities/../Entities/../Engine/../Math/Vector.hpp:
 
-../Game/../Entities/Creatures/../../Entities/../Engine/Sprite.hpp:
+../Game/../Entities/../Entities/../Entities/../Engine/Timer.hpp:
 
-../Game/../Entities/Creatures/../../Entities/../Engine/Timer.hpp:
+../Game/../Entities/../Entities/../Math/Vector.hpp:
 
-../Game/../Entities/Creatures/../../Entities/Templates/EntityTemplate.hpp:
+../Game/../Entities/../Entities/../Engine/Timer.hpp:
 
-../Game/../Entities/Creatures/../../Entities/Templates/../../Math/Rectangle.hpp:
+../Game/../Entities/../Game/Input.hpp:
 
-../Game/../Entities/Creatures/../../Math/Vector.hpp:
+../Game/../Entities/../Interfaces/RemoveLockInterface.hpp:
 
-../Game/../Entities/Creatures/../../Math/Quadrilateral.hpp:
-
-../Game/../Entities/Creatures/../../Engine/Timer.hpp:
-
-../Game/../Entities/Creatures/../../Game/Game.hpp:
-
-../Game/../Entities/Creatures/../../Game/../Listeners/CreatureMovedToPointListener.hpp:
-
-../Game/../Entities/Creatures/../../Game/../Engine/Cursor.hpp:
-
-../Game/../Entities/Creatures/../../Game/../Engine/../Engine/Renderer.hpp:
-
-../Game/../Entities/Creatures/../../Game/../Engine/../Engine/Sprite.hpp:
-
-../Game/../Entities/Creatures/../../Game/../Engine/../Math/Vector.hpp:
-
-../Game/../Entities/Creatures/../../Game/../Listeners/EventListener.hpp:
-
-../Game/../Entities/Creatures/../../Game/../guichan.hpp:
-
-../Game/../Entities/Creatures/../../Game/../Game/Input.hpp:
-
-../Game/../Entities/Creatures/../../Game/../Engine/Renderer.hpp:
-
-../Game/../Entities/Creatures/../../Game/../Engine/Timer.hpp:
-
-../Game/../Entities/Creatures/../../Game/Input.hpp:
+../Game/../Entities/../Engine/Timer.hpp:
 
 ../Game/../Managers/VideoManager.hpp:
 

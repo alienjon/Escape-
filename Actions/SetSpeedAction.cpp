@@ -7,7 +7,7 @@
 
 #include "SetSpeedAction.hpp"
 
-#include "../Entities/Creatures/Creature.hpp"
+#include "../Entities/Creature.hpp"
 #include "../Engine/Logger.hpp"
 
 SetSpeedAction::SetSpeedAction(Creature& creature, double speed) : mCreature(&creature), mSpeed(speed)

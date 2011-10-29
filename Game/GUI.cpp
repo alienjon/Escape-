@@ -22,7 +22,7 @@
 #include "../Engine/Logger.hpp"
 
 #include "../Managers/FontManager.hpp"
-#include "../Entities/Creatures/Player.hpp"
+#include "../Entities/Player.hpp"
 #include "../Managers/VideoManager.hpp"
 
 GUI::GUI(Renderer* renderer) : mBase(0),

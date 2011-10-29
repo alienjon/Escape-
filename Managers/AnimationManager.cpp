@@ -8,7 +8,7 @@
 
 #include <stdexcept>
 
-#include "../Entities/Creatures/Creature.hpp"
+#include "../Entities/Creature.hpp"
 #include "../Game/Game.hpp"
 #include "../Engine/Logger.hpp"
 #include "../main.hpp"

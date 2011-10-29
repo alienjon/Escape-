@@ -18,7 +18,7 @@
 class Entity;
 
 /**
- * @brief An interface for interacting with various meta-game elements (such as the GUI).
+ * @brief An interface for interacting with various meta-game elements (such as the GUI).@todo needed?
  */
 class GameInterfaceInterface
 {

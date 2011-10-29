@@ -19,7 +19,7 @@ class DeathListener
      * @brief Called when the entity has died.
      * @param entity The entity who died.
      */
-    virtual void deathOccurred(Entity& entity) = 0;
+    virtual void deathOccurred(Entity* entity) = 0;
 };
 
 #endif /* DEATHLISTENER_HPP_ */

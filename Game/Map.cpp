@@ -27,8 +27,7 @@ using std::stack;
 using std::vector;
 
 const unsigned int MAP_CELL_SIDE = 4; // The number of tiles on a single side of a cell - It has to be >= 3 and should be an even number (Because of the doors)
-#include <iostream>
-using namespace std; //@todo remove when done.
+
 struct Cell
 {
 	Cell() :

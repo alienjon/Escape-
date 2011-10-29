@@ -13,14 +13,16 @@
 #include <string>
 
 #include "../Interfaces/ActionInterface.hpp"
+#include "../Interfaces/ChangeScoreInterface.hpp"
 #include "../Listeners/ChangeScoreListener.hpp"
 #include "../Listeners/CreatureMovedToPointListener.hpp"
-#include "../Interfaces/EnvironmentInterface.hpp"
+#include "../Listeners/DeathListener.hpp"
 #include "../Interfaces/EventInterface.hpp"
 #include "../Listeners/EventListener.hpp"
 #include "../Game/Game.hpp"
 #include "../Interfaces/GameInterfaceInterface.hpp"
 #include "../Game/Input.hpp"
+#include "../Listeners/LevelCompleteListener.hpp"
 #include "../Game/Map.hpp"
 #include "../Math/Rectangle.hpp"
 #include "../Engine/Renderer.hpp"
@@ -30,6 +32,7 @@
 
 class Entity;
 class Player;
+class Portal;
 
 /**
  * @brief A level is a single contained area in the game.
@@ -37,7 +40,7 @@ class Player;
  * The level essentially acts as a manager between all objects (creatures, items, traps)
  * and a single map.  It is literally a solitary contained area in the game.
  */
-class Level : public ActionInterface, public EnvironmentInterface, public EventInterface, public EventListener, public GameInterfaceInterface
+class Level : public ActionInterface, public ChangeScoreInterface, public ChangeScoreListener, public DeathListener, public EventInterface, public EventListener, public GameInterfaceInterface, public LevelCompleteListener
 {
     public:
     /**
@@ -49,11 +52,11 @@ class Level : public ActionInterface, public EnvironmentInterface, public EventI
     Level(unsigned int difficulty, Player& player, Viewport& viewport);
     virtual ~Level();
 
-    /**
-     * @brief Add a change score listener.
-     * @param listener The listener to add.
-     */
-    virtual void addChangeScoreListener(ChangeScoreListener* listener);
+	/**
+	 * @brief Change the score by the provided amount.
+	 * @param change The amount to change the score.
+	 */
+	virtual void changeScore(int change);
 
     /**
      * @brief Check if the provided entity collides with anything in the map.
@@ -68,6 +71,15 @@ class Level : public ActionInterface, public EnvironmentInterface, public EventI
      * @return True if a collision was found.
      */
     virtual bool checkMapCollision(const Entity& entity) const;
+
+    /**
+     * @brief Called when the entity has died.
+     * @param entity The entity who died.
+     */
+    inline void deathOccurred(Entity* entity)
+    {
+    	mDeadEntities.push_back(entity);
+    }
 
     /**
      * @brief Draw the map to the screen.
@@ -114,6 +126,11 @@ class Level : public ActionInterface, public EnvironmentInterface, public EventI
     virtual bool isDone() const;
 
     /**
+     * @brief A level complete signal is called.
+     */
+    virtual void levelComplete();
+
+    /**
      * @brief Calling logic for a level will call logic for all map tiles (if necessary), creatures and objects.
      */
     virtual void logic();
@@ -123,40 +140,40 @@ class Level : public ActionInterface, public EnvironmentInterface, public EventI
      */
     virtual void playerFoundExit();
 
-    /**
-     * @brief Remove a change score listener.
-     * @param listener The listener to remove.
-     */
-    virtual void removeChangeScoreListener(ChangeScoreListener* listener);
-
     private:
+    /**
+     * @brief Add an entity to the level.
+     * @param entity The entity to add.
+     */
+    void mAddEntity(Entity* entity);
+
+    /**
+     * @brief Remove an entity to the level.
+     * @param entity The entity to remove.
+     */
+    void mRemoveEntity(Entity* entity);
+
     /**
      * True if the level has completed.
      */
     bool mIsDone;
 
-    /**
-     * The player handle.
-     */
+    // The player handle.
     Player* mPlayer;
 
-    /**
-     * The entities in the level.
-     */
+    Portal* mPortal;
+
+    // The entities in the level.
     std::list<Entity*> mEntities;
 
-    /**
-     * A level has a map.
-     */
+    // A level has a map.
     Map mMap;
 
-    /**
-     * The viewport for this level.
-     */
+    // The viewport for this level.
     Viewport& mViewport;
 
-    // A list of change score listeners.
-    std::list<ChangeScoreListener*> mChangeScoreListeners;
+    // The listeners.
+    std::list<Entity*> mDeadEntities;
 };
 
 #endif /* LEVEL_HPP_ */

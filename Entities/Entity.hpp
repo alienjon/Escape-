@@ -12,16 +12,15 @@
 
 #include "../Interfaces/ActionInterface.hpp"
 #include "../Listeners/AnimationCycleListener.hpp"
+#include "../Interfaces/ChangeScoreInterface.hpp"
 #include "../Listeners/DeathListener.hpp"
 #include "../Game/Direction.hpp"
-#include "../Entities/EntityType.hpp"
 #include "../Interfaces/EventInterface.hpp"
 #include "../Game/Input.hpp"
-#include "../Listeners/InteractionListener.hpp"
-#include "../Listeners/MovementListener.hpp"
 #include "../Math/Vector.hpp"
 #include "../Math/Quadrilateral.hpp"
 #include "../Math/Rectangle.hpp"
+#include "../Interfaces/RemoveLockInterface.hpp"
 #include "../Engine/Renderer.hpp"
 #include "../Engine/Sprite.hpp"
 #include "../Engine/Timer.hpp"
@@ -36,43 +35,43 @@ class Level;
  * (such as displaying itself, performing logic and having
  * various listeners)
  */
-class Entity : public ActionInterface, public EventInterface
+class Entity : public ActionInterface, public ChangeScoreInterface, public EventInterface, public RemoveLockInterface
 {
-    friend class DisplayAnimationAction;
-    friend class ExplosionEntity;
+	friend class DisplayAnimationAction;
 
     public:
+    enum EntityType
+    {
+    	ENTITY_CREATURE,
+    	ENTITY_PLAYER,
+    	ENTITY_NULL
+    };
+
     virtual ~Entity();
 
     /**
      * @brief Add an animation cycle listener.
      * @param listener The listener to add.
      */
-    void addAnimationCycleListener(AnimationCycleListener* listener);
+    inline void addAnimationCycleListener(AnimationCycleListener* listener)
+    {
+        mSprite.addAnimationCycleListener(listener);
+    }
 
     /**
      * @brief Add a death listener.
      * @param listener The listener to add.
      */
-    void addDeathListener(DeathListener* listener);
+    inline void addDeathListener(DeathListener* listener)
+    {
+        mDeathListeners.push_back(listener);
+    }
 
     /**
-     * @brief Add an interaction listener.
-     * @param listener The listener to add.
+     * @brief This creature is colliding/interacting with an entity.
+     * @param entity The entity this creature collided into.
      */
-    void addInteractionListener(InteractionListener* listener);
-
-    /**
-     * @brief Add a movement listener.
-     * @param listener The listener.
-     */
-    void addMovementListener(MovementListener* listener);
-
-    /**
-     * @brief Cause a certain amount of damage to the being.
-     * @param value The amount of damage to give.
-     */
-    virtual void damage(unsigned int value);
+    virtual void collide(Entity& entity) = 0;
 
     /**
      * @brief Draw the being to the screen.
@@ -81,115 +80,99 @@ class Entity : public ActionInterface, public EventInterface
     virtual void draw(Renderer& renderer);
 
     /**
-     * @brief Each being has an alignment to which they are a member.
-     * @return This being's alignment.
-     * @see alignment
+     * @brief Get the physical area of this being.
+     * @return The dimension.
      */
-    virtual const std::string& getAlignment() const;
-
-    /**
-     * @brief Get the collision area of this being.
-     * @return The collision area.
-     */
-    const Rectangle getDimension() const;
-
-    /**
-     * @brief Get the current health value.
-     * @return The current health value.
-     */
-    unsigned int getHealth() const;
+    inline const Rectangle& getDimension() const
+    {
+    	return mDimension;
+    }
 
     /**
      * @brief Get the being's height.
      * @return The being's height.
      */
-    unsigned int getHeight() const;
-
-    /**
-     * @brief Get this entities specific ID.
-     * @return The unique ID number for this creature.
-     */
-    unsigned int getId() const;
-
-    /**
-     * @brief Get the maximum possible health value for this creature.
-     * @return The maximum health.
-     */
-    unsigned int getMaxHealth() const;
-
-    /**
-     * @brief Get the name of the entity.
-     * @return The name of the entity.
-     */
-    const std::string& getName() const;
+    inline unsigned int getHeight() const
+    {
+    	return mDimension.height;
+    }
 
     /**
      * @brief Get the current position of this being.
      * @return The current position of this being.
      */
-    virtual const Vector& getPosition() const;
+    inline const Vector& getPosition() const
+    {
+        return mDimension.vector;
+    }
 
     /**
      * @brief Get the type of being this is.
      * @return The type of being.
      */
-    virtual EntityType getType() const;
-
-    /**
-     * @brief Get's the visible area.
-     * @return The dimension of the visible area.
-     */
-    virtual const Rectangle getVisibleArea() const;
+    inline Entity::EntityType getType() const
+    {
+        return mType;
+    }
 
     /**
      * @brief Get the being's width.
      * @return The being's width.
      */
-    unsigned int getWidth() const;
+    inline unsigned int getWidth() const
+    {
+    	return mDimension.width;
+    }
 
     /**
      * @brief Get the x position.
      * @return The x position.
      */
-    const double& getX() const;
+    inline double getX() const
+    {
+    	return mDimension.vector.x;
+    }
 
     /**
      * @brief Get the y position.
      * @return The y position.
      */
-    const double& getY() const;
+    inline double getY() const
+    {
+    	return mDimension.vector.y;
+    }
 
     /**
      * @brief Handle input.
      * @param input The current input state.
      */
-    virtual void handleInput(const Input& input);
+    virtual void handleInput(const Input& input)
+    {}
 
     /**
      * @brief Interact with an entity.
      * @param entity The entity.
      */
-    virtual void interact(Entity& entity);
+    virtual void interact(Entity& entity)
+    {}
 
     /**
-     * @brief Checks the collision state of the being.
-     * @return The collision state of the being.
+     * @brief Checks the collision state of the entity.
+     * @return The collision state of the entity.
      */
-    virtual bool isCollidable() const;
+    inline bool isCollidable() const
+    {
+        return mIsCollidable;
+    }
 
     /**
-     * @brief Determines the living status of this entity.
-     * @return True if the entity is not dead.
-     * @note Please note that, as this is a zombie game, I use the term 'dead' loosly...
+     * @brief Checks the interactability of the entity.
+     * @return The interactability of the entity.
      */
-    bool isDead() const;
-
-    /**
-     * @brief Checks to see if this entity is colliding with an area.
-     * @param area The area to check.
-     * @return True if an intersection exists.
-     */
-    virtual bool isIntersecting(const Quadrilateral& area) const;
+    inline bool isInteractable() const
+    {
+    	return mIsInteractable;
+    }
 
     /**
      * @brief Perform internal logic.
@@ -198,54 +181,49 @@ class Entity : public ActionInterface, public EventInterface
     virtual void logic(Level& level);
 
     /**
-     * @brief Look at the provided point.
-     * @param point The point to look at.
-     *
-     * @note This is unimplemented in Entity.
-     */
-    virtual void lookAt(const Vector& point);
-
-    /**
      * @brief Remove an animation cycle listener.
      * @param listener The listener to remove.
      */
-    void removeAnimationCycleListener(AnimationCycleListener* listener);
+    inline void removeAnimationCycleListener(AnimationCycleListener* listener)
+    {
+        mSprite.removeAnimationCycleListener(listener);
+    }
 
     /**
      * @brief Remove a death listener.
      * @param listener The listener to add.
      */
-    void removeDeathListener(DeathListener* listener);
-
-    /**
-     * @brief Add an interaction listener.
-     * @param listener The listener to add.
-     */
-    void removeInteractionListener(InteractionListener* listener);
-
-    /**
-     * @brief Remove a movement listener.
-     * @param listener The listener to remove.
-     */
-    void removeMovementListener(MovementListener* listener);
-
-    /**
-     * @brief Set this being's alignment.
-     * @param alignment The alignment to set.
-     */
-    virtual void setAlignment(const std::string& alignment);
+    inline void removeDeathListener(DeathListener* listener)
+    {
+        mDeathListeners.remove(listener);
+    }
 
     /**
      * @brief Set the animating state of the entity.
      * @param state The state to set.
      */
-    virtual void setAnimating(bool state);
+    inline void setAnimating(bool state)
+    {
+        mSprite.setAnimating(state);
+    }
 
     /**
      * @brief Set the collision state of the entity.
      * @param state The state to set.
      */
-    virtual void setCollision(bool state);
+    inline void setCollidable(bool state)
+    {
+    	mIsCollidable = state;
+    }
+
+    /**
+     * @brief Set the interactability of the entity.
+     * @param state The interactability state.
+     */
+    inline void setInteractable(bool state)
+    {
+    	mIsInteractable = state;
+    }
 
     /**
      * @brief Set the position of this being.
@@ -258,13 +236,19 @@ class Entity : public ActionInterface, public EventInterface
      * @brief Set the X position.
      * @param x The x position.
      */
-    void setX(double x);
+    inline void setX(double x)
+    {
+    	mDimension.vector.x = x;
+    }
 
     /**
      * @brief Set the Y position.
      * @param y The y position.
      */
-    void setY(double y);
+    inline void setY(double y)
+    {
+    	mDimension.vector.y = y;
+    }
 
     protected:
     /**
@@ -275,13 +259,7 @@ class Entity : public ActionInterface, public EventInterface
      *
      * @see mCollisionArea
      */
-    Entity(const std::string& name, unsigned int maxHealth, const Rectangle& collisionArea);
-
-    /**
-     * @brief This entity collided with the collidee
-     * @param collidee The entity that has collided with this entity.
-     */
-    virtual void mCollision(Entity& collidee);
+    Entity();
 
     /**
      * @brief This performs common operations when an entity has died (health has reached 0 or otherwise killed)
@@ -289,120 +267,42 @@ class Entity : public ActionInterface, public EventInterface
     virtual void mDie();
 
     /**
-     * @brief Get the collision area.
-     * @return The collision offset.
-     */
-    const Rectangle& mGetCollisionArea() const;
-
-    /**
-     * @brief Checks if this sprite is performing any actions.
-     * @return True if this sprite has actions in its queue.
-     */
-    bool mIsPerforming() const;
-
-    /**
-     * @brief Push an interaction event.
-     * @param actor The acting being.
-     *
-     * @note This should be called by each derivative of this class.
-     */
-     void mPushInteraction(Entity* actor);
-
-     /**
-      * @brief Push a movement event to the listeners.
-      */
-     void mPushMovementEvent();
-
-    /**
      * @brief Set this being's displaying animation.
      * @param sprite The animation to set.
      */
     virtual void mSetAnimation(const Sprite& sprite);
 
-    /**
-     * This entity's specific ID.
-     */
-    unsigned int mId;
+    // The being type.
+    Entity::EntityType mType;
 
-    /**
-     * An entity is 'dead' when its health has reached zero or below.
-     */
-    int mHealth;
-    unsigned int mMaxHealth;
-
-    /**
-     * The collidability state of this being.
-     */
-    bool mCollidable;
-
-    /**
-     * This being's alignment.
-     */
-    std::string mAlignment;
-
-    /**
-     * The being type.
-     */
-    EntityType mType;
-
-    /**
-     * The displaying sprite for this being.
-     */
+    // The displaying sprite for this being.
     Sprite mSprite;
 
+    /**
+     * @brief Set the size of the entity.
+     * @param width The width.
+     * @param height The height.
+     * @todo remove once entity sprites are implemented.
+     */
+    void mSetSize(unsigned int width, unsigned int height)
+    {
+    	mDimension.width = width;
+    	mDimension.height= height;
+    }
+
     private:
-    /**
-     * The counter for each specific entity.
-     */
-    static unsigned int mIdCounter;
+    // The collidability state of this being.
+    bool mIsCollidable;
 
-    /**
-     * The name of the entity.
-     */
-    std::string mName;
+    // An entity's ability to collide with another entity is not related to whether it can still interact with an entity.
+    bool mIsInteractable;
 
-    /**
-     * The collision area of the being.
-     *
-     * The X and Y values are the offset of the collision area in comparison to the rest of the sprite.
-     */
-    Rectangle mCollisionArea;
-
-    /**
-     * The position of the entity in the game world.
-     */
-    Vector mPosition;
-
-    /**
-     * The listeners.
-     */
+    // The listeners.
     std::list<DeathListener*> mDeathListeners;
-    std::list<InteractionListener*> mInteractionListeners;
-    std::list<MovementListener*> mMovementListeners;
 
-    /**
-     * True if the entity is dead.
-     */
-    bool mIsDead;
+    // The dimension of the entity in the game world.
+    Rectangle mDimension;
 };
-
-/**
- * @brief Get the closest entity of a collection.
- * @param collection The collection to iterate through.
- * @param entity The entity to compare distance to.
- * @return The closest entity or null, if the collection is empty.
- */
-Entity* getClosestEntity(const std::set<Entity*>& collection, Entity& entity);
-
-/**
- * The pause time interval for the indication animation.
- */
-extern const uint SPRITE_INDICATOR_ANIMATION_INTERVAL;
-
-/**
- * The distance a sprite is pushed (in px) if pushed.
- */
-extern const int PUSH_DISTANCE;
 
 /**
  * @brief Accept 2 beings and return the one with the lower Z index.
