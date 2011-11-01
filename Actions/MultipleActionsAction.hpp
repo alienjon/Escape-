@@ -4,7 +4,6 @@
  *  Created on: Apr 19, 2009
  *      Author: alienjon
  */
-
 #ifndef MULTIPLEACTIONSACTION_HPP_
 #define MULTIPLEACTIONSACTION_HPP_
 
@@ -25,11 +24,10 @@ class MultipleActionsAction : public Action
     virtual ~MultipleActionsAction();
 
     /**
-     * Activate the actions all at once.
-     * @param eData The environment data.
-     * @note Even if some actions are performed immediately, the MultipleActionsAction will not be performed until ALL of the actions have been performed.
+     * @brief Activate the action.
+     * @param level The level in which the action takes place.
      */
-    virtual void activate(EnvironmentData& eData);
+    virtual void activate(Level& level);
 
     protected:
     /**

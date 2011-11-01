@@ -4,7 +4,6 @@
  *  Created on: Apr 23, 2009
  *      Author: alienjon
  */
-
 #include "SetSpeedAction.hpp"
 
 #include "../Entities/Creature.hpp"
@@ -25,7 +24,7 @@ SetSpeedAction::~SetSpeedAction()
 {
 }
 
-void SetSpeedAction::activate(EnvironmentData& eData)
+void SetSpeedAction::activate(Level& level)
 {
 	// If the action has not been activated, then activate it.
 	if(!mActivated)

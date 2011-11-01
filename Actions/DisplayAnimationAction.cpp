@@ -20,7 +20,7 @@ DisplayAnimationAction::~DisplayAnimationAction()
     mEntity.removeAnimationCycleListener(this);
 }
 
-void DisplayAnimationAction::activate(EnvironmentData& eData)
+void DisplayAnimationAction::activate(Level& level)
 {
     // If the action has not yet been activated, then set the initial information.
     if(!mActivated)

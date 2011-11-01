@@ -7,12 +7,11 @@
 #ifndef DISPLAYANIMATIONACTION_HPP_
 #define DISPLAYANIMATIONACTION_HPP_
 
-#include "Action.hpp"
+#include "../Actions/Action.hpp"
 #include "../Listeners/AnimationCycleListener.hpp"
 #include "../Engine/Sprite.hpp"
 
 class Entity;
-class EnvironmentData;
 
 /**
  * @brief An action to tell a being to display a certain animation.
@@ -33,9 +32,9 @@ class DisplayAnimationAction : public Action, public AnimationCycleListener
 
     /**
      * @brief Activate the action.
-     * @param eData The environment data.
+     * @param level The level in which the action takes place.
      */
-    virtual void activate(EnvironmentData& eData);
+    virtual void activate(Level& level);
 
     /**
      * @brief The entity's animation was cycled.

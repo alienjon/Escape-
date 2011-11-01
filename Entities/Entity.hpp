@@ -11,11 +11,11 @@
 #include <string>
 
 #include "../Interfaces/ActionInterface.hpp"
+#include "../Interfaces/AddLockInterface.hpp"
 #include "../Listeners/AnimationCycleListener.hpp"
 #include "../Interfaces/ChangeScoreInterface.hpp"
 #include "../Listeners/DeathListener.hpp"
 #include "../Game/Direction.hpp"
-#include "../Interfaces/EventInterface.hpp"
 #include "../Game/Input.hpp"
 #include "../Math/Vector.hpp"
 #include "../Math/Quadrilateral.hpp"
@@ -35,7 +35,7 @@ class Level;
  * (such as displaying itself, performing logic and having
  * various listeners)
  */
-class Entity : public ActionInterface, public ChangeScoreInterface, public EventInterface, public RemoveLockInterface
+class Entity : public ActionInterface, public AddLockInterface, public ChangeScoreInterface, public RemoveLockInterface
 {
 	friend class DisplayAnimationAction;
 

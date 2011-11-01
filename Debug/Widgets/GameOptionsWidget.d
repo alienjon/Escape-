@@ -67,10 +67,33 @@ Widgets/GameOptionsWidget.d: ../Widgets/GameOptionsWidget.cpp \
  ../Widgets/../Guichan/widgets/textfield.hpp \
  ../Widgets/../Guichan/widgets/window.hpp \
  ../Widgets/../Guichan/widgets/container.hpp \
- ../Widgets/../Guichan/platform.hpp ../Widgets/../Engine/Colors.hpp \
+ ../Widgets/../Guichan/platform.hpp ../Widgets/../Widgets/MenuButton.hpp \
+ ../Widgets/../Widgets/../guichan.hpp ../Widgets/../Engine/Colors.hpp \
  ../Widgets/../Engine/../guichan.hpp \
  ../Widgets/../Managers/FontManager.hpp \
- ../Widgets/../Managers/../guichan.hpp ../Widgets/../Engine/Logger.hpp
+ ../Widgets/../Managers/../guichan.hpp ../Widgets/../Engine/Logger.hpp \
+ ../Widgets/../Managers/VideoManager.hpp \
+ ../Widgets/../Managers/../Math/Rectangle.hpp \
+ ../Widgets/../Managers/../Math/../guichan.hpp \
+ ../Widgets/../Managers/../Math/../Math/Polygon.hpp \
+ ../Widgets/../Managers/../Math/../Math/../Math/Vector.hpp \
+ ../Widgets/../Managers/../Math/../Math/Vector.hpp \
+ ../Widgets/../Managers/../Engine/Surface.hpp \
+ ../Widgets/../Managers/../Engine/../Guichan/sdl.hpp \
+ ../Widgets/../Managers/../Engine/../Guichan/sdl/sdlgraphics.hpp \
+ ../Widgets/../Managers/../Engine/../Guichan/sdl/../color.hpp \
+ ../Widgets/../Managers/../Engine/../Guichan/sdl/../graphics.hpp \
+ ../Widgets/../Managers/../Engine/../Guichan/sdl/../platform.hpp \
+ ../Widgets/../Managers/../Engine/../Guichan/sdl/sdlimage.hpp \
+ ../Widgets/../Managers/../Engine/../Guichan/sdl/../image.hpp \
+ ../Widgets/../Managers/../Engine/../Guichan/sdl/sdlimageloader.hpp \
+ ../Widgets/../Managers/../Engine/../Guichan/sdl/../imageloader.hpp \
+ ../Widgets/../Managers/../Engine/../Guichan/sdl/sdlinput.hpp \
+ ../Widgets/../Managers/../Engine/../Guichan/sdl/../input.hpp \
+ ../Widgets/../Managers/../Engine/../Guichan/sdl/../keyinput.hpp \
+ ../Widgets/../Managers/../Engine/../Guichan/sdl/../mouseinput.hpp \
+ ../Widgets/../Managers/../Engine/../Guichan/platform.hpp \
+ ../Widgets/../Managers/../Engine/../Math/Rectangle.hpp
 
 ../Widgets/GameOptionsWidget.hpp:
 
@@ -244,6 +267,10 @@ Widgets/GameOptionsWidget.d: ../Widgets/GameOptionsWidget.cpp \
 
 ../Widgets/../Guichan/platform.hpp:
 
+../Widgets/../Widgets/MenuButton.hpp:
+
+../Widgets/../Widgets/../guichan.hpp:
+
 ../Widgets/../Engine/Colors.hpp:
 
 ../Widgets/../Engine/../guichan.hpp:
@@ -253,3 +280,47 @@ Widgets/GameOptionsWidget.d: ../Widgets/GameOptionsWidget.cpp \
 ../Widgets/../Managers/../guichan.hpp:
 
 ../Widgets/../Engine/Logger.hpp:
+
+../Widgets/../Managers/VideoManager.hpp:
+
+../Widgets/../Managers/../Math/Rectangle.hpp:
+
+../Widgets/../Managers/../Math/../guichan.hpp:
+
+../Widgets/../Managers/../Math/../Math/Polygon.hpp:
+
+../Widgets/../Managers/../Math/../Math/../Math/Vector.hpp:
+
+../Widgets/../Managers/../Math/../Math/Vector.hpp:
+
+../Widgets/../Managers/../Engine/Surface.hpp:
+
+../Widgets/../Managers/../Engine/../Guichan/sdl.hpp:
+
+../Widgets/../Managers/../Engine/../Guichan/sdl/sdlgraphics.hpp:
+
+../Widgets/../Managers/../Engine/../Guichan/sdl/../color.hpp:
+
+../Widgets/../Managers/../Engine/../Guichan/sdl/../graphics.hpp:
+
+../Widgets/../Managers/../Engine/../Guichan/sdl/../platform.hpp:
+
+../Widgets/../Managers/../Engine/../Guichan/sdl/sdlimage.hpp:
+
+../Widgets/../Managers/../Engine/../Guichan/sdl/../image.hpp:
+
+../Widgets/../Managers/../Engine/../Guichan/sdl/sdlimageloader.hpp:
+
+../Widgets/../Managers/../Engine/../Guichan/sdl/../imageloader.hpp:
+
+../Widgets/../Managers/../Engine/../Guichan/sdl/sdlinput.hpp:
+
+../Widgets/../Managers/../Engine/../Guichan/sdl/../input.hpp:
+
+../Widgets/../Managers/../Engine/../Guichan/sdl/../keyinput.hpp:
+
+../Widgets/../Managers/../Engine/../Guichan/sdl/../mouseinput.hpp:
+
+../Widgets/../Managers/../Engine/../Guichan/platform.hpp:
+
+../Widgets/../Managers/../Engine/../Math/Rectangle.hpp:

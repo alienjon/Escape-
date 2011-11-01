@@ -10,10 +10,7 @@
 #include <list>
 #include <string>
 
-#include "../Listeners/ChangeScoreListener.hpp"
-#include "../Game/Event.hpp"
 #include "../Widgets/GameOptionsWidget.hpp"
-#include "../Widgets/GameOverWidget.hpp"
 #include "../Game/GUI.hpp"
 #include "../guichan.hpp"
 #include "../Game/Input.hpp"
@@ -29,8 +26,6 @@
 #include "../Math/Vector.hpp"
 #include "../Engine/Viewport.hpp"
 
-class Entity;
-
 /**
  * @brief The game screen is a means to display the game itself.
  */
@@ -41,7 +36,7 @@ class GameScreen : public gcn::ActionListener, public ChangeScoreListener, publi
      * @brief Construct a game screen and start a new game.
      * @param difficulty The difficulty of the game.
      */
-    GameScreen(Event difficulty);
+    GameScreen(unsigned int difficulty);
     virtual ~GameScreen();
 
     /**
@@ -73,14 +68,6 @@ class GameScreen : public gcn::ActionListener, public ChangeScoreListener, publi
     virtual void draw(Renderer& renderer);
 
     /**
-     * @brief An event occurred.
-     * @param event The event that occurred.
-     * @param content Additional content.
-     * @param creatureMovedToPointListener A potential creature moved to point listener.
-     */
-    virtual void eventOccurred(Event event, const std::string& content = "", CreatureMovedToPointListener* creaturedMovedToPointListener = 0);
-
-    /**
      * @brief Handle input.
      * @param input The input.
      */
@@ -110,17 +97,11 @@ class GameScreen : public gcn::ActionListener, public ChangeScoreListener, publi
     // The current level.
     Level* mLevel;
 
-    // The game over widget.
-    GameOverWidget mGameOverWidget;
-
     // The game options menu.
     GameOptionsWidget mOptionsMenu;
 
     // A widget to show the user any collected messages (tutorial info, speech, etc...)
     MessageDisplayWidget mMessageOSD;
-
-    // The game screen's input timer.
-    Timer mInputTimer;
 
     // The menu bar.
     GameScreenMenuBar mMenuBar;

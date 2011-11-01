@@ -4,7 +4,6 @@
  *  Created on: Aug 14, 2009
  *      Author: alienjon
  */
-
 #include "DisplaySpriteAction.hpp"
 
 #include <stdexcept>
@@ -33,7 +32,7 @@ DisplaySpriteAction::~DisplaySpriteAction()
     mContainer->remove(&mSpriteWidget);
 }
 
-void DisplaySpriteAction::activate(EnvironmentData& eData)
+void DisplaySpriteAction::activate(Level& level)
 {
     // If not activated, then this is the first run.
     if(!mActivated)

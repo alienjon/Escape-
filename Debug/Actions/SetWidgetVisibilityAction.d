@@ -1,6 +1,7 @@
 Actions/SetWidgetVisibilityAction.d: \
  ../Actions/SetWidgetVisibilityAction.cpp \
- ../Actions/SetWidgetVisibilityAction.hpp ../Actions/../guichan.hpp \
+ ../Actions/SetWidgetVisibilityAction.hpp \
+ ../Actions/../Actions/Action.hpp ../Actions/../guichan.hpp \
  ../Actions/../Guichan/actionevent.hpp ../Actions/../Guichan/event.hpp \
  ../Actions/../Guichan/platform.hpp \
  ../Actions/../Guichan/actionlistener.hpp \
@@ -68,9 +69,11 @@ Actions/SetWidgetVisibilityAction.d: \
  ../Actions/../Guichan/widgets/textfield.hpp \
  ../Actions/../Guichan/widgets/window.hpp \
  ../Actions/../Guichan/widgets/container.hpp \
- ../Actions/../Guichan/platform.hpp ../Actions/Action.hpp
+ ../Actions/../Guichan/platform.hpp
 
 ../Actions/SetWidgetVisibilityAction.hpp:
+
+../Actions/../Actions/Action.hpp:
 
 ../Actions/../guichan.hpp:
 
@@ -241,5 +244,3 @@ Actions/SetWidgetVisibilityAction.d: \
 ../Actions/../Guichan/widgets/container.hpp:
 
 ../Actions/../Guichan/platform.hpp:
-
-../Actions/Action.hpp:

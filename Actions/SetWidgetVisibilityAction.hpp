@@ -4,13 +4,11 @@
  *  Created on: Aug 6, 2009
  *      Author: alienjon
  */
-
 #ifndef SETWIDGETVISIBILITYACTION_HPP_
 #define SETWIDGETVISIBILITYACTION_HPP_
 
+#include "../Actions/Action.hpp"
 #include "../guichan.hpp"
-
-#include "Action.hpp"
 
 /**
  * @brief An action that sets the visibility status of a widget.
@@ -27,9 +25,9 @@ class SetWidgetVisibilityAction : public Action
 
     /**
      * @brief Activate the action.
-     * @param eData The environment data.
+     * @param level The level in which the action takes place.
      */
-    virtual void activate(EnvironmentData& eData);
+    virtual void activate(Level& level);
 
     private:
     /**

@@ -4,7 +4,6 @@
  *  Created on: Apr 23, 2009
  *      Author: alienjon
  */
-
 #ifndef WanderAction_HPP_
 #define WanderAction_HPP_
 
@@ -25,11 +24,11 @@ class WanderAction: public Action
 	WanderAction(Creature* creature);
 	virtual ~WanderAction();
 
-	/**
-	 * @brief Activate the action and have the creature wander.
-	 * @param eData The environment data.
-	 */
-	virtual void activate(EnvironmentData& eData);
+    /**
+     * @brief Activate the action.
+     * @param level The level in which the action takes place.
+     */
+    virtual void activate(Level& level);
 
 	protected:
 	/**

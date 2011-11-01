@@ -9,7 +9,6 @@
 #include <cmath>
 #include <stdexcept>
 
-#include "../Managers/AnimationManager.hpp"
 #include "../Entities/Entity.hpp"
 #include "../Game/Keywords.hpp"
 #include "../Engine/Logger.hpp"
@@ -20,44 +19,16 @@ using std::runtime_error;
 using std::string;
 
 const unsigned int SCORE_COUNTER_INTERVAL = 25;
+const unsigned int __TIME_MULTIPLIER__ = 2300;
 
-unsigned int convertTimeToBonus(unsigned int time)
-{
-	return time / 1000;//@todo how should time bonus be calculated?
-}
-
-GameScreen::GameScreen(Event difficulty) :
-	mDifficulty(0),
+GameScreen::GameScreen(unsigned int difficulty) :
+	mDifficulty(difficulty),
 	mIsPaused(false),
 	mLevel(0),
 	mScore(0),
 	mCounter(0)
 {
-	// Determine the game's difficulty value based on the difficulty level.
-	switch(difficulty)//@todo review difficulty in testing
-	{
-		case EVENT_STARTNORMAL:
-		{
-			mDifficulty = 5;
-			break;
-		}
-		case EVENT_STARTHARD:
-		{
-			mDifficulty = 10;
-			break;
-		}
-		default:
-		{
-			mDifficulty = 1;
-		}
-	}
-
-	// Listen for when the game over widget's buttons are pressed.
-	mGameOverWidget.addEventListener(this);
-	mGameOverWidget.addActionListener(this); // @todo use Guichan's action events instead of my own events.  This will require removing the EventListeners, etc...
-
 	// Configure the widgets.
-	mOptionsMenu.setSize(mBase.getWidth() / 2, mBase.getHeight() / 2);
 	mMessageOSD.setWidth(mBase.getWidth() / 2);
 	mMessageOSD.setPosition((mBase.getWidth() / 2) - (mMessageOSD.getWidth() / 2), mBase.getHeight() / 5);
 
@@ -65,25 +36,22 @@ GameScreen::GameScreen(Event difficulty) :
 	mMessageOSD.addActionListener(this);
 	mBase.addKeyListener(&mMessageOSD);
 	mLevelCompleteWidget.addActionListener(this);
+	mOptionsMenu.addActionListener(this);
 
 	// Start the timers.
-	mInputTimer.start();
 	mScoreTimer.start();
 }
 
 GameScreen::~GameScreen()
 {
-	mGameOverWidget.removeEventListener(this);
-	mGameOverWidget.removeActionListener(this);
 	mMessageOSD.removeActionListener(this);
 	mBase.removeKeyListener(&mMessageOSD);
 
 	// In the event that the game crashes before a level is loaded, this will segfault without a check.
 	if(mLevel)
 	{
-		mLevel->removeEventListener(this);
+		mLevel->removeActionListener(this);
 		mLevel->removeChangeScoreListener(this);
-		mLevel->setInterfaceListener(0);
 
 		// Delete and unset the level.
 		delete mLevel;
@@ -99,28 +67,72 @@ void GameScreen::action(const gcn::ActionEvent& event)
 		mMessageOSD.setVisible(false);
 	}
 	// If the level complete widget sends a signal, then load the next level.
-	if(event.getSource() == &mLevelCompleteWidget)
+	else if(event.getSource() == &mLevelCompleteWidget)
 	{
 		// Hide the level complete widget.
 		mLevelCompleteWidget.setVisible(false);
 
-		// Unload the current level.
-		mLevel->removeEventListener(this);
-		mLevel->removeChangeScoreListener(this);
-		delete mLevel;
+		// If the old level completed, then load the next level.
+		if(mLevel->isDone())
+		{
+			// Unload the current level.
+			mLevel->removeActionListener(this);
+			mLevel->removeChangeScoreListener(this);
+			delete mLevel;
 
-		// Increase the difficulty and go to the next level.
-		mLevel = new Level(++mDifficulty, mPlayer, mViewport);
-		mLevel->addEventListener(this);
-		mLevel->addChangeScoreListener(this);
+			// Increase the difficulty and go to the next level.
+			mLevel = new Level(++mDifficulty, mPlayer, mViewport);
+			mLevel->addActionListener(this);
+			mLevel->addChangeScoreListener(this);
 
-		// Make sure the game is not paused.
-		mMenuBar.stop();
-		mMenuBar.start();
-		mIsPaused = false;
-
-// @todo need to find a way to quit the game normally		mDone = true;
+			// Make sure the game is not paused.
+			mMenuBar.stop();
+			mMenuBar.start(mLevel->getMap().getComplexity() * __TIME_MULTIPLIER__);
+			mIsPaused = false;
+		}
+		// If the old level didn't complete, then the level was lost.
+		else
+		{
+			setActionEventId(ACTION_TO_MAINMENU);
+			distributeActionEvent();
+			mDone = true;
+		}
 	}
+	else if(event.getSource() == &mOptionsMenu)
+	{
+		if(event.getId() == GAMEOPTIONS_RESUME)
+		{
+			mIsPaused = false;
+			mMenuBar.unpause();
+			mOptionsMenu.setVisible(false);
+			mOptionsMenu.requestMoveToBottom();
+		}
+		else if(event.getId() == GAMEOPTIONS_MAINMENU)
+		{
+			setActionEventId(ACTION_TO_MAINMENU);
+			distributeActionEvent();
+			mDone = true;
+		}
+		else if(event.getId() == GAMEOPTIONS_EXIT)
+		{
+			setActionEventId(ACTION_QUIT);
+			distributeActionEvent();
+			mDone = true;
+		}
+	}
+	// Now check for the id's.
+	else if(event.getId() == ACTION_QUIT)
+		mDone = true;
+	else if(event.getId() == ACTION_TO_MAINMENU)
+	{
+		setActionEventId(ACTION_TO_MAINMENU);
+		distributeActionEvent();
+		mDone = true;
+	}
+	else if(event.getId() == ACTION_PAUSE)
+		mIsPaused = true;
+	else if(event.getId() == ACTION_UNPAUSE)
+		mIsPaused = false;
 }
 
 void GameScreen::changeScore(int change)
@@ -130,16 +142,7 @@ void GameScreen::changeScore(int change)
 
 void GameScreen::displayMessage(const string& caption, const string& message, const string& sprite, const string& keyword)
 {
-	Sprite anim;
-	try
-	{
-		anim = AnimationManager::get(sprite);
-	}
-	catch(runtime_error& e)
-	{
-		anim = AnimationManager::get(ANIMATION_NULL_CONVERSATION);
-	}
-
+	Sprite anim;//@todo review how this is handled/is it needed?
 	// Show the message.
 	mMessageOSD.setVisible(true);
 	mMessageOSD.set(caption, message, anim);
@@ -160,99 +163,26 @@ void GameScreen::draw(Renderer& renderer)
     // Pop the drawing area.
     renderer.popClipArea();
     renderer.popClipArea();
-
-    // Apply the layers.
-//    renderer.applyLayers();@todo review lighting
-}
-
-void GameScreen::eventOccurred(Event event, const std::string& content, CreatureMovedToPointListener* creatureMovedToVectorListener)
-{
-    // If the event is to quit or to load the main menu, then we are done.
-    switch(event)
-    {
-    	case EVENT_PAUSE:
-    	{
-    		mIsPaused = true;
-    		break;
-    	}
-    	case EVENT_UNPAUSE:
-    	{
-    		mIsPaused = false;
-    		break;
-    	}
-        case EVENT_INPUT_ACTIVATE:
-        {
-        	// Get the player and halt input.
-        	mPlayer.setInputState(true);
-        	break;
-        }
-        case EVENT_INPUT_DEACTIVATE:
-        {
-        	mPlayer.setInputState(false);
-        	break;
-        }
-        case EVENT_MAINMENU:
-        {
-        	// The content should be a delimited list of images to show as credits screens before returning to the main menu.
-        	// Iterate through them and load them.
-//        	string::size_type pos = 0;
-//        	while(pos != content.size())
-//        	{
-//        		// Extract the current image and load it.
-//        		string filename = extractDataLine(content, pos, CHAR_DELIMITER);
-//        		pushEvent(EVENT_ADDCREDITSCREEN, filename); // @todo instead of a credit screen, show the player the top 10 scores for his/her difficulty.
-//        	}
-
-        	// End by adding the main menu.
-        	pushEvent(EVENT_MAINMENU);
-
-        	// Don't break, as both EVENT_MAINMENU and EVENT_QUIT need to set mDone.
-        }
-        case EVENT_QUIT:
-        {
-            mDone = true;
-            break;
-        }
-        default:
-        {
-        }
-    }
-
-    // Push the event to any additional listeners.
-    pushEvent(event, content);
 }
 
 void GameScreen::handleInput(const Input& input)
 {
-	/*  As in the Game object, each conditional will return to avoid repetition of commands. */
-
-	if(mInputTimer.getTime() >= 50)
+	// Open the menu widget if escape is pressed.
+	if(input.isKeyPressed(SDLK_ESCAPE))
 	{
-		// Restart the timer.
-		mInputTimer.start();
+		// Pause the game.
+		mIsPaused = true;
+		mMenuBar.pause();
 
-		if(input.isKeyPressed(SDLK_ESCAPE))
-		{
-			// If the options menu is open (is visible) then hide it and unpause the game.
-			if(mOptionsMenu.isVisible())
-			{
-				mOptionsMenu.setVisible(false);
-			}
-			// If the options menu is hidden, the display message is not being shown,
-			// and the game is not paused, then show the options and pause the game.
-			else if(!mIsPaused && !mMessageOSD.isVisible())
-			{
-				mOptionsMenu.setVisible(true);
-			}
-			return;
-		}
+		// Show the options menu.
+		mOptionsMenu.setVisible(true);
+		mOptionsMenu.requestFocus();
+		mOptionsMenu.requestMoveToTop();
 	}
 
 	// If we're not paused and the message display isn't visible, continue with input.
     if(!mIsPaused && !mMessageOSD.isVisible() && !mOptionsMenu.isVisible())
-    {
         mLevel->handleInput(input);
-    }
 }
 
 void GameScreen::load(GUI* gui)
@@ -262,12 +192,7 @@ void GameScreen::load(GUI* gui)
 
     // Setup the in-game options menu.
     mOptionsMenu.setVisible(false);
-    mBase.add(&mOptionsMenu, (mBase.getWidth() / 2) - (mOptionsMenu.getWidth() / 2), (mBase.getHeight() / 2) - (mOptionsMenu.getHeight() / 2));
-
-    // Setup the game over widget.
-    mGameOverWidget.setVisible(false);
-    mGameOverWidget.setSize((mBase.getWidth() * 3) / 4, (mBase.getWidth() * 3) / 4);
-    mBase.add(&mGameOverWidget, (mBase.getWidth() / 2) - (mGameOverWidget.getWidth() / 2), (mBase.getHeight() / 2) - (mGameOverWidget.getHeight() / 2));
+    mBase.add(&mOptionsMenu, 0, 0);
 
     // Hide the message OSD.
     mMessageOSD.setVisible(false);
@@ -288,22 +213,20 @@ void GameScreen::load(GUI* gui)
 
     // Load the level at the current difficulty.
     mLevel = new Level(mDifficulty, mPlayer, mViewport);
-
-    // Set level listeners.
-    mLevel->addEventListener(this);
+    mLevel->addActionListener(this);
     mLevel->addChangeScoreListener(this);
 
     // Configure the mini map.
     mMenuBar.configureMiniMap(mLevel->getMap().copyMapImage(), &mPlayer);
 
     // Start the timer.
-    mMenuBar.stop();
-    mMenuBar.start();
+    mMenuBar.stop();// Stopping first as a precaution.
+    mMenuBar.start(mLevel->getMap().getComplexity() * __TIME_MULTIPLIER__);
 }
 
 void GameScreen::logic()
 {
-	// Update the counter if time has run up.
+	// Update the score.
 	if(mCounter != 0 && mScoreTimer.getTime() >= SCORE_COUNTER_INTERVAL)
 	{
 		// Only increment the score by 1, but determine the direction.
@@ -322,13 +245,24 @@ void GameScreen::logic()
 		mScoreTimer.start();
 	}
 
-	// Before any logic has been done, check if the next level should be loaded.
-	if(mLevel->isDone() && !mLevelCompleteWidget.isVisible())
+	// If time is up, then the player has lost...
+	if(mMenuBar.getTime() == 0 && !mLevel->isDone() && !mLevelCompleteWidget.isVisible())
 	{
-		// Stop the timer.
-		mMenuBar.pause();
+		// Pause the game.
+		mMenuBar.stop();
+		mIsPaused = true;
 
-		// Pause the game itself.
+		// Display the level complete widget, but don't add any bonuses.
+		double bonusMod = 0;
+		unsigned int bonus = 0;
+		mLevelCompleteWidget.display("LEVEL FAILED", mMenuBar.getTime()/100, mMenuBar.getTime(), mLevel->getMap().getComplexity(), mLevel->getMap().getComplexity(), mDifficulty, (double)bonusMod, mScore, bonus, mScore + bonus);
+		mLevelCompleteWidget.setPosition(mBase.getWidth() / 2 - mLevelCompleteWidget.getWidth() / 2, mBase.getHeight() / 2 - mLevelCompleteWidget.getHeight() / 2);
+	}
+	// ... or if the next level should be loaded.
+	else if(mLevel->isDone() && !mLevelCompleteWidget.isVisible())
+	{
+		// Pause the game.
+		mMenuBar.pause();
 		mIsPaused = true;
 
 		// Add the rest of the counter to the score and set the final score.
@@ -337,11 +271,11 @@ void GameScreen::logic()
 		mMenuBar.setScore(mScore);
 
 		// Display the level complete widget.
-		mLevelCompleteWidget.setPosition(mBase.getWidth() / 2 - mLevelCompleteWidget.getWidth() / 2, mBase.getHeight() / 2 - mLevelCompleteWidget.getHeight() / 2);
+//		mLevelCompleteWidget.setPosition(mBase.getWidth() / 2 - mLevelCompleteWidget.getWidth() / 2, mBase.getHeight() / 2 - mLevelCompleteWidget.getHeight() / 2);
 		double bonusMod = (mDifficulty / 10.0) + 1;
-		unsigned int bonus = (convertTimeToBonus(mMenuBar.getTime()) + mLevel->getMap().getComplexity()) * bonusMod; // @todo review scoring
-		mLevelCompleteWidget.display(mMenuBar.getTime()/100, convertTimeToBonus(mMenuBar.getTime()), mLevel->getMap().getComplexity(), mLevel->getMap().getComplexity(), mDifficulty, (double)bonusMod, mScore, bonus, mScore + bonus);
-		mScore += bonus;
+		unsigned int bonus = (mMenuBar.getTime() + mLevel->getMap().getComplexity()) * bonusMod; // @todo review scoring
+		mLevelCompleteWidget.display("LEVEL COMPLETE", mMenuBar.getTime()/100, mMenuBar.getTime(), mLevel->getMap().getComplexity(), mLevel->getMap().getComplexity(), mDifficulty, (double)bonusMod, mScore, bonus, mScore + bonus);
+		mMenuBar.setScore(mScore += bonus);
 		mLevelCompleteWidget.setPosition(mBase.getWidth() / 2 - mLevelCompleteWidget.getWidth() / 2, mBase.getHeight() / 2 - mLevelCompleteWidget.getHeight() / 2);
 	}
 

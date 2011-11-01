@@ -9,7 +9,7 @@
 
 #include <string>
 
-#include "Action.hpp"
+#include "../Actions/Action.hpp"
 #include "../Managers/AudioManager.hpp"
 
 /**
@@ -27,10 +27,10 @@ class PlayMusicAction: public Action
     PlayMusicAction(const std::string& music, unsigned int loops, unsigned int fadein = 0);
 
     /**
-     * @brief Play the music.
-     * @param eData The environment data.
+     * @brief Activate the action.
+     * @param level The level in which the action takes place.
      */
-    virtual void activate(EnvironmentData& eData);
+    virtual void activate(Level& level);
 
     private:
     /**

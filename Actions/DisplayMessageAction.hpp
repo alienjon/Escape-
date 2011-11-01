@@ -4,7 +4,6 @@
  *  Created on: May 24, 2010
  *      Author: the-saint
  */
-
 #ifndef DISPLAYMESSAGEACTION_HPP_
 #define DISPLAYMESSAGEACTION_HPP_
 
@@ -30,10 +29,11 @@ class DisplayMessageAction : public Action
 	DisplayMessageAction(const std::string& caption, const std::string& message, const std::string& sprite, GameScreen* screen);
 	virtual	~DisplayMessageAction();
 
-	/**
-	 * @brief Activate the action.
-	 */
-//	virtual void activate(EnvironmentData& eData);//@todo review
+    /**
+     * @brief Activate the action.
+     * @param level The level in which the action takes place.
+     */
+    virtual void activate(Level& level);
 
 	private:
 	/**

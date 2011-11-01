@@ -4,22 +4,14 @@
  *  Created on: Jun 24, 2009
  *      Author: alienjon
  */
-
 #ifndef SCREEN_HPP_
 #define SCREEN_HPP_
 
-#include <list>
-#include <string>
-
 #include "SDL/SDL.h"
-
-#include "../guichan.hpp"
 
 #include "../Game/Game.hpp"
 #include "../Game/GUI.hpp"
-#include "../Game/Event.hpp"
-#include "../Interfaces/EventInterface.hpp"
-#include "../Listeners/EventListener.hpp"
+#include "../guichan.hpp"
 #include "../Game/Input.hpp"
 #include "../Managers/VideoManager.hpp"
 #include "../Engine/Viewport.hpp"
@@ -31,10 +23,17 @@
  *  the main menu while a *Credits screen will display credits (possibly in the form of an animation
  *  or video).
  */
-class Screen : public EventListener, public EventInterface
+class Screen : public gcn::Widget
 {
     public:
     virtual ~Screen()
+    {}
+
+    /**
+     * @brief Draw, from gcn::Widget.
+     * @param graphics The graphics object with which to draw.
+     */
+    virtual void draw(gcn::Graphics* graphics)
     {}
 
     /**

@@ -58,13 +58,21 @@ class GameScreenMenuBar: public gcn::Container
 
 	/**
 	 * @brief Start the timer.
+	 * @param startTime The time the counter will start counting down from.
+	 * @note If a number less than zero is provided (or the parameter is left empty) the timer will start counting up from zero.
+	 * @note If a value is provided as a paremeter the timer will count from that time (in seconds) to zero and stop.
 	 */
-	virtual void start();
+	virtual void start(int startTime = -1);
 
 	/**
 	 * @brief Stop the timer.
 	 */
 	virtual void stop();
+
+	/**
+	 * @brief Unpause the timer.
+	 */
+	virtual void unpause();
 
 	private:
 	// The timer widget.

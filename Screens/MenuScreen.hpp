@@ -4,15 +4,13 @@
  *  Created on: Jun 24, 2009
  *      Author: alienjon
  */
-
 #ifndef MENUSCREEN_HPP_
 #define MENUSCREEN_HPP_
 
+#include <list>
 #include <string>
 
-#include "../Listeners/CreatureMovedToPointListener.hpp"
 #include "MenuScreenWidgets/CreditsMenu.hpp"
-#include "../Game/Event.hpp"
 #include "../guichan.hpp"
 #include "MenuScreenWidgets/MainMenu.hpp"
 #include "../Game/Map.hpp"
@@ -45,7 +43,7 @@
  * This widget is the overall container for each menu, so it needs to be the size of 9 screens (note above)
  * even though it only uses 5 of them.
  */
-class MenuScreen : public Screen
+class MenuScreen : public gcn::ActionListener, public Screen
 {
     public:
     enum MainMenuScreen
@@ -64,18 +62,16 @@ class MenuScreen : public Screen
     virtual ~MenuScreen();
 
     /**
+     * @brief An action occurred.
+     * @param event The event's details.
+     */
+    virtual void action(const gcn::ActionEvent& event);
+
+    /**
      * @brief Draw the screen.
      * @param renderer The graphics object to draw with.
      */
     virtual void draw(Renderer& renderer);
-
-    /**
-     * @brief An event occurred.
-     * @param event The event that occurred.
-     * @param content Additional content.
-     * @param creatureMovedToPointListener A potential moved to point listener.
-     */
-    virtual void eventOccurred(Event event, const std::string& content = "", CreatureMovedToPointListener* creatureMovedToPointListener = 0);
 
     /**
      * @brief Perform anything necessary to prepare this screen for displaying what it needs to.

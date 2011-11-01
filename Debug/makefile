@@ -14,7 +14,6 @@ RM := rm -rf
 -include Screens/MenuScreenWidgets/subdir.mk
 -include Math/subdir.mk
 -include Managers/subdir.mk
--include Interfaces/subdir.mk
 -include Guichan/widgets/subdir.mk
 -include Guichan/subdir.mk
 -include Guichan/sdl/subdir.mk

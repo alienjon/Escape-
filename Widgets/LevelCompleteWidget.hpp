@@ -33,6 +33,7 @@ class LevelCompleteWidget : public gcn::Container, public gcn::KeyListener
 
 	/**
 	 * @brief Display the widget and start displaying the level results.
+	 * @param message The message to display.
 	 * @param timeValue The time raw score.
 	 * @param timeBonus The bonus from the time.
 	 * @param mapValue The map difficulty's raw score.
@@ -43,7 +44,8 @@ class LevelCompleteWidget : public gcn::Container, public gcn::KeyListener
 	 * @param bonus The bonus score from the base score.
 	 * @param total The total score.
 	 */
-	virtual void display(unsigned int timeValue, unsigned int timeBonus, unsigned int mapValue, unsigned int mapBonus,
+	virtual void display(const std::string& message,
+						 unsigned int timeValue, unsigned int timeBonus, unsigned int mapValue, unsigned int mapBonus,
 						 unsigned int difficultyValue, double difficultyBonus, unsigned int base, unsigned int bonus, unsigned int total);
 
 	/**

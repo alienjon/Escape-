@@ -20,7 +20,7 @@ MoveToAction::~MoveToAction()
     mCreature.removeCreatureMovedToPointListener(this);
 }
 
-void MoveToAction::activate(EnvironmentData& eData)
+void MoveToAction::activate(Level& level)
 {
     // If the action was not activated, the creature was not provided a direction to face.
     if(!mActivated)

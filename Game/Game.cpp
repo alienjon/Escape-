@@ -12,12 +12,12 @@
 #include <string>
 
 #include "GUI.hpp"
+#include "../Game/Keywords.hpp"
 #include "../Game/Level.hpp"
 #include "../Engine/Logger.hpp"
 #include "../Engine/Renderer.hpp"
 #include "../Engine/Timer.hpp"
 
-#include "../Managers/AnimationManager.hpp"
 #include "../Managers/AudioManager.hpp"
 #include "../Managers/FontManager.hpp"
 #include "../Screens/GameScreen.hpp"
@@ -47,7 +47,6 @@ Game::Game() : mIsRunning(true),
     // Create the managers.
     AudioManager::create();
     VideoManager::create();
-    AnimationManager::create();
     FontManager::create();
     TilesetManager::create();
 
@@ -65,7 +64,6 @@ Game::~Game()
 
     // Delete the objects (delete them in reverse order)
     TilesetManager::terminate();
-    AnimationManager::terminate();
     VideoManager::terminate();
     FontManager::terminate();
     AudioManager::terminate();
@@ -222,7 +220,7 @@ void Game::mLoadNextScreen()
     if(mCurrentScreen != mScreens.end())
     {
         // Remove the listeners.
-        (*mCurrentScreen)->removeEventListener(this);
+        (*mCurrentScreen)->removeActionListener(this);
 
         // Tell the screen to unload itself.
         (*mCurrentScreen)->unload();
@@ -249,7 +247,7 @@ void Game::mLoadNextScreen()
     (*mCurrentScreen)->load(mGui);
 
     // Set listeners.
-    (*mCurrentScreen)->addEventListener(this);
+    (*mCurrentScreen)->addActionListener(this);
 
     // If the old screen exists, delete it.
     if(oldScreen)
@@ -261,7 +259,7 @@ void Game::mLoadNextScreen()
 void Game::mLoadResources()
 {
     // First, determine the number of resources to be loaded.
-    const double resourceCount = AnimationManager::determineSize() + TilesetManager::determineSize();
+    const double resourceCount = TilesetManager::determineSize();
 
     // Double check to make sure resources need to be loaded.
     if(resourceCount == 0)
@@ -271,13 +269,6 @@ void Game::mLoadResources()
 
     // The total number of resources currently loaded.
     double resourcesLoaded = 0;
-
-    // Load the animations.
-    do
-    {
-        mDrawResourceFrame((resourcesLoaded++ / resourceCount) * 100, AnimationManager::getCurrentResourceName());
-    }
-    while(AnimationManager::loadResource());
 
     // Load the tilesets.
     do
@@ -297,39 +288,40 @@ void Game::mLogic()
     mCursor.logic();
 }
 
-void Game::eventOccurred(Event event, const string& content, CreatureMovedToPointListener* creatureMovedToPointListener)
+void Game::action(const gcn::ActionEvent& event)
 {
-    switch(event)
-    {
-        case EVENT_STARTEASY:
-        case EVENT_STARTNORMAL:
-        case EVENT_STARTHARD:
-        {
-            // Start a new game.
-        	mScreens.push_back(new GameScreen(event));
-            break;
-        }
-        case EVENT_QUIT:
-        {
-            mIsRunning = false;
-            break;
-        }
-        case EVENT_MAINMENU:
-        {
-            mScreens.push_back(new MenuScreen());
-            break;
-        }
-        case EVENT_ADDCREDITSCREEN:
-        {
-        	string::size_type pos = 0;
-        	string credit_file	  = extractDataLine(content, pos, CHAR_DELIMITER_ALTERNATE);
-        	unsigned int fade_in  = toInt(extractDataLine(content, pos, CHAR_DELIMITER_ALTERNATE));
-        	unsigned int fade_out = toInt(extractDataLine(content, pos, CHAR_DELIMITER_ALTERNATE));
-        	mScreens.push_back(new SpriteCreditScreen(Sprite(VideoManager::loadSurface(credit_file)), 4000, fade_in, fade_out));
-        }
-        default: // Don't do anything.
-        {}
-    }
+	if(event.getId() == ACTION_STARTGAME_EASY)
+	{
+		mScreens.push_back(new GameScreen(1));
+	}
+	else if(event.getId() == ACTION_STARTGAME_NORMAL)
+	{
+		mScreens.push_back(new GameScreen(5));
+	}
+	else if(event.getId() == ACTION_STARTGAME_HARD)
+	{
+		mScreens.push_back(new GameScreen(10));
+	}
+	else if(event.getId() == ACTION_QUIT)
+	{
+		mIsRunning = false;
+	}
+	else if(event.getId() == ACTION_TO_MAINMENU)
+	{
+		mScreens.push_back(new MenuScreen());
+	}
+//	else if(event.getId() == ACTION_TO_CREDITSCREEN)//@todo review adding credit screens.
+//    {
+//    	string::size_type pos = 0;
+//    	string credit_file	  = extractDataLine(content, pos, CHAR_DELIMITER_ALTERNATE);
+//    	unsigned int fade_in  = toInt(extractDataLine(content, pos, CHAR_DELIMITER_ALTERNATE));
+//    	unsigned int fade_out = toInt(extractDataLine(content, pos, CHAR_DELIMITER_ALTERNATE));
+//    	mScreens.push_back(new SpriteCreditScreen(Sprite(VideoManager::loadSurface(credit_file)), 4000, fade_in, fade_out));
+//    }
+	else
+	{
+		Logger::log("Invalid action requested: " + event.getId());
+	}
 }
 
 bool Game::isDebug()
@@ -349,7 +341,7 @@ void Game::run()
     // If the game is being debugged, then skip to the game screen.
     if(Game::isDebug())
     {
-    	mScreens.push_back(new GameScreen(EVENT_STARTNORMAL));
+    	mScreens.push_back(new GameScreen(5));
     }
     else
     {
@@ -406,7 +398,7 @@ void Game::setDebug(bool state)
 	m_debug = state;
 }
 
-bool Game::m_debug = false; // @todo Implement toggling, debug, etc...
+bool Game::m_debug = false;
 
 const string GAME_NAME = "Escape!";
 const string GAME_VERSION = "0.0.0";

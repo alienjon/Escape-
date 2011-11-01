@@ -4,7 +4,6 @@
  *  Created on: Jul 1, 2009
  *      Author: alienjon
  */
-
 #ifndef MENUBUTTON_HPP_
 #define MENUBUTTON_HPP_
 
@@ -12,9 +11,6 @@
 #include <string>
 
 #include "../guichan.hpp"
-
-#include "../Game/Event.hpp"
-#include "../Listeners/EventListener.hpp"
 
 /**
  * @brief An in-game button.
@@ -25,16 +21,9 @@ class MenuButton : public gcn::Label, public gcn::KeyListener, public gcn::Mouse
     /**
      * @brief A MenuButton is a button for the game's menus.  It has an enabled and a disabled image.
      * @param button The name of the button (also acts as the button's action event id so that listeners know which button was pressed)
-     * @param event The event to perform when this button is pressed.
      */
-    MenuButton(const std::string& name, Event event);
+    MenuButton(const std::string& name);
     virtual ~MenuButton();
-
-    /**
-     * @brief Add an event listener.
-     * @param listener The event listener.
-     */
-    virtual void addEventListener(EventListener* listener);
 
     /**
      * @brief Draw the button.
@@ -91,18 +80,6 @@ class MenuButton : public gcn::Label, public gcn::KeyListener, public gcn::Mouse
     virtual void keyReleased(gcn::KeyEvent& keyEvent);
 
     /**
-     * @brief Remove an event listener.
-     * @param listener The listener to remove.
-     */
-    virtual void removeEventListener(EventListener* listener);
-
-    /**
-     * @brief Set the event to perform when this button is pressed.
-     * @param event The event to set.
-     */
-    virtual void setEvent(Event event);
-
-    /**
      * @brief Set this button's state to hover.
      */
     virtual void setHover();
@@ -117,29 +94,11 @@ class MenuButton : public gcn::Label, public gcn::KeyListener, public gcn::Mouse
      */
     virtual void setPressed();
 
-    protected:
-    /**
-     * @brief Tell the listeners that an event occurred.
-     */
-    virtual void mPushEvent();
-
     private:
-    /**
-     * The enabled and disabled images.
-     */
+    // The enabled and disabled images.
     gcn::Font* mInactiveFont;
     gcn::Font* mHoverFont;
     gcn::Font* mPressedFont;
-
-    /**
-     * The event to perform when the button is pressed.
-     */
-    Event mEvent;
-
-    /**
-     * The list of event listeners.
-     */
-    std::list<EventListener*> mEventListeners;
 };
 
 #endif /* MENUICON_HPP_ */

@@ -23,14 +23,14 @@ MultipleActionsAction::~MultipleActionsAction()
 	}
 }
 
-void MultipleActionsAction::activate(EnvironmentData& eData)
+void MultipleActionsAction::activate(Level& level)
 {
     // Go through the actions list and activate all of the remaining actions.
     for(ActionList::iterator it = mActions->begin(); it != mActions->end(); ++it)
     {
         // Perform the current action.
         Action* temp = *it;
-        temp->activate(eData);
+        temp->activate(level);
     }
 
     // For each item in the list, if that item has been performed, add it to a list to be removed.

@@ -4,15 +4,12 @@
  *  Created on: Aug 14, 2009
  *      Author: alienjon
  */
-
 #ifndef DISPLAYSPRITEACTION_HPP_
 #define DISPLAYSPRITEACTION_HPP_
 
-#include "Action.hpp"
-
-#include "../guichan.hpp"
-
+#include "../Actions/Action.hpp"
 #include "../Listeners/AnimationCycleListener.hpp"
+#include "../guichan.hpp"
 #include "../Engine/Sprite.hpp"
 #include "../Widgets/SpriteWidget.hpp"
 #include "../Math/Vector.hpp"
@@ -35,9 +32,9 @@ class DisplaySpriteAction : public Action, public AnimationCycleListener
 
     /**
      * @brief Activate the action.
-     * @param eData The environment data.
+     * @param level The level in which the action takes place.
      */
-    virtual void activate(EnvironmentData& eData);
+    virtual void activate(Level& level);
 
     /**
      * @brief An animation cycle has occurred.

@@ -88,28 +88,27 @@ Game/GUI.d: ../Game/GUI.cpp ../Game/GUI.hpp ../Game/../guichan.hpp \
  ../Game/../Engine/Logger.hpp ../Game/../Engine/../guichan.hpp \
  ../Game/../Managers/FontManager.hpp ../Game/../Managers/../guichan.hpp \
  ../Game/../Entities/Player.hpp \
+ ../Game/../Entities/../Listeners/AddLockListener.hpp \
+ ../Game/../Entities/../Listeners/../guichan.hpp \
  ../Game/../Entities/../Entities/Creature.hpp \
  ../Game/../Entities/../Entities/../Listeners/CreatureMovedToPointListener.hpp \
  ../Game/../Entities/../Entities/../Entities/Entity.hpp \
  ../Game/../Entities/../Entities/../Entities/../Interfaces/ActionInterface.hpp \
  ../Game/../Entities/../Entities/../Entities/../Interfaces/../Actions/Action.hpp \
+ ../Game/../Entities/../Entities/../Entities/../Interfaces/AddLockInterface.hpp \
+ ../Game/../Entities/../Entities/../Entities/../Interfaces/../Listeners/AddLockListener.hpp \
+ ../Game/../Entities/../Entities/../Entities/../Interfaces/../guichan.hpp \
  ../Game/../Entities/../Entities/../Entities/../Listeners/AnimationCycleListener.hpp \
  ../Game/../Entities/../Entities/../Entities/../Interfaces/ChangeScoreInterface.hpp \
  ../Game/../Entities/../Entities/../Entities/../Interfaces/../Listeners/ChangeScoreListener.hpp \
  ../Game/../Entities/../Entities/../Entities/../Listeners/DeathListener.hpp \
  ../Game/../Entities/../Entities/../Entities/../Game/Direction.hpp \
- ../Game/../Entities/../Entities/../Entities/../Interfaces/EventInterface.hpp \
- ../Game/../Entities/../Entities/../Entities/../Interfaces/../Listeners/CreatureMovedToPointListener.hpp \
- ../Game/../Entities/../Entities/../Entities/../Interfaces/../Listeners/EventListener.hpp \
- ../Game/../Entities/../Entities/../Entities/../Interfaces/../Listeners/../Listeners/CreatureMovedToPointListener.hpp \
- ../Game/../Entities/../Entities/../Entities/../Interfaces/../Listeners/../Game/Event.hpp \
  ../Game/../Entities/../Entities/../Entities/../Game/Input.hpp \
  ../Game/../Entities/../Entities/../Entities/../Game/../Math/Vector.hpp \
  ../Game/../Entities/../Entities/../Entities/../Math/Vector.hpp \
  ../Game/../Entities/../Entities/../Entities/../Math/Quadrilateral.hpp \
  ../Game/../Entities/../Entities/../Entities/../Math/Rectangle.hpp \
  ../Game/../Entities/../Entities/../Entities/../Interfaces/RemoveLockInterface.hpp \
- ../Game/../Entities/../Entities/../Entities/../Interfaces/../guichan.hpp \
  ../Game/../Entities/../Entities/../Entities/../Interfaces/../Listeners/RemoveLockListener.hpp \
  ../Game/../Entities/../Entities/../Entities/../Interfaces/../Listeners/../guichan.hpp \
  ../Game/../Entities/../Entities/../Entities/../Engine/Renderer.hpp \
@@ -125,7 +124,7 @@ Game/GUI.d: ../Game/GUI.cpp ../Game/GUI.hpp ../Game/../guichan.hpp \
  ../Game/../Entities/../Entities/../Math/Vector.hpp \
  ../Game/../Entities/../Entities/../Engine/Timer.hpp \
  ../Game/../Entities/../Game/Input.hpp \
- ../Game/../Entities/../Interfaces/RemoveLockInterface.hpp \
+ ../Game/../Entities/../Listeners/RemoveLockListener.hpp \
  ../Game/../Entities/../Engine/Timer.hpp \
  ../Game/../Managers/VideoManager.hpp \
  ../Game/../Managers/../Math/Rectangle.hpp \
@@ -379,6 +378,10 @@ Game/GUI.d: ../Game/GUI.cpp ../Game/GUI.hpp ../Game/../guichan.hpp \
 
 ../Game/../Entities/Player.hpp:
 
+../Game/../Entities/../Listeners/AddLockListener.hpp:
+
+../Game/../Entities/../Listeners/../guichan.hpp:
+
 ../Game/../Entities/../Entities/Creature.hpp:
 
 ../Game/../Entities/../Entities/../Listeners/CreatureMovedToPointListener.hpp:
@@ -389,6 +392,12 @@ Game/GUI.d: ../Game/GUI.cpp ../Game/GUI.hpp ../Game/../guichan.hpp \
 
 ../Game/../Entities/../Entities/../Entities/../Interfaces/../Actions/Action.hpp:
 
+../Game/../Entities/../Entities/../Entities/../Interfaces/AddLockInterface.hpp:
+
+../Game/../Entities/../Entities/../Entities/../Interfaces/../Listeners/AddLockListener.hpp:
+
+../Game/../Entities/../Entities/../Entities/../Interfaces/../guichan.hpp:
+
 ../Game/../Entities/../Entities/../Entities/../Listeners/AnimationCycleListener.hpp:
 
 ../Game/../Entities/../Entities/../Entities/../Interfaces/ChangeScoreInterface.hpp:
@@ -398,16 +407,6 @@ Game/GUI.d: ../Game/GUI.cpp ../Game/GUI.hpp ../Game/../guichan.hpp \
 ../Game/../Entities/../Entities/../Entities/../Listeners/DeathListener.hpp:
 
 ../Game/../Entities/../Entities/../Entities/../Game/Direction.hpp:
-
-../Game/../Entities/../Entities/../Entities/../Interfaces/EventInterface.hpp:
-
-../Game/../Entities/../Entities/../Entities/../Interfaces/../Listeners/CreatureMovedToPointListener.hpp:
-
-../Game/../Entities/../Entities/../Entities/../Interfaces/../Listeners/EventListener.hpp:
-
-../Game/../Entities/../Entities/../Entities/../Interfaces/../Listeners/../Listeners/CreatureMovedToPointListener.hpp:
-
-../Game/../Entities/../Entities/../Entities/../Interfaces/../Listeners/../Game/Event.hpp:
 
 ../Game/../Entities/../Entities/../Entities/../Game/Input.hpp:
 
@@ -420,8 +419,6 @@ Game/GUI.d: ../Game/GUI.cpp ../Game/GUI.hpp ../Game/../guichan.hpp \
 ../Game/../Entities/../Entities/../Entities/../Math/Rectangle.hpp:
 
 ../Game/../Entities/../Entities/../Entities/../Interfaces/RemoveLockInterface.hpp:
-
-../Game/../Entities/../Entities/../Entities/../Interfaces/../guichan.hpp:
 
 ../Game/../Entities/../Entities/../Entities/../Interfaces/../Listeners/RemoveLockListener.hpp:
 
@@ -453,7 +450,7 @@ Game/GUI.d: ../Game/GUI.cpp ../Game/GUI.hpp ../Game/../guichan.hpp \
 
 ../Game/../Entities/../Game/Input.hpp:
 
-../Game/../Entities/../Interfaces/RemoveLockInterface.hpp:
+../Game/../Entities/../Listeners/RemoveLockListener.hpp:
 
 ../Game/../Entities/../Engine/Timer.hpp:
 

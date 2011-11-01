@@ -19,7 +19,8 @@ void KeyEntity::collide(Entity& entity)
 	// If the entity was a player, then add a score to the level and die.
 	if(entity.getType() == Entity::ENTITY_PLAYER)
 	{
-		// Remove the key.
+		// Distribute information that the lock was picked up.
+		distributeAddLock(mColor);
 		distributeRemoveLock(mColor);
 
 		// Add to the score.

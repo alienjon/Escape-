@@ -4,7 +4,6 @@
  *  Created on: Apr 23, 2009
  *      Author: alienjon
  */
-
 #include "WanderAction.hpp"
 
 #include "../Entities/Creature.hpp"
@@ -25,7 +24,7 @@ WanderAction::~WanderAction()
 {
 }
 
-void WanderAction::activate(EnvironmentData& eData)
+void WanderAction::activate(Level& level)
 {
 	// Tell the creature to wander.
 	if(mCreature)

@@ -4,11 +4,10 @@
  *  Created on: Apr 23, 2009
  *      Author: alienjon
  */
-
 #ifndef SETSPEEDACTION_HPP_
 #define SETSPEEDACTION_HPP_
 
-#include "Action.hpp"
+#include "../Actions/Action.hpp"
 
 class Creature;
 
@@ -26,11 +25,11 @@ class SetSpeedAction: public Action
 	SetSpeedAction(Creature& creature, double speed);
 	virtual ~SetSpeedAction();
 
-	/**
-	 * @brief Activate the action.
-	 * @param eData The environment data.
-	 */
-	virtual void activate(EnvironmentData& eData);
+    /**
+     * @brief Activate the action.
+     * @param level The level in which the action takes place.
+     */
+    virtual void activate(Level& level);
 
 	protected:
 	/**

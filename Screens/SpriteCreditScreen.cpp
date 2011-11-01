@@ -38,11 +38,6 @@ void SpriteCreditScreen::draw(Renderer& renderer)
     }
 }
 
-void SpriteCreditScreen::eventOccurred(Event event, const std::string& content, CreatureMovedToPointListener* creatureMovedToPointListener)
-{
-    pushEvent(event, content, creatureMovedToPointListener);
-}
-
 void SpriteCreditScreen::handleInput(const Input& input)
 {
 	if(Game::isDebug() && (input.isKeyPressed(SDLK_SPACE) || input.isMousePressed(SDL_BUTTON_LEFT)))

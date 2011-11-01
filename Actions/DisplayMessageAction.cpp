@@ -27,12 +27,12 @@ DisplayMessageAction::DisplayMessageAction(const string& caption, const string& 
 DisplayMessageAction::~DisplayMessageAction()
 {
 }
-
-//void DisplayMessageAction::activate(EnvironmentData& eData)@todo review
-//{
+#include "../Engine/Logger.hpp"
+void DisplayMessageAction::activate(Level& level)//@todo review
+{
 //	// Display the message.
 //	mScreen->displayMessage(mCaption, mMessage, mImage, "");
-//
-//	// Done.
-//	mPerformed = true;
-//}
+Logger::log("implement display message action.");
+	// Done.
+	mPerformed = true;
+}

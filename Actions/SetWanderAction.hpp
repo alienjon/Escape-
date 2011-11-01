@@ -4,7 +4,6 @@
  *  Created on: Aug 7, 2009
  *      Author: alienjon
  */
-
 #ifndef SETWANDERACTION_HPP_
 #define SETWANDERACTION_HPP_
 
@@ -27,9 +26,9 @@ class SetWanderAction : public Action
 
     /**
      * @brief Activate the action.
-     * @param eData The environment data.
+     * @param level The level in which the action takes place.
      */
-    virtual void activate(EnvironmentData& eData);
+    virtual void activate(Level& level);
 
     private:
     /**

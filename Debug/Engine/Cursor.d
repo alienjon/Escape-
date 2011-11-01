@@ -111,8 +111,7 @@ Engine/Cursor.d: ../Engine/Cursor.cpp ../Engine/Cursor.hpp \
  ../Engine/../Engine/../Engine/Renderer.hpp \
  ../Engine/../Engine/Surface.hpp ../Engine/../Engine/Timer.hpp \
  ../Engine/../Engine/../Math/Vector.hpp ../Engine/../Math/Vector.hpp \
- ../Engine/../Managers/AnimationManager.hpp \
- ../Engine/../Managers/../Engine/Sprite.hpp
+ ../Engine/../Engine/Colors.hpp
 
 ../Engine/Cursor.hpp:
 
@@ -346,6 +345,4 @@ Engine/Cursor.d: ../Engine/Cursor.cpp ../Engine/Cursor.hpp \
 
 ../Engine/../Math/Vector.hpp:
 
-../Engine/../Managers/AnimationManager.hpp:
-
-../Engine/../Managers/../Engine/Sprite.hpp:
+../Engine/../Engine/Colors.hpp:

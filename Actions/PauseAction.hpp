@@ -4,12 +4,10 @@
  *  Created on: Apr 23, 2009
  *      Author: alienjon
  */
-
 #ifndef PAUSEACTION_HPP_
 #define PAUSEACTION_HPP_
 
-#include "Action.hpp"
-
+#include "../Actions/Action.hpp"
 #include "../Engine/Timer.hpp"
 
 /**
@@ -24,11 +22,11 @@ class PauseAction : public Action
 	 */
 	PauseAction(unsigned int time);
 
-	/**
-	 * @brief Activate the action.
-	 * @param eData The environment data.
-	 */
-	virtual void activate(EnvironmentData& eData);
+    /**
+     * @brief Activate the action.
+     * @param level The level in which the action takes place.
+     */
+    virtual void activate(Level& level);
 
 	private:
 	/**

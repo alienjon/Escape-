@@ -102,10 +102,9 @@ Widgets/MessageDisplayWidget.d: ../Widgets/MessageDisplayWidget.cpp \
  ../Widgets/../Widgets/../Engine/Sprite.hpp \
  ../Widgets/../Engine/Timer.hpp ../Widgets/../Engine/Colors.hpp \
  ../Widgets/../Managers/FontManager.hpp \
- ../Widgets/../Managers/../guichan.hpp ../Widgets/../Game/Keywords.hpp \
- ../Widgets/../main.hpp ../Widgets/../Game/Direction.hpp \
- ../Widgets/../Game/../Math/Vector.hpp ../Widgets/../guichan.hpp \
- ../Widgets/../Math/Vector.hpp
+ ../Widgets/../Managers/../guichan.hpp ../Widgets/../main.hpp \
+ ../Widgets/../Game/Direction.hpp ../Widgets/../Game/../Math/Vector.hpp \
+ ../Widgets/../guichan.hpp ../Widgets/../Math/Vector.hpp
 
 ../Widgets/MessageDisplayWidget.hpp:
 
@@ -356,8 +355,6 @@ Widgets/MessageDisplayWidget.d: ../Widgets/MessageDisplayWidget.cpp \
 ../Widgets/../Managers/FontManager.hpp:
 
 ../Widgets/../Managers/../guichan.hpp:
-
-../Widgets/../Game/Keywords.hpp:
 
 ../Widgets/../main.hpp:
 

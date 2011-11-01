@@ -57,17 +57,10 @@ Level::Level(unsigned int difficulty, Player& player, Viewport& viewport) :
 
 	//@todo randomize the colors and the color's positions in the map.
 	// Set the initial locks on the player.@review Might locks be added later?  What if the timer counts down, if it reaches zero the player loses the level, but opening locks adds time (maybe for easy/medium?)
-	mPlayer->addLock(COLOR_RED);
 	mPortal->addLock(COLOR_RED);
-
-	mPlayer->addLock(COLOR_BLUE);
 	mPortal->addLock(COLOR_BLUE);
-
-	mPlayer->addLock(COLOR_ORANGE);
 	mPortal->addLock(COLOR_ORANGE);
-
-	mPlayer->addLock(COLOR_GREEN);
-	mPlayer->addLock(COLOR_GREEN);
+	mPortal->addLock(COLOR_GREEN);
 
 	unsigned int x_offset = (MAP_CELL_SIDE / 2) * mMap.getTileset().getWidth(),
 				 y_offset = (MAP_CELL_SIDE / 2) * mMap.getTileset().getHeight();
@@ -116,7 +109,7 @@ void Level::mAddEntity(Entity* entity)
 {
 	entity->addDeathListener(this);
 	entity->addChangeScoreListener(this);
-	entity->addRemoveLockListener(mPlayer);
+	entity->addAddLockListener(mPlayer);
 	entity->addRemoveLockListener(mPortal);
 	mEntities.push_back(entity);
 }
@@ -125,7 +118,7 @@ void Level::mRemoveEntity(Entity* entity)
 {
 	entity->removeDeathListener(this);
 	entity->removeChangeScoreListener(this);
-	entity->removeRemoveLockListener(mPlayer);
+	entity->removeAddLockListener(mPlayer);
 	entity->removeRemoveLockListener(mPortal);
 	mEntities.remove(entity);
 	delete entity;
@@ -165,13 +158,6 @@ void Level::draw(Renderer& renderer)
 	// Draw the entities.
 	for(list<Entity*>::iterator it = mEntities.begin(); it != mEntities.end(); ++it)
 		(*it)->draw(renderer);
-}
-
-void Level::eventOccurred(Event event, const std::string& content, CreatureMovedToPointListener* creatureMovedToPointListener)
-{
-	// Push on! Onwards to VICTORY!!!
-	// ... or at least towards the GameScreen...
-	pushEvent(event, content, creatureMovedToPointListener);
 }
 
 const Vector& Level::getPortal() const

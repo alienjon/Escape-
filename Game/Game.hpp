@@ -10,9 +10,7 @@
 #include <list>
 #include <string>
 
-#include "../Listeners/CreatureMovedToPointListener.hpp"
 #include "../Engine/Cursor.hpp"
-#include "../Listeners/EventListener.hpp"
 #include "../guichan.hpp"
 #include "../Game/Input.hpp"
 #include "../Engine/Renderer.hpp"
@@ -28,7 +26,7 @@ class Screen;
  *
  * Manages screens as interfaces to the game itself.
  */
-class Game : public EventListener
+class Game : public gcn::ActionListener
 {
     public:
     /**
@@ -50,12 +48,10 @@ class Game : public EventListener
     virtual ~Game();
 
     /**
-     * @brief An event occurred.
-     * @param event The event that occurred.
-     * @param content Additional content.
-     * @param creatureMovedToPointListener A potential moved to point listener.
+     * @brief An action occurred.
+     * @param event The event details.
      */
-    virtual void eventOccurred(Event event, const std::string& content = "", CreatureMovedToPointListener* creatureMovedToPointListener = 0);
+    virtual void action(const gcn::ActionEvent& event);
 
     /**
      * @brief Run the game.

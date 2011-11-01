@@ -13,7 +13,8 @@
 using std::string;
 
 const unsigned int LEVELCOMPLETEWIDGET_TIMERINTERVAL = 1500;
-
+#include <iostream>
+using namespace std;
 LevelCompleteWidget::LevelCompleteWidget()
 {
 	// Configure the widget.
@@ -44,7 +45,6 @@ LevelCompleteWidget::LevelCompleteWidget()
 	mMessage.setFont(FontManager::get(FONT_TEXT));
 
 	// Set the labels.
-	mCaption.setCaption("LEVEL COMPLETE");
 	mTimeLabel.setCaption("Time Completed: ");
 	mMapLabel.setCaption("Maze Complexity: ");
 	mDifficultyLabel.setCaption("Difficulty: ");
@@ -54,7 +54,6 @@ LevelCompleteWidget::LevelCompleteWidget()
 	mMessage.setCaption("press space to continue");
 
 	// Adjust the sizes.
-	mCaption.adjustSize();
 	mTimeLabel.adjustSize();
 	mMapLabel.adjustSize();
 	mDifficultyLabel.adjustSize();
@@ -154,13 +153,15 @@ void LevelCompleteWidget::adjust()
 	setHeight(mMessage.getY() + mMessage.getHeight());
 }
 
-void LevelCompleteWidget::display(unsigned int timeValue, unsigned int timeBonus, unsigned int mapValue, unsigned int mapBonus,
+void LevelCompleteWidget::display(const string& message,
+								  unsigned int timeValue, unsigned int timeBonus, unsigned int mapValue, unsigned int mapBonus,
 								  unsigned int difficultyValue, double difficultyBonus, unsigned int base, unsigned int bonus, unsigned int total)
 {
 	// Oh right, actually show the widget.
 	setVisible(true);
 
 	// Set the values for the labels.
+	mCaption.setCaption(message);
 	mTimeValue.setCaption(toString(timeValue));
 	mTimeBonus.setCaption(toString(timeBonus));
 	mMapValue.setCaption(toString(mapValue));
@@ -172,6 +173,7 @@ void LevelCompleteWidget::display(unsigned int timeValue, unsigned int timeBonus
 	mTotalScoreValue.setCaption(toString(total));
 
 	// Adjust the sizes.
+	mCaption.adjustSize();
 	mTimeValue.adjustSize();
 	mTimeBonus.adjustSize();
 	mMapValue.adjustSize();

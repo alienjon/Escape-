@@ -11,7 +11,6 @@
 #include <SDL/SDL_image.h>
 
 #include "Game/Direction.hpp"
-#include "Game/Event.hpp"
 #include "Game/Game.hpp"
 #include "Engine/Logger.hpp"
 #include "main.hpp"

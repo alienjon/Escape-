@@ -29,7 +29,6 @@ Screens \
 Screens/MenuScreenWidgets \
 Math \
 Managers \
-Interfaces \
 Guichan/widgets \
 Guichan \
 Guichan/sdl \

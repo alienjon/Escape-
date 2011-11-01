@@ -4,14 +4,13 @@
  *  Created on: Apr 23, 2009
  *      Author: alienjon
  */
-
 #include "PauseAction.hpp"
 
 PauseAction::PauseAction(unsigned int time) : mTime(time)
 {
 }
 
-void PauseAction::activate(EnvironmentData& eData)
+void PauseAction::activate(Level& level)
 {
 	// If the pause action has not been activated yet, then activate it.
 	if(!mActivated)

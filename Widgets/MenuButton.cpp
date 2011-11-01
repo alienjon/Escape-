@@ -4,7 +4,6 @@
  *  Created on: Jul 1, 2009
  *      Author: alienjon
  */
-
 #include "MenuButton.hpp"
 
 #include "../Managers/AudioManager.hpp"
@@ -14,16 +13,12 @@
 using std::list;
 using std::string;
 
-MenuButton::MenuButton(const string& name, Event event) : gcn::Label(name),
-                                                          mEvent(event)
+MenuButton::MenuButton(const string& name) : gcn::Label(name)
 {
     // Add this as a mouse, key and focus listener.
     addKeyListener(this);
     addMouseListener(this);
     addFocusListener(this);
-
-    // Set the event it (the name) of this button.
-    setActionEventId(name);
 
     mInactiveFont = FontManager::get(FONT_MENU_INACTIVE);
     mHoverFont    = FontManager::get(FONT_MENU_HOVER);
@@ -40,19 +35,6 @@ MenuButton::~MenuButton()
     removeKeyListener(this);
     removeMouseListener(this);
     removeFocusListener(this);
-}
-
-void MenuButton::mPushEvent()
-{
-    for(list<EventListener*>::iterator it = mEventListeners.begin(); it != mEventListeners.end(); ++it)
-    {
-        (*it)->eventOccurred(mEvent);
-    }
-}
-
-void MenuButton::addEventListener(EventListener* listener)
-{
-    mEventListeners.push_back(listener);
 }
 
 void MenuButton::draw(gcn::Graphics* graphics)
@@ -91,28 +73,22 @@ void MenuButton::mouseExited(gcn::MouseEvent& mouseEvent)
 void MenuButton::mousePressed(gcn::MouseEvent& mouseEvent)
 {
     if(mouseEvent.getButton() == gcn::MouseInput::LEFT)
-    {
         setPressed();
-    }
 }
 
 void MenuButton::mouseReleased(gcn::MouseEvent& mouseEvent)
 {
     if(mouseEvent.getButton() != gcn::MouseInput::LEFT)
-    {
         return;
-    }
 
     setInactive();
-    mPushEvent();
+    distributeActionEvent();
 }
 
 void MenuButton::keyPressed(gcn::KeyEvent& keyEvent)
 {
     if(keyEvent.getKey().getValue() == gcn::Key::SPACE)
-    {
         setPressed();
-    }
 }
 
 void MenuButton::keyReleased(gcn::KeyEvent& keyEvent)
@@ -120,18 +96,8 @@ void MenuButton::keyReleased(gcn::KeyEvent& keyEvent)
     if(keyEvent.getKey().getValue() == gcn::Key::SPACE)
     {
         setHover();
-        mPushEvent();
+        distributeActionEvent();
     }
-}
-
-void MenuButton::removeEventListener(EventListener* listener)
-{
-    mEventListeners.remove(listener);
-}
-
-void MenuButton::setEvent(Event event)
-{
-    mEvent = event;
 }
 
 void MenuButton::setHover()

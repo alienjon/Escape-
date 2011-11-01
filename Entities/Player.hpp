@@ -9,9 +9,10 @@
 
 #include <list>
 
+#include "../Listeners/AddLockListener.hpp"
 #include "../Entities/Creature.hpp"
 #include "../Game/Input.hpp"
-#include "../Interfaces/RemoveLockInterface.hpp"
+#include "../Listeners/RemoveLockListener.hpp"
 #include "../Engine/Timer.hpp"
 
 class Level;
@@ -19,7 +20,7 @@ class Level;
 /**
  * @brief The player class.
  */
-class Player : public Creature, public RemoveLockListener
+class Player : public AddLockListener, public Creature, public RemoveLockListener
 {
 	public:
     /**
@@ -63,6 +64,14 @@ class Player : public Creature, public RemoveLockListener
 	 * @param input The input object.
 	 */
 	virtual void handleInput(const Input& input);
+
+	/**
+	 * @brief Remove all locks from the player.
+	 */
+	inline void removeAllLocks()
+	{
+		mLocks.clear();
+	}
 
     /**
      * @brief Remove a color lock from the player.

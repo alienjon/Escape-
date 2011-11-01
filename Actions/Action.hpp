@@ -4,13 +4,12 @@
  *  Created on: Apr 19, 2009
  *      Author: alienjon
  */
-
 #ifndef ACTION_HPP_
 #define ACTION_HPP_
 
 #include <list>
 
-class EnvironmentData;
+class Level;
 
 /**
  * @brief An action is a single act that can be performed in such a way so that it can be placed in a list an acted in a certain order.
@@ -23,9 +22,9 @@ class Action
 
     /**
      * @brief Activate this action.
-     * @param eData The environment data.
+     * @param level Level in which the action takes place.
      */
-    virtual void activate(EnvironmentData& eData) = 0;
+    virtual void activate(Level& level) = 0;
 
     /**
      * @brief Return true if this action has been performed.

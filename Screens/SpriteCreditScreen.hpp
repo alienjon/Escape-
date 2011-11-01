@@ -4,14 +4,11 @@
  *  Created on: Jun 24, 2009
  *      Author: alienjon
  */
-
 #ifndef SPRITECREDITSCREEN_HPP_
 #define SPRITECREDITSCREEN_HPP_
 
 #include <string>
 
-#include "../Listeners/CreatureMovedToPointListener.hpp"
-#include "../Game/Event.hpp"
 #include "../Game/GUI.hpp"
 #include "../Engine/Renderer.hpp"
 #include "Screen.hpp"
@@ -32,14 +29,6 @@ class SpriteCreditScreen : public Screen
      * @param fadeOut The length of time to fade out the sprite.
      */
     SpriteCreditScreen(const Sprite& surface, unsigned int displayTime, unsigned int fadeIn = 0, unsigned int fadeOut = 0);
-
-    /**
-     * @brief An event occurred.
-     * @param event The event that occurred.
-     * @param content Additional content.
-     * @param creatureMovedToPointListener A potential moved to point listener.
-     */
-    virtual void eventOccurred(Event event, const std::string& content = "", CreatureMovedToPointListener* creatureMovedToPointListener = 0);
 
     /**
      * @brief Input handling.

@@ -1,5 +1,6 @@
 Actions/DisplaySpriteAction.d: ../Actions/DisplaySpriteAction.cpp \
- ../Actions/DisplaySpriteAction.hpp ../Actions/Action.hpp \
+ ../Actions/DisplaySpriteAction.hpp ../Actions/../Actions/Action.hpp \
+ ../Actions/../Listeners/AnimationCycleListener.hpp \
  ../Actions/../guichan.hpp ../Actions/../Guichan/actionevent.hpp \
  ../Actions/../Guichan/event.hpp ../Actions/../Guichan/platform.hpp \
  ../Actions/../Guichan/actionlistener.hpp \
@@ -67,9 +68,8 @@ Actions/DisplaySpriteAction.d: ../Actions/DisplaySpriteAction.cpp \
  ../Actions/../Guichan/widgets/textfield.hpp \
  ../Actions/../Guichan/widgets/window.hpp \
  ../Actions/../Guichan/widgets/container.hpp \
- ../Actions/../Guichan/platform.hpp \
- ../Actions/../Listeners/AnimationCycleListener.hpp \
- ../Actions/../Engine/Sprite.hpp ../Actions/../Engine/../guichan.hpp \
+ ../Actions/../Guichan/platform.hpp ../Actions/../Engine/Sprite.hpp \
+ ../Actions/../Engine/../guichan.hpp \
  ../Actions/../Engine/../Listeners/AnimationCycleListener.hpp \
  ../Actions/../Engine/../Math/Rectangle.hpp \
  ../Actions/../Engine/../Math/../guichan.hpp \
@@ -104,7 +104,9 @@ Actions/DisplaySpriteAction.d: ../Actions/DisplaySpriteAction.cpp \
 
 ../Actions/DisplaySpriteAction.hpp:
 
-../Actions/Action.hpp:
+../Actions/../Actions/Action.hpp:
+
+../Actions/../Listeners/AnimationCycleListener.hpp:
 
 ../Actions/../guichan.hpp:
 
@@ -275,8 +277,6 @@ Actions/DisplaySpriteAction.d: ../Actions/DisplaySpriteAction.cpp \
 ../Actions/../Guichan/widgets/container.hpp:
 
 ../Actions/../Guichan/platform.hpp:
-
-../Actions/../Listeners/AnimationCycleListener.hpp:
 
 ../Actions/../Engine/Sprite.hpp:
 

@@ -4,7 +4,6 @@
  *  Created on: Aug 6, 2009
  *      Author: alienjon
  */
-
 #include "SetWidgetVisibilityAction.hpp"
 
 #include <stdexcept>
@@ -19,7 +18,7 @@ SetWidgetVisibilityAction::SetWidgetVisibilityAction(gcn::Widget* widget, bool s
     }
 }
 
-void SetWidgetVisibilityAction::activate(EnvironmentData& eData)
+void SetWidgetVisibilityAction::activate(Level& level)
 {
     // Set the widget's visibility and consider yourself performed!
     mWidget->setVisible(mState);

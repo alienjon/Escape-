@@ -15,12 +15,8 @@
 #include "../Interfaces/ActionInterface.hpp"
 #include "../Interfaces/ChangeScoreInterface.hpp"
 #include "../Listeners/ChangeScoreListener.hpp"
-#include "../Listeners/CreatureMovedToPointListener.hpp"
 #include "../Listeners/DeathListener.hpp"
-#include "../Interfaces/EventInterface.hpp"
-#include "../Listeners/EventListener.hpp"
 #include "../Game/Game.hpp"
-#include "../Interfaces/GameInterfaceInterface.hpp"
 #include "../Game/Input.hpp"
 #include "../Listeners/LevelCompleteListener.hpp"
 #include "../Game/Map.hpp"
@@ -40,7 +36,7 @@ class Portal;
  * The level essentially acts as a manager between all objects (creatures, items, traps)
  * and a single map.  It is literally a solitary contained area in the game.
  */
-class Level : public ActionInterface, public ChangeScoreInterface, public ChangeScoreListener, public DeathListener, public EventInterface, public EventListener, public GameInterfaceInterface, public LevelCompleteListener
+class Level : public ActionInterface, public ChangeScoreInterface, public ChangeScoreListener, public DeathListener, public LevelCompleteListener, public gcn::Widget
 {
     public:
     /**
@@ -82,18 +78,17 @@ class Level : public ActionInterface, public ChangeScoreInterface, public Change
     }
 
     /**
+     * @brief Draw, from gcn::Widget
+     * @param graphics The graphics object.
+     */
+    virtual void draw(gcn::Graphics* graphics)
+    {}
+
+    /**
      * @brief Draw the map to the screen.
      * @param renderer The graphics object to draw with.
      */
     virtual void draw(Renderer& renderer);
-
-    /**
-     * @brief An event occurred.
-     * @param event The event that occurred.
-     * @param content Additional content.
-     * @param creatureMovedToVectorListener A potential moved to point listener.
-     */
-    virtual void eventOccurred(Event event, const std::string& content = "", CreatureMovedToPointListener* creatureMovedToVectorListener = 0);
 
     /**
      * @brief Return the level's entrance/exit area.

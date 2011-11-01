@@ -389,13 +389,6 @@ void Map::draw(Renderer& renderer, const Viewport& viewport)
 			Point dest = mMap.at(x + y * width_in_tiles).first;
 			Rectangle actual(dest.x, dest.y, src.width, src.height);
 			renderer.drawImage(surface, src.vector.x, src.vector.y, dest.x, dest.y, src.width, src.height);
-
-			// Draw the collision areas if testing.
-			if(Game::isDebug())
-			{
-				renderer.setColor(COLOR_ORANGE);
-				mCollisions.at(x + y * width_in_tiles).draw(renderer);
-			}
 		}
 	}
 }

@@ -9,7 +9,7 @@
 
 #include "../Actions/Action.hpp"
 
-class EnvironmentData;
+class Level;
 
 /**
  * @brief The action interface allows a class to extend itself to accept actions.
@@ -30,24 +30,54 @@ class ActionInterface
      * @brief Add an action for this sprite to perform.
      * @param action The action to add to the queue.
      */
-    virtual void addAction(Action* action);
+    inline void addAction(Action* action)
+    {
+    	mActions.push_back(action);
+    }
 
     /**
      * @brief Clear the current actions.
      */
-    virtual void clearActions();
+    inline void clearActions()
+    {
+    	// Delete actions.
+    	for(ActionList::iterator it = mActions.begin(); it != mActions.end(); ++it)
+    	{
+    		delete *it;
+    	}
+
+    	mActions.clear();
+    }
 
     /**
      * @brief The performing state.
      * @return True if there is currently an active action.
      */
-    virtual bool isPerforming() const;
+    inline bool isPerforming() const
+    {
+    	return !mActions.empty();
+    }
 
     /**
      * @brief Perform logic.
-     * @param eData The environmental data.
+     * @param level The level in which the action takes place.
      */
-    virtual void logic(EnvironmentData& eData);
+    inline void logic(Level& level)
+    {
+    	// Check for actions: If there is a current action set then activate it.
+    	if(!mActions.empty())
+    	{
+    		Action* temp = *(mActions.begin());
+    		temp->activate(level);
+
+    		// If that action is now performed, then remove it.
+    		if(temp->isPerformed())
+    		{
+    			mActions.pop_front();
+    			delete temp;
+    		}
+    	}
+    }
 
     private:
     /**

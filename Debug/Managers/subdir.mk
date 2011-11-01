@@ -4,21 +4,18 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
-../Managers/AnimationManager.cpp \
 ../Managers/AudioManager.cpp \
 ../Managers/FontManager.cpp \
 ../Managers/TilesetManager.cpp \
 ../Managers/VideoManager.cpp 
 
 OBJS += \
-./Managers/AnimationManager.o \
 ./Managers/AudioManager.o \
 ./Managers/FontManager.o \
 ./Managers/TilesetManager.o \
 ./Managers/VideoManager.o 
 
 CPP_DEPS += \
-./Managers/AnimationManager.d \
 ./Managers/AudioManager.d \
 ./Managers/FontManager.d \
 ./Managers/TilesetManager.d \

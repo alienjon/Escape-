@@ -6,12 +6,11 @@
  */
 #include "CreditsMenu.hpp"
 
+#include "../../Game/Keywords.hpp"
 #include "../MenuScreen.hpp"
 #include "../../Managers/VideoManager.hpp"
 
-using std::string;
-
-CreditsMenu::CreditsMenu() : mBackButton(ID_MAINMENU_BUTTON_MAIN, EVENT_SLIDE_MAINMENU)
+CreditsMenu::CreditsMenu() : mBackButton(ID_MAINMENU_BUTTON_MAIN)
 {
     // Set and configure the credits.
     mText.setText("CODING CREDITS");
@@ -75,7 +74,8 @@ CreditsMenu::CreditsMenu() : mBackButton(ID_MAINMENU_BUTTON_MAIN, EVENT_SLIDE_MA
 
     // Place the button in the lower right corner.
     add(&mBackButton, getWidth() - mBackButton.getWidth() - 5, getHeight() - mBackButton.getHeight() - 5);
-    mBackButton.addEventListener(this);
+    mBackButton.setActionEventId(ACTION_SLIDE_MAINMENU);
+    mBackButton.addActionListener(this);
 }
 
 CreditsMenu::~CreditsMenu()
@@ -83,10 +83,5 @@ CreditsMenu::~CreditsMenu()
     remove(&mScrollArea);
     remove(&mBackButton);
 
-    mBackButton.removeEventListener(this);
-}
-
-void CreditsMenu::eventOccurred(Event event, const string& content, CreatureMovedToPointListener* creatureMovedToPointListener)
-{
-    pushEvent(event, content, creatureMovedToPointListener);
+    mBackButton.removeActionListener(this);
 }

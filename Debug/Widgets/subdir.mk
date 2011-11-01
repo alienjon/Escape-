@@ -6,7 +6,6 @@
 CPP_SRCS += \
 ../Widgets/FPSDisplayWidget.cpp \
 ../Widgets/GameOptionsWidget.cpp \
-../Widgets/GameOverWidget.cpp \
 ../Widgets/GameScreenMenuBar.cpp \
 ../Widgets/LevelCompleteWidget.cpp \
 ../Widgets/MenuButton.cpp \
@@ -18,7 +17,6 @@ CPP_SRCS += \
 OBJS += \
 ./Widgets/FPSDisplayWidget.o \
 ./Widgets/GameOptionsWidget.o \
-./Widgets/GameOverWidget.o \
 ./Widgets/GameScreenMenuBar.o \
 ./Widgets/LevelCompleteWidget.o \
 ./Widgets/MenuButton.o \
@@ -30,7 +28,6 @@ OBJS += \
 CPP_DEPS += \
 ./Widgets/FPSDisplayWidget.d \
 ./Widgets/GameOptionsWidget.d \
-./Widgets/GameOverWidget.d \
 ./Widgets/GameScreenMenuBar.d \
 ./Widgets/LevelCompleteWidget.d \
 ./Widgets/MenuButton.d \

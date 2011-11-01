@@ -1,7 +1,5 @@
 Screens/SpriteCreditScreen.d: ../Screens/SpriteCreditScreen.cpp \
- ../Screens/SpriteCreditScreen.hpp \
- ../Screens/../Listeners/CreatureMovedToPointListener.hpp \
- ../Screens/../Game/Event.hpp ../Screens/../Game/GUI.hpp \
+ ../Screens/SpriteCreditScreen.hpp ../Screens/../Game/GUI.hpp \
  ../Screens/../Game/../guichan.hpp \
  ../Screens/../Game/../Guichan/actionevent.hpp \
  ../Screens/../Game/../Guichan/event.hpp \
@@ -120,9 +118,7 @@ Screens/SpriteCreditScreen.d: ../Screens/SpriteCreditScreen.cpp \
  ../Screens/../Game/../Engine/Surface.hpp \
  ../Screens/../Game/../Engine/../Math/Rectangle.hpp \
  ../Screens/../Game/../Engine/Timer.hpp ../Screens/../Engine/Renderer.hpp \
- ../Screens/Screen.hpp ../Screens/../guichan.hpp \
- ../Screens/../Game/Game.hpp \
- ../Screens/../Game/../Listeners/CreatureMovedToPointListener.hpp \
+ ../Screens/Screen.hpp ../Screens/../Game/Game.hpp \
  ../Screens/../Game/../Engine/Cursor.hpp \
  ../Screens/../Game/../Engine/../Engine/Renderer.hpp \
  ../Screens/../Game/../Engine/../Engine/Sprite.hpp \
@@ -134,16 +130,9 @@ Screens/SpriteCreditScreen.d: ../Screens/SpriteCreditScreen.cpp \
  ../Screens/../Game/../Engine/../Engine/Timer.hpp \
  ../Screens/../Game/../Engine/../Engine/../Math/Vector.hpp \
  ../Screens/../Game/../Engine/../Math/Vector.hpp \
- ../Screens/../Game/../Listeners/EventListener.hpp \
- ../Screens/../Game/../Listeners/../Listeners/CreatureMovedToPointListener.hpp \
- ../Screens/../Game/../Listeners/../Game/Event.hpp \
  ../Screens/../Game/../Game/Input.hpp \
- ../Screens/../Game/../Game/../Math/Vector.hpp \
- ../Screens/../Interfaces/EventInterface.hpp \
- ../Screens/../Interfaces/../Listeners/CreatureMovedToPointListener.hpp \
- ../Screens/../Interfaces/../Listeners/EventListener.hpp \
- ../Screens/../Listeners/EventListener.hpp ../Screens/../Game/Input.hpp \
- ../Screens/../Managers/VideoManager.hpp \
+ ../Screens/../Game/../Game/../Math/Vector.hpp ../Screens/../guichan.hpp \
+ ../Screens/../Game/Input.hpp ../Screens/../Managers/VideoManager.hpp \
  ../Screens/../Managers/../guichan.hpp \
  ../Screens/../Managers/../Math/Rectangle.hpp \
  ../Screens/../Managers/../Engine/Surface.hpp \
@@ -154,10 +143,6 @@ Screens/SpriteCreditScreen.d: ../Screens/SpriteCreditScreen.cpp \
  ../Screens/../Engine/Timer.hpp
 
 ../Screens/SpriteCreditScreen.hpp:
-
-../Screens/../Listeners/CreatureMovedToPointListener.hpp:
-
-../Screens/../Game/Event.hpp:
 
 ../Screens/../Game/GUI.hpp:
 
@@ -401,11 +386,7 @@ Screens/SpriteCreditScreen.d: ../Screens/SpriteCreditScreen.cpp \
 
 ../Screens/Screen.hpp:
 
-../Screens/../guichan.hpp:
-
 ../Screens/../Game/Game.hpp:
-
-../Screens/../Game/../Listeners/CreatureMovedToPointListener.hpp:
 
 ../Screens/../Game/../Engine/Cursor.hpp:
 
@@ -429,23 +410,11 @@ Screens/SpriteCreditScreen.d: ../Screens/SpriteCreditScreen.cpp \
 
 ../Screens/../Game/../Engine/../Math/Vector.hpp:
 
-../Screens/../Game/../Listeners/EventListener.hpp:
-
-../Screens/../Game/../Listeners/../Listeners/CreatureMovedToPointListener.hpp:
-
-../Screens/../Game/../Listeners/../Game/Event.hpp:
-
 ../Screens/../Game/../Game/Input.hpp:
 
 ../Screens/../Game/../Game/../Math/Vector.hpp:
 
-../Screens/../Interfaces/EventInterface.hpp:
-
-../Screens/../Interfaces/../Listeners/CreatureMovedToPointListener.hpp:
-
-../Screens/../Interfaces/../Listeners/EventListener.hpp:
-
-../Screens/../Listeners/EventListener.hpp:
+../Screens/../guichan.hpp:
 
 ../Screens/../Game/Input.hpp:
 

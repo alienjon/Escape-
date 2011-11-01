@@ -15,7 +15,7 @@ PlayMusicAction::PlayMusicAction(const string& music, unsigned int loops, unsign
 {
 }
 
-void PlayMusicAction::activate(EnvironmentData& eData)
+void PlayMusicAction::activate(Level& level)
 {
     // Play the music.
     AudioManager::playMusic(mMusic, mLoops, mFadein);

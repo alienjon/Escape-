@@ -1,8 +1,5 @@
 Screens/MenuScreen.d: ../Screens/MenuScreen.cpp ../Screens/MenuScreen.hpp \
- ../Screens/../Listeners/CreatureMovedToPointListener.hpp \
  ../Screens/MenuScreenWidgets/CreditsMenu.hpp \
- ../Screens/MenuScreenWidgets/../../Listeners/CreatureMovedToPointListener.hpp \
- ../Screens/MenuScreenWidgets/../../Game/Event.hpp \
  ../Screens/MenuScreenWidgets/../../guichan.hpp \
  ../Screens/MenuScreenWidgets/../../Guichan/actionevent.hpp \
  ../Screens/MenuScreenWidgets/../../Guichan/event.hpp \
@@ -90,14 +87,9 @@ Screens/MenuScreen.d: ../Screens/MenuScreen.cpp ../Screens/MenuScreen.hpp \
  ../Screens/MenuScreenWidgets/../../Guichan/platform.hpp \
  ../Screens/MenuScreenWidgets/../../Widgets/MenuButton.hpp \
  ../Screens/MenuScreenWidgets/../../Widgets/../guichan.hpp \
- ../Screens/MenuScreenWidgets/../../Widgets/../Game/Event.hpp \
- ../Screens/MenuScreenWidgets/../../Widgets/../Listeners/EventListener.hpp \
- ../Screens/MenuScreenWidgets/../../Widgets/../Listeners/../Listeners/CreatureMovedToPointListener.hpp \
- ../Screens/MenuScreenWidgets/../../Widgets/../Listeners/../Game/Event.hpp \
  ../Screens/MenuScreenWidgets/MenuWidget.hpp \
  ../Screens/MenuScreenWidgets/../../Engine/Colors.hpp \
  ../Screens/MenuScreenWidgets/../../Engine/../guichan.hpp \
- ../Screens/MenuScreenWidgets/../../Listeners/EventListener.hpp \
  ../Screens/MenuScreenWidgets/../../Managers/VideoManager.hpp \
  ../Screens/MenuScreenWidgets/../../Managers/../guichan.hpp \
  ../Screens/MenuScreenWidgets/../../Managers/../Math/Rectangle.hpp \
@@ -121,9 +113,8 @@ Screens/MenuScreen.d: ../Screens/MenuScreen.cpp ../Screens/MenuScreen.hpp \
  ../Screens/MenuScreenWidgets/../../Managers/../Engine/../Guichan/sdl/../mouseinput.hpp \
  ../Screens/MenuScreenWidgets/../../Managers/../Engine/../Guichan/platform.hpp \
  ../Screens/MenuScreenWidgets/../../Managers/../Engine/../Math/Rectangle.hpp \
- ../Screens/../Game/Event.hpp ../Screens/../guichan.hpp \
- ../Screens/MenuScreenWidgets/MainMenu.hpp ../Screens/../Game/Map.hpp \
- ../Screens/../Game/../Math/CollisionArea.hpp \
+ ../Screens/../guichan.hpp ../Screens/MenuScreenWidgets/MainMenu.hpp \
+ ../Screens/../Game/Map.hpp ../Screens/../Game/../Math/CollisionArea.hpp \
  ../Screens/../Game/../Math/../Math/Rectangle.hpp \
  ../Screens/../Game/../Math/../Engine/Renderer.hpp \
  ../Screens/../Game/../Math/../Engine/../Math/Quadrilateral.hpp \
@@ -146,9 +137,7 @@ Screens/MenuScreen.d: ../Screens/MenuScreen.cpp ../Screens/MenuScreen.hpp \
  ../Screens/MenuScreenWidgets/NewGameMenu.hpp \
  ../Screens/MenuScreenWidgets/OptionsMenu.hpp \
  ../Screens/../Engine/Renderer.hpp ../Screens/Screen.hpp \
- ../Screens/../Game/Game.hpp \
- ../Screens/../Game/../Listeners/CreatureMovedToPointListener.hpp \
- ../Screens/../Game/../Engine/Cursor.hpp \
+ ../Screens/../Game/Game.hpp ../Screens/../Game/../Engine/Cursor.hpp \
  ../Screens/../Game/../Engine/../Engine/Renderer.hpp \
  ../Screens/../Game/../Engine/../Engine/Sprite.hpp \
  ../Screens/../Game/../Engine/../Engine/../guichan.hpp \
@@ -158,7 +147,6 @@ Screens/MenuScreen.d: ../Screens/MenuScreen.cpp ../Screens/MenuScreen.hpp \
  ../Screens/../Game/../Engine/../Engine/Surface.hpp \
  ../Screens/../Game/../Engine/../Engine/Timer.hpp \
  ../Screens/../Game/../Engine/../Engine/../Math/Vector.hpp \
- ../Screens/../Game/../Listeners/EventListener.hpp \
  ../Screens/../Game/../guichan.hpp ../Screens/../Game/../Game/Input.hpp \
  ../Screens/../Game/../Game/../Math/Vector.hpp \
  ../Screens/../Game/../Engine/Timer.hpp ../Screens/../Game/GUI.hpp \
@@ -171,11 +159,7 @@ Screens/MenuScreen.d: ../Screens/MenuScreen.cpp ../Screens/MenuScreen.hpp \
  ../Screens/../Game/../Widgets/../guichan.hpp \
  ../Screens/../Game/../Widgets/../Math/Vector.hpp \
  ../Screens/../Game/../Widgets/../Engine/Timer.hpp \
- ../Screens/../Game/../Engine/Surface.hpp \
- ../Screens/../Interfaces/EventInterface.hpp \
- ../Screens/../Interfaces/../Listeners/CreatureMovedToPointListener.hpp \
- ../Screens/../Interfaces/../Listeners/EventListener.hpp \
- ../Screens/../Listeners/EventListener.hpp ../Screens/../Game/Input.hpp \
+ ../Screens/../Game/../Engine/Surface.hpp ../Screens/../Game/Input.hpp \
  ../Screens/../Managers/VideoManager.hpp \
  ../Screens/../Engine/Viewport.hpp \
  ../Screens/../Managers/AudioManager.hpp \
@@ -187,13 +171,7 @@ Screens/MenuScreen.d: ../Screens/MenuScreen.cpp ../Screens/MenuScreen.hpp \
 
 ../Screens/MenuScreen.hpp:
 
-../Screens/../Listeners/CreatureMovedToPointListener.hpp:
-
 ../Screens/MenuScreenWidgets/CreditsMenu.hpp:
-
-../Screens/MenuScreenWidgets/../../Listeners/CreatureMovedToPointListener.hpp:
-
-../Screens/MenuScreenWidgets/../../Game/Event.hpp:
 
 ../Screens/MenuScreenWidgets/../../guichan.hpp:
 
@@ -369,21 +347,11 @@ Screens/MenuScreen.d: ../Screens/MenuScreen.cpp ../Screens/MenuScreen.hpp \
 
 ../Screens/MenuScreenWidgets/../../Widgets/../guichan.hpp:
 
-../Screens/MenuScreenWidgets/../../Widgets/../Game/Event.hpp:
-
-../Screens/MenuScreenWidgets/../../Widgets/../Listeners/EventListener.hpp:
-
-../Screens/MenuScreenWidgets/../../Widgets/../Listeners/../Listeners/CreatureMovedToPointListener.hpp:
-
-../Screens/MenuScreenWidgets/../../Widgets/../Listeners/../Game/Event.hpp:
-
 ../Screens/MenuScreenWidgets/MenuWidget.hpp:
 
 ../Screens/MenuScreenWidgets/../../Engine/Colors.hpp:
 
 ../Screens/MenuScreenWidgets/../../Engine/../guichan.hpp:
-
-../Screens/MenuScreenWidgets/../../Listeners/EventListener.hpp:
 
 ../Screens/MenuScreenWidgets/../../Managers/VideoManager.hpp:
 
@@ -430,8 +398,6 @@ Screens/MenuScreen.d: ../Screens/MenuScreen.cpp ../Screens/MenuScreen.hpp \
 ../Screens/MenuScreenWidgets/../../Managers/../Engine/../Guichan/platform.hpp:
 
 ../Screens/MenuScreenWidgets/../../Managers/../Engine/../Math/Rectangle.hpp:
-
-../Screens/../Game/Event.hpp:
 
 ../Screens/../guichan.hpp:
 
@@ -489,8 +455,6 @@ Screens/MenuScreen.d: ../Screens/MenuScreen.cpp ../Screens/MenuScreen.hpp \
 
 ../Screens/../Game/Game.hpp:
 
-../Screens/../Game/../Listeners/CreatureMovedToPointListener.hpp:
-
 ../Screens/../Game/../Engine/Cursor.hpp:
 
 ../Screens/../Game/../Engine/../Engine/Renderer.hpp:
@@ -510,8 +474,6 @@ Screens/MenuScreen.d: ../Screens/MenuScreen.cpp ../Screens/MenuScreen.hpp \
 ../Screens/../Game/../Engine/../Engine/Timer.hpp:
 
 ../Screens/../Game/../Engine/../Engine/../Math/Vector.hpp:
-
-../Screens/../Game/../Listeners/EventListener.hpp:
 
 ../Screens/../Game/../guichan.hpp:
 
@@ -542,14 +504,6 @@ Screens/MenuScreen.d: ../Screens/MenuScreen.cpp ../Screens/MenuScreen.hpp \
 ../Screens/../Game/../Widgets/../Engine/Timer.hpp:
 
 ../Screens/../Game/../Engine/Surface.hpp:
-
-../Screens/../Interfaces/EventInterface.hpp:
-
-../Screens/../Interfaces/../Listeners/CreatureMovedToPointListener.hpp:
-
-../Screens/../Interfaces/../Listeners/EventListener.hpp:
-
-../Screens/../Listeners/EventListener.hpp:
 
 ../Screens/../Game/Input.hpp:
 

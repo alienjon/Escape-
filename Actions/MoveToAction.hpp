@@ -29,10 +29,10 @@ class MoveToAction : public Action, public CreatureMovedToPointListener
     virtual ~MoveToAction();
 
     /**
-     * @brief Set the facing direction of the creature and determine the slope (on the first call) and move the creature on subsequent calls.
-     * @param eData The environment data.
+     * @brief Activate the action.
+     * @param level The level in which the action takes place.
      */
-    virtual void activate(EnvironmentData& eData);
+    virtual void activate(Level& level);
 
     /**
      * @brief The creature has moved to the next point on a path.

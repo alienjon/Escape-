@@ -66,10 +66,7 @@ Widgets/MenuButton.d: ../Widgets/MenuButton.cpp ../Widgets/MenuButton.hpp \
  ../Widgets/../Guichan/widgets/textfield.hpp \
  ../Widgets/../Guichan/widgets/window.hpp \
  ../Widgets/../Guichan/widgets/container.hpp \
- ../Widgets/../Guichan/platform.hpp ../Widgets/../Game/Event.hpp \
- ../Widgets/../Listeners/EventListener.hpp \
- ../Widgets/../Listeners/../Listeners/CreatureMovedToPointListener.hpp \
- ../Widgets/../Listeners/../Game/Event.hpp \
+ ../Widgets/../Guichan/platform.hpp \
  ../Widgets/../Managers/AudioManager.hpp \
  ../Widgets/../Managers/../Listeners/SoundStoppedListener.hpp \
  ../Widgets/../Managers/FontManager.hpp \
@@ -268,14 +265,6 @@ Widgets/MenuButton.d: ../Widgets/MenuButton.cpp ../Widgets/MenuButton.hpp \
 ../Widgets/../Guichan/widgets/container.hpp:
 
 ../Widgets/../Guichan/platform.hpp:
-
-../Widgets/../Game/Event.hpp:
-
-../Widgets/../Listeners/EventListener.hpp:
-
-../Widgets/../Listeners/../Listeners/CreatureMovedToPointListener.hpp:
-
-../Widgets/../Listeners/../Game/Event.hpp:
 
 ../Widgets/../Managers/AudioManager.hpp:
 

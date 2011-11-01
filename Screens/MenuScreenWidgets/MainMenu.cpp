@@ -8,27 +8,31 @@
 
 #include <algorithm>
 
+#include "../../Game/Keywords.hpp"
 #include "../MenuScreen.hpp"
 #include "../../Managers/VideoManager.hpp"
 
 using std::max;
-using std::string;
 
 MainMenu::MainMenu() :
-	mStartButton(ID_MAINMENU_BUTTON_START, EVENT_SLIDE_NEWMENU),
-	mOptionsButton(ID_MAINMENU_BUTTON_OPTIONS, EVENT_SLIDE_OPTIONSMENU),
-	mCreditsButton(ID_MAINMENU_BUTTON_CREDITS, EVENT_SLIDE_CREDITSMENU),
-	mQuitButton(ID_MAINMENU_BUTTON_QUIT, EVENT_QUIT)
+	mStartButton(ID_MAINMENU_BUTTON_START),
+	mOptionsButton(ID_MAINMENU_BUTTON_OPTIONS),
+	mCreditsButton(ID_MAINMENU_BUTTON_CREDITS),
+	mQuitButton(ID_MAINMENU_BUTTON_QUIT)
 {
     // This menu is see through.
     setOpaque(false);
     setFrameSize(0);
 
     // Listen to each button.
-    mStartButton.addEventListener(this);
-    mOptionsButton.addEventListener(this);
-    mCreditsButton.addEventListener(this);
-    mQuitButton.addEventListener(this);
+    mStartButton.addActionListener(this);
+    mStartButton.setActionEventId(ACTION_SLIDE_NEWMENU);
+    mOptionsButton.addActionListener(this);
+    mOptionsButton.setActionEventId(ACTION_SLIDE_OPTIONSMENU);
+    mCreditsButton.addActionListener(this);
+    mCreditsButton.setActionEventId(ACTION_SLIDE_CREDITSMENU);
+    mQuitButton.addActionListener(this);
+    mQuitButton.setActionEventId(ACTION_QUIT);
 
     // The horizontal buffer between buttons.
     int buffer = 8;
@@ -41,22 +45,21 @@ MainMenu::MainMenu() :
     add(&mOptionsButton, (getWidth() / 2) - (mOptionsButton.getWidth() / 2), mStartButton.getY() + mStartButton.getHeight() + buffer);
     add(&mCreditsButton, (getWidth() / 2) - (mCreditsButton.getWidth() / 2), mOptionsButton.getY() + mOptionsButton.getHeight() + buffer);
     add(&mQuitButton, (getWidth() / 2) - (mQuitButton.getWidth() / 2), mCreditsButton.getY() + mCreditsButton.getHeight() + buffer);
+    mStartButton.setActionEventId(ACTION_SLIDE_STARTGAME);
+    mOptionsButton.setActionEventId(ACTION_SLIDE_OPTIONSMENU);
+    mCreditsButton.setActionEventId(ACTION_SLIDE_CREDITSMENU);
+    mQuitButton.setActionEventId(ACTION_QUIT);
 }
 
 MainMenu::~MainMenu()
 {
-    mStartButton.removeEventListener(this);
-    mOptionsButton.removeEventListener(this);
-    mCreditsButton.removeEventListener(this);
-    mQuitButton.removeEventListener(this);
+    mStartButton.removeActionListener(this);
+    mOptionsButton.removeActionListener(this);
+    mCreditsButton.removeActionListener(this);
+    mQuitButton.removeActionListener(this);
 
     remove(&mQuitButton);
     remove(&mCreditsButton);
     remove(&mOptionsButton);
     remove(&mStartButton);
-}
-
-void MainMenu::eventOccurred(Event event, const string& content, CreatureMovedToPointListener* creatureMovedToPointListener)
-{
-    pushEvent(event, content, creatureMovedToPointListener);
 }

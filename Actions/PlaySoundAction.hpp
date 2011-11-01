@@ -4,7 +4,6 @@
  *  Created on: Aug 12, 2009
  *      Author: alienjon
  */
-
 #ifndef PLAYSOUNDACTION_HPP_
 #define PLAYSOUNDACTION_HPP_
 
@@ -27,10 +26,10 @@ class PlaySoundAction : public Action
     PlaySoundAction(const std::string& sound, unsigned int loops);
 
     /**
-     * @brief Play the sound.
-     * @param eData The environment data.
+     * @brief Activate the action.
+     * @param level The level in which the action takes place.
      */
-    virtual void activate(EnvironmentData& eData);
+    virtual void activate(Level& level);
 
     private:
     /**

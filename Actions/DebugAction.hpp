@@ -4,7 +4,6 @@
  *  Created on: Aug 7, 2009
  *      Author: alienjon
  */
-
 #ifndef DEBUGACTION_HPP_
 #define DEBUGACTION_HPP_
 
@@ -25,9 +24,9 @@ class DebugAction : public Action
 
     /**
      * @brief Activate the action.
-     * @param eData The environment data.
+     * @param level The level in which the action takes place.
      */
-    virtual void activate(EnvironmentData& eData);
+    virtual void activate(Level& level);
 
     private:
     /**

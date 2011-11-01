@@ -6,12 +6,11 @@
  */
 #include "OptionsMenu.hpp"
 
+#include "../../Game/Keywords.hpp"
 #include "../MenuScreen.hpp"
 #include "../../Managers/VideoManager.hpp"
 
-using std::string;
-
-OptionsMenu::OptionsMenu() : mBackButton(ID_MAINMENU_BUTTON_MAIN, EVENT_SLIDE_MAINMENU)
+OptionsMenu::OptionsMenu() : mBackButton(ID_MAINMENU_BUTTON_MAIN)
 {
     // Add widgets to the container.
     // @todo Add widgets
@@ -24,20 +23,16 @@ OptionsMenu::OptionsMenu() : mBackButton(ID_MAINMENU_BUTTON_MAIN, EVENT_SLIDE_MA
     add(&mContainer, 100, 150);
 
     // Place the back button at the bottom right of the screen.
+    mBackButton.setActionEventId(ACTION_SLIDE_MAINMENU);
     add(&mBackButton,
         getWidth() - mBackButton.getWidth() - 5,
         getHeight() - mBackButton.getHeight() - 5);
-    mBackButton.addEventListener(this);
+    mBackButton.addActionListener(this);
 }
 
 OptionsMenu::~OptionsMenu()
 {
     remove(&mContainer);
     remove(&mBackButton);
-    mBackButton.removeEventListener(this);
-}
-
-void OptionsMenu::eventOccurred(Event event, const string& content, CreatureMovedToPointListener* creatureMovedToPointListener)
-{
-    pushEvent(event, content, creatureMovedToPointListener);
+    mBackButton.removeActionListener(this);
 }

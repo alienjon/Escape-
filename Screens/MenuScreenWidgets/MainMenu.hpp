@@ -4,14 +4,9 @@
  *  Created on: Jul 1, 2009
  *      Author: alienjon
  */
-
 #ifndef MAINMENU_HPP_
 #define MAINMENU_HPP_
 
-#include <string>
-
-#include "../../Listeners/CreatureMovedToPointListener.hpp"
-#include "../../Game/Event.hpp"
 #include "../../guichan.hpp"
 #include "../../Widgets/MenuButton.hpp"
 #include "MenuWidget.hpp"
@@ -27,14 +22,6 @@ class MainMenu : public MenuWidget
      */
     MainMenu();
     virtual ~MainMenu();
-
-    /**
-     * @brief An event occurred.
-     * @param event The event that occurred.
-     * @param content Additional content.
-     * @param creatureMovedToPointListener A potential creature moved to point listener.
-     */
-    virtual void eventOccurred(Event event, const std::string& content = "", CreatureMovedToPointListener* creaturedMovedToPointListener = 0);
 
     private:
     /**

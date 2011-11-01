@@ -14,7 +14,7 @@ PlaySoundAction::PlaySoundAction(const std::string& sound, unsigned int loops) :
 {
 }
 
-void PlaySoundAction::activate(EnvironmentData& eData)
+void PlaySoundAction::activate(Level& level)
 {
     // Play the sound.
     AudioManager::playSound(mSound, mLoops);

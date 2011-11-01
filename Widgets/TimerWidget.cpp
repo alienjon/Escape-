@@ -12,15 +12,16 @@
 
 using std::string;
 
-TimerWidget::TimerWidget()
+TimerWidget::TimerWidget() :
+	mStartTime(0)
 {
 	// Set the font.
-	setFont(FontManager::get(FONT_DEFAULT));//@todo identify a timer widget font
+	setFont(FontManager::get(FONT_DEFAULT));//@todo find a timer widget font
 }
 
 unsigned int TimerWidget::getTime() const
 {
-	return mTimer.getTime();
+	return (mStartTime < 0) ? mTimer.getTime() : (unsigned int)mStartTime - mTimer.getTime();
 }
 
 void TimerWidget::logic()
@@ -28,9 +29,15 @@ void TimerWidget::logic()
 	// Perform GCN logic.
 	gcn::Label::logic();
 
-	// Update the counter.
-	setCaption(convertToTime(mTimer.getTime()));
-	adjustSize();
+	// Update the counter if the timer is running.
+	if(mTimer.isStarted() && !mTimer.isPaused())
+	{
+		// If the timer has exceeded the start time, then time is up.
+		if(mStartTime >= 0 && mTimer.getTime() > (unsigned int)mStartTime)
+			stop();
+		setCaption(convertToTime((mStartTime < 0) ? mTimer.getTime() : (unsigned int)mStartTime - mTimer.getTime()));
+		adjustSize();
+	}
 }
 
 void TimerWidget::pause()
@@ -38,12 +45,19 @@ void TimerWidget::pause()
 	mTimer.pause();
 }
 
-void TimerWidget::start()
+void TimerWidget::start(int startTime)
 {
+	mStartTime = startTime;
 	mTimer.start();
 }
 
 void TimerWidget::stop()
 {
+	mStartTime = -1;
 	mTimer.stop();
+}
+
+void TimerWidget::unpause()
+{
+	mTimer.unpause();
 }

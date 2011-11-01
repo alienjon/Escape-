@@ -1,6 +1,5 @@
 Screens/GameScreen.d: ../Screens/GameScreen.cpp ../Screens/GameScreen.hpp \
- ../Screens/../Listeners/ChangeScoreListener.hpp \
- ../Screens/../Game/Event.hpp ../Screens/../Widgets/GameOptionsWidget.hpp \
+ ../Screens/../Widgets/GameOptionsWidget.hpp \
  ../Screens/../Widgets/../guichan.hpp \
  ../Screens/../Widgets/../Guichan/actionevent.hpp \
  ../Screens/../Widgets/../Guichan/event.hpp \
@@ -86,13 +85,8 @@ Screens/GameScreen.d: ../Screens/GameScreen.cpp ../Screens/GameScreen.hpp \
  ../Screens/../Widgets/../Guichan/widgets/window.hpp \
  ../Screens/../Widgets/../Guichan/widgets/container.hpp \
  ../Screens/../Widgets/../Guichan/platform.hpp \
- ../Screens/../Widgets/GameOverWidget.hpp \
- ../Screens/../Widgets/../Listeners/CreatureMovedToPointListener.hpp \
- ../Screens/../Widgets/MenuButton.hpp \
- ../Screens/../Widgets/../Game/Event.hpp \
- ../Screens/../Widgets/../Listeners/EventListener.hpp \
- ../Screens/../Widgets/../Listeners/../Listeners/CreatureMovedToPointListener.hpp \
- ../Screens/../Widgets/../Listeners/../Game/Event.hpp \
+ ../Screens/../Widgets/../Widgets/MenuButton.hpp \
+ ../Screens/../Widgets/../Widgets/../guichan.hpp \
  ../Screens/../Game/GUI.hpp ../Screens/../Game/../guichan.hpp \
  ../Screens/../Game/../Guichan/sdl.hpp \
  ../Screens/../Game/../Guichan/sdl/sdlgraphics.hpp \
@@ -131,7 +125,6 @@ Screens/GameScreen.d: ../Screens/GameScreen.cpp ../Screens/GameScreen.hpp \
  ../Screens/../Game/Input.hpp ../Screens/../Game/../Math/Vector.hpp \
  ../Screens/../Widgets/GameScreenMenuBar.hpp \
  ../Screens/../Widgets/../Widgets/MiniMap.hpp \
- ../Screens/../Widgets/../Widgets/../guichan.hpp \
  ../Screens/../Widgets/../Widgets/../Math/Rectangle.hpp \
  ../Screens/../Widgets/../Widgets/../Engine/Surface.hpp \
  ../Screens/../Widgets/../Widgets/../Engine/Viewport.hpp \
@@ -148,14 +141,8 @@ Screens/GameScreen.d: ../Screens/GameScreen.cpp ../Screens/GameScreen.hpp \
  ../Screens/../Game/../Interfaces/ChangeScoreInterface.hpp \
  ../Screens/../Game/../Interfaces/../Listeners/ChangeScoreListener.hpp \
  ../Screens/../Game/../Listeners/ChangeScoreListener.hpp \
- ../Screens/../Game/../Listeners/CreatureMovedToPointListener.hpp \
  ../Screens/../Game/../Listeners/DeathListener.hpp \
- ../Screens/../Game/../Interfaces/EventInterface.hpp \
- ../Screens/../Game/../Interfaces/../Listeners/CreatureMovedToPointListener.hpp \
- ../Screens/../Game/../Interfaces/../Listeners/EventListener.hpp \
- ../Screens/../Game/../Listeners/EventListener.hpp \
  ../Screens/../Game/../Game/Game.hpp \
- ../Screens/../Game/../Game/../Listeners/CreatureMovedToPointListener.hpp \
  ../Screens/../Game/../Game/../Engine/Cursor.hpp \
  ../Screens/../Game/../Game/../Engine/../Engine/Renderer.hpp \
  ../Screens/../Game/../Game/../Engine/../Engine/Sprite.hpp \
@@ -167,17 +154,10 @@ Screens/GameScreen.d: ../Screens/GameScreen.cpp ../Screens/GameScreen.hpp \
  ../Screens/../Game/../Game/../Engine/../Engine/Timer.hpp \
  ../Screens/../Game/../Game/../Engine/../Engine/../Math/Vector.hpp \
  ../Screens/../Game/../Game/../Engine/../Math/Vector.hpp \
- ../Screens/../Game/../Game/../Listeners/EventListener.hpp \
  ../Screens/../Game/../Game/../guichan.hpp \
  ../Screens/../Game/../Game/../Game/Input.hpp \
  ../Screens/../Game/../Game/../Engine/Renderer.hpp \
  ../Screens/../Game/../Game/../Engine/Timer.hpp \
- ../Screens/../Game/../Interfaces/GameInterfaceInterface.hpp \
- ../Screens/../Game/../Interfaces/../Listeners/InterfaceListener.hpp \
- ../Screens/../Game/../Interfaces/../Listeners/../Math/Rectangle.hpp \
- ../Screens/../Game/../Interfaces/../Listeners/../Math/Vector.hpp \
- ../Screens/../Game/../Interfaces/../Math/Rectangle.hpp \
- ../Screens/../Game/../Interfaces/../Math/Vector.hpp \
  ../Screens/../Game/../Game/Input.hpp \
  ../Screens/../Game/../Listeners/LevelCompleteListener.hpp \
  ../Screens/../Game/../Game/Map.hpp \
@@ -203,21 +183,24 @@ Screens/GameScreen.d: ../Screens/GameScreen.cpp ../Screens/GameScreen.hpp \
  ../Screens/../Widgets/../Widgets/../Listeners/AnimationCycleListener.hpp \
  ../Screens/../Widgets/../Widgets/../Engine/Sprite.hpp \
  ../Screens/../Entities/Player.hpp \
+ ../Screens/../Entities/../Listeners/AddLockListener.hpp \
+ ../Screens/../Entities/../Listeners/../guichan.hpp \
  ../Screens/../Entities/../Entities/Creature.hpp \
  ../Screens/../Entities/../Entities/../Listeners/CreatureMovedToPointListener.hpp \
  ../Screens/../Entities/../Entities/../Entities/Entity.hpp \
  ../Screens/../Entities/../Entities/../Entities/../Interfaces/ActionInterface.hpp \
+ ../Screens/../Entities/../Entities/../Entities/../Interfaces/AddLockInterface.hpp \
+ ../Screens/../Entities/../Entities/../Entities/../Interfaces/../Listeners/AddLockListener.hpp \
+ ../Screens/../Entities/../Entities/../Entities/../Interfaces/../guichan.hpp \
  ../Screens/../Entities/../Entities/../Entities/../Listeners/AnimationCycleListener.hpp \
  ../Screens/../Entities/../Entities/../Entities/../Interfaces/ChangeScoreInterface.hpp \
  ../Screens/../Entities/../Entities/../Entities/../Listeners/DeathListener.hpp \
  ../Screens/../Entities/../Entities/../Entities/../Game/Direction.hpp \
- ../Screens/../Entities/../Entities/../Entities/../Interfaces/EventInterface.hpp \
  ../Screens/../Entities/../Entities/../Entities/../Game/Input.hpp \
  ../Screens/../Entities/../Entities/../Entities/../Math/Vector.hpp \
  ../Screens/../Entities/../Entities/../Entities/../Math/Quadrilateral.hpp \
  ../Screens/../Entities/../Entities/../Entities/../Math/Rectangle.hpp \
  ../Screens/../Entities/../Entities/../Entities/../Interfaces/RemoveLockInterface.hpp \
- ../Screens/../Entities/../Entities/../Entities/../Interfaces/../guichan.hpp \
  ../Screens/../Entities/../Entities/../Entities/../Interfaces/../Listeners/RemoveLockListener.hpp \
  ../Screens/../Entities/../Entities/../Entities/../Interfaces/../Listeners/../guichan.hpp \
  ../Screens/../Entities/../Entities/../Entities/../Engine/Renderer.hpp \
@@ -226,28 +209,20 @@ Screens/GameScreen.d: ../Screens/GameScreen.cpp ../Screens/GameScreen.hpp \
  ../Screens/../Entities/../Entities/../Math/Vector.hpp \
  ../Screens/../Entities/../Entities/../Engine/Timer.hpp \
  ../Screens/../Entities/../Game/Input.hpp \
- ../Screens/../Entities/../Interfaces/RemoveLockInterface.hpp \
+ ../Screens/../Entities/../Listeners/RemoveLockListener.hpp \
  ../Screens/../Entities/../Engine/Timer.hpp \
  ../Screens/../Engine/Renderer.hpp ../Screens/Screen.hpp \
- ../Screens/../Game/Game.hpp ../Screens/../Interfaces/EventInterface.hpp \
- ../Screens/../Listeners/EventListener.hpp \
- ../Screens/../Managers/VideoManager.hpp \
+ ../Screens/../Game/Game.hpp ../Screens/../Managers/VideoManager.hpp \
  ../Screens/../Managers/../guichan.hpp \
  ../Screens/../Managers/../Math/Rectangle.hpp \
  ../Screens/../Managers/../Engine/Surface.hpp \
  ../Screens/../Engine/Viewport.hpp ../Screens/../Engine/Sprite.hpp \
  ../Screens/../Engine/Timer.hpp ../Screens/../Math/Vector.hpp \
- ../Screens/../Managers/AnimationManager.hpp \
- ../Screens/../Managers/../Engine/Sprite.hpp \
  ../Screens/../Entities/Entity.hpp ../Screens/../Game/Keywords.hpp \
  ../Screens/../Engine/Logger.hpp ../Screens/../Engine/../guichan.hpp \
  ../Screens/../main.hpp
 
 ../Screens/GameScreen.hpp:
-
-../Screens/../Listeners/ChangeScoreListener.hpp:
-
-../Screens/../Game/Event.hpp:
 
 ../Screens/../Widgets/GameOptionsWidget.hpp:
 
@@ -421,19 +396,9 @@ Screens/GameScreen.d: ../Screens/GameScreen.cpp ../Screens/GameScreen.hpp \
 
 ../Screens/../Widgets/../Guichan/platform.hpp:
 
-../Screens/../Widgets/GameOverWidget.hpp:
+../Screens/../Widgets/../Widgets/MenuButton.hpp:
 
-../Screens/../Widgets/../Listeners/CreatureMovedToPointListener.hpp:
-
-../Screens/../Widgets/MenuButton.hpp:
-
-../Screens/../Widgets/../Game/Event.hpp:
-
-../Screens/../Widgets/../Listeners/EventListener.hpp:
-
-../Screens/../Widgets/../Listeners/../Listeners/CreatureMovedToPointListener.hpp:
-
-../Screens/../Widgets/../Listeners/../Game/Event.hpp:
+../Screens/../Widgets/../Widgets/../guichan.hpp:
 
 ../Screens/../Game/GUI.hpp:
 
@@ -517,8 +482,6 @@ Screens/GameScreen.d: ../Screens/GameScreen.cpp ../Screens/GameScreen.hpp \
 
 ../Screens/../Widgets/../Widgets/MiniMap.hpp:
 
-../Screens/../Widgets/../Widgets/../guichan.hpp:
-
 ../Screens/../Widgets/../Widgets/../Math/Rectangle.hpp:
 
 ../Screens/../Widgets/../Widgets/../Engine/Surface.hpp:
@@ -551,21 +514,9 @@ Screens/GameScreen.d: ../Screens/GameScreen.cpp ../Screens/GameScreen.hpp \
 
 ../Screens/../Game/../Listeners/ChangeScoreListener.hpp:
 
-../Screens/../Game/../Listeners/CreatureMovedToPointListener.hpp:
-
 ../Screens/../Game/../Listeners/DeathListener.hpp:
 
-../Screens/../Game/../Interfaces/EventInterface.hpp:
-
-../Screens/../Game/../Interfaces/../Listeners/CreatureMovedToPointListener.hpp:
-
-../Screens/../Game/../Interfaces/../Listeners/EventListener.hpp:
-
-../Screens/../Game/../Listeners/EventListener.hpp:
-
 ../Screens/../Game/../Game/Game.hpp:
-
-../Screens/../Game/../Game/../Listeners/CreatureMovedToPointListener.hpp:
 
 ../Screens/../Game/../Game/../Engine/Cursor.hpp:
 
@@ -589,8 +540,6 @@ Screens/GameScreen.d: ../Screens/GameScreen.cpp ../Screens/GameScreen.hpp \
 
 ../Screens/../Game/../Game/../Engine/../Math/Vector.hpp:
 
-../Screens/../Game/../Game/../Listeners/EventListener.hpp:
-
 ../Screens/../Game/../Game/../guichan.hpp:
 
 ../Screens/../Game/../Game/../Game/Input.hpp:
@@ -598,18 +547,6 @@ Screens/GameScreen.d: ../Screens/GameScreen.cpp ../Screens/GameScreen.hpp \
 ../Screens/../Game/../Game/../Engine/Renderer.hpp:
 
 ../Screens/../Game/../Game/../Engine/Timer.hpp:
-
-../Screens/../Game/../Interfaces/GameInterfaceInterface.hpp:
-
-../Screens/../Game/../Interfaces/../Listeners/InterfaceListener.hpp:
-
-../Screens/../Game/../Interfaces/../Listeners/../Math/Rectangle.hpp:
-
-../Screens/../Game/../Interfaces/../Listeners/../Math/Vector.hpp:
-
-../Screens/../Game/../Interfaces/../Math/Rectangle.hpp:
-
-../Screens/../Game/../Interfaces/../Math/Vector.hpp:
 
 ../Screens/../Game/../Game/Input.hpp:
 
@@ -661,6 +598,10 @@ Screens/GameScreen.d: ../Screens/GameScreen.cpp ../Screens/GameScreen.hpp \
 
 ../Screens/../Entities/Player.hpp:
 
+../Screens/../Entities/../Listeners/AddLockListener.hpp:
+
+../Screens/../Entities/../Listeners/../guichan.hpp:
+
 ../Screens/../Entities/../Entities/Creature.hpp:
 
 ../Screens/../Entities/../Entities/../Listeners/CreatureMovedToPointListener.hpp:
@@ -669,6 +610,12 @@ Screens/GameScreen.d: ../Screens/GameScreen.cpp ../Screens/GameScreen.hpp \
 
 ../Screens/../Entities/../Entities/../Entities/../Interfaces/ActionInterface.hpp:
 
+../Screens/../Entities/../Entities/../Entities/../Interfaces/AddLockInterface.hpp:
+
+../Screens/../Entities/../Entities/../Entities/../Interfaces/../Listeners/AddLockListener.hpp:
+
+../Screens/../Entities/../Entities/../Entities/../Interfaces/../guichan.hpp:
+
 ../Screens/../Entities/../Entities/../Entities/../Listeners/AnimationCycleListener.hpp:
 
 ../Screens/../Entities/../Entities/../Entities/../Interfaces/ChangeScoreInterface.hpp:
@@ -676,8 +623,6 @@ Screens/GameScreen.d: ../Screens/GameScreen.cpp ../Screens/GameScreen.hpp \
 ../Screens/../Entities/../Entities/../Entities/../Listeners/DeathListener.hpp:
 
 ../Screens/../Entities/../Entities/../Entities/../Game/Direction.hpp:
-
-../Screens/../Entities/../Entities/../Entities/../Interfaces/EventInterface.hpp:
 
 ../Screens/../Entities/../Entities/../Entities/../Game/Input.hpp:
 
@@ -688,8 +633,6 @@ Screens/GameScreen.d: ../Screens/GameScreen.cpp ../Screens/GameScreen.hpp \
 ../Screens/../Entities/../Entities/../Entities/../Math/Rectangle.hpp:
 
 ../Screens/../Entities/../Entities/../Entities/../Interfaces/RemoveLockInterface.hpp:
-
-../Screens/../Entities/../Entities/../Entities/../Interfaces/../guichan.hpp:
 
 ../Screens/../Entities/../Entities/../Entities/../Interfaces/../Listeners/RemoveLockListener.hpp:
 
@@ -707,7 +650,7 @@ Screens/GameScreen.d: ../Screens/GameScreen.cpp ../Screens/GameScreen.hpp \
 
 ../Screens/../Entities/../Game/Input.hpp:
 
-../Screens/../Entities/../Interfaces/RemoveLockInterface.hpp:
+../Screens/../Entities/../Listeners/RemoveLockListener.hpp:
 
 ../Screens/../Entities/../Engine/Timer.hpp:
 
@@ -716,10 +659,6 @@ Screens/GameScreen.d: ../Screens/GameScreen.cpp ../Screens/GameScreen.hpp \
 ../Screens/Screen.hpp:
 
 ../Screens/../Game/Game.hpp:
-
-../Screens/../Interfaces/EventInterface.hpp:
-
-../Screens/../Listeners/EventListener.hpp:
 
 ../Screens/../Managers/VideoManager.hpp:
 
@@ -736,10 +675,6 @@ Screens/GameScreen.d: ../Screens/GameScreen.cpp ../Screens/GameScreen.hpp \
 ../Screens/../Engine/Timer.hpp:
 
 ../Screens/../Math/Vector.hpp:
-
-../Screens/../Managers/AnimationManager.hpp:
-
-../Screens/../Managers/../Engine/Sprite.hpp:
 
 ../Screens/../Entities/Entity.hpp:
 

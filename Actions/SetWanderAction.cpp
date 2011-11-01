@@ -22,7 +22,7 @@ SetWanderAction::SetWanderAction(Creature* creature, bool state) : mCreature(cre
     }
 }
 
-void SetWanderAction::activate(EnvironmentData& eData)
+void SetWanderAction::activate(Level& level)
 {
     // Set the creature's wandering state.
 //    mCreature->setWandering(mState);@todo review

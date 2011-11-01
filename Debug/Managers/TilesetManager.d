@@ -113,9 +113,7 @@ Managers/TilesetManager.d: ../Managers/TilesetManager.cpp \
  ../Managers/../Game/../Engine/Surface.hpp \
  ../Managers/../Game/../Engine/../Guichan/sdl.hpp \
  ../Managers/../Game/../Engine/../Math/Rectangle.hpp \
- ../Managers/../Game/Game.hpp \
- ../Managers/../Game/../Listeners/CreatureMovedToPointListener.hpp \
- ../Managers/../Game/../Engine/Cursor.hpp \
+ ../Managers/../Game/Game.hpp ../Managers/../Game/../Engine/Cursor.hpp \
  ../Managers/../Game/../Engine/../Engine/Renderer.hpp \
  ../Managers/../Game/../Engine/../Engine/Sprite.hpp \
  ../Managers/../Game/../Engine/../Engine/../guichan.hpp \
@@ -126,9 +124,6 @@ Managers/TilesetManager.d: ../Managers/TilesetManager.cpp \
  ../Managers/../Game/../Engine/../Engine/Timer.hpp \
  ../Managers/../Game/../Engine/../Engine/../Math/Vector.hpp \
  ../Managers/../Game/../Engine/../Math/Vector.hpp \
- ../Managers/../Game/../Listeners/EventListener.hpp \
- ../Managers/../Game/../Listeners/../Listeners/CreatureMovedToPointListener.hpp \
- ../Managers/../Game/../Listeners/../Game/Event.hpp \
  ../Managers/../Game/../guichan.hpp ../Managers/../Game/../Game/Input.hpp \
  ../Managers/../Game/../Game/../Math/Vector.hpp \
  ../Managers/../Game/../Engine/Renderer.hpp \
@@ -369,8 +364,6 @@ Managers/TilesetManager.d: ../Managers/TilesetManager.cpp \
 
 ../Managers/../Game/Game.hpp:
 
-../Managers/../Game/../Listeners/CreatureMovedToPointListener.hpp:
-
 ../Managers/../Game/../Engine/Cursor.hpp:
 
 ../Managers/../Game/../Engine/../Engine/Renderer.hpp:
@@ -392,12 +385,6 @@ Managers/TilesetManager.d: ../Managers/TilesetManager.cpp \
 ../Managers/../Game/../Engine/../Engine/../Math/Vector.hpp:
 
 ../Managers/../Game/../Engine/../Math/Vector.hpp:
-
-../Managers/../Game/../Listeners/EventListener.hpp:
-
-../Managers/../Game/../Listeners/../Listeners/CreatureMovedToPointListener.hpp:
-
-../Managers/../Game/../Listeners/../Game/Event.hpp:
 
 ../Managers/../Game/../guichan.hpp:
 

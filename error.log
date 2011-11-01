@@ -4,5 +4,9 @@ Logging to error.log
 Log: Setting video driver to x11
 Log: Video initialization successful.
 Log: Audio initialization successful.
-Log: Portal(7, 5)
-Log: Debugging disabled
+Log: Portal(7, 7)
+Log: Portal(9, 9)
+Log: Show Game Options
+Log: Show Game Credits
+Log: Portal(9, 9)
+General STD error: MenuScreen::logic() -> Trying to slide from an invalid screen to center.

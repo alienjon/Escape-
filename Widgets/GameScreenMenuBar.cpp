@@ -64,12 +64,17 @@ void GameScreenMenuBar::setScore(unsigned int score)
 	mScoreValue.adjustSize();
 }
 
-void GameScreenMenuBar::start()
+void GameScreenMenuBar::start(int startTime)
 {
-	mTimerWidget.start();
+	mTimerWidget.start(startTime);
 }
 
 void GameScreenMenuBar::stop()
 {
 	mTimerWidget.stop();
+}
+
+void GameScreenMenuBar::unpause()
+{
+	mTimerWidget.unpause();
 }

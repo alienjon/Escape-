@@ -4,21 +4,66 @@
  *  Created on: Aug 7, 2009
  *      Author: alienjon
  */
-
 #include "GameOptionsWidget.hpp"
 
 #include "../Engine/Colors.hpp"
 #include "../Managers/FontManager.hpp"
 #include "../Engine/Logger.hpp"
+#include "../Managers/VideoManager.hpp"
 
 using std::string;
 
-GameOptionsWidget::GameOptionsWidget() : gcn::Window("GAME OPTIONS")
+const string GAMEOPTIONS_RESUME = "GAMEOPTIONS_RESUME";
+const string GAMEOPTIONS_MAINMENU = "GAMEOPTIONS_MAINMENU";
+const string GAMEOPTIONS_EXIT = "GAMEOPTIONS_EXIT";
+
+GameOptionsWidget::GameOptionsWidget() :
+	mResumeButton("RESUME"),
+	mOptionsButton("GAME OPTIONS"),
+	mCreditsButton("SEE CREDITS"),
+	mMainMenuButton("QUIT TO MAIN MENU"),
+	mExitButton("QUIT GAME")
 {
     // Configure this widget.
-    setBaseColor(COLOR_MENU_DARK);
-    setBackgroundColor(COLOR_MENU_LIGHT);
-    setFrameSize(2);
-    setFont(FontManager::get(FONT_DEFAULT));
-    setMovable(false);
+	setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+	gcn::Color c = COLOR_MENU_DARK;
+	c.a = 100;
+    setBaseColor(c);
+
+    // Configure the buttons.
+    mResumeButton.addActionListener(this);
+    mOptionsButton.addActionListener(this);
+    mCreditsButton.addActionListener(this);
+    mMainMenuButton.addActionListener(this);
+    mExitButton.addActionListener(this);
+
+    // Add and position the various buttons.
+    add(&mResumeButton, getWidth() * 0.2, ((getHeight() / 6) * 1) - (mResumeButton.getHeight() / 2));
+    add(&mOptionsButton, getWidth() * 0.2, ((getHeight() / 6) * 2) - (mOptionsButton.getHeight() / 2));
+    add(&mCreditsButton, getWidth() * 0.2, ((getHeight() / 6) * 3) - (mCreditsButton.getHeight() / 2));
+    add(&mMainMenuButton, getWidth() * 0.2, ((getHeight() / 6) * 4) - (mMainMenuButton.getHeight() / 2));
+    add(&mExitButton, getWidth() * 0.2, ((getHeight() / 6) * 5) - (mExitButton.getHeight() / 2));
+}
+
+void GameOptionsWidget::action(const gcn::ActionEvent& actionEvent)
+{
+	if(actionEvent.getSource() == &mResumeButton)
+	{
+		setActionEventId(GAMEOPTIONS_RESUME);
+		distributeActionEvent();
+	}
+	else if(actionEvent.getSource() == &mOptionsButton)
+		Logger::log("Show Game Options");
+	else if(actionEvent.getSource() == &mCreditsButton)
+		Logger::log("Show Game Credits");
+	else if(actionEvent.getSource() == &mMainMenuButton)
+	{
+		setActionEventId(GAMEOPTIONS_MAINMENU);
+		distributeActionEvent();
+	}
+	else if(actionEvent.getSource() == &mExitButton)
+	{
+		setActionEventId(GAMEOPTIONS_EXIT);
+		distributeActionEvent();
+	}
 }

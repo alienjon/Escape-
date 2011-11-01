@@ -4,26 +4,25 @@
  *  Created on: Sep 25, 2009
  *      Author: alienjon
  */
-
 #include "Cursor.hpp"
 
 #include <string>
 
-#include "../Managers/AnimationManager.hpp"
+#include "../Engine/Colors.hpp"
 
 using std::string;
-
-const string CURSOR_KEYWORD = "CURSOR";
 
 Cursor::Cursor()
 {}
 
-void Cursor::draw(Renderer& renderer)
+void Cursor::draw(Renderer& renderer)//@todo how is the cursor handled.
 {
-	if(mSprite.isVisible())
-	{
-		mSprite.draw(renderer, mPoint.x - (mSprite.getWidth() / 2), mPoint.y - (mSprite.getHeight() / 2));
-	}
+	renderer.setColor(COLOR_WHITE);
+	renderer.drawPoint(mPoint.x, mPoint.y);
+//	if(mSprite.isVisible())
+//	{
+//		mSprite.draw(renderer, mPoint.x - (mSprite.getWidth() / 2), mPoint.y - (mSprite.getHeight() / 2));
+//	}
 }
 
 inline bool Cursor::isVisible() const
@@ -33,7 +32,6 @@ inline bool Cursor::isVisible() const
 
 void Cursor::load()
 {
-    mSprite = Sprite(AnimationManager::get(CURSOR_KEYWORD));
 }
 
 void Cursor::logic()

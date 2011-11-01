@@ -20,7 +20,7 @@ using std::string;
 
 MenuScreen::MenuScreen() :
 		mTitle(VideoManager::loadSurface(FILE_MENUSCREEN_TITLEIMAGE)),
-		mMap(((800 * 3) / 64) / MAP_CELL_SIDE, ((600 * 3) / 48) / MAP_CELL_SIDE),//, TilesetManager::get("office")),@todo review
+		mMap(((800 * 3) / 64) / MAP_CELL_SIDE, ((600 * 3) / 48) / MAP_CELL_SIDE),
         mCurrentScreen(MAINMENUSCREEN_MAIN),
         mNextScreen(MAINMENUSCREEN_NULL),
         mSlideCounter(0)
@@ -37,10 +37,10 @@ MenuScreen::MenuScreen() :
     mHeader.setFrameSize(4);
 
     // Set this widget as an action listener for each menu (for when buttons are pressed)
-    mCreditsMenu.addEventListener(this);
-    mMainMenu.addEventListener(this);
-    mNewGameMenu.addEventListener(this);
-    mOptionsMenu.addEventListener(this);
+    mCreditsMenu.addActionListener(this);
+    mMainMenu.addActionListener(this);
+    mNewGameMenu.addActionListener(this);
+    mOptionsMenu.addActionListener(this);
 
     // Configure the menu's container.
     mMenus.setSize(SCREEN_WIDTH * 3, SCREEN_HEIGHT * 3);
@@ -59,10 +59,10 @@ MenuScreen::MenuScreen() :
 MenuScreen::~MenuScreen()
 {
 	// @todo test with this removed, I shouldn't need it.
-    mCreditsMenu.removeEventListener(this);
-    mMainMenu.removeEventListener(this);
-    mNewGameMenu.removeEventListener(this);
-    mOptionsMenu.removeEventListener(this);
+    mCreditsMenu.removeActionListener(this);
+    mMainMenu.removeActionListener(this);
+    mNewGameMenu.removeActionListener(this);
+    mOptionsMenu.removeActionListener(this);
 }
 
 void MenuScreen::mDisplay(const string& message)
@@ -202,37 +202,38 @@ void MenuScreen::mLogic_slideToCenter(double distance)
     }
 }
 
-void MenuScreen::eventOccurred(Event event, const std::string& content, CreatureMovedToPointListener* creatureMovedToPointListener)
+void MenuScreen::action(const gcn::ActionEvent& event)
 {
     // If the action performed is requesting a move to a screen, move to that screen.
-    if(event == EVENT_SLIDE_NEWMENU) // Go to the start a new game screen
+	if(event.getSource() == &mNewGameMenu)
     {
         mDisplay("Start a new game.");
         slideToScreen(MAINMENUSCREEN_NEW);
     }
-    else if(event == EVENT_SLIDE_OPTIONSMENU) // Go to the options screen.
+    else if(event.getSource() == &mOptionsMenu) // Go to the options screen.
     {
         mDisplay("Change game options.");
         slideToScreen(MAINMENUSCREEN_OPTIONS);
     }
-    else if(event == EVENT_SLIDE_CREDITSMENU) // Go to the credits screen.
+    else if(event.getSource() == &mCreditsMenu) // Go to the credits screen.
     {
         mDisplay("See the credits.");
         slideToScreen(MAINMENUSCREEN_CREDITS);
     }
-    else if(event == EVENT_SLIDE_MAINMENU) // Go to the main menu screen.
+    else if(event.getSource() == &mMainMenu) // Go to the main menu screen.
     {
         mDisplay("Welcome to Escape!");
         slideToScreen(MAINMENUSCREEN_MAIN);
     }
-    else if(event == EVENT_DISPLAYMESSAGE) // Display a message.
-    {
-        mDisplay(content);
-    }
+//    else if(event.getSource() == EVENT_DISPLAYMESSAGE) // @todo Display a message?
+//    {
+//        mDisplay(event.getId());
+//    }
     else
     {
         // Push the event to the listeners (likely the game object)
-        pushEvent(event, content);
+    	setActionEventId(event.getId());
+    	distributeActionEvent();
 
         // Also consider this screen to have finished.
         mDone = true;
@@ -246,11 +247,8 @@ void MenuScreen::draw(Renderer& renderer)
 
     // Draw the map.
 	renderer.setColor(COLOR_BLACK);
-	renderer.fillRectangle(gcn::Rectangle(0, 0, mViewport.getWidth(), mViewport.getHeight()));
+	renderer.fillRectangle(gcn::Rectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT));
 	mMap.draw(renderer, mViewport);
-//    mMap.drawLower(renderer, mViewport);
-//    mMap.drawMiddle(renderer, mViewport);
-//    mMap.drawUpper(renderer, mViewport);
 
     // Pop the drawing area.
     renderer.popClipArea();

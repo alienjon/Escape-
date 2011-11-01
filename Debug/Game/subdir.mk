@@ -5,7 +5,6 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
 ../Game/Direction.cpp \
-../Game/EnvironmentData.cpp \
 ../Game/GUI.cpp \
 ../Game/Game.cpp \
 ../Game/Input.cpp \
@@ -16,7 +15,6 @@ CPP_SRCS += \
 
 OBJS += \
 ./Game/Direction.o \
-./Game/EnvironmentData.o \
 ./Game/GUI.o \
 ./Game/Game.o \
 ./Game/Input.o \
@@ -27,7 +25,6 @@ OBJS += \
 
 CPP_DEPS += \
 ./Game/Direction.d \
-./Game/EnvironmentData.d \
 ./Game/GUI.d \
 ./Game/Game.d \
 ./Game/Input.d \
