@@ -19,6 +19,8 @@ extern const gcn::Color COLOR_RED;
 extern const gcn::Color COLOR_GREEN;
 extern const gcn::Color COLOR_BLUE;
 extern const gcn::Color COLOR_ORANGE;
+extern const gcn::Color COLOR_YELLOW;
+extern const gcn::Color COLOR_PINK;
 
 extern const gcn::Color COLOR_MENU_DARK;
 extern const gcn::Color COLOR_MENU_LIGHT;

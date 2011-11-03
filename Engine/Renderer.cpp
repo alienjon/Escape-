@@ -143,8 +143,43 @@ void Renderer::drawImage(const Surface* image, int srcX, int srcY, int dstX, int
 	SDL_BlitSurface(image->mSurface, &src, mTarget, &dst);
 }
 
+void Renderer::fillEllipse(int x, int y, unsigned int width, unsigned int height)
+{
+    if (mClipStack.empty())
+    {
+        throw GCN_EXCEPTION("Clip stack is empty, perhaps you called a draw funtion outside of _beginDraw() and _endDraw()?");
+    }
+
+    const gcn::ClipRectangle& top = mClipStack.top();
+
+    x += top.xOffset;
+    y += top.yOffset;
+    Rectangle bounds(x - width / 2, y - height / 2, width, height);
+
+    if(!bounds.isIntersecting(bounds))
+        return;
+
+	gcn::Color c = getColor();
+	filledEllipseRGBA(mTarget, (Sint16)x, (Sint16)y, width, height, c.r, c.g, c.b, c.a);
+}
+
 void Renderer::fillQuadrilateral(const Quadrilateral& quad)
 {
+	//@fixme I think that quadrilaterals need to have the clip stack included here.
+//    if (mClipStack.empty())
+//    {
+//        throw GCN_EXCEPTION("Clip stack is empty, perhaps you called a draw funtion outside of _beginDraw() and _endDraw()?");
+//    }
+//
+//    const gcn::ClipRectangle& top = mClipStack.top();
+//
+//    x += top.xOffset;
+//    y += top.yOffset;
+//    Rectangle bounds(x - width / 2, y - height / 2, width, height);
+//
+//    if(!bounds.isIntersecting(bounds))
+//        return;
+
     // The lists of X and Y points.
     Sint16 xList[] = {quad.p1.x, quad.p2.x, quad.p3.x, quad.p4.x};
     Sint16 yList[] = {quad.p1.y, quad.p2.y, quad.p3.y, quad.p4.y};

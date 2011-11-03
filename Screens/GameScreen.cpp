@@ -271,10 +271,9 @@ void GameScreen::logic()
 		mMenuBar.setScore(mScore);
 
 		// Display the level complete widget.
-//		mLevelCompleteWidget.setPosition(mBase.getWidth() / 2 - mLevelCompleteWidget.getWidth() / 2, mBase.getHeight() / 2 - mLevelCompleteWidget.getHeight() / 2);
 		double bonusMod = (mDifficulty / 10.0) + 1;
-		unsigned int bonus = (mMenuBar.getTime() + mLevel->getMap().getComplexity()) * bonusMod; // @todo review scoring
-		mLevelCompleteWidget.display("LEVEL COMPLETE", mMenuBar.getTime()/100, mMenuBar.getTime(), mLevel->getMap().getComplexity(), mLevel->getMap().getComplexity(), mDifficulty, (double)bonusMod, mScore, bonus, mScore + bonus);
+		unsigned int bonus = (mMenuBar.getTime()/100 + mLevel->getMap().getComplexity()) * bonusMod; // @todo review scoring
+		mLevelCompleteWidget.display("LEVEL COMPLETE", mMenuBar.getTime()/100, mMenuBar.getTime()/100, mLevel->getMap().getComplexity(), mLevel->getMap().getComplexity(), mDifficulty, (double)bonusMod, mScore, bonus, mScore + bonus);
 		mMenuBar.setScore(mScore += bonus);
 		mLevelCompleteWidget.setPosition(mBase.getWidth() / 2 - mLevelCompleteWidget.getWidth() / 2, mBase.getHeight() / 2 - mLevelCompleteWidget.getHeight() / 2);
 	}

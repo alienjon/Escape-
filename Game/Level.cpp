@@ -15,6 +15,7 @@
 #include "../Entities/KeyEntity.hpp"
 #include "../Engine/Logger.hpp"
 #include "../main.hpp"
+#include "../Entities/Pickup.hpp"
 #include "../Entities/Player.hpp"
 #include "../Entities/Portal.hpp"
 #include "../Managers/TilesetManager.hpp"
@@ -56,30 +57,60 @@ Level::Level(unsigned int difficulty, Player& player, Viewport& viewport) :
 	mEntities.push_back(mPlayer);
 
 	//@todo randomize the colors and the color's positions in the map.
-	// Set the initial locks on the player.@review Might locks be added later?  What if the timer counts down, if it reaches zero the player loses the level, but opening locks adds time (maybe for easy/medium?)
+	/* Set the initial locks on the player.@review Might locks be added later?
+	 * What if the timer counts down, if it reaches zero the player loses the
+	 * level, but opening locks adds time (maybe for easy/medium?)
+	 */
 	mPortal->addLock(COLOR_RED);
 	mPortal->addLock(COLOR_BLUE);
 	mPortal->addLock(COLOR_ORANGE);
 	mPortal->addLock(COLOR_GREEN);
 
-	unsigned int x_offset = (MAP_CELL_SIDE / 2) * mMap.getTileset().getWidth(),
+	// Populate the map with entities, etc...
+	unsigned int width = mMap.getCellWidth(),
+				 height= mMap.getCellHeight(),
+				 x_offset = (MAP_CELL_SIDE / 2) * mMap.getTileset().getWidth(),
 				 y_offset = (MAP_CELL_SIDE / 2) * mMap.getTileset().getHeight();
+	for(unsigned int h = 0; h != height; ++h)
+	{
+		for(unsigned int w = 0; w != width; ++w)
+		{
+			// Get the x and y locations for this entity.
+			int x = (w * MAP_CELL_SIDE * mMap.getTileset().getWidth()) + x_offset,
+				y = (h * MAP_CELL_SIDE * mMap.getTileset().getHeight()) + y_offset;
 
-	KeyEntity* key = new KeyEntity(COLOR_RED);
-	key->setPosition(x_offset - (key->getWidth() / 2), y_offset - (key->getHeight() / 2)); // Top left corner.
-	mAddEntity(key);
-	key = new KeyEntity(COLOR_BLUE);
-	key->setPosition(mMap.getWidth() - x_offset - (key->getWidth() / 2), y_offset - (key->getHeight() / 2)); // Top right corner.
-	mAddEntity(key);
-	key = new KeyEntity(COLOR_ORANGE);
-	key->setPosition(x_offset - (key->getWidth() / 2), mMap.getHeight() - y_offset - (key->getHeight() / 2)); // Bottom left corner.
-	mAddEntity(key);
-	key = new KeyEntity(COLOR_GREEN);
-	key->setPosition(mMap.getWidth() - x_offset - (key->getWidth() / 2), mMap.getHeight() - y_offset - (key->getHeight() / 2)); // Bottom right corner.
-	mAddEntity(key);
+			// A likely entity to be created.
+			Entity* entity = 0;
 
-	// Populate the map with traps/weapons/etc, but not within a 3 cell range of the player.
-//@todo populate the map with traps/weapons/etc... - add this level as an event listener for the stuff (addEventListener(this))
+			// If this is one of the 4 corners, add a key.
+			if(w == 0 && h == 0) // Top left corner.
+				entity = new KeyEntity(COLOR_RED);
+			else if(w == 0 && h == height - 1) // Top right corner.
+				entity = new KeyEntity(COLOR_BLUE);
+			else if(w == width - 1 && h == 0) // Bottom left corner.
+				entity = new KeyEntity(COLOR_ORANGE);
+			else if(w == width - 1 && h == height - 1) // Bottom right corner.
+				entity = new KeyEntity(COLOR_GREEN);
+			else if(w == width / 2 && h == height / 2) // Skip the portal cell.
+			{}
+			else // Add a point pickup
+			{
+				// A 1 in 10 chance that the pickup will be a big one.
+				//@todo Add pickups that increase time, decrease score, other effects?
+				if(random(1, 20) == 1)
+					entity = new Pickup(50, COLOR_YELLOW, 10);
+				else
+					entity = new Pickup(5, COLOR_PINK, 4);
+			}
+
+			// If an entity was created, configure it.
+			if(entity)
+			{
+				entity->setPosition(x, y);
+				mAddEntity(entity);
+			}
+		}
+	}
 
 	// Populate the map with enemies, but not within 3 cells of the player.
 //@todo populate the map with enemies - add this level as an event listener for the enemies (addEventListener(this))

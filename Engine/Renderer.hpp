@@ -75,6 +75,15 @@ class Renderer : public gcn::SDLGraphics
      */
     virtual void drawImage(const Surface* image, int srcX, int srcY, int dstX, int dstY, int width, int height);
 
+    /**
+     * @brief Draw a filled ellipse.
+     * @param x The x position of the ellipse.
+     * @param y The y position of the ellipse.
+     * @param width The width of the ellipse.
+     * @param height The height of the ellipse.
+     */
+    virtual void fillEllipse(int x, int y, unsigned int width, unsigned int height);
+
 	/**
 	 * @brief Draw a filled quadrilateral onto the current layer.
 	 * @param quad The quadrilateral to draw.

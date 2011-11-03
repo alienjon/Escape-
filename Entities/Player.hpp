@@ -27,7 +27,6 @@ class Player : public AddLockListener, public Creature, public RemoveLockListene
      * @brief Construct a new player.
      */
     Player();
-    virtual ~Player();
 
     /**
      * @brief Add a color lock to the player.
@@ -66,6 +65,12 @@ class Player : public AddLockListener, public Creature, public RemoveLockListene
 	virtual void handleInput(const Input& input);
 
 	/**
+	 * @brief Perform player logic.
+	 * @param level The level in which this player exists.
+	 */
+	virtual void logic(Level& level);
+
+	/**
 	 * @brief Remove all locks from the player.
 	 */
 	inline void removeAllLocks()
@@ -80,6 +85,8 @@ class Player : public AddLockListener, public Creature, public RemoveLockListene
     inline void removeLock(gcn::Color color)
     {
     	mLocks.remove(color);
+    	if(mLocks.empty())
+    		mCyclePosition = mLocks.end();
     }
 
     /**
@@ -112,13 +119,15 @@ class Player : public AddLockListener, public Creature, public RemoveLockListene
 	// The interacting timer.
 	Timer mInteractingTimer;
 
+	// The information for cycling collected keys.
+	Timer mColorCycleTimer;
+	std::list<gcn::Color>::iterator mCyclePosition;
+
 	// The color locks.
 	std::list<gcn::Color> mLocks;
 };
 
-/**
- * The action key.
- */
+// The action key.
 extern const SDLKey PLAYER_ACTION_KEY;
 
 #endif /* PLAYER_H_ */

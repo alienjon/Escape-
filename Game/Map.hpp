@@ -35,7 +35,7 @@ class Map
      * @brief Check an area vs. map collisions (hitting a wall, for example)
      * @param area The area to check.
      * @return True if a collision occurred.
-     *///@todo remove quadrilaterals, just use rectangles
+     *///@todo remove quadrilaterals, just use rectangles?
     virtual bool checkCollision(const Quadrilateral& area) const;
 
     /**
@@ -59,16 +59,28 @@ class Map
     virtual void draw(Renderer& renderer, const Viewport& viewport);
 
     /**
+     * @brief Get the height of the map in cells (as opposed to tiles or pixels).
+     * @return The number of cells in the map's height.
+     */
+    inline unsigned int getCellHeight() const
+    {
+    	return mHeight;
+    }
+
+    /**
+     * @brief Get the width of the map in cells (as opposed to tiles or pixels).
+     * @return The number of cells in the map's width.
+     */
+    inline unsigned int getCellWidth() const
+    {
+    	return mWidth;
+    }
+
+    /**
      * @brief Get the complexity of the map.
      * @return The complexity of the map (cellsWidth * cellsHeight)
      */
     virtual unsigned int getComplexity() const;
-
-    /**
-     * @brief Get the location on the map that is the entrance/exit for the player.
-     * @return The portal location.
-     */
-    const Vector& getPortal() const;
 
     /**
      * @brief Returns the pixel height of the map.
@@ -76,6 +88,11 @@ class Map
      */
     virtual unsigned int getHeight() const;
 
+    /**
+     * @brief Get the location on the map that is the entrance/exit for the player.
+     * @return The portal location.
+     */
+    const Vector& getPortal() const;
 
     /**
      * @brief Get this map's tileset.

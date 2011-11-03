@@ -19,9 +19,12 @@ using std::list;
 using std::runtime_error;
 using std::set;
 
+const unsigned int COLOR_CYCLE_TIME_INTERVAL = 1300;
+
 Player::Player() :
 	mAllowInput(true),
-	mIsInteracting(false)
+	mIsInteracting(false),
+	mCyclePosition(mLocks.end())
 {
     // This is the player.
     mType = ENTITY_PLAYER;
@@ -29,15 +32,12 @@ Player::Player() :
     // The player moves at a normal speed.
     setSpeed(1.0);
 
-    // Start the interacting timer.
+    // Start the timers.
     mInteractingTimer.start();
+    mColorCycleTimer.start();
 
     //@todo remove when done.
     mSetSize(30, 30);
-}
-
-Player::~Player()
-{
 }
 
 void Player::mDie()
@@ -58,9 +58,18 @@ void Player::draw(Renderer& renderer)//@todo review and implement player drawing
 	renderer.setColor(COLOR_WHITE);
 	renderer.fillRectangle(Rectangle(getDimension()));
 
-	// For each color lock, draw it on the player.@todo review - is this how I want to do this?
-	Rectangle area = getDimension();
-	unsigned int size = area.width / (mLocks.size() + 1);
+// @todo Draw the 4 locks in the 4 corners.  Use the rotating timer to rotate the 4 squares around the player's symbol
+//	// For each color lock, draw it on the player.@todo review - is this how I want to do this?
+//	Rectangle area = getDimension();
+//	unsigned int size = area.width / 3;
+//	list<gcn::Color>::iterator it = mCyclePosition; // @todo make sure this copies the position
+//	unsigned int pos = 0;
+//	do
+//	{
+//		renderer.setColor(*it);
+//		renderer.fillRectangle(area);
+//		it++;
+//	} while(it != mCyclePosition);
 	for(list<gcn::Color>::const_iterator it = mLocks.begin(); it != mLocks.end(); ++it)
 	{
 		area.width = (area.width > size) ? area.width - size : size;
@@ -113,6 +122,24 @@ void Player::handleInput(const Input& input)
     	mIsInteracting = true;
     	mInteractingTimer.start();
     }
+}
+
+void Player::logic(Level& level)
+{
+	// If the timer interval has passed, update the color start position.
+	if(mColorCycleTimer.getTime() >= COLOR_CYCLE_TIME_INTERVAL)
+	{
+		// Update the color cycle position (but only if there are locks entered)
+		if(!mLocks.empty())
+		{
+			mCyclePosition++;
+			if(mCyclePosition == mLocks.end())
+				mCyclePosition = mLocks.begin();
+		}
+
+		// Restart the timer.
+		mColorCycleTimer.start();
+	}
 }
 
 const SDLKey PLAYER_ACTION_KEY = SDLK_SPACE;

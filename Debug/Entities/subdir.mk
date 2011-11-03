@@ -7,6 +7,7 @@ CPP_SRCS += \
 ../Entities/Creature.cpp \
 ../Entities/Entity.cpp \
 ../Entities/KeyEntity.cpp \
+../Entities/Pickup.cpp \
 ../Entities/Player.cpp \
 ../Entities/Portal.cpp 
 
@@ -14,6 +15,7 @@ OBJS += \
 ./Entities/Creature.o \
 ./Entities/Entity.o \
 ./Entities/KeyEntity.o \
+./Entities/Pickup.o \
 ./Entities/Player.o \
 ./Entities/Portal.o 
 
@@ -21,6 +23,7 @@ CPP_DEPS += \
 ./Entities/Creature.d \
 ./Entities/Entity.d \
 ./Entities/KeyEntity.d \
+./Entities/Pickup.d \
 ./Entities/Player.d \
 ./Entities/Portal.d 
 
