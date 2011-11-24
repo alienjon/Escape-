@@ -5,7 +5,6 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
 ../Actions/DebugAction.cpp \
-../Actions/DisplayAnimationAction.cpp \
 ../Actions/DisplayMessageAction.cpp \
 ../Actions/DisplaySpriteAction.cpp \
 ../Actions/FastSearchAction.cpp \
@@ -21,7 +20,6 @@ CPP_SRCS += \
 
 OBJS += \
 ./Actions/DebugAction.o \
-./Actions/DisplayAnimationAction.o \
 ./Actions/DisplayMessageAction.o \
 ./Actions/DisplaySpriteAction.o \
 ./Actions/FastSearchAction.o \
@@ -37,7 +35,6 @@ OBJS += \
 
 CPP_DEPS += \
 ./Actions/DebugAction.d \
-./Actions/DisplayAnimationAction.d \
 ./Actions/DisplayMessageAction.d \
 ./Actions/DisplaySpriteAction.d \
 ./Actions/FastSearchAction.d \

@@ -4,34 +4,34 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
-../Game/Direction.cpp \
-../Game/GUI.cpp \
+../Game/CollisionArea.cpp \
 ../Game/Game.cpp \
-../Game/Input.cpp \
 ../Game/Keywords.cpp \
 ../Game/Level.cpp \
 ../Game/Map.cpp \
-../Game/Tileset.cpp 
+../Game/Math.cpp \
+../Game/Tileset.cpp \
+../Game/TilesetManager.cpp 
 
 OBJS += \
-./Game/Direction.o \
-./Game/GUI.o \
+./Game/CollisionArea.o \
 ./Game/Game.o \
-./Game/Input.o \
 ./Game/Keywords.o \
 ./Game/Level.o \
 ./Game/Map.o \
-./Game/Tileset.o 
+./Game/Math.o \
+./Game/Tileset.o \
+./Game/TilesetManager.o 
 
 CPP_DEPS += \
-./Game/Direction.d \
-./Game/GUI.d \
+./Game/CollisionArea.d \
 ./Game/Game.d \
-./Game/Input.d \
 ./Game/Keywords.d \
 ./Game/Level.d \
 ./Game/Map.d \
-./Game/Tileset.d 
+./Game/Math.d \
+./Game/Tileset.d \
+./Game/TilesetManager.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

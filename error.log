@@ -1,8 +1,5 @@
 Logging to error.log
-[Logfile for Escape! v0.0.0]
+[Logfile for Mazin' it Up v0.0.0]
 ---------------
-Log: Setting video driver to x11
-Log: Video initialization successful.
-Log: Audio initialization successful.
-Log: Portal(5, 7)
-Log: Portal(7, 9)
+Log: Portal(6.88281, 8.88281)
+Warning: Error loading sound: Audio/rollover10.wav

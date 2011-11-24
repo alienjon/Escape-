@@ -6,12 +6,18 @@
  */
 #include "KeyEntity.hpp"
 
+#include "../Engine/AudioManager.hpp"
+#include "../Game/Keywords.hpp"
 #include "../Game/Level.hpp"
 
-KeyEntity::KeyEntity(gcn::Color color) :
-	mColor(color)
+const float KEYENTITY_MAXSIZE = 35.f;
+const float KEYENTITY_MINSIZE = 5.f;
+
+KeyEntity::KeyEntity(sf::Color color) :
+	mColor(color),
+	mIsGrowing(true)
 {
-	mSetSize(20, 20);//@todo how will the KeyEntity's be handled visually?
+	mTimer.start();
 }
 
 void KeyEntity::collide(Entity& entity)
@@ -22,17 +28,50 @@ void KeyEntity::collide(Entity& entity)
 		// Distribute information that the lock was picked up.
 		distributeAddLock(mColor);
 		distributeRemoveLock(mColor);
+		distributeFloatingText("Key", sf::Vector2f(getX() + getWidth(), getY()), mColor);
 
 		// Add to the score.
 		distributeChangeScore(50);//@todo how many points should be awarded for obtaining a key?
 
 		// Kill the entity.
 		mDie();
+
+		// Play a sound.
+		AudioManager::playSound(SOUND_PICKUP_KEY);
 	}
 }
 
-void KeyEntity::draw(Renderer& renderer)
+void KeyEntity::logic(Level& level)
 {
-	renderer.setColor(mColor);
-	renderer.fillRectangle(Rectangle(getDimension()));
+	// Perform entity logic.
+	Entity::logic(level);
+
+	// Grow or shrink the key.
+	if(mTimer.getTime() >= 10)
+	{
+		if(mIsGrowing)
+		{
+			mSize.x += 0.2;
+			mSize.y += 0.2;
+			if(mSize.x >= KEYENTITY_MAXSIZE)
+			{
+				mSize.x = mSize.y = KEYENTITY_MAXSIZE;
+				mIsGrowing = false;
+			}
+		}
+		else
+		{
+			mSize.x -= 0.2;
+			mSize.y -= 0.2;
+			if(mSize.x <= KEYENTITY_MINSIZE)
+			{
+				mSize.x = mSize.y = KEYENTITY_MINSIZE;
+				mIsGrowing = true;
+			}
+		}
+		sf::Vector2f pos = getPosition();
+		mSprite = sf::Shape::Rectangle(-(mSize.x / 2), -(mSize.y / 2), mSize.x, mSize.y, mColor);
+		setPosition(pos.x, pos.y);
+		mTimer.start();
+	}
 }

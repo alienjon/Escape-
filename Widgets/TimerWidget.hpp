@@ -7,7 +7,7 @@
 #ifndef TIMERWIDGET_HPP_
 #define TIMERWIDGET_HPP_
 
-#include "../guichan.hpp"
+#include "../Engine/guichan.hpp"
 #include "../Engine/Timer.hpp"
 
 /**
@@ -44,7 +44,7 @@ class TimerWidget : public gcn::Label
 	 * @note If a number less than zero is provided (or the parameter is left empty) the timer will start counting up from zero.
 	 * @note If a value is provided as a paremeter the timer will count from that time (in seconds) to zero and stop.
 	 */
-	virtual void start(int startTime = -1);
+	virtual void start(unsigned int startTime = 0);
 
 	/**
 	 * @brief Stop the timer.
@@ -61,7 +61,7 @@ class TimerWidget : public gcn::Label
 	Timer mTimer;
 
 	// The start time.
-	int mStartTime;
+	unsigned int mStartTime;
 };
 
 #endif /* TIMERWIDGET_HPP_ */

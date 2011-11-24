@@ -6,11 +6,16 @@
  */
 #include "Pickup.hpp"
 
-Pickup::Pickup(int value, const gcn::Color& color, unsigned int size) :
+#include "../Engine/AudioManager.hpp"
+#include "../Game/Keywords.hpp"
+#include "../main.hpp"
+
+Pickup::Pickup(int value, const sf::Color& color, unsigned int size) :
 	mValue(value),
-	mColor(color),
-	mSize(size)
+	mSize(size),
+	mColor(color)
 {
+	mSprite = sf::Shape::Rectangle(0, 0, size, size, mColor);
 }
 
 void Pickup::collide(Entity& entity)
@@ -18,16 +23,14 @@ void Pickup::collide(Entity& entity)
 	// If the entity was a player, then add a score to the level and die.
 	if(entity.getType() == Entity::ENTITY_PLAYER)
 	{
-		// Add to the score.
+		// Distribute information that the pickup was grabbed.
 		distributeChangeScore(mValue);
+		distributeFloatingText(toString(mValue), sf::Vector2f(getX() + getWidth(), getY()), mColor);
 
 		// Kill the pickup.
 		mDie();
-	}
-}
 
-void Pickup::draw(Renderer& renderer)
-{
-	renderer.setColor(mColor);
-	renderer.fillEllipse(getX() - (mSize / 2), getY() - (mSize / 2), mSize, mSize);
+		// Play the pickup sound.
+		AudioManager::playSound(SOUND_PICKUP);
+	}
 }

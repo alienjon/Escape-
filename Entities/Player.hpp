@@ -9,9 +9,12 @@
 
 #include <list>
 
+#include <SFML/Graphics.hpp>
+
+#include "../Engine/guichan.hpp"
+
 #include "../Listeners/AddLockListener.hpp"
 #include "../Entities/Creature.hpp"
-#include "../Game/Input.hpp"
 #include "../Listeners/RemoveLockListener.hpp"
 #include "../Engine/Timer.hpp"
 
@@ -20,7 +23,7 @@ class Level;
 /**
  * @brief The player class.
  */
-class Player : public AddLockListener, public Creature, public RemoveLockListener
+class Player : public AddLockListener, public Creature, public gcn::KeyListener, public RemoveLockListener
 {
 	public:
     /**
@@ -32,7 +35,7 @@ class Player : public AddLockListener, public Creature, public RemoveLockListene
      * @brief Add a color lock to the player.
      * @param color The color lock to add.
      */
-    inline void addLock(gcn::Color color)
+    inline void addLock(sf::Color color)
     {
     	mLocks.push_back(color);
     }
@@ -47,22 +50,28 @@ class Player : public AddLockListener, public Creature, public RemoveLockListene
      * @brief Draw the being to the screen.
      * @param renderer The graphics object.
      */
-    virtual void draw(Renderer& renderer);
+    virtual void draw(sf::RenderWindow& renderer);
 
     /**
      * @brief Get the color locks for the player.
      * @return The locks.
      */
-    inline const std::list<gcn::Color>& getColorLock() const
+    inline const std::list<sf::Color>& getColorLock() const
 	{
     	return mLocks;
 	}
 
-	/**
-	 * @brief Handle player input.
-	 * @param input The input object.
-	 */
-	virtual void handleInput(const Input& input);
+    /**
+     * @brief A key was pressed.
+     * @param event The key event.
+     */
+    virtual void keyPressed(gcn::KeyEvent& event);
+
+    /**
+     * @brief A key was released.
+     * @param event The key event.
+     */
+    virtual void keyReleased(gcn::KeyEvent& event);
 
 	/**
 	 * @brief Perform player logic.
@@ -82,11 +91,9 @@ class Player : public AddLockListener, public Creature, public RemoveLockListene
      * @brief Remove a color lock from the player.
      * @param color The lock to remove.
      */
-    inline void removeLock(gcn::Color color)
+    inline void removeLock(sf::Color color)
     {
     	mLocks.remove(color);
-    	if(mLocks.empty())
-    		mCyclePosition = mLocks.end();
     }
 
     /**
@@ -110,24 +117,32 @@ class Player : public AddLockListener, public Creature, public RemoveLockListene
 	virtual void mDie();
 
 	private:
+	enum ColorCycle
+	{
+		COLORCYCLE_PAUSE,
+		COLORCYCLE_MOVE,
+		COLORCYCLE_SWITCHCOLORS
+	};
+
+	/**
+	 * @brief Reset the cycle colors to their original positions.
+	 */
+	void mResetCyclePositions();
+
 	// True if the player can accept input.
 	bool mAllowInput;
 
-	// True if the player should interact at the next logic call.
-	bool mIsInteracting;
-
-	// The interacting timer.
-	Timer mInteractingTimer;
-
 	// The information for cycling collected keys.
 	Timer mColorCycleTimer;
-	std::list<gcn::Color>::iterator mCyclePosition;
+	ColorCycle mCycle;
+	sf::FloatRect mCol1, mCol2, mCol3, mCol4;
+	std::list<sf::Color>::iterator mColor1, mColor2, mColor3, mColor4;
 
 	// The color locks.
-	std::list<gcn::Color> mLocks;
+	std::list<sf::Color> mLocks;
 };
 
 // The action key.
-extern const SDLKey PLAYER_ACTION_KEY;
+extern const sf::Keyboard::Key PLAYER_ACTION_KEY;
 
 #endif /* PLAYER_H_ */

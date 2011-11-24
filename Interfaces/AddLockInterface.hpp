@@ -8,9 +8,9 @@
 #define ADDLOCKINTERFACE_HPP_
 
 #include <list>
+#include <SFML/Graphics.hpp>
 
 #include "../Listeners/AddLockListener.hpp"
-#include "../guichan.hpp"
 
 class AddLockInterface
 {
@@ -28,7 +28,7 @@ class AddLockInterface
 	 * @brief Distribute an add lock event.
 	 * @param color The color of the lock to add.
 	 */
-	inline void distributeAddLock(gcn::Color color)
+	inline void distributeAddLock(sf::Color color)
 	{
 		for(std::list<AddLockListener*>::iterator it = mAddLockListeners.begin(); it != mAddLockListeners.end(); it++)
 			(*it)->addLock(color);

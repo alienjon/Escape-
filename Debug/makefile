@@ -12,15 +12,13 @@ RM := rm -rf
 -include Widgets/subdir.mk
 -include Screens/subdir.mk
 -include Screens/MenuScreenWidgets/subdir.mk
--include Math/subdir.mk
--include Managers/subdir.mk
--include Guichan/widgets/subdir.mk
--include Guichan/subdir.mk
--include Guichan/sdl/subdir.mk
--include Guichan/opengl/subdir.mk
 -include Game/subdir.mk
+-include Game/Math/subdir.mk
 -include Entities/subdir.mk
 -include Engine/subdir.mk
+-include Engine/Guichan/widgets/subdir.mk
+-include Engine/Guichan/subdir.mk
+-include Engine/Guichan/sfml/subdir.mk
 -include Actions/subdir.mk
 -include objects.mk
 

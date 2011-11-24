@@ -7,7 +7,7 @@
 #ifndef REMOVELOCKLISTENER_HPP_
 #define REMOVELOCKLISTENER_HPP_
 
-#include "../guichan.hpp"
+#include <SFML/Graphics.hpp>
 
 class RemoveLockListener
 {
@@ -16,7 +16,7 @@ class RemoveLockListener
 	 * @brief Remove a lock.
 	 * @param color The color of the lock to remove.
 	 */
-	virtual void removeLock(gcn::Color color) = 0;
+	virtual void removeLock(sf::Color color) = 0;
 };
 
 #endif /* REMOVELOCKLISTENER_HPP_ */

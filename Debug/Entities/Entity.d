@@ -3,163 +3,133 @@ Entities/Entity.d: ../Entities/Entity.cpp ../Entities/Entity.hpp \
  ../Entities/../Interfaces/../Actions/Action.hpp \
  ../Entities/../Interfaces/AddLockInterface.hpp \
  ../Entities/../Interfaces/../Listeners/AddLockListener.hpp \
- ../Entities/../Interfaces/../Listeners/../guichan.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/actionevent.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/event.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/platform.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/actionlistener.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/actionevent.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/cliprectangle.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/rectangle.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/color.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/deathlistener.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/event.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/exception.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/focushandler.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/focuslistener.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/font.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/genericinput.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/input.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/keyinput.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/key.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/mouseinput.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/graphics.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/cliprectangle.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/gui.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/keyevent.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/inputevent.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/mouseevent.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/image.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/imagefont.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/font.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/imageloader.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/input.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/inputevent.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/key.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/keyevent.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/keyinput.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/keylistener.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/listmodel.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/mouseevent.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/mouseinput.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/mouselistener.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/rectangle.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/selectionevent.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/selectionlistener.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/selectionevent.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/widget.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/color.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/widgetlistener.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/widgets/button.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/widgets/../focuslistener.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/widgets/../graphics.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/widgets/../keylistener.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/widgets/../mouseevent.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/widgets/../mouselistener.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/widgets/../platform.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/widgets/../widget.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/widgets/checkbox.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/widgets/container.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/widgets/../basiccontainer.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/widgets/../deathlistener.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/widgets/../platform.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/widgets/../widget.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/widgets/dropdown.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/widgets/../actionlistener.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/widgets/../deathlistener.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/widgets/../focushandler.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/widgets/../listmodel.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/widgets/../selectionlistener.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/widgets/listbox.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/widgets/scrollarea.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/widgets/icon.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/widgets/../image.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/widgets/imagebutton.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/widgets/button.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/widgets/label.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/widgets/listbox.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/widgets/scrollarea.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/widgets/slider.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/widgets/radiobutton.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/widgets/tab.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/widgets/tabbedarea.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/widgets/textbox.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/widgets/textfield.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/widgets/window.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/widgets/container.hpp \
- ../Entities/../Interfaces/../Listeners/../Guichan/platform.hpp \
- ../Entities/../Interfaces/../guichan.hpp \
- ../Entities/../Listeners/AnimationCycleListener.hpp \
  ../Entities/../Interfaces/ChangeScoreInterface.hpp \
  ../Entities/../Interfaces/../Listeners/ChangeScoreListener.hpp \
  ../Entities/../Listeners/DeathListener.hpp \
- ../Entities/../Game/Direction.hpp ../Entities/../Game/../Math/Vector.hpp \
- ../Entities/../Game/Input.hpp ../Entities/../Math/Vector.hpp \
- ../Entities/../Math/Quadrilateral.hpp \
- ../Entities/../Math/../Math/Polygon.hpp \
- ../Entities/../Math/../Math/../Math/Vector.hpp \
- ../Entities/../Math/../Math/Rectangle.hpp \
- ../Entities/../Math/../Math/../guichan.hpp \
- ../Entities/../Math/../Math/../Math/Polygon.hpp \
- ../Entities/../Math/../Math/Vector.hpp ../Entities/../Math/Rectangle.hpp \
+ ../Entities/../Interfaces/FloatingTextInterface.hpp \
+ ../Entities/../Interfaces/../Listeners/FloatingTextListener.hpp \
+ ../Entities/../Game/Math.hpp \
  ../Entities/../Interfaces/RemoveLockInterface.hpp \
  ../Entities/../Interfaces/../Listeners/RemoveLockListener.hpp \
- ../Entities/../Engine/Renderer.hpp \
- ../Entities/../Engine/../Math/Quadrilateral.hpp \
- ../Entities/../Engine/../Guichan/sdl.hpp \
- ../Entities/../Engine/../Guichan/sdl/sdlgraphics.hpp \
- ../Entities/../Engine/../Guichan/sdl/../color.hpp \
- ../Entities/../Engine/../Guichan/sdl/../graphics.hpp \
- ../Entities/../Engine/../Guichan/sdl/../platform.hpp \
- ../Entities/../Engine/../Guichan/sdl/sdlimage.hpp \
- ../Entities/../Engine/../Guichan/sdl/../image.hpp \
- ../Entities/../Engine/../Guichan/sdl/sdlimageloader.hpp \
- ../Entities/../Engine/../Guichan/sdl/../imageloader.hpp \
- ../Entities/../Engine/../Guichan/sdl/sdlinput.hpp \
- ../Entities/../Engine/../Guichan/sdl/../input.hpp \
- ../Entities/../Engine/../Guichan/sdl/../keyinput.hpp \
- ../Entities/../Engine/../Guichan/sdl/../mouseinput.hpp \
- ../Entities/../Engine/../Guichan/platform.hpp \
- ../Entities/../Engine/Sprite.hpp ../Entities/../Engine/../guichan.hpp \
- ../Entities/../Engine/../Listeners/AnimationCycleListener.hpp \
- ../Entities/../Engine/../Math/Rectangle.hpp \
- ../Entities/../Engine/../Engine/Renderer.hpp \
- ../Entities/../Engine/Surface.hpp ../Entities/../Engine/Timer.hpp \
- ../Entities/../Engine/../Math/Vector.hpp ../Entities/../Engine/Timer.hpp \
- ../Entities/../Game/Level.hpp \
+ ../Entities/../Game/Level.hpp ../Entities/../Game/../Engine/guichan.hpp \
+ ../Entities/../Game/../Engine/Guichan/actionevent.hpp \
+ ../Entities/../Game/../Engine/Guichan/event.hpp \
+ ../Entities/../Game/../Engine/Guichan/platform.hpp \
+ ../Entities/../Game/../Engine/Guichan/actionlistener.hpp \
+ ../Entities/../Game/../Engine/Guichan/actionevent.hpp \
+ ../Entities/../Game/../Engine/Guichan/cliprectangle.hpp \
+ ../Entities/../Game/../Engine/Guichan/rectangle.hpp \
+ ../Entities/../Game/../Engine/Guichan/color.hpp \
+ ../Entities/../Game/../Engine/Guichan/deathlistener.hpp \
+ ../Entities/../Game/../Engine/Guichan/event.hpp \
+ ../Entities/../Game/../Engine/Guichan/exception.hpp \
+ ../Entities/../Game/../Engine/Guichan/focushandler.hpp \
+ ../Entities/../Game/../Engine/Guichan/focuslistener.hpp \
+ ../Entities/../Game/../Engine/Guichan/font.hpp \
+ ../Entities/../Game/../Engine/Guichan/genericinput.hpp \
+ ../Entities/../Game/../Engine/Guichan/input.hpp \
+ ../Entities/../Game/../Engine/Guichan/keyinput.hpp \
+ ../Entities/../Game/../Engine/Guichan/key.hpp \
+ ../Entities/../Game/../Engine/Guichan/mouseinput.hpp \
+ ../Entities/../Game/../Engine/Guichan/graphics.hpp \
+ ../Entities/../Game/../Engine/Guichan/cliprectangle.hpp \
+ ../Entities/../Game/../Engine/Guichan/gui.hpp \
+ ../Entities/../Game/../Engine/Guichan/keyevent.hpp \
+ ../Entities/../Game/../Engine/Guichan/inputevent.hpp \
+ ../Entities/../Game/../Engine/Guichan/mouseevent.hpp \
+ ../Entities/../Game/../Engine/Guichan/image.hpp \
+ ../Entities/../Game/../Engine/Guichan/imagefont.hpp \
+ ../Entities/../Game/../Engine/Guichan/font.hpp \
+ ../Entities/../Game/../Engine/Guichan/imageloader.hpp \
+ ../Entities/../Game/../Engine/Guichan/input.hpp \
+ ../Entities/../Game/../Engine/Guichan/inputevent.hpp \
+ ../Entities/../Game/../Engine/Guichan/key.hpp \
+ ../Entities/../Game/../Engine/Guichan/keyevent.hpp \
+ ../Entities/../Game/../Engine/Guichan/keyinput.hpp \
+ ../Entities/../Game/../Engine/Guichan/keylistener.hpp \
+ ../Entities/../Game/../Engine/Guichan/listmodel.hpp \
+ ../Entities/../Game/../Engine/Guichan/mouseevent.hpp \
+ ../Entities/../Game/../Engine/Guichan/mouseinput.hpp \
+ ../Entities/../Game/../Engine/Guichan/mouselistener.hpp \
+ ../Entities/../Game/../Engine/Guichan/rectangle.hpp \
+ ../Entities/../Game/../Engine/Guichan/selectionevent.hpp \
+ ../Entities/../Game/../Engine/Guichan/selectionlistener.hpp \
+ ../Entities/../Game/../Engine/Guichan/selectionevent.hpp \
+ ../Entities/../Game/../Engine/Guichan/widget.hpp \
+ ../Entities/../Game/../Engine/Guichan/color.hpp \
+ ../Entities/../Game/../Engine/Guichan/widgetlistener.hpp \
+ ../Entities/../Game/../Engine/Guichan/widgets/button.hpp \
+ ../Entities/../Game/../Engine/Guichan/widgets/../focuslistener.hpp \
+ ../Entities/../Game/../Engine/Guichan/widgets/../graphics.hpp \
+ ../Entities/../Game/../Engine/Guichan/widgets/../keylistener.hpp \
+ ../Entities/../Game/../Engine/Guichan/widgets/../mouseevent.hpp \
+ ../Entities/../Game/../Engine/Guichan/widgets/../mouselistener.hpp \
+ ../Entities/../Game/../Engine/Guichan/widgets/../platform.hpp \
+ ../Entities/../Game/../Engine/Guichan/widgets/../widget.hpp \
+ ../Entities/../Game/../Engine/Guichan/widgets/checkbox.hpp \
+ ../Entities/../Game/../Engine/Guichan/widgets/container.hpp \
+ ../Entities/../Game/../Engine/Guichan/widgets/../basiccontainer.hpp \
+ ../Entities/../Game/../Engine/Guichan/widgets/../deathlistener.hpp \
+ ../Entities/../Game/../Engine/Guichan/widgets/../platform.hpp \
+ ../Entities/../Game/../Engine/Guichan/widgets/../widget.hpp \
+ ../Entities/../Game/../Engine/Guichan/widgets/dropdown.hpp \
+ ../Entities/../Game/../Engine/Guichan/widgets/../actionlistener.hpp \
+ ../Entities/../Game/../Engine/Guichan/widgets/../deathlistener.hpp \
+ ../Entities/../Game/../Engine/Guichan/widgets/../focushandler.hpp \
+ ../Entities/../Game/../Engine/Guichan/widgets/../listmodel.hpp \
+ ../Entities/../Game/../Engine/Guichan/widgets/../selectionlistener.hpp \
+ ../Entities/../Game/../Engine/Guichan/widgets/listbox.hpp \
+ ../Entities/../Game/../Engine/Guichan/widgets/scrollarea.hpp \
+ ../Entities/../Game/../Engine/Guichan/widgets/icon.hpp \
+ ../Entities/../Game/../Engine/Guichan/widgets/../image.hpp \
+ ../Entities/../Game/../Engine/Guichan/widgets/imagebutton.hpp \
+ ../Entities/../Game/../Engine/Guichan/widgets/button.hpp \
+ ../Entities/../Game/../Engine/Guichan/widgets/label.hpp \
+ ../Entities/../Game/../Engine/Guichan/widgets/listbox.hpp \
+ ../Entities/../Game/../Engine/Guichan/widgets/scrollarea.hpp \
+ ../Entities/../Game/../Engine/Guichan/widgets/slider.hpp \
+ ../Entities/../Game/../Engine/Guichan/widgets/radiobutton.hpp \
+ ../Entities/../Game/../Engine/Guichan/widgets/tab.hpp \
+ ../Entities/../Game/../Engine/Guichan/widgets/tabbedarea.hpp \
+ ../Entities/../Game/../Engine/Guichan/widgets/textbox.hpp \
+ ../Entities/../Game/../Engine/Guichan/widgets/textfield.hpp \
+ ../Entities/../Game/../Engine/Guichan/widgets/window.hpp \
+ ../Entities/../Game/../Engine/Guichan/widgets/container.hpp \
+ ../Entities/../Game/../Engine/Guichan/platform.hpp \
+ ../Entities/../Game/../Engine/Guichan/sfml.hpp \
+ ../Entities/../Game/../Engine/Guichan/sfml/sfmlfont.hpp \
+ ../Entities/../Game/../Engine/Guichan/sfml/../font.hpp \
+ ../Entities/../Game/../Engine/Guichan/sfml/../graphics.hpp \
+ ../Entities/../Game/../Engine/Guichan/sfml/sfmlgraphics.hpp \
+ ../Entities/../Game/../Engine/Guichan/sfml/../color.hpp \
+ ../Entities/../Game/../Engine/Guichan/sfml/../rectangle.hpp \
+ ../Entities/../Game/../Engine/Guichan/sfml/sfmlimage.hpp \
+ ../Entities/../Game/../Engine/Guichan/sfml/../image.hpp \
+ ../Entities/../Game/../Engine/Guichan/sfml/sfmlimageloader.hpp \
+ ../Entities/../Game/../Engine/Guichan/sfml/../imageloader.hpp \
+ ../Entities/../Game/../Engine/Guichan/sfml/sfmlinput.hpp \
+ ../Entities/../Game/../Engine/Guichan/sfml/../input.hpp \
+ ../Entities/../Game/../Engine/Guichan/sfml/../keyinput.hpp \
+ ../Entities/../Game/../Engine/Guichan/sfml/../mouseinput.hpp \
  ../Entities/../Game/../Interfaces/ActionInterface.hpp \
  ../Entities/../Game/../Interfaces/ChangeScoreInterface.hpp \
  ../Entities/../Game/../Listeners/ChangeScoreListener.hpp \
  ../Entities/../Game/../Listeners/DeathListener.hpp \
- ../Entities/../Game/../Game/Game.hpp \
- ../Entities/../Game/../Game/../Engine/Cursor.hpp \
- ../Entities/../Game/../Game/../Engine/../Engine/Renderer.hpp \
- ../Entities/../Game/../Game/../Engine/../Engine/Sprite.hpp \
- ../Entities/../Game/../Game/../Engine/../Math/Vector.hpp \
- ../Entities/../Game/../Game/../guichan.hpp \
- ../Entities/../Game/../Game/../Game/Input.hpp \
- ../Entities/../Game/../Game/../Engine/Renderer.hpp \
- ../Entities/../Game/../Game/../Engine/Timer.hpp \
- ../Entities/../Game/../Game/Input.hpp \
+ ../Entities/../Game/../Listeners/FloatingTextListener.hpp \
+ ../Entities/../Game/../Interfaces/GCNActionInterface.hpp \
+ ../Entities/../Game/../Interfaces/../Engine/guichan.hpp \
  ../Entities/../Game/../Listeners/LevelCompleteListener.hpp \
  ../Entities/../Game/../Game/Map.hpp \
- ../Entities/../Game/../Game/../Math/CollisionArea.hpp \
- ../Entities/../Game/../Game/../Math/../Math/Rectangle.hpp \
- ../Entities/../Game/../Game/../Math/../Engine/Renderer.hpp \
- ../Entities/../Game/../Game/../Math/Point.hpp \
- ../Entities/../Game/../Game/../Math/Quadrilateral.hpp \
- ../Entities/../Game/../Game/../Math/Rectangle.hpp \
+ ../Entities/../Game/../Game/../Game/CollisionArea.hpp \
  ../Entities/../Game/../Game/../Game/Tileset.hpp \
- ../Entities/../Game/../Game/../Game/../Math/CollisionArea.hpp \
- ../Entities/../Game/../Game/../Game/../Math/Rectangle.hpp \
- ../Entities/../Game/../Game/../Game/../Engine/Surface.hpp \
- ../Entities/../Game/../Game/../Engine/Viewport.hpp \
- ../Entities/../Game/../Game/../Engine/../Math/Quadrilateral.hpp \
- ../Entities/../Game/../Game/../Engine/../Math/Rectangle.hpp \
- ../Entities/../Game/../Math/Rectangle.hpp \
- ../Entities/../Game/../Engine/Renderer.hpp \
- ../Entities/../Game/../Math/Quadrilateral.hpp \
- ../Entities/../Game/../Engine/Viewport.hpp
+ ../Entities/../Game/../Game/../Game/../Game/CollisionArea.hpp \
+ ../Entities/../Game/../Entities/Portal.hpp \
+ ../Entities/../Game/../Entities/../Entities/Entity.hpp \
+ ../Entities/../Game/../Entities/../Interfaces/LevelCompleteInterface.hpp \
+ ../Entities/../Game/../Entities/../Interfaces/../Listeners/LevelCompleteListener.hpp \
+ ../Entities/../Game/../Entities/../Listeners/RemoveLockListener.hpp \
+ ../Entities/../Game/../Entities/../Engine/Timer.hpp \
+ ../Entities/../Game/../Engine/Timer.hpp
 
 ../Entities/Entity.hpp:
 
@@ -171,265 +141,223 @@ Entities/Entity.d: ../Entities/Entity.cpp ../Entities/Entity.hpp \
 
 ../Entities/../Interfaces/../Listeners/AddLockListener.hpp:
 
-../Entities/../Interfaces/../Listeners/../guichan.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/actionevent.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/event.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/platform.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/actionlistener.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/actionevent.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/cliprectangle.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/rectangle.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/color.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/deathlistener.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/event.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/exception.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/focushandler.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/focuslistener.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/font.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/genericinput.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/input.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/keyinput.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/key.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/mouseinput.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/graphics.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/cliprectangle.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/gui.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/keyevent.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/inputevent.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/mouseevent.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/image.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/imagefont.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/font.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/imageloader.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/input.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/inputevent.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/key.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/keyevent.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/keyinput.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/keylistener.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/listmodel.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/mouseevent.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/mouseinput.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/mouselistener.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/rectangle.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/selectionevent.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/selectionlistener.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/selectionevent.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/widget.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/color.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/widgetlistener.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/widgets/button.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/widgets/../focuslistener.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/widgets/../graphics.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/widgets/../keylistener.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/widgets/../mouseevent.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/widgets/../mouselistener.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/widgets/../platform.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/widgets/../widget.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/widgets/checkbox.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/widgets/container.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/widgets/../basiccontainer.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/widgets/../deathlistener.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/widgets/../platform.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/widgets/../widget.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/widgets/dropdown.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/widgets/../actionlistener.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/widgets/../deathlistener.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/widgets/../focushandler.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/widgets/../listmodel.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/widgets/../selectionlistener.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/widgets/listbox.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/widgets/scrollarea.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/widgets/icon.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/widgets/../image.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/widgets/imagebutton.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/widgets/button.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/widgets/label.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/widgets/listbox.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/widgets/scrollarea.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/widgets/slider.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/widgets/radiobutton.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/widgets/tab.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/widgets/tabbedarea.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/widgets/textbox.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/widgets/textfield.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/widgets/window.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/widgets/container.hpp:
-
-../Entities/../Interfaces/../Listeners/../Guichan/platform.hpp:
-
-../Entities/../Interfaces/../guichan.hpp:
-
-../Entities/../Listeners/AnimationCycleListener.hpp:
-
 ../Entities/../Interfaces/ChangeScoreInterface.hpp:
 
 ../Entities/../Interfaces/../Listeners/ChangeScoreListener.hpp:
 
 ../Entities/../Listeners/DeathListener.hpp:
 
-../Entities/../Game/Direction.hpp:
+../Entities/../Interfaces/FloatingTextInterface.hpp:
 
-../Entities/../Game/../Math/Vector.hpp:
+../Entities/../Interfaces/../Listeners/FloatingTextListener.hpp:
 
-../Entities/../Game/Input.hpp:
-
-../Entities/../Math/Vector.hpp:
-
-../Entities/../Math/Quadrilateral.hpp:
-
-../Entities/../Math/../Math/Polygon.hpp:
-
-../Entities/../Math/../Math/../Math/Vector.hpp:
-
-../Entities/../Math/../Math/Rectangle.hpp:
-
-../Entities/../Math/../Math/../guichan.hpp:
-
-../Entities/../Math/../Math/../Math/Polygon.hpp:
-
-../Entities/../Math/../Math/Vector.hpp:
-
-../Entities/../Math/Rectangle.hpp:
+../Entities/../Game/Math.hpp:
 
 ../Entities/../Interfaces/RemoveLockInterface.hpp:
 
 ../Entities/../Interfaces/../Listeners/RemoveLockListener.hpp:
 
-../Entities/../Engine/Renderer.hpp:
-
-../Entities/../Engine/../Math/Quadrilateral.hpp:
-
-../Entities/../Engine/../Guichan/sdl.hpp:
-
-../Entities/../Engine/../Guichan/sdl/sdlgraphics.hpp:
-
-../Entities/../Engine/../Guichan/sdl/../color.hpp:
-
-../Entities/../Engine/../Guichan/sdl/../graphics.hpp:
-
-../Entities/../Engine/../Guichan/sdl/../platform.hpp:
-
-../Entities/../Engine/../Guichan/sdl/sdlimage.hpp:
-
-../Entities/../Engine/../Guichan/sdl/../image.hpp:
-
-../Entities/../Engine/../Guichan/sdl/sdlimageloader.hpp:
-
-../Entities/../Engine/../Guichan/sdl/../imageloader.hpp:
-
-../Entities/../Engine/../Guichan/sdl/sdlinput.hpp:
-
-../Entities/../Engine/../Guichan/sdl/../input.hpp:
-
-../Entities/../Engine/../Guichan/sdl/../keyinput.hpp:
-
-../Entities/../Engine/../Guichan/sdl/../mouseinput.hpp:
-
-../Entities/../Engine/../Guichan/platform.hpp:
-
-../Entities/../Engine/Sprite.hpp:
-
-../Entities/../Engine/../guichan.hpp:
-
-../Entities/../Engine/../Listeners/AnimationCycleListener.hpp:
-
-../Entities/../Engine/../Math/Rectangle.hpp:
-
-../Entities/../Engine/../Engine/Renderer.hpp:
-
-../Entities/../Engine/Surface.hpp:
-
-../Entities/../Engine/Timer.hpp:
-
-../Entities/../Engine/../Math/Vector.hpp:
-
-../Entities/../Engine/Timer.hpp:
-
 ../Entities/../Game/Level.hpp:
+
+../Entities/../Game/../Engine/guichan.hpp:
+
+../Entities/../Game/../Engine/Guichan/actionevent.hpp:
+
+../Entities/../Game/../Engine/Guichan/event.hpp:
+
+../Entities/../Game/../Engine/Guichan/platform.hpp:
+
+../Entities/../Game/../Engine/Guichan/actionlistener.hpp:
+
+../Entities/../Game/../Engine/Guichan/actionevent.hpp:
+
+../Entities/../Game/../Engine/Guichan/cliprectangle.hpp:
+
+../Entities/../Game/../Engine/Guichan/rectangle.hpp:
+
+../Entities/../Game/../Engine/Guichan/color.hpp:
+
+../Entities/../Game/../Engine/Guichan/deathlistener.hpp:
+
+../Entities/../Game/../Engine/Guichan/event.hpp:
+
+../Entities/../Game/../Engine/Guichan/exception.hpp:
+
+../Entities/../Game/../Engine/Guichan/focushandler.hpp:
+
+../Entities/../Game/../Engine/Guichan/focuslistener.hpp:
+
+../Entities/../Game/../Engine/Guichan/font.hpp:
+
+../Entities/../Game/../Engine/Guichan/genericinput.hpp:
+
+../Entities/../Game/../Engine/Guichan/input.hpp:
+
+../Entities/../Game/../Engine/Guichan/keyinput.hpp:
+
+../Entities/../Game/../Engine/Guichan/key.hpp:
+
+../Entities/../Game/../Engine/Guichan/mouseinput.hpp:
+
+../Entities/../Game/../Engine/Guichan/graphics.hpp:
+
+../Entities/../Game/../Engine/Guichan/cliprectangle.hpp:
+
+../Entities/../Game/../Engine/Guichan/gui.hpp:
+
+../Entities/../Game/../Engine/Guichan/keyevent.hpp:
+
+../Entities/../Game/../Engine/Guichan/inputevent.hpp:
+
+../Entities/../Game/../Engine/Guichan/mouseevent.hpp:
+
+../Entities/../Game/../Engine/Guichan/image.hpp:
+
+../Entities/../Game/../Engine/Guichan/imagefont.hpp:
+
+../Entities/../Game/../Engine/Guichan/font.hpp:
+
+../Entities/../Game/../Engine/Guichan/imageloader.hpp:
+
+../Entities/../Game/../Engine/Guichan/input.hpp:
+
+../Entities/../Game/../Engine/Guichan/inputevent.hpp:
+
+../Entities/../Game/../Engine/Guichan/key.hpp:
+
+../Entities/../Game/../Engine/Guichan/keyevent.hpp:
+
+../Entities/../Game/../Engine/Guichan/keyinput.hpp:
+
+../Entities/../Game/../Engine/Guichan/keylistener.hpp:
+
+../Entities/../Game/../Engine/Guichan/listmodel.hpp:
+
+../Entities/../Game/../Engine/Guichan/mouseevent.hpp:
+
+../Entities/../Game/../Engine/Guichan/mouseinput.hpp:
+
+../Entities/../Game/../Engine/Guichan/mouselistener.hpp:
+
+../Entities/../Game/../Engine/Guichan/rectangle.hpp:
+
+../Entities/../Game/../Engine/Guichan/selectionevent.hpp:
+
+../Entities/../Game/../Engine/Guichan/selectionlistener.hpp:
+
+../Entities/../Game/../Engine/Guichan/selectionevent.hpp:
+
+../Entities/../Game/../Engine/Guichan/widget.hpp:
+
+../Entities/../Game/../Engine/Guichan/color.hpp:
+
+../Entities/../Game/../Engine/Guichan/widgetlistener.hpp:
+
+../Entities/../Game/../Engine/Guichan/widgets/button.hpp:
+
+../Entities/../Game/../Engine/Guichan/widgets/../focuslistener.hpp:
+
+../Entities/../Game/../Engine/Guichan/widgets/../graphics.hpp:
+
+../Entities/../Game/../Engine/Guichan/widgets/../keylistener.hpp:
+
+../Entities/../Game/../Engine/Guichan/widgets/../mouseevent.hpp:
+
+../Entities/../Game/../Engine/Guichan/widgets/../mouselistener.hpp:
+
+../Entities/../Game/../Engine/Guichan/widgets/../platform.hpp:
+
+../Entities/../Game/../Engine/Guichan/widgets/../widget.hpp:
+
+../Entities/../Game/../Engine/Guichan/widgets/checkbox.hpp:
+
+../Entities/../Game/../Engine/Guichan/widgets/container.hpp:
+
+../Entities/../Game/../Engine/Guichan/widgets/../basiccontainer.hpp:
+
+../Entities/../Game/../Engine/Guichan/widgets/../deathlistener.hpp:
+
+../Entities/../Game/../Engine/Guichan/widgets/../platform.hpp:
+
+../Entities/../Game/../Engine/Guichan/widgets/../widget.hpp:
+
+../Entities/../Game/../Engine/Guichan/widgets/dropdown.hpp:
+
+../Entities/../Game/../Engine/Guichan/widgets/../actionlistener.hpp:
+
+../Entities/../Game/../Engine/Guichan/widgets/../deathlistener.hpp:
+
+../Entities/../Game/../Engine/Guichan/widgets/../focushandler.hpp:
+
+../Entities/../Game/../Engine/Guichan/widgets/../listmodel.hpp:
+
+../Entities/../Game/../Engine/Guichan/widgets/../selectionlistener.hpp:
+
+../Entities/../Game/../Engine/Guichan/widgets/listbox.hpp:
+
+../Entities/../Game/../Engine/Guichan/widgets/scrollarea.hpp:
+
+../Entities/../Game/../Engine/Guichan/widgets/icon.hpp:
+
+../Entities/../Game/../Engine/Guichan/widgets/../image.hpp:
+
+../Entities/../Game/../Engine/Guichan/widgets/imagebutton.hpp:
+
+../Entities/../Game/../Engine/Guichan/widgets/button.hpp:
+
+../Entities/../Game/../Engine/Guichan/widgets/label.hpp:
+
+../Entities/../Game/../Engine/Guichan/widgets/listbox.hpp:
+
+../Entities/../Game/../Engine/Guichan/widgets/scrollarea.hpp:
+
+../Entities/../Game/../Engine/Guichan/widgets/slider.hpp:
+
+../Entities/../Game/../Engine/Guichan/widgets/radiobutton.hpp:
+
+../Entities/../Game/../Engine/Guichan/widgets/tab.hpp:
+
+../Entities/../Game/../Engine/Guichan/widgets/tabbedarea.hpp:
+
+../Entities/../Game/../Engine/Guichan/widgets/textbox.hpp:
+
+../Entities/../Game/../Engine/Guichan/widgets/textfield.hpp:
+
+../Entities/../Game/../Engine/Guichan/widgets/window.hpp:
+
+../Entities/../Game/../Engine/Guichan/widgets/container.hpp:
+
+../Entities/../Game/../Engine/Guichan/platform.hpp:
+
+../Entities/../Game/../Engine/Guichan/sfml.hpp:
+
+../Entities/../Game/../Engine/Guichan/sfml/sfmlfont.hpp:
+
+../Entities/../Game/../Engine/Guichan/sfml/../font.hpp:
+
+../Entities/../Game/../Engine/Guichan/sfml/../graphics.hpp:
+
+../Entities/../Game/../Engine/Guichan/sfml/sfmlgraphics.hpp:
+
+../Entities/../Game/../Engine/Guichan/sfml/../color.hpp:
+
+../Entities/../Game/../Engine/Guichan/sfml/../rectangle.hpp:
+
+../Entities/../Game/../Engine/Guichan/sfml/sfmlimage.hpp:
+
+../Entities/../Game/../Engine/Guichan/sfml/../image.hpp:
+
+../Entities/../Game/../Engine/Guichan/sfml/sfmlimageloader.hpp:
+
+../Entities/../Game/../Engine/Guichan/sfml/../imageloader.hpp:
+
+../Entities/../Game/../Engine/Guichan/sfml/sfmlinput.hpp:
+
+../Entities/../Game/../Engine/Guichan/sfml/../input.hpp:
+
+../Entities/../Game/../Engine/Guichan/sfml/../keyinput.hpp:
+
+../Entities/../Game/../Engine/Guichan/sfml/../mouseinput.hpp:
 
 ../Entities/../Game/../Interfaces/ActionInterface.hpp:
 
@@ -439,60 +367,32 @@ Entities/Entity.d: ../Entities/Entity.cpp ../Entities/Entity.hpp \
 
 ../Entities/../Game/../Listeners/DeathListener.hpp:
 
-../Entities/../Game/../Game/Game.hpp:
+../Entities/../Game/../Listeners/FloatingTextListener.hpp:
 
-../Entities/../Game/../Game/../Engine/Cursor.hpp:
+../Entities/../Game/../Interfaces/GCNActionInterface.hpp:
 
-../Entities/../Game/../Game/../Engine/../Engine/Renderer.hpp:
-
-../Entities/../Game/../Game/../Engine/../Engine/Sprite.hpp:
-
-../Entities/../Game/../Game/../Engine/../Math/Vector.hpp:
-
-../Entities/../Game/../Game/../guichan.hpp:
-
-../Entities/../Game/../Game/../Game/Input.hpp:
-
-../Entities/../Game/../Game/../Engine/Renderer.hpp:
-
-../Entities/../Game/../Game/../Engine/Timer.hpp:
-
-../Entities/../Game/../Game/Input.hpp:
+../Entities/../Game/../Interfaces/../Engine/guichan.hpp:
 
 ../Entities/../Game/../Listeners/LevelCompleteListener.hpp:
 
 ../Entities/../Game/../Game/Map.hpp:
 
-../Entities/../Game/../Game/../Math/CollisionArea.hpp:
-
-../Entities/../Game/../Game/../Math/../Math/Rectangle.hpp:
-
-../Entities/../Game/../Game/../Math/../Engine/Renderer.hpp:
-
-../Entities/../Game/../Game/../Math/Point.hpp:
-
-../Entities/../Game/../Game/../Math/Quadrilateral.hpp:
-
-../Entities/../Game/../Game/../Math/Rectangle.hpp:
+../Entities/../Game/../Game/../Game/CollisionArea.hpp:
 
 ../Entities/../Game/../Game/../Game/Tileset.hpp:
 
-../Entities/../Game/../Game/../Game/../Math/CollisionArea.hpp:
+../Entities/../Game/../Game/../Game/../Game/CollisionArea.hpp:
 
-../Entities/../Game/../Game/../Game/../Math/Rectangle.hpp:
+../Entities/../Game/../Entities/Portal.hpp:
 
-../Entities/../Game/../Game/../Game/../Engine/Surface.hpp:
+../Entities/../Game/../Entities/../Entities/Entity.hpp:
 
-../Entities/../Game/../Game/../Engine/Viewport.hpp:
+../Entities/../Game/../Entities/../Interfaces/LevelCompleteInterface.hpp:
 
-../Entities/../Game/../Game/../Engine/../Math/Quadrilateral.hpp:
+../Entities/../Game/../Entities/../Interfaces/../Listeners/LevelCompleteListener.hpp:
 
-../Entities/../Game/../Game/../Engine/../Math/Rectangle.hpp:
+../Entities/../Game/../Entities/../Listeners/RemoveLockListener.hpp:
 
-../Entities/../Game/../Math/Rectangle.hpp:
+../Entities/../Game/../Entities/../Engine/Timer.hpp:
 
-../Entities/../Game/../Engine/Renderer.hpp:
-
-../Entities/../Game/../Math/Quadrilateral.hpp:
-
-../Entities/../Game/../Engine/Viewport.hpp:
+../Entities/../Game/../Engine/Timer.hpp:

@@ -4,7 +4,7 @@
 #include <fstream>
 #include <stdexcept>
 
-#include "../guichan.hpp"
+#include "../Engine/guichan.hpp"
 
 /**
  * @brief The logger is accessed via Logger::log() to store information to the logfile.

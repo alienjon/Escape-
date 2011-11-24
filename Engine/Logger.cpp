@@ -21,7 +21,6 @@
 
 #include <iostream>
 
-#include "../Game/Game.hpp"
 #include "../main.hpp"
 
 using std::cout;

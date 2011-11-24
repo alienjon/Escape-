@@ -6,43 +6,58 @@
  */
 #include "LevelCompleteWidget.hpp"
 
+#include "../Engine/AudioManager.hpp"
 #include "../Engine/Colors.hpp"
-#include "../Managers/FontManager.hpp"
+#include "../Engine/FontManager.hpp"
+#include "../Game/Keywords.hpp"
 #include "../main.hpp"
 
 using std::string;
 
 const unsigned int LEVELCOMPLETEWIDGET_TIMERINTERVAL = 1500;
-#include <iostream>
-using namespace std;
+
 LevelCompleteWidget::LevelCompleteWidget()
 {
 	// Configure the widget.
 	addKeyListener(this);
 	setFocusable(true);
 	setOpaque(true);
-	setBaseColor(COLOR_WHITE);
+	setBaseColor(gcn::COLOR_WHITE);
 	setFrameSize(2);
 
+	// Load the fonts.
+	gcn::SFMLFont* captionFont = FontManager::getGCNFont(FONT_CAPTION);
+	gcn::SFMLFont* defaultFont = FontManager::getGCNFont(FONT_DEFAULT);
+	gcn::SFMLFont* textFont    = FontManager::getGCNFont(FONT_TEXT);
+	gcn::SFMLFont* messageFont = FontManager::getGCNFont(FONT_CAPTION);
+	captionFont->SetColor(sf::Color::Blue);
+	captionFont->SetStyle(sf::Text::Bold | sf::Text::Underlined);
+	captionFont->SetCharacterSize(24);
+	defaultFont->SetColor(sf::Color::Blue);
+	defaultFont->SetCharacterSize(20);
+	textFont->SetColor(sf::Color::Cyan);
+	textFont->SetCharacterSize(20);
+	messageFont->SetColor(sf::Color::Magenta);
+	messageFont->SetCharacterSize(14);
+
 	// Configure the fonts.
-	//@todo I probably want to get new fonts for these to make them look better.
-	mCaption.setFont(FontManager::get(FONT_CAPTION));
-	mTimeLabel.setFont(FontManager::get(FONT_DEFAULT));
-	mTimeValue.setFont(FontManager::get(FONT_TEXT));
-	mTimeBonus.setFont(FontManager::get(FONT_DEFAULT));
-	mMapLabel.setFont(FontManager::get(FONT_DEFAULT));
-	mMapValue.setFont(FontManager::get(FONT_TEXT));
-	mMapBonus.setFont(FontManager::get(FONT_DEFAULT));
-	mDifficultyLabel.setFont(FontManager::get(FONT_DEFAULT));
-	mDifficultyValue.setFont(FontManager::get(FONT_TEXT));
-	mDifficultyBonus.setFont(FontManager::get(FONT_DEFAULT));
-	mBaseScoreLabel.setFont(FontManager::get(FONT_DEFAULT));
-	mBaseScoreValue.setFont(FontManager::get(FONT_DEFAULT));
-	mBonusScoreLabel.setFont(FontManager::get(FONT_DEFAULT));
-	mBonusScoreValue.setFont(FontManager::get(FONT_DEFAULT));
-	mTotalScoreLabel.setFont(FontManager::get(FONT_DEFAULT));
-	mTotalScoreValue.setFont(FontManager::get(FONT_DEFAULT));
-	mMessage.setFont(FontManager::get(FONT_TEXT));
+	mCaption.setFont(captionFont);
+	mTimeLabel.setFont(defaultFont);
+	mTimeValue.setFont(textFont);
+	mTimeBonus.setFont(defaultFont);
+	mMapLabel.setFont(defaultFont);
+	mMapValue.setFont(textFont);
+	mMapBonus.setFont(defaultFont);
+	mDifficultyLabel.setFont(defaultFont);
+	mDifficultyValue.setFont(textFont);
+	mDifficultyBonus.setFont(defaultFont);
+	mBaseScoreLabel.setFont(defaultFont);
+	mBaseScoreValue.setFont(defaultFont);
+	mBonusScoreLabel.setFont(defaultFont);
+	mBonusScoreValue.setFont(defaultFont);
+	mTotalScoreLabel.setFont(defaultFont);
+	mTotalScoreValue.setFont(defaultFont);
+	mMessage.setFont(messageFont);
 
 	// Set the labels.
 	mTimeLabel.setCaption("Time Completed: ");
@@ -147,7 +162,7 @@ void LevelCompleteWidget::adjust()
 
 	// The caption and message go last, as they are based on the size.
 	mCaption.setPosition(getWidth() / 2 - mCaption.getWidth() / 2, 0);
-	mMessage.setPosition(getWidth() / 2 - mMessage.getWidth() / 2, mTotalScoreLabel.getY() + mTotalScoreLabel.getHeight() + 8);
+	mMessage.setPosition(getWidth() / 2 - mMessage.getWidth() / 2, mTotalScoreLabel.getY() + mTotalScoreLabel.getHeight());
 
 	// Set the height.
 	setHeight(mMessage.getY() + mMessage.getHeight());
@@ -223,7 +238,7 @@ void LevelCompleteWidget::logic()
 			mTimeBonus.setVisible(true);
 
 			// Play a sound.
-//			AudioManager::playSound(LEVEL COMPLETE SOUND, 1);@todo find sound and implement.
+			AudioManager::playSound(SOUND_LEVELCOMPLETE_ITEMDISPLAY);
 
 			// Reset the timer.
 			mTimer.start();
@@ -236,7 +251,7 @@ void LevelCompleteWidget::logic()
 			mMapBonus.setVisible(true);
 
 			// Play a sound.
-//			AudioManager::playSound(LEVEL COMPLETE SOUND, 1);@todo find sound and implement.
+			AudioManager::playSound(SOUND_LEVELCOMPLETE_ITEMDISPLAY);
 
 			// Reset the timer.
 			mTimer.start();
@@ -249,7 +264,7 @@ void LevelCompleteWidget::logic()
 			mDifficultyBonus.setVisible(true);
 
 			// Play a sound.
-//			AudioManager::playSound(LEVEL COMPLETE SOUND, 1);@todo find sound and implement.
+			AudioManager::playSound(SOUND_LEVELCOMPLETE_ITEMDISPLAY);
 
 			// Reset the timer.
 			mTimer.start();
@@ -262,7 +277,7 @@ void LevelCompleteWidget::logic()
 			mTotalScoreValue.setVisible(true);
 
 			// Play a sound.
-//			AudioManager::playSound(LEVEL COMPLETE SOUND, 1);@todo find sound and implement.
+			AudioManager::playSound(SOUND_LEVELCOMPLETE_FINISH);
 
 			// Reset the timer.
 			mTimer.start();

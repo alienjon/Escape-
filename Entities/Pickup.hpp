@@ -7,9 +7,9 @@
 #ifndef PICKUP_HPP_
 #define PICKUP_HPP_
 
+#include <SFML/Graphics.hpp>
+
 #include "../Entities/Entity.hpp"
-#include "../guichan.hpp"
-#include "../Engine/Renderer.hpp"
 
 /**
  * @brief A pickup is something that the player picks up to get points.
@@ -23,7 +23,7 @@ class Pickup : public Entity
 	 * @param color The color of the pickup.
 	 * @param size The size of the pickup.
 	 */
-	Pickup(int value, const gcn::Color& color, unsigned int size);
+	Pickup(int value, const sf::Color& color, unsigned int size);
 
     /**
      * @brief This KeyEntity is colliding/interacting with an entity.
@@ -31,21 +31,15 @@ class Pickup : public Entity
      */
     virtual void collide(Entity& entity);
 
-	/**
-	 * @brief Draw the pickup.
-	 * @param renderer The renderer with which to draw.
-	 */
-	virtual void draw(Renderer& renderer);
-
 	private:
 	// The value of the pickup.
 	int mValue;
 
-	// The color of the pickup.
-	gcn::Color mColor;
-
 	// The size of the pickup.
 	unsigned int mSize;
+
+	// The color of the pickup.
+	sf::Color mColor;
 };
 
 #endif /* PICKUP_HPP_ */

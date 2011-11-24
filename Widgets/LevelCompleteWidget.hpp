@@ -9,7 +9,7 @@
 
 #include <string>
 
-#include "../guichan.hpp"
+#include "../Engine/guichan.hpp"
 #include "../Engine/Timer.hpp"
 
 /**
@@ -85,7 +85,6 @@ class LevelCompleteWidget : public gcn::Container, public gcn::KeyListener
 			   mBonusScoreLabel, mBonusScoreValue,
 			   mTotalScoreLabel, mTotalScoreValue,
 			   mMessage;
-
 };
 
 #endif /* LEVELCOMPLETEWIDGET_H_ */

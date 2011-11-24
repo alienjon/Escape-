@@ -7,12 +7,11 @@
 #ifndef TILESET_HPP_
 #define TILESET_HPP_
 
+#include <SFML/Graphics.hpp>
 #include <map>
 #include <string>
 
-#include "../Math/CollisionArea.hpp"
-#include "../Math/Rectangle.hpp"
-#include "../Engine/Surface.hpp"
+#include "../Game/CollisionArea.hpp"
 
 /**
  * @brief A tileset maintains tile data and provides tiles for maps.
@@ -54,7 +53,7 @@ class Tileset
 	 * @param level The level of the tile type to get.
 	 * @return The area on the tileset surface that represents the tile.
 	 */
-	const Rectangle& getTile(Tileset::TileType type) const;
+	const sf::Sprite& getTile(Tileset::TileType type) const;
 
 	/**
 	 * @brief Get the collision area for the specified tile.
@@ -63,15 +62,6 @@ class Tileset
 	 * @note The collision area is relative to the tile itself.
 	 */
 	const CollisionArea& getTileCollision(Tileset::TileType type) const;
-
-    /**
-     * @brief Get the tileset's meta image.
-     * @return The tileset's meta image.
-     */
-    inline const Surface* getTilesetSurface() const
-	{
-		return mSurface;
-	}
 
     /**
      * @brief Gets the width of a single tile.
@@ -83,17 +73,12 @@ class Tileset
     }
 
     private:
-    // The tileset's meta image.
-    Surface* mSurface;
-
     // The name and dimensions of the tileset.
     unsigned int mWidth, mHeight;
 
     // The tiles as defined by the area's they represent on the map.
-    std::map<Tileset::TileType, Rectangle> mTiles;
+    std::map<Tileset::TileType, sf::Sprite> mTiles;
     std::map<Tileset::TileType, CollisionArea> mCollisions;
 };
-
-extern const std::string TILESET_DIRECTORY;
 
 #endif /* TILESET_HPP_ */

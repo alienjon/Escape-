@@ -9,13 +9,13 @@
 
 #include <string>
 
-#include "../guichan.hpp"
+#include "../Engine/guichan.hpp"
 #include "../Widgets/MenuButton.hpp"
 
 /**
  * @brief A widget to display the in-game options menu.
  */
-class GameOptionsWidget : public gcn::ActionListener, public gcn::Container
+class GameOptionsWidget : public gcn::ActionListener, public gcn::Container, public gcn::KeyListener
 {
     public:
     /**
@@ -28,6 +28,12 @@ class GameOptionsWidget : public gcn::ActionListener, public gcn::Container
      * @param actionEvent The action event.
      */
     virtual void action(const gcn::ActionEvent& actionEvent);
+
+    /**
+     * @brief A key was pressed.
+     * @param event The key event.
+     */
+    virtual void keyPressed(gcn::KeyEvent& event);
 
     private:
     // Buttons.@todo Make these buttons look cooler

@@ -4,13 +4,10 @@
  *  Created on: Mar 30, 2009
  *      Author: alienjon
  */
-
 #ifndef FPSDISPLAYWIDGET_HPP_
 #define FPSDISPLAYWIDGET_HPP_
 
-#include "../guichan.hpp"
-
-#include "../main.hpp"
+#include "../Engine/guichan.hpp"
 #include "../Engine/Timer.hpp"
 
 /**
@@ -29,11 +26,12 @@ class FPSDisplayWidget : public gcn::Label
 	 */
 	virtual void logic();
 
-	protected:
-	/**
-	 * Timer used specifically to keep track of a single second for FPS calculation.
-	 */
-	Timer mFPSTimer;
+	private:
+	// Timer used specifically to keep track of a single second for FPS calculation.
+	Timer mTimer;
+
+	// The FPS counter.
+	unsigned int mCounter;
 };
 
 #endif /* FPSDISPLAYWIDGET_HPP_ */

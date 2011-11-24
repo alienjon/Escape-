@@ -4,4 +4,4 @@
 
 USER_OBJS :=
 
-LIBS := -lSDL -lSDL_gfx -lSDL_image -lSDL_mixer
+LIBS := -lsfml-system -lsfml-window -lsfml-graphics -lsfml-audio

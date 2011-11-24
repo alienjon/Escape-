@@ -7,10 +7,10 @@
 #ifndef MENUBUTTON_HPP_
 #define MENUBUTTON_HPP_
 
-#include <list>
 #include <string>
 
-#include "../guichan.hpp"
+#include "../Engine/guichan.hpp"
+#include "../Engine/Guichan/sfml.hpp"
 
 /**
  * @brief An in-game button.
@@ -96,9 +96,7 @@ class MenuButton : public gcn::Label, public gcn::KeyListener, public gcn::Mouse
 
     private:
     // The enabled and disabled images.
-    gcn::Font* mInactiveFont;
-    gcn::Font* mHoverFont;
-    gcn::Font* mPressedFont;
+    gcn::SFMLFont *mInactiveFont, *mHoverFont, *mPressedFont;
 };
 
 #endif /* MENUICON_HPP_ */

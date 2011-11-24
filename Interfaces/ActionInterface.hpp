@@ -80,9 +80,7 @@ class ActionInterface
     }
 
     private:
-    /**
-     * This is the action queue for this being.
-     */
+    // This is the action queue for this being.
     ActionList mActions;
 };
 

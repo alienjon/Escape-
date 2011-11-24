@@ -7,9 +7,11 @@
 #ifndef KEY_HPP_
 #define KEY_HPP_
 
+#include <SFML/Graphics.hpp>
+
 #include "../Entities/Entity.hpp"
-#include "../guichan.hpp"
 #include "../Interfaces/RemoveLockInterface.hpp"
+#include "../Engine/Timer.hpp"
 
 class Level;
 
@@ -23,7 +25,7 @@ class KeyEntity : public Entity
 	 * @brief Default constructor.
 	 * @param color The color of this key.
 	 */
-	KeyEntity(gcn::Color color);
+	KeyEntity(sf::Color color);
 
     /**
      * @brief This KeyEntity is colliding/interacting with an entity.
@@ -32,14 +34,23 @@ class KeyEntity : public Entity
     virtual void collide(Entity& entity);
 
 	/**
-	 * @brief Draw the key.
-	 * @param renderer The renderer with which to draw.
+	 * @brief Perform logic.
+	 * @param level The level in which this entity resides.
 	 */
-	virtual void draw(Renderer& renderer);
+	virtual void logic(Level& level);
 
 	private:
 	// The key's color.
-	gcn::Color mColor;
+	sf::Color mColor;
+
+	// If not growing, then it is shrinking.
+	bool mIsGrowing;
+
+	// The drawing area of the entity.
+	sf::Vector2f mSize;
+
+	// The animation timer.
+	Timer mTimer;
 };
 
 #endif /* KEY_HPP_ */

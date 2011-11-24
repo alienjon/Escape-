@@ -6,32 +6,37 @@
  */
 #include "FPSDisplayWidget.hpp"
 
-#include "../Game/Game.hpp"
-#include "../Managers/FontManager.hpp"
+#include "../Engine/FontManager.hpp"
+#include "../Game/Keywords.hpp"
+#include "../main.hpp"
 
-FPSDisplayWidget::FPSDisplayWidget() : gcn::Label()
+FPSDisplayWidget::FPSDisplayWidget() : gcn::Label(),
+	mCounter(0)
 {
 	// Start the timer.
-	mFPSTimer.start();
+	mTimer.start();
 
 	// Set the font.
-	setFont(FontManager::get(FONT_DEFAULT));
+	setFont(FontManager::getGCNFont(FONT_DEFAULT));
 }
 
 void FPSDisplayWidget::logic()
 {
+	// Another frame was called.
+	mCounter++;
+
 	// Perform GCN logic.
 	gcn::Label::logic();
 
 	// Calculate the FPS.
-	if(mFPSTimer.getTime() > 1000)
+	if(mTimer.getTime() >= 1000)
 	{
 		// Update the FPS.
-		setCaption(toString(gFPSCounter));
+		setCaption(toString(mCounter));
 		adjustSize();
 
 		// Reset the FPS timer value.
-		mFPSTimer.start();
-		gFPSCounter = 0;
+		mTimer.start();
+		mCounter = 0;
 	}
 }

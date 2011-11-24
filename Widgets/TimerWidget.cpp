@@ -7,7 +7,8 @@
 #include "TimerWidget.hpp"
 
 #include "../Game/Game.hpp"
-#include "../Managers/FontManager.hpp"
+#include "../Engine/FontManager.hpp"
+#include "../Game/Keywords.hpp"
 #include "../main.hpp"
 
 using std::string;
@@ -16,12 +17,12 @@ TimerWidget::TimerWidget() :
 	mStartTime(0)
 {
 	// Set the font.
-	setFont(FontManager::get(FONT_DEFAULT));//@todo find a timer widget font
+	setFont(FontManager::getGCNFont(FONT_DEFAULT));
 }
 
 unsigned int TimerWidget::getTime() const
 {
-	return (mStartTime < 0) ? mTimer.getTime() : (unsigned int)mStartTime - mTimer.getTime();
+	return (mStartTime == 0) ? mTimer.getTime() : mTimer.getTime() - mStartTime;
 }
 
 void TimerWidget::logic()
@@ -29,15 +30,11 @@ void TimerWidget::logic()
 	// Perform GCN logic.
 	gcn::Label::logic();
 
-	// Update the counter if the timer is running.
-	if(mTimer.isStarted() && !mTimer.isPaused())
-	{
-		// If the timer has exceeded the start time, then time is up.
-		if(mStartTime >= 0 && mTimer.getTime() > (unsigned int)mStartTime)
-			stop();
-		setCaption(convertToTime((mStartTime < 0) ? mTimer.getTime() : (unsigned int)mStartTime - mTimer.getTime()));
-		adjustSize();
-	}
+	// If the timer has exceeded the start time, then time is up.
+	if(mStartTime > 0 && mTimer.getTime() >= mStartTime)
+		stop();
+	setCaption(convertToTime((mStartTime == 0) ? mTimer.getTime() : mStartTime - mTimer.getTime()));
+	adjustSize();
 }
 
 void TimerWidget::pause()
@@ -45,15 +42,15 @@ void TimerWidget::pause()
 	mTimer.pause();
 }
 
-void TimerWidget::start(int startTime)
+void TimerWidget::start(unsigned int startTime)
 {
-	mStartTime = startTime;
 	mTimer.start();
+	mStartTime = mTimer.getTime() + startTime;
 }
 
 void TimerWidget::stop()
 {
-	mStartTime = -1;
+	mStartTime = 0;
 	mTimer.stop();
 }
 

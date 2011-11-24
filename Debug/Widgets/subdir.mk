@@ -10,7 +10,6 @@ CPP_SRCS += \
 ../Widgets/LevelCompleteWidget.cpp \
 ../Widgets/MenuButton.cpp \
 ../Widgets/MessageDisplayWidget.cpp \
-../Widgets/MiniMap.cpp \
 ../Widgets/SpriteWidget.cpp \
 ../Widgets/TimerWidget.cpp 
 
@@ -21,7 +20,6 @@ OBJS += \
 ./Widgets/LevelCompleteWidget.o \
 ./Widgets/MenuButton.o \
 ./Widgets/MessageDisplayWidget.o \
-./Widgets/MiniMap.o \
 ./Widgets/SpriteWidget.o \
 ./Widgets/TimerWidget.o 
 
@@ -32,7 +30,6 @@ CPP_DEPS += \
 ./Widgets/LevelCompleteWidget.d \
 ./Widgets/MenuButton.d \
 ./Widgets/MessageDisplayWidget.d \
-./Widgets/MiniMap.d \
 ./Widgets/SpriteWidget.d \
 ./Widgets/TimerWidget.d 
 

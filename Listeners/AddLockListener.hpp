@@ -7,7 +7,7 @@
 #ifndef ADDLOCKLISTENER_HPP_
 #define ADDLOCKLISTENER_HPP_
 
-#include "../guichan.hpp"
+#include <SFML/Graphics.hpp>
 
 class AddLockListener
 {
@@ -16,7 +16,7 @@ class AddLockListener
 	 * @brief Add a lock.
 	 * @param color The lock color to add.
 	 */
-	virtual void addLock(gcn::Color color) = 0;
+	virtual void addLock(sf::Color color) = 0;
 };
 
 #endif /* ADDLOCKLISTENER_HPP_ */

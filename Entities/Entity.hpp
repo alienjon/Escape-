@@ -10,20 +10,15 @@
 #include <set>
 #include <string>
 
+#include <SFML/Graphics.hpp>
+
 #include "../Interfaces/ActionInterface.hpp"
 #include "../Interfaces/AddLockInterface.hpp"
-#include "../Listeners/AnimationCycleListener.hpp"
 #include "../Interfaces/ChangeScoreInterface.hpp"
 #include "../Listeners/DeathListener.hpp"
-#include "../Game/Direction.hpp"
-#include "../Game/Input.hpp"
-#include "../Math/Vector.hpp"
-#include "../Math/Quadrilateral.hpp"
-#include "../Math/Rectangle.hpp"
+#include "../Interfaces/FloatingTextInterface.hpp"
+#include "../Game/Math.hpp"
 #include "../Interfaces/RemoveLockInterface.hpp"
-#include "../Engine/Renderer.hpp"
-#include "../Engine/Sprite.hpp"
-#include "../Engine/Timer.hpp"
 
 class Level;
 
@@ -35,10 +30,8 @@ class Level;
  * (such as displaying itself, performing logic and having
  * various listeners)
  */
-class Entity : public ActionInterface, public AddLockInterface, public ChangeScoreInterface, public RemoveLockInterface
+class Entity : public ActionInterface, public AddLockInterface, public ChangeScoreInterface, public FloatingTextInterface, public RemoveLockInterface
 {
-	friend class DisplayAnimationAction;
-
     public:
     enum EntityType
     {
@@ -48,15 +41,6 @@ class Entity : public ActionInterface, public AddLockInterface, public ChangeSco
     };
 
     virtual ~Entity();
-
-    /**
-     * @brief Add an animation cycle listener.
-     * @param listener The listener to add.
-     */
-    inline void addAnimationCycleListener(AnimationCycleListener* listener)
-    {
-        mSprite.addAnimationCycleListener(listener);
-    }
 
     /**
      * @brief Add a death listener.
@@ -77,15 +61,15 @@ class Entity : public ActionInterface, public AddLockInterface, public ChangeSco
      * @brief Draw the being to the screen.
      * @param renderer The graphics object.
      */
-    virtual void draw(Renderer& renderer);
+    virtual void draw(sf::RenderWindow& renderer);
 
     /**
      * @brief Get the physical area of this being.
      * @return The dimension.
      */
-    inline const Rectangle& getDimension() const
+    inline const sf::Shape& getDimension() const
     {
-    	return mDimension;
+    	return mSprite;
     }
 
     /**
@@ -94,16 +78,16 @@ class Entity : public ActionInterface, public AddLockInterface, public ChangeSco
      */
     inline unsigned int getHeight() const
     {
-    	return mDimension.height;
+    	return boundingBox(mSprite).Height;
     }
 
     /**
      * @brief Get the current position of this being.
      * @return The current position of this being.
      */
-    inline const Vector& getPosition() const
+    inline const sf::Vector2f& getPosition() const
     {
-        return mDimension.vector;
+        return mSprite.GetPosition();
     }
 
     /**
@@ -121,40 +105,33 @@ class Entity : public ActionInterface, public AddLockInterface, public ChangeSco
      */
     inline unsigned int getWidth() const
     {
-    	return mDimension.width;
+    	return boundingBox(mSprite).Width;
     }
 
     /**
      * @brief Get the x position.
      * @return The x position.
      */
-    inline double getX() const
+    inline float getX() const
     {
-    	return mDimension.vector.x;
+    	return mSprite.GetPosition().x;
     }
 
     /**
      * @brief Get the y position.
      * @return The y position.
      */
-    inline double getY() const
+    inline float getY() const
     {
-    	return mDimension.vector.y;
+    	return mSprite.GetPosition().y;
     }
 
-    /**
-     * @brief Handle input.
-     * @param input The current input state.
-     */
-    virtual void handleInput(const Input& input)
-    {}
-
-    /**
-     * @brief Interact with an entity.
-     * @param entity The entity.
-     */
-    virtual void interact(Entity& entity)
-    {}
+//    /**
+//     * @brief Interact with an entity.
+//     * @param entity The entity.
+//     */
+//    virtual void interact(Entity& entity)
+//    {}
 
     /**
      * @brief Checks the collision state of the entity.
@@ -181,30 +158,12 @@ class Entity : public ActionInterface, public AddLockInterface, public ChangeSco
     virtual void logic(Level& level);
 
     /**
-     * @brief Remove an animation cycle listener.
-     * @param listener The listener to remove.
-     */
-    inline void removeAnimationCycleListener(AnimationCycleListener* listener)
-    {
-        mSprite.removeAnimationCycleListener(listener);
-    }
-
-    /**
      * @brief Remove a death listener.
      * @param listener The listener to add.
      */
     inline void removeDeathListener(DeathListener* listener)
     {
         mDeathListeners.remove(listener);
-    }
-
-    /**
-     * @brief Set the animating state of the entity.
-     * @param state The state to set.
-     */
-    inline void setAnimating(bool state)
-    {
-        mSprite.setAnimating(state);
     }
 
     /**
@@ -230,24 +189,28 @@ class Entity : public ActionInterface, public AddLockInterface, public ChangeSco
      * @param x The x position.
      * @param y The y position.
      */
-    void setPosition(double x, double y);
+    inline void setPosition(float x, float y)
+    {
+    	setX(x);
+    	setY(y);
+    }
 
     /**
      * @brief Set the X position.
      * @param x The x position.
      */
-    inline void setX(double x)
+    inline void setX(float x)
     {
-    	mDimension.vector.x = x;
+    	mSprite.SetX(x);
     }
 
     /**
      * @brief Set the Y position.
      * @param y The y position.
      */
-    inline void setY(double y)
+    inline void setY(float y)
     {
-    	mDimension.vector.y = y;
+    	mSprite.SetY(y);
     }
 
     protected:
@@ -262,33 +225,16 @@ class Entity : public ActionInterface, public AddLockInterface, public ChangeSco
     Entity();
 
     /**
-     * @brief This performs common operations when an entity has died (health has reached 0 or otherwise killed)
+     * @brief This performs common operations when an entity has died.
      */
     virtual void mDie();
-
-    /**
-     * @brief Set this being's displaying animation.
-     * @param sprite The animation to set.
-     */
-    virtual void mSetAnimation(const Sprite& sprite);
 
     // The being type.
     Entity::EntityType mType;
 
     // The displaying sprite for this being.
-    Sprite mSprite;
-
-    /**
-     * @brief Set the size of the entity.
-     * @param width The width.
-     * @param height The height.
-     * @todo remove once entity sprites are implemented.
-     */
-    void mSetSize(unsigned int width, unsigned int height)
-    {
-    	mDimension.width = width;
-    	mDimension.height= height;
-    }
+    //@todo How should entities be displayed?
+    sf::Shape mSprite;
 
     private:
     // The collidability state of this being.
@@ -299,9 +245,6 @@ class Entity : public ActionInterface, public AddLockInterface, public ChangeSco
 
     // The listeners.
     std::list<DeathListener*> mDeathListeners;
-
-    // The dimension of the entity in the game world.
-    Rectangle mDimension;
 };
 
 /**

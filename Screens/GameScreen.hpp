@@ -7,29 +7,25 @@
 #ifndef GAMESCREEN_HPP_
 #define GAMESCREEN_HPP_
 
-#include <list>
-#include <string>
+#include <SFML/Graphics.hpp>
+#include <SFML/System.hpp>
 
+#include "../Listeners/ChangeScoreListener.hpp"
 #include "../Widgets/GameOptionsWidget.hpp"
-#include "../Game/GUI.hpp"
-#include "../guichan.hpp"
-#include "../Game/Input.hpp"
-#include "../Widgets/GameScreenMenuBar.hpp"
+#include "../Engine/GUI.hpp"
+#include "../Engine/guichan.hpp"
+//#include "../Widgets/GameScreenMenuBar.hpp"
 #include "../Game/Level.hpp"
 #include "../Widgets/LevelCompleteWidget.hpp"
-#include "../Widgets/MessageDisplayWidget.hpp"
 #include "../Entities/Player.hpp"
-#include "../Engine/Renderer.hpp"
-#include "Screen.hpp"
-#include "../Engine/Sprite.hpp"
+#include "../Engine/Screen.hpp"
 #include "../Engine/Timer.hpp"
-#include "../Math/Vector.hpp"
-#include "../Engine/Viewport.hpp"
+#include "../Widgets/TimerWidget.hpp"
 
 /**
  * @brief The game screen is a means to display the game itself.
  */
-class GameScreen : public gcn::ActionListener, public ChangeScoreListener, public Screen
+class GameScreen : public ChangeScoreListener, public Screen
 {
     public:
     /**
@@ -52,26 +48,22 @@ class GameScreen : public gcn::ActionListener, public ChangeScoreListener, publi
 	virtual void changeScore(int change);
 
     /**
-     * @brief Messages can be things like tutorials or even conversations.
-     * @param caption The caption.
-     * @param message The message to display.
-     * @param sprite The sprite keyword to use to display with the message.
-     * @param keyword A keyword to pass when the conversation is closed.
-     * @note The image can be an empty string and a default image will display.
-     */
-    virtual void displayMessage(const std::string& caption, const std::string& message, const std::string& sprite, const std::string& keyword);
-
-    /**
      * @brief Render the screen.
      * @param renderer The graphics object with which to draw.
      */
-    virtual void draw(Renderer& renderer);
+    virtual void draw(gcn::SFMLGraphics& renderer);
 
     /**
-     * @brief Handle input.
-     * @param input The input.
+     * @brief A key was pressed.
+     * @param event The key event.
      */
-    virtual void handleInput(const Input& input);
+    virtual void keyPressed(gcn::KeyEvent& event);
+
+    /**
+     * @brief A key was released.
+     * @param event The key event.
+     */
+    virtual void keyReleased(gcn::KeyEvent& event);
 
     /**
      * @brief Perform anything necessary to prepare this screen for displaying what it needs to.
@@ -85,9 +77,6 @@ class GameScreen : public gcn::ActionListener, public ChangeScoreListener, publi
     virtual void logic();
 
     private:
-    // The player.
-    Player mPlayer;
-
     // The game's initial difficulty.
     unsigned int mDifficulty;
 
@@ -100,26 +89,30 @@ class GameScreen : public gcn::ActionListener, public ChangeScoreListener, publi
     // The game options menu.
     GameOptionsWidget mOptionsMenu;
 
-    // A widget to show the user any collected messages (tutorial info, speech, etc...)
-    MessageDisplayWidget mMessageOSD;
-
     // The menu bar.
-    GameScreenMenuBar mMenuBar;
+//    GameScreenMenuBar mMenuBar;
 
     // The level complete widget.
     LevelCompleteWidget mLevelCompleteWidget;
 
-    // The viewport.
-    Viewport mViewport;
-
 	// This is the score.
 	unsigned int mScore;
 
-	// This is the amount to add to the scure.
+	// This is the amount to add to the score.
 	int mCounter;
 
 	// This is the score timer.
 	Timer mScoreTimer;
+
+    // The visual bounds for this level.
+    sf::View mCamera;
+
+    // Internal widgets.
+    TimerWidget mTimerWidget;
+    gcn::Label mScoreLabel;
+
+    // The player.
+    Player mPlayer;
 };
 
 #endif /* GAMESCREEN_HPP_ */

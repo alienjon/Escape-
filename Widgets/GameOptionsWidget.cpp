@@ -7,9 +7,7 @@
 #include "GameOptionsWidget.hpp"
 
 #include "../Engine/Colors.hpp"
-#include "../Managers/FontManager.hpp"
 #include "../Engine/Logger.hpp"
-#include "../Managers/VideoManager.hpp"
 
 using std::string;
 
@@ -25,10 +23,11 @@ GameOptionsWidget::GameOptionsWidget() :
 	mExitButton("QUIT GAME")
 {
     // Configure this widget.
-	setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
-	gcn::Color c = COLOR_MENU_DARK;
+	setSize(800, 600);//@todo how do I want to handle screen size?
+	gcn::Color c = gcn::COLOR_GREEN;
 	c.a = 100;
     setBaseColor(c);
+    addKeyListener(this);
 
     // Configure the buttons.
     mResumeButton.addActionListener(this);
@@ -64,6 +63,15 @@ void GameOptionsWidget::action(const gcn::ActionEvent& actionEvent)
 	else if(actionEvent.getSource() == &mExitButton)
 	{
 		setActionEventId(GAMEOPTIONS_EXIT);
+		distributeActionEvent();
+	}
+}
+
+void GameOptionsWidget::keyPressed(gcn::KeyEvent& event)
+{
+	if(event.getKey().getValue() == gcn::Key::ESCAPE)
+	{
+		setActionEventId(GAMEOPTIONS_RESUME);
 		distributeActionEvent();
 	}
 }

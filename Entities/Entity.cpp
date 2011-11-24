@@ -16,6 +16,8 @@ Entity::Entity() :
 	mIsCollidable(true),
 	mIsInteractable(true)
 {
+	// This is the magic pink to make unchanged colors obvious.
+	mSprite.SetColor(sf::Color::Magenta);
 }
 
 Entity::~Entity()
@@ -36,40 +38,18 @@ void Entity::mDie()
     }
 }
 
-void Entity::mSetAnimation(const Sprite& sprite)//@fixme cleanup how the collision area is calculated.
+void Entity::draw(sf::RenderWindow& renderer)
 {
-	// Set the sprite.
-    mSprite = sprite;
-
-    // Make sure it is animating.
-    mSprite.setAnimating(true);
-
-    // Update the dimension.
-    mDimension = Rectangle(mDimension.vector.x, mDimension.vector.y, mSprite.getWidth(), mSprite.getHeight());
-}
-
-void Entity::draw(Renderer& renderer)
-{
-    // Just need to draw ourselves.
-    mSprite.draw(renderer, getPosition());
+	renderer.Draw(mSprite);
 }
 
 void Entity::logic(Level& level)
 {
-    // Update the being's display.
-    mSprite.logic();
-
     // Update the action logic.
-//    ActionInterface::logic(eData); @todo review.
+    ActionInterface::logic(level);
 }
 
-void Entity::setPosition(double x, double y)
+bool sortByZIndex(const Entity* a, const Entity* b)
 {
-	setX(x);
-	setY(y);
-}
-
-bool sortByZIndex(const Entity* beingA, const Entity* beingB)
-{
-	return beingA->getDimension().getCenter().y < beingB->getDimension().getCenter().y;
+	return a->getDimension().GetOrigin().y < b->getDimension().GetOrigin().y;
 }

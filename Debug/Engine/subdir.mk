@@ -4,34 +4,34 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
+../Engine/AudioManager.cpp \
 ../Engine/Colors.cpp \
-../Engine/Cursor.cpp \
+../Engine/Engine.cpp \
+../Engine/FontManager.cpp \
+../Engine/GUI.cpp \
 ../Engine/Logger.cpp \
-../Engine/Renderer.cpp \
-../Engine/Sprite.cpp \
-../Engine/Surface.cpp \
 ../Engine/Timer.cpp \
-../Engine/Viewport.cpp 
+../Engine/VideoManager.cpp 
 
 OBJS += \
+./Engine/AudioManager.o \
 ./Engine/Colors.o \
-./Engine/Cursor.o \
+./Engine/Engine.o \
+./Engine/FontManager.o \
+./Engine/GUI.o \
 ./Engine/Logger.o \
-./Engine/Renderer.o \
-./Engine/Sprite.o \
-./Engine/Surface.o \
 ./Engine/Timer.o \
-./Engine/Viewport.o 
+./Engine/VideoManager.o 
 
 CPP_DEPS += \
+./Engine/AudioManager.d \
 ./Engine/Colors.d \
-./Engine/Cursor.d \
+./Engine/Engine.d \
+./Engine/FontManager.d \
+./Engine/GUI.d \
 ./Engine/Logger.d \
-./Engine/Renderer.d \
-./Engine/Sprite.d \
-./Engine/Surface.d \
 ./Engine/Timer.d \
-./Engine/Viewport.d 
+./Engine/VideoManager.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

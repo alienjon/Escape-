@@ -9,29 +9,46 @@
 #include <stdexcept>
 
 #include "../main.hpp"
-#include "../Managers/VideoManager.hpp"
+#include "../Engine/VideoManager.hpp"
 
 using std::map;
 using std::runtime_error;
 using std::string;
 
-Tileset::Tileset(const string& filename) :
-	mSurface(VideoManager::loadSurface(TILESET_DIRECTORY + filename))
+Tileset::Tileset(const string& filename)
 {
 	// Calculate the width and height.
-	mWidth  = mSurface->getWidth()  / 3;
-	mHeight = mSurface->getHeight() / 3;
+	sf::Sprite meta = sf::Sprite(VideoManager::getTexture(filename));
+	mWidth  = meta.GetSize().x / 3;
+	mHeight = meta.GetSize().y / 3;
 
 	// Create the map areas.
-	mTiles[NORTHWEST] = Rectangle(0, 0, mWidth, mHeight);
-	mTiles[NORTH]	  = Rectangle(mWidth, mHeight * 2, mWidth, mHeight);
-	mTiles[NORTHEAST] = Rectangle(mWidth * 2, 0, mWidth, mHeight);
-	mTiles[WEST]	  = Rectangle(0, mHeight, mWidth, mHeight);
-	mTiles[EAST]	  = Rectangle(mWidth * 2, mHeight, mWidth, mHeight);
-	mTiles[SOUTHWEST] = Rectangle(0, mHeight * 2, mWidth, mHeight);
-	mTiles[SOUTH]	  = Rectangle(mWidth, 0, mWidth, mHeight);
-	mTiles[SOUTHEAST] = Rectangle(mWidth * 2, mHeight * 2, mWidth, mHeight);
-	mTiles[EMPTYFLOOR]= Rectangle(0, 0, 0, 0);
+	mTiles[NORTHWEST] = sf::Sprite(VideoManager::getTexture(filename));
+	mTiles[NORTHWEST].SetSubRect(sf::IntRect(0, 0, mWidth, mHeight));
+
+	mTiles[NORTH]	  = sf::Sprite(VideoManager::getTexture(filename));
+	mTiles[NORTH].SetSubRect(sf::IntRect(mWidth, mHeight * 2, mWidth, mHeight));
+
+	mTiles[NORTHEAST] = sf::Sprite(VideoManager::getTexture(filename));
+	mTiles[NORTHEAST].SetSubRect(sf::IntRect(mWidth * 2, 0, mWidth, mHeight));
+
+	mTiles[WEST]	  = sf::Sprite(VideoManager::getTexture(filename));
+	mTiles[WEST].SetSubRect(sf::IntRect(0, mHeight, mWidth, mHeight));
+
+	mTiles[EAST]	  = sf::Sprite(VideoManager::getTexture(filename));
+	mTiles[EAST].SetSubRect(sf::IntRect(mWidth * 2, mHeight, mWidth, mHeight));
+
+	mTiles[SOUTHWEST] = sf::Sprite(VideoManager::getTexture(filename));
+	mTiles[SOUTHWEST].SetSubRect(sf::IntRect(0, mHeight * 2, mWidth, mHeight));
+
+	mTiles[SOUTH]	  = sf::Sprite(VideoManager::getTexture(filename));
+	mTiles[SOUTH].SetSubRect(sf::IntRect(mWidth, 0, mWidth, mHeight));
+
+	mTiles[SOUTHEAST] = sf::Sprite(VideoManager::getTexture(filename));
+	mTiles[SOUTHEAST].SetSubRect(sf::IntRect(mWidth * 2, mHeight * 2, mWidth, mHeight));
+
+	mTiles[EMPTYFLOOR]= sf::Sprite(VideoManager::getTexture(filename));
+	mTiles[EMPTYFLOOR].SetSubRect(sf::IntRect(0, 0, 0, 0));
 
 	/* Create the collision areas based on the width of the collision area. */
 	int col_size = 8; // @todo Should this be fixed or set with the tileset?
@@ -41,52 +58,52 @@ Tileset::Tileset(const string& filename) :
 
 	// The north wall.
 	area = CollisionArea();
-	area.addRectangle(Rectangle(0, (mHeight / 2) - (col_size / 2), mWidth, col_size));
+	area.add(sf::Shape::Rectangle(0, (mHeight / 2) - (col_size / 2), mWidth, col_size, sf::Color(255, 255, 255)));
 	mCollisions[NORTH] = area;
 
 	// The south wall.
 	area = CollisionArea();
-	area.addRectangle(Rectangle(0, (mHeight / 2) - (col_size / 2), mWidth, col_size));
+	area.add(sf::Shape::Rectangle(0, (mHeight / 2) - (col_size / 2), mWidth, col_size, sf::Color(255, 255, 255)));
 	mCollisions[SOUTH] = area;
 
 	// The west wall.
 	area = CollisionArea();
-	area.addRectangle(Rectangle((mWidth / 2) - (col_size / 2), 0, col_size, mHeight));
+	area.add(sf::Shape::Rectangle((mWidth / 2) - (col_size / 2), 0, col_size, mHeight, sf::Color(255, 255, 255)));
 	mCollisions[WEST] = area;
 
 	// The east wall.
 	area = CollisionArea();
-	area.addRectangle(Rectangle((mWidth / 2) - (col_size / 2), 0, col_size, mHeight));
+	area.add(sf::Shape::Rectangle((mWidth / 2) - (col_size / 2), 0, col_size, mHeight, sf::Color(255, 255, 255)));
 	mCollisions[EAST] = area;
 
 	// The northwest wall.
 	area = CollisionArea();
-	area.addRectangle(Rectangle((mWidth / 2) - (col_size / 2), (mHeight / 2) - (col_size / 2), (mWidth / 2) + (col_size / 2), col_size));
-	area.addRectangle(Rectangle((mWidth / 2) - (col_size / 2), (mHeight / 2) - (col_size / 2), col_size, (mHeight / 2) + (col_size / 2)));
+	area.add(sf::Shape::Rectangle((mWidth / 2) - (col_size / 2), (mHeight / 2) - (col_size / 2), (mWidth / 2) + (col_size / 2), col_size, sf::Color(255, 255, 255)));
+	area.add(sf::Shape::Rectangle((mWidth / 2) - (col_size / 2), (mHeight / 2) - (col_size / 2), col_size, (mHeight / 2) + (col_size / 2), sf::Color(255, 255, 255)));
 	mCollisions[NORTHWEST] = area;
 
 	// The northeast wall.
 	area = CollisionArea();
-	area.addRectangle(Rectangle(0, (mHeight / 2) - (col_size / 2), (mWidth / 2) + (col_size / 2), col_size));
-	area.addRectangle(Rectangle((mWidth / 2) - (col_size / 2), (mHeight / 2) - (col_size / 2), col_size, (mHeight / 2) + (col_size / 2)));
+	area.add(sf::Shape::Rectangle(0, (mHeight / 2) - (col_size / 2), (mWidth / 2) + (col_size / 2), col_size, sf::Color(255, 255, 255)));
+	area.add(sf::Shape::Rectangle((mWidth / 2) - (col_size / 2), (mHeight / 2) - (col_size / 2), col_size, (mHeight / 2) + (col_size / 2), sf::Color(255, 255, 255)));
 	mCollisions[NORTHEAST] = area;
 
 	// The southeast wall.
 	area = CollisionArea();
-	area.addRectangle(Rectangle((mWidth / 2) - (col_size / 2), 0, col_size, (mHeight / 2) + (col_size / 2)));
-	area.addRectangle(Rectangle(0, (mHeight / 2) - (col_size / 2), (mWidth / 2) + (col_size / 2), col_size));
+	area.add(sf::Shape::Rectangle((mWidth / 2) - (col_size / 2), 0, col_size, (mHeight / 2) + (col_size / 2), sf::Color(255, 255, 255)));
+	area.add(sf::Shape::Rectangle(0, (mHeight / 2) - (col_size / 2), (mWidth / 2) + (col_size / 2), col_size, sf::Color(255, 255, 255)));
 	mCollisions[SOUTHEAST] = area;
 
 	// The southwest wall.
 	area = CollisionArea();
-	area.addRectangle(Rectangle((mWidth / 2) - (col_size / 2), 0, col_size, (mHeight / 2) + (col_size / 2)));
-	area.addRectangle(Rectangle((mWidth / 2) - (col_size / 2), (mHeight / 2) - (col_size / 2), (mWidth / 2) + (col_size / 2), col_size));
+	area.add(sf::Shape::Rectangle((mWidth / 2) - (col_size / 2), 0, col_size, (mHeight / 2) + (col_size / 2), sf::Color(255, 255, 255)));
+	area.add(sf::Shape::Rectangle((mWidth / 2) - (col_size / 2), (mHeight / 2) - (col_size / 2), (mWidth / 2) + (col_size / 2), col_size, sf::Color(255, 255, 255)));
 	mCollisions[SOUTHWEST] = area;
 }
 
-const Rectangle& Tileset::getTile(Tileset::TileType type) const
+const sf::Sprite& Tileset::getTile(Tileset::TileType type) const
 {
-	map<Tileset::TileType, Rectangle>::const_iterator it = mTiles.find(type);
+	map<Tileset::TileType, sf::Sprite>::const_iterator it = mTiles.find(type);
 	if(it == mTiles.end())
 		throw runtime_error("Tileset::getTile() -> Invalid tile type provided.");
 	return it->second;
@@ -99,5 +116,3 @@ const CollisionArea& Tileset::getTileCollision(Tileset::TileType type) const
 		throw runtime_error("Tileset::getTileCollision() -> Invalid tile type provided.");
 	return it->second;
 }
-
-const string TILESET_DIRECTORY = "Tilesets/";

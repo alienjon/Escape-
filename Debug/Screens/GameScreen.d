@@ -1,508 +1,398 @@
 Screens/GameScreen.d: ../Screens/GameScreen.cpp ../Screens/GameScreen.hpp \
+ ../Screens/../Listeners/ChangeScoreListener.hpp \
  ../Screens/../Widgets/GameOptionsWidget.hpp \
- ../Screens/../Widgets/../guichan.hpp \
- ../Screens/../Widgets/../Guichan/actionevent.hpp \
- ../Screens/../Widgets/../Guichan/event.hpp \
- ../Screens/../Widgets/../Guichan/platform.hpp \
- ../Screens/../Widgets/../Guichan/actionlistener.hpp \
- ../Screens/../Widgets/../Guichan/actionevent.hpp \
- ../Screens/../Widgets/../Guichan/cliprectangle.hpp \
- ../Screens/../Widgets/../Guichan/rectangle.hpp \
- ../Screens/../Widgets/../Guichan/color.hpp \
- ../Screens/../Widgets/../Guichan/deathlistener.hpp \
- ../Screens/../Widgets/../Guichan/event.hpp \
- ../Screens/../Widgets/../Guichan/exception.hpp \
- ../Screens/../Widgets/../Guichan/focushandler.hpp \
- ../Screens/../Widgets/../Guichan/focuslistener.hpp \
- ../Screens/../Widgets/../Guichan/font.hpp \
- ../Screens/../Widgets/../Guichan/genericinput.hpp \
- ../Screens/../Widgets/../Guichan/input.hpp \
- ../Screens/../Widgets/../Guichan/keyinput.hpp \
- ../Screens/../Widgets/../Guichan/key.hpp \
- ../Screens/../Widgets/../Guichan/mouseinput.hpp \
- ../Screens/../Widgets/../Guichan/graphics.hpp \
- ../Screens/../Widgets/../Guichan/cliprectangle.hpp \
- ../Screens/../Widgets/../Guichan/gui.hpp \
- ../Screens/../Widgets/../Guichan/keyevent.hpp \
- ../Screens/../Widgets/../Guichan/inputevent.hpp \
- ../Screens/../Widgets/../Guichan/mouseevent.hpp \
- ../Screens/../Widgets/../Guichan/image.hpp \
- ../Screens/../Widgets/../Guichan/imagefont.hpp \
- ../Screens/../Widgets/../Guichan/font.hpp \
- ../Screens/../Widgets/../Guichan/imageloader.hpp \
- ../Screens/../Widgets/../Guichan/input.hpp \
- ../Screens/../Widgets/../Guichan/inputevent.hpp \
- ../Screens/../Widgets/../Guichan/key.hpp \
- ../Screens/../Widgets/../Guichan/keyevent.hpp \
- ../Screens/../Widgets/../Guichan/keyinput.hpp \
- ../Screens/../Widgets/../Guichan/keylistener.hpp \
- ../Screens/../Widgets/../Guichan/listmodel.hpp \
- ../Screens/../Widgets/../Guichan/mouseevent.hpp \
- ../Screens/../Widgets/../Guichan/mouseinput.hpp \
- ../Screens/../Widgets/../Guichan/mouselistener.hpp \
- ../Screens/../Widgets/../Guichan/rectangle.hpp \
- ../Screens/../Widgets/../Guichan/selectionevent.hpp \
- ../Screens/../Widgets/../Guichan/selectionlistener.hpp \
- ../Screens/../Widgets/../Guichan/selectionevent.hpp \
- ../Screens/../Widgets/../Guichan/widget.hpp \
- ../Screens/../Widgets/../Guichan/color.hpp \
- ../Screens/../Widgets/../Guichan/widgetlistener.hpp \
- ../Screens/../Widgets/../Guichan/widgets/button.hpp \
- ../Screens/../Widgets/../Guichan/widgets/../focuslistener.hpp \
- ../Screens/../Widgets/../Guichan/widgets/../graphics.hpp \
- ../Screens/../Widgets/../Guichan/widgets/../keylistener.hpp \
- ../Screens/../Widgets/../Guichan/widgets/../mouseevent.hpp \
- ../Screens/../Widgets/../Guichan/widgets/../mouselistener.hpp \
- ../Screens/../Widgets/../Guichan/widgets/../platform.hpp \
- ../Screens/../Widgets/../Guichan/widgets/../widget.hpp \
- ../Screens/../Widgets/../Guichan/widgets/checkbox.hpp \
- ../Screens/../Widgets/../Guichan/widgets/container.hpp \
- ../Screens/../Widgets/../Guichan/widgets/../basiccontainer.hpp \
- ../Screens/../Widgets/../Guichan/widgets/../deathlistener.hpp \
- ../Screens/../Widgets/../Guichan/widgets/../platform.hpp \
- ../Screens/../Widgets/../Guichan/widgets/../widget.hpp \
- ../Screens/../Widgets/../Guichan/widgets/dropdown.hpp \
- ../Screens/../Widgets/../Guichan/widgets/../actionlistener.hpp \
- ../Screens/../Widgets/../Guichan/widgets/../deathlistener.hpp \
- ../Screens/../Widgets/../Guichan/widgets/../focushandler.hpp \
- ../Screens/../Widgets/../Guichan/widgets/../listmodel.hpp \
- ../Screens/../Widgets/../Guichan/widgets/../selectionlistener.hpp \
- ../Screens/../Widgets/../Guichan/widgets/listbox.hpp \
- ../Screens/../Widgets/../Guichan/widgets/scrollarea.hpp \
- ../Screens/../Widgets/../Guichan/widgets/icon.hpp \
- ../Screens/../Widgets/../Guichan/widgets/../image.hpp \
- ../Screens/../Widgets/../Guichan/widgets/imagebutton.hpp \
- ../Screens/../Widgets/../Guichan/widgets/button.hpp \
- ../Screens/../Widgets/../Guichan/widgets/label.hpp \
- ../Screens/../Widgets/../Guichan/widgets/listbox.hpp \
- ../Screens/../Widgets/../Guichan/widgets/scrollarea.hpp \
- ../Screens/../Widgets/../Guichan/widgets/slider.hpp \
- ../Screens/../Widgets/../Guichan/widgets/radiobutton.hpp \
- ../Screens/../Widgets/../Guichan/widgets/tab.hpp \
- ../Screens/../Widgets/../Guichan/widgets/tabbedarea.hpp \
- ../Screens/../Widgets/../Guichan/widgets/textbox.hpp \
- ../Screens/../Widgets/../Guichan/widgets/textfield.hpp \
- ../Screens/../Widgets/../Guichan/widgets/window.hpp \
- ../Screens/../Widgets/../Guichan/widgets/container.hpp \
- ../Screens/../Widgets/../Guichan/platform.hpp \
+ ../Screens/../Widgets/../Engine/guichan.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/actionevent.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/event.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/platform.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/actionlistener.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/actionevent.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/cliprectangle.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/rectangle.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/color.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/deathlistener.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/event.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/exception.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/focushandler.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/focuslistener.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/font.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/genericinput.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/input.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/keyinput.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/key.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/mouseinput.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/graphics.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/cliprectangle.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/gui.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/keyevent.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/inputevent.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/mouseevent.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/image.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/imagefont.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/font.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/imageloader.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/input.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/inputevent.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/key.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/keyevent.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/keyinput.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/keylistener.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/listmodel.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/mouseevent.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/mouseinput.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/mouselistener.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/rectangle.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/selectionevent.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/selectionlistener.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/selectionevent.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/widget.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/color.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/widgetlistener.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/widgets/button.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/widgets/../focuslistener.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/widgets/../graphics.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/widgets/../keylistener.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/widgets/../mouseevent.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/widgets/../mouselistener.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/widgets/../platform.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/widgets/../widget.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/widgets/checkbox.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/widgets/container.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/widgets/../basiccontainer.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/widgets/../deathlistener.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/widgets/../platform.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/widgets/../widget.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/widgets/dropdown.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/widgets/../actionlistener.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/widgets/../deathlistener.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/widgets/../focushandler.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/widgets/../listmodel.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/widgets/../selectionlistener.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/widgets/listbox.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/widgets/scrollarea.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/widgets/icon.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/widgets/../image.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/widgets/imagebutton.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/widgets/button.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/widgets/label.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/widgets/listbox.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/widgets/scrollarea.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/widgets/slider.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/widgets/radiobutton.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/widgets/tab.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/widgets/tabbedarea.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/widgets/textbox.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/widgets/textfield.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/widgets/window.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/widgets/container.hpp \
+ ../Screens/../Widgets/../Engine/Guichan/platform.hpp \
  ../Screens/../Widgets/../Widgets/MenuButton.hpp \
- ../Screens/../Widgets/../Widgets/../guichan.hpp \
- ../Screens/../Game/GUI.hpp ../Screens/../Game/../guichan.hpp \
- ../Screens/../Game/../Guichan/sdl.hpp \
- ../Screens/../Game/../Guichan/sdl/sdlgraphics.hpp \
- ../Screens/../Game/../Guichan/sdl/../color.hpp \
- ../Screens/../Game/../Guichan/sdl/../graphics.hpp \
- ../Screens/../Game/../Guichan/sdl/../platform.hpp \
- ../Screens/../Game/../Guichan/sdl/sdlimage.hpp \
- ../Screens/../Game/../Guichan/sdl/../image.hpp \
- ../Screens/../Game/../Guichan/sdl/sdlimageloader.hpp \
- ../Screens/../Game/../Guichan/sdl/../imageloader.hpp \
- ../Screens/../Game/../Guichan/sdl/sdlinput.hpp \
- ../Screens/../Game/../Guichan/sdl/../input.hpp \
- ../Screens/../Game/../Guichan/sdl/../keyinput.hpp \
- ../Screens/../Game/../Guichan/sdl/../mouseinput.hpp \
- ../Screens/../Game/../Guichan/platform.hpp \
- ../Screens/../Game/../Widgets/FPSDisplayWidget.hpp \
- ../Screens/../Game/../Widgets/../guichan.hpp \
- ../Screens/../Game/../Widgets/../main.hpp \
- ../Screens/../Game/../Widgets/../Game/Direction.hpp \
- ../Screens/../Game/../Widgets/../Game/../Math/Vector.hpp \
- ../Screens/../Game/../Widgets/../guichan.hpp \
- ../Screens/../Game/../Widgets/../Math/Vector.hpp \
- ../Screens/../Game/../Widgets/../Engine/Timer.hpp \
- ../Screens/../Game/../Engine/Renderer.hpp \
- ../Screens/../Game/../Engine/../Math/Quadrilateral.hpp \
- ../Screens/../Game/../Engine/../Math/../Math/Polygon.hpp \
- ../Screens/../Game/../Engine/../Math/../Math/../Math/Vector.hpp \
- ../Screens/../Game/../Engine/../Math/../Math/Rectangle.hpp \
- ../Screens/../Game/../Engine/../Math/../Math/../guichan.hpp \
- ../Screens/../Game/../Engine/../Math/../Math/../Math/Polygon.hpp \
- ../Screens/../Game/../Engine/../Math/../Math/Vector.hpp \
- ../Screens/../Game/../Engine/../Guichan/sdl.hpp \
- ../Screens/../Game/../Engine/Surface.hpp \
- ../Screens/../Game/../Engine/../Math/Rectangle.hpp \
- ../Screens/../Game/../Engine/Timer.hpp ../Screens/../guichan.hpp \
- ../Screens/../Game/Input.hpp ../Screens/../Game/../Math/Vector.hpp \
- ../Screens/../Widgets/GameScreenMenuBar.hpp \
- ../Screens/../Widgets/../Widgets/MiniMap.hpp \
- ../Screens/../Widgets/../Widgets/../Math/Rectangle.hpp \
- ../Screens/../Widgets/../Widgets/../Engine/Surface.hpp \
- ../Screens/../Widgets/../Widgets/../Engine/Viewport.hpp \
- ../Screens/../Widgets/../Widgets/../Engine/../Math/Quadrilateral.hpp \
- ../Screens/../Widgets/../Widgets/../Engine/../Math/Rectangle.hpp \
- ../Screens/../Widgets/../Widgets/../Engine/../Math/Vector.hpp \
- ../Screens/../Widgets/../Math/Rectangle.hpp \
- ../Screens/../Widgets/../Engine/Surface.hpp \
- ../Screens/../Widgets/../Widgets/TimerWidget.hpp \
- ../Screens/../Widgets/../Widgets/../Engine/Timer.hpp \
- ../Screens/../Game/Level.hpp \
+ ../Screens/../Widgets/../Widgets/../Engine/guichan.hpp \
+ ../Screens/../Widgets/../Widgets/../Engine/Guichan/sfml.hpp \
+ ../Screens/../Widgets/../Widgets/../Engine/Guichan/sfml/sfmlfont.hpp \
+ ../Screens/../Widgets/../Widgets/../Engine/Guichan/sfml/../font.hpp \
+ ../Screens/../Widgets/../Widgets/../Engine/Guichan/sfml/../graphics.hpp \
+ ../Screens/../Widgets/../Widgets/../Engine/Guichan/sfml/sfmlgraphics.hpp \
+ ../Screens/../Widgets/../Widgets/../Engine/Guichan/sfml/../color.hpp \
+ ../Screens/../Widgets/../Widgets/../Engine/Guichan/sfml/../rectangle.hpp \
+ ../Screens/../Widgets/../Widgets/../Engine/Guichan/sfml/sfmlimage.hpp \
+ ../Screens/../Widgets/../Widgets/../Engine/Guichan/sfml/../image.hpp \
+ ../Screens/../Widgets/../Widgets/../Engine/Guichan/sfml/sfmlimageloader.hpp \
+ ../Screens/../Widgets/../Widgets/../Engine/Guichan/sfml/../imageloader.hpp \
+ ../Screens/../Widgets/../Widgets/../Engine/Guichan/sfml/sfmlinput.hpp \
+ ../Screens/../Widgets/../Widgets/../Engine/Guichan/sfml/../input.hpp \
+ ../Screens/../Widgets/../Widgets/../Engine/Guichan/sfml/../keyinput.hpp \
+ ../Screens/../Widgets/../Widgets/../Engine/Guichan/sfml/../mouseinput.hpp \
+ ../Screens/../Widgets/../Widgets/../Engine/Guichan/platform.hpp \
+ ../Screens/../Engine/GUI.hpp \
+ ../Screens/../Engine/../Widgets/FPSDisplayWidget.hpp \
+ ../Screens/../Engine/../Widgets/../Engine/guichan.hpp \
+ ../Screens/../Engine/../Widgets/../Engine/Timer.hpp \
+ ../Screens/../Engine/../Engine/guichan.hpp \
+ ../Screens/../Engine/../Engine/Guichan/sfml.hpp \
+ ../Screens/../Engine/guichan.hpp ../Screens/../Game/Level.hpp \
+ ../Screens/../Game/../Engine/guichan.hpp \
+ ../Screens/../Game/../Engine/Guichan/sfml.hpp \
  ../Screens/../Game/../Interfaces/ActionInterface.hpp \
  ../Screens/../Game/../Interfaces/../Actions/Action.hpp \
  ../Screens/../Game/../Interfaces/ChangeScoreInterface.hpp \
  ../Screens/../Game/../Interfaces/../Listeners/ChangeScoreListener.hpp \
  ../Screens/../Game/../Listeners/ChangeScoreListener.hpp \
  ../Screens/../Game/../Listeners/DeathListener.hpp \
- ../Screens/../Game/../Game/Game.hpp \
- ../Screens/../Game/../Game/../Engine/Cursor.hpp \
- ../Screens/../Game/../Game/../Engine/../Engine/Renderer.hpp \
- ../Screens/../Game/../Game/../Engine/../Engine/Sprite.hpp \
- ../Screens/../Game/../Game/../Engine/../Engine/../guichan.hpp \
- ../Screens/../Game/../Game/../Engine/../Engine/../Listeners/AnimationCycleListener.hpp \
- ../Screens/../Game/../Game/../Engine/../Engine/../Math/Rectangle.hpp \
- ../Screens/../Game/../Game/../Engine/../Engine/../Engine/Renderer.hpp \
- ../Screens/../Game/../Game/../Engine/../Engine/Surface.hpp \
- ../Screens/../Game/../Game/../Engine/../Engine/Timer.hpp \
- ../Screens/../Game/../Game/../Engine/../Engine/../Math/Vector.hpp \
- ../Screens/../Game/../Game/../Engine/../Math/Vector.hpp \
- ../Screens/../Game/../Game/../guichan.hpp \
- ../Screens/../Game/../Game/../Game/Input.hpp \
- ../Screens/../Game/../Game/../Engine/Renderer.hpp \
- ../Screens/../Game/../Game/../Engine/Timer.hpp \
- ../Screens/../Game/../Game/Input.hpp \
+ ../Screens/../Game/../Listeners/FloatingTextListener.hpp \
+ ../Screens/../Game/../Interfaces/GCNActionInterface.hpp \
+ ../Screens/../Game/../Interfaces/../Engine/guichan.hpp \
  ../Screens/../Game/../Listeners/LevelCompleteListener.hpp \
  ../Screens/../Game/../Game/Map.hpp \
- ../Screens/../Game/../Game/../Math/CollisionArea.hpp \
- ../Screens/../Game/../Game/../Math/../Math/Rectangle.hpp \
- ../Screens/../Game/../Game/../Math/../Engine/Renderer.hpp \
- ../Screens/../Game/../Game/../Math/Point.hpp \
- ../Screens/../Game/../Game/../Math/Quadrilateral.hpp \
- ../Screens/../Game/../Game/../Math/Rectangle.hpp \
+ ../Screens/../Game/../Game/../Game/CollisionArea.hpp \
  ../Screens/../Game/../Game/../Game/Tileset.hpp \
- ../Screens/../Game/../Game/../Game/../Math/CollisionArea.hpp \
- ../Screens/../Game/../Game/../Game/../Math/Rectangle.hpp \
- ../Screens/../Game/../Game/../Game/../Engine/Surface.hpp \
- ../Screens/../Game/../Game/../Engine/Viewport.hpp \
- ../Screens/../Game/../Math/Rectangle.hpp \
- ../Screens/../Game/../Math/Quadrilateral.hpp \
- ../Screens/../Game/../Engine/Viewport.hpp \
+ ../Screens/../Game/../Game/../Game/../Game/CollisionArea.hpp \
+ ../Screens/../Game/../Entities/Portal.hpp \
+ ../Screens/../Game/../Entities/../Entities/Entity.hpp \
+ ../Screens/../Game/../Entities/../Entities/../Interfaces/ActionInterface.hpp \
+ ../Screens/../Game/../Entities/../Entities/../Interfaces/AddLockInterface.hpp \
+ ../Screens/../Game/../Entities/../Entities/../Interfaces/../Listeners/AddLockListener.hpp \
+ ../Screens/../Game/../Entities/../Entities/../Interfaces/ChangeScoreInterface.hpp \
+ ../Screens/../Game/../Entities/../Entities/../Listeners/DeathListener.hpp \
+ ../Screens/../Game/../Entities/../Entities/../Interfaces/FloatingTextInterface.hpp \
+ ../Screens/../Game/../Entities/../Entities/../Interfaces/../Listeners/FloatingTextListener.hpp \
+ ../Screens/../Game/../Entities/../Entities/../Game/Math.hpp \
+ ../Screens/../Game/../Entities/../Entities/../Interfaces/RemoveLockInterface.hpp \
+ ../Screens/../Game/../Entities/../Entities/../Interfaces/../Listeners/RemoveLockListener.hpp \
+ ../Screens/../Game/../Entities/../Interfaces/LevelCompleteInterface.hpp \
+ ../Screens/../Game/../Entities/../Interfaces/../Listeners/LevelCompleteListener.hpp \
+ ../Screens/../Game/../Entities/../Listeners/RemoveLockListener.hpp \
+ ../Screens/../Game/../Entities/../Engine/Timer.hpp \
+ ../Screens/../Game/../Engine/Timer.hpp \
  ../Screens/../Widgets/LevelCompleteWidget.hpp \
  ../Screens/../Widgets/../Engine/Timer.hpp \
- ../Screens/../Widgets/MessageDisplayWidget.hpp \
- ../Screens/../Widgets/../Engine/Sprite.hpp \
- ../Screens/../Widgets/../Widgets/SpriteWidget.hpp \
- ../Screens/../Widgets/../Widgets/../Listeners/AnimationCycleListener.hpp \
- ../Screens/../Widgets/../Widgets/../Engine/Sprite.hpp \
  ../Screens/../Entities/Player.hpp \
+ ../Screens/../Entities/../Engine/guichan.hpp \
  ../Screens/../Entities/../Listeners/AddLockListener.hpp \
- ../Screens/../Entities/../Listeners/../guichan.hpp \
  ../Screens/../Entities/../Entities/Creature.hpp \
- ../Screens/../Entities/../Entities/../Listeners/CreatureMovedToPointListener.hpp \
  ../Screens/../Entities/../Entities/../Entities/Entity.hpp \
- ../Screens/../Entities/../Entities/../Entities/../Interfaces/ActionInterface.hpp \
- ../Screens/../Entities/../Entities/../Entities/../Interfaces/AddLockInterface.hpp \
- ../Screens/../Entities/../Entities/../Entities/../Interfaces/../Listeners/AddLockListener.hpp \
- ../Screens/../Entities/../Entities/../Entities/../Interfaces/../guichan.hpp \
- ../Screens/../Entities/../Entities/../Entities/../Listeners/AnimationCycleListener.hpp \
- ../Screens/../Entities/../Entities/../Entities/../Interfaces/ChangeScoreInterface.hpp \
- ../Screens/../Entities/../Entities/../Entities/../Listeners/DeathListener.hpp \
- ../Screens/../Entities/../Entities/../Entities/../Game/Direction.hpp \
- ../Screens/../Entities/../Entities/../Entities/../Game/Input.hpp \
- ../Screens/../Entities/../Entities/../Entities/../Math/Vector.hpp \
- ../Screens/../Entities/../Entities/../Entities/../Math/Quadrilateral.hpp \
- ../Screens/../Entities/../Entities/../Entities/../Math/Rectangle.hpp \
- ../Screens/../Entities/../Entities/../Entities/../Interfaces/RemoveLockInterface.hpp \
- ../Screens/../Entities/../Entities/../Entities/../Interfaces/../Listeners/RemoveLockListener.hpp \
- ../Screens/../Entities/../Entities/../Entities/../Interfaces/../Listeners/../guichan.hpp \
- ../Screens/../Entities/../Entities/../Entities/../Engine/Renderer.hpp \
- ../Screens/../Entities/../Entities/../Entities/../Engine/Sprite.hpp \
- ../Screens/../Entities/../Entities/../Entities/../Engine/Timer.hpp \
- ../Screens/../Entities/../Entities/../Math/Vector.hpp \
  ../Screens/../Entities/../Entities/../Engine/Timer.hpp \
- ../Screens/../Entities/../Game/Input.hpp \
  ../Screens/../Entities/../Listeners/RemoveLockListener.hpp \
  ../Screens/../Entities/../Engine/Timer.hpp \
- ../Screens/../Engine/Renderer.hpp ../Screens/Screen.hpp \
- ../Screens/../Game/Game.hpp ../Screens/../Managers/VideoManager.hpp \
- ../Screens/../Managers/../guichan.hpp \
- ../Screens/../Managers/../Math/Rectangle.hpp \
- ../Screens/../Managers/../Engine/Surface.hpp \
- ../Screens/../Engine/Viewport.hpp ../Screens/../Engine/Sprite.hpp \
- ../Screens/../Engine/Timer.hpp ../Screens/../Math/Vector.hpp \
- ../Screens/../Entities/Entity.hpp ../Screens/../Game/Keywords.hpp \
- ../Screens/../Engine/Logger.hpp ../Screens/../Engine/../guichan.hpp \
+ ../Screens/../Engine/Screen.hpp \
+ ../Screens/../Engine/../Interfaces/GCNActionInterface.hpp \
+ ../Screens/../Engine/../Engine/Logger.hpp \
+ ../Screens/../Engine/../Engine/../Engine/guichan.hpp \
+ ../Screens/../Engine/Timer.hpp ../Screens/../Widgets/TimerWidget.hpp \
+ ../Screens/../Game/Keywords.hpp ../Screens/../Engine/FontManager.hpp \
  ../Screens/../main.hpp
 
 ../Screens/GameScreen.hpp:
 
+../Screens/../Listeners/ChangeScoreListener.hpp:
+
 ../Screens/../Widgets/GameOptionsWidget.hpp:
 
-../Screens/../Widgets/../guichan.hpp:
+../Screens/../Widgets/../Engine/guichan.hpp:
 
-../Screens/../Widgets/../Guichan/actionevent.hpp:
+../Screens/../Widgets/../Engine/Guichan/actionevent.hpp:
 
-../Screens/../Widgets/../Guichan/event.hpp:
+../Screens/../Widgets/../Engine/Guichan/event.hpp:
 
-../Screens/../Widgets/../Guichan/platform.hpp:
+../Screens/../Widgets/../Engine/Guichan/platform.hpp:
 
-../Screens/../Widgets/../Guichan/actionlistener.hpp:
+../Screens/../Widgets/../Engine/Guichan/actionlistener.hpp:
 
-../Screens/../Widgets/../Guichan/actionevent.hpp:
+../Screens/../Widgets/../Engine/Guichan/actionevent.hpp:
 
-../Screens/../Widgets/../Guichan/cliprectangle.hpp:
+../Screens/../Widgets/../Engine/Guichan/cliprectangle.hpp:
 
-../Screens/../Widgets/../Guichan/rectangle.hpp:
+../Screens/../Widgets/../Engine/Guichan/rectangle.hpp:
 
-../Screens/../Widgets/../Guichan/color.hpp:
+../Screens/../Widgets/../Engine/Guichan/color.hpp:
 
-../Screens/../Widgets/../Guichan/deathlistener.hpp:
+../Screens/../Widgets/../Engine/Guichan/deathlistener.hpp:
 
-../Screens/../Widgets/../Guichan/event.hpp:
+../Screens/../Widgets/../Engine/Guichan/event.hpp:
 
-../Screens/../Widgets/../Guichan/exception.hpp:
+../Screens/../Widgets/../Engine/Guichan/exception.hpp:
 
-../Screens/../Widgets/../Guichan/focushandler.hpp:
+../Screens/../Widgets/../Engine/Guichan/focushandler.hpp:
 
-../Screens/../Widgets/../Guichan/focuslistener.hpp:
+../Screens/../Widgets/../Engine/Guichan/focuslistener.hpp:
 
-../Screens/../Widgets/../Guichan/font.hpp:
+../Screens/../Widgets/../Engine/Guichan/font.hpp:
 
-../Screens/../Widgets/../Guichan/genericinput.hpp:
+../Screens/../Widgets/../Engine/Guichan/genericinput.hpp:
 
-../Screens/../Widgets/../Guichan/input.hpp:
+../Screens/../Widgets/../Engine/Guichan/input.hpp:
 
-../Screens/../Widgets/../Guichan/keyinput.hpp:
+../Screens/../Widgets/../Engine/Guichan/keyinput.hpp:
 
-../Screens/../Widgets/../Guichan/key.hpp:
+../Screens/../Widgets/../Engine/Guichan/key.hpp:
 
-../Screens/../Widgets/../Guichan/mouseinput.hpp:
+../Screens/../Widgets/../Engine/Guichan/mouseinput.hpp:
 
-../Screens/../Widgets/../Guichan/graphics.hpp:
+../Screens/../Widgets/../Engine/Guichan/graphics.hpp:
 
-../Screens/../Widgets/../Guichan/cliprectangle.hpp:
+../Screens/../Widgets/../Engine/Guichan/cliprectangle.hpp:
 
-../Screens/../Widgets/../Guichan/gui.hpp:
+../Screens/../Widgets/../Engine/Guichan/gui.hpp:
 
-../Screens/../Widgets/../Guichan/keyevent.hpp:
+../Screens/../Widgets/../Engine/Guichan/keyevent.hpp:
 
-../Screens/../Widgets/../Guichan/inputevent.hpp:
+../Screens/../Widgets/../Engine/Guichan/inputevent.hpp:
 
-../Screens/../Widgets/../Guichan/mouseevent.hpp:
+../Screens/../Widgets/../Engine/Guichan/mouseevent.hpp:
 
-../Screens/../Widgets/../Guichan/image.hpp:
+../Screens/../Widgets/../Engine/Guichan/image.hpp:
 
-../Screens/../Widgets/../Guichan/imagefont.hpp:
+../Screens/../Widgets/../Engine/Guichan/imagefont.hpp:
 
-../Screens/../Widgets/../Guichan/font.hpp:
+../Screens/../Widgets/../Engine/Guichan/font.hpp:
 
-../Screens/../Widgets/../Guichan/imageloader.hpp:
+../Screens/../Widgets/../Engine/Guichan/imageloader.hpp:
 
-../Screens/../Widgets/../Guichan/input.hpp:
+../Screens/../Widgets/../Engine/Guichan/input.hpp:
 
-../Screens/../Widgets/../Guichan/inputevent.hpp:
+../Screens/../Widgets/../Engine/Guichan/inputevent.hpp:
 
-../Screens/../Widgets/../Guichan/key.hpp:
+../Screens/../Widgets/../Engine/Guichan/key.hpp:
 
-../Screens/../Widgets/../Guichan/keyevent.hpp:
+../Screens/../Widgets/../Engine/Guichan/keyevent.hpp:
 
-../Screens/../Widgets/../Guichan/keyinput.hpp:
+../Screens/../Widgets/../Engine/Guichan/keyinput.hpp:
 
-../Screens/../Widgets/../Guichan/keylistener.hpp:
+../Screens/../Widgets/../Engine/Guichan/keylistener.hpp:
 
-../Screens/../Widgets/../Guichan/listmodel.hpp:
+../Screens/../Widgets/../Engine/Guichan/listmodel.hpp:
 
-../Screens/../Widgets/../Guichan/mouseevent.hpp:
+../Screens/../Widgets/../Engine/Guichan/mouseevent.hpp:
 
-../Screens/../Widgets/../Guichan/mouseinput.hpp:
+../Screens/../Widgets/../Engine/Guichan/mouseinput.hpp:
 
-../Screens/../Widgets/../Guichan/mouselistener.hpp:
+../Screens/../Widgets/../Engine/Guichan/mouselistener.hpp:
 
-../Screens/../Widgets/../Guichan/rectangle.hpp:
+../Screens/../Widgets/../Engine/Guichan/rectangle.hpp:
 
-../Screens/../Widgets/../Guichan/selectionevent.hpp:
+../Screens/../Widgets/../Engine/Guichan/selectionevent.hpp:
 
-../Screens/../Widgets/../Guichan/selectionlistener.hpp:
+../Screens/../Widgets/../Engine/Guichan/selectionlistener.hpp:
 
-../Screens/../Widgets/../Guichan/selectionevent.hpp:
+../Screens/../Widgets/../Engine/Guichan/selectionevent.hpp:
 
-../Screens/../Widgets/../Guichan/widget.hpp:
+../Screens/../Widgets/../Engine/Guichan/widget.hpp:
 
-../Screens/../Widgets/../Guichan/color.hpp:
+../Screens/../Widgets/../Engine/Guichan/color.hpp:
 
-../Screens/../Widgets/../Guichan/widgetlistener.hpp:
+../Screens/../Widgets/../Engine/Guichan/widgetlistener.hpp:
 
-../Screens/../Widgets/../Guichan/widgets/button.hpp:
+../Screens/../Widgets/../Engine/Guichan/widgets/button.hpp:
 
-../Screens/../Widgets/../Guichan/widgets/../focuslistener.hpp:
+../Screens/../Widgets/../Engine/Guichan/widgets/../focuslistener.hpp:
 
-../Screens/../Widgets/../Guichan/widgets/../graphics.hpp:
+../Screens/../Widgets/../Engine/Guichan/widgets/../graphics.hpp:
 
-../Screens/../Widgets/../Guichan/widgets/../keylistener.hpp:
+../Screens/../Widgets/../Engine/Guichan/widgets/../keylistener.hpp:
 
-../Screens/../Widgets/../Guichan/widgets/../mouseevent.hpp:
+../Screens/../Widgets/../Engine/Guichan/widgets/../mouseevent.hpp:
 
-../Screens/../Widgets/../Guichan/widgets/../mouselistener.hpp:
+../Screens/../Widgets/../Engine/Guichan/widgets/../mouselistener.hpp:
 
-../Screens/../Widgets/../Guichan/widgets/../platform.hpp:
+../Screens/../Widgets/../Engine/Guichan/widgets/../platform.hpp:
 
-../Screens/../Widgets/../Guichan/widgets/../widget.hpp:
+../Screens/../Widgets/../Engine/Guichan/widgets/../widget.hpp:
 
-../Screens/../Widgets/../Guichan/widgets/checkbox.hpp:
+../Screens/../Widgets/../Engine/Guichan/widgets/checkbox.hpp:
 
-../Screens/../Widgets/../Guichan/widgets/container.hpp:
+../Screens/../Widgets/../Engine/Guichan/widgets/container.hpp:
 
-../Screens/../Widgets/../Guichan/widgets/../basiccontainer.hpp:
+../Screens/../Widgets/../Engine/Guichan/widgets/../basiccontainer.hpp:
 
-../Screens/../Widgets/../Guichan/widgets/../deathlistener.hpp:
+../Screens/../Widgets/../Engine/Guichan/widgets/../deathlistener.hpp:
 
-../Screens/../Widgets/../Guichan/widgets/../platform.hpp:
+../Screens/../Widgets/../Engine/Guichan/widgets/../platform.hpp:
 
-../Screens/../Widgets/../Guichan/widgets/../widget.hpp:
+../Screens/../Widgets/../Engine/Guichan/widgets/../widget.hpp:
 
-../Screens/../Widgets/../Guichan/widgets/dropdown.hpp:
+../Screens/../Widgets/../Engine/Guichan/widgets/dropdown.hpp:
 
-../Screens/../Widgets/../Guichan/widgets/../actionlistener.hpp:
+../Screens/../Widgets/../Engine/Guichan/widgets/../actionlistener.hpp:
 
-../Screens/../Widgets/../Guichan/widgets/../deathlistener.hpp:
+../Screens/../Widgets/../Engine/Guichan/widgets/../deathlistener.hpp:
 
-../Screens/../Widgets/../Guichan/widgets/../focushandler.hpp:
+../Screens/../Widgets/../Engine/Guichan/widgets/../focushandler.hpp:
 
-../Screens/../Widgets/../Guichan/widgets/../listmodel.hpp:
+../Screens/../Widgets/../Engine/Guichan/widgets/../listmodel.hpp:
 
-../Screens/../Widgets/../Guichan/widgets/../selectionlistener.hpp:
+../Screens/../Widgets/../Engine/Guichan/widgets/../selectionlistener.hpp:
 
-../Screens/../Widgets/../Guichan/widgets/listbox.hpp:
+../Screens/../Widgets/../Engine/Guichan/widgets/listbox.hpp:
 
-../Screens/../Widgets/../Guichan/widgets/scrollarea.hpp:
+../Screens/../Widgets/../Engine/Guichan/widgets/scrollarea.hpp:
 
-../Screens/../Widgets/../Guichan/widgets/icon.hpp:
+../Screens/../Widgets/../Engine/Guichan/widgets/icon.hpp:
 
-../Screens/../Widgets/../Guichan/widgets/../image.hpp:
+../Screens/../Widgets/../Engine/Guichan/widgets/../image.hpp:
 
-../Screens/../Widgets/../Guichan/widgets/imagebutton.hpp:
+../Screens/../Widgets/../Engine/Guichan/widgets/imagebutton.hpp:
 
-../Screens/../Widgets/../Guichan/widgets/button.hpp:
+../Screens/../Widgets/../Engine/Guichan/widgets/button.hpp:
 
-../Screens/../Widgets/../Guichan/widgets/label.hpp:
+../Screens/../Widgets/../Engine/Guichan/widgets/label.hpp:
 
-../Screens/../Widgets/../Guichan/widgets/listbox.hpp:
+../Screens/../Widgets/../Engine/Guichan/widgets/listbox.hpp:
 
-../Screens/../Widgets/../Guichan/widgets/scrollarea.hpp:
+../Screens/../Widgets/../Engine/Guichan/widgets/scrollarea.hpp:
 
-../Screens/../Widgets/../Guichan/widgets/slider.hpp:
+../Screens/../Widgets/../Engine/Guichan/widgets/slider.hpp:
 
-../Screens/../Widgets/../Guichan/widgets/radiobutton.hpp:
+../Screens/../Widgets/../Engine/Guichan/widgets/radiobutton.hpp:
 
-../Screens/../Widgets/../Guichan/widgets/tab.hpp:
+../Screens/../Widgets/../Engine/Guichan/widgets/tab.hpp:
 
-../Screens/../Widgets/../Guichan/widgets/tabbedarea.hpp:
+../Screens/../Widgets/../Engine/Guichan/widgets/tabbedarea.hpp:
 
-../Screens/../Widgets/../Guichan/widgets/textbox.hpp:
+../Screens/../Widgets/../Engine/Guichan/widgets/textbox.hpp:
 
-../Screens/../Widgets/../Guichan/widgets/textfield.hpp:
+../Screens/../Widgets/../Engine/Guichan/widgets/textfield.hpp:
 
-../Screens/../Widgets/../Guichan/widgets/window.hpp:
+../Screens/../Widgets/../Engine/Guichan/widgets/window.hpp:
 
-../Screens/../Widgets/../Guichan/widgets/container.hpp:
+../Screens/../Widgets/../Engine/Guichan/widgets/container.hpp:
 
-../Screens/../Widgets/../Guichan/platform.hpp:
+../Screens/../Widgets/../Engine/Guichan/platform.hpp:
 
 ../Screens/../Widgets/../Widgets/MenuButton.hpp:
 
-../Screens/../Widgets/../Widgets/../guichan.hpp:
+../Screens/../Widgets/../Widgets/../Engine/guichan.hpp:
 
-../Screens/../Game/GUI.hpp:
+../Screens/../Widgets/../Widgets/../Engine/Guichan/sfml.hpp:
 
-../Screens/../Game/../guichan.hpp:
+../Screens/../Widgets/../Widgets/../Engine/Guichan/sfml/sfmlfont.hpp:
 
-../Screens/../Game/../Guichan/sdl.hpp:
+../Screens/../Widgets/../Widgets/../Engine/Guichan/sfml/../font.hpp:
 
-../Screens/../Game/../Guichan/sdl/sdlgraphics.hpp:
+../Screens/../Widgets/../Widgets/../Engine/Guichan/sfml/../graphics.hpp:
 
-../Screens/../Game/../Guichan/sdl/../color.hpp:
+../Screens/../Widgets/../Widgets/../Engine/Guichan/sfml/sfmlgraphics.hpp:
 
-../Screens/../Game/../Guichan/sdl/../graphics.hpp:
+../Screens/../Widgets/../Widgets/../Engine/Guichan/sfml/../color.hpp:
 
-../Screens/../Game/../Guichan/sdl/../platform.hpp:
+../Screens/../Widgets/../Widgets/../Engine/Guichan/sfml/../rectangle.hpp:
 
-../Screens/../Game/../Guichan/sdl/sdlimage.hpp:
+../Screens/../Widgets/../Widgets/../Engine/Guichan/sfml/sfmlimage.hpp:
 
-../Screens/../Game/../Guichan/sdl/../image.hpp:
+../Screens/../Widgets/../Widgets/../Engine/Guichan/sfml/../image.hpp:
 
-../Screens/../Game/../Guichan/sdl/sdlimageloader.hpp:
+../Screens/../Widgets/../Widgets/../Engine/Guichan/sfml/sfmlimageloader.hpp:
 
-../Screens/../Game/../Guichan/sdl/../imageloader.hpp:
+../Screens/../Widgets/../Widgets/../Engine/Guichan/sfml/../imageloader.hpp:
 
-../Screens/../Game/../Guichan/sdl/sdlinput.hpp:
+../Screens/../Widgets/../Widgets/../Engine/Guichan/sfml/sfmlinput.hpp:
 
-../Screens/../Game/../Guichan/sdl/../input.hpp:
+../Screens/../Widgets/../Widgets/../Engine/Guichan/sfml/../input.hpp:
 
-../Screens/../Game/../Guichan/sdl/../keyinput.hpp:
+../Screens/../Widgets/../Widgets/../Engine/Guichan/sfml/../keyinput.hpp:
 
-../Screens/../Game/../Guichan/sdl/../mouseinput.hpp:
+../Screens/../Widgets/../Widgets/../Engine/Guichan/sfml/../mouseinput.hpp:
 
-../Screens/../Game/../Guichan/platform.hpp:
+../Screens/../Widgets/../Widgets/../Engine/Guichan/platform.hpp:
 
-../Screens/../Game/../Widgets/FPSDisplayWidget.hpp:
+../Screens/../Engine/GUI.hpp:
 
-../Screens/../Game/../Widgets/../guichan.hpp:
+../Screens/../Engine/../Widgets/FPSDisplayWidget.hpp:
 
-../Screens/../Game/../Widgets/../main.hpp:
+../Screens/../Engine/../Widgets/../Engine/guichan.hpp:
 
-../Screens/../Game/../Widgets/../Game/Direction.hpp:
+../Screens/../Engine/../Widgets/../Engine/Timer.hpp:
 
-../Screens/../Game/../Widgets/../Game/../Math/Vector.hpp:
+../Screens/../Engine/../Engine/guichan.hpp:
 
-../Screens/../Game/../Widgets/../guichan.hpp:
+../Screens/../Engine/../Engine/Guichan/sfml.hpp:
 
-../Screens/../Game/../Widgets/../Math/Vector.hpp:
-
-../Screens/../Game/../Widgets/../Engine/Timer.hpp:
-
-../Screens/../Game/../Engine/Renderer.hpp:
-
-../Screens/../Game/../Engine/../Math/Quadrilateral.hpp:
-
-../Screens/../Game/../Engine/../Math/../Math/Polygon.hpp:
-
-../Screens/../Game/../Engine/../Math/../Math/../Math/Vector.hpp:
-
-../Screens/../Game/../Engine/../Math/../Math/Rectangle.hpp:
-
-../Screens/../Game/../Engine/../Math/../Math/../guichan.hpp:
-
-../Screens/../Game/../Engine/../Math/../Math/../Math/Polygon.hpp:
-
-../Screens/../Game/../Engine/../Math/../Math/Vector.hpp:
-
-../Screens/../Game/../Engine/../Guichan/sdl.hpp:
-
-../Screens/../Game/../Engine/Surface.hpp:
-
-../Screens/../Game/../Engine/../Math/Rectangle.hpp:
-
-../Screens/../Game/../Engine/Timer.hpp:
-
-../Screens/../guichan.hpp:
-
-../Screens/../Game/Input.hpp:
-
-../Screens/../Game/../Math/Vector.hpp:
-
-../Screens/../Widgets/GameScreenMenuBar.hpp:
-
-../Screens/../Widgets/../Widgets/MiniMap.hpp:
-
-../Screens/../Widgets/../Widgets/../Math/Rectangle.hpp:
-
-../Screens/../Widgets/../Widgets/../Engine/Surface.hpp:
-
-../Screens/../Widgets/../Widgets/../Engine/Viewport.hpp:
-
-../Screens/../Widgets/../Widgets/../Engine/../Math/Quadrilateral.hpp:
-
-../Screens/../Widgets/../Widgets/../Engine/../Math/Rectangle.hpp:
-
-../Screens/../Widgets/../Widgets/../Engine/../Math/Vector.hpp:
-
-../Screens/../Widgets/../Math/Rectangle.hpp:
-
-../Screens/../Widgets/../Engine/Surface.hpp:
-
-../Screens/../Widgets/../Widgets/TimerWidget.hpp:
-
-../Screens/../Widgets/../Widgets/../Engine/Timer.hpp:
+../Screens/../Engine/guichan.hpp:
 
 ../Screens/../Game/Level.hpp:
+
+../Screens/../Game/../Engine/guichan.hpp:
+
+../Screens/../Game/../Engine/Guichan/sfml.hpp:
 
 ../Screens/../Game/../Interfaces/ActionInterface.hpp:
 
@@ -516,172 +406,90 @@ Screens/GameScreen.d: ../Screens/GameScreen.cpp ../Screens/GameScreen.hpp \
 
 ../Screens/../Game/../Listeners/DeathListener.hpp:
 
-../Screens/../Game/../Game/Game.hpp:
+../Screens/../Game/../Listeners/FloatingTextListener.hpp:
 
-../Screens/../Game/../Game/../Engine/Cursor.hpp:
+../Screens/../Game/../Interfaces/GCNActionInterface.hpp:
 
-../Screens/../Game/../Game/../Engine/../Engine/Renderer.hpp:
-
-../Screens/../Game/../Game/../Engine/../Engine/Sprite.hpp:
-
-../Screens/../Game/../Game/../Engine/../Engine/../guichan.hpp:
-
-../Screens/../Game/../Game/../Engine/../Engine/../Listeners/AnimationCycleListener.hpp:
-
-../Screens/../Game/../Game/../Engine/../Engine/../Math/Rectangle.hpp:
-
-../Screens/../Game/../Game/../Engine/../Engine/../Engine/Renderer.hpp:
-
-../Screens/../Game/../Game/../Engine/../Engine/Surface.hpp:
-
-../Screens/../Game/../Game/../Engine/../Engine/Timer.hpp:
-
-../Screens/../Game/../Game/../Engine/../Engine/../Math/Vector.hpp:
-
-../Screens/../Game/../Game/../Engine/../Math/Vector.hpp:
-
-../Screens/../Game/../Game/../guichan.hpp:
-
-../Screens/../Game/../Game/../Game/Input.hpp:
-
-../Screens/../Game/../Game/../Engine/Renderer.hpp:
-
-../Screens/../Game/../Game/../Engine/Timer.hpp:
-
-../Screens/../Game/../Game/Input.hpp:
+../Screens/../Game/../Interfaces/../Engine/guichan.hpp:
 
 ../Screens/../Game/../Listeners/LevelCompleteListener.hpp:
 
 ../Screens/../Game/../Game/Map.hpp:
 
-../Screens/../Game/../Game/../Math/CollisionArea.hpp:
-
-../Screens/../Game/../Game/../Math/../Math/Rectangle.hpp:
-
-../Screens/../Game/../Game/../Math/../Engine/Renderer.hpp:
-
-../Screens/../Game/../Game/../Math/Point.hpp:
-
-../Screens/../Game/../Game/../Math/Quadrilateral.hpp:
-
-../Screens/../Game/../Game/../Math/Rectangle.hpp:
+../Screens/../Game/../Game/../Game/CollisionArea.hpp:
 
 ../Screens/../Game/../Game/../Game/Tileset.hpp:
 
-../Screens/../Game/../Game/../Game/../Math/CollisionArea.hpp:
+../Screens/../Game/../Game/../Game/../Game/CollisionArea.hpp:
 
-../Screens/../Game/../Game/../Game/../Math/Rectangle.hpp:
+../Screens/../Game/../Entities/Portal.hpp:
 
-../Screens/../Game/../Game/../Game/../Engine/Surface.hpp:
+../Screens/../Game/../Entities/../Entities/Entity.hpp:
 
-../Screens/../Game/../Game/../Engine/Viewport.hpp:
+../Screens/../Game/../Entities/../Entities/../Interfaces/ActionInterface.hpp:
 
-../Screens/../Game/../Math/Rectangle.hpp:
+../Screens/../Game/../Entities/../Entities/../Interfaces/AddLockInterface.hpp:
 
-../Screens/../Game/../Math/Quadrilateral.hpp:
+../Screens/../Game/../Entities/../Entities/../Interfaces/../Listeners/AddLockListener.hpp:
 
-../Screens/../Game/../Engine/Viewport.hpp:
+../Screens/../Game/../Entities/../Entities/../Interfaces/ChangeScoreInterface.hpp:
+
+../Screens/../Game/../Entities/../Entities/../Listeners/DeathListener.hpp:
+
+../Screens/../Game/../Entities/../Entities/../Interfaces/FloatingTextInterface.hpp:
+
+../Screens/../Game/../Entities/../Entities/../Interfaces/../Listeners/FloatingTextListener.hpp:
+
+../Screens/../Game/../Entities/../Entities/../Game/Math.hpp:
+
+../Screens/../Game/../Entities/../Entities/../Interfaces/RemoveLockInterface.hpp:
+
+../Screens/../Game/../Entities/../Entities/../Interfaces/../Listeners/RemoveLockListener.hpp:
+
+../Screens/../Game/../Entities/../Interfaces/LevelCompleteInterface.hpp:
+
+../Screens/../Game/../Entities/../Interfaces/../Listeners/LevelCompleteListener.hpp:
+
+../Screens/../Game/../Entities/../Listeners/RemoveLockListener.hpp:
+
+../Screens/../Game/../Entities/../Engine/Timer.hpp:
+
+../Screens/../Game/../Engine/Timer.hpp:
 
 ../Screens/../Widgets/LevelCompleteWidget.hpp:
 
 ../Screens/../Widgets/../Engine/Timer.hpp:
 
-../Screens/../Widgets/MessageDisplayWidget.hpp:
-
-../Screens/../Widgets/../Engine/Sprite.hpp:
-
-../Screens/../Widgets/../Widgets/SpriteWidget.hpp:
-
-../Screens/../Widgets/../Widgets/../Listeners/AnimationCycleListener.hpp:
-
-../Screens/../Widgets/../Widgets/../Engine/Sprite.hpp:
-
 ../Screens/../Entities/Player.hpp:
+
+../Screens/../Entities/../Engine/guichan.hpp:
 
 ../Screens/../Entities/../Listeners/AddLockListener.hpp:
 
-../Screens/../Entities/../Listeners/../guichan.hpp:
-
 ../Screens/../Entities/../Entities/Creature.hpp:
-
-../Screens/../Entities/../Entities/../Listeners/CreatureMovedToPointListener.hpp:
 
 ../Screens/../Entities/../Entities/../Entities/Entity.hpp:
 
-../Screens/../Entities/../Entities/../Entities/../Interfaces/ActionInterface.hpp:
-
-../Screens/../Entities/../Entities/../Entities/../Interfaces/AddLockInterface.hpp:
-
-../Screens/../Entities/../Entities/../Entities/../Interfaces/../Listeners/AddLockListener.hpp:
-
-../Screens/../Entities/../Entities/../Entities/../Interfaces/../guichan.hpp:
-
-../Screens/../Entities/../Entities/../Entities/../Listeners/AnimationCycleListener.hpp:
-
-../Screens/../Entities/../Entities/../Entities/../Interfaces/ChangeScoreInterface.hpp:
-
-../Screens/../Entities/../Entities/../Entities/../Listeners/DeathListener.hpp:
-
-../Screens/../Entities/../Entities/../Entities/../Game/Direction.hpp:
-
-../Screens/../Entities/../Entities/../Entities/../Game/Input.hpp:
-
-../Screens/../Entities/../Entities/../Entities/../Math/Vector.hpp:
-
-../Screens/../Entities/../Entities/../Entities/../Math/Quadrilateral.hpp:
-
-../Screens/../Entities/../Entities/../Entities/../Math/Rectangle.hpp:
-
-../Screens/../Entities/../Entities/../Entities/../Interfaces/RemoveLockInterface.hpp:
-
-../Screens/../Entities/../Entities/../Entities/../Interfaces/../Listeners/RemoveLockListener.hpp:
-
-../Screens/../Entities/../Entities/../Entities/../Interfaces/../Listeners/../guichan.hpp:
-
-../Screens/../Entities/../Entities/../Entities/../Engine/Renderer.hpp:
-
-../Screens/../Entities/../Entities/../Entities/../Engine/Sprite.hpp:
-
-../Screens/../Entities/../Entities/../Entities/../Engine/Timer.hpp:
-
-../Screens/../Entities/../Entities/../Math/Vector.hpp:
-
 ../Screens/../Entities/../Entities/../Engine/Timer.hpp:
-
-../Screens/../Entities/../Game/Input.hpp:
 
 ../Screens/../Entities/../Listeners/RemoveLockListener.hpp:
 
 ../Screens/../Entities/../Engine/Timer.hpp:
 
-../Screens/../Engine/Renderer.hpp:
+../Screens/../Engine/Screen.hpp:
 
-../Screens/Screen.hpp:
+../Screens/../Engine/../Interfaces/GCNActionInterface.hpp:
 
-../Screens/../Game/Game.hpp:
+../Screens/../Engine/../Engine/Logger.hpp:
 
-../Screens/../Managers/VideoManager.hpp:
-
-../Screens/../Managers/../guichan.hpp:
-
-../Screens/../Managers/../Math/Rectangle.hpp:
-
-../Screens/../Managers/../Engine/Surface.hpp:
-
-../Screens/../Engine/Viewport.hpp:
-
-../Screens/../Engine/Sprite.hpp:
+../Screens/../Engine/../Engine/../Engine/guichan.hpp:
 
 ../Screens/../Engine/Timer.hpp:
 
-../Screens/../Math/Vector.hpp:
-
-../Screens/../Entities/Entity.hpp:
+../Screens/../Widgets/TimerWidget.hpp:
 
 ../Screens/../Game/Keywords.hpp:
 
-../Screens/../Engine/Logger.hpp:
-
-../Screens/../Engine/../guichan.hpp:
+../Screens/../Engine/FontManager.hpp:
 
 ../Screens/../main.hpp:

@@ -7,28 +7,23 @@
 #ifndef LEVEL_HPP_
 #define LEVEL_HPP_
 
-#include <fstream>
 #include <list>
-#include <map>
-#include <string>
+#include "../Engine/guichan.hpp"
+#include "../Engine/Guichan/sfml.hpp"
 
 #include "../Interfaces/ActionInterface.hpp"
 #include "../Interfaces/ChangeScoreInterface.hpp"
 #include "../Listeners/ChangeScoreListener.hpp"
 #include "../Listeners/DeathListener.hpp"
-#include "../Game/Game.hpp"
-#include "../Game/Input.hpp"
+#include "../Listeners/FloatingTextListener.hpp"
+#include "../Interfaces/GCNActionInterface.hpp"
 #include "../Listeners/LevelCompleteListener.hpp"
 #include "../Game/Map.hpp"
-#include "../Math/Rectangle.hpp"
-#include "../Engine/Renderer.hpp"
-#include "../Math/Quadrilateral.hpp"
-#include "../Math/Vector.hpp"
-#include "../Engine/Viewport.hpp"
+#include "../Entities/Portal.hpp"
+#include "../Engine/Timer.hpp"
 
 class Entity;
 class Player;
-class Portal;
 
 /**
  * @brief A level is a single contained area in the game.
@@ -36,17 +31,23 @@ class Portal;
  * The level essentially acts as a manager between all objects (creatures, items, traps)
  * and a single map.  It is literally a solitary contained area in the game.
  */
-class Level : public ActionInterface, public ChangeScoreInterface, public ChangeScoreListener, public DeathListener, public LevelCompleteListener, public gcn::Widget
+class Level : public ActionInterface, public ChangeScoreInterface, public ChangeScoreListener, public DeathListener, public GCNActionInterface, public FloatingTextListener, public LevelCompleteListener
 {
     public:
     /**
      * @brief Construct a new level.
-     * @param Difficulty The difficulty of the level to create.
-     * @param player The player object.
-     * @param viewport The screen's viewport.
+     * @param difficulty The difficulty of the level to create.
      */
-    Level(unsigned int difficulty, Player& player, Viewport& viewport);
+    Level(unsigned int difficulty, Player& player);
     virtual ~Level();
+
+    /**
+     * @brief Display a floating text on the screen for a short period of time.
+     * @param str The text to display.
+     * @param position The initial position to display the text (it will float up over a short period of time)
+     * @param color The color of the text to display.
+     */
+    virtual void addFloatingText(const std::string& str, const sf::Vector2f& position, const sf::Color& color);
 
 	/**
 	 * @brief Change the score by the provided amount.
@@ -88,31 +89,13 @@ class Level : public ActionInterface, public ChangeScoreInterface, public Change
      * @brief Draw the map to the screen.
      * @param renderer The graphics object to draw with.
      */
-    virtual void draw(Renderer& renderer);
-
-    /**
-     * @brief Return the level's entrance/exit area.
-     * @return The entrance/exit area of this map.
-     */
-    const Vector& getPortal() const;
+    virtual void draw(gcn::SFMLGraphics& renderer);
 
     /**
      * @brief Get the map.
      * @return The map.
      */
     const Map& getMap() const;
-
-    /**
-     * @brief Returns the viewport.
-     * @return The level's viewport.
-     */
-    const Viewport& getViewport() const;
-
-    /**
-     * @brief Handle input.
-     * @param event The input.
-     */
-    void handleInput(const Input& input);
 
     /**
      * @brief Checks whether the level has completed.
@@ -127,8 +110,9 @@ class Level : public ActionInterface, public ChangeScoreInterface, public Change
 
     /**
      * @brief Calling logic for a level will call logic for all map tiles (if necessary), creatures and objects.
+     * @param camera The camera that is looking at the level.
      */
-    virtual void logic();
+    virtual void logic(sf::View& camera);
 
     /**
      * @brief Called when the player finds the exit.
@@ -154,18 +138,22 @@ class Level : public ActionInterface, public ChangeScoreInterface, public Change
     bool mIsDone;
 
     // The player handle.
-    Player* mPlayer;
+    Player& mPlayer;
 
-    Portal* mPortal;
+    // The portal.
+    Portal mPortal;
 
     // The entities in the level.
     std::list<Entity*> mEntities;
 
+    // These are the floating texts found in the level.
+    std::list<sf::Text> mFloatingTexts;
+
+    // This is the floating text timer.
+    Timer mFloatingTextTimer;
+
     // A level has a map.
     Map mMap;
-
-    // The viewport for this level.
-    Viewport& mViewport;
 
     // The listeners.
     std::list<Entity*> mDeadEntities;

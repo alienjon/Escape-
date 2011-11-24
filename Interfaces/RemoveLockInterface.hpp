@@ -8,8 +8,8 @@
 #define REMOVELOCKINTERFACE_HPP_
 
 #include <list>
+#include <SFML/Graphics.hpp>
 
-#include "../guichan.hpp"
 #include "../Listeners/RemoveLockListener.hpp"
 
 class RemoveLockInterface
@@ -28,7 +28,7 @@ class RemoveLockInterface
 	 * @brief Tell all remove lock listeners to remove a lock.
 	 * @param color The color of the lock to remove.
 	 */
-	void distributeRemoveLock(gcn::Color color)
+	void distributeRemoveLock(sf::Color color)
 	{
 		for(std::list<RemoveLockListener*>::iterator it = mRemoveLockListeners.begin(); it != mRemoveLockListeners.end(); it++)
 			(*it)->removeLock(color);

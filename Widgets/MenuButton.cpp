@@ -6,23 +6,27 @@
  */
 #include "MenuButton.hpp"
 
-#include "../Managers/AudioManager.hpp"
-#include "../Managers/FontManager.hpp"
-#include "../Managers/VideoManager.hpp"
+#include "../Engine/AudioManager.hpp"
+#include "../Engine/Colors.hpp"
+#include "../Engine/FontManager.hpp"
+#include "../Game/Keywords.hpp"
 
-using std::list;
 using std::string;
 
-MenuButton::MenuButton(const string& name) : gcn::Label(name)
+MenuButton::MenuButton(const string& name) : gcn::Label(name),
+	mInactiveFont(FontManager::getGCNFont(FONT_DEFAULT)),
+	mHoverFont(FontManager::getGCNFont(FONT_DEFAULT)),
+	mPressedFont(FontManager::getGCNFont(FONT_DEFAULT))
 {
     // Add this as a mouse, key and focus listener.
     addKeyListener(this);
     addMouseListener(this);
     addFocusListener(this);
 
-    mInactiveFont = FontManager::get(FONT_MENU_INACTIVE);
-    mHoverFont    = FontManager::get(FONT_MENU_HOVER);
-    mPressedFont  = FontManager::get(FONT_MENU_PRESSED);
+//@todo review colors/how the button is displayed
+    mInactiveFont->SetColor(sf::Color(100, 0, 0));
+    mHoverFont->SetColor(sf::Color(255, 0, 0));
+    mPressedFont->SetColor(sf::Color(175, 0, 0));
 
     // Set the initial font.
     setFont(mInactiveFont);
@@ -41,13 +45,6 @@ void MenuButton::draw(gcn::Graphics* graphics)
 {
     // Draw the button first.
     gcn::Label::draw(graphics);
-
-    // If this button is focused, then also draw a border around the label.
-    if(isFocused())
-    {
-        graphics->setColor(gcn::Color(0, 0, 0));
-        graphics->drawRectangle(gcn::Rectangle(0, 0, getWidth(), getHeight()));
-    }
 }
 
 void MenuButton::focusGained(gcn::Event& event)
@@ -114,7 +111,7 @@ void MenuButton::setInactive()
 
 void MenuButton::setPressed()
 {
-    AudioManager::playSound("MenuButton.ogg");//@todo have this as a constant?
+    AudioManager::playSound(SOUND_MENU_CLICK);
     setFont(mPressedFont);
     adjustSize();
 }

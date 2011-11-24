@@ -27,14 +27,12 @@ SUBDIRS := \
 Widgets \
 Screens \
 Screens/MenuScreenWidgets \
-Math \
-Managers \
-Guichan/widgets \
-Guichan \
-Guichan/sdl \
-Guichan/opengl \
 Game \
+Game/Math \
 Entities \
 Engine \
+Engine/Guichan/widgets \
+Engine/Guichan \
+Engine/Guichan/sfml \
 Actions \
 

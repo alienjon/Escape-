@@ -9,6 +9,8 @@
 
 #include <string>
 
+extern const std::string ACTION_SHOWCURSOR;
+extern const std::string ACTION_HIDECURSOR;
 extern const std::string ACTION_PAUSE;
 extern const std::string ACTION_TO_MAINMENU;
 extern const std::string ACTION_SLIDE_CREDITSMENU;
@@ -21,5 +23,17 @@ extern const std::string ACTION_STARTGAME_HARD;
 extern const std::string ACTION_STARTGAME_NORMAL;
 extern const std::string ACTION_UNPAUSE;
 extern const std::string ACTION_QUIT;
+
+// These are the fonts.
+extern const std::string FONT_DEFAULT;
+extern const std::string FONT_TEXT;
+extern const std::string FONT_CAPTION;
+
+// These are the sounds.
+extern const std::string SOUND_LEVELCOMPLETE_FINISH;
+extern const std::string SOUND_LEVELCOMPLETE_ITEMDISPLAY;
+extern const std::string SOUND_MENU_CLICK;
+extern const std::string SOUND_PICKUP;
+extern const std::string SOUND_PICKUP_KEY;
 
 #endif /* KEYWORDS_HPP_ */

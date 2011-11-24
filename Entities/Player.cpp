@@ -6,25 +6,28 @@
  */
 #include "Player.hpp"
 
-#include <set>
-#include <stdexcept>
-
-#include "../Engine/Colors.hpp"
-#include "../Game/Level.hpp"
-#include "../Engine/Logger.hpp"
-#include "../Actions/MultipleActionsAction.hpp"
-#include "../Actions/PlaySoundAction.hpp"
-
-using std::list;
-using std::runtime_error;
-using std::set;
+//#include <set>
+//#include <stdexcept>
+//
+//#include "../Engine/Colors.hpp"
+//#include "../Game/Level.hpp"
+//#include "../Engine/Logger.hpp"
+//#include "../Actions/MultipleActionsAction.hpp"
+//#include "../Actions/PlaySoundAction.hpp"
+//
+//using std::list;
+//using std::runtime_error;
+//using std::set;
 
 const unsigned int COLOR_CYCLE_TIME_INTERVAL = 1300;
+const float PLAYER_SIZE = 50.f;
+const float INTERNAL_SIZE = 10.f;
+const sf::Color PLAYER_COLOR = sf::Color::Blue;
 
 Player::Player() :
 	mAllowInput(true),
-	mIsInteracting(false),
-	mCyclePosition(mLocks.end())
+	mCycle(COLORCYCLE_MOVE),
+	mColor1(mLocks.end()), mColor2(mLocks.end()), mColor3(mLocks.end()), mColor4(mLocks.end())
 {
     // This is the player.
     mType = ENTITY_PLAYER;
@@ -32,12 +35,17 @@ Player::Player() :
     // The player moves at a normal speed.
     setSpeed(1.0);
 
-    // Start the timers.
-    mInteractingTimer.start();
+    // Start the timer.
     mColorCycleTimer.start();
 
-    //@todo remove when done.
-    mSetSize(30, 30);
+    // Setup the player's size.
+    mSprite.AddPoint(0, 0, PLAYER_COLOR);
+    mSprite.AddPoint(PLAYER_SIZE, 0, PLAYER_COLOR);
+    mSprite.AddPoint(PLAYER_SIZE, PLAYER_SIZE, PLAYER_COLOR);
+    mSprite.AddPoint(0, PLAYER_SIZE, PLAYER_COLOR);
+
+    // Configure the internal sizes.
+    mResetCyclePositions();
 }
 
 void Player::mDie()
@@ -49,98 +57,161 @@ void Player::mDie()
     Creature::mDie();
 }
 
+void Player::mResetCyclePositions()
+{
+    mCol1 = sf::FloatRect(PLAYER_SIZE * 0.02f, PLAYER_SIZE * 0.02f, PLAYER_SIZE * 0.46f, PLAYER_SIZE * 0.46f);
+    mCol2 = sf::FloatRect(PLAYER_SIZE * 0.52f, PLAYER_SIZE * 0.02f, PLAYER_SIZE * 0.46f, PLAYER_SIZE * 0.46f);
+    mCol3 = sf::FloatRect(PLAYER_SIZE * 0.52f, PLAYER_SIZE * 0.52f, PLAYER_SIZE * 0.46f, PLAYER_SIZE * 0.46f);
+    mCol4 = sf::FloatRect(PLAYER_SIZE * 0.02f, PLAYER_SIZE * 0.52f, PLAYER_SIZE * 0.46f, PLAYER_SIZE * 0.46f);
+}
+
 void Player::collide(Entity& entity)
 {
 }
 
-void Player::draw(Renderer& renderer)//@todo review and implement player drawing.
+void Player::draw(sf::RenderWindow& renderer)
 {
-	renderer.setColor(COLOR_WHITE);
-	renderer.fillRectangle(Rectangle(getDimension()));
+	// Draw the base creature.
+	Creature::draw(renderer);
 
-// @todo Draw the 4 locks in the 4 corners.  Use the rotating timer to rotate the 4 squares around the player's symbol
-//	// For each color lock, draw it on the player.@todo review - is this how I want to do this?
-//	Rectangle area = getDimension();
-//	unsigned int size = area.width / 3;
-//	list<gcn::Color>::iterator it = mCyclePosition; // @todo make sure this copies the position
-//	unsigned int pos = 0;
-//	do
-//	{
-//		renderer.setColor(*it);
-//		renderer.fillRectangle(area);
-//		it++;
-//	} while(it != mCyclePosition);
-	for(list<gcn::Color>::const_iterator it = mLocks.begin(); it != mLocks.end(); ++it)
-	{
-		area.width = (area.width > size) ? area.width - size : size;
-		area.height= (area.height> size) ? area.height- size : size;
-		area.vector.x = getX() + (getWidth() / 2) - (area.width / 2);
-		area.vector.y = getY() + (getHeight()/ 2) - (area.height/ 2);
-		renderer.setColor(*it);
-		renderer.fillRectangle(area);
-	}
+	// Draw the colors.
+	if(mColor1 != mLocks.end())
+		renderer.Draw(sf::Shape::Rectangle(getX() + mCol1.Left, getY() + mCol1.Top, mCol1.Width, mCol1.Height, *mColor1));
+	if(mColor2 != mLocks.end())
+		renderer.Draw(sf::Shape::Rectangle(getX() + mCol2.Left, getY() + mCol2.Top, mCol2.Width, mCol2.Height, *mColor2));
+	if(mColor3 != mLocks.end())
+		renderer.Draw(sf::Shape::Rectangle(getX() + mCol3.Left, getY() + mCol3.Top, mCol3.Width, mCol3.Height, *mColor3));
+	if(mColor4 != mLocks.end())
+		renderer.Draw(sf::Shape::Rectangle(getX() + mCol4.Left, getY() + mCol4.Top, mCol4.Width, mCol4.Height, *mColor4));
 }
 
-void Player::handleInput(const Input& input)
+void Player::keyPressed(gcn::KeyEvent& event)
 {
-	// Reset the velocity.
-	mXVelocity = mYVelocity = 0;
-
-	// Unset the interaction.
-	mIsInteracting = false;
-
 	// Check for allowing input.
     if(!mAllowInput)
-    {
         return;
-    }
 
     // Calculate the velocity.
-    if(input.isKeyPressed(SDLK_w))
-    {
-    	mYVelocity--;
-    }
+	if(event.getKey().getValue() == gcn::Key::UP)
+		mUp = true;
+	if(event.getKey().getValue() == gcn::Key::DOWN)
+		mDown = true;
+	if(event.getKey().getValue() == gcn::Key::LEFT)
+		mLeft = true;
+	if(event.getKey().getValue() == gcn::Key::RIGHT)
+		mRight = true;
+}
 
-    if(input.isKeyPressed(SDLK_s))
-    {
-    	mYVelocity++;
-    }
-
-    if(input.isKeyPressed(SDLK_a))
-    {
-    	mXVelocity--;
-    }
-
-    if(input.isKeyPressed(SDLK_d))
-    {
-    	mXVelocity++;
-    }
-
-    // Press 'SPACE' or the left mouse button to interact.
-    if((input.isKeyClicked(SDLK_SPACE) || input.isMousePressed(SDL_BUTTON_LEFT)) && mInteractingTimer.getTime() >= 250)
-    {
-    	mIsInteracting = true;
-    	mInteractingTimer.start();
-    }
+void Player::keyReleased(gcn::KeyEvent& event)
+{
+	if(event.getKey().getValue() == gcn::Key::UP)
+		mUp = false;
+	if(event.getKey().getValue() == gcn::Key::DOWN)
+		mDown = false;
+	if(event.getKey().getValue() == gcn::Key::LEFT)
+		mLeft = false;
+	if(event.getKey().getValue() == gcn::Key::RIGHT)
+		mRight = false;
 }
 
 void Player::logic(Level& level)
 {
-	// If the timer interval has passed, update the color start position.
-	if(mColorCycleTimer.getTime() >= COLOR_CYCLE_TIME_INTERVAL)
+	// Call creature logic.
+	Creature::logic(level);
+
+	// Do the color cycle information after the player's position is updated.
+	if(mCycle == COLORCYCLE_MOVE)
 	{
-		// Update the color cycle position (but only if there are locks entered)
-		if(!mLocks.empty())
+		if(mColorCycleTimer.getTime() >= 5)
 		{
-			mCyclePosition++;
-			if(mCyclePosition == mLocks.end())
-				mCyclePosition = mLocks.begin();
+			mCol1.Left += 0.35f;
+			mCol2.Top  += 0.35f;
+			mCol3.Left -= 0.35f;
+			mCol4.Top  -= 0.35f;
+			if(mCol1.Left >= PLAYER_SIZE * 0.52f)
+			{
+				mResetCyclePositions();
+				mCycle = COLORCYCLE_SWITCHCOLORS;
+			}
+			mColorCycleTimer.start();
+		}
+	}
+	else if(mCycle == COLORCYCLE_PAUSE)
+	{
+		if(mColorCycleTimer.getTime() >= COLOR_CYCLE_TIME_INTERVAL)
+		{
+			mColorCycleTimer.start();
+			mCycle = COLORCYCLE_MOVE;
+		}
+	}
+	else if(mCycle == COLORCYCLE_SWITCHCOLORS)
+	{
+		if(mLocks.empty())
+		{
+			mColor4 = mColor3 = mColor2 = mColor1 = mLocks.end();
+			return;
 		}
 
-		// Restart the timer.
-		mColorCycleTimer.start();
+		// Adjust the color positions.
+		mColor4 = mColor3;
+		mColor3 = mColor2;
+		mColor2 = mColor1;
+
+		// Increment the initial color position
+		static int lock_buffer = 0;
+		switch(mLocks.size())
+		{
+			case 0: break;
+			case 1:
+			{
+				if(mColor1 == mLocks.end())
+				{
+					if(lock_buffer == 0)
+					{
+						mColor1 = mLocks.begin();
+						lock_buffer = 2;
+					}
+					else
+						lock_buffer--;
+				}
+				else
+					mColor1++;
+				break;
+			}
+			case 2:
+			{
+				if(mColor1 == mLocks.end())
+				{
+					if(lock_buffer == 0)
+					{
+						mColor1 = mLocks.begin();
+						lock_buffer = 1;
+					}
+					else
+						lock_buffer--;
+				}
+				else
+					mColor1++;
+				break;
+			}
+			case 3:
+			{
+				if(mColor1 == mLocks.end())
+					mColor1 = mLocks.begin();
+				else
+					mColor1++;
+				break;
+			}
+			default:
+			{
+				if(++mColor1 == mLocks.end())
+					mColor1 = mLocks.begin();
+			}
+		}
+
+		mCycle = COLORCYCLE_PAUSE;
 	}
 }
 
-const SDLKey PLAYER_ACTION_KEY = SDLK_SPACE;
+const sf::Keyboard::Key PLAYER_ACTION_KEY = sf::Keyboard::Space;
 const int Player::PLAYER_ACTION_DISTANCE = 2;

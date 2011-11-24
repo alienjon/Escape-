@@ -1,12 +1,16 @@
-#ifndef TIMER_HPP
-#define TIMER_HPP
-
-/**
- * @brief A basic timer class that utilizes SDL to keep track of time.
+/*
+ * Timer.hpp
  *
- * Upon construction a timer is not running.  Each method is rather self-explanatory.
- * @see getTime() Will get the current time on the timer.  A zero likely means the timer
- * has not yet been started (@see start())
+ *  Created on: Nov 3, 2011
+ *      Author: alienjon
+ */
+#ifndef TIMER_HPP_
+#define TIMER_HPP_
+
+#include <SFML/System.hpp>
+
+/*
+ * @brief A class that implements functions for a timer.
  */
 class Timer
 {
@@ -15,6 +19,29 @@ class Timer
 	 * @brief The basic constructor initializes a timer's properties.
 	 */
 	Timer();
+
+	/**
+	 * @brief Returns the current time since this timer was started or reset.
+	 * @return The time (in seconds) since the timer was started or reset.
+	 */
+	unsigned int getTime() const;
+
+	/**
+	 * @brief Returns the paused state of the timer.
+	 * @return True if the timer is paused, false if it unpaused.
+	 */
+	bool isPaused() const;
+
+	/**
+	 * @brief Returns the running state of the timer.
+	 * @return True if the timer is running, false if it is stopped.
+	 */
+	virtual bool isStarted() const;
+
+	/**
+	 * @brief Pause the timer.
+	 */
+	void pause();
 
 	/**
 	 * @brief Start the timer.
@@ -27,34 +54,14 @@ class Timer
 	void stop();
 
 	/**
-	 * @brief Pause the timer.
-	 */
-	void pause();
-
-	/**
 	 * @brief Unpause the timer.
 	 */
 	void unpause();
 
-	/**
-	 * @brief Returns the running state of the timer.
-	 * @return True if the timer is running, false if it is stopped.
-	 */
-	virtual bool isStarted() const;
-
-	/**
-	 * @brief Returns the paused state of the timer.
-	 * @return True if the timer is paused, false if it unpaused.
-	 */
-	bool isPaused() const;
-
-	/**
-	 * @brief Returns the current time since this timer was started or reset.
-	 * @return The time (in milliseconds) since the timer was started or reset.
-	 */
-	unsigned int getTime() const;
-
 	private:
+	// The internal clock.
+	sf::Clock mClock;
+
 	// The current time.
 	unsigned int mCurrentTime;
 
@@ -68,4 +75,4 @@ class Timer
 	bool mPaused;
 };
 
-#endif
+#endif /* TIMER_HPP_ */
