@@ -17,6 +17,7 @@ KeyEntity::KeyEntity(sf::Color color) :
 	mColor(color),
 	mIsGrowing(true)
 {
+	mType = ENTITY_KEY;
 	mTimer.start();
 }
 

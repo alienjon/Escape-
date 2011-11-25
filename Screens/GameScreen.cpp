@@ -22,8 +22,7 @@ using std::string;
 
 const unsigned int SCORE_COUNTER_INTERVAL = 25;
 const unsigned int __TIME_MULTIPLIER__ = 2300;
-#include <iostream>
-using namespace std;//@todo remove when done
+
 GameScreen::GameScreen(unsigned int difficulty) : Screen(),
 	mDifficulty(difficulty),
 	mIsPaused(false),
@@ -64,6 +63,7 @@ void GameScreen::action(const gcn::ActionEvent& event)
 	{
 		// Hide the level complete widget.
 		mLevelCompleteWidget.setVisible(false);
+		mBase.requestFocus();
 
 		// If the old level completed, then load the next level.
 		if(mLevel->isDone())
@@ -269,11 +269,7 @@ void GameScreen::logic()
 		mLevelCompleteWidget.setPosition(mBase.getWidth() / 2 - mLevelCompleteWidget.getWidth() / 2, mBase.getHeight() / 2 - mLevelCompleteWidget.getHeight() / 2);
 	}
 
-    // Only do game logic if the game is not paused and neither the options menu or
-	// the message display widget is being shown.
+    // Only do game logic if the game is not paused.
     if(!mIsPaused)
 		mLevel->logic(mCamera);
-
-	// Center the player on the screen.
-	mCamera.SetCenter(mPlayer.getX(), mPlayer.getY());
 }

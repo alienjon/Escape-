@@ -19,8 +19,9 @@ class FloatingTextListener
      * @param str The text to display.
      * @param position The initial position to display the text (it will float up over a short period of time)
      * @param color The color of the text to display.
+     * @param size The character size of the text.
      */
-    virtual void addFloatingText(const std::string& str, const sf::Vector2f& position, const sf::Color& color) = 0;
+    virtual void addFloatingText(const std::string& str, const sf::Vector2f& position, const sf::Color& color, unsigned int size) = 0;
 };
 
 #endif /* FLOATINGTEXTLISTENER_HPP_ */

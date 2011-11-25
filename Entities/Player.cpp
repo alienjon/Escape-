@@ -6,19 +6,6 @@
  */
 #include "Player.hpp"
 
-//#include <set>
-//#include <stdexcept>
-//
-//#include "../Engine/Colors.hpp"
-//#include "../Game/Level.hpp"
-//#include "../Engine/Logger.hpp"
-//#include "../Actions/MultipleActionsAction.hpp"
-//#include "../Actions/PlaySoundAction.hpp"
-//
-//using std::list;
-//using std::runtime_error;
-//using std::set;
-
 const unsigned int COLOR_CYCLE_TIME_INTERVAL = 1300;
 const float PLAYER_SIZE = 50.f;
 const float INTERNAL_SIZE = 10.f;

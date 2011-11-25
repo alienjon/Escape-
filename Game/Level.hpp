@@ -46,8 +46,9 @@ class Level : public ActionInterface, public ChangeScoreInterface, public Change
      * @param str The text to display.
      * @param position The initial position to display the text (it will float up over a short period of time)
      * @param color The color of the text to display.
+     * @param size The character size of the text.
      */
-    virtual void addFloatingText(const std::string& str, const sf::Vector2f& position, const sf::Color& color);
+    virtual void addFloatingText(const std::string& str, const sf::Vector2f& position, const sf::Color& color, unsigned int size);
 
 	/**
 	 * @brief Change the score by the provided amount.
@@ -90,6 +91,11 @@ class Level : public ActionInterface, public ChangeScoreInterface, public Change
      * @param renderer The graphics object to draw with.
      */
     virtual void draw(gcn::SFMLGraphics& renderer);
+
+    /**
+     * @brief Flip the level upside-down.
+     */
+    virtual void flip();
 
     /**
      * @brief Get the map.
@@ -155,8 +161,17 @@ class Level : public ActionInterface, public ChangeScoreInterface, public Change
     // A level has a map.
     Map mMap;
 
-    // The listeners.
+    // A list of dead entities (to remove in logic).
     std::list<Entity*> mDeadEntities;
+
+    // A list of pickups that could still be picked up and a toggle to check if an award has been given for picking all items up.
+    std::list<Entity*> mPickups;
+    bool mPickupAward;
+
+    // The flip screen animation timer.
+    Timer mFlipTimer;
+    float mFlipAngle;
+    bool mFlipped;
 };
 
 #endif /* LEVEL_HPP_ */

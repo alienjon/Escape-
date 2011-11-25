@@ -6,6 +6,7 @@
 CPP_SRCS += \
 ../Entities/Creature.cpp \
 ../Entities/Entity.cpp \
+../Entities/FlipScreen.cpp \
 ../Entities/KeyEntity.cpp \
 ../Entities/Pickup.cpp \
 ../Entities/Player.cpp \
@@ -14,6 +15,7 @@ CPP_SRCS += \
 OBJS += \
 ./Entities/Creature.o \
 ./Entities/Entity.o \
+./Entities/FlipScreen.o \
 ./Entities/KeyEntity.o \
 ./Entities/Pickup.o \
 ./Entities/Player.o \
@@ -22,6 +24,7 @@ OBJS += \
 CPP_DEPS += \
 ./Entities/Creature.d \
 ./Entities/Entity.d \
+./Entities/FlipScreen.d \
 ./Entities/KeyEntity.d \
 ./Entities/Pickup.d \
 ./Entities/Player.d \

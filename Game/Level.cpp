@@ -10,6 +10,7 @@
 #include <stdexcept>
 
 #include "../Entities/Entity.hpp"
+#include "../Entities/FlipScreen.hpp"
 #include "../Engine/FontManager.hpp"
 #include "../Game/Game.hpp"
 #include "../Entities/KeyEntity.hpp"
@@ -27,13 +28,18 @@ using std::string;
 
 const unsigned int FLOATINGTEXT_TIMER_INTERVAL = 15;
 const float FLOATINGTEXT_MOVE_STEP = 0.3f;
+const unsigned int FLIP_ROTATION_SPEED = 20;
+const float FLIP_ROTATION_STEP = 0.2f;
 
 Level::Level(unsigned int difficulty, Player& player) :
 	mIsDone(false),
 	mPlayer(player),
 	mPortal(30, 30),
 	mMap(random(random(difficulty, difficulty * 2), random(difficulty, difficulty * 2)),
-		 random(random(difficulty, difficulty * 2), random(difficulty, difficulty * 2)))
+		 random(random(difficulty, difficulty * 2), random(difficulty, difficulty * 2))),
+	mPickupAward(false),
+	mFlipAngle(0.f),
+	mFlipped(false)
 {
 	// Start the floating text timer.
 	mFloatingTextTimer.start();
@@ -96,10 +102,15 @@ Level::Level(unsigned int difficulty, Player& player) :
 			{
 				// A 1 in 10 chance that the pickup will be a big one.
 				//@todo Add pickups that increase time, decrease score, other effects?
-				if(random(1, 20) == 1)
-					entity = new Pickup(50, sf::Color::White, 15);
-				else
+				int n = random(1, 100);
+				if(n <= 65)
 					entity = new Pickup(5, sf::Color::Magenta, 8);
+				else if(n <= 70)
+					entity = new Pickup(25, sf::Color::White, 15);
+				else if(n <= 85)
+					entity = new Pickup(-50, sf::Color::Red, 50);
+				else
+					entity = new FlipScreen(*this);
 			}
 
 			// If an entity was created, configure it.
@@ -134,6 +145,9 @@ Level::~Level()
 
 void Level::mAddEntity(Entity* entity)
 {
+	if(entity->getType() == Entity::ENTITY_PICKUP)
+			mPickups.push_back(entity);
+
 	entity->addDeathListener(this);
 	entity->addChangeScoreListener(this);
 	entity->addAddLockListener(&mPlayer);
@@ -144,6 +158,8 @@ void Level::mAddEntity(Entity* entity)
 
 void Level::mRemoveEntity(Entity* entity)
 {
+	if(entity->getType() == Entity::ENTITY_PICKUP)
+			mPickups.remove(entity);
 	entity->removeDeathListener(this);
 	entity->removeChangeScoreListener(this);
 	entity->removeAddLockListener(&mPlayer);
@@ -153,9 +169,9 @@ void Level::mRemoveEntity(Entity* entity)
 	delete entity;
 }
 
-void Level::addFloatingText(const string& str, const sf::Vector2f& position, const sf::Color& color)
+void Level::addFloatingText(const string& str, const sf::Vector2f& position, const sf::Color& color, unsigned int size)
 {
-	sf::Text txt = sf::Text(str, FontManager::getSFFont(FONT_CAPTION), 20);
+	sf::Text txt = sf::Text(str, FontManager::getSFFont(FONT_DEFAULT), size);
 	txt.SetColor(color);
 	txt.SetPosition(position);
 	mFloatingTexts.push_back(txt);
@@ -197,6 +213,11 @@ void Level::draw(gcn::SFMLGraphics& renderer)
 		renderer.Draw(*it);
 }
 
+void Level::flip()
+{
+	mFlipTimer.start();
+}
+
 const Map& Level::getMap() const
 {
 	return mMap;
@@ -214,14 +235,22 @@ void Level::levelComplete()
 
 void Level::logic(sf::View& camera)
 {
-	// Remove all dead enities.
+	// Remove all dead entities.
 	for(list<Entity*>::iterator it = mDeadEntities.begin(); it != mDeadEntities.end(); it++)
 		mRemoveEntity(*it);
 	mDeadEntities.clear();
 
-    // Perform all being logic.
+    // Perform all entity logic.
     for(list<Entity*>::iterator it = mEntities.begin(); it != mEntities.end(); it++)
         (*it)->logic(*this);
+
+    // If all items have been picked up, display a floating text and give a bonus.
+    if(mPickups.empty() && !mPickupAward)
+    {
+    	addFloatingText("Level Cleared!", mPlayer.getPosition(), sf::Color::Yellow, 30);
+    	distributeChangeScore(250);
+    	mPickupAward = true;
+    }
 
     // Perform floating text logic if the interval is passed.
     if(mFloatingTextTimer.getTime() >= FLOATINGTEXT_TIMER_INTERVAL)
@@ -240,7 +269,7 @@ void Level::logic(sf::View& camera)
     	mFloatingTextTimer.start();
     }
 
-	// Make sure that the camera doesn't go out of bounds.@fixme The camera is going out of bounds...
+	// Make sure that the camera doesn't go out of bounds.
 	sf::Vector2f center = camera.GetCenter(),
 				 half(camera.GetSize().x / 2, camera.GetSize().y / 2);
 	if(center.x - half.x < 0)
@@ -252,6 +281,28 @@ void Level::logic(sf::View& camera)
 	if(center.y + half.y > mMap.getHeight())
 		center.y = mMap.getHeight() - half.y;
 	camera.SetCenter(center);
+
+	// Center the player on the screen.
+	camera.SetCenter(mPlayer.getX(), mPlayer.getY());
+
+	// Flip the screen.
+	if(mFlipTimer.isStarted())
+	{
+		mFlipAngle += FLIP_ROTATION_STEP;
+		if(mFlipped && mFlipAngle >= 360.f)
+		{
+			mFlipTimer.stop();
+			mFlipAngle = 0.f;
+			mFlipped = false;
+		}
+		else if(!mFlipped && mFlipAngle >= 180.f)
+		{
+			mFlipTimer.stop();
+			mFlipAngle = 180.f;
+			mFlipped = true;
+		}
+		camera.SetRotation(mFlipAngle);
+	}
 }
 
 void Level::playerFoundExit()

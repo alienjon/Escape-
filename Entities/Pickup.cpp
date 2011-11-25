@@ -15,6 +15,7 @@ Pickup::Pickup(int value, const sf::Color& color, unsigned int size) :
 	mSize(size),
 	mColor(color)
 {
+	mType = ENTITY_PICKUP;
 	mSprite = sf::Shape::Rectangle(0, 0, size, size, mColor);
 }
 

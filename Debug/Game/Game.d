@@ -163,9 +163,9 @@ Game/Game.d: ../Game/Game.cpp ../Game/Game.hpp \
  ../Game/../Screens/../Entities/../Listeners/RemoveLockListener.hpp \
  ../Game/../Screens/../Entities/../Engine/Timer.hpp \
  ../Game/../Screens/../Engine/Screen.hpp \
- ../Game/../Screens/../Engine/../Interfaces/GCNActionInterface.hpp \
  ../Game/../Screens/../Engine/../Engine/guichan.hpp \
  ../Game/../Screens/../Engine/../Engine/Guichan/sfml.hpp \
+ ../Game/../Screens/../Engine/../Interfaces/GCNActionInterface.hpp \
  ../Game/../Screens/../Engine/../Engine/Logger.hpp \
  ../Game/../Screens/../Engine/../Engine/../Engine/guichan.hpp \
  ../Game/../Screens/../Engine/Timer.hpp \
@@ -505,11 +505,11 @@ Game/Game.d: ../Game/Game.cpp ../Game/Game.hpp \
 
 ../Game/../Screens/../Engine/Screen.hpp:
 
-../Game/../Screens/../Engine/../Interfaces/GCNActionInterface.hpp:
-
 ../Game/../Screens/../Engine/../Engine/guichan.hpp:
 
 ../Game/../Screens/../Engine/../Engine/Guichan/sfml.hpp:
+
+../Game/../Screens/../Engine/../Interfaces/GCNActionInterface.hpp:
 
 ../Game/../Screens/../Engine/../Engine/Logger.hpp:
 

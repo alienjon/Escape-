@@ -9,9 +9,10 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "../Interfaces/GCNActionInterface.hpp"
 #include "../Engine/guichan.hpp"
 #include "../Engine/Guichan/sfml.hpp"
+
+#include "../Interfaces/GCNActionInterface.hpp"
 #include "../Engine/Logger.hpp"
 
 /*

@@ -36,6 +36,8 @@ class Entity : public ActionInterface, public AddLockInterface, public ChangeSco
     enum EntityType
     {
     	ENTITY_CREATURE,
+    	ENTITY_KEY,
+    	ENTITY_PICKUP,
     	ENTITY_PLAYER,
     	ENTITY_NULL
     };
