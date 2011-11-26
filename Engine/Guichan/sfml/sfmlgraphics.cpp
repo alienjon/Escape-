@@ -36,13 +36,13 @@ namespace gcn
 		if(mClipStack.empty())
 			return;
 		const ClipRectangle& top = mClipStack.top();
-		glEnable(GL_SCISSOR_TEST);
-		glScissor(top.x - 1, GetHeight() - (top.y + top.height), top.x + top.width, top.y + top.height);
+//		glEnable(GL_SCISSOR_TEST);
+//		glScissor(top.x - 1, GetHeight() - (top.y + top.height), top.x + top.width, top.y + top.height);
 	}
 
 	void SFMLGraphics::stopDraw()
 	{
-		glDisable(GL_SCISSOR_TEST);
+//		glDisable(GL_SCISSOR_TEST);
 	}
 
 	void SFMLGraphics::drawImage(const Image *image, int srcX, int srcY, int dstX, int dstY, int width, int height)

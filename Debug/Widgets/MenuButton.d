@@ -86,6 +86,59 @@ Widgets/MenuButton.d: ../Widgets/MenuButton.cpp ../Widgets/MenuButton.hpp \
  ../Widgets/../Engine/Guichan/platform.hpp \
  ../Widgets/../Engine/Guichan/sfml.hpp \
  ../Widgets/../Engine/Guichan/sfml/sfmlfont.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Graphics.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Window.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/System.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Config.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/System/Clock.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/System/Err.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/System/InputStream.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/System/Lock.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/System/NonCopyable.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/System/Mutex.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/System/Sleep.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/System/String.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/System/Thread.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/System/Thread.inl \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/System/ThreadLocal.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/System/ThreadLocalPtr.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/System/ThreadLocalPtr.inl \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/System/Utf.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/System/Utf.inl \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/System/Vector2.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/System/Vector2.inl \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/System/Vector3.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/System/Vector3.inl \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Window/Context.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Window/GlResource.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Window/ContextSettings.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Window/Event.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Window/Joystick.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Window/Keyboard.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Window/Mouse.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Window/VideoMode.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Window/Window.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Window/WindowHandle.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Window/WindowStyle.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Graphics/Color.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Graphics/Font.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Graphics/Glyph.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Graphics/Rect.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Graphics/Rect.inl \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Graphics/Texture.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Graphics/Image.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Graphics/Renderer.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Graphics/Drawable.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Graphics/Matrix3.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Graphics/Matrix3.inl \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Graphics/RenderTexture.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Graphics/RenderTarget.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Graphics/View.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Graphics/RenderWindow.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Graphics/Shader.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Graphics/Shape.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Graphics/Sprite.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Graphics/Text.hpp \
  ../Widgets/../Engine/Guichan/sfml/../font.hpp \
  ../Widgets/../Engine/Guichan/sfml/../graphics.hpp \
  ../Widgets/../Engine/Guichan/sfml/sfmlgraphics.hpp \
@@ -99,7 +152,17 @@ Widgets/MenuButton.d: ../Widgets/MenuButton.cpp ../Widgets/MenuButton.hpp \
  ../Widgets/../Engine/Guichan/sfml/../input.hpp \
  ../Widgets/../Engine/Guichan/sfml/../keyinput.hpp \
  ../Widgets/../Engine/Guichan/sfml/../mouseinput.hpp \
- ../Widgets/../Engine/AudioManager.hpp ../Widgets/../Engine/Colors.hpp \
+ ../Widgets/../Engine/AudioManager.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Audio.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Audio/Listener.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Audio/Music.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Audio/SoundStream.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Audio/SoundSource.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Audio/Sound.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Audio/SoundBuffer.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Audio/SoundBufferRecorder.hpp \
+ C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Audio/SoundRecorder.hpp \
+ ../Widgets/../Engine/Colors.hpp \
  ../Widgets/../Engine/../Engine/guichan.hpp \
  ../Widgets/../Engine/FontManager.hpp \
  ../Widgets/../Engine/../Engine/Guichan/sfml.hpp \
@@ -281,6 +344,112 @@ Widgets/MenuButton.d: ../Widgets/MenuButton.cpp ../Widgets/MenuButton.hpp \
 
 ../Widgets/../Engine/Guichan/sfml/sfmlfont.hpp:
 
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Graphics.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Window.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/System.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Config.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/System/Clock.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/System/Err.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/System/InputStream.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/System/Lock.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/System/NonCopyable.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/System/Mutex.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/System/Sleep.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/System/String.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/System/Thread.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/System/Thread.inl:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/System/ThreadLocal.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/System/ThreadLocalPtr.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/System/ThreadLocalPtr.inl:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/System/Utf.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/System/Utf.inl:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/System/Vector2.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/System/Vector2.inl:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/System/Vector3.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/System/Vector3.inl:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Window/Context.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Window/GlResource.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Window/ContextSettings.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Window/Event.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Window/Joystick.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Window/Keyboard.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Window/Mouse.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Window/VideoMode.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Window/Window.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Window/WindowHandle.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Window/WindowStyle.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Graphics/Color.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Graphics/Font.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Graphics/Glyph.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Graphics/Rect.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Graphics/Rect.inl:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Graphics/Texture.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Graphics/Image.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Graphics/Renderer.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Graphics/Drawable.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Graphics/Matrix3.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Graphics/Matrix3.inl:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Graphics/RenderTexture.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Graphics/RenderTarget.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Graphics/View.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Graphics/RenderWindow.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Graphics/Shader.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Graphics/Shape.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Graphics/Sprite.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Graphics/Text.hpp:
+
 ../Widgets/../Engine/Guichan/sfml/../font.hpp:
 
 ../Widgets/../Engine/Guichan/sfml/../graphics.hpp:
@@ -308,6 +477,24 @@ Widgets/MenuButton.d: ../Widgets/MenuButton.cpp ../Widgets/MenuButton.hpp \
 ../Widgets/../Engine/Guichan/sfml/../mouseinput.hpp:
 
 ../Widgets/../Engine/AudioManager.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Audio.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Audio/Listener.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Audio/Music.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Audio/SoundStream.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Audio/SoundSource.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Audio/Sound.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Audio/SoundBuffer.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Audio/SoundBufferRecorder.hpp:
+
+C:\MinGW\msys\1.0\home\alienjon\SFML\include/SFML/Audio/SoundRecorder.hpp:
 
 ../Widgets/../Engine/Colors.hpp:
 
