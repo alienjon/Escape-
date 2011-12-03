@@ -9,6 +9,7 @@
 
 #include <string>
 
+// These are the actions.
 extern const std::string ACTION_SHOWCURSOR;
 extern const std::string ACTION_HIDECURSOR;
 extern const std::string ACTION_PAUSE;
@@ -29,11 +30,22 @@ extern const std::string FONT_DEFAULT;
 extern const std::string FONT_TEXT;
 extern const std::string FONT_CAPTION;
 
+// These are the images.
+extern const std::string IMAGE_FLIPSCREEN;
+extern const std::string IMAGE_ZOOMSCREEN;
+extern const std::string IMAGE_TIMEGAIN;
+extern const std::string IMAGE_TIMELOSS;
+extern const std::string IMAGE_FASTPLAYER;
+extern const std::string IMAGE_SLOWPLAYER;
+
 // These are the sounds.
 extern const std::string SOUND_LEVELCOMPLETE_FINISH;
 extern const std::string SOUND_LEVELCOMPLETE_ITEMDISPLAY;
 extern const std::string SOUND_MENU_CLICK;
 extern const std::string SOUND_PICKUP;
 extern const std::string SOUND_PICKUP_KEY;
+extern const std::string SOUND_PICKUP_SPECIAL;
+extern const std::string SOUND_TELEPORT_COLLIDE;
+extern const std::string SOUND_TELEPORT_WARNING;
 
 #endif /* KEYWORDS_HPP_ */

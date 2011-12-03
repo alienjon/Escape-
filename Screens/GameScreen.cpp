@@ -28,7 +28,8 @@ GameScreen::GameScreen(unsigned int difficulty) : Screen(),
 	mIsPaused(false),
 	mLevel(0),
 	mScore(0),
-	mCounter(0)
+	mCounter(0),
+	mResetView(false)
 {
 	// Set the size of the screen.
 	setSize(800, 600);//@todo how should screen sizing work?  also, this needs to be changed when the menu widget is included
@@ -52,6 +53,7 @@ GameScreen::~GameScreen()
 	{
 		mLevel->removeActionListener(this);
 		mLevel->removeChangeScoreListener(this);
+		mLevel->removeTimeChangeListener(this);
 		delete mLevel;
 	}
 	removeKeyListener(&mPlayer);
@@ -71,12 +73,17 @@ void GameScreen::action(const gcn::ActionEvent& event)
 			// Unload the current level.
 			mLevel->removeActionListener(this);
 			mLevel->removeChangeScoreListener(this);
+			mLevel->removeTimeChangeListener(this);
 			delete mLevel;
 
 			// Increase the difficulty and go to the next level.
 			mLevel = new Level(++mDifficulty, mPlayer);
 			mLevel->addActionListener(this);
 			mLevel->addChangeScoreListener(this);
+			mLevel->addTimeChangeListener(this);
+
+		    // Reset the view.
+		    mResetView = true;//@todo this isn't working.  Make sure the view is reset when a new level is loaded.
 
 			// Make sure the game is not paused.
 //			mMenuBar.stop();
@@ -138,6 +145,13 @@ void GameScreen::changeScore(int change)
 
 void GameScreen::draw(gcn::SFMLGraphics& renderer)
 {
+	// If resetting the view, reset it.
+	if(mResetView)
+	{
+		mCamera = renderer.GetDefaultView();
+		mResetView = false;
+	}
+
 	// Everything on the level is relative to the viewport.
 	renderer.SetView(mCamera);
 
@@ -184,6 +198,7 @@ void GameScreen::load(GUI* gui)
 
     // Add the menu bar.
     mBase.add(&mScoreLabel, 0, mBase.getHeight() - mScoreLabel.getHeight());
+    addTimeChangeListener(&mTimerWidget);
     mBase.add(&mTimerWidget);
 //    mMenuBar.setSize(mBase.getWidth(), mBase.getHeight() * 0.15);
 //    mMenuBar.adjustInternals();
@@ -199,6 +214,10 @@ void GameScreen::load(GUI* gui)
     mLevel = new Level(mDifficulty, mPlayer);
     mLevel->addActionListener(this);
     mLevel->addChangeScoreListener(this);
+    mLevel->addTimeChangeListener(this);
+
+    // Reset the view.
+    mResetView = true;
 
     // Start the timer
     mTimerWidget.stop();

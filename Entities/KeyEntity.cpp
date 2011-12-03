@@ -71,7 +71,7 @@ void KeyEntity::logic(Level& level)
 			}
 		}
 		sf::Vector2f pos = getPosition();
-		mSprite = sf::Shape::Rectangle(-(mSize.x / 2), -(mSize.y / 2), mSize.x, mSize.y, mColor);
+		mShape = sf::Shape::Rectangle(-(mSize.x / 2), -(mSize.y / 2), mSize.x, mSize.y, mColor);
 		setPosition(pos.x, pos.y);
 		mTimer.start();
 	}

@@ -16,7 +16,7 @@ Pickup::Pickup(int value, const sf::Color& color, unsigned int size) :
 	mColor(color)
 {
 	mType = ENTITY_PICKUP;
-	mSprite = sf::Shape::Rectangle(0, 0, size, size, mColor);
+	mShape = sf::Shape::Rectangle(0-int(size/2), 0-int(size/2), size, size, mColor);
 }
 
 void Pickup::collide(Entity& entity)

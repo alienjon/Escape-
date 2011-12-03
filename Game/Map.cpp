@@ -54,8 +54,8 @@ ostream& operator<<(ostream& os, const Cell& cell)
 }
 
 Map::Map(unsigned int width, unsigned int height) :
-	mWidth(width),
-	mHeight(height),
+	mWidth(width < 3 ? 3 : width),
+	mHeight(height < 3 ? 3 : height),
 	mTileset(TilesetManager::getRandom())
 {
 	// Begin by populating the map with closed cells.

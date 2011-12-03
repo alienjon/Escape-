@@ -9,11 +9,19 @@
 #include "../Engine/AudioManager.hpp"
 #include "../Game/Keywords.hpp"
 #include "../Game/Level.hpp"
+#include "../Engine/VideoManager.hpp"
+
+const unsigned int ROTATE_INTERVAL = 5;
+const float ROTATE_STEP = -1.5f;
 
 FlipScreen::FlipScreen(Level& level) :
 	mLevel(level)
 {
-	mSprite = sf::Shape::Circle(0, 0, 10, sf::Color::Red);
+	mType = ENTITY_FLIP;
+	mSprite = sf::Sprite(VideoManager::getTexture(IMAGE_FLIPSCREEN));
+	adjustSize();
+	mSprite.SetOrigin(getWidth() / 2, getHeight() / 2);
+	mTimer.start();
 }
 
 void FlipScreen::collide(Entity& entity)
@@ -31,6 +39,15 @@ void FlipScreen::collide(Entity& entity)
 		mDie();
 
 		// Play the pickup sound.
-		AudioManager::playSound(SOUND_PICKUP);
+		AudioManager::playSound(SOUND_PICKUP_SPECIAL);
+	}
+}
+
+void FlipScreen::logic(Level& level)
+{
+	if(mTimer.getTime() >= ROTATE_INTERVAL)
+	{
+		mSprite.Rotate(ROTATE_STEP);
+		mTimer.start();
 	}
 }

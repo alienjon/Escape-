@@ -129,6 +129,9 @@ Entities/Entity.d: ../Entities/Entity.cpp ../Entities/Entity.hpp \
  ../Entities/../Game/../Entities/../Interfaces/../Listeners/LevelCompleteListener.hpp \
  ../Entities/../Game/../Entities/../Listeners/RemoveLockListener.hpp \
  ../Entities/../Game/../Entities/../Engine/Timer.hpp \
+ ../Entities/../Game/../Interfaces/TimeChangeInterface.hpp \
+ ../Entities/../Game/../Interfaces/../Listeners/TimeChangeListener.hpp \
+ ../Entities/../Game/../Listeners/TimeChangeListener.hpp \
  ../Entities/../Game/../Engine/Timer.hpp
 
 ../Entities/Entity.hpp:
@@ -394,5 +397,11 @@ Entities/Entity.d: ../Entities/Entity.cpp ../Entities/Entity.hpp \
 ../Entities/../Game/../Entities/../Listeners/RemoveLockListener.hpp:
 
 ../Entities/../Game/../Entities/../Engine/Timer.hpp:
+
+../Entities/../Game/../Interfaces/TimeChangeInterface.hpp:
+
+../Entities/../Game/../Interfaces/../Listeners/TimeChangeListener.hpp:
+
+../Entities/../Game/../Listeners/TimeChangeListener.hpp:
 
 ../Entities/../Game/../Engine/Timer.hpp:

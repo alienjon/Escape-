@@ -8,13 +8,14 @@
 #define TIMERWIDGET_HPP_
 
 #include "../Engine/guichan.hpp"
+#include "../Listeners/TimeChangeListener.hpp"
 #include "../Engine/Timer.hpp"
 
 /**
  * @brief A widget that displays a counting timer.  For a timer to count down
  * a time, @see CountdownTimerWidget
  */
-class TimerWidget : public gcn::Label
+class TimerWidget : public gcn::Label, public TimeChangeListener
 {
 	public:
 	/**
@@ -50,6 +51,12 @@ class TimerWidget : public gcn::Label
 	 * @brief Stop the timer.
 	 */
 	virtual void stop();
+
+	/**
+	 * @brief Change the time.
+	 * @param time The amount to change the time.
+	 */
+	virtual void timeChange(int time);
 
 	/**
 	 * @brief Unpause the timer.

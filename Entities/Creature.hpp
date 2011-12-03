@@ -7,9 +7,12 @@
 #ifndef CREATURE_HPP_
 #define CREATURE_HPP_
 
-//#include <list>
-//
-//#include "../Listeners/CreatureMovedToPointListener.hpp"
+#include <list>
+#include <queue>
+
+#include <SFML/System.hpp>
+
+#include "../Listeners/CreatureWaypointListener.hpp"
 #include "../Entities/Entity.hpp"
 #include "../Engine/Timer.hpp"
 
@@ -23,14 +26,23 @@ class Creature : public Entity
     public:
     virtual ~Creature();
 
-//    /**
-//     * @brief Add a moved to point listener.
-//     * @param listener The listener to add.
-//     */
-//    inline void addCreatureMovedToPointListener(CreatureMovedToPointListener* listener)
-//    {
-//        mMovedToPointListeners.push_back(listener);
-//    }
+    /**
+     * @brief Add a moved to point listener.
+     * @param listener The listener to add.
+     */
+    inline void addCreatureWaypointListener(CreatureWaypointListener* listener)
+    {
+    	mWaypointListeners.push_back(listener);
+    }
+
+    /**
+     * @brief Add a waypoint for the creature to move toward.
+     * @param waypoint The location on the map for the player to move.
+     */
+    inline void addWaypoint(const sf::Vector2f& waypoint)
+    {
+    	mWaypoints.push(waypoint);
+    }
 
     /**
      * @brief Get the current speed of the creature.
@@ -47,21 +59,14 @@ class Creature : public Entity
      */
     virtual void logic(Level& level);
 
-//    /**
-//     * @brief Move to the requested point.
-//     * @param x The x position to move.
-//     * @param y The y position to move.
-//     */
-//    virtual void moveTo(int x, int y);
-//
-//    /**
-//     * @brief Remove a moved to point listener.
-//     * @param listener The listener to add.
-//     */
-//    inline void removeCreatureMovedToPointListener(CreatureMovedToPointListener* listener)
-//    {
-//        mMovedToPointListeners.remove(listener);
-//    }
+    /**
+     * @brief Remove a moved to point listener.
+     * @param listener The listener to add.
+     */
+    inline void removeCreatureWaypointListener(CreatureWaypointListener* listener)
+    {
+        mWaypointListeners.remove(listener);
+    }
 
     /**
      * @brief Set the speed of this creature when it moves.
@@ -74,25 +79,17 @@ class Creature : public Entity
     }
 
     /**
+     * @brief Set the current waypoint.
+     * @param waypoint The waypoint to set.
+     * @note Calling this function clears all waypoints and then sets the provided waypoint as the next one.
+     */
+    virtual void setWaypoint(const sf::Vector2f& waypoint);
+
+    /**
      * @brief Stop all movement.
+     * @note This clears all waypoints.
      */
     virtual void stop();
-
-//    /**
-//     * @brief Tell the creature to wander.
-//     */
-//    virtual void wander();
-//
-//    protected:
-//    /**
-//     * The length of time (in ms) an enemy will wait if it is wandering.
-//     */
-//    static const int WANDER_PAUSE_TIME;
-//
-//    /**
-//     * The pause time for a creature between movements.
-//     */
-//    static const int CREATURE_PAUSE_TIME_BETWEEN_MOVEMENTS;
 
     /**
      * @brief Construct a creature.
@@ -100,33 +97,12 @@ class Creature : public Entity
     Creature();
 
     /**
-     * @brief Stuff to do when the creature dies.
+     * @brief Tell the moved to point listeners that the creature has finished moving to the next point.
      */
-    virtual void mDie();
-
-//    /**
-//     * @brief Tell the moved to point listeners that the creature has finished moving to the next point.
-//     */
-//    void mMovedToVector();
-
-    /**
-     * @brief When a creature is told to stop() it ceases all movement.  A soft stop allows for a pause
-     * 		  between movements (like when a creature has moved to a point)
-     */
-    void mSoftStop();
+    void mMovedToWaypoint();
 
     // The four directionals.
     bool mUp, mDown, mLeft, mRight;
-
-//    /**
-//     * The point the creature is currently moving towards.
-//     */
-//    Vector mWaypoint;
-//
-//    /**
-//     * The listener lists.
-//     */
-//    std::list<CreatureMovedToPointListener*> mMovedToPointListeners;
 
     private:
     // The speed at which this creature is moving. (1.0 is 100% speed, but higher is faster, etc...)
@@ -134,6 +110,12 @@ class Creature : public Entity
 
     // True if the creature is moving.
     Timer mMovementTimer;
+
+    // The queue of waypoints.
+    std::queue<sf::Vector2f> mWaypoints;
+
+    // The waypoint listeners.
+    std::list<CreatureWaypointListener*> mWaypointListeners;
 };
 
 #endif

@@ -8,6 +8,7 @@
 #define LEVEL_HPP_
 
 #include <list>
+
 #include "../Engine/guichan.hpp"
 #include "../Engine/Guichan/sfml.hpp"
 
@@ -20,6 +21,8 @@
 #include "../Listeners/LevelCompleteListener.hpp"
 #include "../Game/Map.hpp"
 #include "../Entities/Portal.hpp"
+#include "../Interfaces/TimeChangeInterface.hpp"
+#include "../Listeners/TimeChangeListener.hpp"
 #include "../Engine/Timer.hpp"
 
 class Entity;
@@ -31,7 +34,8 @@ class Player;
  * The level essentially acts as a manager between all objects (creatures, items, traps)
  * and a single map.  It is literally a solitary contained area in the game.
  */
-class Level : public ActionInterface, public ChangeScoreInterface, public ChangeScoreListener, public DeathListener, public GCNActionInterface, public FloatingTextListener, public LevelCompleteListener
+class Level : public ActionInterface, public ChangeScoreInterface, public ChangeScoreListener, public DeathListener, public GCNActionInterface,
+			  public FloatingTextListener, public LevelCompleteListener, public TimeChangeInterface, public TimeChangeListener
 {
     public:
     /**
@@ -57,18 +61,18 @@ class Level : public ActionInterface, public ChangeScoreInterface, public Change
 	virtual void changeScore(int change);
 
     /**
-     * @brief Check if the provided entity collides with anything in the map.
+     * @brief Check if the provided entity collides with anything in the map and, if so, collide them.
      * @param entity The entity to check collisions against.
-     * @return The entity that was collided against, or null if no collisions detected.
+     * @return Returns true if a collision occurred where both entities are collidable - meaning that they cannot move through each other.
      */
-    virtual Entity* checkEntityCollision(const Entity& entity) const;
+    virtual bool checkEntityCollision(Entity& entity);
 
     /**
      * @brief Check if the provided entity collides with the map.
      * @param entity The entity to check collisions against.
      * @return True if a collision was found.
      */
-    virtual bool checkMapCollision(const Entity& entity) const;
+    virtual bool checkMapCollision(Entity& entity);
 
     /**
      * @brief Called when the entity has died.
@@ -125,6 +129,26 @@ class Level : public ActionInterface, public ChangeScoreInterface, public Change
      */
     virtual void playerFoundExit();
 
+    /**
+     * @brief Teleport the player to a random position within the map.
+     * @note As the keys are definitely in the corners, the player will be at least 1 cell in on all sides.
+     */
+    virtual void teleportPlayer();
+
+    /**
+     * @brief Distribute a time change event.
+     * @param time The time to change.
+     */
+    virtual void timeChange(int time)
+    {
+    	distributeTimeChange(time);
+    }
+
+    /**
+     * @brief Zoom the level.
+     */
+    virtual void zoom();
+
     private:
     /**
      * @brief Add an entity to the level.
@@ -168,10 +192,21 @@ class Level : public ActionInterface, public ChangeScoreInterface, public Change
     std::list<Entity*> mPickups;
     bool mPickupAward;
 
-    // The flip screen animation timer.
+    // Flipping data.
     Timer mFlipTimer;
     float mFlipAngle;
     bool mFlipped;
+
+    // Zooming data.
+    Timer mZoomTimer;
+    float mZoomFactor;
+    bool mZoomed;
+
+    // Teleporter information.
+    Timer mTeleportTimer;
+    unsigned int mTeleportInterval,
+				 mTeleportIntervalMin,
+				 mTeleportIntervalMax;
 };
 
 #endif /* LEVEL_HPP_ */

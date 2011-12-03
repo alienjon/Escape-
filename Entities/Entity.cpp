@@ -17,7 +17,7 @@ Entity::Entity() :
 	mIsInteractable(true)
 {
 	// This is the magic pink to make unchanged colors obvious.
-	mSprite.SetColor(sf::Color::Magenta);
+	mShape.SetColor(sf::Color::Magenta);
 }
 
 Entity::~Entity()
@@ -40,7 +40,7 @@ void Entity::mDie()
 
 void Entity::draw(sf::RenderWindow& renderer)
 {
-	renderer.Draw(mSprite);
+	renderer.Draw(mShape);
 }
 
 void Entity::logic(Level& level)
@@ -49,7 +49,7 @@ void Entity::logic(Level& level)
     ActionInterface::logic(level);
 }
 
-bool sortByZIndex(const Entity* a, const Entity* b)
+bool sortByZIndex(Entity* a, Entity* b)
 {
 	return a->getDimension().GetOrigin().y < b->getDimension().GetOrigin().y;
 }

@@ -18,9 +18,10 @@ Portal::Portal(unsigned int width, unsigned int height) :
 	mHeight(height),
 	mStartRadius(0.f)
 {
+	mType = ENTITY_PORTAL;
 	setCollidable(false);
-	mSprite = sf::Shape::Circle(mWidth / 2, mHeight / 2, (mWidth + mHeight) / 2, sf::Color::White);
-	mSprite.EnableFill(true);
+	mShape = sf::Shape::Circle(mWidth / 2, mHeight / 2, (mWidth + mHeight) / 2, sf::Color::White);
+	mShape.EnableFill(true);
 	mTimer.start();
 }
 
@@ -36,7 +37,7 @@ void Portal::addLock(sf::Color color)
 void Portal::collide(Entity& entity)
 {
 	// If the player collides with the portal and all the locks are removed, end the level.
-	if(mLocks.empty() && entity.getType() == ENTITY_PLAYER)
+	if(entity.getType() == ENTITY_PLAYER && mLocks.empty())
 		distributeLevelComplete();
 }
 

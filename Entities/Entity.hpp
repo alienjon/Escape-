@@ -36,9 +36,15 @@ class Entity : public ActionInterface, public AddLockInterface, public ChangeSco
     enum EntityType
     {
     	ENTITY_CREATURE,
+    	ENTITY_FLIP,
     	ENTITY_KEY,
     	ENTITY_PICKUP,
     	ENTITY_PLAYER,
+    	ENTITY_PORTAL,
+    	ENTITY_SPEEDCHANGE,
+    	ENTITY_TELEPORTER,
+    	ENTITY_TIMECHANGE,
+    	ENTITY_ZOOM,
     	ENTITY_NULL
     };
 
@@ -54,7 +60,7 @@ class Entity : public ActionInterface, public AddLockInterface, public ChangeSco
     }
 
     /**
-     * @brief This creature is colliding/interacting with an entity.
+     * @brief This entity is colliding/interacting with an entity.
      * @param entity The entity this creature collided into.
      */
     virtual void collide(Entity& entity) = 0;
@@ -69,27 +75,27 @@ class Entity : public ActionInterface, public AddLockInterface, public ChangeSco
      * @brief Get the physical area of this being.
      * @return The dimension.
      */
-    inline const sf::Shape& getDimension() const
+    virtual const sf::Shape& getDimension()
     {
-    	return mSprite;
+    	return mShape;
     }
 
     /**
      * @brief Get the being's height.
      * @return The being's height.
      */
-    inline unsigned int getHeight() const
+    virtual unsigned int getHeight() const
     {
-    	return boundingBox(mSprite).Height;
+    	return boundingBox(mShape).Height;
     }
 
     /**
      * @brief Get the current position of this being.
      * @return The current position of this being.
      */
-    inline const sf::Vector2f& getPosition() const
+    virtual const sf::Vector2f& getPosition() const
     {
-        return mSprite.GetPosition();
+    	return mShape.GetPosition();
     }
 
     /**
@@ -105,35 +111,28 @@ class Entity : public ActionInterface, public AddLockInterface, public ChangeSco
      * @brief Get the being's width.
      * @return The being's width.
      */
-    inline unsigned int getWidth() const
+    virtual unsigned int getWidth() const
     {
-    	return boundingBox(mSprite).Width;
+    	return boundingBox(mShape).Width;
     }
 
     /**
      * @brief Get the x position.
      * @return The x position.
      */
-    inline float getX() const
+    virtual float getX() const
     {
-    	return mSprite.GetPosition().x;
+    	return mShape.GetPosition().x;
     }
 
     /**
      * @brief Get the y position.
      * @return The y position.
      */
-    inline float getY() const
+    virtual float getY() const
     {
-    	return mSprite.GetPosition().y;
+    	return mShape.GetPosition().y;
     }
-
-//    /**
-//     * @brief Interact with an entity.
-//     * @param entity The entity.
-//     */
-//    virtual void interact(Entity& entity)
-//    {}
 
     /**
      * @brief Checks the collision state of the entity.
@@ -201,18 +200,18 @@ class Entity : public ActionInterface, public AddLockInterface, public ChangeSco
      * @brief Set the X position.
      * @param x The x position.
      */
-    inline void setX(float x)
+    virtual void setX(float x)
     {
-    	mSprite.SetX(x);
+    	mShape.SetX(x);
     }
 
     /**
      * @brief Set the Y position.
      * @param y The y position.
      */
-    inline void setY(float y)
+    virtual void setY(float y)
     {
-    	mSprite.SetY(y);
+    	mShape.SetY(y);
     }
 
     protected:
@@ -234,9 +233,8 @@ class Entity : public ActionInterface, public AddLockInterface, public ChangeSco
     // The being type.
     Entity::EntityType mType;
 
-    // The displaying sprite for this being.
-    //@todo How should entities be displayed?
-    sf::Shape mSprite;
+    // The image.
+    sf::Shape mShape;
 
     private:
     // The collidability state of this being.
@@ -255,6 +253,6 @@ class Entity : public ActionInterface, public AddLockInterface, public ChangeSco
  * @param beingB The second being.
  * @return True if the first being is of a lower Z-Index than the other.
  */
-bool sortByZIndex(const Entity* beingA, const Entity* beingB);
+bool sortByZIndex(Entity* beingA, Entity* beingB);
 
 #endif /* ENTITY_HPP_ */

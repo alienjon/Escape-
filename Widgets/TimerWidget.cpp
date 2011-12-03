@@ -54,6 +54,14 @@ void TimerWidget::stop()
 	mTimer.stop();
 }
 
+void TimerWidget::timeChange(int time)
+{
+	if(time < 0 && int(mStartTime) - time < 0)
+		stop();
+	else
+		mStartTime -= time;
+}
+
 void TimerWidget::unpause()
 {
 	mTimer.unpause();

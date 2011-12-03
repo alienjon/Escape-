@@ -151,6 +151,9 @@ Game/Game.d: ../Game/Game.cpp ../Game/Game.hpp \
  ../Game/../Screens/../Game/../Entities/../Interfaces/../Listeners/LevelCompleteListener.hpp \
  ../Game/../Screens/../Game/../Entities/../Listeners/RemoveLockListener.hpp \
  ../Game/../Screens/../Game/../Entities/../Engine/Timer.hpp \
+ ../Game/../Screens/../Game/../Interfaces/TimeChangeInterface.hpp \
+ ../Game/../Screens/../Game/../Interfaces/../Listeners/TimeChangeListener.hpp \
+ ../Game/../Screens/../Game/../Listeners/TimeChangeListener.hpp \
  ../Game/../Screens/../Game/../Engine/Timer.hpp \
  ../Game/../Screens/../Widgets/LevelCompleteWidget.hpp \
  ../Game/../Screens/../Widgets/../Engine/Timer.hpp \
@@ -158,6 +161,7 @@ Game/Game.d: ../Game/Game.cpp ../Game/Game.hpp \
  ../Game/../Screens/../Entities/../Engine/guichan.hpp \
  ../Game/../Screens/../Entities/../Listeners/AddLockListener.hpp \
  ../Game/../Screens/../Entities/../Entities/Creature.hpp \
+ ../Game/../Screens/../Entities/../Entities/../Listeners/CreatureWaypointListener.hpp \
  ../Game/../Screens/../Entities/../Entities/../Entities/Entity.hpp \
  ../Game/../Screens/../Entities/../Entities/../Engine/Timer.hpp \
  ../Game/../Screens/../Entities/../Listeners/RemoveLockListener.hpp \
@@ -168,8 +172,11 @@ Game/Game.d: ../Game/Game.cpp ../Game/Game.hpp \
  ../Game/../Screens/../Engine/../Interfaces/GCNActionInterface.hpp \
  ../Game/../Screens/../Engine/../Engine/Logger.hpp \
  ../Game/../Screens/../Engine/../Engine/../Engine/guichan.hpp \
+ ../Game/../Screens/../Interfaces/TimeChangeInterface.hpp \
+ ../Game/../Screens/../Listeners/TimeChangeListener.hpp \
  ../Game/../Screens/../Engine/Timer.hpp \
  ../Game/../Screens/../Widgets/TimerWidget.hpp \
+ ../Game/../Screens/../Widgets/../Listeners/TimeChangeListener.hpp \
  ../Game/../Game/Keywords.hpp ../Game/../Engine/Logger.hpp \
  ../Game/../Game/TilesetManager.hpp ../Game/../Game/../Game/Tileset.hpp
 
@@ -481,6 +488,12 @@ Game/Game.d: ../Game/Game.cpp ../Game/Game.hpp \
 
 ../Game/../Screens/../Game/../Entities/../Engine/Timer.hpp:
 
+../Game/../Screens/../Game/../Interfaces/TimeChangeInterface.hpp:
+
+../Game/../Screens/../Game/../Interfaces/../Listeners/TimeChangeListener.hpp:
+
+../Game/../Screens/../Game/../Listeners/TimeChangeListener.hpp:
+
 ../Game/../Screens/../Game/../Engine/Timer.hpp:
 
 ../Game/../Screens/../Widgets/LevelCompleteWidget.hpp:
@@ -494,6 +507,8 @@ Game/Game.d: ../Game/Game.cpp ../Game/Game.hpp \
 ../Game/../Screens/../Entities/../Listeners/AddLockListener.hpp:
 
 ../Game/../Screens/../Entities/../Entities/Creature.hpp:
+
+../Game/../Screens/../Entities/../Entities/../Listeners/CreatureWaypointListener.hpp:
 
 ../Game/../Screens/../Entities/../Entities/../Entities/Entity.hpp:
 
@@ -515,9 +530,15 @@ Game/Game.d: ../Game/Game.cpp ../Game/Game.hpp \
 
 ../Game/../Screens/../Engine/../Engine/../Engine/guichan.hpp:
 
+../Game/../Screens/../Interfaces/TimeChangeInterface.hpp:
+
+../Game/../Screens/../Listeners/TimeChangeListener.hpp:
+
 ../Game/../Screens/../Engine/Timer.hpp:
 
 ../Game/../Screens/../Widgets/TimerWidget.hpp:
+
+../Game/../Screens/../Widgets/../Listeners/TimeChangeListener.hpp:
 
 ../Game/../Game/Keywords.hpp:
 

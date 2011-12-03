@@ -47,13 +47,13 @@ class Portal: public Entity, public LevelCompleteInterface, public RemoveLockLis
     virtual void draw(sf::RenderWindow& renderer);
 
     /**
-     * @brief Get the color locks for the portal.
-     * @return The locks.
+     * @brief Get the type of being this is.
+     * @return The type of being.
      */
-//    inline const std::list<sf::Color>& getColorLock() const
-//	{
-//    	return mLocks;
-//	}
+    inline Entity::EntityType getType() const
+    {
+        return mType;
+    }
 
     /**
      * @brief Get the height of the portal.

@@ -26,10 +26,10 @@ Player::Player() :
     mColorCycleTimer.start();
 
     // Setup the player's size.
-    mSprite.AddPoint(0, 0, PLAYER_COLOR);
-    mSprite.AddPoint(PLAYER_SIZE, 0, PLAYER_COLOR);
-    mSprite.AddPoint(PLAYER_SIZE, PLAYER_SIZE, PLAYER_COLOR);
-    mSprite.AddPoint(0, PLAYER_SIZE, PLAYER_COLOR);
+    mShape.AddPoint(0, 0, PLAYER_COLOR);
+    mShape.AddPoint(PLAYER_SIZE, 0, PLAYER_COLOR);
+    mShape.AddPoint(PLAYER_SIZE, PLAYER_SIZE, PLAYER_COLOR);
+    mShape.AddPoint(0, PLAYER_SIZE, PLAYER_COLOR);
 
     // Configure the internal sizes.
     mResetCyclePositions();
@@ -54,6 +54,10 @@ void Player::mResetCyclePositions()
 
 void Player::collide(Entity& entity)
 {
+	// The player doesn't do any collision work.  If a collision does occur, then
+	// it is because another moving creature collided with the player.  Do that
+	// creature's collision.
+	entity.collide(*this);
 }
 
 void Player::draw(sf::RenderWindow& renderer)
@@ -190,10 +194,8 @@ void Player::logic(Level& level)
 				break;
 			}
 			default:
-			{
 				if(++mColor1 == mLocks.end())
 					mColor1 = mLocks.begin();
-			}
 		}
 
 		mCycle = COLORCYCLE_PAUSE;

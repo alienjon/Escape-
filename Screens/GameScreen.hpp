@@ -19,13 +19,15 @@
 #include "../Widgets/LevelCompleteWidget.hpp"
 #include "../Entities/Player.hpp"
 #include "../Engine/Screen.hpp"
+#include "../Interfaces/TimeChangeInterface.hpp"
+#include "../Listeners/TimeChangeListener.hpp"
 #include "../Engine/Timer.hpp"
 #include "../Widgets/TimerWidget.hpp"
 
 /**
  * @brief The game screen is a means to display the game itself.
  */
-class GameScreen : public ChangeScoreListener, public Screen
+class GameScreen : public ChangeScoreListener, public TimeChangeInterface, public TimeChangeListener, public Screen
 {
     public:
     /**
@@ -76,6 +78,15 @@ class GameScreen : public ChangeScoreListener, public Screen
      */
     virtual void logic();
 
+    /**
+     * @brief A time change request was sent.
+     * @param time The time to change.
+     */
+    virtual void timeChange(int time)
+    {
+    	distributeTimeChange(time);
+    }
+
     private:
     // The game's initial difficulty.
     unsigned int mDifficulty;
@@ -113,6 +124,9 @@ class GameScreen : public ChangeScoreListener, public Screen
 
     // The player.
     Player mPlayer;
+
+    // If true, reset the view on the next draw() call (used when loading a new level)
+    bool mResetView;
 };
 
 #endif /* GAMESCREEN_HPP_ */
