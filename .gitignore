@@ -6,3 +6,5 @@ EscapeToolkit
 *.o
 /mapfile.txt
 /minimap.bmp
+/.project
+/.cproject
