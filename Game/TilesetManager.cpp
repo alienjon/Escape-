@@ -45,9 +45,6 @@ TilesetManager::TilesetManager()
 
 TilesetManager::~TilesetManager()
 {
-	// Delete all the tilesets.@todo remove?
-//	for(vector<Tileset*>::iterator it = mTilesets.begin(); it != mTilesets.end(); ++it)
-//		delete *it;
 }
 
 void TilesetManager::create()

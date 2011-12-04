@@ -36,7 +36,7 @@ class GameOptionsWidget : public gcn::ActionListener, public gcn::Container, pub
     virtual void keyPressed(gcn::KeyEvent& event);
 
     private:
-    // Buttons.@todo Make these buttons look cooler
+    // Buttons.
     MenuButton mResumeButton, mOptionsButton, mCreditsButton, mMainMenuButton, mExitButton;
 };
 

@@ -33,13 +33,11 @@ const string IMAGE_FASTPLAYER = "Images/fastplayer.png";
 const string IMAGE_SLOWPLAYER = "Images/slowplayer.png";
 
 // These are the fonts.
-//@todo credit to www.dafont.com and credits in Font/
 const string FONT_DEFAULT = "Fonts/VeraMono.ttf";
 const string FONT_TEXT = "Fonts/VeraMono.ttf";
 const string FONT_CAPTION = "Fonts/Perfect.ttf";
 
 // These are the sounds.
-//@todo credit to andyt at freesfx.uk: http://www.freesfx.co.uk/users/andyt/
 const string SOUND_LEVELCOMPLETE_FINISH = "Audio/LevelComplete1.wav";
 const string SOUND_LEVELCOMPLETE_ITEMDISPLAY = "Audio/rollover_10.wav";
 const string SOUND_MENU_CLICK = "Audio/MenuButton.ogg";

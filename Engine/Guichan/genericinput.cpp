@@ -58,12 +58,10 @@ namespace gcn
 
     void GenericInput::pushKeyPressed(int unicode)
     {
-        // TODO
     }
 
     void GenericInput::pushKeyReleased(int unicode)
     {
-        // TODO
     }
 
     void GenericInput::pushMouseButtonPressed(int x, int y, int button)

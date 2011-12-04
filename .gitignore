@@ -5,7 +5,9 @@
 .git
 *.d
 *.o
+*.mk
 mapfile.txt
 .project
 .cproject
 error.log
+makefile

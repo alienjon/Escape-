@@ -32,7 +32,7 @@ void KeyEntity::collide(Entity& entity)
 		distributeFloatingText("Key", sf::Vector2f(getX() + getWidth(), getY()), mColor);
 
 		// Add to the score.
-		distributeChangeScore(50);//@todo how many points should be awarded for obtaining a key?
+		distributeChangeScore(50);
 
 		// Kill the entity.
 		mDie();

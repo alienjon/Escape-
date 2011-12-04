@@ -5,7 +5,6 @@
  */
 #include "main.hpp"
 
-#include <ctime>
 #include <iostream>
 #include <stdexcept>
 
@@ -85,9 +84,6 @@ int main(int args, const char** pArgs)
 
     try
     {
-    	// Seed the randomizer. @fixme put this in the engine somehow (static method?)
-    	srand(time(0));
-
 		// Create the game object.
 		Game game;
 
@@ -99,16 +95,16 @@ int main(int args, const char** pArgs)
     	Logger::error(e);
         return 1;
     }
-//    catch(exception& e)
-//    {
-//        Logger::error(e);
-//        return 1;
-//    }
-//    catch(...)
-//    {
-//    	Logger::error("main.cpp::main() -> Unknown error running program.");
-//        return 1;
-//    }
+    catch(exception& e)
+    {
+        Logger::error(e);
+        return 1;
+    }
+    catch(...)
+    {
+    	Logger::error("main.cpp::main() -> Unknown error running program.");
+        return 1;
+    }
 
     // Terminate the logger.
     Logger::terminate();

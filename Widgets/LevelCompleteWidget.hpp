@@ -14,7 +14,6 @@
 
 /**
  * @brief A widget to display the final score at the end of the level.
- * @todo Implement showing the number of zombies killed, innocents saved?
  */
 class LevelCompleteWidget : public gcn::Container, public gcn::KeyListener
 {
@@ -65,7 +64,6 @@ class LevelCompleteWidget : public gcn::Container, public gcn::KeyListener
 
 	// The internal widgets.
 	/*
-	 * @todo Maybe have a different label for the 'actual' label, one for the value for that label, and one for the bonus that attribute provides.
 	 * ie:Value			Value	Bonus
 	 * Time Completed:	1:24:43	300		<- The time completed (not sure how to compute score based on time...)
 	 * Map Complexity:	400		400		<- This is simply the dimension of the map (width * height) and the bonus is equal to the value.

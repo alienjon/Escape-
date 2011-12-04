@@ -7,6 +7,7 @@
 #include "Engine.hpp"
 
 #include <cctype>
+#include <ctime>
 #include <fstream>
 #include <stdexcept>
 #include <string>
@@ -33,6 +34,9 @@ Engine::Engine() :
 	mGui(0),
 	mCurrentScreen(mScreens.end())
 {
+	// Seed the randomizer.
+	srand(time(0));
+
 	// Load saved video settings.
 	ifstream settings;
 	string line, keyword, value;
