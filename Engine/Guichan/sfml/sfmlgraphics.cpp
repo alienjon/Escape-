@@ -116,7 +116,7 @@ namespace gcn
 			return;
 
 		Color c = getColor();
-		sf::Shape rect = sf::Shape::Rectangle(area.x, area.y, area.width, area.height, sf::Color(c.r, c.g, c.b, c.a));
+		sf::Shape rect = sf::Shape::Rectangle(area.x, area.y, area.width, area.height, sf::Color(c.r, c.g, c.b, c.a), 1.f, sf::Color(c.r, c.g, c.b, c.a));
 		rect.EnableFill(false);
 		startDraw();
 		Draw(rect);
@@ -137,10 +137,8 @@ namespace gcn
 			return;
 
 		Color c = getColor();
-		sf::Shape rect = sf::Shape::Rectangle(area.x, area.y, area.width, area.height, sf::Color(c.r, c.g, c.b, c.a));
-		rect.EnableFill(true);
 		startDraw();
-		Draw(rect);
+		Draw(sf::Shape::Rectangle(area.x, area.y, area.width, area.height, sf::Color(c.r, c.g, c.b, c.a)));
 		stopDraw();
 	}
 

@@ -13,7 +13,6 @@
 
 //@todo These probably won't be here forever...
 #include "../Engine/FontManager.hpp"
-#include "../Game/Keywords.hpp"
 #include "../main.hpp"
 
 using std::abs;
@@ -39,6 +38,9 @@ GameScreen::GameScreen(unsigned int difficulty) : Screen(),
 	mOptionsMenu.addActionListener(this);
 	addKeyListener(&mPlayer);
 
+	// Setup the player/player item display.
+	mPlayer.addPickupListener(&mItemDisplay);
+
 	// @todo Temporary configurations.
 	mScoreLabel.setFont(FontManager::getGCNFont(FONT_DEFAULT));
 	mScoreLabel.setCaption("Score: 0");
@@ -57,6 +59,7 @@ GameScreen::~GameScreen()
 		delete mLevel;
 	}
 	removeKeyListener(&mPlayer);
+	mPlayer.removePickupListener(&mItemDisplay);
 }
 
 void GameScreen::action(const gcn::ActionEvent& event)
@@ -161,6 +164,14 @@ void GameScreen::draw(gcn::SFMLGraphics& renderer)
 
 void GameScreen::keyPressed(gcn::KeyEvent& event)
 {
+	// If the shift key is pressed, give the item display widget full access.
+	if(event.getKey().getValue() == gcn::Key::LEFT_SHIFT || event.getKey().getValue() == gcn::Key::RIGHT_SHIFT)
+	{
+		mItemDisplay.requestModalFocus();
+		mItemDisplay.requestFocus();
+		mPlayer.stop();
+	}
+
 	// Open the options menu.
 	if(event.getKey().getValue() == gcn::Key::ESCAPE)
 	{
@@ -195,6 +206,10 @@ void GameScreen::load(GUI* gui)
     // Setup the in-game options menu.
     mOptionsMenu.setVisible(false);
     mBase.add(&mOptionsMenu, 0, 0);
+
+    // The player items.
+//    mBase.addKeyListener(&mItemDisplay);
+    mBase.add(&mItemDisplay, mBase.getWidth() - mItemDisplay.getWidth() - 4, 4);
 
     // Add the menu bar.
     mBase.add(&mScoreLabel, 0, mBase.getHeight() - mScoreLabel.getHeight());

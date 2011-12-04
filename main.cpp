@@ -74,7 +74,7 @@ int main(int args, const char** pArgs)
 		    clog << "Usage: Escape [PARAMETER]\n"
 		         << "\t-v, --version    Display version information.\n"
 		         << "\t-h, --help       Display this usage information.\n"
-		         << "\t-d, --debug      Run the game with debugging warnings (errors are shown regardless\n"
+		         << "\t-d, --debug      Run the game with debugging settings\n"
 		         << endl;
 			return 0;
 		}
@@ -105,9 +105,6 @@ int main(int args, const char** pArgs)
     	Logger::error("main.cpp::main() -> Unknown error running program.");
         return 1;
     }
-
-    // Terminate the logger.
-    Logger::terminate();
 
 	// Exit.
 	return 0;

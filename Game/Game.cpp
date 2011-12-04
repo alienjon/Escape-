@@ -48,8 +48,7 @@ void Game::action(const gcn::ActionEvent& event)
 		mRenderer.ShowMouseCursor(true);
 	else if(event.getId() == ACTION_HIDECURSOR)
 		mRenderer.ShowMouseCursor(false);
-	else if(event.getId() == ACTION_TO_MAINMENU)//@todo implement the main screen.
-		int x;
+//	else if(event.getId() == ACTION_TO_MAINMENU)//@todo implement the main screen.
 //		mScreens.push_back(new MenuScreen());
 //	else if(event.getId() == ACTION_TO_CREDITSCREEN)//@todo review adding credit screens.
 //    {

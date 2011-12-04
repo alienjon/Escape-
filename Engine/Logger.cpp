@@ -22,6 +22,7 @@
 #include <iostream>
 
 #include "../main.hpp"
+#include "../Engine/Engine.hpp"
 
 using std::cout;
 using std::endl;
@@ -41,9 +42,7 @@ Logger::Logger()
 		m_output("---------------");
 	}
 	else
-	{
 		cout << "Error in creating " << FILE_LOG << ". Logging all output to the console." << endl;
-	}
 }
 
 Logger::~Logger()
@@ -57,9 +56,7 @@ void Logger::mLog(const string& s)
 {
     // Check to make sure the logger is created.
     if(mLogger == 0)
-    {
-        mLogger = new Logger();
-    }
+        create();
 
     // Now display the message.
     mLogger->m_output(s);
@@ -69,11 +66,16 @@ void Logger::m_output(const string& s)
 {
 	// Output all logged information to the log file.
 	if(m_logFile.is_open())
-	{
 		m_logFile << s << endl;
-	}
 
-    cout << s << endl;
+	if(Engine::isDebug())
+		cout << s << endl;
+}
+
+void Logger::create()
+{
+    if(mLogger == 0)
+        mLogger = new Logger();
 }
 
 void Logger::terminate()

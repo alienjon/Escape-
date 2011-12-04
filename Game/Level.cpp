@@ -16,6 +16,7 @@
 #include "../Entities/KeyEntity.hpp"
 #include "../Game/Keywords.hpp"
 #include "../main.hpp"
+#include "../Entities/Phase.hpp"
 #include "../Entities/Pickup.hpp"
 #include "../Entities/Player.hpp"
 #include "../Entities/SpeedChange.hpp"
@@ -392,7 +393,7 @@ void Level::logic(sf::View& camera)
 	}
 
 	// Center the player on the screen.
-	camera.SetCenter(mPlayer.getX(), mPlayer.getY());
+	camera.SetCenter(mPlayer.getX() + (mPlayer.getWidth() / 2), mPlayer.getY() + (mPlayer.getHeight() / 2));
 
 	// Make sure that the camera doesn't go out of bounds.
 	sf::Vector2f center = camera.GetCenter(),

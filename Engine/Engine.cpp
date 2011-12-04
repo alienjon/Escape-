@@ -34,6 +34,9 @@ Engine::Engine() :
 	mGui(0),
 	mCurrentScreen(mScreens.end())
 {
+	// Create the logger first.
+    Logger::create();
+
 	// Seed the randomizer.
 	srand(time(0));
 
@@ -74,9 +77,6 @@ Engine::Engine() :
 	else
 		Logger::log("Configuration file cannot be loaded, using default settings.");
 	settings.close();
-
-	// Set other options.
-	mRenderer.EnableKeyRepeat(false);
 
     // Create the managers.
     AudioManager::create();
@@ -119,6 +119,9 @@ Engine::~Engine()
     mGui->getTop()->removeActionListener(this);
     mGui->removeGlobalKeyListener(this);
     delete mGui;
+
+    // Terminate the logger.
+    Logger::terminate();
 }
 
 void Engine::mCleanUpScreens()
@@ -174,9 +177,10 @@ void Engine::mLoadNextScreen()
 
 void Engine::keyPressed(gcn::KeyEvent& event)
 {
-	// Quit the game.@todo remove during final version
-	if(event.getKey().getValue() == 'c' && event.isControlPressed())
-		mRenderer.Close();
+	// Quit the game.
+	if(isDebug())
+		if(event.getKey().getValue() == 'c' && event.isControlPressed())
+			mRenderer.Close();
 
 	// Save a screenshot.
 	if(event.getKey().getValue() == 'p' && event.isControlPressed())
@@ -252,6 +256,9 @@ void Engine::run()
 void Engine::updateScreen()
 {
 	mRenderer.Create(mVideoMode, GAME_NAME, (mFullscreen) ? sf::Style::Fullscreen : sf::Style::Titlebar, mSettings);
+
+	// Set other options that are defaulted when the renderer is re-created.
+	mRenderer.EnableKeyRepeat(false);
 }
 
 void Engine::setDebug(bool state)

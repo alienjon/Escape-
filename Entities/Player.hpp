@@ -15,9 +15,11 @@
 
 #include "../Listeners/AddLockListener.hpp"
 #include "../Entities/Creature.hpp"
+#include "../Listeners/PickupListener.hpp"
 #include "../Listeners/RemoveLockListener.hpp"
 #include "../Engine/Timer.hpp"
 
+class Item;
 class Level;
 
 /**
@@ -38,6 +40,15 @@ class Player : public AddLockListener, public Creature, public gcn::KeyListener,
     inline void addLock(sf::Color color)
     {
     	mLocks.push_back(color);
+    }
+
+    /**
+     * @brief Add a pickup listener.
+     * @param listener The listener to add.
+     */
+    inline void addPickupListener(PickupListener* listener)
+    {
+    	mPickupListeners.push_back(listener);
     }
 
     /**
@@ -80,6 +91,13 @@ class Player : public AddLockListener, public Creature, public gcn::KeyListener,
 	virtual void logic(Level& level);
 
 	/**
+	 * @brief Pickup an item.
+	 * @param item The item picked up.
+	 * @return True if the item was successfully picked up.
+	 */
+	virtual bool pickup(Item& item);
+
+	/**
 	 * @brief Remove all locks from the player.
 	 */
 	inline void removeAllLocks()
@@ -94,6 +112,15 @@ class Player : public AddLockListener, public Creature, public gcn::KeyListener,
     inline void removeLock(sf::Color color)
     {
     	mLocks.remove(color);
+    }
+
+    /**
+     * @brief Remove a pickup listener.
+     * @param listener The listener.
+     */
+    inline void removePickupListener(PickupListener* listener)
+    {
+    	mPickupListeners.remove(listener);
     }
 
     /**
@@ -125,6 +152,14 @@ class Player : public AddLockListener, public Creature, public gcn::KeyListener,
 	};
 
 	/**
+	 * @brief Distribute a pickup event.
+	 * @param pos The position of the pickup.
+	 * @param item
+	 * @return True if at least one listener was able to pick up the item.
+	 */
+	bool mDistributePickup(Item& item);
+
+	/**
 	 * @brief Reset the cycle colors to their original positions.
 	 */
 	void mResetCyclePositions();
@@ -140,6 +175,12 @@ class Player : public AddLockListener, public Creature, public gcn::KeyListener,
 
 	// The color locks.
 	std::list<sf::Color> mLocks;
+
+	// The 3 held objects.
+	std::list<Item*> mItems;
+
+	// The item pick up listeners.
+	std::list<PickupListener*> mPickupListeners;
 };
 
 // The action key.

@@ -6,10 +6,14 @@
  */
 #include "Player.hpp"
 
+#include "../Entities/Item.hpp"
+
 const unsigned int COLOR_CYCLE_TIME_INTERVAL = 1300;
 const float PLAYER_SIZE = 50.f;
 const float INTERNAL_SIZE = 10.f;
 const sf::Color PLAYER_COLOR = sf::Color::Blue;
+
+using std::list;
 
 Player::Player() :
 	mAllowInput(true),
@@ -42,6 +46,15 @@ void Player::mDie()
 
     // Continue dying.
     Creature::mDie();
+}
+
+bool Player::mDistributePickup(Item& item)
+{
+	bool ret = false;
+	for(list<PickupListener*>::iterator it = mPickupListeners.begin(); it != mPickupListeners.end(); ++it)
+		if((*it)->itemPickedUp(item))
+			ret = true;
+	return ret;
 }
 
 void Player::mResetCyclePositions()
@@ -200,6 +213,11 @@ void Player::logic(Level& level)
 
 		mCycle = COLORCYCLE_PAUSE;
 	}
+}
+
+bool Player::pickup(Item& item)
+{
+	return mDistributePickup(item);
 }
 
 const sf::Keyboard::Key PLAYER_ACTION_KEY = sf::Keyboard::Space;

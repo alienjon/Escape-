@@ -18,6 +18,11 @@ class Logger
 	virtual ~Logger();
 
 	/**
+	 * @brief Create the logger.
+	 */
+	static void create();
+
+	/**
 	 * @brief Checks to see if a logger is created and deletes the object.
 	 */
 	static void terminate();

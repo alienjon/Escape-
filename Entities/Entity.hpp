@@ -20,6 +20,7 @@
 #include "../Game/Math.hpp"
 #include "../Interfaces/RemoveLockInterface.hpp"
 
+class Item;
 class Level;
 
 /**
@@ -37,7 +38,9 @@ class Entity : public ActionInterface, public AddLockInterface, public ChangeSco
     {
     	ENTITY_CREATURE,
     	ENTITY_FLIP,
+    	ENTITY_ITEM,
     	ENTITY_KEY,
+    	ENTITY_PHASE,
     	ENTITY_PICKUP,
     	ENTITY_PLAYER,
     	ENTITY_PORTAL,
@@ -157,6 +160,17 @@ class Entity : public ActionInterface, public AddLockInterface, public ChangeSco
      * @param level The level within which the entity is currently residing.
      */
     virtual void logic(Level& level);
+
+    /**
+     * @brief Pickup an item.
+     * @param item The item to pickup.
+     * @return True if the item was picked up successfully.
+     * @note Used for the player.
+     */
+    virtual bool pickup(Item& item)
+    {
+    	return false;
+    }
 
     /**
      * @brief Remove a death listener.

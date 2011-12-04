@@ -18,6 +18,7 @@
 #include "../Game/Level.hpp"
 #include "../Widgets/LevelCompleteWidget.hpp"
 #include "../Entities/Player.hpp"
+#include "../Widgets/PlayerItemDisplay.hpp"
 #include "../Engine/Screen.hpp"
 #include "../Interfaces/TimeChangeInterface.hpp"
 #include "../Listeners/TimeChangeListener.hpp"
@@ -105,6 +106,9 @@ class GameScreen : public ChangeScoreListener, public TimeChangeInterface, publi
 
     // The level complete widget.
     LevelCompleteWidget mLevelCompleteWidget;
+
+    // The player item display.
+    PlayerItemDisplay mItemDisplay;
 
 	// This is the score.
 	unsigned int mScore;
