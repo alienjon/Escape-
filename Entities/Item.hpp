@@ -9,12 +9,14 @@
 
 #include <string>
 
-#include "../Entities/Entity.hpp"
+#include "../Entities/ImageEntity.hpp"
+
+class Creature;
 
 /*
  * @brief An object the player can pick up and use.
  */
-class Item : public Entity
+class Item : public ImageEntity
 {
 	public:
 	virtual ~Item()
@@ -40,8 +42,9 @@ class Item : public Entity
 
 	/**
 	 * @brief Use the item.
+	 * @param creature The creature using this item.
 	 */
-	void use();
+	void use(Creature& creature);
 
 	protected:
 	/**
@@ -50,10 +53,10 @@ class Item : public Entity
 	Item();
 
 	/**
-	 * @brief Perform the item's specific action.
-	 * @note This is to be overwritten but child classes so that the actual effects occur when 'use()' is called.
+	 * @brief Perform the specific action of this item (to be managed by children of this class)
+	 * @param creature The creature to perform the item's skills on.
 	 */
-	virtual void mPerform()
+	virtual void mPerform(Creature& creature)
 	{}
 
 	private:

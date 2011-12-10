@@ -18,6 +18,7 @@
 #include "../Game/Level.hpp"
 #include "../Widgets/LevelCompleteWidget.hpp"
 #include "../Entities/Player.hpp"
+#include "../Widgets/PlayerDirectionSelectionWidget.hpp"
 #include "../Widgets/PlayerItemDisplay.hpp"
 #include "../Engine/Screen.hpp"
 #include "../Interfaces/TimeChangeInterface.hpp"
@@ -131,6 +132,9 @@ class GameScreen : public ChangeScoreListener, public TimeChangeInterface, publi
 
     // If true, reset the view on the next draw() call (used when loading a new level)
     bool mResetView;
+
+    // The player direction selection widget.
+    PlayerDirectionSelectionWidget mPlayerDirectionSelectionWidget;
 };
 
 #endif /* GAMESCREEN_HPP_ */

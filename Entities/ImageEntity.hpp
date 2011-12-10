@@ -39,6 +39,15 @@ class ImageEntity : public Entity
     }
 
     /**
+     * @brief Get the drawable aspect of the entity.
+     * @return The drawable aspect of the entity.
+     */
+    virtual sf::Drawable& getDrawable()
+    {
+    	return mSprite;
+    }
+
+    /**
      * @brief Get the entity's height.
      * @return The entity's height.
      */

@@ -10,6 +10,7 @@
 #include <stdexcept>
 
 #include "../Engine/AudioManager.hpp"
+#include "../Entities/Creature.hpp"
 #include "../Entities/Entity.hpp"
 #include "../Entities/FlipScreen.hpp"
 #include "../Engine/FontManager.hpp"
@@ -36,7 +37,8 @@ const unsigned int FLIP_ROTATION_SPEED = 5;
 const float FLIP_ROTATION_STEP = 1.5f;
 const unsigned int ZOOM_SPEED = 5;
 const float ZOOM_STEP = 0.0055f;
-
+#include <iostream>
+using namespace std;//@todo remove
 Level::Level(unsigned int difficulty, Player& player) :
 	mIsDone(false),
 	mPlayer(player),
@@ -126,29 +128,30 @@ Level::Level(unsigned int difficulty, Player& player) :
 				 * the player then presses that direction and the player shrinks completely and then its position is set to
 				 * the middle of once cell in the direction specified by the player.
 				 */
-				int n = random(1, 100);
-				if(n <= 65)
-				{
-					entity = new Pickup(5, sf::Color::Magenta, 20);
-					mPickups.push_back(entity);
-				}
-				else if(n <= 70)
-				{
-					entity = new Pickup(25, sf::Color::Magenta, 5);
-					mPickups.push_back(entity);
-				}
-				else if(n <= 75)
-					entity = new TimeChange(*this);
-				else if(n <= 80)
-					entity = new SpeedChange(2.f, mPlayer);
-				else if(n <= 85)
-					entity = new SpeedChange(0.5f, mPlayer);
-				else if(n <= 90)
-					entity = new Pickup(-50, sf::Color::Red, 50);
-				else if(n <= 95)
-					entity = new FlipScreen(*this);
-				else
-					entity = new ZoomScreen(*this);
+//				int n = random(1, 100);
+//				if(n <= 65)
+//				{
+//					entity = new Pickup(5, sf::Color::Magenta, 20);
+//					mPickups.push_back(entity);
+//				}
+//				else if(n <= 70)
+//				{
+//					entity = new Pickup(25, sf::Color::Magenta, 5);
+//					mPickups.push_back(entity);
+//				}
+//				else if(n <= 75)
+//					entity = new TimeChange(*this);
+//				else if(n <= 80)
+//					entity = new SpeedChange(2.f, mPlayer);
+//				else if(n <= 85)
+//					entity = new SpeedChange(0.5f, mPlayer);
+//				else if(n <= 90)
+//					entity = new Pickup(-50, sf::Color::Red, 50);
+//				else if(n <= 95)
+//					entity = new FlipScreen(*this);
+//				else
+//					entity = new ZoomScreen(*this);
+				entity = new Phase(*this);
 			}
 
 			// If an entity was created, configure it.
@@ -274,14 +277,17 @@ void Level::levelComplete()
 
 void Level::logic(sf::View& camera)
 {
+	// Perform actions.
+	ActionInterface::logic(*this);
+
 	// Remove all dead entities.
 	for(list<Entity*>::iterator it = mDeadEntities.begin(); it != mDeadEntities.end(); it++)
 		mRemoveEntity(*it);
 	mDeadEntities.clear();
 
     // Perform all entity logic.
-    for(list<Entity*>::iterator it = mEntities.begin(); it != mEntities.end(); it++)
-        (*it)->logic(*this);
+	for(list<Entity*>::iterator it = mEntities.begin(); it != mEntities.end(); it++)
+		(*it)->logic(*this);
 
     // If all items have been picked up, display a floating text and give a bonus.
     if(mPickups.empty() && !mPickupAward)
@@ -292,6 +298,7 @@ void Level::logic(sf::View& camera)
     }
 
     // Perform floating text logic if the interval is passed.
+    //@todo turn floating text into actions?
     if(mFloatingTextTimer.getTime() >= FLOATINGTEXT_TIMER_INTERVAL)
     {
     	list<list<sf::Text>::iterator > removeList;
@@ -309,6 +316,7 @@ void Level::logic(sf::View& camera)
     }
 
 	// Flip the screen.
+    //@todo turn flipping the screen into actions?
 	if(mFlipTimer.isStarted() && mFlipTimer.getTime() >= FLIP_ROTATION_SPEED)
 	{
 		mFlipAngle += FLIP_ROTATION_STEP;
@@ -329,6 +337,7 @@ void Level::logic(sf::View& camera)
 	}
 
 	// Zoom the screen.
+	//@todo turn zooming into actions?
 	if(mZoomTimer.isStarted() && mZoomTimer.getTime() >= ZOOM_SPEED)
 	{
 		mZoomFactor *= 1.f - (ZOOM_STEP * (mZoomed ? -1.f : 1.f));
@@ -349,6 +358,7 @@ void Level::logic(sf::View& camera)
 	}
 
 	// Check to see if a new teleporter is to be created.
+	//@todo make the teleporter into actions?
 	if(mTeleportTimer.getTime() >= mTeleportInterval)
 	{
 		// Play a warning sound that a teleporter was created.
@@ -407,6 +417,70 @@ void Level::logic(sf::View& camera)
 	if(center.y + half.y > mMap.getHeight())
 		center.y = mMap.getHeight() - half.y;
 	camera.SetCenter(center);
+}
+
+void Level::phaseDirection(const string& dir)
+{
+	for(list<Creature*>::iterator it = mPhaseList.begin(); it != mPhaseList.end(); ++it)
+	{
+		// Get the creature's current cell location.
+		int cell_x = (int)(*it)->getX() / (MAP_CELL_SIDE * mMap.getTileset().getWidth());
+		int cell_y = (int)(*it)->getY() / (MAP_CELL_SIDE * mMap.getTileset().getHeight());
+
+		// Now change the cell to the cell to move to (a cell in that direction).
+		if(dir == toLower("up"))
+			cell_y--;
+		else if(dir == toLower("down"))
+			cell_y++;
+		else if(dir == toLower("left"))
+			cell_x--;
+		else if(dir == toLower("right"))
+			cell_x++;
+		else
+			throw runtime_error("Level::phaseDirection() -> Invalid direction provided.");
+
+		// Re-convert the cell position to pixel location. Have the creature move to the middle of the cell.
+		(*it)->phaseTo(sf::Vector2f((cell_x * MAP_CELL_SIDE * mMap.getTileset().getWidth()) + ((MAP_CELL_SIDE / 2) * mMap.getTileset().getWidth()) - ((*it)->getWidth() / 2),
+									(cell_y * MAP_CELL_SIDE * mMap.getTileset().getHeight())+ ((MAP_CELL_SIDE / 2) * mMap.getTileset().getHeight()) - ((*it)->getHeight() / 2)));
+
+		// Allow the creature to continue moving.
+		(*it)->setMovable(true);
+	}
+}
+
+void Level::phaseCreature(Creature& creature)
+{
+	// Hold creature movement while it is determining a direction to phase.
+	creature.setMovable(false);
+
+	// Determine the available directions.
+	bool up = false, down = false, left = false, right = false;
+	float width = MAP_CELL_SIDE * mMap.getTileset().getWidth(),
+		  height= MAP_CELL_SIDE * mMap.getTileset().getHeight();
+	if(creature.getY() >= height)
+		up = true;
+	if(creature.getY() + creature.getHeight() + height < mMap.getHeight())
+		down = true;
+	if(creature.getX() >= width)
+		left = true;
+	if(creature.getX() + creature.getWidth() + width < mMap.getWidth())
+		right = true;
+
+	// Show the directional GUI around the player and give it modal input.
+	string dat = ":";
+	dat += up ? "true" : "false";
+	dat += ":";
+	dat += down ? "true" : "false";
+	dat += ":";
+	dat += left ? "true" : "false";
+	dat += ":";
+	dat += right ? "true" : "false";
+	dat += ":";
+	dat += toString(creature.getX() + (creature.getWidth() / 2)) + ":" + toString(creature.getY() + (creature.getHeight() / 2));
+	mDistributeActionEvent(ACTION_SELECTION_REQUEST + dat);
+
+	// This creature will now listen for when the next phase location is provided.
+	mPhaseList.push_back(&creature);
 }
 
 void Level::playerFoundExit()

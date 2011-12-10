@@ -84,6 +84,15 @@ class Entity : public ActionInterface, public AddLockInterface, public ChangeSco
     }
 
     /**
+     * @brief Get the drawable aspect of the entity.
+     * @return The drawable aspect of the entity.
+     */
+    virtual sf::Drawable& getDrawable()
+    {
+    	return mShape;
+    }
+
+    /**
      * @brief Get the being's height.
      * @return The being's height.
      */

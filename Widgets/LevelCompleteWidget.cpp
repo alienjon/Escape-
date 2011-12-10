@@ -222,7 +222,10 @@ void LevelCompleteWidget::keyPressed(gcn::KeyEvent& e)
 {
 	// If this widget has focus, and the space bar was pressed, then signal the widget is completed.
 	if(isFocused() && e.getKey().getValue() == gcn::Key::SPACE)
+	{
 		distributeActionEvent();
+		setVisible(false);
+	}
 }
 
 void LevelCompleteWidget::logic()

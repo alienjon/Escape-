@@ -10,22 +10,24 @@
 #include <stdexcept>
 
 #include "../Game/Keywords.hpp"
-
-//@todo These probably won't be here forever...
-#include "../Engine/FontManager.hpp"
 #include "../main.hpp"
+
+//@todo This probably won't be here forever...
+#include "../Engine/FontManager.hpp"
 
 using std::abs;
 using std::runtime_error;
 using std::string;
 
 const unsigned int SCORE_COUNTER_INTERVAL = 25;
-const unsigned int __TIME_MULTIPLIER__ = 2300;
-
+const unsigned int __TIME_MULTIPLIER__ = 1000;
+#include <iostream>
+using namespace std;//@todo remove when done
 GameScreen::GameScreen(unsigned int difficulty) : Screen(),
 	mDifficulty(difficulty),
 	mIsPaused(false),
 	mLevel(0),
+	mItemDisplay(mPlayer),
 	mScore(0),
 	mCounter(0),
 	mResetView(false)
@@ -37,6 +39,8 @@ GameScreen::GameScreen(unsigned int difficulty) : Screen(),
 	mLevelCompleteWidget.addActionListener(this);
 	mOptionsMenu.addActionListener(this);
 	addKeyListener(&mPlayer);
+	addKeyListener(&mItemDisplay);
+	addKeyListener(&mPlayerDirectionSelectionWidget);
 
 	// Setup the player/player item display.
 	mPlayer.addPickupListener(&mItemDisplay);
@@ -59,17 +63,38 @@ GameScreen::~GameScreen()
 		delete mLevel;
 	}
 	removeKeyListener(&mPlayer);
+	removeKeyListener(&mItemDisplay);
+	removeKeyListener(&mPlayerDirectionSelectionWidget);
 	mPlayer.removePickupListener(&mItemDisplay);
+    mPlayerDirectionSelectionWidget.removeActionListener(this);
 }
 
 void GameScreen::action(const gcn::ActionEvent& event)
 {
-	if(event.getSource() == &mLevelCompleteWidget)
+	string::size_type pos = 0;
+	string keyword = extractDataLine(event.getId(), pos, DELIMITER);
+	if(keyword == ACTION_SELECTION_REQUEST)
 	{
-		// Hide the level complete widget.
-		mLevelCompleteWidget.setVisible(false);
-		mBase.requestFocus();
+		// Determine the directions to display.
+		bool up	   = extractDataLine(event.getId(), pos, DELIMITER) == toLower("true");
+		bool down  = extractDataLine(event.getId(), pos, DELIMITER) == toLower("true");
+		bool left  = extractDataLine(event.getId(), pos, DELIMITER) == toLower("true");
+		bool right = extractDataLine(event.getId(), pos, DELIMITER) == toLower("true");
+		int x = toInt(extractDataLine(event.getId(), pos, DELIMITER));
+		int y = toInt(extractDataLine(event.getId(), pos, DELIMITER));
 
+		// Display the widget.
+		mPlayerDirectionSelectionWidget.setPosition(((mBase.getWidth() / 2) - (mCamera.GetCenter().x - x)) - (mPlayerDirectionSelectionWidget.getWidth() / 2),
+													((mBase.getHeight() / 2) - (mCamera.GetCenter().y - y)) - (mPlayerDirectionSelectionWidget.getHeight() / 2));
+		mPlayerDirectionSelectionWidget.display(up, down, left, right);
+	}
+	else if(keyword == ACTION_DIRECTION_SELECTED)
+	{
+		// Tell the level to phase the player in the requested direction.
+		mLevel->phaseDirection(extractDataLine(event.getId(), pos, DELIMITER));
+	}
+	else if(event.getSource() == &mLevelCompleteWidget)
+	{
 		// If the old level completed, then load the next level.
 		if(mLevel->isDone())
 		{
@@ -105,37 +130,35 @@ void GameScreen::action(const gcn::ActionEvent& event)
 	}
 	else if(event.getSource() == &mOptionsMenu)
 	{
-		if(event.getId() == GAMEOPTIONS_RESUME)
+		if(keyword == GAMEOPTIONS_RESUME)
 		{
 			mIsPaused = false;
 //			mMenuBar.unpause();
 			mTimerWidget.unpause();//@todo remove when done
-			mOptionsMenu.setVisible(false);
-			mOptionsMenu.requestMoveToBottom();
 			mDistributeActionEvent(ACTION_HIDECURSOR);
 		}
-		else if(event.getId() == GAMEOPTIONS_MAINMENU)
+		else if(keyword == GAMEOPTIONS_MAINMENU)
 		{
 			mDistributeActionEvent(ACTION_TO_MAINMENU);
 			mDone = true;
 		}
-		else if(event.getId() == GAMEOPTIONS_EXIT)
+		else if(keyword == GAMEOPTIONS_EXIT)
 		{
 			mDistributeActionEvent(ACTION_QUIT);
 			mDone = true;
 		}
 	}
 	// Now check for the id's.
-	else if(event.getId() == ACTION_QUIT)
+	else if(keyword == ACTION_QUIT)
 		mDone = true;
-	else if(event.getId() == ACTION_TO_MAINMENU)
+	else if(keyword == ACTION_TO_MAINMENU)
 	{
 		mDistributeActionEvent(ACTION_TO_MAINMENU);
 		mDone = true;
 	}
-	else if(event.getId() == ACTION_PAUSE)
+	else if(keyword == ACTION_PAUSE)
 		mIsPaused = true;
-	else if(event.getId() == ACTION_UNPAUSE)
+	else if(keyword == ACTION_UNPAUSE)
 		mIsPaused = false;
 }
 
@@ -164,12 +187,11 @@ void GameScreen::draw(gcn::SFMLGraphics& renderer)
 
 void GameScreen::keyPressed(gcn::KeyEvent& event)
 {
-	// If the shift key is pressed, give the item display widget full access.
+	// If the shift key is pressed, give the item display widget focus and don't let the player move.
 	if(event.getKey().getValue() == gcn::Key::LEFT_SHIFT || event.getKey().getValue() == gcn::Key::RIGHT_SHIFT)
 	{
-		mItemDisplay.requestModalFocus();
-		mItemDisplay.requestFocus();
-		mPlayer.stop();
+		mItemDisplay.setFocusable(true);
+		mPlayer.setInputState(false);
 	}
 
 	// Open the options menu.
@@ -192,10 +214,14 @@ void GameScreen::keyPressed(gcn::KeyEvent& event)
 
 void GameScreen::keyReleased(gcn::KeyEvent& event)
 {
+	// If the shift key is released, return movement to the player.
+	if(event.getKey().getValue() == gcn::Key::LEFT_SHIFT || event.getKey().getValue() == gcn::Key::RIGHT_SHIFT)
+		mPlayer.setInputState(true);
+
 	Screen::keyReleased(event);
 }
 
-void GameScreen::load(GUI* gui)
+void GameScreen::load(GUI* gui)//@todo move the adding/etc... to the constructor
 {
     // Set the base.
     gui->setBase(&mBase);//@todo should this be in Engine?
@@ -207,9 +233,13 @@ void GameScreen::load(GUI* gui)
     mOptionsMenu.setVisible(false);
     mBase.add(&mOptionsMenu, 0, 0);
 
-    // The player items.
+    // Player items.
 //    mBase.addKeyListener(&mItemDisplay);
     mBase.add(&mItemDisplay, mBase.getWidth() - mItemDisplay.getWidth() - 4, 4);
+
+    // Direction Selection.
+    mBase.add(&mPlayerDirectionSelectionWidget);
+    mPlayerDirectionSelectionWidget.addActionListener(this);
 
     // Add the menu bar.
     mBase.add(&mScoreLabel, 0, mBase.getHeight() - mScoreLabel.getHeight());

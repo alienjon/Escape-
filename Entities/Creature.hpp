@@ -14,6 +14,7 @@
 
 #include "../Listeners/CreatureWaypointListener.hpp"
 #include "../Entities/Entity.hpp"
+#include "../Listeners/PhaseMovementListener.hpp"
 #include "../Engine/Timer.hpp"
 
 class Level;
@@ -21,7 +22,7 @@ class Level;
 /**
  * @brief A base class for all creatures.
  */
-class Creature : public Entity
+class Creature : public Entity, public PhaseMovementListener
 {
     public:
     virtual ~Creature();
@@ -54,10 +55,25 @@ class Creature : public Entity
     }
 
     /**
+     * @brief Is this creature able to move right now?
+     * @return True if the creature is able to move.
+     */
+    inline bool isMovable() const
+    {
+    	return mMovable;
+    }
+
+    /**
      * @brief Perform internal logic.
      * @param level The level within which the creature is residing.
      */
     virtual void logic(Level& level);
+
+    /**
+     * @brief Phase this creature to the specified position.
+     * @param vec The position to phase the creature to.
+     */
+    virtual void phaseTo(const sf::Vector2f& vec);
 
     /**
      * @brief Remove a moved to point listener.
@@ -66,6 +82,15 @@ class Creature : public Entity
     inline void removeCreatureWaypointListener(CreatureWaypointListener* listener)
     {
         mWaypointListeners.remove(listener);
+    }
+
+    /**
+     * @brief Set the movable state of the creature.
+     * @param state The state to set.
+     */
+    inline void setMovable(bool state)
+    {
+    	mMovable = state;
     }
 
     /**
@@ -96,6 +121,11 @@ class Creature : public Entity
      */
     Creature();
 
+	/**
+	 * @brief The creature has died.
+	 */
+	virtual void mDie();
+
     /**
      * @brief Tell the moved to point listeners that the creature has finished moving to the next point.
      */
@@ -116,6 +146,9 @@ class Creature : public Entity
 
     // The waypoint listeners.
     std::list<CreatureWaypointListener*> mWaypointListeners;
+
+    // The movability state.
+    bool mMovable;
 };
 
 #endif

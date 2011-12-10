@@ -16,7 +16,7 @@ const sf::Color PLAYER_COLOR = sf::Color::Blue;
 using std::list;
 
 Player::Player() :
-	mAllowInput(true),
+	mHasInput(true),
 	mCycle(COLORCYCLE_MOVE),
 	mColor1(mLocks.end()), mColor2(mLocks.end()), mColor3(mLocks.end()), mColor4(mLocks.end())
 {
@@ -37,15 +37,6 @@ Player::Player() :
 
     // Configure the internal sizes.
     mResetCyclePositions();
-}
-
-void Player::mDie()
-{
-    // Stop accepting player input.
-    mAllowInput = false;
-
-    // Continue dying.
-    Creature::mDie();
 }
 
 bool Player::mDistributePickup(Item& item)
@@ -91,9 +82,9 @@ void Player::draw(sf::RenderWindow& renderer)
 
 void Player::keyPressed(gcn::KeyEvent& event)
 {
-	// Check for allowing input.
-    if(!mAllowInput)
-        return;
+	// Only perform input if allowed.
+	if(!mHasInput)
+		return;
 
     // Calculate the velocity.
 	if(event.getKey().getValue() == gcn::Key::UP)

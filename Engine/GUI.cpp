@@ -25,8 +25,7 @@
 #include "../Game/Keywords.hpp"
 #include "../main.hpp"
 
-GUI::GUI(gcn::SFMLGraphics& graphics, gcn::SFMLInput& input) :
-	mBase(0)
+GUI::GUI(gcn::SFMLGraphics& graphics, gcn::SFMLInput& input)
 {
 	// Set the graphics handler.
 	setGraphics(&graphics);
@@ -37,7 +36,9 @@ GUI::GUI(gcn::SFMLGraphics& graphics, gcn::SFMLInput& input) :
 	// Configure the root widget.
 	mRoot.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 	mRoot.setOpaque(false);
+	mRoot.setFocusable(true);
 	setTop(&mRoot);
+	mFocusHandler->requestFocus(&mRoot);
 
 	// Add the FPS display widget to the GUI.
 	mRoot.add(&mFPSDisplayWidget, 0, 0);
@@ -50,34 +51,11 @@ GUI::GUI(gcn::SFMLGraphics& graphics, gcn::SFMLInput& input) :
     mGraphics->setFont(font);
 }
 
-void GUI::remove(gcn::Widget* widget)
-{
-    mRoot.remove(widget);
-}
-
 void GUI::setBase(gcn::Container* container)
 {
-    if(mBase)
-    {
-    	try
-    	{
-    		remove(mBase);
-    	}
-    	catch(gcn::Exception e)
-    	{
-    		// @fixme This is a bit of a hack to avoid an error when a screen calls setBase().  I think it is related to difficulty removing
-    		// the previous screen's base, but I need to look into it.
-    	}
-    }
-
-    mBase = container;
-    mRoot.add(mBase);
-
-    // Just ensure that the FPS widget is on top.
+	// Set the new container, but make sure that the FPS widget is on top.
+    mRoot.add(container);
     mFPSDisplayWidget.requestMoveToTop();
-
-    // Request focus for the screen.
-    mFocusHandler->requestFocus(mBase);
 }
 
 void GUI::toggleFPS()

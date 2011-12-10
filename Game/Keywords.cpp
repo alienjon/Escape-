@@ -9,6 +9,8 @@
 using std::string;
 
 // These are the actions.
+const string ACTION_DIRECTION_SELECTED = "ACTION_DIRECTION_SELECTED";
+const string ACTION_SELECTION_REQUEST = "ACTION_DIRECTION_SELECTION_REQUEST";
 const string ACTION_SHOWCURSOR = "ACTION_SHOWCURSOR";
 const string ACTION_HIDECURSOR = "ACTION_HIDECURSOR";
 const string ACTION_PAUSE = "ACTION_PAUSE";
@@ -31,6 +33,11 @@ const string IMAGE_TIMEGAIN	  = "Images/timegain.png";
 const string IMAGE_TIMELOSS	  = "Images/timeloss.png";
 const string IMAGE_FASTPLAYER = "Images/fastplayer.png";
 const string IMAGE_SLOWPLAYER = "Images/slowplayer.png";
+const string IMAGE_ITEM_PHASE = "Images/phase.png";
+const string IMAGE_DIRECTIONAL_ARROW_UP = "Images/arrow_up.png";
+const string IMAGE_DIRECTIONAL_ARROW_DOWN = "Images/arrow_down.png";
+const string IMAGE_DIRECTIONAL_ARROW_LEFT = "Images/arrow_left.png";
+const string IMAGE_DIRECTIONAL_ARROW_RIGHT = "Images/arrow_right.png";
 
 // These are the fonts.
 const string FONT_DEFAULT = "Fonts/VeraMono.ttf";

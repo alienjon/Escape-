@@ -8,20 +8,24 @@
 
 #include "../Engine/Colors.hpp"
 #include "../Entities/Item.hpp"
+#include "../Entities/Player.hpp"
 #include "../Engine/VideoManager.hpp"
 
-PlayerItemDisplay::PlayerItemDisplay() :
+PlayerItemDisplay::PlayerItemDisplay(Player& player) :
 	mFirstItem(0),
 	mSecondItem(0),
 	mThirdItem(0),
 	mLeft(false),
-	mRight(false)
+	mRight(false),
+	mPlayer(player)
 {
 	// Configure the widget.
 	setSize(150, 50);
 	addKeyListener(this);
-	setFocusable(true);
-	setOpaque(false);
+	setFocusable(false);
+	setOpaque(true);
+	setBaseColor(gcn::Color(156, 230, 134, 100));
+	setFrameSize(1);
 
 	// Add the icons.
 	add(&mFirst, 1, 1);
@@ -35,7 +39,7 @@ void PlayerItemDisplay::draw(gcn::Graphics* graphics)
 	gcn::Container::draw(graphics);
 
 	// Draw the selection box on top.
-	if(isModalFocused())
+	if(isFocusable())
 	{
 		graphics->setColor(gcn::Color(255, 0, 0));
 		if(mLeft && !mRight)
@@ -83,8 +87,8 @@ bool PlayerItemDisplay::itemPickedUp(Item& item)
 
 void PlayerItemDisplay::keyPressed(gcn::KeyEvent& event)
 {
-	// Only do input if this widget has modal focus.
-	if(isModalFocused())
+	// Only do stuff if this widget has focus.
+	if(isFocusable())
 	{
 		if(event.getKey().getValue() == gcn::Key::LEFT)
 			mLeft = true;
@@ -94,22 +98,26 @@ void PlayerItemDisplay::keyPressed(gcn::KeyEvent& event)
 		{
 			if(mLeft && !mRight && mFirstItem)
 			{
-				mFirstItem->use();
+				mFirstItem->use(mPlayer);
 				mFirstItem = 0;
 				mFirst.setImage(0);
 			}
 			else if(!mLeft && mRight && mThirdItem)
 			{
-				mThirdItem->use();
+				mThirdItem->use(mPlayer);
 				mThirdItem = 0;
 				mThird.setImage(0);
 			}
 			else if(mSecondItem)
 			{
-				mSecondItem->use();
+				mSecondItem->use(mPlayer);
 				mSecondItem = 0;
 				mSecond.setImage(0);
 			}
+
+			// Unset after selected.
+			mLeft = mRight = false;
+			setFocusable(false);
 		}
 	}
 }
@@ -119,12 +127,12 @@ void PlayerItemDisplay::keyReleased(gcn::KeyEvent& event)
 	// If the shift key is pressed, give the item display widget full access.
 	if(event.getKey().getValue() == gcn::Key::LEFT_SHIFT || event.getKey().getValue() == gcn::Key::RIGHT_SHIFT)
 	{
-		releaseModalFocus();
 		mLeft = mRight = false;
+		setFocusable(false);
 	}
 
-	// Only do input if this widget has modal focus.
-	if(isModalFocused())
+	// Only do input if this widget has focus.
+	if(isFocusable())
 	{
 		if(event.getKey().getValue() == gcn::Key::LEFT)
 			mLeft = false;

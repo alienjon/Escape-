@@ -50,6 +50,7 @@ void GameOptionsWidget::action(const gcn::ActionEvent& actionEvent)
 	{
 		setActionEventId(GAMEOPTIONS_RESUME);
 		distributeActionEvent();
+		setVisible(false);
 	}
 	else if(actionEvent.getSource() == &mOptionsButton)
 		Logger::log("Show Game Options");

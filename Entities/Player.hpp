@@ -124,12 +124,12 @@ class Player : public AddLockListener, public Creature, public gcn::KeyListener,
     }
 
     /**
-     * @brief Set the player's state of accepting input.
-     * @param state The input acceptance state.
+     * @brief Set the input state.
+     * @param state True allows the player to receive input.
      */
     inline void setInputState(bool state)
     {
-    	mAllowInput = state;
+    	mHasInput = state;
     }
 
 	protected:
@@ -137,11 +137,6 @@ class Player : public AddLockListener, public Creature, public gcn::KeyListener,
 	 * This is the distance in front of the player that will be used when the player presses the action button.
 	 */
 	static const int PLAYER_ACTION_DISTANCE;
-
-	/**
-	 * @brief The player has died.
-	 */
-	virtual void mDie();
 
 	private:
 	enum ColorCycle
@@ -164,8 +159,8 @@ class Player : public AddLockListener, public Creature, public gcn::KeyListener,
 	 */
 	void mResetCyclePositions();
 
-	// True if the player can accept input.
-	bool mAllowInput;
+	// If true, the player can perform input.
+	bool mHasInput;
 
 	// The information for cycling collected keys.
 	Timer mColorCycleTimer;

@@ -24,12 +24,6 @@ class GUI : public gcn::Gui
     GUI(gcn::SFMLGraphics& graphics, gcn::SFMLInput& input);
 
     /**
-     * @brief Remove the widget from the root container.
-     * @param widget The widget to remove.
-     */
-    virtual void remove(gcn::Widget* widget);
-
-    /**
      * @brief Sets the base widget for the root container.
      * @param container The container to set.
      */
@@ -41,12 +35,8 @@ class GUI : public gcn::Gui
 	virtual void toggleFPS();
 
 	protected:
-	/**
-	 * The root container is the bottom container in which all other widgets feed out from.
-	 * The base container is the first container that contains easily-accessible widgets (OSD, for example)
-	 */
+	// The root container is the bottom container in which all other widgets feed out from.
 	gcn::Container mRoot;
-	gcn::Container* mBase;
 
 	// The FPS display widget.
 	FPSDisplayWidget mFPSDisplayWidget;

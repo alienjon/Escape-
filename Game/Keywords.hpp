@@ -10,6 +10,8 @@
 #include <string>
 
 // These are the actions.
+extern const std::string ACTION_DIRECTION_SELECTED;
+extern const std::string ACTION_SELECTION_REQUEST;
 extern const std::string ACTION_SHOWCURSOR;
 extern const std::string ACTION_HIDECURSOR;
 extern const std::string ACTION_PAUSE;
@@ -37,6 +39,11 @@ extern const std::string IMAGE_TIMEGAIN;
 extern const std::string IMAGE_TIMELOSS;
 extern const std::string IMAGE_FASTPLAYER;
 extern const std::string IMAGE_SLOWPLAYER;
+extern const std::string IMAGE_ITEM_PHASE;
+extern const std::string IMAGE_DIRECTIONAL_ARROW_UP;
+extern const std::string IMAGE_DIRECTIONAL_ARROW_DOWN;
+extern const std::string IMAGE_DIRECTIONAL_ARROW_LEFT;
+extern const std::string IMAGE_DIRECTIONAL_ARROW_RIGHT;
 
 // These are the sounds.
 extern const std::string SOUND_LEVELCOMPLETE_FINISH;

@@ -166,6 +166,8 @@ void Engine::mLoadNextScreen()
     // Set listeners.
     (*mCurrentScreen)->addActionListener(this);
     this->addActionListener(*mCurrentScreen);
+    mGui->getTop()->addKeyListener(*mCurrentScreen);
+    mGui->getTop()->addMouseListener(*mCurrentScreen);
 
     // Load the new screen.
     (*mCurrentScreen)->load(mGui);

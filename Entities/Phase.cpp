@@ -6,19 +6,26 @@
  */
 #include "Phase.hpp"
 
+#include "../Entities/Creature.hpp"
 #include "../Game/Keywords.hpp"
+#include "../Game/Level.hpp"
+#include "../Engine/VideoManager.hpp"
 
-Phase::Phase()
+Phase::Phase(Level& level) :
+	mLevel(level)
 {
 	mType = ENTITY_PHASE;
+	mSprite = sf::Sprite(VideoManager::getTexture(IMAGE_ITEM_PHASE));
+	adjustSize();
+	mSprite.SetOrigin(getWidth() / 2, getHeight() / 2);
 }
 
-void Phase::mPerform()
+void Phase::mPerform(Creature& creature)
 {
-
+	mLevel.phaseCreature(creature);
 }
 
 const std::string& Phase::getImageFilename() const
 {
-
+	return IMAGE_ITEM_PHASE;
 }

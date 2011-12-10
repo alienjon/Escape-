@@ -7,6 +7,10 @@
 #include "Creature.hpp"
 
 #include "../Game/Level.hpp"
+#include "../Actions/MoveToAction.hpp"
+#include "../Actions/MultipleActionsAction.hpp"
+#include "../Actions/SetCollidableAction.hpp"
+#include "../Actions/SetInteractableAction.hpp"
 
 using std::list;
 using std::queue;
@@ -15,7 +19,8 @@ const unsigned int CREATURE_MOVEMENT_DISTANCE = 4;
 
 Creature::Creature() :
 	mUp(false), mDown(false), mLeft(false), mRight(false),
-	mSpeed(1.f)
+	mSpeed(1.f),
+	mMovable(true)
 {
 	mType = ENTITY_CREATURE;
     mMovementTimer.start();
@@ -27,6 +32,15 @@ Creature::~Creature()
     // objects that are part of an entity (or other sub-classes) may get removed while still
     // needing the creature-like aspects of this object {cough cough moveToAction() cough cough}
     clearActions();
+}
+
+void Creature::mDie()
+{
+    // Stop moving.
+    setMovable(false);
+
+    // Continue dying.
+    Entity::mDie();
 }
 
 void Creature::mMovedToWaypoint()
@@ -53,7 +67,7 @@ void Creature::logic(Level& level)
 	}
 
 	// If the creature is moving in at least one direction then move.
-	if(mUp || mDown || mLeft || mRight)
+	if(isMovable() && (mUp || mDown || mLeft || mRight))
 	{
 		// If we're moving, then do the generic stuff.
 		if(mMovementTimer.getTime() > 5)
@@ -114,6 +128,31 @@ void Creature::logic(Level& level)
 
     // Call the entity's logic.
     Entity::logic(level);
+}
+
+void Creature::phaseTo(const sf::Vector2f& vec)
+{
+	// Create the action list of what is to be done for phasing.
+	ActionList* lst = new ActionList();
+
+//@todo fade player in and out
+	// Check the collidable and interactable states and set as appropriate (they need to be false for the phasewalk, but set it back afterwards)
+	if(isCollidable())
+		lst->push_back(new SetCollidableAction(*this, false));
+	if(isInteractable())
+		lst->push_back(new SetInteractableAction(*this, false));
+	lst->push_back(new MoveToAction(*this, vec));
+
+	// Combine the actions together in a multiple action.
+	addAction(new MultipleActionsAction(lst));
+
+	// Create the action list of what is to be done to cleanup from phasing.
+	lst = new ActionList();
+	if(isCollidable())
+		lst->push_back(new SetCollidableAction(*this, true));
+	if(isInteractable())
+		lst->push_back(new SetInteractableAction(*this, true));
+	addAction(new MultipleActionsAction(lst));
 }
 
 void Creature::setWaypoint(const sf::Vector2f& waypoint)

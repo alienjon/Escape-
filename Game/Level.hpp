@@ -25,6 +25,7 @@
 #include "../Listeners/TimeChangeListener.hpp"
 #include "../Engine/Timer.hpp"
 
+class Creature;
 class Entity;
 class Player;
 
@@ -65,14 +66,14 @@ class Level : public ActionInterface, public ChangeScoreInterface, public Change
      * @param entity The entity to check collisions against.
      * @return Returns true if a collision occurred where both entities are collidable - meaning that they cannot move through each other.
      */
-    virtual bool checkEntityCollision(Entity& entity);
+    bool checkEntityCollision(Entity& entity);
 
     /**
      * @brief Check if the provided entity collides with the map.
      * @param entity The entity to check collisions against.
      * @return True if a collision was found.
      */
-    virtual bool checkMapCollision(Entity& entity);
+    bool checkMapCollision(Entity& entity);
 
     /**
      * @brief Called when the entity has died.
@@ -82,13 +83,6 @@ class Level : public ActionInterface, public ChangeScoreInterface, public Change
     {
     	mDeadEntities.push_back(entity);
     }
-
-    /**
-     * @brief Draw, from gcn::Widget
-     * @param graphics The graphics object.
-     */
-    virtual void draw(gcn::Graphics* graphics)
-    {}
 
     /**
      * @brief Draw the map to the screen.
@@ -111,7 +105,7 @@ class Level : public ActionInterface, public ChangeScoreInterface, public Change
      * @brief Checks whether the level has completed.
      * @return True if the level has completed.
      */
-    virtual bool isDone() const;
+    bool isDone() const;
 
     /**
      * @brief A level complete signal is called.
@@ -125,15 +119,28 @@ class Level : public ActionInterface, public ChangeScoreInterface, public Change
     virtual void logic(sf::View& camera);
 
     /**
+     * @brief Phase move the creature.
+     * @param creature The creature to phase.
+     * @note If the creature is a player show a widget to have the player select a phase direction.
+     */
+    void phaseCreature(Creature& creature);
+
+    /**
+     * @brief Tell any creatures waiting to phase the direction to do so.
+     * @param dir The direction to phase.
+     */
+    void phaseDirection(const std::string& dir);
+
+    /**
      * @brief Called when the player finds the exit.
      */
-    virtual void playerFoundExit();
+    void playerFoundExit();
 
     /**
      * @brief Teleport the player to a random position within the map.
      * @note As the keys are definitely in the corners, the player will be at least 1 cell in on all sides.
      */
-    virtual void teleportPlayer();
+    void teleportPlayer();
 
     /**
      * @brief Distribute a time change event.
@@ -162,9 +169,7 @@ class Level : public ActionInterface, public ChangeScoreInterface, public Change
      */
     void mRemoveEntity(Entity* entity);
 
-    /**
-     * True if the level has completed.
-     */
+    // True if the level has completed.
     bool mIsDone;
 
     // The player handle.
@@ -185,8 +190,9 @@ class Level : public ActionInterface, public ChangeScoreInterface, public Change
     // A level has a map.
     Map mMap;
 
-    // A list of dead entities (to remove in logic).
+    // Lists of things the levle manages.
     std::list<Entity*> mDeadEntities;
+    std::list<Creature*> mPhaseList;
 
     // A list of pickups that could still be picked up and a toggle to check if an award has been given for picking all items up.
     std::list<Entity*> mPickups;

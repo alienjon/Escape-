@@ -13,6 +13,7 @@
 #include "../Listeners/PickupListener.hpp"
 
 class Item;
+class Player;
 
 /**
  * @brief The player item display shows the 3 items the player has picked up.
@@ -22,8 +23,9 @@ class PlayerItemDisplay : public gcn::Container, public gcn::KeyListener, public
 	public:
 	/**
 	 * @brief Default constructor.
+	 * @param player The player.
 	 */
-	PlayerItemDisplay();
+	PlayerItemDisplay(Player& player);
 
 	/**
 	 * @brief Draw the widget.
@@ -59,6 +61,9 @@ class PlayerItemDisplay : public gcn::Container, public gcn::KeyListener, public
 
 	// The state of the left/right button pressed.
 	bool mLeft, mRight;
+
+	// The player.
+	Player& mPlayer;
 };
 
 #endif /* PLAYERITEMDISPLAY_HPP_ */

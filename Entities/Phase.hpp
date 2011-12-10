@@ -9,6 +9,9 @@
 
 #include "../Entities/Item.hpp"
 
+class Creature;
+class Level;
+
 /**
  * @brief A phase is an item that allows the player to move in a specified direction by one cell.
  */
@@ -17,8 +20,9 @@ class Phase : public Item
 	public:
 	/**
 	 * @brief Default constructor.
+	 * @param level The level in which the phase exists.
 	 */
-	Phase();
+	Phase(Level& level);
 
 	/**
 	 * @brief Get the filename of the item's image.
@@ -26,12 +30,16 @@ class Phase : public Item
 	 */
 	virtual const std::string& getImageFilename() const;
 
-	private:
+	protected:
 	/**
-	 * @brief Perform the item's specific action.
-	 * @note This is to be overwritten but child classes so that the actual effects occur when 'use()' is called.
+	 * @brief Use the item.
+	 * @param creature The creature using this item.
 	 */
-	virtual void mPerform();
+	virtual void mPerform(Creature& creature);
+
+	private:
+	// The level in which this phase exists.
+	Level& mLevel;
 };
 
 #endif /* PHASE_HPP_ */

@@ -6,6 +6,8 @@
  */
 #include "Item.hpp"
 
+#include "../Entities/Creature.hpp"
+
 Item::Item() :
 	mIsDrawing(true)
 {
@@ -27,11 +29,11 @@ void Item::collide(Entity& entity)
 void Item::draw(sf::RenderWindow& renderer)
 {
 	if(mIsDrawing)
-		Entity::draw(renderer);
+		ImageEntity::draw(renderer);
 }
 
-void Item::use()
+void Item::use(Creature& creature)
 {
-	mPerform();
+	mPerform(creature);
 	mDie();
 }
