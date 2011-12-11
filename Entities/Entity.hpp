@@ -40,6 +40,7 @@ class Entity : public ActionInterface, public AddLockInterface, public ChangeSco
     	ENTITY_FLIP,
     	ENTITY_ITEM,
     	ENTITY_KEY,
+    	ENTITY_NULLIFY,
     	ENTITY_PHASE,
     	ENTITY_PICKUP,
     	ENTITY_PLAYER,

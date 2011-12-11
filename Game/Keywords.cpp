@@ -33,6 +33,7 @@ const string IMAGE_TIMEGAIN	  = "Images/timegain.png";
 const string IMAGE_TIMELOSS	  = "Images/timeloss.png";
 const string IMAGE_FASTPLAYER = "Images/fastplayer.png";
 const string IMAGE_SLOWPLAYER = "Images/slowplayer.png";
+const string IMAGE_ITEM_NULLIFY = "Images/nullify.png";
 const string IMAGE_ITEM_PHASE = "Images/phase.png";
 const string IMAGE_DIRECTIONAL_ARROW_UP = "Images/arrow_up.png";
 const string IMAGE_DIRECTIONAL_ARROW_DOWN = "Images/arrow_down.png";

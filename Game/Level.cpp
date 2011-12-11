@@ -17,6 +17,7 @@
 #include "../Entities/KeyEntity.hpp"
 #include "../Game/Keywords.hpp"
 #include "../main.hpp"
+#include "../Entities/Nullify.hpp"
 #include "../Entities/Phase.hpp"
 #include "../Entities/Pickup.hpp"
 #include "../Entities/Player.hpp"
@@ -118,40 +119,35 @@ Level::Level(unsigned int difficulty, Player& player) :
 				/**
 				 * @todo review the percentages (change them based on the size of the map/difficulty?)
 				 *
-				 * @todo implement pickups for the player: things the player can pickup (up to 3) and an icon will display
-				 * on the side of the screen.  If the player hits the spacebar then these items are used (or holds
-				 * shift then the center item is highlighted. or a left press (with the spacebar) or right press will
-				 * select the item to the left or right - pressing that direction and holding it highlights that option, releasing
-				 * the button returns to the center and pressing the opposite direction will center the selection)
-				 * Examples: 'shift' - shift the player one cell in the specified direction - when the item is activated (the
-				 * player presses spacebar) 4 directional arrows appear in the GUI (surrounding the player, one in each direction)
-				 * the player then presses that direction and the player shrinks completely and then its position is set to
-				 * the middle of once cell in the direction specified by the player.
+				 * @todo Other items?
 				 */
-//				int n = random(1, 100);
-//				if(n <= 65)
-//				{
-//					entity = new Pickup(5, sf::Color::Magenta, 20);
-//					mPickups.push_back(entity);
-//				}
-//				else if(n <= 70)
-//				{
-//					entity = new Pickup(25, sf::Color::Magenta, 5);
-//					mPickups.push_back(entity);
-//				}
-//				else if(n <= 75)
-//					entity = new TimeChange(*this);
-//				else if(n <= 80)
-//					entity = new SpeedChange(2.f, mPlayer);
-//				else if(n <= 85)
-//					entity = new SpeedChange(0.5f, mPlayer);
-//				else if(n <= 90)
-//					entity = new Pickup(-50, sf::Color::Red, 50);
-//				else if(n <= 95)
-//					entity = new FlipScreen(*this);
-//				else
-//					entity = new ZoomScreen(*this);
-				entity = new Phase(*this);
+				int n = random(1, 100);
+				if(n <= 65)
+				{
+					entity = new Pickup(5, sf::Color::Magenta, 20);
+					mPickups.push_back(entity);
+				}
+				else if(n <= 68)
+				{
+					entity = new Pickup(75, sf::Color::Magenta, 5);
+					mPickups.push_back(entity);
+				}
+				else if(n <= 73)
+					entity = new TimeChange(*this);
+				else if(n <= 80)
+					entity = new Phase(*this);
+				else if(n <= 83)
+					entity = new Nullify(*this);
+				else if(n <= 85)
+					entity = new SpeedChange(2.f, mPlayer);
+				else if(n <= 88)
+					entity = new SpeedChange(0.5f, mPlayer);
+				else if(n <= 90)
+					entity = new Pickup(-50, sf::Color::Red, 50);
+				else if(n <= 95)
+					entity = new FlipScreen(*this);
+				else
+					entity = new ZoomScreen(*this);
 			}
 
 			// If an entity was created, configure it.
@@ -417,6 +413,20 @@ void Level::logic(sf::View& camera)
 	if(center.y + half.y > mMap.getHeight())
 		center.y = mMap.getHeight() - half.y;
 	camera.SetCenter(center);
+}
+
+void Level::nullify(Creature& creature)
+{
+	// If the level is flipped, unflip it.
+	if(mFlipped)
+		flip();
+
+	// If the level is zoomed, unzoom it.
+	if(mZoomed)
+		zoom();
+
+	// Set the player's speed to the default 1.f.
+	mPlayer.setSpeed(1.f);
 }
 
 void Level::phaseDirection(const string& dir)

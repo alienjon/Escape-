@@ -119,6 +119,12 @@ class Level : public ActionInterface, public ChangeScoreInterface, public Change
     virtual void logic(sf::View& camera);
 
     /**
+     * @brief Nullify all negative status effects for the provided creature.
+     * @param creature The creature whose effects are to be nullified.
+     */
+    virtual void nullify(Creature& creature);
+
+    /**
      * @brief Phase move the creature.
      * @param creature The creature to phase.
      * @note If the creature is a player show a widget to have the player select a phase direction.

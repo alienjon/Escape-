@@ -6,6 +6,7 @@
  */
 #include "Creature.hpp"
 
+#include "../Actions/CheckCollisionAction.hpp"
 #include "../Game/Level.hpp"
 #include "../Actions/MoveToAction.hpp"
 #include "../Actions/MultipleActionsAction.hpp"
@@ -76,9 +77,8 @@ void Creature::logic(Level& level)
 			if(mUp)
 			{
 				setY(getY() - dist);
-				bool wall	= level.checkMapCollision(*this),
-					 entity = level.checkEntityCollision(*this);
-				if(wall || entity)
+				bool entity = level.checkEntityCollision(*this);
+				if(level.checkMapCollision(*this) || entity)
 					setY(getY() + dist);
 				if(entity && !mWaypoints.empty())
 					mUp = false;
@@ -86,9 +86,8 @@ void Creature::logic(Level& level)
 			if(mDown)
 			{
 				setY(getY() + dist);
-				bool wall	= level.checkMapCollision(*this),
-					 entity = level.checkEntityCollision(*this);
-				if(wall || entity)
+				bool entity = level.checkEntityCollision(*this);
+				if(level.checkMapCollision(*this) || entity)
 					setY(getY() - dist);
 				if(entity && !mWaypoints.empty())
 					mDown = false;
@@ -96,9 +95,8 @@ void Creature::logic(Level& level)
 			if(mLeft)
 			{
 				setX(getX() - dist);
-				bool wall	= level.checkMapCollision(*this),
-					 entity = level.checkEntityCollision(*this);
-				if(wall || entity)
+				bool entity = level.checkEntityCollision(*this);
+				if(level.checkMapCollision(*this) || entity)
 					setX(getX() + dist);
 				if(entity && !mWaypoints.empty())
 					mLeft = false;
@@ -106,9 +104,8 @@ void Creature::logic(Level& level)
 			if(mRight)
 			{
 				setX(getX() + dist);
-				bool wall	= level.checkMapCollision(*this),
-					 entity = level.checkEntityCollision(*this);
-				if(wall || entity)
+				bool entity = level.checkEntityCollision(*this);
+				if(level.checkMapCollision(*this) || entity)
 					setX(getX() - dist);
 				if(entity && !mWaypoints.empty())
 					mRight = false;
@@ -136,6 +133,7 @@ void Creature::phaseTo(const sf::Vector2f& vec)
 	ActionList* lst = new ActionList();
 
 //@todo fade player in and out
+
 	// Check the collidable and interactable states and set as appropriate (they need to be false for the phasewalk, but set it back afterwards)
 	if(isCollidable())
 		lst->push_back(new SetCollidableAction(*this, false));
@@ -153,6 +151,9 @@ void Creature::phaseTo(const sf::Vector2f& vec)
 	if(isInteractable())
 		lst->push_back(new SetInteractableAction(*this, true));
 	addAction(new MultipleActionsAction(lst));
+
+	// After all the rest of this, check to see if the creature landed on something.
+	addAction(new CheckCollisionAction(*this));
 }
 
 void Creature::setWaypoint(const sf::Vector2f& waypoint)
