@@ -29,6 +29,15 @@ class ImageEntity : public Entity
     }
 
     /**
+     * @brief Get the alpha value for the entity.
+     * @return The alpha value for the entity.
+     */
+    virtual unsigned int getAlpha() const
+    {
+    	return mSprite.GetColor().a;
+    }
+
+    /**
      * @brief Get the physical area of this being.
      * @return The dimension.
      */
@@ -90,6 +99,16 @@ class ImageEntity : public Entity
     virtual float getY() const
     {
     	return mSprite.GetPosition().y;
+    }
+
+    /**
+     * @brief Set the alpha of the entity.
+     * @param a The alpha value.
+     */
+    virtual void setAlpha(unsigned int a)
+    {
+    	const sf::Color& c = mSprite.GetColor();
+    	mSprite.SetColor(sf::Color(c.r, c.g, c.b, a));
     }
 
     /**

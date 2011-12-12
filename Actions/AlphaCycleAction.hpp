@@ -7,30 +7,50 @@
 #ifndef ALPHACYCLEACTION_HPP_
 #define ALPHACYCLEACTION_HPP_
 
-#include <SFML/Graphics.hpp>
-
 #include "../Actions/Action.hpp"
+#include "../Listeners/CreatureWaypointListener.hpp"
+#include "../Engine/Timer.hpp"
+
+class Entity;
+class Level;
 
 /**
  * @brief An action to decrease and then increase the alpha level of a drawable.
  */
-class AlphaCycleAction : public Action
+class AlphaCycleAction : public Action, public CreatureWaypointListener
 {
 	public:
-	AlphaCycleAction(sf::Drawable& drawable);
+	/**
+	 * @brief Default constructor.
+	 * @param entity The cycling entity.
+	 */
+	AlphaCycleAction(Entity& entity);
+	virtual ~AlphaCycleAction();
 
-    /**
-     * @brief Activate this action.
-     * @param level Level in which the action takes place.
-     */
-    virtual void activate(Level& level);
+	/**
+	 * @brief Activate the action (action logic).
+	 * @param level The level in which the action is activating.
+	 */
+	virtual void activate(Level& level);
+
+	/**
+	 * @brief The creature has moved to a waypoint.
+	 * @param creature The creature that moved.
+	 */
+	virtual void creatureMoved(Creature& creature);
 
 	private:
-	// The drawable to set the opacity of.
-	sf::Drawable& mDrawable;
+	// The entity.
+	Entity& mEntity;
 
-	// If true then the action is increasing opacity, false is decreasing.
-	bool mIsAddingAlpha;
+	// The animation timer.
+	Timer mTimer;
+
+	// If true, the alpha level is increasing.
+	bool mIncreaseAlpha;
+
+	// The original alpha value.
+	unsigned int mOriginalAlpha;
 };
 
 #endif /* ALPHACYCLEACTION_HPP_ */

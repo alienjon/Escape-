@@ -76,6 +76,15 @@ class Entity : public ActionInterface, public AddLockInterface, public ChangeSco
     virtual void draw(sf::RenderWindow& renderer);
 
     /**
+     * @brief Get the alpha value for the entity.
+     * @return The alpha value for the entity.
+     */
+    virtual unsigned int getAlpha() const
+    {
+    	return mShape.GetColor().a;
+    }
+
+    /**
      * @brief Get the physical area of this being.
      * @return The dimension.
      */
@@ -189,6 +198,16 @@ class Entity : public ActionInterface, public AddLockInterface, public ChangeSco
     inline void removeDeathListener(DeathListener* listener)
     {
         mDeathListeners.remove(listener);
+    }
+
+    /**
+     * @brief Set the alpha of the entity.
+     * @param a The alpha value.
+     */
+    virtual void setAlpha(unsigned int a)
+    {
+    	const sf::Color& c = mShape.GetColor();
+    	mShape.SetColor(sf::Color(c.r, c.g, c.b, a));
     }
 
     /**

@@ -6,6 +6,7 @@
  */
 #include "Creature.hpp"
 
+#include "../Actions/AlphaCycleAction.hpp"
 #include "../Actions/CheckCollisionAction.hpp"
 #include "../Game/Level.hpp"
 #include "../Actions/MoveToAction.hpp"
@@ -132,9 +133,12 @@ void Creature::phaseTo(const sf::Vector2f& vec)
 	// Create the action list of what is to be done for phasing.
 	ActionList* lst = new ActionList();
 
-//@todo fade player in and out
+	// Start oscillating the player alpha.
+	AlphaCycleAction* alpha = new AlphaCycleAction(*this);
+	addCreatureWaypointListener(alpha);
+	lst->push_back(alpha);
 
-	// Check the collidable and interactable states and set as appropriate (they need to be false for the phasewalk, but set it back afterwards)
+	// Check the collidable and interactable states and set as appropriate (they need to be false for the phase walk, but set it back afterwards)
 	if(isCollidable())
 		lst->push_back(new SetCollidableAction(*this, false));
 	if(isInteractable())
