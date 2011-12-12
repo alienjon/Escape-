@@ -7,7 +7,6 @@
 #include "Nullify.hpp"
 
 #include "../Entities/Creature.hpp"
-#include "../Game/Keywords.hpp"
 #include "../Game/Level.hpp"
 #include "../Engine/VideoManager.hpp"
 

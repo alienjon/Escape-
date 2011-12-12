@@ -6,7 +6,9 @@
  */
 #include "Item.hpp"
 
+#include "../Engine/AudioManager.hpp"
 #include "../Entities/Creature.hpp"
+#include "../Game/Keywords.hpp"
 
 Item::Item() :
 	mIsDrawing(true)
@@ -23,6 +25,9 @@ void Item::collide(Entity& entity)
 		{
 			setInteractable(false);
 			mIsDrawing = false;
+
+			// Play the pickup sound.
+			AudioManager::playSound(SOUND_PICKUP_SPECIAL);
 		}
 }
 
@@ -34,6 +39,9 @@ void Item::draw(sf::RenderWindow& renderer)
 
 void Item::use(Creature& creature)
 {
+	// Play the pickup sound.
+	AudioManager::playSound(SOUND_PICKUP_SPECIAL);
+
 	mPerform(creature);
 	mDie();
 }

@@ -113,41 +113,40 @@ Level::Level(unsigned int difficulty, Player& player) :
 				entity = new KeyEntity(sf::Color::Green);
 			else if(w == width / 2 && h == height / 2) // Skip the portal cell.
 			{}
-			else // Add a point pickup
+			else
 			{
-				// A 1 in 10 chance that the pickup will be a big one.
 				/**
-				 * @todo review the percentages (change them based on the size of the map/difficulty?)
-				 *
 				 * @todo Other items?
 				 */
 				int n = random(1, 100);
-				if(n <= 65)
+				if(n <= 75)
 				{
 					entity = new Pickup(5, sf::Color::Magenta, 20);
 					mPickups.push_back(entity);
 				}
-				else if(n <= 68)
+				else if(n <= 78)
 				{
 					entity = new Pickup(75, sf::Color::Magenta, 5);
 					mPickups.push_back(entity);
 				}
-				else if(n <= 73)
-					entity = new TimeChange(*this);
-				else if(n <= 80)
-					entity = new Phase(*this);
 				else if(n <= 83)
-					entity = new Nullify(*this);
-				else if(n <= 85)
-					entity = new SpeedChange(2.f, mPlayer);
-				else if(n <= 88)
-					entity = new SpeedChange(0.5f, mPlayer);
-				else if(n <= 90)
 					entity = new Pickup(-50, sf::Color::Red, 50);
-				else if(n <= 95)
+				else if(n <= 85)
+					entity = new TimeChange(*this);
+				else if(n <= 87)
+					entity = new SpeedChange(2.f, mPlayer);
+				else if(n <= 89)
+					entity = new SpeedChange(0.5f, mPlayer);
+				else if(n <= 93)
 					entity = new FlipScreen(*this);
-				else
+				else if(n <= 95)
 					entity = new ZoomScreen(*this);
+				else if(n <= 97)
+					entity = new Phase(*this);
+				else// if(n <= 99)
+					entity = new Nullify(*this);
+//				else
+//					entity = new Teleport(*this);
 			}
 
 			// If an entity was created, configure it.
