@@ -16,6 +16,6 @@ DebugAction::DebugAction(const string& message) : mMessage(message)
 
 void DebugAction::activate(Level& level)
 {
-    Logger::log(mMessage);
+    LOG(mMessage);
     mPerformed = true;
 }

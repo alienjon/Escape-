@@ -29,6 +29,9 @@ using std::endl;
 using std::ios;
 using std::string;
 
+// The log file.
+const char* FILE_LOG = "error.log";
+
 Logger::Logger()
 {
 	// Open the log file.
@@ -54,12 +57,8 @@ Logger::~Logger()
 
 void Logger::mLog(const string& s)
 {
-    // Check to make sure the logger is created.
-    if(mLogger == 0)
-        create();
-
     // Now display the message.
-    mLogger->m_output(s);
+    mLogger.m_output(s);
 }
 
 void Logger::m_output(const string& s)
@@ -72,75 +71,9 @@ void Logger::m_output(const string& s)
 		cout << s << endl;
 }
 
-void Logger::create()
+void Logger::error(const string& error, const string& function, const string& filename, unsigned int line)
 {
-    if(mLogger == 0)
-        mLogger = new Logger();
-}
-
-void Logger::terminate()
-{
-    delete mLogger;
-}
-
-void Logger::error(const gcn::Exception& e)
-{
-	mLog("Guichan error: " + e.getFilename() + "::" + e.getFunction() + "(" + toString(e.getLine()) + ")->" +  e.getMessage());
-}
-
-void Logger::error(const std::domain_error& e)
-{
-	mLog("Domain error: " + string(e.what()));
-}
-
-void Logger::error(const std::invalid_argument& e)
-{
-	mLog("Invalid argument error: " + string(e.what()));
-}
-
-void Logger::error(const std::length_error& e)
-{
-	mLog("Length error: " + string(e.what()));
-}
-
-void Logger::error(const std::out_of_range& e)
-{
-	mLog("Out of range error: " + string(e.what()));
-}
-
-void Logger::error(const std::logic_error& e)
-{
-	mLog("Logic error: " + string(e.what()));
-}
-
-void Logger::error(const std::range_error e)
-{
-	mLog("Range error: " + string(e.what()));
-}
-
-void Logger::error(const std::overflow_error& e)
-{
-	mLog("Overflow error: " + string(e.what()));
-}
-
-void Logger::error(const std::underflow_error& e)
-{
-	mLog("Underflow error: " + string(e.what()));
-}
-
-void Logger::error(const std::runtime_error& e)
-{
-	mLog("Runtime error: " + string(e.what()));
-}
-
-void Logger::error(const std::exception& e)
-{
-	mLog("General STD error: " + string(e.what()));
-}
-
-void Logger::error(const string& error)
-{
-	mLog("Error: " + error);
+	mLog("Error: " + filename + "::" + function + "(" + toString(line) + ") -> " + error);
 }
 
 void Logger::log(const string& message)
@@ -148,11 +81,4 @@ void Logger::log(const string& message)
 	mLog("Log: " + message);
 }
 
-void Logger::warn(const string& warning)
-{
-	mLog("Warning: " + warning);
-}
-
-Logger* Logger::mLogger = 0;
-
-const char* Logger::FILE_LOG = "error.log";
+Logger Logger::mLogger;

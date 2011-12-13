@@ -33,6 +33,21 @@ PlayerItemDisplay::PlayerItemDisplay(Player& player) :
 	add(&mThird, 101, 1);
 }
 
+void PlayerItemDisplay::clear()
+{
+	mFirstItem = 0;
+	mFirst.setImage(0);
+
+	mThirdItem = 0;
+	mThird.setImage(0);
+
+	mSecondItem = 0;
+	mSecond.setImage(0);
+
+	mLeft = mRight = false;
+	setFocusable(false);
+}
+
 void PlayerItemDisplay::draw(gcn::Graphics* graphics)
 {
 	// Draw the rest of the display.

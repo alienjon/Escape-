@@ -19,7 +19,6 @@ const unsigned int LEVELCOMPLETEWIDGET_TIMERINTERVAL = 1500;
 LevelCompleteWidget::LevelCompleteWidget()
 {
 	// Configure the widget.
-	addKeyListener(this);
 	setFocusable(true);
 	setOpaque(true);
 	setBaseColor(gcn::COLOR_WHITE);
@@ -221,7 +220,7 @@ void LevelCompleteWidget::display(const string& message,
 void LevelCompleteWidget::keyPressed(gcn::KeyEvent& e)
 {
 	// If this widget has focus, and the space bar was pressed, then signal the widget is completed.
-	if(isFocused() && e.getKey().getValue() == gcn::Key::SPACE)
+	if(isVisible() && e.getKey().getValue() == gcn::Key::SPACE)
 	{
 		distributeActionEvent();
 		setVisible(false);
@@ -289,9 +288,6 @@ void LevelCompleteWidget::logic()
 		{
 			// Display the message.
 			mMessage.setVisible(true);
-
-			// First, request focus.  If there's a problem, then error.
-			requestFocus();
 
 			// Stop the timer.
 			mTimer.stop();

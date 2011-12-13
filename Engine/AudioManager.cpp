@@ -85,7 +85,7 @@ void AudioManager::playSound(const string& filename)
 	}
 	catch(const runtime_error& e)
 	{
-		Logger::warn(e.what());
+		ERROR(e.what());
 	}
 }
 

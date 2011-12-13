@@ -28,6 +28,11 @@ class PlayerItemDisplay : public gcn::Container, public gcn::KeyListener, public
 	PlayerItemDisplay(Player& player);
 
 	/**
+	 * @brief Clear the item display of all items.
+	 */
+	virtual void clear();
+
+	/**
 	 * @brief Draw the widget.
 	 * @param graphics The graphics object with which to draw.
 	 */

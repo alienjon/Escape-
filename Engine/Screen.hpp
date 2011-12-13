@@ -301,7 +301,7 @@ class Screen : public gcn::ActionListener, public GCNActionInterface, public gcn
     				break;
     			}
     			default:
-    				Logger::warn("Invalid key type provided.");
+    				ERROR("Invalid key type provided.");
     		}
     	}
     }
@@ -363,7 +363,7 @@ class Screen : public gcn::ActionListener, public GCNActionInterface, public gcn
 					break;
 				}
     			default:
-    				Logger::warn("Invalid mouse type provided.");
+    				ERROR("Invalid mouse type provided.");
     		}
     	}
     }

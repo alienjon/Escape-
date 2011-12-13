@@ -59,7 +59,7 @@ void Game::action(const gcn::ActionEvent& event)
 //    	mScreens.push_back(new SpriteCreditScreen(Sprite(VideoManager::loadSurface(credit_file)), 4000, fade_in, fade_out));
 //    }
 	else
-		Logger::log("Invalid action requested: " + event.getId());
+		LOG("Invalid action requested: " + event.getId());
 }
 
 void Game::mDrawResourceFrame(unsigned int percent, const string& title)

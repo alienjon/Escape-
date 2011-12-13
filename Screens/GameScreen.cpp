@@ -41,6 +41,7 @@ GameScreen::GameScreen(unsigned int difficulty) : Screen(),
 	addKeyListener(&mPlayer);
 	addKeyListener(&mItemDisplay);
 	addKeyListener(&mPlayerDirectionSelectionWidget);
+	addKeyListener(&mLevelCompleteWidget);
 
 	// Setup the player/player item display.
 	mPlayer.addPickupListener(&mItemDisplay);
@@ -65,6 +66,7 @@ GameScreen::~GameScreen()
 	removeKeyListener(&mPlayer);
 	removeKeyListener(&mItemDisplay);
 	removeKeyListener(&mPlayerDirectionSelectionWidget);
+	removeKeyListener(&mLevelCompleteWidget);
 	mPlayer.removePickupListener(&mItemDisplay);
     mPlayerDirectionSelectionWidget.removeActionListener(this);
 }
@@ -103,6 +105,7 @@ void GameScreen::action(const gcn::ActionEvent& event)
 			mLevel->removeChangeScoreListener(this);
 			mLevel->removeTimeChangeListener(this);
 			delete mLevel;
+			mItemDisplay.clear();
 
 			// Increase the difficulty and go to the next level.
 			mLevel = new Level(++mDifficulty, mPlayer);

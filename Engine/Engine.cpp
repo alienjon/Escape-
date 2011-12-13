@@ -34,9 +34,6 @@ Engine::Engine() :
 	mGui(0),
 	mCurrentScreen(mScreens.end())
 {
-	// Create the logger first.
-    Logger::create();
-
 	// Seed the randomizer.
 	srand(time(0));
 
@@ -71,11 +68,11 @@ Engine::Engine() :
 			else if(keyword == "Antialiasing")
 				mSettings.AntialiasingLevel = toInt(value);
 			else if(Engine::isDebug())
-				Logger::log("Unknown entry in config.txt: " + keyword);
+				LOG("Unknown entry in config.txt: " + keyword);
 		}
 	}
 	else
-		Logger::log("Configuration file cannot be loaded, using default settings.");
+		LOG("Configuration file cannot be loaded, using default settings.");
 	settings.close();
 
     // Create the managers.
@@ -119,9 +116,6 @@ Engine::~Engine()
     mGui->getTop()->removeActionListener(this);
     mGui->removeGlobalKeyListener(this);
     delete mGui;
-
-    // Terminate the logger.
-    Logger::terminate();
 }
 
 void Engine::mCleanUpScreens()
@@ -198,9 +192,9 @@ void Engine::keyPressed(gcn::KeyEvent& event)
 	{
 		setDebug(!isDebug());
 		if(isDebug())
-			Logger::log("Debugging enabled");
+			LOG("Debugging enabled");
 		else
-			Logger::log("Debugging disabled");
+			LOG("Debugging disabled");
 	}
 }
 

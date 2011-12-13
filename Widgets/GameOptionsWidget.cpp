@@ -53,9 +53,9 @@ void GameOptionsWidget::action(const gcn::ActionEvent& actionEvent)
 		setVisible(false);
 	}
 	else if(actionEvent.getSource() == &mOptionsButton)
-		Logger::log("Show Game Options");
+		LOG("Show Game Options");
 	else if(actionEvent.getSource() == &mCreditsButton)
-		Logger::log("Show Game Credits");
+		LOG("Show Game Credits");
 	else if(actionEvent.getSource() == &mMainMenuButton)
 	{
 		setActionEventId(GAMEOPTIONS_MAINMENU);

@@ -92,17 +92,17 @@ int main(int args, const char** pArgs)
     }
     catch(gcn::Exception& e)
     {
-    	Logger::error(e);
+    	ERROR(e.getMessage());
         return 1;
     }
     catch(exception& e)
     {
-        Logger::error(e);
+        ERROR(e.what());
         return 1;
     }
     catch(...)
     {
-    	Logger::error("main.cpp::main() -> Unknown error running program.");
+    	ERROR("main.cpp::main() -> Unknown error running program.");
         return 1;
     }
 
