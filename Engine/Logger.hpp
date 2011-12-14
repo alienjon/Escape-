@@ -2,9 +2,7 @@
 #define LOGGER_HPP
 
 #include <fstream>
-#include <stdexcept>
-
-#include "../Engine/guichan.hpp"
+#include <string>
 
 #ifndef __FUNCTION__
 #define __FUNCTION__ "?"
@@ -22,10 +20,9 @@
 #define ERROR(mess) Logger::error(mess, __FUNCTION__, __FILE__, __LINE__)
 
 /**
- * @brief The logger is accessed via Logger::log() to store information to the logfile.
- *
- * The logger is mainly intended to provide messages to the user (via command line) but
- * can additionally be used for warnings or errors.
+ * @brief The logger allows output to be displayed to the console.
+ * To use simply include Logger.hpp and call LOG() or ERROR() with
+ * the log or error message, respectively.
  */
 class Logger
 {
@@ -51,14 +48,6 @@ class Logger
 	// The game logger.
 	static Logger mLogger;
 
-    /**
-     * @brief Log a message.
-     * @param message The message to log.
-     *
-     * @note The logger is created in the first call to this method.
-     */
-	static void mLog(const std::string& message);
-
 	// The output log file.
 	std::ofstream m_logFile;
 
@@ -72,7 +61,7 @@ class Logger
 	 * @brief Display the provided string.
 	 * @param s The string message to display.
 	 */
-	void m_output(const std::string& s);
+	void mLog(const std::string& s);
 };
 
 #endif

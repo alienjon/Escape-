@@ -15,8 +15,8 @@
 // Game constants.
 extern const unsigned int SCREEN_HEIGHT;
 extern const unsigned int SCREEN_WIDTH;
-extern const std::string GAME_NAME;
-extern const std::string GAME_VERSION;
+extern const char* GAME_NAME;
+extern const char* GAME_VERSION;
 extern const char DELIMITER;
 
 /**

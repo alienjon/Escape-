@@ -24,7 +24,7 @@
 #include "../main.hpp"
 #include "../Engine/Engine.hpp"
 
-using std::cout;
+using std::clog;
 using std::endl;
 using std::ios;
 using std::string;
@@ -40,45 +40,39 @@ Logger::Logger()
 	// Check to make sure the log file was properly opened.
 	if(m_logFile.is_open())
 	{
-		m_output(string("Logging to ") + FILE_LOG);
-		m_output("[Logfile for " + string(GAME_NAME) + " v" + GAME_VERSION + "]");
-		m_output("---------------");
+		mLog(string("Logging to ") + FILE_LOG);
+		mLog("[Logfile for " + string(GAME_NAME) + " v" + string(GAME_VERSION) + "]");
+		mLog("---------------");
 	}
 	else
-		cout << "Error in creating " << FILE_LOG << ". Logging all output to the console." << endl;
+		clog << "Error in creating " << FILE_LOG << ". Logging all output to the console." << endl;
 }
 
 Logger::~Logger()
 {
 	// Close the log file.
 	m_logFile.close();
-	cout << "Log file closed." << endl;
+	clog << "Log file closed." << endl;
 }
 
 void Logger::mLog(const string& s)
-{
-    // Now display the message.
-    mLogger.m_output(s);
-}
-
-void Logger::m_output(const string& s)
 {
 	// Output all logged information to the log file.
 	if(m_logFile.is_open())
 		m_logFile << s << endl;
 
 	if(Engine::isDebug())
-		cout << s << endl;
+		clog << s << endl;
 }
 
 void Logger::error(const string& error, const string& function, const string& filename, unsigned int line)
 {
-	mLog("Error: " + filename + "::" + function + "(" + toString(line) + ") -> " + error);
+	mLogger.mLog("Error: " + filename + "::" + function + "(" + toString(line) + ") -> " + error);
 }
 
 void Logger::log(const string& message)
 {
-	mLog("Log: " + message);
+	mLogger.mLog("Log: " + message);
 }
 
 Logger Logger::mLogger;
