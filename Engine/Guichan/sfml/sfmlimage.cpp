@@ -14,30 +14,30 @@ namespace gcn
 {
 	SFMLImage::SFMLImage(const string& filename)
 	{
-		if(!LoadFromFile(filename))
+		if(!loadFromFile(filename))
 			throw GCN_EXCEPTION("Cannot load file with filename: " + filename);
 	}
 
 	int SFMLImage::getHeight() const
 	{
-		return GetHeight();
+		return getSize().y;
 	}
 
 	Color SFMLImage::getPixel(int x, int y)
 	{
-		sf::Image img = CopyToImage();
-		sf::Color color = img.GetPixel(x, y);
+		sf::Image img = copyToImage();
+		sf::Color color = img.getPixel(x, y);
 		return Color(color.r, color.g, color.b, color.a);
 	}
 
 	int SFMLImage::getWidth() const
 	{
-		return GetWidth();
+		return getSize().x;
 	}
 
 	void SFMLImage::putPixel(int x, int y, const Color& color)
 	{
-		sf::Image img = CopyToImage();
-		img.SetPixel(x, y, sf::Color(color.r, color.g, color.b, color.a));
+		sf::Image img = copyToImage();
+		img.setPixel(x, y, sf::Color(color.r, color.g, color.b, color.a));
 	}
 }

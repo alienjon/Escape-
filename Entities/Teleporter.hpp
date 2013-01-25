@@ -17,7 +17,7 @@ class Level;
  * and slowly moves across to the other side.  When it reaches the other side it dies.  If it
  * hits the player on the way the player is automatically teleported to a random area of the map.
  */
-class Teleporter : public Creature, public CreatureWaypointListener
+class Teleporter : public Creature, public CreatureWaypointListener//@todo keep?
 {
 	public:
 	/**

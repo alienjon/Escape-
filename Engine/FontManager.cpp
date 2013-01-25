@@ -46,7 +46,7 @@ const sf::Font& FontManager::getSFFont(const string& filename)
 	if(it == mFontManager->mSFFonts.end())
 	{
 		mFontManager->mSFFonts[filename] = sf::Font();
-		if(!mFontManager->mSFFonts[filename].LoadFromFile(filename))
+		if(!mFontManager->mSFFonts[filename].loadFromFile(filename))
 			throw runtime_error("Error loading sf::Font: " + filename);
 		return mFontManager->mSFFonts[filename];
 	}

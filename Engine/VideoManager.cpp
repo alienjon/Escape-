@@ -43,7 +43,7 @@ const sf::Texture& VideoManager::getTexture(const std::string& filename)
 	if(it == mVideoManager->mTextures.end())
 	{
 		mVideoManager->mTextures[filename] = sf::Texture();
-		if(!mVideoManager->mTextures[filename].LoadFromFile(filename))
+		if(!mVideoManager->mTextures[filename].loadFromFile(filename))
 			throw runtime_error("Error: requested image not found: " + filename);
 		return mVideoManager->mTextures[filename];
 	}

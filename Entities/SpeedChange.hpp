@@ -9,13 +9,13 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "../Entities/ImageEntity.hpp"
+#include "../Entities/Entity.hpp"
 #include "../Engine/Timer.hpp"
 
 class Creature;
 class Level;
 
-class SpeedChange : public ImageEntity
+class SpeedChange : public Entity
 {
 	public:
 	/**

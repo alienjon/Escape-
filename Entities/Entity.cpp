@@ -16,8 +16,6 @@ Entity::Entity() :
 	mIsCollidable(true),
 	mIsInteractable(true)
 {
-	// This is the magic pink to make unchanged colors obvious.
-	mShape.SetColor(sf::Color::Magenta);
 }
 
 Entity::~Entity()
@@ -40,7 +38,7 @@ void Entity::mDie()
 
 void Entity::draw(sf::RenderWindow& renderer)
 {
-	renderer.Draw(mShape);
+	renderer.draw(mSprite);
 }
 
 void Entity::logic(Level& level)
@@ -50,6 +48,7 @@ void Entity::logic(Level& level)
 }
 
 bool sortByZIndex(Entity* a, Entity* b)
-{
-	return a->getDimension().GetOrigin().y < b->getDimension().GetOrigin().y;
+{//@todo change to origin?
+//	return a->getDimension().getOrigin().y < b->getDimension().getOrigin().y;
+	return a->getY() < b->getY();
 }

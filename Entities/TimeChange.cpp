@@ -32,9 +32,8 @@ TimeChange::TimeChange(Level& level) :
 	mInterval(0)
 {
 	mType = ENTITY_TIMECHANGE;
-	mSprite.SetTexture(VideoManager::getTexture(IMAGE_TIMELOSS));
-	mSprite.SetOrigin(getWidth() / 2, getHeight() / 2);
-	adjustSize();
+	mSprite.setTexture(VideoManager::getTexture(IMAGE_TIMELOSS));
+	mSprite.setOrigin(getWidth() / 2, getHeight() / 2);
 	mTimer.start();
 }
 
@@ -62,7 +61,7 @@ void TimeChange::collide(Entity& entity)
 void TimeChange::logic(Level& level)
 {
 	// Perform entity logic.
-	ImageEntity::logic(level);
+	Entity::logic(level);
 
 	// If time is up, set the interval, update the image, and switch time gain/loss state.
 	if(mTimer.getTime() >= mInterval)
@@ -70,17 +69,16 @@ void TimeChange::logic(Level& level)
 		if(mIsAdding)
 		{
 			mInterval = random(TIMECHANGE_INTERVAL_LOSS_MIN, TIMECHANGE_INTERVAL_LOSS_MAX);
-			mSprite.SetTexture(VideoManager::getTexture(IMAGE_TIMELOSS));
+			mSprite.setTexture(VideoManager::getTexture(IMAGE_TIMELOSS));
 			mIsAdding = false;
 		}
 		else
 		{
 			mInterval = random(TIMECHANGE_INTERVAL_GAIN_MIN, TIMECHANGE_INTERVAL_GAIN_MAX);
-			mSprite.SetTexture(VideoManager::getTexture(IMAGE_TIMEGAIN));
+			mSprite.setTexture(VideoManager::getTexture(IMAGE_TIMEGAIN));
 			mIsAdding = true;
 		}
-		adjustSize();
-		mSprite.SetOrigin(getWidth() / 2, getHeight() / 2);
+		mSprite.setOrigin(getWidth() / 2, getHeight() / 2);
 		mTimer.start();
 	}
 }

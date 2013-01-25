@@ -9,6 +9,7 @@
 #include "../Engine/AudioManager.hpp"
 #include "../Game/Keywords.hpp"
 #include "../Game/Level.hpp"
+#include "../Engine/VideoManager.hpp"
 
 const float KEYENTITY_MAXSIZE = 35.f;
 const float KEYENTITY_MINSIZE = 5.f;
@@ -19,6 +20,8 @@ KeyEntity::KeyEntity(sf::Color color) :
 {
 	mType = ENTITY_KEY;
 	mTimer.start();
+	mSprite.setTexture(VideoManager::getTexture(IMAGE_KEY));
+	mSprite.setOrigin(getWidth() / 2, getHeight() / 2);
 }
 
 void KeyEntity::collide(Entity& entity)
@@ -42,7 +45,7 @@ void KeyEntity::collide(Entity& entity)
 	}
 }
 
-void KeyEntity::logic(Level& level)
+void KeyEntity::logic(Level& level)//@todo Update code to enlarge and shrink the keys
 {
 	// Perform entity logic.
 	Entity::logic(level);
@@ -70,8 +73,12 @@ void KeyEntity::logic(Level& level)
 				mIsGrowing = true;
 			}
 		}
+//	    mShape.setPoint(0, sf::Vector2f(-(mSize.x / 2), -(mSize.y / 2)));
+//	    mShape.setPoint(1, sf::Vector2f(-(mSize.x / 2) + mSize.x, -(mSize.y / 2)));
+//	    mShape.setPoint(2, sf::Vector2f(-(mSize.x / 2) + mSize.x, -(mSize.y / 2) + mSize.y));
+//	    mShape.setPoint(3, sf::Vector2f(-(mSize.x / 2), -(mSize.y / 2) + mSize.y));
+//	    mShape.setFillColor(mColor);
 		sf::Vector2f pos = getPosition();
-		mShape = sf::Shape::Rectangle(-(mSize.x / 2), -(mSize.y / 2), mSize.x, mSize.y, mColor);
 		setPosition(pos.x, pos.y);
 		mTimer.start();
 	}

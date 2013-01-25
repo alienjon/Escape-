@@ -24,9 +24,9 @@ MenuButton::MenuButton(const string& name) : gcn::Label(name),
     addFocusListener(this);
 
 //@todo review colors/how the button is displayed
-    mInactiveFont->SetColor(sf::Color(100, 0, 0));
-    mHoverFont->SetColor(sf::Color(255, 0, 0));
-    mPressedFont->SetColor(sf::Color(175, 0, 0));
+    mInactiveFont->setColor(sf::Color(100, 0, 0));
+    mHoverFont->setColor(sf::Color(255, 0, 0));
+    mPressedFont->setColor(sf::Color(175, 0, 0));
 
     // Set the initial font.
     setFont(mInactiveFont);

@@ -36,12 +36,6 @@ class Engine : public gcn::ActionListener, public GCNActionInterface, public gcn
     static void setDebug(bool state);
 
     /**
-     * @brief Set the framerate.
-     * @param rate The framerate.
-     */
-    static void setFramerate(unsigned int rate);
-
-    /**
      * @brief Default constructor.
      */
     Engine();
@@ -61,7 +55,7 @@ class Engine : public gcn::ActionListener, public GCNActionInterface, public gcn
      */
     inline void setScreenBPP(unsigned int bpp)
     {
-    	mVideoMode.BitsPerPixel = bpp;
+    	mVideoMode.bitsPerPixel = bpp;
     }
 
     /**
@@ -72,7 +66,7 @@ class Engine : public gcn::ActionListener, public GCNActionInterface, public gcn
      */
     inline void setScreenHeight(unsigned int height)
     {
-    	mVideoMode.Height = height;
+    	mVideoMode.height = height;
     }
 
     /**
@@ -83,7 +77,7 @@ class Engine : public gcn::ActionListener, public GCNActionInterface, public gcn
      */
     inline void setScreenWidth(unsigned int width)
     {
-    	mVideoMode.Width = width;
+    	mVideoMode.width = width;
     }
 
     /**

@@ -20,7 +20,7 @@ class Pickup : public Entity
 	/**
 	 * @brief Default constructor.
 	 * @param value The value of the pickup.
-	 * @param color The color of the pickup.
+	 * @color The color of the pickup.
 	 * @param size The size of the pickup.
 	 */
 	Pickup(int value, const sf::Color& color, unsigned int size);
@@ -37,9 +37,6 @@ class Pickup : public Entity
 
 	// The size of the pickup.
 	unsigned int mSize;
-
-	// The color of the pickup.
-	sf::Color mColor;
 };
 
 #endif /* PICKUP_HPP_ */

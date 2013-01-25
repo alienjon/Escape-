@@ -7,6 +7,7 @@
 #ifndef GAMESCREEN_HPP_
 #define GAMESCREEN_HPP_
 
+#include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
 
@@ -95,6 +96,9 @@ class GameScreen : public ChangeScoreListener, public TimeChangeInterface, publi
 
     // True if the game is paused.
     bool mIsPaused;
+
+    // The background music.
+    sf::Music mBackMusic;
 
     // The current level.
     Level* mLevel;

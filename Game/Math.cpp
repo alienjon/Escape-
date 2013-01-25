@@ -12,36 +12,36 @@ using std::sqrt;
 
 const float PI = 3.14159265f;
 
-sf::FloatRect boundingBox(const sf::Shape& shape)
+sf::FloatRect boundingBox(const sf::ConvexShape& shape)
 {
-	if(shape.GetPointsCount() == 0)
+	if(shape.getPointCount() == 0)
 		return sf::FloatRect();
 
 	int xMin = 0, xMax = 0, yMin = 0, yMax = 0;
-	for(unsigned int i = 0; i != shape.GetPointsCount(); ++i)
+	for(unsigned int i = 0; i != shape.getPointCount(); ++i)
 	{
-		if(shape.GetPointPosition(i).x < xMin)
-			xMin = shape.GetPointPosition(i).x;
-		if(shape.GetPointPosition(i).x > xMax)
-			xMax = shape.GetPointPosition(i).x;
-		if(shape.GetPointPosition(i).y < yMin)
-			yMin = shape.GetPointPosition(i).y;
-		if(shape.GetPointPosition(i).y > yMax)
-			yMax = shape.GetPointPosition(i).y;
+		if(shape.getPoint(i).x < xMin)
+			xMin = shape.getPoint(i).x;
+		if(shape.getPoint(i).x > xMax)
+			xMax = shape.getPoint(i).x;
+		if(shape.getPoint(i).y < yMin)
+			yMin = shape.getPoint(i).y;
+		if(shape.getPoint(i).y > yMax)
+			yMax = shape.getPoint(i).y;
 	}
 	return sf::FloatRect(xMin, yMin, xMax - xMin, yMax - yMin);
 }
 
-sf::Vector2f center(const sf::Shape& shape)
+sf::Vector2f center(const sf::ConvexShape& shape)
 {
 	float x = 0, y = 0;
-	for(unsigned int i = 0; i != shape.GetPointsCount(); ++i)
+	for(unsigned int i = 0; i != shape.getPointCount(); ++i)
 	{
-		x += shape.GetPointPosition(i).x;
-		y += shape.GetPointPosition(i).y;
+		x += shape.getPoint(i).x;
+		y += shape.getPoint(i).y;
 	}
-	x /= shape.GetPointsCount();
-	y /= shape.GetPointsCount();
+	x /= shape.getPointCount();
+	y /= shape.getPointCount();
 	return sf::Vector2f(x, y);
 }
 
@@ -55,21 +55,21 @@ float dotProduct(const sf::Vector2f& vec1, const sf::Vector2f& vec2)
 	return (vec1.x * vec2.x) + (vec1.y * vec2.y);
 }
 
-sf::Vector2f edge(const sf::Shape& poly, unsigned int edge)
+sf::Vector2f edge(const sf::ConvexShape& poly, unsigned int edge)
 {
-	sf::Vector2f a = poly.GetPointPosition(edge),
-				 b = (edge + 1 == poly.GetPointsCount()) ? poly.GetPointPosition(0) : poly.GetPointPosition(edge + 1);
+	sf::Vector2f a = poly.getPoint(edge),
+				 b = (edge + 1 == poly.getPointCount()) ? poly.getPoint(0) : poly.getPoint(edge + 1);
 	return b - a;
 }
 
-bool isPolyIntersecting(sf::Shape poly1, sf::Shape poly2)
+bool isPolyIntersecting(sf::ConvexShape poly1, sf::ConvexShape poly2)
 {
-	for(unsigned int i = 0; i != poly1.GetPointsCount(); ++i)
-		poly1.SetPointPosition(i, poly1.GetPointPosition(i) + poly1.GetPosition());
-	for(unsigned int i = 0; i != poly2.GetPointsCount(); ++i)
-		poly2.SetPointPosition(i, poly2.GetPointPosition(i) + poly2.GetPosition());
-	int pointCountA = poly1.GetPointsCount(),
-		pointCountB = poly2.GetPointsCount();
+	for(unsigned int i = 0; i != poly1.getPointCount(); ++i)
+		poly1.setPoint(i, poly1.getPoint(i) + poly1.getPosition());
+	for(unsigned int i = 0; i != poly2.getPointCount(); ++i)
+		poly2.setPoint(i, poly2.getPoint(i) + poly2.getPosition());
+	int pointCountA = poly1.getPointCount(),
+		pointCountB = poly2.getPointCount();
 	int totalPoints = pointCountA + pointCountB;
 
 	// Loop through all Points.
@@ -105,13 +105,13 @@ sf::Vector2f normalize(const sf::Vector2f& vec)
 	return sf::Vector2f(vec.x / mag, vec.y / mag);
 }
 
-void projectPolygonOnSingleAxis(const sf::Vector2f& axis, const sf::Shape& polygon, float& min, float& max)
+void projectPolygonOnSingleAxis(const sf::Vector2f& axis, const sf::ConvexShape& polygon, float& min, float& max)
 {
-	float dotP = dotProduct(axis, polygon.GetPointPosition(0));
+	float dotP = dotProduct(axis, polygon.getPoint(0));
 	min = max = dotP;
-	for(unsigned int i = 0; i != polygon.GetPointsCount(); ++i)
+	for(unsigned int i = 0; i != polygon.getPointCount(); ++i)
 	{
-		dotP = dotProduct(polygon.GetPointPosition(i), axis);
+		dotP = dotProduct(polygon.getPoint(i), axis);
 		if(dotP < min) min = dotP;
 		else if(dotP > max) max = dotP;
 	}

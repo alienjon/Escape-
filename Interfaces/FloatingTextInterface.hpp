@@ -33,8 +33,10 @@ class FloatingTextInterface
      * @param position The initial position to display the text (it will float up over a short period of time)
      * @param color The color of the text to display.
      * @param size The character size of the text.
+     *
+     * @todo Do I want the floating text colors to change?  If so, how should they be determined?
      */
-	void distributeFloatingText(const std::string& str, sf::Vector2f position, const sf::Color& color, unsigned int size = 20)
+	void distributeFloatingText(const std::string& str, sf::Vector2f position, const sf::Color& color = sf::Color::White, unsigned int size = 20)
 	{
 		for(std::list<FloatingTextListener*>::iterator it = mFloatingTextListeners.begin(); it != mFloatingTextListeners.end(); ++it)
 			(*it)->addFloatingText(str, position, color, size);

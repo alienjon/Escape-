@@ -38,28 +38,28 @@ namespace gcn
 		KeyInput keyInput;
 		MouseInput mouseInput;
 
-		switch(event.Type)
+		switch(event.type)
 		{
 			case sf::Event::KeyPressed:
 			{
-				keyInput.setKey(convertSFToGCNKey(event.Key.Code));
+				keyInput.setKey(convertSFToGCNKey(event.key.code));
 				keyInput.setType(KeyInput::PRESSED);
-				keyInput.setShiftPressed(event.Key.Shift);
-				keyInput.setAltPressed(event.Key.Alt);
-				keyInput.setControlPressed(event.Key.Control);
-				keyInput.setMetaPressed(event.Key.Code == sf::Keyboard::LSystem);
+				keyInput.setShiftPressed(event.key.shift);
+				keyInput.setAltPressed(event.key.alt);
+				keyInput.setControlPressed(event.key.control);
+				keyInput.setMetaPressed(event.key.code == sf::Keyboard::LSystem);
 				keyInput.setNumericPad(isNumpad(event));
 				mKeyQueue.push(keyInput);
 				break;
 			}
 			case sf::Event::KeyReleased:
 			{
-				keyInput.setKey(convertSFToGCNKey(event.Key.Code));
+				keyInput.setKey(convertSFToGCNKey(event.key.code));
 				keyInput.setType(KeyInput::RELEASED);
-				keyInput.setShiftPressed(event.Key.Shift);
-				keyInput.setAltPressed(event.Key.Alt);
-				keyInput.setControlPressed(event.Key.Control);
-				keyInput.setMetaPressed(event.Key.Code == sf::Keyboard::LSystem);
+				keyInput.setShiftPressed(event.key.shift);
+				keyInput.setAltPressed(event.key.alt);
+				keyInput.setControlPressed(event.key.control);
+				keyInput.setMetaPressed(event.key.code == sf::Keyboard::LSystem);
 				keyInput.setNumericPad(isNumpad(event));
 				mKeyQueue.push(keyInput);
 				break;
@@ -67,32 +67,32 @@ namespace gcn
 			case sf::Event::MouseButtonPressed:
 			{
 				mMouseDown = true;
-				mouseInput.setX(event.MouseButton.X);
-				mouseInput.setY(event.MouseButton.Y);
-				mouseInput.setButton(convertSFToGCNButton(event.MouseButton.Button));
+				mouseInput.setX(event.mouseButton.x);
+				mouseInput.setY(event.mouseButton.y);
+				mouseInput.setButton(convertSFToGCNButton(event.mouseButton.button));
 				mouseInput.setType(MouseInput::PRESSED);//@fixme SDLKeyInput also includes a mouse wheel, how do I implement this in sf?
-				mouseInput.setTimeStamp(mTimestampClock.GetElapsedTime() * 1000);
+				mouseInput.setTimeStamp(int(mTimestampClock.getElapsedTime().asMilliseconds() * 1000.f));
 				mMouseQueue.push(mouseInput);
 				break;
 			}
 			case sf::Event::MouseButtonReleased:
 			{
 				mMouseDown = false;
-				mouseInput.setX(event.MouseButton.X);
-				mouseInput.setY(event.MouseButton.Y);
-				mouseInput.setButton(convertSFToGCNButton(event.MouseButton.Button));
+				mouseInput.setX(event.mouseButton.x);
+				mouseInput.setY(event.mouseButton.y);
+				mouseInput.setButton(convertSFToGCNButton(event.mouseButton.button));
 				mouseInput.setType(MouseInput::RELEASED);
-				mouseInput.setTimeStamp(mTimestampClock.GetElapsedTime() * 1000);
+				mouseInput.setTimeStamp(int(mTimestampClock.getElapsedTime().asMilliseconds() * 1000.f));
 				mMouseQueue.push(mouseInput);
 				break;
 			}
 			case sf::Event::MouseMoved:
 			{
-				mouseInput.setX(event.MouseMove.X);
-				mouseInput.setY(event.MouseMove.Y);
+				mouseInput.setX(event.mouseMove.x);
+				mouseInput.setY(event.mouseMove.y);
 				mouseInput.setButton(MouseInput::EMPTY);
 				mouseInput.setType(MouseInput::MOVED);
-				mouseInput.setTimeStamp(mTimestampClock.GetElapsedTime() * 1000);
+				mouseInput.setTimeStamp(int(mTimestampClock.getElapsedTime().asMilliseconds() * 1000.f));
 				mMouseQueue.push(mouseInput);
 				break;
 			}
@@ -205,7 +205,7 @@ namespace gcn
 				return '-';
 			case sf::Keyboard::Equal:
 				return '=';
-			case sf::Keyboard::Back:
+			case sf::Keyboard::BackSpace:
 				return Key::BACKSPACE;
 			case sf::Keyboard::Divide:
 				return '/';

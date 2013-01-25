@@ -36,7 +36,7 @@ class Timer
 	 * @brief Returns the running state of the timer.
 	 * @return True if the timer is running, false if it is stopped.
 	 */
-	virtual bool isStarted() const;
+	bool isStarted() const;
 
 	/**
 	 * @brief Pause the timer.

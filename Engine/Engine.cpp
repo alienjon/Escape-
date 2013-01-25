@@ -62,11 +62,11 @@ Engine::Engine() :
 			else if(keyword == "Fullscreen")
 				mFullscreen = (toLower(value) == "true") ? true : false;
 			else if(keyword == "BitDepth")
-				mSettings.DepthBits = toInt(value);
+				mSettings.depthBits = toInt(value);
 			else if(keyword == "StencilBits")
-				mSettings.StencilBits = toInt(value);
+				mSettings.stencilBits = toInt(value);
 			else if(keyword == "Antialiasing")
-				mSettings.AntialiasingLevel = toInt(value);
+				mSettings.antialiasingLevel = toInt(value);
 			else if(Engine::isDebug())
 				LOG("Unknown entry in config.txt: " + keyword);
 		}
@@ -97,14 +97,14 @@ Engine::~Engine()
 	settings << "# Commented lines begin with a '#' and the entire line is ignored.\n";
 	settings << "# All other lines have a keyword and a value separated by a colon on a single line.\n";
 	settings << "##\n";
-	settings << "ScreenWidth:" << toString(mVideoMode.Width) << "\n";
-	settings << "ScreenHeight:" << toString(mVideoMode.Height) << "\n";
-	settings << "ScreenBPP:" << toString(mVideoMode.BitsPerPixel) << "\n";
+	settings << "ScreenWidth:" << toString(mVideoMode.width) << "\n";
+	settings << "ScreenHeight:" << toString(mVideoMode.height) << "\n";
+	settings << "ScreenBPP:" << toString(mVideoMode.bitsPerPixel) << "\n";
 	settings << "VerticalSync:" << (mVerticalSync ? "true" : "false") << "\n";
 	settings << "Fullscreen:" << (mFullscreen ? "true" : "false") << "\n";
-	settings << "BitDepth:" << toString(mSettings.DepthBits) << "\n";
-	settings << "StencilBits:" << toString(mSettings.StencilBits) << "\n";
-	settings << "Antialiasing:" << toString(mSettings.AntialiasingLevel) << "\n";
+	settings << "BitDepth:" << toString(mSettings.depthBits) << "\n";
+	settings << "StencilBits:" << toString(mSettings.stencilBits) << "\n";
+	settings << "Antialiasing:" << toString(mSettings.antialiasingLevel) << "\n";
 	settings.close();
 
 	mCleanUpScreens();
@@ -176,14 +176,16 @@ void Engine::keyPressed(gcn::KeyEvent& event)
 	// Quit the game.
 	if(isDebug())
 		if(event.getKey().getValue() == 'c' && event.isControlPressed())
-			mRenderer.Close();
+			mRenderer.close();
 
 	// Save a screenshot.
 	if(event.getKey().getValue() == 'p' && event.isControlPressed())
 	{
 		static unsigned int i = 0;
-		sf::Image shot = mRenderer.Capture();
-		shot.SaveToFile("screenshot_" + toString(i++) + ".png");
+		sf::Image shot = mRenderer.capture();
+		string filename = "screenshot_" + toString(i++) + ".png";
+		shot.saveToFile(filename);
+		LOG("Screenshot saved as '" + filename + "'");
 		return;
 	}
 
@@ -192,9 +194,34 @@ void Engine::keyPressed(gcn::KeyEvent& event)
 	{
 		setDebug(!isDebug());
 		if(isDebug())
+		{
 			LOG("Debugging enabled");
+		}
 		else
-			LOG("Debugging disabled");
+		{
+			LOG_TO_CONSOLE("Debugging disabled");
+		}
+	}
+
+	// Display engine settings.
+	if(event.getKey().getValue() == gcn::Key::F2)
+	{
+		LOG_TO_CONSOLE("Screen Size: " + toString(mVideoMode.width) + " x " + toString(mVideoMode.height) + " (" + toString(mVideoMode.bitsPerPixel) + ")");
+		LOG_TO_CONSOLE(string("Fullscreen: ") + ((mFullscreen) ? "true" : "false"));
+		LOG_TO_CONSOLE(string("Vertical Sync: ") + ((mVerticalSync) ? "true" : "false"));
+		LOG_TO_CONSOLE("Antialiasing: " + toString(mSettings.antialiasingLevel));
+		LOG_TO_CONSOLE("Audio Enabled: TO BE IMPLEMENTED");//@todo implement audio enable
+		LOG_TO_CONSOLE("Music Volume: TO BE IMPLEMENTED");//@todo implement music volume
+		LOG_TO_CONSOLE("SFX Volume: TO BE IMPLEMENTED");//@todo implement sfx volume
+	}
+
+	// Toggle fullscreen.
+	//@todo I can do this without the screen flickering.  It's changing the scale/window decorations.  Look into it?
+	if(event.getKey().getValue() == gcn::Key::ENTER && event.isAltPressed())
+	{
+		mFullscreen = !mFullscreen;
+		updateScreen();
+		LOG(string("Fullscreen ") + (mFullscreen ? "enabled" : "disabled"));
 	}
 }
 
@@ -218,11 +245,11 @@ void Engine::run()
     mLoadNextScreen();
 
 	// Basic game loop.
-    while(mRenderer.IsOpened())
+    while(mRenderer.isOpen())
     {
     	// Process the events.
     	sf::Event event;
-    	while(mRenderer.PollEvent(event))
+    	while(mRenderer.pollEvent(event))
     		mInput.pushInput(event);
 
     	// Logic.
@@ -233,11 +260,11 @@ void Engine::run()
 		(*mCurrentScreen)->draw(mRenderer);
 
 		// Draw the gui.
-		mRenderer.SetView(mRenderer.GetDefaultView());
+		mRenderer.setView(mRenderer.getDefaultView());
 		mGui->draw();
 
         // Render the frame.
-        mRenderer.Display();
+        mRenderer.display();
 
         // If the screen has finished, then load the next screen.
         if((*mCurrentScreen)->isDone())
@@ -251,10 +278,12 @@ void Engine::run()
 
 void Engine::updateScreen()
 {
-	mRenderer.Create(mVideoMode, GAME_NAME, (mFullscreen) ? sf::Style::Fullscreen : sf::Style::Titlebar, mSettings);
+	mRenderer.create(mVideoMode, GAME_NAME, (mFullscreen) ? sf::Style::Fullscreen : sf::Style::Titlebar, mSettings);
 
 	// Set other options that are defaulted when the renderer is re-created.
-	mRenderer.EnableKeyRepeat(false);
+	mRenderer.setKeyRepeatEnabled(false);
+    mRenderer.setFramerateLimit(100); // @note Sets the maximum framerate if vsync is disabled.
+    mRenderer.setVerticalSyncEnabled(mVerticalSync);
 }
 
 void Engine::setDebug(bool state)

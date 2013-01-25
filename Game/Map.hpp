@@ -26,13 +26,15 @@ class Map
      * @param tileset The tileset for the map to use.
      */
 	Map(unsigned int width, unsigned int height);
+	virtual ~Map()
+	{}
 
     /**
      * @brief Check an area vs. map collisions (ie: hitting a wall)
      * @param the area to check.
      * @return True if a collision occurred.
      */
-    virtual bool checkCollision(const sf::Shape& area) const;
+    virtual bool checkCollision(const sf::FloatRect& area) const;
 
     /**
      * @brief Draw the map.

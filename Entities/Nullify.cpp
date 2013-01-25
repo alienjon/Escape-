@@ -16,8 +16,7 @@ Nullify::Nullify(Level& level) :
 {
 	mType = ENTITY_NULLIFY;
 	mSprite = sf::Sprite(VideoManager::getTexture(IMAGE_ITEM_NULLIFY));
-	adjustSize();
-	mSprite.SetOrigin(getWidth() / 2, getHeight() / 2);
+	mSprite.setOrigin(getWidth() / 2, getHeight() / 2);
 }
 
 void Nullify::mPerform(Creature& creature)

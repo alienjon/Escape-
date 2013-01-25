@@ -6,22 +6,24 @@
  */
 #include "Portal.hpp"
 
+#include "../Game/Keywords.hpp"
 #include "../Game/Level.hpp"
+#include "../Engine/VideoManager.hpp"
 
 using std::list;
 using std::pair;
 
 const float PORTAL_ANIMATION_STEP = 0.2f;
 
-Portal::Portal(unsigned int width, unsigned int height) :
+Portal::Portal(unsigned int width, unsigned int height) ://@todo width and height may not be used any longer.  Evaluate after animation is complete
 	mWidth(width),
 	mHeight(height),
 	mStartRadius(0.f)
 {
 	mType = ENTITY_PORTAL;
 	setCollidable(false);
-	mShape = sf::Shape::Circle(mWidth / 2, mHeight / 2, (mWidth + mHeight) / 2, sf::Color::White);
-	mShape.EnableFill(true);
+	mSprite.setTexture(VideoManager::getTexture(IMAGE_PORTAL));
+	mSprite.setOrigin(getWidth() / 2, getHeight() / 2);
 	mTimer.start();
 }
 
@@ -46,13 +48,12 @@ void Portal::draw(sf::RenderWindow& renderer)
 	Entity::draw(renderer);
 	for(list<pair<sf::Color, float> >::iterator it = mLocks.begin(); it != mLocks.end(); ++it)
 	{
-		sf::Shape shape = sf::Shape::Circle(getX() + (mWidth / 2), getY() + (mHeight / 2), it->second - 5, it->first, 5, it->first);
-		shape.EnableFill(false);
-		renderer.Draw(shape);
+		sf::CircleShape shape(mWidth / 2, 32);// getX() + (mWidth / 2), getY() + (mHeight / 2), it->second - 5, it->first, 5, it->first);
+		renderer.draw(shape);
 	}
 }
 
-void Portal::logic(Level& level)
+void Portal::logic(Level& level)//@todo how do I want the colors to display (animation) on the portal?
 {
 	if(mTimer.getTime() >= 10)
 	{

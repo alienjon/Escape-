@@ -7,12 +7,12 @@
 #ifndef ZOOMSCREEN_HPP_
 #define ZOOMSCREEN_HPP_
 
-#include "../Entities/ImageEntity.hpp"
+#include "../Entities/Entity.hpp"
 #include "../Engine/Timer.hpp"
 
 class Level;
 
-class ZoomScreen : public ImageEntity
+class ZoomScreen : public Entity
 {
 	public:
 	/**

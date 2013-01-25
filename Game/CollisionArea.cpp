@@ -10,28 +10,35 @@
 
 using std::list;
 
-void CollisionArea::add(const sf::Shape& rect)
+void CollisionArea::add(const sf::FloatRect& rect)
 {
 	mAreas.push_back(rect);
 }
 
 void CollisionArea::setPosition(float x, float y)
 {
-	for(list<sf::Shape>::iterator it = mAreas.begin(); it != mAreas.end(); it++)
-		for(unsigned int i = 0; i != it->GetPointsCount(); ++i)
-			it->SetPosition(x, y);
+	mPosition.x = x;
+	mPosition.y = y;
 }
 
 void CollisionArea::draw(sf::RenderWindow& renderer)
 {
-	for(list<sf::Shape>::iterator it = mAreas.begin(); it != mAreas.end(); it++)
-		renderer.Draw(*it);
+	for(list<sf::FloatRect>::iterator it = mAreas.begin(); it != mAreas.end(); it++)
+	{
+		sf::RectangleShape rect(sf::Vector2f(it->width, it->height));
+		rect.setPosition(it->left + mPosition.x, it->top + mPosition.y);
+		renderer.draw(rect);
+	}
 }
 
-bool CollisionArea::isIntersecting(const sf::Shape& area) const
+bool CollisionArea::isIntersecting(const sf::FloatRect& area) const
 {
-	for(list<sf::Shape>::const_iterator it = mAreas.begin(); it != mAreas.end(); it++)
-		if(isPolyIntersecting(area, *it))
+	sf::FloatRect new_area = area;//@todo make sure this code works (originally this was shapes that held their own coordinates, now there's a single offset coordinate)
+	new_area.left -= mPosition.x;
+	new_area.top -= mPosition.y;
+
+	for(list<sf::FloatRect>::const_iterator it = mAreas.begin(); it != mAreas.end(); it++)
+		if(new_area.intersects(*it))
 			return true;
 	return false;
 }

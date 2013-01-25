@@ -264,7 +264,7 @@ Map::Map(unsigned int width, unsigned int height) :
                     //{this places the tile in the cell}  {this moves the tile over within the cell block}
 					unsigned int pos = (cell_y * MAP_CELL_SIDE + y) * width_in_tiles + (cell_x * MAP_CELL_SIDE + x);
 					mMap.at(pos).first = mTileset.getTile(tile);
-					mMap.at(pos).first.SetPosition((cell_x * MAP_CELL_SIDE * tile_width) + (x * tile_width), (cell_y * MAP_CELL_SIDE * tile_height)+ (y * tile_height));
+					mMap.at(pos).first.setPosition((cell_x * MAP_CELL_SIDE * tile_width) + (x * tile_width), (cell_y * MAP_CELL_SIDE * tile_height)+ (y * tile_height));
 					mMap.at(pos).second = mTileset.getTileCollision(tile);
 					mMap.at(pos).second.setPosition((cell_x * MAP_CELL_SIDE * tile_width) + (x * tile_width),
 													(cell_y * MAP_CELL_SIDE * tile_height) + (y * tile_height));
@@ -274,17 +274,16 @@ Map::Map(unsigned int width, unsigned int height) :
 	}
 }
 
-bool Map::checkCollision(const sf::Shape& area) const
+bool Map::checkCollision(const sf::FloatRect& area) const
 {
 	// The width of the map in tiles.
 	unsigned int width_in_tiles = mWidth * MAP_CELL_SIDE;
 
 	// Calculate the start and end x,y values.
-	sf::FloatRect box = boundingBox(area);
-	int start_y = ((area.GetPosition().y + box.Top)				 / mTileset.getHeight()) - 1,
-		end_y   = ((area.GetPosition().y + box.Top + box.Height) / mTileset.getHeight()) + 1,
-		start_x = ((area.GetPosition().x + box.Left)			 / mTileset.getWidth())  - 1,
-		end_x   = ((area.GetPosition().x + box.Left + box.Width) / mTileset.getWidth())  + 1;
+	int start_y = (area.top				 / mTileset.getHeight()) - 1,
+		end_y   = ((area.top + area.height) / mTileset.getHeight()) + 1,
+		start_x = ((area.left)			 / mTileset.getWidth())  - 1,
+		end_x   = ((area.left + area.width) / mTileset.getWidth())  + 1;
 
 	// Correct for min,max.
 	start_y = (start_y < 0) ? 0 : start_y;
@@ -304,8 +303,8 @@ void Map::draw(sf::RenderWindow& renderer)
 	/* Only draw tiles in the bounds of the screen */
 	// Calculate the start and end x,y values.
 	unsigned int width_in_tiles = mWidth * MAP_CELL_SIDE;
-	sf::Vector2f pos = renderer.GetView().GetCenter(),
-				 siz = renderer.GetView().GetSize();
+	sf::Vector2f pos = renderer.getView().getCenter(),
+				 siz = renderer.getView().getSize();
 	int start_x = (pos.x - (siz.x / 2)) / mTileset.getWidth() - 1,
 	    end_x   = (pos.x + (siz.x / 2)) / mTileset.getWidth() + 1,
 		start_y = (pos.y - (siz.y / 2)) / mTileset.getHeight() - 1,
@@ -320,7 +319,7 @@ void Map::draw(sf::RenderWindow& renderer)
 	// Draw the tiles in the determined area.
 	for(int y = start_y; y != end_y; ++y)
 		for(int x = start_x; x != end_x; ++x)
-			renderer.Draw(mMap.at(x + y * width_in_tiles).first);
+			renderer.draw(mMap.at(x + y * width_in_tiles).first);
 }
 
 unsigned int Map::getComplexity() const

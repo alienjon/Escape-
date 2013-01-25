@@ -45,8 +45,8 @@ GUI::GUI(gcn::SFMLGraphics& graphics, gcn::SFMLInput& input)
 
     // Set the global font.
 	gcn::SFMLFont* font = FontManager::getGCNFont(FONT_DEFAULT);
-	font->SetStyle(sf::Text::Italic | sf::Text::Bold);
-	font->SetColor(sf::Color::Magenta);
+	font->setStyle(sf::Text::Italic | sf::Text::Bold);
+	font->setColor(sf::Color::Magenta);
     gcn::Widget::setGlobalFont(font);
     mGraphics->setFont(font);
 }

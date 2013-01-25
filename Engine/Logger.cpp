@@ -55,13 +55,13 @@ Logger::~Logger()
 	clog << "Log file closed." << endl;
 }
 
-void Logger::mLog(const string& s)
+void Logger::mLog(const string& s, bool force)
 {
 	// Output all logged information to the log file.
 	if(m_logFile.is_open())
 		m_logFile << s << endl;
 
-	if(Engine::isDebug())
+	if(Engine::isDebug() || force)
 		clog << s << endl;
 }
 
@@ -70,9 +70,9 @@ void Logger::error(const string& error, const string& function, const string& fi
 	mLogger.mLog("Error: " + filename + "::" + function + "(" + toString(line) + ") -> " + error);
 }
 
-void Logger::log(const string& message)
+void Logger::log(const string& message, bool force)
 {
-	mLogger.mLog("Log: " + message);
+	mLogger.mLog("Log: " + message, force);
 }
 
 Logger Logger::mLogger;

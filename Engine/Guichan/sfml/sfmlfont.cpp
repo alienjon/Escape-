@@ -19,15 +19,15 @@ namespace gcn
 
 	SFMLFont::SFMLFont(const string& filename)
 	{
-		if(!mFont.LoadFromFile(filename))
+		if(!mFont.loadFromFile(filename))
 			throw GCN_EXCEPTION("Error loading font: " + filename);
-		SetFont(mFont);
+		setFont(mFont);
 	}
 
-	SFMLFont::SFMLFont(const SFMLFont& font) : mFont(font.GetFont())
+	SFMLFont::SFMLFont(const SFMLFont& font) : mFont(*font.getFont())
 	{
 		if(this != &font)
-			SetFont(mFont);
+			setFont(mFont);
 	}
 
 	SFMLFont::~SFMLFont()
@@ -38,8 +38,8 @@ namespace gcn
 		if(this == &font)
 			return *this;
 
-		mFont = font.GetFont();
-		SetFont(mFont);
+		mFont = *(font.getFont());
+		setFont(mFont);
 		return *this;
 	}
 
@@ -50,31 +50,31 @@ namespace gcn
 			throw GCN_EXCEPTION("Trying to draw a sf:String to a non-SFMLGraphics.");
 
 		const ClipRectangle& top = graphics->getCurrentClipArea();
-		SetString(text);
-		SetPosition(x + top.xOffset, y + top.y);
+		setString(text);
+		setPosition(x + top.xOffset, y + top.y);
 		sfmlGraphics->startDraw();
-		sfmlGraphics->Draw(*this);
+		sfmlGraphics->draw(*this);
 		sfmlGraphics->stopDraw();
 	}
 
 	int SFMLFont::getHeight() const
 	{
-		return GetCharacterSize();
+		return getCharacterSize();
 	}
 
 	int SFMLFont::getWidth(const string& text) const
 	{
-		sf::Text str(text, GetFont(), GetCharacterSize());
-		return str.GetRect().Width;
+		sf::Text str(text, *getFont(), getCharacterSize());
+		return str.getGlobalBounds().width;
 	}
 
 	void SFMLFont::setColor(const gcn::Color& color)
 	{
-		SetColor(sf::Color(color.r, color.g, color.b, color.a));
+		setColor(sf::Color(color.r, color.g, color.b, color.a));
 	}
 
 	void SFMLFont::setColor(const sf::Color& color)
 	{
-		SetColor(color);
+		sf::Text::setColor(color);
 	}
 }

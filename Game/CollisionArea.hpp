@@ -17,11 +17,14 @@
 class CollisionArea
 {
 	public:
+	virtual ~CollisionArea()
+	{}
+
 	/**
 	 * @brief Add a shape to the area.
 	 * @param rect The rectangle to add.
 	 */
-	virtual void add(const sf::Shape& rect);
+	virtual void add(const sf::FloatRect& rect);
 
 	/**
 	 * @brief Draw the collision area.
@@ -34,7 +37,7 @@ class CollisionArea
 	 * @param area The area to check.
 	 * @return True if an intersection exists.
 	 */
-	virtual bool isIntersecting(const sf::Shape& area) const;
+	virtual bool isIntersecting(const sf::FloatRect& area) const;
 
 	/**
 	 * @brief Set the position of the area.
@@ -45,7 +48,10 @@ class CollisionArea
 
 	private:
 	// The edges of the polygon.
-	std::list<sf::Shape> mAreas;
+	std::list<sf::FloatRect> mAreas;
+
+	// The location of the area.
+	sf::Vector2f mPosition;
 };
 
 #endif /* COLLISIONAREA_HPP_ */

@@ -20,8 +20,7 @@ ZoomScreen::ZoomScreen(Level& level) :
 {
 	mType = ENTITY_ZOOM;
 	mSprite = sf::Sprite(VideoManager::getTexture(IMAGE_ZOOMSCREEN));
-	adjustSize();
-	mSprite.SetOrigin(getWidth() / 2, getHeight() / 2);
+	mSprite.setOrigin(getWidth() / 2, getHeight() / 2);
 	mTimer.start();
 }
 
@@ -50,17 +49,16 @@ void ZoomScreen::logic(Level& level)
 	{
 		if(mIsZooming)
 		{
-			mSprite.Scale(ZOOM_STEP, ZOOM_STEP);
-			if(mSprite.GetScale().x >= 2.5f)
+			mSprite.scale(ZOOM_STEP, ZOOM_STEP);
+			if(mSprite.getScale().x >= 2.5f)
 				mIsZooming = false;
 		}
 		else
 		{
-			mSprite.Scale(1/ZOOM_STEP, 1/ZOOM_STEP);
-			if(mSprite.GetScale().x <= 0.3f)
+			mSprite.scale(1/ZOOM_STEP, 1/ZOOM_STEP);
+			if(mSprite.getScale().x <= 0.3f)
 				mIsZooming = true;
 		}
-		adjustSize();
 		level.checkEntityCollision(*this);
 		mTimer.start();
 	}

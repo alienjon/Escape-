@@ -16,14 +16,14 @@ extern const float PI;
  * @param shape The shape to calculate.
  * @return The bounding box.
  */
-sf::FloatRect boundingBox(const sf::Shape& shape);
+sf::FloatRect boundingBox(const sf::ConvexShape& shape);
 
 /**
  * Calculate the center vector of the polygon.
  * @param shape The shape to get the center of.
  * @return The center vector of the polygon.
  */
-sf::Vector2f center(const sf::Shape& shape);
+sf::Vector2f center(const sf::ConvexShape& shape);
 
 /**
  * Calculates the distance between 2 line segments that exist on a single axis.
@@ -49,7 +49,7 @@ float dotProduct(const sf::Vector2f& vec1, const sf::Vector2f& vec2);
  * @param edge The edge position to get (correlates with the vector position)
  * @return A vector of the vector in the polygon.
  */
-sf::Vector2f edge(const sf::Shape& poly, unsigned int edge);
+sf::Vector2f edge(const sf::ConvexShape& poly, unsigned int edge);
 
 /**
  * Determine if 2 polygons are intersecting.
@@ -57,7 +57,7 @@ sf::Vector2f edge(const sf::Shape& poly, unsigned int edge);
  * @param poly2 The second polygon.
  * @return True if an intersection exists.
  */
-bool isPolyIntersecting(sf::Shape poly1, sf::Shape poly2);
+bool isPolyIntersecting(sf::ConvexShape poly1, sf::ConvexShape poly2);
 
 /**
  * Calculate the magnitude of this vector.
@@ -80,7 +80,7 @@ sf::Vector2f normalize(const sf::Vector2f& vec);
  * @param min Reference to the minimum value of the polygon.
  * @param max Reference to the maximum value of the polygon.
  */
-void projectPolygonOnSingleAxis(const sf::Vector2f& axis, const sf::Shape& polygon, float& min, float& max);
+void projectPolygonOnSingleAxis(const sf::Vector2f& axis, const sf::ConvexShape& polygon, float& min, float& max);
 
 /**
  * @brief Converts Radians to Degrees.

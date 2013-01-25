@@ -11,3 +11,5 @@ mapfile.txt
 .cproject
 error.log
 makefile
+doxy.Doxyfile
+html/

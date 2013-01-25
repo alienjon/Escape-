@@ -28,8 +28,7 @@ SpeedChange::SpeedChange(float speed, Creature& creature) :
 		mSprite = sf::Sprite(VideoManager::getTexture(IMAGE_SLOWPLAYER));
 	else
 		mSprite = sf::Sprite(VideoManager::getTexture(IMAGE_FASTPLAYER));
-	adjustSize();
-	mSprite.SetOrigin(getWidth() / 2, getHeight() / 2);
+	mSprite.setOrigin(getWidth() / 2, getHeight() / 2);
 }
 
 void SpeedChange::collide(Entity& entity)
@@ -58,13 +57,12 @@ void SpeedChange::collide(Entity& entity)
 
 void SpeedChange::draw(sf::RenderWindow& renderer)
 {
-	if(!mTimer.isStarted())
-		ImageEntity::draw(renderer);
+	if(!mTimer.isStarted())draw(renderer);
 }
 
 void SpeedChange::logic(Level& level)
 {
-	ImageEntity::logic(level);
+	Entity::logic(level);
 
 	if(mTimer.isStarted() &&
 	   ((mTimer.getTime() >= SPEEDCHANGE_INCREASE_INTERVAL && mSpeed < 1.f) ||

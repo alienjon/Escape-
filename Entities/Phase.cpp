@@ -16,8 +16,7 @@ Phase::Phase(Level& level) :
 {
 	mType = ENTITY_PHASE;
 	mSprite = sf::Sprite(VideoManager::getTexture(IMAGE_ITEM_PHASE));
-	adjustSize();
-	mSprite.SetOrigin(getWidth() / 2, getHeight() / 2);
+	mSprite.setOrigin(getWidth() / 2, getHeight() / 2);
 }
 
 void Phase::mPerform(Creature& creature)

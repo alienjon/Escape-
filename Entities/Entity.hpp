@@ -78,29 +78,33 @@ class Entity : public ActionInterface, public AddLockInterface, public ChangeSco
     /**
      * @brief Get the alpha value for the entity.
      * @return The alpha value for the entity.
+     *
+     * @note Must be implemented by inheriting classes as it is based off of class-specific sf::Drawables.
      */
     virtual unsigned int getAlpha() const
     {
-    	return mShape.GetColor().a;
+    	return mSprite.getColor().a;
     }
 
     /**
      * @brief Get the physical area of this being.
      * @return The dimension.
+     *
+     * @note Must be implemented by inheriting classes as it is based off of class-specific sf::Drawables.
      */
-    virtual const sf::Shape& getDimension()
+    virtual const sf::FloatRect getDimension() const
     {
-    	return mShape;
+    	return mSprite.getGlobalBounds();
     }
 
     /**
      * @brief Get the drawable aspect of the entity.
      * @return The drawable aspect of the entity.
      */
-    virtual sf::Drawable& getDrawable()
-    {
-    	return mShape;
-    }
+//    virtual sf::Drawable& getDrawable()@todo needed?
+//    {
+//    	return mShape;
+//    }
 
     /**
      * @brief Get the being's height.
@@ -108,7 +112,8 @@ class Entity : public ActionInterface, public AddLockInterface, public ChangeSco
      */
     virtual unsigned int getHeight() const
     {
-    	return boundingBox(mShape).Height;
+    	return mSprite.getGlobalBounds().height;
+//    			boundingBox(mShape).height;@todo remove?
     }
 
     /**
@@ -117,7 +122,7 @@ class Entity : public ActionInterface, public AddLockInterface, public ChangeSco
      */
     virtual const sf::Vector2f& getPosition() const
     {
-    	return mShape.GetPosition();
+    	return mSprite.getPosition();
     }
 
     /**
@@ -135,7 +140,8 @@ class Entity : public ActionInterface, public AddLockInterface, public ChangeSco
      */
     virtual unsigned int getWidth() const
     {
-    	return boundingBox(mShape).Width;
+    	return mSprite.getGlobalBounds().width;
+//    	return boundingBox(mShape).width;@todo remove?
     }
 
     /**
@@ -144,7 +150,7 @@ class Entity : public ActionInterface, public AddLockInterface, public ChangeSco
      */
     virtual float getX() const
     {
-    	return mShape.GetPosition().x;
+    	return getPosition().x;
     }
 
     /**
@@ -153,7 +159,7 @@ class Entity : public ActionInterface, public AddLockInterface, public ChangeSco
      */
     virtual float getY() const
     {
-    	return mShape.GetPosition().y;
+    	return getPosition().y;
     }
 
     /**
@@ -203,11 +209,13 @@ class Entity : public ActionInterface, public AddLockInterface, public ChangeSco
     /**
      * @brief Set the alpha of the entity.
      * @param a The alpha value.
+     *
+     * @note Must be implemented in the inheriting class as it affects the class-specific sf::Drawable used.
      */
     virtual void setAlpha(unsigned int a)
     {
-    	const sf::Color& c = mShape.GetColor();
-    	mShape.SetColor(sf::Color(c.r, c.g, c.b, a));
+    	const sf::Color& c = mSprite.getColor();
+    	mSprite.setColor(sf::Color(c.r, c.g, c.b, a));
     }
 
     /**
@@ -232,11 +240,12 @@ class Entity : public ActionInterface, public AddLockInterface, public ChangeSco
      * @brief Set the position of this being.
      * @param x The x position.
      * @param y The y position.
+     *
+     * @note Children of this class must set the position for the specific sf::Drawable used to display to the screen (position information is stored in that object)
      */
     inline void setPosition(float x, float y)
     {
-    	setX(x);
-    	setY(y);
+    	mSprite.setPosition(x, y);
     }
 
     /**
@@ -245,7 +254,7 @@ class Entity : public ActionInterface, public AddLockInterface, public ChangeSco
      */
     virtual void setX(float x)
     {
-    	mShape.SetX(x);
+    	setPosition(x, getY());
     }
 
     /**
@@ -254,7 +263,7 @@ class Entity : public ActionInterface, public AddLockInterface, public ChangeSco
      */
     virtual void setY(float y)
     {
-    	mShape.SetY(y);
+    	setPosition(getX(), y);
     }
 
     protected:
@@ -276,8 +285,8 @@ class Entity : public ActionInterface, public AddLockInterface, public ChangeSco
     // The being type.
     Entity::EntityType mType;
 
-    // The image.
-    sf::Shape mShape;
+    // The visual entity.
+    sf::Sprite mSprite;
 
     private:
     // The collidability state of this being.

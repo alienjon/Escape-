@@ -17,7 +17,7 @@
 using std::list;
 using std::queue;
 
-const unsigned int CREATURE_MOVEMENT_DISTANCE = 4;
+const unsigned int CREATURE_MOVEMENT_DISTANCE = 8;
 
 Creature::Creature() :
 	mUp(false), mDown(false), mLeft(false), mRight(false),
@@ -72,7 +72,7 @@ void Creature::logic(Level& level)
 	if(isMovable() && (mUp || mDown || mLeft || mRight))
 	{
 		// If we're moving, then do the generic stuff.
-		if(mMovementTimer.getTime() > 5)
+		if(mMovementTimer.getTime() > 15)
 		{
 			float dist = CREATURE_MOVEMENT_DISTANCE * mSpeed;
 			if(mUp)

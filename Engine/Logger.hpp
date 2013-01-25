@@ -17,6 +17,7 @@
  * the exception occured by using other compiler macros.
  */
 #define LOG(mess) Logger::log(mess)
+#define LOG_TO_CONSOLE(mess) Logger::log(mess, true)
 #define ERROR(mess) Logger::error(mess, __FUNCTION__, __FILE__, __LINE__)
 
 /**
@@ -41,8 +42,9 @@ class Logger
 	/**
 	 * @brief Log an informational message.
 	 * @param message The message.
+	 * @param force Force the log message to the console.
 	 */
-	static void log(const std::string& message);
+	static void log(const std::string& message, bool force = false);
 
 	protected:
 	// The game logger.
@@ -60,8 +62,9 @@ class Logger
 	/**
 	 * @brief Display the provided string.
 	 * @param s The string message to display.
+	 * @param force Force the log message to the console.
 	 */
-	void mLog(const std::string& s);
+	void mLog(const std::string& s, bool force = false);
 };
 
 #endif

@@ -7,12 +7,12 @@
 #ifndef FLIPSCREEN_HPP_
 #define FLIPSCREEN_HPP_
 
-#include "../Entities/ImageEntity.hpp"
+#include "../Entities/Entity.hpp"
 #include "../Engine/Timer.hpp"
 
 class Level;
 
-class FlipScreen : public ImageEntity
+class FlipScreen : public Entity
 {
 	public:
 	/**

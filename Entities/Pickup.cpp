@@ -12,11 +12,10 @@
 
 Pickup::Pickup(int value, const sf::Color& color, unsigned int size) :
 	mValue(value),
-	mSize(size),
-	mColor(color)
+	mSize(size)
 {
 	mType = ENTITY_PICKUP;
-	mShape = sf::Shape::Rectangle(0-int(size/2), 0-int(size/2), size, size, mColor);
+	mSprite.setColor(color);
 }
 
 void Pickup::collide(Entity& entity)
@@ -26,7 +25,7 @@ void Pickup::collide(Entity& entity)
 	{
 		// Distribute information that the pickup was grabbed.
 		distributeChangeScore(mValue);
-		distributeFloatingText(toString(mValue), sf::Vector2f(getX() + getWidth(), getY()), mColor);
+		distributeFloatingText(toString(mValue), sf::Vector2f(getX() + getWidth(), getY()));
 
 		// Kill the pickup.
 		mDie();

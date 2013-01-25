@@ -24,13 +24,6 @@ class AudioManager
     static void create();
 
     /**
-     * @brief Get a music file to play.
-     * @param filename The filename of the music.
-     * @return The music.
-     */
-//    static sf::Music getMusic(const std::string& filename);
-
-    /**
      * @brief Get a sound to play.
      * @param filename The filename of the sound.
      */
@@ -58,7 +51,6 @@ class AudioManager
     sf::SoundBuffer& mGetSoundBuffer(const std::string& filename);
 
     // The audio collections.
-//    std::map<std::string, sf::Music> mMusics;@todo implement music
     std::map<std::string, sf::SoundBuffer> mSounds;
 
     // This is the list of playing sounds.  When playSound() is called, all stopped sounds are removed.

@@ -9,12 +9,14 @@
 #include "../Engine/AudioManager.hpp"
 #include "../Game/Keywords.hpp"
 #include "../Game/Level.hpp"
+#include "../Engine/VideoManager.hpp"
 
-Teleporter::Teleporter(unsigned int width, unsigned int height, Level& level) :
+Teleporter::Teleporter(unsigned int width, unsigned int height, Level& level) ://@todo remove teleporter entirely?  If not, then how is it implemented?
 	mLevel(level)
 {
 	mType = ENTITY_TELEPORTER;
-	mShape = sf::Shape::Rectangle(0, 0, width, height, sf::Color::Red);
+//	mSprite.setTexture(VideoManager::getTexture(IMAGE_TELEPORTER));
+//	mSprite.setOrigin(getWidth() / 2, getHeight() / 2);
 	addCreatureWaypointListener(this);
 	setCollidable(false);
 	setSpeed(0.66);

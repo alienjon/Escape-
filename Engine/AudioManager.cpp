@@ -28,7 +28,7 @@ sf::SoundBuffer& AudioManager::mGetSoundBuffer(const string& filename)
 	if(it == mSounds.end())
 	{
 		mSounds[filename] = sf::SoundBuffer();
-		if(!mSounds[filename].LoadFromFile(filename))
+		if(!mSounds[filename].loadFromFile(filename))
 			throw runtime_error("Error loading sound: " + filename);
 		return mSounds[filename];
 	}
@@ -42,26 +42,6 @@ void AudioManager::create()
         mAudioManager = new AudioManager;
 }
 
-//sf::Music AudioManager::getMusic(const string& filename)
-//{
-//	if(!mAudioManager)
-//		create();
-//
-//	// Find/load the requested music file.
-//	map<string, sf::Music>::iterator it = mAudioManager->mMusics.find(filename);
-//
-//	// If the music isn't found, load it.
-//	if(it == mAudioManager->mMusics.end())
-//	{
-//		mAudioManager->mMusics[filename] = sf::Music();
-//		if(!mAudioManager->mMusics[filename].OpenFromFile(filename))
-//			throw runtime_error("Error loading music: " + filename);
-//		return mAudioManager->mMusics[filename];
-//	}
-//	else
-//		return it->second;
-//}
-
 void AudioManager::playSound(const string& filename)
 {
 	if(!mAudioManager)
@@ -71,7 +51,7 @@ void AudioManager::playSound(const string& filename)
 	list<list<sf::Sound>::iterator> toRemove;
 	for(list<sf::Sound>::iterator it = mAudioManager->mPlayingSounds.begin(); it != mAudioManager->mPlayingSounds.end(); ++it)
 	{
-		if(it->GetStatus() == sf::Sound::Stopped)
+		if(it->getStatus() == sf::Sound::Stopped)
 			toRemove.push_back(it);
 	}
 	for(list<list<sf::Sound>::iterator>::iterator it = toRemove.begin(); it != toRemove.end(); ++it)
@@ -81,7 +61,7 @@ void AudioManager::playSound(const string& filename)
 	try
 	{
 		mAudioManager->mPlayingSounds.push_back(sf::Sound(mAudioManager->mGetSoundBuffer(filename)));
-		mAudioManager->mPlayingSounds.back().Play();
+		mAudioManager->mPlayingSounds.back().play();
 	}
 	catch(const runtime_error& e)
 	{

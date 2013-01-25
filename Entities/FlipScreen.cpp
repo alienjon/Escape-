@@ -19,8 +19,7 @@ FlipScreen::FlipScreen(Level& level) :
 {
 	mType = ENTITY_FLIP;
 	mSprite = sf::Sprite(VideoManager::getTexture(IMAGE_FLIPSCREEN));
-	adjustSize();
-	mSprite.SetOrigin(getWidth() / 2, getHeight() / 2);
+	mSprite.setOrigin(getWidth() / 2, getHeight() / 2);
 	mTimer.start();
 }
 
@@ -47,7 +46,7 @@ void FlipScreen::logic(Level& level)
 {
 	if(mTimer.getTime() >= ROTATE_INTERVAL)
 	{
-		mSprite.Rotate(ROTATE_STEP);
+		mSprite.rotate(ROTATE_STEP);
 		mTimer.start();
 	}
 }

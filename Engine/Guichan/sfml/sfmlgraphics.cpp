@@ -23,7 +23,7 @@ namespace gcn
 
 	void SFMLGraphics::_beginDraw()
 	{
-		pushClipArea(Rectangle(0, 0, GetWidth(), GetHeight()));
+		pushClipArea(Rectangle(0, 0, getSize().x, getSize().y));
 	}
 
 	void SFMLGraphics::_endDraw()
@@ -37,7 +37,7 @@ namespace gcn
 			return;
 		const ClipRectangle& top = mClipStack.top();
 		glEnable(GL_SCISSOR_TEST);
-		glScissor(top.x - 1, GetHeight() - (top.y + top.height), top.x + top.width, top.y + top.height);
+		glScissor(top.x - 1, getSize().y - (top.y + top.height), top.x + top.width, top.y + top.height);
 	}
 
 	void SFMLGraphics::stopDraw()
@@ -58,10 +58,10 @@ namespace gcn
 
 		const ClipRectangle& top = getCurrentClipArea();
 		sf::Sprite sprite(*sfImage);
-		sprite.SetPosition(dstX + top.xOffset, dstY + top.yOffset);
-		sprite.SetSubRect(sf::IntRect(srcX, srcY, srcX + width, srcY + height));
+		sprite.setPosition(dstX + top.xOffset, dstY + top.yOffset);
+		sprite.setTextureRect(sf::IntRect(srcX, srcY, srcX + width, srcY + height));
 		startDraw();
-		Draw(sprite);
+		draw(sprite);
 		stopDraw();
 	}
 
@@ -79,8 +79,12 @@ namespace gcn
 			return;
 
 		Color c = getColor();
-		startDraw();
-		Draw(sf::Shape::Line(x1, y1, x2, y2, 1, sf::Color(c.r, c.g, c.b, c.a)));
+		startDraw();//@fixme HOW TO I DRAW A SIMPLE LINE?!?!
+		sf::VertexArray line(sf::LinesStrip, 2);
+		line[0].position = sf::Vector2f(x1, y1);
+		line[1].position = sf::Vector2f(x2, y2);
+		draw(line);
+//		draw(sf::Shape::line(x1, y1, x2, y2, 1, sf::Color(c.r, c.g, c.b, c.a)));
 		stopDraw();
 	}
 
@@ -95,10 +99,11 @@ namespace gcn
 		if(!c_area.isPointInRect(x, y))
 			return;
 
-		sf::Shape area;
-		area.AddPoint(x, y, sf::Color(mColor.r, mColor.g, mColor.b, mColor.a));
+		sf::CircleShape area(1);
+		area.setPosition(x, y);
+		area.setFillColor(sf::Color(mColor.r, mColor.g, mColor.b, mColor.a));
 		startDraw();
-		Draw(area);
+		draw(area);
 		stopDraw();
 	}
 
@@ -116,10 +121,12 @@ namespace gcn
 			return;
 
 		Color c = getColor();
-		sf::Shape rect = sf::Shape::Rectangle(area.x, area.y, area.width, area.height, sf::Color(c.r, c.g, c.b, c.a), 1.f, sf::Color(c.r, c.g, c.b, c.a));
-		rect.EnableFill(false);
+		sf::RectangleShape rect(sf::Vector2f(area.width, area.height));
+		rect.setPosition(area.x, area.y);
+		rect.setFillColor(sf::Color(c.r, c.g, c.b, c.a));
+		draw(rect);
 		startDraw();
-		Draw(rect);
+		draw(rect);
 		stopDraw();
 	}
 
@@ -138,7 +145,10 @@ namespace gcn
 
 		Color c = getColor();
 		startDraw();
-		Draw(sf::Shape::Rectangle(area.x, area.y, area.width, area.height, sf::Color(c.r, c.g, c.b, c.a)));
+		sf::RectangleShape rect(sf::Vector2f(area.width, area.height));
+		rect.setPosition(area.x, area.y);
+		rect.setFillColor(sf::Color(c.r, c.g, c.b, c.a));
+		draw(rect);
 		stopDraw();
 	}
 

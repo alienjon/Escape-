@@ -29,15 +29,15 @@ LevelCompleteWidget::LevelCompleteWidget()
 	gcn::SFMLFont* defaultFont = FontManager::getGCNFont(FONT_DEFAULT);
 	gcn::SFMLFont* textFont    = FontManager::getGCNFont(FONT_TEXT);
 	gcn::SFMLFont* messageFont = FontManager::getGCNFont(FONT_CAPTION);
-	captionFont->SetColor(sf::Color::Blue);
-	captionFont->SetStyle(sf::Text::Bold | sf::Text::Underlined);
-	captionFont->SetCharacterSize(24);
-	defaultFont->SetColor(sf::Color::Blue);
-	defaultFont->SetCharacterSize(20);
-	textFont->SetColor(sf::Color::Cyan);
-	textFont->SetCharacterSize(20);
-	messageFont->SetColor(sf::Color::Magenta);
-	messageFont->SetCharacterSize(14);
+	captionFont->setColor(sf::Color::Blue);
+	captionFont->setStyle(sf::Text::Bold | sf::Text::Underlined);
+	captionFont->setCharacterSize(24);
+	defaultFont->setColor(sf::Color::Blue);
+	defaultFont->setCharacterSize(20);
+	textFont->setColor(sf::Color::Cyan);
+	textFont->setCharacterSize(20);
+	messageFont->setColor(sf::Color::Magenta);
+	messageFont->setCharacterSize(14);
 
 	// Configure the fonts.
 	mCaption.setFont(captionFont);

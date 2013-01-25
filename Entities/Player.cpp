@@ -7,6 +7,8 @@
 #include "Player.hpp"
 
 #include "../Entities/Item.hpp"
+#include "../Game/Keywords.hpp"
+#include "../Engine/VideoManager.hpp"
 
 const unsigned int COLOR_CYCLE_TIME_INTERVAL = 1300;
 const float PLAYER_SIZE = 50.f;
@@ -24,16 +26,14 @@ Player::Player() :
     mType = ENTITY_PLAYER;
 
     // The player moves at a normal speed.
-    setSpeed(1.0);
+    setSpeed(1.5);
 
     // Start the timer.
     mColorCycleTimer.start();
 
     // Setup the player's size.
-    mShape.AddPoint(0, 0, PLAYER_COLOR);
-    mShape.AddPoint(PLAYER_SIZE, 0, PLAYER_COLOR);
-    mShape.AddPoint(PLAYER_SIZE, PLAYER_SIZE, PLAYER_COLOR);
-    mShape.AddPoint(0, PLAYER_SIZE, PLAYER_COLOR);
+	mSprite.setTexture(VideoManager::getTexture(IMAGE_PLAYER));
+	mSprite.setOrigin(getWidth() / 2, getHeight() / 2);
 
     // Configure the internal sizes.
     mResetCyclePositions();
@@ -69,15 +69,38 @@ void Player::draw(sf::RenderWindow& renderer)
 	// Draw the base creature.
 	Creature::draw(renderer);
 
+	// The drawing objects.
+	sf::RectangleShape shape;
+
 	// Draw the colors.
 	if(mColor1 != mLocks.end())
-		renderer.Draw(sf::Shape::Rectangle(getX() + mCol1.Left, getY() + mCol1.Top, mCol1.Width, mCol1.Height, *mColor1));
+	{
+		shape.setSize(sf::Vector2f(mCol1.width, mCol1.width));
+		shape.setPosition(getX() + mCol1.left, getY() + mCol1.top);
+		shape.setFillColor(*mColor1);
+		renderer.draw(shape);
+	}
 	if(mColor2 != mLocks.end())
-		renderer.Draw(sf::Shape::Rectangle(getX() + mCol2.Left, getY() + mCol2.Top, mCol2.Width, mCol2.Height, *mColor2));
+	{
+		shape.setSize(sf::Vector2f(mCol2.width, mCol2.width));
+		shape.setPosition(getX() + mCol2.left, getY() + mCol2.top);
+		shape.setFillColor(*mColor2);
+		renderer.draw(shape);
+	}
 	if(mColor3 != mLocks.end())
-		renderer.Draw(sf::Shape::Rectangle(getX() + mCol3.Left, getY() + mCol3.Top, mCol3.Width, mCol3.Height, *mColor3));
+	{
+		shape.setSize(sf::Vector2f(mCol3.width, mCol3.width));
+		shape.setPosition(getX() + mCol3.left, getY() + mCol3.top);
+		shape.setFillColor(*mColor3);
+		renderer.draw(shape);
+	}
 	if(mColor4 != mLocks.end())
-		renderer.Draw(sf::Shape::Rectangle(getX() + mCol4.Left, getY() + mCol4.Top, mCol4.Width, mCol4.Height, *mColor4));
+	{
+		shape.setSize(sf::Vector2f(mCol4.width, mCol4.width));
+		shape.setPosition(getX() + mCol4.left, getY() + mCol4.top);
+		shape.setFillColor(*mColor4);
+		renderer.draw(shape);
+	}
 }
 
 void Player::keyPressed(gcn::KeyEvent& event)
@@ -119,11 +142,11 @@ void Player::logic(Level& level)
 	{
 		if(mColorCycleTimer.getTime() >= 5)
 		{
-			mCol1.Left += 0.35f;
-			mCol2.Top  += 0.35f;
-			mCol3.Left -= 0.35f;
-			mCol4.Top  -= 0.35f;
-			if(mCol1.Left >= PLAYER_SIZE * 0.52f)
+			mCol1.left += 0.35f;
+			mCol2.top  += 0.35f;
+			mCol3.left -= 0.35f;
+			mCol4.top  -= 0.35f;
+			if(mCol1.left >= PLAYER_SIZE * 0.52f)
 			{
 				mResetCyclePositions();
 				mCycle = COLORCYCLE_SWITCHCOLORS;

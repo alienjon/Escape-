@@ -7,12 +7,12 @@
 #ifndef TIMECHANGE_HPP_
 #define TIMECHANGE_HPP_
 
-#include "../Entities/ImageEntity.hpp"
+#include "../Entities/Entity.hpp"
 #include "../Engine/Timer.hpp"
 
 class Level;
 
-class TimeChange : public ImageEntity
+class TimeChange : public Entity
 {
 	public:
 	/**

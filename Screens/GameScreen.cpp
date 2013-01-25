@@ -20,7 +20,7 @@ using std::runtime_error;
 using std::string;
 
 const unsigned int SCORE_COUNTER_INTERVAL = 25;
-const unsigned int __TIME_MULTIPLIER__ = 1000;
+const unsigned int __TIME_MULTIPLIER__ = 1000;//@todo change time multiplier for difficulty levels? Laura found game a bit too hard, Dan a bit too easy?
 #include <iostream>
 using namespace std;//@todo remove when done
 GameScreen::GameScreen(unsigned int difficulty) : Screen(),
@@ -34,6 +34,12 @@ GameScreen::GameScreen(unsigned int difficulty) : Screen(),
 {
 	// Set the size of the screen.
 	setSize(800, 600);//@todo how should screen sizing work?  also, this needs to be changed when the menu widget is included
+
+	// Load the background music.
+	if(!mBackMusic.openFromFile(MUSIC_BACKGROUND))
+		ERROR("Unable to open music file '" + MUSIC_BACKGROUND);
+	else
+		mBackMusic.play();
 
 	// Configure the action listeners.
 	mLevelCompleteWidget.addActionListener(this);
@@ -86,8 +92,8 @@ void GameScreen::action(const gcn::ActionEvent& event)
 		int y = toInt(extractDataLine(event.getId(), pos, DELIMITER));
 
 		// Display the widget.
-		mPlayerDirectionSelectionWidget.setPosition(((mBase.getWidth() / 2) - (mCamera.GetCenter().x - x)) - (mPlayerDirectionSelectionWidget.getWidth() / 2),
-													((mBase.getHeight() / 2) - (mCamera.GetCenter().y - y)) - (mPlayerDirectionSelectionWidget.getHeight() / 2));
+		mPlayerDirectionSelectionWidget.setPosition(((mBase.getWidth() / 2) - (mCamera.getCenter().x - x)) - (mPlayerDirectionSelectionWidget.getWidth() / 2),
+													((mBase.getHeight() / 2) - (mCamera.getCenter().y - y)) - (mPlayerDirectionSelectionWidget.getHeight() / 2));
 		mPlayerDirectionSelectionWidget.display(up, down, left, right);
 	}
 	else if(keyword == ACTION_DIRECTION_SELECTED)
@@ -177,12 +183,12 @@ void GameScreen::draw(gcn::SFMLGraphics& renderer)
 	// If resetting the view, reset it.
 	if(mResetView)
 	{
-		mCamera = renderer.GetDefaultView();
+		mCamera = renderer.getDefaultView();
 		mResetView = false;
 	}
 
 	// Everything on the level is relative to the viewport.
-	renderer.SetView(mCamera);
+	renderer.setView(mCamera);
 
     // Draw any screen objects.
     mLevel->draw(renderer);
@@ -226,6 +232,9 @@ void GameScreen::keyReleased(gcn::KeyEvent& event)
 
 void GameScreen::load(GUI* gui)//@todo move the adding/etc... to the constructor
 {
+	// Start playing background music.
+//	mBackMusic.//@todo implement playing music
+
     // Set the base.
     gui->setBase(&mBase);//@todo should this be in Engine?
 

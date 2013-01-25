@@ -23,7 +23,7 @@ unsigned int Timer::getTime() const
 		if(mPaused)
 			return mPausedTime;
 		else
-			return mClock.GetElapsedTime() - mCurrentTime;
+			return mClock.getElapsedTime().asMilliseconds() - mCurrentTime;
 	}
 	// If the timer is not running, return 0.
 	else
@@ -46,7 +46,7 @@ void Timer::pause()
 	if(mRunning && !mPaused)
 	{
 		mPaused = true;
-		mPausedTime = mClock.GetElapsedTime() - mCurrentTime;
+		mPausedTime = mClock.getElapsedTime().asMilliseconds() - mCurrentTime;
 	}
 }
 
@@ -54,7 +54,7 @@ void Timer::start()
 {
 	mRunning = true;
 	mPaused = false;
-	mCurrentTime = mClock.GetElapsedTime();
+	mCurrentTime = mClock.getElapsedTime().asMilliseconds();
 }
 
 void Timer::stop()
@@ -73,7 +73,7 @@ void Timer::unpause()
 	{
 		// Unpause the timer.
 		mPaused = false;
-		mCurrentTime = mClock.GetElapsedTime() - mPausedTime;
+		mCurrentTime = mClock.getElapsedTime().asMilliseconds() - mPausedTime;
 		mPausedTime = 0;
 	}
 }

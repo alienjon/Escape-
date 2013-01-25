@@ -57,7 +57,7 @@ Level::Level(unsigned int difficulty, Player& player) :
 {
 	// Start the timers.
 	mFloatingTextTimer.start();
-	mTeleportTimer.start();
+//	mTeleportTimer.start();@todo will I remove the teleport?
 
 	// Set the initial teleport interval.
 	mTeleportInterval = random(mTeleportIntervalMin, mTeleportIntervalMax);
@@ -104,7 +104,7 @@ Level::Level(unsigned int difficulty, Player& player) :
 
 			// If this is one of the 4 corners, add a key.
 			if(w == 0 && h == 0) // Top left corner.
-				entity = new KeyEntity(sf::Color::Red);
+				entity = new KeyEntity(sf::Color::Blue);
 			else if(w == 0 && h == height - 1) // Top right corner.
 				entity = new KeyEntity(sf::Color::Cyan);
 			else if(w == width - 1 && h == 0) // Bottom left corner.
@@ -117,34 +117,36 @@ Level::Level(unsigned int difficulty, Player& player) :
 			{
 				/**
 				 * @todo Other items?
+				 * @todo finalize colors
+				 * @todo finalize which power ups I'm going to keep
 				 */
 				int n = random(1, 100);
-				if(n <= 75)
+				if(n <= 85)
 				{
 					entity = new Pickup(5, sf::Color::Magenta, 20);
 					mPickups.push_back(entity);
 				}
-				else if(n <= 78)
+				else if(n <= 90)
 				{
 					entity = new Pickup(75, sf::Color::Magenta, 5);
 					mPickups.push_back(entity);
 				}
-				else if(n <= 83)
-					entity = new Pickup(-50, sf::Color::Red, 50);
-				else if(n <= 85)
-					entity = new TimeChange(*this);
-				else if(n <= 87)
-					entity = new SpeedChange(2.f, mPlayer);
-				else if(n <= 89)
-					entity = new SpeedChange(0.5f, mPlayer);
-				else if(n <= 93)
-					entity = new FlipScreen(*this);
 				else if(n <= 95)
-					entity = new ZoomScreen(*this);
-				else if(n <= 97)
-					entity = new Phase(*this);
-				else// if(n <= 99)
-					entity = new Nullify(*this);
+					entity = new Pickup(-50, sf::Color::Red, 50);
+				else//(n <= 85)
+					entity = new TimeChange(*this);
+//				else if(n <=87)
+//					entity = new SpeedChange(2.f, mPlayer);
+//				else if(n <= 89)
+//					entity = new SpeedChange(0.5f, mPlayer);
+//				else if(n <= 93)
+//					entity = new FlipScreen(*this);
+//				else if(n <= 95)
+//					entity = new ZoomScreen(*this);
+//				else if(n <= 97)
+//					entity = new Phase(*this);
+//				else// if(n <= 99)
+//					entity = new Nullify(*this);
 //				else
 //					entity = new Teleport(*this);
 			}
@@ -201,8 +203,8 @@ void Level::mRemoveEntity(Entity* entity)
 void Level::addFloatingText(const string& str, const sf::Vector2f& position, const sf::Color& color, unsigned int size)
 {
 	sf::Text txt = sf::Text(str, FontManager::getSFFont(FONT_DEFAULT), size);
-	txt.SetColor(color);
-	txt.SetPosition(position);
+	txt.setColor(color);
+	txt.setPosition(position);
 	mFloatingTexts.push_back(txt);
 }
 
@@ -215,7 +217,7 @@ bool Level::checkEntityCollision(Entity& entity)
 {
 	bool collision = false;
 	for(list<Entity*>::iterator it = mEntities.begin(); it != mEntities.end(); ++it)
-		if(*it != &entity && isPolyIntersecting(entity.getDimension(), (*it)->getDimension()))
+		if(*it != &entity && entity.getDimension().intersects((*it)->getDimension()))
 		{
 			// If both entities are collidable, then a collision occurred.
 			if(entity.isCollidable() && (*it)->isCollidable())
@@ -236,7 +238,7 @@ bool Level::checkMapCollision(Entity& entity)
 void Level::draw(gcn::SFMLGraphics& renderer)
 {
 	// Draw a black ground.
-	renderer.Clear(sf::Color::Black);
+	renderer.clear(sf::Color::Black);
 
 	// Draw the map.
 	mMap.draw(renderer);
@@ -247,7 +249,7 @@ void Level::draw(gcn::SFMLGraphics& renderer)
 
 	// Draw the floating texts.
 	for(list<sf::Text>::const_iterator it = mFloatingTexts.begin(); it != mFloatingTexts.end(); ++it)
-		renderer.Draw(*it);
+		renderer.draw(*it);
 }
 
 void Level::flip()
@@ -299,10 +301,10 @@ void Level::logic(sf::View& camera)
     	list<list<sf::Text>::iterator > removeList;
     	for(list<sf::Text>::iterator it = mFloatingTexts.begin(); it != mFloatingTexts.end(); ++it)
     	{
-    		it->Move(0, -FLOATINGTEXT_MOVE_STEP);
-    		sf::Color c = it->GetColor();
-    		it->SetColor(sf::Color(c.r, c.g, c.b, c.a - 3));
-    		if(it->GetColor().a == 0)
+    		it->move(0, -FLOATINGTEXT_MOVE_STEP);
+    		sf::Color c = it->getColor();
+    		it->setColor(sf::Color(c.r, c.g, c.b, c.a - 3));
+    		if(it->getColor().a == 0)
     			removeList.push_back(it);
     	}
     	for(list<list<sf::Text>::iterator >::iterator it = removeList.begin(); it != removeList.end(); ++it)
@@ -328,7 +330,7 @@ void Level::logic(sf::View& camera)
 			mFlipAngle = 180.f;
 			mFlipped = true;
 		}
-		camera.SetRotation(mFlipAngle);
+		camera.setRotation(mFlipAngle);
 	}
 
 	// Zoom the screen.
@@ -349,7 +351,7 @@ void Level::logic(sf::View& camera)
 			mZoomed = true;
 		}
 		else
-			camera.Zoom(1.f - (ZOOM_STEP * (mZoomed ? -1.f : 1.f)));
+			camera.zoom(1.f - (ZOOM_STEP * (mZoomed ? -1.f : 1.f)));
 	}
 
 	// Check to see if a new teleporter is to be created.
@@ -398,11 +400,11 @@ void Level::logic(sf::View& camera)
 	}
 
 	// Center the player on the screen.
-	camera.SetCenter(mPlayer.getX() + (mPlayer.getWidth() / 2), mPlayer.getY() + (mPlayer.getHeight() / 2));
+	camera.setCenter(mPlayer.getX() + (mPlayer.getWidth() / 2), mPlayer.getY() + (mPlayer.getHeight() / 2));
 
 	// Make sure that the camera doesn't go out of bounds.
-	sf::Vector2f center = camera.GetCenter(),
-				 half(camera.GetSize().x / 2, camera.GetSize().y / 2);
+	sf::Vector2f center = camera.getCenter(),
+				 half(camera.getSize().x / 2, camera.getSize().y / 2);
 	if(center.x - half.x < 0)
 		center.x = half.x;
 	if(center.x + half.x > mMap.getWidth())
@@ -411,7 +413,7 @@ void Level::logic(sf::View& camera)
 		center.y = half.y;
 	if(center.y + half.y > mMap.getHeight())
 		center.y = mMap.getHeight() - half.y;
-	camera.SetCenter(center);
+	camera.setCenter(center);
 }
 
 void Level::nullify(Creature& creature)

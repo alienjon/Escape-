@@ -34,7 +34,7 @@ void Item::collide(Entity& entity)
 void Item::draw(sf::RenderWindow& renderer)
 {
 	if(mIsDrawing)
-		ImageEntity::draw(renderer);
+		draw(renderer);
 }
 
 void Item::use(Creature& creature)

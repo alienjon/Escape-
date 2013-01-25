@@ -9,14 +9,14 @@
 
 #include <string>
 
-#include "../Entities/ImageEntity.hpp"
+#include "../Entities/Entity.hpp"
 
 class Creature;
 
 /*
  * @brief An object the player can pick up and use.
  */
-class Item : public ImageEntity
+class Item : public Entity
 {
 	public:
 	virtual ~Item()

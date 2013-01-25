@@ -33,18 +33,22 @@ extern const std::string FONT_TEXT;
 extern const std::string FONT_CAPTION;
 
 // These are the images.
-extern const std::string IMAGE_FLIPSCREEN;
-extern const std::string IMAGE_ZOOMSCREEN;
-extern const std::string IMAGE_TIMEGAIN;
-extern const std::string IMAGE_TIMELOSS;
-extern const std::string IMAGE_FASTPLAYER;
-extern const std::string IMAGE_SLOWPLAYER;
-extern const std::string IMAGE_ITEM_NULLIFY;
-extern const std::string IMAGE_ITEM_PHASE;
 extern const std::string IMAGE_DIRECTIONAL_ARROW_UP;
 extern const std::string IMAGE_DIRECTIONAL_ARROW_DOWN;
 extern const std::string IMAGE_DIRECTIONAL_ARROW_LEFT;
 extern const std::string IMAGE_DIRECTIONAL_ARROW_RIGHT;
+extern const std::string IMAGE_FASTPLAYER;
+extern const std::string IMAGE_FLIPSCREEN;
+extern const std::string IMAGE_ITEM_NULLIFY;
+extern const std::string IMAGE_ITEM_PHASE;
+extern const std::string IMAGE_KEY;
+extern const std::string IMAGE_PLAYER;
+extern const std::string IMAGE_PORTAL;
+extern const std::string IMAGE_SLOWPLAYER;
+extern const std::string IMAGE_TIMEGAIN;
+extern const std::string IMAGE_TIMELOSS;
+extern const std::string IMAGE_ZOOMSCREEN;
+
 
 // These are the sounds.
 extern const std::string SOUND_LEVELCOMPLETE_FINISH;
@@ -55,5 +59,8 @@ extern const std::string SOUND_PICKUP_KEY;
 extern const std::string SOUND_PICKUP_SPECIAL;
 extern const std::string SOUND_TELEPORT_COLLIDE;
 extern const std::string SOUND_TELEPORT_WARNING;
+
+// These are the music files.
+extern const std::string MUSIC_BACKGROUND;
 
 #endif /* KEYWORDS_HPP_ */
