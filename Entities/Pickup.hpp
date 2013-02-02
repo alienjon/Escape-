@@ -17,13 +17,21 @@
 class Pickup : public Entity
 {
 	public:
+	// The different pickup sizes.
+	typedef enum
+	{
+		SMALL,
+		MEDIUM,
+		LARGE
+	} PickupSize;
+
 	/**
 	 * @brief Default constructor.
 	 * @param value The value of the pickup.
 	 * @color The color of the pickup.
 	 * @param size The size of the pickup.
 	 */
-	Pickup(int value, const sf::Color& color, unsigned int size);
+	Pickup(int value, const sf::Color& color, PickupSize size);
 
     /**
      * @brief This KeyEntity is colliding/interacting with an entity.
@@ -34,9 +42,6 @@ class Pickup : public Entity
 	private:
 	// The value of the pickup.
 	int mValue;
-
-	// The size of the pickup.
-	unsigned int mSize;
 };
 
 #endif /* PICKUP_HPP_ */

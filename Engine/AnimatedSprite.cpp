@@ -52,13 +52,7 @@ void AnimatedSprite::mUpdateTexCoords()
 
 void AnimatedSprite::addFrame(const sf::Texture& frame)
 {
-	mAnimation.push_back(pair<const sf::Texture&, sf::IntRect>(frame, sf::IntRect(0, 0, frame.getSize().x, frame.getSize().y)));
-	if(mAnimationFrame == mAnimation.end())
-	{
-		mAnimationFrame = mAnimation.begin();
-		mUpdatePositions();
-		mUpdateTexCoords();
-	}
+	addFrame(frame, sf::IntRect(0, 0, frame.getSize().x, frame.getSize().y));
 }
 
 void AnimatedSprite::addFrame(const sf::Texture& frame, const sf::IntRect& drawArea)

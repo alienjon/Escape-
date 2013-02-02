@@ -35,6 +35,7 @@ const string IMAGE_FASTPLAYER = "Images/fastplayer.png";
 const string IMAGE_ITEM_NULLIFY = "Images/nullify.png";
 const string IMAGE_ITEM_PHASE = "Images/phase.png";
 const string IMAGE_KEY = "Images/key.png";
+const string IMAGE_PICKUP = "Images/pickup.png";
 const string IMAGE_PLAYER = "Images/player.png";
 const string IMAGE_PORTAL = "Images/portal.png";
 const string IMAGE_FLIPSCREEN = "Images/rotate.png";

@@ -9,13 +9,32 @@
 #include "../Engine/AudioManager.hpp"
 #include "../Game/Keywords.hpp"
 #include "../main.hpp"
+#include "../Engine/VideoManager.hpp"
 
-Pickup::Pickup(int value, const sf::Color& color, unsigned int size) :
-	mValue(value),
-	mSize(size)
+Pickup::Pickup(int value, const sf::Color& color, PickupSize size) :
+	mValue(value)
 {
 	mType = ENTITY_PICKUP;
-//	mSprite.setColor(color);@fixme Need sprite/animation for pickups
+	mSprite.addFrame(VideoManager::getTexture(IMAGE_PICKUP));
+	mSprite.setColor(color);
+	mSprite.setOrigin(getWidth() / 2, getHeight() / 2);
+	switch(size)
+	{
+		case SMALL:
+		{
+			mSprite.scale(0.5, 0.5);
+			break;
+		}
+		case LARGE:
+		{
+			mSprite.scale(2.5, 2.5);
+			break;
+		}
+		default:
+		{
+			break;
+		}
+	}
 }
 
 void Pickup::collide(Entity& entity)

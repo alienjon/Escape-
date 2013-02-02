@@ -42,6 +42,7 @@ extern const std::string IMAGE_FLIPSCREEN;
 extern const std::string IMAGE_ITEM_NULLIFY;
 extern const std::string IMAGE_ITEM_PHASE;
 extern const std::string IMAGE_KEY;
+extern const std::string IMAGE_PICKUP;
 extern const std::string IMAGE_PLAYER;
 extern const std::string IMAGE_PORTAL;
 extern const std::string IMAGE_SLOWPLAYER;

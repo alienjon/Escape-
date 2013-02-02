@@ -123,16 +123,16 @@ Level::Level(unsigned int difficulty, Player& player) :
 				int n = random(1, 100);
 				if(n <= 85)
 				{
-					entity = new Pickup(5, sf::Color::Magenta, 20);
+					entity = new Pickup(5, sf::Color::Magenta, Pickup::MEDIUM);
 					mPickups.push_back(entity);
 				}
 				else if(n <= 90)
 				{
-					entity = new Pickup(75, sf::Color::Magenta, 5);
+					entity = new Pickup(75, sf::Color::Magenta, Pickup::SMALL);
 					mPickups.push_back(entity);
 				}
 				else if(n <= 95)
-					entity = new Pickup(-50, sf::Color::Red, 50);
+					entity = new Pickup(-50, sf::Color::Red, Pickup::LARGE);
 				else//(n <= 85)
 					entity = new TimeChange(*this);
 //				else if(n <=87)
