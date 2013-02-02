@@ -18,6 +18,11 @@ TimerWidget::TimerWidget() :
 {
 	// Set the font.
 	setFont(FontManager::getGCNFont(FONT_DEFAULT));
+
+	// Set default size.
+	setCaption("000:00:00");
+	adjustSize();
+	setAlignment(gcn::Graphics::LEFT);//@fixme This isn't actually aligning left.
 }
 
 unsigned int TimerWidget::getTime() const

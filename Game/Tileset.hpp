@@ -35,8 +35,10 @@ class Tileset
     /**
      * @brief Construct a tileset.
      * @param filename The filename of the tileset.
+     * @param width The width of a single tile.
+     * @param height The height of a single tile.
      */
-    Tileset(const std::string& filename);
+    Tileset(const std::string& filename, unsigned int width, unsigned int height);
 
     /**
      * @brief Gets the height of a single tile.
@@ -53,7 +55,7 @@ class Tileset
 	 * @param level The level of the tile type to get.
 	 * @return The area on the tileset surface that represents the tile.
 	 */
-	const sf::Sprite& getTile(Tileset::TileType type) const;
+	const sf::Image& getTile(Tileset::TileType type) const;
 
 	/**
 	 * @brief Get the collision area for the specified tile.
@@ -77,7 +79,7 @@ class Tileset
     unsigned int mWidth, mHeight;
 
     // The tiles as defined by the area's they represent on the map.
-    std::map<Tileset::TileType, sf::Sprite> mTiles;
+    std::map<Tileset::TileType, sf::Image> mTiles;
     std::map<Tileset::TileType, CollisionArea> mCollisions;
 };
 

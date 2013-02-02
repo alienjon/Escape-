@@ -74,7 +74,14 @@ int main(int args, const char** pArgs)
 		    clog << "Usage: Escape [PARAMETER]\n"
 		         << "\t-v, --version    Display version information.\n"
 		         << "\t-h, --help       Display this usage information.\n"
-		         << "\t-d, --debug      Run the game with debugging settings\n"
+		         << "\t-d, --debug      Run the game with debugging settings.\n"
+		         << "\n"
+		         << "In-Game Options\n"
+		         << "\tF1		Toggle debugging output.\n"
+		         << "\tF2		Display game engine settings.\n"
+		         << "\tCTRL+c		Force quit the game (debug enabled only).\n"
+		         << "\tCTRL+p		Take a screenshot (saved in main game directory).\n"
+		         << "\tALT+ENTER	Toggle fullscreen.\n"
 		         << endl;
 			return 0;
 		}

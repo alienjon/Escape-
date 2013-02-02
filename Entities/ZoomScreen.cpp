@@ -19,7 +19,7 @@ ZoomScreen::ZoomScreen(Level& level) :
 	mIsZooming(true)
 {
 	mType = ENTITY_ZOOM;
-	mSprite = sf::Sprite(VideoManager::getTexture(IMAGE_ZOOMSCREEN));
+	mSprite.addFrame(VideoManager::getTexture(IMAGE_ZOOMSCREEN));
 	mSprite.setOrigin(getWidth() / 2, getHeight() / 2);
 	mTimer.start();
 }

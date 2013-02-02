@@ -21,13 +21,11 @@ using std::string;
 
 const unsigned int SCORE_COUNTER_INTERVAL = 25;
 const unsigned int __TIME_MULTIPLIER__ = 1000;//@todo change time multiplier for difficulty levels? Laura found game a bit too hard, Dan a bit too easy?
-#include <iostream>
-using namespace std;//@todo remove when done
+
 GameScreen::GameScreen(unsigned int difficulty) : Screen(),
 	mDifficulty(difficulty),
 	mIsPaused(false),
 	mLevel(0),
-	mItemDisplay(mPlayer),
 	mScore(0),
 	mCounter(0),
 	mResetView(false)
@@ -35,28 +33,21 @@ GameScreen::GameScreen(unsigned int difficulty) : Screen(),
 	// Set the size of the screen.
 	setSize(800, 600);//@todo how should screen sizing work?  also, this needs to be changed when the menu widget is included
 
-	// Load the background music.
-	if(!mBackMusic.openFromFile(MUSIC_BACKGROUND))
-		ERROR("Unable to open music file '" + MUSIC_BACKGROUND);
-	else
-		mBackMusic.play();
-
 	// Configure the action listeners.
 	mLevelCompleteWidget.addActionListener(this);
 	mOptionsMenu.addActionListener(this);
 	addKeyListener(&mPlayer);
-	addKeyListener(&mItemDisplay);
 	addKeyListener(&mPlayerDirectionSelectionWidget);
 	addKeyListener(&mLevelCompleteWidget);
-
-	// Setup the player/player item display.
-	mPlayer.addPickupListener(&mItemDisplay);
 
 	// @todo Temporary configurations.
 	mScoreLabel.setFont(FontManager::getGCNFont(FONT_DEFAULT));
 	mScoreLabel.setCaption("Score: 0");
 	mScoreLabel.adjustSize();
 	mScoreTimer.start();
+
+	// Configurations.
+    mTimerWidget.setPosition(mBase.getWidth() - mTimerWidget.getWidth(), mBase.getHeight() - mTimerWidget.getHeight());
 }
 
 GameScreen::~GameScreen()
@@ -70,10 +61,8 @@ GameScreen::~GameScreen()
 		delete mLevel;
 	}
 	removeKeyListener(&mPlayer);
-	removeKeyListener(&mItemDisplay);
 	removeKeyListener(&mPlayerDirectionSelectionWidget);
 	removeKeyListener(&mLevelCompleteWidget);
-	mPlayer.removePickupListener(&mItemDisplay);
     mPlayerDirectionSelectionWidget.removeActionListener(this);
 }
 
@@ -111,7 +100,6 @@ void GameScreen::action(const gcn::ActionEvent& event)
 			mLevel->removeChangeScoreListener(this);
 			mLevel->removeTimeChangeListener(this);
 			delete mLevel;
-			mItemDisplay.clear();
 
 			// Increase the difficulty and go to the next level.
 			mLevel = new Level(++mDifficulty, mPlayer);
@@ -120,12 +108,10 @@ void GameScreen::action(const gcn::ActionEvent& event)
 			mLevel->addTimeChangeListener(this);
 
 		    // Reset the view.
-		    mResetView = true;//@todo this isn't working.  Make sure the view is reset when a new level is loaded.
+		    mResetView = true;//@fixme this isn't working.  Make sure the view is reset when a new level is loaded.
 
 			// Make sure the game is not paused.
-//			mMenuBar.stop();
-			mTimerWidget.stop();//@todo remove when done
-//			mMenuBar.start(mLevel->getMap().getComplexity() * __TIME_MULTIPLIER__);
+			mTimerWidget.stop();
 			mTimerWidget.start(mLevel->getMap().getComplexity() * __TIME_MULTIPLIER__);//@todo remove when done
 			mIsPaused = false;
 		}
@@ -142,8 +128,7 @@ void GameScreen::action(const gcn::ActionEvent& event)
 		if(keyword == GAMEOPTIONS_RESUME)
 		{
 			mIsPaused = false;
-//			mMenuBar.unpause();
-			mTimerWidget.unpause();//@todo remove when done
+			mTimerWidget.unpause();
 			mDistributeActionEvent(ACTION_HIDECURSOR);
 		}
 		else if(keyword == GAMEOPTIONS_MAINMENU)
@@ -192,24 +177,19 @@ void GameScreen::draw(gcn::SFMLGraphics& renderer)
 
     // Draw any screen objects.
     mLevel->draw(renderer);
+
+    // Return the view.
+    renderer.setView(renderer.getDefaultView());
 }
 
 void GameScreen::keyPressed(gcn::KeyEvent& event)
 {
-	// If the shift key is pressed, give the item display widget focus and don't let the player move.
-	if(event.getKey().getValue() == gcn::Key::LEFT_SHIFT || event.getKey().getValue() == gcn::Key::RIGHT_SHIFT)
-	{
-		mItemDisplay.setFocusable(true);
-		mPlayer.setInputState(false);
-	}
-
 	// Open the options menu.
 	if(event.getKey().getValue() == gcn::Key::ESCAPE)
 	{
 		// Pause the game.
 		mIsPaused = true;
-//		mMenuBar.pause();
-		mTimerWidget.pause();//@todo remove when done
+		mTimerWidget.pause();
 
 		// Show the options menu.
 		mOptionsMenu.setVisible(true);
@@ -223,17 +203,17 @@ void GameScreen::keyPressed(gcn::KeyEvent& event)
 
 void GameScreen::keyReleased(gcn::KeyEvent& event)
 {
-	// If the shift key is released, return movement to the player.
-	if(event.getKey().getValue() == gcn::Key::LEFT_SHIFT || event.getKey().getValue() == gcn::Key::RIGHT_SHIFT)
-		mPlayer.setInputState(true);
-
 	Screen::keyReleased(event);
 }
 
 void GameScreen::load(GUI* gui)//@todo move the adding/etc... to the constructor
 {
-	// Start playing background music.
-//	mBackMusic.//@todo implement playing music
+	// Load the background music.
+	//@todo implement random song playing?  How should I want music handled?
+	if(!mBackMusic.openFromFile(MUSIC_BACKGROUND))
+		ERROR("Unable to open music file '" + MUSIC_BACKGROUND);
+	else
+		mBackMusic.play();
 
     // Set the base.
     gui->setBase(&mBase);//@todo should this be in Engine?
@@ -245,10 +225,6 @@ void GameScreen::load(GUI* gui)//@todo move the adding/etc... to the constructor
     mOptionsMenu.setVisible(false);
     mBase.add(&mOptionsMenu, 0, 0);
 
-    // Player items.
-//    mBase.addKeyListener(&mItemDisplay);
-    mBase.add(&mItemDisplay, mBase.getWidth() - mItemDisplay.getWidth() - 4, 4);
-
     // Direction Selection.
     mBase.add(&mPlayerDirectionSelectionWidget);
     mPlayerDirectionSelectionWidget.addActionListener(this);
@@ -257,11 +233,6 @@ void GameScreen::load(GUI* gui)//@todo move the adding/etc... to the constructor
     mBase.add(&mScoreLabel, 0, mBase.getHeight() - mScoreLabel.getHeight());
     addTimeChangeListener(&mTimerWidget);
     mBase.add(&mTimerWidget);
-//    mMenuBar.setSize(mBase.getWidth(), mBase.getHeight() * 0.15);
-//    mMenuBar.adjustInternals();
-//    mViewport.setHeight(mViewport.getHeight() - mMenuBar.getHeight());
-//    mViewport.setYOffset(mMenuBar.getHeight());
-//    mBase.add(&mMenuBar);
 
     // Add the level complete widget.
     mLevelCompleteWidget.setVisible(false);
@@ -276,19 +247,13 @@ void GameScreen::load(GUI* gui)//@todo move the adding/etc... to the constructor
     // Reset the view.
     mResetView = true;
 
-    // Start the timer
+    // Restart the timer
     mTimerWidget.stop();
     mTimerWidget.start(mLevel->getMap().getComplexity() * __TIME_MULTIPLIER__);
-//    mMenuBar.stop();// Stopping first as a precaution.
-//    mMenuBar.start(mLevel->getMap().getComplexity() * __TIME_MULTIPLIER__);
 }
 
 void GameScreen::logic()
 {
-	//@todo Temporary until I figure GUI stuff out later.
-	mTimerWidget.adjustSize();
-	mTimerWidget.setPosition(mBase.getWidth() - mTimerWidget.getWidth(), mBase.getHeight() - mTimerWidget.getHeight());
-
 	// Update the score.
 	if(mCounter != 0 && mScoreTimer.getTime() >= SCORE_COUNTER_INTERVAL)
 	{
@@ -299,10 +264,8 @@ void GameScreen::logic()
 		mScore = (sign < 0 && mScore == 0) ? 0 : mScore + sign;
 
 		// Set the score.
-		//@todo fix when gui implemented
 		mScoreLabel.setCaption("Score: " + toString(mScore));
 		mScoreLabel.adjustSize();
-//		mMenuBar.setScore(mScore);
 
 		// Update the counter.
 		mCounter -= sign;
@@ -315,7 +278,7 @@ void GameScreen::logic()
 	if(mTimerWidget.getTime() == 0 && !mLevel->isDone() && !mLevelCompleteWidget.isVisible())
 	{
 		// Pause the game.
-		mTimerWidget.stop();//@todo remove when done
+		mTimerWidget.stop();
 		mIsPaused = true;
 
 		// Display the level complete widget, but don't add any bonuses.
@@ -338,10 +301,10 @@ void GameScreen::logic()
 
 		// Display the level complete widget.
 		double bonusMod = (mDifficulty / 10.0) + 1;
-		unsigned int timeBonus = mTimerWidget.getTime() / (1000000 * mLevel->getMap().getComplexity()); // @todo review scoring
+		unsigned int timeBonus = mTimerWidget.getTime() / (1000000 * mLevel->getMap().getComplexity());
 		unsigned int bonus = (timeBonus) * bonusMod;
-		mLevelCompleteWidget.display("LEVEL COMPLETE", timeBonus, timeBonus, mLevel->getMap().getComplexity(), mLevel->getMap().getComplexity(), mDifficulty, (double)bonusMod, mScore, bonus, mScore + bonus);//@todo remove when done
-		mScoreLabel.setCaption(toString(mScore += bonus));//@todo remove when done
+		mLevelCompleteWidget.display("LEVEL COMPLETE", timeBonus, timeBonus, mLevel->getMap().getComplexity(), mLevel->getMap().getComplexity(), mDifficulty, (double)bonusMod, mScore, bonus, mScore + bonus);
+		mScoreLabel.setCaption(toString(mScore += bonus));
 		mLevelCompleteWidget.setPosition(mBase.getWidth() / 2 - mLevelCompleteWidget.getWidth() / 2, mBase.getHeight() / 2 - mLevelCompleteWidget.getHeight() / 2);
 	}
 

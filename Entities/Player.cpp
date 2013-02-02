@@ -32,7 +32,7 @@ Player::Player() :
     mColorCycleTimer.start();
 
     // Setup the player's size.
-	mSprite.setTexture(VideoManager::getTexture(IMAGE_PLAYER));
+	mSprite.addFrame(VideoManager::getTexture(IMAGE_PLAYER));
 	mSprite.setOrigin(getWidth() / 2, getHeight() / 2);
 
     // Configure the internal sizes.

@@ -13,3 +13,5 @@ error.log
 makefile
 doxy.Doxyfile
 html/
+/background.png
+/.directory

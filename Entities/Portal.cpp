@@ -22,7 +22,7 @@ Portal::Portal(unsigned int width, unsigned int height) ://@todo width and heigh
 {
 	mType = ENTITY_PORTAL;
 	setCollidable(false);
-	mSprite.setTexture(VideoManager::getTexture(IMAGE_PORTAL));
+	mSprite.addFrame(VideoManager::getTexture(IMAGE_PORTAL));
 	mSprite.setOrigin(getWidth() / 2, getHeight() / 2);
 	mTimer.start();
 }
@@ -46,11 +46,11 @@ void Portal::collide(Entity& entity)
 void Portal::draw(sf::RenderWindow& renderer)
 {
 	Entity::draw(renderer);
-	for(list<pair<sf::Color, float> >::iterator it = mLocks.begin(); it != mLocks.end(); ++it)
-	{
-		sf::CircleShape shape(mWidth / 2, 32);// getX() + (mWidth / 2), getY() + (mHeight / 2), it->second - 5, it->first, 5, it->first);
-		renderer.draw(shape);
-	}
+//	for(list<pair<sf::Color, float> >::iterator it = mLocks.begin(); it != mLocks.end(); ++it)@todo review if I want this
+//	{
+//		sf::CircleShape shape(mWidth / 2, 32);// getX() + (mWidth / 2), getY() + (mHeight / 2), it->second - 5, it->first, 5, it->first);
+//		renderer.draw(shape);
+//	}
 }
 
 void Portal::logic(Level& level)//@todo how do I want the colors to display (animation) on the portal?

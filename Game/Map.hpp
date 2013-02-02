@@ -16,7 +16,7 @@
 /**
  * @brief A map is the visual representation of a level.
  */
-class Map
+class Map : public sf::Drawable
 {
     public:
     /**
@@ -38,9 +38,10 @@ class Map
 
     /**
      * @brief Draw the map.
-     * @param renderer The renderer.
+     * @param target The render target.
+     * @param states The render states.
      */
-    virtual void draw(sf::RenderWindow& renderer);
+    virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
     /**
      * @brief Get the height of the map in cells (as opposed to tiles or pixels).
@@ -85,8 +86,18 @@ class Map
     virtual unsigned int getWidth() const;
 
     private:
-    // The walls and collisions.
-    std::vector<std::pair<sf::Sprite, CollisionArea> > mMap;
+    // The walls and collisions.@todo remove?
+//    std::vector<std::pair<sf::Sprite, CollisionArea> > mMap;
+
+    // The visual map.
+    sf::Texture mMapTexture;
+    sf::Sprite mMapSprite;
+
+    // This vertex array holds collections of 4 vertices that define individual tiles for the map to draw.
+    sf::VertexArray mTiles;
+
+    // The collision areas.
+    std::vector<CollisionArea> mCollisions;
 
     // The width and height of the map in tiles.
     unsigned int mWidth, mHeight;

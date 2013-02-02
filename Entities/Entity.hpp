@@ -14,6 +14,7 @@
 
 #include "../Interfaces/ActionInterface.hpp"
 #include "../Interfaces/AddLockInterface.hpp"
+#include "../Engine/AnimatedSprite.hpp"
 #include "../Interfaces/ChangeScoreInterface.hpp"
 #include "../Listeners/DeathListener.hpp"
 #include "../Interfaces/FloatingTextInterface.hpp"
@@ -83,7 +84,7 @@ class Entity : public ActionInterface, public AddLockInterface, public ChangeSco
      */
     virtual unsigned int getAlpha() const
     {
-    	return mSprite.getColor().a;
+    	return mSprite.getAlpha();
     }
 
     /**
@@ -92,19 +93,10 @@ class Entity : public ActionInterface, public AddLockInterface, public ChangeSco
      *
      * @note Must be implemented by inheriting classes as it is based off of class-specific sf::Drawables.
      */
-    virtual const sf::FloatRect getDimension() const
+    virtual sf::FloatRect getDimension() const
     {
     	return mSprite.getGlobalBounds();
     }
-
-    /**
-     * @brief Get the drawable aspect of the entity.
-     * @return The drawable aspect of the entity.
-     */
-//    virtual sf::Drawable& getDrawable()@todo needed?
-//    {
-//    	return mShape;
-//    }
 
     /**
      * @brief Get the being's height.
@@ -112,8 +104,7 @@ class Entity : public ActionInterface, public AddLockInterface, public ChangeSco
      */
     virtual unsigned int getHeight() const
     {
-    	return mSprite.getGlobalBounds().height;
-//    			boundingBox(mShape).height;@todo remove?
+    	return mSprite.getHeight();
     }
 
     /**
@@ -140,8 +131,7 @@ class Entity : public ActionInterface, public AddLockInterface, public ChangeSco
      */
     virtual unsigned int getWidth() const
     {
-    	return mSprite.getGlobalBounds().width;
-//    	return boundingBox(mShape).width;@todo remove?
+    	return mSprite.getWidth();
     }
 
     /**
@@ -214,8 +204,7 @@ class Entity : public ActionInterface, public AddLockInterface, public ChangeSco
      */
     virtual void setAlpha(unsigned int a)
     {
-    	const sf::Color& c = mSprite.getColor();
-    	mSprite.setColor(sf::Color(c.r, c.g, c.b, a));
+    	mSprite.setAlpha(a);
     }
 
     /**
@@ -286,7 +275,7 @@ class Entity : public ActionInterface, public AddLockInterface, public ChangeSco
     Entity::EntityType mType;
 
     // The visual entity.
-    sf::Sprite mSprite;
+    AnimatedSprite mSprite;
 
     private:
     // The collidability state of this being.

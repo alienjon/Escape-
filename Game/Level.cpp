@@ -238,10 +238,10 @@ bool Level::checkMapCollision(Entity& entity)
 void Level::draw(gcn::SFMLGraphics& renderer)
 {
 	// Draw a black ground.
-	renderer.clear(sf::Color::Black);
+//	renderer.clear(sf::Color::Black);
 
 	// Draw the map.
-	mMap.draw(renderer);
+	renderer.draw(mMap);
 
 	// Draw the entities.
 	for(list<Entity*>::iterator it = mEntities.begin(); it != mEntities.end(); ++it)
@@ -390,6 +390,7 @@ void Level::logic(sf::View& camera)
 				tele = new Teleporter(4, mMap.getHeight(), *this);
 				tele->setPosition(0, 0);
 				tele->addWaypoint(sf::Vector2f(mMap.getWidth(), 0));
+				break;
 			}
 		}
 		mAddEntity(tele);

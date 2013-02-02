@@ -15,7 +15,7 @@ Pickup::Pickup(int value, const sf::Color& color, unsigned int size) :
 	mSize(size)
 {
 	mType = ENTITY_PICKUP;
-	mSprite.setColor(color);
+//	mSprite.setColor(color);@fixme Need sprite/animation for pickups
 }
 
 void Pickup::collide(Entity& entity)

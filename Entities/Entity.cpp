@@ -45,6 +45,9 @@ void Entity::logic(Level& level)
 {
     // Update the action logic.
     ActionInterface::logic(level);
+
+	// Update the display logic.
+    mSprite.logic();
 }
 
 bool sortByZIndex(Entity* a, Entity* b)

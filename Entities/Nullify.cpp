@@ -15,7 +15,7 @@ Nullify::Nullify(Level& level) :
 	mLevel(level)
 {
 	mType = ENTITY_NULLIFY;
-	mSprite = sf::Sprite(VideoManager::getTexture(IMAGE_ITEM_NULLIFY));
+	mSprite.addFrame(VideoManager::getTexture(IMAGE_ITEM_NULLIFY));
 	mSprite.setOrigin(getWidth() / 2, getHeight() / 2);
 }
 

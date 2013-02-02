@@ -18,6 +18,11 @@ using std::runtime_error;
 using std::string;
 using std::vector;
 
+TilesetData::TilesetData(const string& fname, unsigned int w, unsigned int h) :
+	filename(fname), width(w), height(h)
+{
+}
+
 TilesetManager::TilesetManager()
 {
     // Open the tileset data file.
@@ -36,7 +41,11 @@ TilesetManager::TilesetManager()
     		continue;
 
         // Add the tileset filename.
-        mData.push_back("Tilesets/" + line);
+    	std::size_t pos = 0;
+        string filename = "Tilesets/" + extractDataLine(line, pos, ',');
+        unsigned int width = toInt(extractDataLine(line, pos, ','));
+        unsigned int height= toInt(extractDataLine(line, pos, ','));
+        mData.push_back(TilesetData(filename, width, height));
     }
 
     // Close the file.
@@ -61,7 +70,7 @@ unsigned int TilesetManager::determineSize()
 const string TilesetManager::getCurrentResourceName()
 {
     // If we are currently debugging, just note that a tileset is loading.
-	return "Tileset: " + *(mManager->mData.begin());
+	return "Tileset: " + mManager->mData.begin()->filename;
 }
 
 bool TilesetManager::loadResource()
@@ -71,7 +80,7 @@ bool TilesetManager::loadResource()
         return false;
 
 	// Add the first entry in the list as the new tileset.
-	mManager->mTilesets.push_back(Tileset(*(mManager->mData.begin())));
+	mManager->mTilesets.push_back(Tileset(mManager->mData.begin()->filename, mManager->mData.begin()->width, mManager->mData.begin()->height));
 
     // Remove the first entry.
     mManager->mData.pop_front();

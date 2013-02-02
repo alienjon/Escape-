@@ -40,9 +40,6 @@ GUI::GUI(gcn::SFMLGraphics& graphics, gcn::SFMLInput& input)
 	setTop(&mRoot);
 	mFocusHandler->requestFocus(&mRoot);
 
-	// Add the FPS display widget to the GUI.
-	mRoot.add(&mFPSDisplayWidget, 0, 0);
-
     // Set the global font.
 	gcn::SFMLFont* font = FontManager::getGCNFont(FONT_DEFAULT);
 	font->setStyle(sf::Text::Italic | sf::Text::Bold);
@@ -51,14 +48,8 @@ GUI::GUI(gcn::SFMLGraphics& graphics, gcn::SFMLInput& input)
     mGraphics->setFont(font);
 }
 
-void GUI::setBase(gcn::Container* container)
+void GUI::setBase(gcn::Container* container)//@fixme Can I do this without this method?
 {
-	// Set the new container, but make sure that the FPS widget is on top.
+	// Set the new container.
     mRoot.add(container);
-    mFPSDisplayWidget.requestMoveToTop();
-}
-
-void GUI::toggleFPS()
-{
-    mFPSDisplayWidget.setVisible(!mFPSDisplayWidget.isVisible());
 }

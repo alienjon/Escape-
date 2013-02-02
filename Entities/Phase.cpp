@@ -15,7 +15,7 @@ Phase::Phase(Level& level) :
 	mLevel(level)
 {
 	mType = ENTITY_PHASE;
-	mSprite = sf::Sprite(VideoManager::getTexture(IMAGE_ITEM_PHASE));
+	mSprite.addFrame(VideoManager::getTexture(IMAGE_ITEM_PHASE));
 	mSprite.setOrigin(getWidth() / 2, getHeight() / 2);
 }
 

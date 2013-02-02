@@ -25,9 +25,9 @@ SpeedChange::SpeedChange(float speed, Creature& creature) :
 {
 	mType = ENTITY_SPEEDCHANGE;
 	if(mSpeed < 1.f)
-		mSprite = sf::Sprite(VideoManager::getTexture(IMAGE_SLOWPLAYER));
+		mSprite.addFrame(VideoManager::getTexture(IMAGE_SLOWPLAYER));
 	else
-		mSprite = sf::Sprite(VideoManager::getTexture(IMAGE_FASTPLAYER));
+		mSprite.addFrame(VideoManager::getTexture(IMAGE_FASTPLAYER));
 	mSprite.setOrigin(getWidth() / 2, getHeight() / 2);
 }
 

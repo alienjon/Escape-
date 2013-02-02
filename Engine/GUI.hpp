@@ -7,7 +7,6 @@
 #ifndef GUI_HPP
 #define GUI_HPP
 
-#include "../Widgets/FPSDisplayWidget.hpp"
 #include "../Engine/guichan.hpp"
 #include "../Engine/Guichan/sfml.hpp"
 
@@ -29,17 +28,9 @@ class GUI : public gcn::Gui
      */
     virtual void setBase(gcn::Container* container);
 
-	/**
-	 * @brief Toggle the fps state.
-	 */
-	virtual void toggleFPS();
-
 	protected:
 	// The root container is the bottom container in which all other widgets feed out from.
 	gcn::Container mRoot;
-
-	// The FPS display widget.
-	FPSDisplayWidget mFPSDisplayWidget;
 };
 
 #endif

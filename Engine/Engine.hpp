@@ -126,6 +126,10 @@ class Engine : public gcn::ActionListener, public GCNActionInterface, public gcn
     // The debug state.
     static bool mDebug;
 
+    // The FPS displays.
+    sf::Text mVideoFPS, mGameFPS;
+    sf::Font mFont;
+
     /**
      * @brief Clean up the remaining game screens.
      */

@@ -63,6 +63,10 @@ void Game::mGameCleanup()
 
 void Game::mGameSetup()
 {
+	// Load Resources.
+//	mLoadResources();@todo I'm currently loading resources on the fly.  Implement file loading in advance.
+
+	// Run the game screens.
 	mScreens.push_back(new GameScreen(5));
 	//@todo implement when done testing gamescreen.
 //    // If the game is being debugged, then skip to the game screen.

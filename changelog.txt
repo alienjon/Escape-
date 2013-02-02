@@ -20,15 +20,22 @@ Implement main menu
 	new game
 	other?
 
+Gameplay
+	Implement better widgets to display game info (score, remaining time, other? (maybe currently active effects?))
+	Check player speed (test faster/slower?)
+	Check point values (are they too much/too little)
+	Check level difficulties (there seems to be a big variety in map difficulty (is it based on size?)) and stabilize
+
 Version 0.1
 -------------
 Graphics
-	Implement animations
+*	Implement animations
 	Evaluate where I want graphics to go (ask Dan for input?)
-	Graphics are a bit choppy - fix this
-	
+*	Graphics are a bit choppy - fix this
+
 Audio
 	What other sounds could be implemented
+	Implement playing multiple (maybe random) songs
 	listen to more music selections and add them for playing
 
 Gameplay

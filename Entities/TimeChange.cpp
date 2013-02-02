@@ -32,7 +32,7 @@ TimeChange::TimeChange(Level& level) :
 	mInterval(0)
 {
 	mType = ENTITY_TIMECHANGE;
-	mSprite.setTexture(VideoManager::getTexture(IMAGE_TIMELOSS));
+	mSprite.addFrame(VideoManager::getTexture(IMAGE_TIMELOSS));
 	mSprite.setOrigin(getWidth() / 2, getHeight() / 2);
 	mTimer.start();
 }
@@ -66,16 +66,18 @@ void TimeChange::logic(Level& level)
 	// If time is up, set the interval, update the image, and switch time gain/loss state.
 	if(mTimer.getTime() >= mInterval)
 	{
+		// I need to clear the animation sprite's frames first.
+		mSprite.clear();
 		if(mIsAdding)
 		{
 			mInterval = random(TIMECHANGE_INTERVAL_LOSS_MIN, TIMECHANGE_INTERVAL_LOSS_MAX);
-			mSprite.setTexture(VideoManager::getTexture(IMAGE_TIMELOSS));
+			mSprite.addFrame(VideoManager::getTexture(IMAGE_TIMELOSS));
 			mIsAdding = false;
 		}
 		else
 		{
 			mInterval = random(TIMECHANGE_INTERVAL_GAIN_MIN, TIMECHANGE_INTERVAL_GAIN_MAX);
-			mSprite.setTexture(VideoManager::getTexture(IMAGE_TIMEGAIN));
+			mSprite.addFrame(VideoManager::getTexture(IMAGE_TIMEGAIN));
 			mIsAdding = true;
 		}
 		mSprite.setOrigin(getWidth() / 2, getHeight() / 2);

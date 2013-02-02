@@ -18,7 +18,7 @@ FlipScreen::FlipScreen(Level& level) :
 	mLevel(level)
 {
 	mType = ENTITY_FLIP;
-	mSprite = sf::Sprite(VideoManager::getTexture(IMAGE_FLIPSCREEN));
+	mSprite.addFrame(VideoManager::getTexture(IMAGE_FLIPSCREEN));
 	mSprite.setOrigin(getWidth() / 2, getHeight() / 2);
 	mTimer.start();
 }

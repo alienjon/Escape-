@@ -15,40 +15,52 @@ using std::map;
 using std::runtime_error;
 using std::string;
 
-Tileset::Tileset(const string& filename)
+Tileset::Tileset(const string& filename, unsigned int width, unsigned int height) :
+	mWidth(width),
+	mHeight(height)
 {
 	// Calculate the width and height.
-	sf::Sprite meta = sf::Sprite(VideoManager::getTexture(filename));
-	mWidth  = meta.getLocalBounds().width / 3;
-	mHeight = meta.getLocalBounds().height / 3;
+	sf::Texture meta;// = VideoManager::getTexture(filename);
+//	mWidth  = meta.getSize().x / 3;//meta.getLocalBounds().width / 3;@todo cleanup?
+//	mHeight = meta.getSize().y / 3;	//meta.getLocalBounds().height / 3;@todo cleanup?
 
 	// Create the map areas.
-	mTiles[NORTHWEST] = sf::Sprite(VideoManager::getTexture(filename));
-	mTiles[NORTHWEST].setTextureRect(sf::IntRect(0, 0, mWidth, mHeight));
+	meta.loadFromFile(filename, sf::IntRect(0, 0, mWidth, mHeight));
+	mTiles[NORTHWEST] = meta.copyToImage();//sf::Sprite(VideoManager::getTexture(filename));
+//	mTiles[NORTHWEST].setTextureRect(sf::IntRect(0, 0, mWidth, mHeight));
 
-	mTiles[NORTH]	  = sf::Sprite(VideoManager::getTexture(filename));
-	mTiles[NORTH].setTextureRect(sf::IntRect(mWidth, mHeight * 2, mWidth, mHeight));
+	meta.loadFromFile(filename, sf::IntRect(mWidth, mHeight * 2, mWidth, mHeight));
+	mTiles[NORTH] = meta.copyToImage();//sf::Sprite(VideoManager::getTexture(filename));
+//	mTiles[NORTH].setTextureRect(sf::IntRect(mWidth, mHeight * 2, mWidth, mHeight));
 
-	mTiles[NORTHEAST] = sf::Sprite(VideoManager::getTexture(filename));
-	mTiles[NORTHEAST].setTextureRect(sf::IntRect(mWidth * 2, 0, mWidth, mHeight));
+	meta.loadFromFile(filename, sf::IntRect(mWidth * 2, 0, mWidth, mHeight));
+	mTiles[NORTHEAST] = meta.copyToImage();//sf::Sprite(VideoManager::getTexture(filename));
+//	mTiles[NORTHEAST].setTextureRect(sf::IntRect(mWidth * 2, 0, mWidth, mHeight));
 
-	mTiles[WEST]	  = sf::Sprite(VideoManager::getTexture(filename));
-	mTiles[WEST].setTextureRect(sf::IntRect(0, mHeight, mWidth, mHeight));
+	meta.loadFromFile(filename, sf::IntRect(0, mHeight, mWidth, mHeight));
+	mTiles[WEST] = meta.copyToImage();//sf::Sprite(VideoManager::getTexture(filename));
+//	mTiles[WEST].setTextureRect(sf::IntRect(0, mHeight, mWidth, mHeight));
 
-	mTiles[EAST]	  = sf::Sprite(VideoManager::getTexture(filename));
-	mTiles[EAST].setTextureRect(sf::IntRect(mWidth * 2, mHeight, mWidth, mHeight));
+	meta.loadFromFile(filename, sf::IntRect(mWidth * 2, mHeight, mWidth, mHeight));
+	mTiles[EAST] = meta.copyToImage();//sf::Sprite(VideoManager::getTexture(filename));
+//	mTiles[EAST].setTextureRect(sf::IntRect(mWidth * 2, mHeight, mWidth, mHeight));
 
-	mTiles[SOUTHWEST] = sf::Sprite(VideoManager::getTexture(filename));
-	mTiles[SOUTHWEST].setTextureRect(sf::IntRect(0, mHeight * 2, mWidth, mHeight));
+	meta.loadFromFile(filename, sf::IntRect(0, mHeight * 2, mWidth, mHeight));
+	mTiles[SOUTHWEST] = meta.copyToImage();//sf::Sprite(VideoManager::getTexture(filename));
+//	mTiles[SOUTHWEST].setTextureRect(sf::IntRect(0, mHeight * 2, mWidth, mHeight));
 
-	mTiles[SOUTH]	  = sf::Sprite(VideoManager::getTexture(filename));
-	mTiles[SOUTH].setTextureRect(sf::IntRect(mWidth, 0, mWidth, mHeight));
+	meta.loadFromFile(filename, sf::IntRect(mWidth, 0, mWidth, mHeight));
+	mTiles[SOUTH] = meta.copyToImage();//sf::Sprite(VideoManager::getTexture(filename));
+//	mTiles[SOUTH].setTextureRect(sf::IntRect(mWidth, 0, mWidth, mHeight));
 
-	mTiles[SOUTHEAST] = sf::Sprite(VideoManager::getTexture(filename));
-	mTiles[SOUTHEAST].setTextureRect(sf::IntRect(mWidth * 2, mHeight * 2, mWidth, mHeight));
+	meta.loadFromFile(filename, sf::IntRect(mWidth * 2, mHeight * 2, mWidth, mHeight));
+	mTiles[SOUTHEAST] = meta.copyToImage();//sf::Sprite(VideoManager::getTexture(filename));
+//	mTiles[SOUTHEAST].setTextureRect(sf::IntRect(mWidth * 2, mHeight * 2, mWidth, mHeight));
 
-	mTiles[EMPTYFLOOR]= sf::Sprite(VideoManager::getTexture(filename));
-	mTiles[EMPTYFLOOR].setTextureRect(sf::IntRect(0, 0, 0, 0));
+	sf::Image emptyfloor;
+	emptyfloor.create(mWidth, mHeight, sf::Color(0, 0, 0, 0));
+	mTiles[EMPTYFLOOR]= emptyfloor;//sf::Sprite(VideoManager::getTexture(filename));
+//	mTiles[EMPTYFLOOR].setTextureRect(sf::IntRect(0, 0, 0, 0));
 
 	/* Create the collision areas based on the width of the collision area. */
 	int col_size = 8; // @todo Should this be fixed or set with the tileset?
@@ -102,9 +114,9 @@ Tileset::Tileset(const string& filename)
 	mCollisions[SOUTHWEST] = area;
 }
 
-const sf::Sprite& Tileset::getTile(Tileset::TileType type) const
+const sf::Image& Tileset::getTile(Tileset::TileType type) const
 {
-	map<Tileset::TileType, sf::Sprite>::const_iterator it = mTiles.find(type);
+	map<Tileset::TileType, sf::Image>::const_iterator it = mTiles.find(type);
 	if(it == mTiles.end())
 		throw runtime_error("Tileset::getTile() -> Invalid tile type provided.");
 	return it->second;

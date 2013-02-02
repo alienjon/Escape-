@@ -15,12 +15,10 @@
 #include "../Widgets/GameOptionsWidget.hpp"
 #include "../Engine/GUI.hpp"
 #include "../Engine/guichan.hpp"
-//#include "../Widgets/GameScreenMenuBar.hpp"
 #include "../Game/Level.hpp"
 #include "../Widgets/LevelCompleteWidget.hpp"
 #include "../Entities/Player.hpp"
 #include "../Widgets/PlayerDirectionSelectionWidget.hpp"
-#include "../Widgets/PlayerItemDisplay.hpp"
 #include "../Engine/Screen.hpp"
 #include "../Interfaces/TimeChangeInterface.hpp"
 #include "../Listeners/TimeChangeListener.hpp"
@@ -106,14 +104,8 @@ class GameScreen : public ChangeScoreListener, public TimeChangeInterface, publi
     // The game options menu.
     GameOptionsWidget mOptionsMenu;
 
-    // The menu bar.
-//    GameScreenMenuBar mMenuBar;
-
     // The level complete widget.
     LevelCompleteWidget mLevelCompleteWidget;
-
-    // The player item display.
-    PlayerItemDisplay mItemDisplay;
 
 	// This is the score.
 	unsigned int mScore;
@@ -128,6 +120,7 @@ class GameScreen : public ChangeScoreListener, public TimeChangeInterface, publi
     sf::View mCamera;
 
     // Internal widgets.
+    //@todo Transfer timer and label to separate widgets.
     TimerWidget mTimerWidget;
     gcn::Label mScoreLabel;
 

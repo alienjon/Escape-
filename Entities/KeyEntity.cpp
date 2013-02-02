@@ -20,7 +20,7 @@ KeyEntity::KeyEntity(sf::Color color) :
 {
 	mType = ENTITY_KEY;
 	mTimer.start();
-	mSprite.setTexture(VideoManager::getTexture(IMAGE_KEY));
+	mSprite.addFrame(VideoManager::getTexture(IMAGE_KEY));
 	mSprite.setOrigin(getWidth() / 2, getHeight() / 2);
 }
 

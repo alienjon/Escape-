@@ -18,6 +18,7 @@
 #include "../Engine/Logger.hpp"
 #include "../main.hpp"
 #include "../Engine/Screen.hpp"
+#include "../Engine/Timer.hpp"
 #include "../Engine/VideoManager.hpp"
 
 using std::ifstream;
@@ -84,6 +85,19 @@ Engine::Engine() :
 	mGui = new GUI(mRenderer, mInput);
 	mGui->addGlobalKeyListener(this);
 	mGui->getTop()->addActionListener(this);
+
+	// Setup the FPS displays.
+	mFont.loadFromFile("Fonts/VeraMono.ttf");
+	mGameFPS.setFont(mFont);
+	mGameFPS.setCharacterSize(18);
+	mGameFPS.setColor(sf::Color::Magenta);
+	mGameFPS.setStyle(sf::Text::Bold);
+	mVideoFPS.setFont(mFont);
+	mVideoFPS.setCharacterSize(18);
+	mVideoFPS.setColor(sf::Color::Magenta);
+	mVideoFPS.setStyle(sf::Text::Bold);
+	mGameFPS.setPosition(0, 0);
+	mVideoFPS.setPosition(0, mGameFPS.getCharacterSize());
 }
 
 Engine::~Engine()
@@ -174,9 +188,8 @@ void Engine::mLoadNextScreen()
 void Engine::keyPressed(gcn::KeyEvent& event)
 {
 	// Quit the game.
-	if(isDebug())
-		if(event.getKey().getValue() == 'c' && event.isControlPressed())
-			mRenderer.close();
+	if(isDebug() && event.getKey().getValue() == 'c' && event.isControlPressed())
+		mRenderer.close();
 
 	// Save a screenshot.
 	if(event.getKey().getValue() == 'p' && event.isControlPressed())
@@ -194,13 +207,9 @@ void Engine::keyPressed(gcn::KeyEvent& event)
 	{
 		setDebug(!isDebug());
 		if(isDebug())
-		{
 			LOG("Debugging enabled");
-		}
 		else
-		{
 			LOG_TO_CONSOLE("Debugging disabled");
-		}
 	}
 
 	// Display engine settings.
@@ -243,28 +252,52 @@ void Engine::run()
     // Setup the game.
     mGameSetup();
     mLoadNextScreen();
+    Timer gametimer, fpstimer;
+    gametimer.start();
+    fpstimer.start();
+    unsigned int gamefps_count = 0, videofps_count = 0;
 
 	// Basic game loop.
     while(mRenderer.isOpen())
     {
-    	// Process the events.
-    	sf::Event event;
-    	while(mRenderer.pollEvent(event))
-    		mInput.pushInput(event);
+    	if(gametimer.getTime() > 1000/60)
+    	{
+			// Process the events.
+			sf::Event event;
+			while(mRenderer.pollEvent(event))
+				mInput.pushInput(event);
 
-    	// Logic.
-    	(*mCurrentScreen)->logic();
-    	mGui->logic();
+			// Logic.
+			(*mCurrentScreen)->logic();
+			mGui->logic();
+			gamefps_count++;
+			gametimer.start();
+    	}
 
-		// Draw the non-gui.
+		// Draw
+    	mRenderer.clear();
 		(*mCurrentScreen)->draw(mRenderer);
-
-		// Draw the gui.
-		mRenderer.setView(mRenderer.getDefaultView());
 		mGui->draw();
+
+		// If debugging, draw FPS info.
+		if(isDebug())
+		{
+			mRenderer.draw(mGameFPS);
+			mRenderer.draw(mVideoFPS);
+
+			if(fpstimer.getTime() > 1000)
+			{
+				mGameFPS.setString("Game FPS: " + toString(gamefps_count));
+				mVideoFPS.setString("VideoFPS: " + toString(videofps_count));
+				gamefps_count = 0;
+				videofps_count = 0;
+				fpstimer.start();
+			}
+		}
 
         // Render the frame.
         mRenderer.display();
+        videofps_count++;
 
         // If the screen has finished, then load the next screen.
         if((*mCurrentScreen)->isDone())
@@ -278,11 +311,16 @@ void Engine::run()
 
 void Engine::updateScreen()
 {
+	// Check the video mode.
+	if(isDebug())
+		mVideoMode.isValid() ? LOG("Video Mode Valid") : LOG("Video Mode Invalid");
+
+	// Recreate the renderer.
 	mRenderer.create(mVideoMode, GAME_NAME, (mFullscreen) ? sf::Style::Fullscreen : sf::Style::Titlebar, mSettings);
 
 	// Set other options that are defaulted when the renderer is re-created.
 	mRenderer.setKeyRepeatEnabled(false);
-    mRenderer.setFramerateLimit(100); // @note Sets the maximum framerate if vsync is disabled.
+    mRenderer.setFramerateLimit(60); // @note Sets the maximum framerate if vsync is disabled.
     mRenderer.setVerticalSyncEnabled(mVerticalSync);
 }
 

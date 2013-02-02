@@ -54,6 +54,7 @@ ostream& operator<<(ostream& os, const Cell& cell)
 }
 
 Map::Map(unsigned int width, unsigned int height) :
+	mTiles(sf::Quads, width * MAP_CELL_SIDE * height * MAP_CELL_SIDE),
 	mWidth(width < 3 ? 3 : width),
 	mHeight(height < 3 ? 3 : height),
 	mTileset(TilesetManager::getRandom())
@@ -171,12 +172,15 @@ Map::Map(unsigned int width, unsigned int height) :
 				mapfile << cells[y][x];
 	}
 
-	// Populate the levels with the correct number of cells.
+	// Populate the collision vector.
 	for(unsigned int i = 0; i != (mWidth * MAP_CELL_SIDE) * (mHeight * MAP_CELL_SIDE); ++i)
-		mMap.push_back(pair<sf::Sprite, CollisionArea>());
+		mCollisions.push_back(CollisionArea());
+
+	// Prepare the map texture for drawing.
+	if(!mMapTexture.create(mWidth * MAP_CELL_SIDE * mTileset.getWidth(), mHeight * MAP_CELL_SIDE * mTileset.getHeight()))
+			ERROR("Unable to create map texture.");
 
 	int tile_width = mTileset.getWidth(), tile_height = mTileset.getHeight();
-	unsigned int width_in_tiles = mWidth * MAP_CELL_SIDE;
 
 	// Now create the rest of the tiles.
 	for(int cell_y = 0; cell_y != (int)mHeight; ++cell_y)
@@ -261,16 +265,24 @@ Map::Map(unsigned int width, unsigned int height) :
 						tile = Tileset::EAST;
 
 					// Configure the entries and collisions.
-                    //{this places the tile in the cell}  {this moves the tile over within the cell block}
-					unsigned int pos = (cell_y * MAP_CELL_SIDE + y) * width_in_tiles + (cell_x * MAP_CELL_SIDE + x);
-					mMap.at(pos).first = mTileset.getTile(tile);
-					mMap.at(pos).first.setPosition((cell_x * MAP_CELL_SIDE * tile_width) + (x * tile_width), (cell_y * MAP_CELL_SIDE * tile_height)+ (y * tile_height));
-					mMap.at(pos).second = mTileset.getTileCollision(tile);
-					mMap.at(pos).second.setPosition((cell_x * MAP_CELL_SIDE * tile_width) + (x * tile_width),
+					unsigned int pos = (cell_y * MAP_CELL_SIDE + y) * (mWidth * MAP_CELL_SIDE) + (cell_x * MAP_CELL_SIDE + x);
+					mMapTexture.update(mTileset.getTile(tile), (cell_x * MAP_CELL_SIDE * tile_width) + (x * tile_width), (cell_y * MAP_CELL_SIDE * tile_height)+ (y * tile_height));
+					mCollisions.at(pos) = mTileset.getTileCollision(tile);
+					mCollisions.at(pos).setPosition((cell_x * MAP_CELL_SIDE * tile_width) + (x * tile_width),
 													(cell_y * MAP_CELL_SIDE * tile_height) + (y * tile_height));
 				}
 			}
 		}
+	}
+
+	// Attach the texture to the sprite.
+	mMapSprite.setTexture(mMapTexture, true);
+
+	// If debugging, then save a copy of the map.
+	if(Game::isDebug())
+	{
+		mMapTexture.copyToImage().saveToFile("background.png");
+		LOG("Copy of map saved to 'background.png'");
 	}
 }
 
@@ -293,33 +305,14 @@ bool Map::checkCollision(const sf::FloatRect& area) const
 
 	for(int y = start_y; y != end_y; ++y)
 		for(int x = start_x; x != end_x; ++x)
-			if(mMap.at(x + y * width_in_tiles).second.isIntersecting(area))
+			if(mCollisions.at(x + y * width_in_tiles).isIntersecting(area))
 				return true;
 	return false;
 }
 
-void Map::draw(sf::RenderWindow& renderer)
+void Map::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	/* Only draw tiles in the bounds of the screen */
-	// Calculate the start and end x,y values.
-	unsigned int width_in_tiles = mWidth * MAP_CELL_SIDE;
-	sf::Vector2f pos = renderer.getView().getCenter(),
-				 siz = renderer.getView().getSize();
-	int start_x = (pos.x - (siz.x / 2)) / mTileset.getWidth() - 1,
-	    end_x   = (pos.x + (siz.x / 2)) / mTileset.getWidth() + 1,
-		start_y = (pos.y - (siz.y / 2)) / mTileset.getHeight() - 1,
-		end_y   = (pos.y + (siz.y / 2)) / mTileset.getHeight() + 1;
-
-	// Correct for min, max.
-	start_y = (start_y < 0) ? 0 : start_y;
-	end_y   = ((unsigned int)end_y >= mHeight * MAP_CELL_SIDE) ? mHeight * MAP_CELL_SIDE : end_y;
-	start_x = (start_x < 0) ? 0 : start_x;
-	end_x   = (end_x >= (int)(mWidth * MAP_CELL_SIDE)) ? (int)(mWidth * MAP_CELL_SIDE) : end_x;
-
-	// Draw the tiles in the determined area.
-	for(int y = start_y; y != end_y; ++y)
-		for(int x = start_x; x != end_x; ++x)
-			renderer.draw(mMap.at(x + y * width_in_tiles).first);
+	target.draw(mMapSprite);
 }
 
 unsigned int Map::getComplexity() const

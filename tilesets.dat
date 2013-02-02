@@ -3,6 +3,6 @@
 # Each entry is the filename for the tileset located in Tilesets/. A tileset
 # could realistically be of any image type (supported by SDL_image) that
 # resembles a closed box. Entries below for an example:
-NeonGreen.png
-NeonRed.png
-NeonCyan.png
+NeonGreen.png,64,64
+NeonRed.png,64,64
+NeonCyan.png,64,64

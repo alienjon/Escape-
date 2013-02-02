@@ -14,6 +14,26 @@
 #include "../Game/Tileset.hpp"
 
 /**
+ * @brief Data needed to create a tileset.
+ */
+struct TilesetData
+{
+	/**
+	 * @brief Constructor for information to build a tileset.
+	 * @param fname The filename of the meta file to create the tileset.
+	 * @param w The width of a single tile.
+	 * @param h The height of a single tile.
+	 */
+	TilesetData(const std::string& fname, unsigned int w, unsigned int h);
+
+	// The filename for the tileset's image.
+	std::string filename;
+
+	// The size of a single tile.
+	unsigned int width, height;
+};
+
+/**
  * @brief A class to manage all tilesets.
  */
 class TilesetManager
@@ -74,7 +94,7 @@ class TilesetManager
     /**
      * The tileset file data extracted into a list.
      */
-    std::list<std::string> mData;
+    std::list<TilesetData> mData;
 
     /**
      * The collection of tilesets.
