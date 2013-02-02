@@ -44,8 +44,8 @@ class SpeedChange : public Entity
 	virtual void logic(Level& level);
 
 	private:
-	// The speed to set for the player.
-	float mSpeed;
+	// The speed the creature is moving to and the speed the creature is moving from.
+	float mSpeedTo, mSpeedFrom;
 
 	// The level in which this entity resides.
 	Creature& mCreature;

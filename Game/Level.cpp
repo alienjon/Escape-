@@ -12,19 +12,15 @@
 #include "../Engine/AudioManager.hpp"
 #include "../Entities/Creature.hpp"
 #include "../Entities/Entity.hpp"
-#include "../Entities/FlipScreen.hpp"
 #include "../Engine/FontManager.hpp"
 #include "../Entities/KeyEntity.hpp"
 #include "../Game/Keywords.hpp"
 #include "../main.hpp"
-#include "../Entities/Nullify.hpp"
-#include "../Entities/Phase.hpp"
 #include "../Entities/Pickup.hpp"
 #include "../Entities/Player.hpp"
 #include "../Entities/SpeedChange.hpp"
 #include "../Entities/Teleporter.hpp"
 #include "../Entities/TimeChange.hpp"
-#include "../Entities/ZoomScreen.hpp"
 
 using std::invalid_argument;
 using std::list;
@@ -121,33 +117,26 @@ Level::Level(unsigned int difficulty, Player& player) :
 				 * @todo finalize which power ups I'm going to keep
 				 */
 				int n = random(1, 100);
-				if(n <= 85)
+				if(n <= 70)
 				{
 					entity = new Pickup(5, sf::Color::Magenta, Pickup::MEDIUM);
 					mPickups.push_back(entity);
 				}
-				else if(n <= 90)
+				else if(n <= 73)
 				{
 					entity = new Pickup(75, sf::Color::Magenta, Pickup::SMALL);
 					mPickups.push_back(entity);
 				}
-				else if(n <= 95)
+				else if(n <= 83)
 					entity = new Pickup(-50, sf::Color::Red, Pickup::LARGE);
-				else//(n <= 85)
+				else if(n <= 88)
 					entity = new TimeChange(*this);
-//				else if(n <=87)
-//					entity = new SpeedChange(2.f, mPlayer);
-//				else if(n <= 89)
-//					entity = new SpeedChange(0.5f, mPlayer);
-//				else if(n <= 93)
-//					entity = new FlipScreen(*this);
-//				else if(n <= 95)
-//					entity = new ZoomScreen(*this);
-//				else if(n <= 97)
-//					entity = new Phase(*this);
-//				else// if(n <= 99)
-//					entity = new Nullify(*this);
-//				else
+				else if(n <=90)
+					entity = new SpeedChange(2.f, mPlayer);
+				else if(n <= 100)
+					entity = new SpeedChange(0.5f, mPlayer);
+				else
+				{}
 //					entity = new Teleport(*this);
 			}
 

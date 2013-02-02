@@ -221,8 +221,11 @@ void Player::logic(Level& level)
 				break;
 			}
 			default:
+			{
 				if(++mColor1 == mLocks.end())
 					mColor1 = mLocks.begin();
+				break;
+			}
 		}
 
 		mCycle = COLORCYCLE_PAUSE;

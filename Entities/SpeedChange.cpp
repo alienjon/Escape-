@@ -12,6 +12,7 @@
 #include "../Entities/Creature.hpp"
 #include "../Game/Keywords.hpp"
 #include "../Game/Level.hpp"
+#include "../Entities/Player.hpp"
 #include "../Engine/VideoManager.hpp"
 
 using std::string;
@@ -20,11 +21,12 @@ const unsigned int SPEEDCHANGE_INCREASE_INTERVAL = 10000;
 const unsigned int SPEEDCHANGE_DECREASE_INTERVAL = 15000;
 
 SpeedChange::SpeedChange(float speed, Creature& creature) :
-	mSpeed(speed),
+	mSpeedTo(speed),
+	mSpeedFrom(creature.getSpeed()),
 	mCreature(creature)
 {
 	mType = ENTITY_SPEEDCHANGE;
-	if(mSpeed < 1.f)
+	if(mSpeedTo < mSpeedFrom)
 		mSprite.addFrame(VideoManager::getTexture(IMAGE_SLOWPLAYER));
 	else
 		mSprite.addFrame(VideoManager::getTexture(IMAGE_FASTPLAYER));
@@ -37,13 +39,13 @@ void SpeedChange::collide(Entity& entity)
 	if(&entity == &mCreature)
 	{
 		// Change the player's speed.
-		mCreature.setSpeed(mSpeed);
+		mCreature.setSpeed(mSpeedTo);
 
 		// Configure the timer.
 		mTimer.start();
 
 		// Display what's happening.
-		string txt = (mSpeed < 1.f) ? "Slow!" : "Fast!";
+		string txt = (mSpeedTo < mSpeedFrom) ? "Slow!" : "Fast!";
 		distributeFloatingText(txt, sf::Vector2f(getX() - (getWidth() / 2), getY() - (getHeight() / 2)), sf::Color::Red);
 
 		// Hide and stop displaying the entity.
@@ -57,7 +59,8 @@ void SpeedChange::collide(Entity& entity)
 
 void SpeedChange::draw(sf::RenderWindow& renderer)
 {
-	if(!mTimer.isStarted())draw(renderer);
+	if(mTimer.isStarted())
+		Entity::draw(renderer);
 }
 
 void SpeedChange::logic(Level& level)
@@ -65,11 +68,11 @@ void SpeedChange::logic(Level& level)
 	Entity::logic(level);
 
 	if(mTimer.isStarted() &&
-	   ((mTimer.getTime() >= SPEEDCHANGE_INCREASE_INTERVAL && mSpeed < 1.f) ||
-	   (mTimer.getTime() >= SPEEDCHANGE_DECREASE_INTERVAL && mSpeed >= 1.f)))
+	   ((mTimer.getTime() >= SPEEDCHANGE_INCREASE_INTERVAL && mSpeedTo < mSpeedFrom) ||
+	   (mTimer.getTime() >= SPEEDCHANGE_DECREASE_INTERVAL && mSpeedTo >= mSpeedFrom)))
 	{
 		distributeFloatingText("Speed Returned!", sf::Vector2f(getX() - (getWidth() / 2), getY() - (getHeight() / 2)), sf::Color::Red);
-		mCreature.setSpeed(1.f);
+		mCreature.setSpeed(mSpeedFrom);
 		mDie();
 	}
 }
