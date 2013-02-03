@@ -59,7 +59,7 @@ void SpeedChange::collide(Entity& entity)
 
 void SpeedChange::draw(sf::RenderWindow& renderer)
 {
-	if(mTimer.isStarted())
+	if(!mTimer.isStarted())
 		Entity::draw(renderer);
 }
 
@@ -71,7 +71,7 @@ void SpeedChange::logic(Level& level)
 	   ((mTimer.getTime() >= SPEEDCHANGE_INCREASE_INTERVAL && mSpeedTo < mSpeedFrom) ||
 	   (mTimer.getTime() >= SPEEDCHANGE_DECREASE_INTERVAL && mSpeedTo >= mSpeedFrom)))
 	{
-		distributeFloatingText("Speed Returned!", sf::Vector2f(getX() - (getWidth() / 2), getY() - (getHeight() / 2)), sf::Color::Red);
+		distributeFloatingText("Speed Returned!", sf::Vector2f(mCreature.getX() - (mCreature.getWidth() / 2), mCreature.getY() - (mCreature.getHeight() / 2)), sf::Color::Red);
 		mCreature.setSpeed(mSpeedFrom);
 		mDie();
 	}

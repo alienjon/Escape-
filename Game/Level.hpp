@@ -91,11 +91,6 @@ class Level : public ActionInterface, public ChangeScoreInterface, public Change
     virtual void draw(gcn::SFMLGraphics& renderer);
 
     /**
-     * @brief Flip the level upside-down.
-     */
-    virtual void flip();
-
-    /**
      * @brief Get the map.
      * @return The map.
      */
@@ -119,25 +114,6 @@ class Level : public ActionInterface, public ChangeScoreInterface, public Change
     virtual void logic(sf::View& camera);
 
     /**
-     * @brief Nullify all negative status effects for the provided creature.
-     * @param creature The creature whose effects are to be nullified.
-     */
-    virtual void nullify(Creature& creature);
-
-    /**
-     * @brief Phase move the creature.
-     * @param creature The creature to phase.
-     * @note If the creature is a player show a widget to have the player select a phase direction.
-     */
-    void phaseCreature(Creature& creature);
-
-    /**
-     * @brief Tell any creatures waiting to phase the direction to do so.
-     * @param dir The direction to phase.
-     */
-    void phaseDirection(const std::string& dir);
-
-    /**
      * @brief Called when the player finds the exit.
      */
     void playerFoundExit();
@@ -156,11 +132,6 @@ class Level : public ActionInterface, public ChangeScoreInterface, public Change
     {
     	distributeTimeChange(time);
     }
-
-    /**
-     * @brief Zoom the level.
-     */
-    virtual void zoom();
 
     private:
     /**
@@ -196,29 +167,12 @@ class Level : public ActionInterface, public ChangeScoreInterface, public Change
     // A level has a map.
     Map mMap;
 
-    // Lists of things the levle manages.
+    // Lists of things the level manages.
     std::list<Entity*> mDeadEntities;
-    std::list<Creature*> mPhaseList;
 
     // A list of pickups that could still be picked up and a toggle to check if an award has been given for picking all items up.
     std::list<Entity*> mPickups;
     bool mPickupAward;
-
-    // Flipping data.
-    Timer mFlipTimer;
-    float mFlipAngle;
-    bool mFlipped;
-
-    // Zooming data.
-    Timer mZoomTimer;
-    float mZoomFactor;
-    bool mZoomed;
-
-    // Teleporter information.
-    Timer mTeleportTimer;
-    unsigned int mTeleportInterval,
-				 mTeleportIntervalMin,
-				 mTeleportIntervalMax;
 };
 
 #endif /* LEVEL_HPP_ */

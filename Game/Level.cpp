@@ -19,7 +19,7 @@
 #include "../Entities/Pickup.hpp"
 #include "../Entities/Player.hpp"
 #include "../Entities/SpeedChange.hpp"
-#include "../Entities/Teleporter.hpp"
+#include "../Entities/SurprisePickup.hpp"
 #include "../Entities/TimeChange.hpp"
 
 using std::invalid_argument;
@@ -30,33 +30,17 @@ using std::string;
 
 const unsigned int FLOATINGTEXT_TIMER_INTERVAL = 15;
 const float FLOATINGTEXT_MOVE_STEP = 0.3f;
-const unsigned int FLIP_ROTATION_SPEED = 5;
-const float FLIP_ROTATION_STEP = 1.5f;
-const unsigned int ZOOM_SPEED = 5;
-const float ZOOM_STEP = 0.0055f;
-#include <iostream>
-using namespace std;//@todo remove
+
 Level::Level(unsigned int difficulty, Player& player) :
 	mIsDone(false),
 	mPlayer(player),
 	mPortal(30, 30),
 	mMap(random(random(difficulty, difficulty * 2), random(difficulty, difficulty * 2)),
 		 random(random(difficulty, difficulty * 2), random(difficulty, difficulty * 2))),
-	mPickupAward(false),
-	mFlipAngle(0.f),
-	mFlipped(false),
-	mZoomFactor(1.f),
-	mZoomed(false),
-	mTeleportInterval(0),
-	mTeleportIntervalMin(45000),//@todo implement a way to dynamically configure the teleport intervals (maybe a leveldata object?)
-	mTeleportIntervalMax(90000)
+	mPickupAward(false)
 {
 	// Start the timers.
 	mFloatingTextTimer.start();
-//	mTeleportTimer.start();@todo will I remove the teleport?
-
-	// Set the initial teleport interval.
-	mTeleportInterval = random(mTeleportIntervalMin, mTeleportIntervalMax);
 
 	// Calculate the entrance position.
 	mPortal.setPosition((((mMap.getCellWidth() / 2) * MAP_CELL_SIDE) + (MAP_CELL_SIDE / 2)) * mMap.getTileset().getWidth() - (mPortal.getPortalWidth() / 2),
@@ -117,27 +101,26 @@ Level::Level(unsigned int difficulty, Player& player) :
 				 * @todo finalize which power ups I'm going to keep
 				 */
 				int n = random(1, 100);
-				if(n <= 70)
-				{
-					entity = new Pickup(5, sf::Color::Magenta, Pickup::MEDIUM);
-					mPickups.push_back(entity);
-				}
-				else if(n <= 73)
+				if(n <= 10)
+					entity = new SurprisePickup(*this);
+				else if(n <= 13)
 				{
 					entity = new Pickup(75, sf::Color::Magenta, Pickup::SMALL);
 					mPickups.push_back(entity);
 				}
-				else if(n <= 83)
+				else if(n <= 20)
 					entity = new Pickup(-50, sf::Color::Red, Pickup::LARGE);
-				else if(n <= 88)
+				else if(n <= 23)
 					entity = new TimeChange(*this);
-				else if(n <=90)
+				else if(n <= 26)
 					entity = new SpeedChange(2.f, mPlayer);
-				else if(n <= 100)
+				else if(n <= 35)
 					entity = new SpeedChange(0.5f, mPlayer);
 				else
-				{}
-//					entity = new Teleport(*this);
+				{
+					entity = new Pickup(5, sf::Color::Magenta, Pickup::MEDIUM);
+					mPickups.push_back(entity);
+				}
 			}
 
 			// If an entity was created, configure it.
@@ -226,9 +209,6 @@ bool Level::checkMapCollision(Entity& entity)
 
 void Level::draw(gcn::SFMLGraphics& renderer)
 {
-	// Draw a black ground.
-//	renderer.clear(sf::Color::Black);
-
 	// Draw the map.
 	renderer.draw(mMap);
 
@@ -239,11 +219,6 @@ void Level::draw(gcn::SFMLGraphics& renderer)
 	// Draw the floating texts.
 	for(list<sf::Text>::const_iterator it = mFloatingTexts.begin(); it != mFloatingTexts.end(); ++it)
 		renderer.draw(*it);
-}
-
-void Level::flip()
-{
-	mFlipTimer.start();
 }
 
 const Map& Level::getMap() const
@@ -301,94 +276,6 @@ void Level::logic(sf::View& camera)
     	mFloatingTextTimer.start();
     }
 
-	// Flip the screen.
-    //@todo turn flipping the screen into actions?
-	if(mFlipTimer.isStarted() && mFlipTimer.getTime() >= FLIP_ROTATION_SPEED)
-	{
-		mFlipAngle += FLIP_ROTATION_STEP;
-		mFlipTimer.start();
-		if(mFlipped && mFlipAngle >= 360.f)
-		{
-			mFlipTimer.stop();
-			mFlipAngle = 0.f;
-			mFlipped = false;
-		}
-		else if(!mFlipped && mFlipAngle >= 180.f)
-		{
-			mFlipTimer.stop();
-			mFlipAngle = 180.f;
-			mFlipped = true;
-		}
-		camera.setRotation(mFlipAngle);
-	}
-
-	// Zoom the screen.
-	//@todo turn zooming into actions?
-	if(mZoomTimer.isStarted() && mZoomTimer.getTime() >= ZOOM_SPEED)
-	{
-		mZoomFactor *= 1.f - (ZOOM_STEP * (mZoomed ? -1.f : 1.f));
-		if(mZoomed && mZoomFactor >= 1.f)
-		{
-			mZoomTimer.stop();
-			mZoomFactor = 1.f;
-			mZoomed = false;
-		}
-		else if(!mZoomed && mZoomFactor <= 0.3f)
-		{
-			mZoomTimer.stop();
-			mZoomFactor = 0.3f;
-			mZoomed = true;
-		}
-		else
-			camera.zoom(1.f - (ZOOM_STEP * (mZoomed ? -1.f : 1.f)));
-	}
-
-	// Check to see if a new teleporter is to be created.
-	//@todo make the teleporter into actions?
-	if(mTeleportTimer.getTime() >= mTeleportInterval)
-	{
-		// Play a warning sound that a teleporter was created.
-		AudioManager::playSound(SOUND_TELEPORT_WARNING);
-		// Create the new teleporter on a random side and have it move to the opposite side.
-		Teleporter* tele = 0;
-		switch(random(0, 3))
-		{
-			case 0: // Move Up
-			{
-				tele = new Teleporter(mMap.getWidth(), 4, *this);
-				tele->setPosition(0, mMap.getHeight());
-				tele->addWaypoint(sf::Vector2f(0, 0));
-				break;
-			}
-			case 1: // Move Down
-			{
-				tele = new Teleporter(mMap.getWidth(), 4, *this);
-				tele->setPosition(0, 0);
-				tele->addWaypoint(sf::Vector2f(0, mMap.getHeight()));
-				break;
-			}
-			case 2: // Move Left
-			{
-				tele = new Teleporter(4, mMap.getHeight(), *this);
-				tele->setPosition(mMap.getWidth(), 0);
-				tele->addWaypoint(sf::Vector2f(0, 0));
-				break;
-			}
-			default: // Move Right
-			{
-				tele = new Teleporter(4, mMap.getHeight(), *this);
-				tele->setPosition(0, 0);
-				tele->addWaypoint(sf::Vector2f(mMap.getWidth(), 0));
-				break;
-			}
-		}
-		mAddEntity(tele);
-
-		// Restart the timer and reset the teleport interval.
-		mTeleportTimer.start();
-		mTeleportInterval = random(mTeleportIntervalMin, mTeleportIntervalMax);
-	}
-
 	// Center the player on the screen.
 	camera.setCenter(mPlayer.getX() + (mPlayer.getWidth() / 2), mPlayer.getY() + (mPlayer.getHeight() / 2));
 
@@ -406,83 +293,7 @@ void Level::logic(sf::View& camera)
 	camera.setCenter(center);
 }
 
-void Level::nullify(Creature& creature)
-{
-	// If the level is flipped, unflip it.
-	if(mFlipped)
-		flip();
 
-	// If the level is zoomed, unzoom it.
-	if(mZoomed)
-		zoom();
-
-	// Set the player's speed to the default 1.f.
-	mPlayer.setSpeed(1.f);
-}
-
-void Level::phaseDirection(const string& dir)
-{
-	for(list<Creature*>::iterator it = mPhaseList.begin(); it != mPhaseList.end(); ++it)
-	{
-		// Get the creature's current cell location.
-		int cell_x = (int)(*it)->getX() / (MAP_CELL_SIDE * mMap.getTileset().getWidth());
-		int cell_y = (int)(*it)->getY() / (MAP_CELL_SIDE * mMap.getTileset().getHeight());
-
-		// Now change the cell to the cell to move to (a cell in that direction).
-		if(dir == toLower("up"))
-			cell_y--;
-		else if(dir == toLower("down"))
-			cell_y++;
-		else if(dir == toLower("left"))
-			cell_x--;
-		else if(dir == toLower("right"))
-			cell_x++;
-		else
-			throw runtime_error("Level::phaseDirection() -> Invalid direction provided.");
-
-		// Re-convert the cell position to pixel location. Have the creature move to the middle of the cell.
-		(*it)->phaseTo(sf::Vector2f((cell_x * MAP_CELL_SIDE * mMap.getTileset().getWidth()) + ((MAP_CELL_SIDE / 2) * mMap.getTileset().getWidth()) - ((*it)->getWidth() / 2),
-									(cell_y * MAP_CELL_SIDE * mMap.getTileset().getHeight())+ ((MAP_CELL_SIDE / 2) * mMap.getTileset().getHeight()) - ((*it)->getHeight() / 2)));
-
-		// Allow the creature to continue moving.
-		(*it)->setMovable(true);
-	}
-}
-
-void Level::phaseCreature(Creature& creature)
-{
-	// Hold creature movement while it is determining a direction to phase.
-	creature.setMovable(false);
-
-	// Determine the available directions.
-	bool up = false, down = false, left = false, right = false;
-	float width = MAP_CELL_SIDE * mMap.getTileset().getWidth(),
-		  height= MAP_CELL_SIDE * mMap.getTileset().getHeight();
-	if(creature.getY() >= height)
-		up = true;
-	if(creature.getY() + creature.getHeight() + height < mMap.getHeight())
-		down = true;
-	if(creature.getX() >= width)
-		left = true;
-	if(creature.getX() + creature.getWidth() + width < mMap.getWidth())
-		right = true;
-
-	// Show the directional GUI around the player and give it modal input.
-	string dat = ":";
-	dat += up ? "true" : "false";
-	dat += ":";
-	dat += down ? "true" : "false";
-	dat += ":";
-	dat += left ? "true" : "false";
-	dat += ":";
-	dat += right ? "true" : "false";
-	dat += ":";
-	dat += toString(creature.getX() + (creature.getWidth() / 2)) + ":" + toString(creature.getY() + (creature.getHeight() / 2));
-	mDistributeActionEvent(ACTION_SELECTION_REQUEST + dat);
-
-	// This creature will now listen for when the next phase location is provided.
-	mPhaseList.push_back(&creature);
-}
 
 void Level::playerFoundExit()
 {
@@ -493,13 +304,7 @@ void Level::teleportPlayer()
 {
 	unsigned int x = random((unsigned int)1, mMap.getCellWidth() - 2),
 				 y = random((unsigned int)1, mMap.getCellHeight()- 2);
-	mPlayer.setPosition(((x * MAP_CELL_SIDE) + (MAP_CELL_SIDE / 2)) * mMap.getTileset().getWidth() - (mPlayer.getWidth() / 2),
-						((y * MAP_CELL_SIDE) + (MAP_CELL_SIDE / 2)) * mMap.getTileset().getHeight() - (mPlayer.getHeight() / 2));
-	checkEntityCollision(mPlayer);
+	mPlayer.setPosition(((x * MAP_CELL_SIDE) + (MAP_CELL_SIDE / 2)) * mMap.getTileset().getWidth(),
+						((y * MAP_CELL_SIDE) + (MAP_CELL_SIDE / 2)) * mMap.getTileset().getHeight());
 	addFloatingText("Teleported!", mPlayer.getPosition(), sf::Color::Red, 20);
-}
-
-void Level::zoom()
-{
-	mZoomTimer.start();
 }

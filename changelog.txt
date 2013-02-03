@@ -39,9 +39,11 @@ Audio
 	listen to more music selections and add them for playing
 
 Gameplay
-	Add point +/- pickups
+*	Add point +/- pickups
 	review other pick ups (maybe a multiplier, speed)
-	remove items (or simplify)
+*	remove items (or simplify)
+	update keys (at least for temporary purposes)
+	make sure exiting at end of level works (it currently does not)
 
 Version 0.0
 -------------

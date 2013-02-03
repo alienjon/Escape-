@@ -40,6 +40,7 @@ const string IMAGE_PLAYER = "Images/player.png";
 const string IMAGE_PORTAL = "Images/portal.png";
 const string IMAGE_FLIPSCREEN = "Images/rotate.png";
 const string IMAGE_SLOWPLAYER = "Images/slowplayer.png";
+const string IMAGE_SURPRISEPICKUP = "Images/questionmark.png";
 const string IMAGE_TIMEGAIN	  = "Images/timegain.png";
 const string IMAGE_TIMELOSS	  = "Images/timeloss.png";
 const string IMAGE_ZOOMSCREEN = "Images/zoom.png";
@@ -56,8 +57,7 @@ const string SOUND_MENU_CLICK = "Audio/MenuButton.ogg";
 const string SOUND_PICKUP = "Audio/rollover_5.wav";
 const string SOUND_PICKUP_KEY = "Audio/rollover_6.wav";
 const string SOUND_PICKUP_SPECIAL = "Audio/rollover_3.wav";
-const string SOUND_TELEPORT_COLLIDE = "Audio/transport_collide.wav";
-const string SOUND_TELEPORT_WARNING = "Audio/transport_warning.wav";
+const string SOUND_SURPRISEPICKUP = "Audio/transport_collide.wav";
 
 // These are the music files.
 const string MUSIC_BACKGROUND = "Audio/DrSeuss - RoaringCow.flac"; // @todo add more music

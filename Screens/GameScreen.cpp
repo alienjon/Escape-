@@ -37,7 +37,6 @@ GameScreen::GameScreen(unsigned int difficulty) : Screen(),
 	mLevelCompleteWidget.addActionListener(this);
 	mOptionsMenu.addActionListener(this);
 	addKeyListener(&mPlayer);
-	addKeyListener(&mPlayerDirectionSelectionWidget);
 	addKeyListener(&mLevelCompleteWidget);
 
 	// @todo Temporary configurations.
@@ -61,36 +60,14 @@ GameScreen::~GameScreen()
 		delete mLevel;
 	}
 	removeKeyListener(&mPlayer);
-	removeKeyListener(&mPlayerDirectionSelectionWidget);
 	removeKeyListener(&mLevelCompleteWidget);
-    mPlayerDirectionSelectionWidget.removeActionListener(this);
 }
 
 void GameScreen::action(const gcn::ActionEvent& event)
 {
 	string::size_type pos = 0;
 	string keyword = extractDataLine(event.getId(), pos, DELIMITER);
-	if(keyword == ACTION_SELECTION_REQUEST)
-	{
-		// Determine the directions to display.
-		bool up	   = extractDataLine(event.getId(), pos, DELIMITER) == toLower("true");
-		bool down  = extractDataLine(event.getId(), pos, DELIMITER) == toLower("true");
-		bool left  = extractDataLine(event.getId(), pos, DELIMITER) == toLower("true");
-		bool right = extractDataLine(event.getId(), pos, DELIMITER) == toLower("true");
-		int x = toInt(extractDataLine(event.getId(), pos, DELIMITER));
-		int y = toInt(extractDataLine(event.getId(), pos, DELIMITER));
-
-		// Display the widget.
-		mPlayerDirectionSelectionWidget.setPosition(((mBase.getWidth() / 2) - (mCamera.getCenter().x - x)) - (mPlayerDirectionSelectionWidget.getWidth() / 2),
-													((mBase.getHeight() / 2) - (mCamera.getCenter().y - y)) - (mPlayerDirectionSelectionWidget.getHeight() / 2));
-		mPlayerDirectionSelectionWidget.display(up, down, left, right);
-	}
-	else if(keyword == ACTION_DIRECTION_SELECTED)
-	{
-		// Tell the level to phase the player in the requested direction.
-		mLevel->phaseDirection(extractDataLine(event.getId(), pos, DELIMITER));
-	}
-	else if(event.getSource() == &mLevelCompleteWidget)
+	if(event.getSource() == &mLevelCompleteWidget)
 	{
 		// If the old level completed, then load the next level.
 		if(mLevel->isDone())
@@ -224,10 +201,6 @@ void GameScreen::load(GUI* gui)//@todo move the adding/etc... to the constructor
     // Setup the in-game options menu.
     mOptionsMenu.setVisible(false);
     mBase.add(&mOptionsMenu, 0, 0);
-
-    // Direction Selection.
-    mBase.add(&mPlayerDirectionSelectionWidget);
-    mPlayerDirectionSelectionWidget.addActionListener(this);
 
     // Add the menu bar.
     mBase.add(&mScoreLabel, 0, mBase.getHeight() - mScoreLabel.getHeight());

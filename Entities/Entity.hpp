@@ -38,18 +38,14 @@ class Entity : public ActionInterface, public AddLockInterface, public ChangeSco
     enum EntityType
     {
     	ENTITY_CREATURE,
-    	ENTITY_FLIP,
     	ENTITY_ITEM,
     	ENTITY_KEY,
-    	ENTITY_NULLIFY,
-    	ENTITY_PHASE,
     	ENTITY_PICKUP,
     	ENTITY_PLAYER,
     	ENTITY_PORTAL,
     	ENTITY_SPEEDCHANGE,
-    	ENTITY_TELEPORTER,
+    	ENTITY_SURPRISEPICKUP,
     	ENTITY_TIMECHANGE,
-    	ENTITY_ZOOM,
     	ENTITY_NULL
     };
 
