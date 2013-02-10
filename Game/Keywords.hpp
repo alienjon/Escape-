@@ -10,8 +10,6 @@
 #include <string>
 
 // These are the actions.
-//extern const std::string ACTION_DIRECTION_SELECTED;
-//extern const std::string ACTION_SELECTION_REQUEST;
 extern const std::string ACTION_SHOWCURSOR;
 extern const std::string ACTION_HIDECURSOR;
 extern const std::string ACTION_PAUSE;
@@ -51,7 +49,6 @@ extern const std::string IMAGE_TIMEGAIN;
 extern const std::string IMAGE_TIMELOSS;
 extern const std::string IMAGE_ZOOMSCREEN;
 
-
 // These are the sounds.
 extern const std::string SOUND_LEVELCOMPLETE_FINISH;
 extern const std::string SOUND_LEVELCOMPLETE_ITEMDISPLAY;
@@ -60,8 +57,5 @@ extern const std::string SOUND_PICKUP;
 extern const std::string SOUND_PICKUP_KEY;
 extern const std::string SOUND_PICKUP_SPECIAL;
 extern const std::string SOUND_SURPRISEPICKUP;
-
-// These are the music files.
-extern const std::string MUSIC_BACKGROUND;
 
 #endif /* KEYWORDS_HPP_ */

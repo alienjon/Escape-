@@ -12,6 +12,8 @@
 class RemoveLockListener
 {
 	public:
+	virtual ~RemoveLockListener() {}
+
 	/**
 	 * @brief Remove a lock.
 	 * @param color The color of the lock to remove.

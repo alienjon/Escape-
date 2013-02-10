@@ -15,6 +15,8 @@ class Entity;
 class DeathListener
 {
     public:
+	virtual ~DeathListener() {}
+
     /**
      * @brief Called when the entity has died.
      * @param entity The entity who died.

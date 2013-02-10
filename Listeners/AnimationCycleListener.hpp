@@ -13,6 +13,8 @@
 class AnimationCycleListener
 {
     public:
+	virtual ~AnimationCycleListener() {}
+
     /**
      * @brief An entity's animation was cycled.
      */

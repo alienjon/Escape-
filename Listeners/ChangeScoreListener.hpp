@@ -13,6 +13,8 @@
 class ChangeScoreListener
 {
 	public:
+	virtual ~ChangeScoreListener() {}
+
 	/**
 	 * @brief Change the score by the provided amount.
 	 * @param change The amount to change the score.

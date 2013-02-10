@@ -9,8 +9,6 @@
 using std::string;
 
 // These are the actions.
-const string ACTION_DIRECTION_SELECTED = "ACTION_DIRECTION_SELECTED";
-const string ACTION_SELECTION_REQUEST = "ACTION_DIRECTION_SELECTION_REQUEST";
 const string ACTION_SHOWCURSOR = "ACTION_SHOWCURSOR";
 const string ACTION_HIDECURSOR = "ACTION_HIDECURSOR";
 const string ACTION_PAUSE = "ACTION_PAUSE";
@@ -58,6 +56,3 @@ const string SOUND_PICKUP = "Audio/rollover_5.wav";
 const string SOUND_PICKUP_KEY = "Audio/rollover_6.wav";
 const string SOUND_PICKUP_SPECIAL = "Audio/rollover_3.wav";
 const string SOUND_SURPRISEPICKUP = "Audio/transport_collide.wav";
-
-// These are the music files.
-const string MUSIC_BACKGROUND = "Audio/DrSeuss - RoaringCow.flac"; // @todo add more music

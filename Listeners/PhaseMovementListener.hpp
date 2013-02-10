@@ -15,6 +15,8 @@
 class PhaseMovementListener
 {
 	public:
+	virtual ~PhaseMovementListener() {}
+
     /**
      * @brief Phase this creature to the specified position.
      * @param vec The position to phase the creature to.

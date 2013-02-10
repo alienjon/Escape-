@@ -15,6 +15,8 @@ class Item;
 class PickupListener
 {
 	public:
+	virtual ~PickupListener() {}
+
 	/**
 	 * @brief An item was picked up.
 	 * @param item The item picked up.

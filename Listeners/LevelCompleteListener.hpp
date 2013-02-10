@@ -10,6 +10,8 @@
 class LevelCompleteListener
 {
 	public:
+	virtual ~LevelCompleteListener() {}
+
 	/**
 	 * @brief The level is complete.
 	 */

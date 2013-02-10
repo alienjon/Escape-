@@ -12,6 +12,8 @@
 class AddLockListener
 {
 	public:
+	virtual ~AddLockListener() {}
+
 	/**
 	 * @brief Add a lock.
 	 * @param color The lock color to add.

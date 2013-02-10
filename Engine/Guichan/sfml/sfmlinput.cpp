@@ -109,7 +109,9 @@ namespace gcn
 				break;
 			}
 			default:
-			{}
+			{
+				break;
+			}
 		}
 	}
 

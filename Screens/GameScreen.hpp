@@ -7,6 +7,8 @@
 #ifndef GAMESCREEN_HPP_
 #define GAMESCREEN_HPP_
 
+#include <vector>
+
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
@@ -128,6 +130,10 @@ class GameScreen : public ChangeScoreListener, public TimeChangeInterface, publi
 
     // If true, reset the view on the next draw() call (used when loading a new level)
     bool mResetView;
+
+    // The collection of background musics.
+    //@todo implement reading files in a directory to do this (boost libs)
+    std::vector<std::string> mBackMusicVector;
 };
 
 #endif /* GAMESCREEN_HPP_ */

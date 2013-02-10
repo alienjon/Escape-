@@ -15,6 +15,8 @@ class Creature;
 class CreatureWaypointListener
 {
     public:
+	virtual ~CreatureWaypointListener() {}
+
     /**
      * @brief The creature has moved to a waypoint.
      * @param creature The creature that moved.

@@ -9,6 +9,7 @@
 #include <cmath>
 #include <stdexcept>
 
+#include "../Game/Game.hpp"
 #include "../Game/Keywords.hpp"
 #include "../main.hpp"
 
@@ -18,6 +19,7 @@
 using std::abs;
 using std::runtime_error;
 using std::string;
+using std::vector;
 
 const unsigned int SCORE_COUNTER_INTERVAL = 25;
 const unsigned int __TIME_MULTIPLIER__ = 1000;//@todo change time multiplier for difficulty levels? Laura found game a bit too hard, Dan a bit too easy?
@@ -47,6 +49,12 @@ GameScreen::GameScreen(unsigned int difficulty) : Screen(),
 
 	// Configurations.
     mTimerWidget.setPosition(mBase.getWidth() - mTimerWidget.getWidth(), mBase.getHeight() - mTimerWidget.getHeight());
+
+    //@todo remove this when I implement boost libs to read through the filesystem.
+    mBackMusicVector.push_back("Audio/DrSeuss - RoaringCow.flac");
+    mBackMusicVector.push_back("Audio/Kid2Will-End_of_Your_Story.flac");
+    mBackMusicVector.push_back("Audio/Pitfall-Final_Boss.flac");
+    mBackMusicVector.push_back("Audio/Kid2Will-Valrens_Fight.flac");
 }
 
 GameScreen::~GameScreen()
@@ -185,13 +193,6 @@ void GameScreen::keyReleased(gcn::KeyEvent& event)
 
 void GameScreen::load(GUI* gui)//@todo move the adding/etc... to the constructor
 {
-	// Load the background music.
-	//@todo implement random song playing?  How should I want music handled?
-	if(!mBackMusic.openFromFile(MUSIC_BACKGROUND))
-		ERROR("Unable to open music file '" + MUSIC_BACKGROUND);
-	else
-		mBackMusic.play();
-
     // Set the base.
     gui->setBase(&mBase);//@todo should this be in Engine?
 
@@ -223,6 +224,18 @@ void GameScreen::load(GUI* gui)//@todo move the adding/etc... to the constructor
     // Restart the timer
     mTimerWidget.stop();
     mTimerWidget.start(mLevel->getMap().getComplexity() * __TIME_MULTIPLIER__);
+
+	// Pick a random background music.
+	string music = mBackMusicVector.at(random(0, int(mBackMusicVector.size() - 1)));
+	if(!mBackMusic.openFromFile(music))
+		ERROR("Unable to open music file '" + music);
+	else
+	{
+		if(Game::isDebug())
+			LOG("Playing: " + music);
+		mBackMusic.play();
+		mBackMusic.setLoop(true);
+	}
 }
 
 void GameScreen::logic()

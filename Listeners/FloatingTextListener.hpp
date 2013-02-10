@@ -14,6 +14,8 @@
 class FloatingTextListener
 {
 	public:
+	virtual ~FloatingTextListener() {}
+
     /**
      * @brief Display a floating text on the screen for a short period of time.
      * @param str The text to display.

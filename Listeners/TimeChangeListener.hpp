@@ -10,6 +10,8 @@
 class TimeChangeListener
 {
 	public:
+	virtual ~TimeChangeListener() {}
+
 	/**
 	 * @brief Change the time of a timer.
 	 * @param time The time to change (positive adds time, negative subtracts time).
