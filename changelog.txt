@@ -44,7 +44,7 @@ Graphics
 Audio
 	What other sounds could be implemented
 *	Implement playing multiple (maybe random) songs
-	listen to more music selections and add them for playing (at least 2-3 more)
+*	listen to more music selections and add them for playing
 
 Gameplay
 *	Add point +/- pickups

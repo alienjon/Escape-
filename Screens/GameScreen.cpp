@@ -55,6 +55,8 @@ GameScreen::GameScreen(unsigned int difficulty) : Screen(),
     mBackMusicVector.push_back("Audio/Kid2Will-End_of_Your_Story.flac");
     mBackMusicVector.push_back("Audio/Pitfall-Final_Boss.flac");
     mBackMusicVector.push_back("Audio/Kid2Will-Valrens_Fight.flac");
+    mBackMusicVector.push_back("Audio/DJtheSdotcom-Firing_up_the_Flame.flac");
+    mBackMusicVector.push_back("Audio/BillBonham-MAGNETS.flac");
 }
 
 GameScreen::~GameScreen()
