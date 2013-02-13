@@ -177,6 +177,11 @@ void Engine::mLoadNextScreen()
     mGui->getTop()->addKeyListener(*mCurrentScreen);
     mGui->getTop()->addMouseListener(*mCurrentScreen);
 
+    // Display the loading screen.
+    mRenderer.clear();
+    mDrawLoadingScreen();
+    mRenderer.display();
+
     // Load the new screen.
     (*mCurrentScreen)->load(mGui);
 

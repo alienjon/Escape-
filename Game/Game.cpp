@@ -13,11 +13,14 @@
 #include "../Game/Keywords.hpp"
 #include "../Engine/Logger.hpp"
 #include "../Game/TilesetManager.hpp"
+#include "../Engine/VideoManager.hpp"
 
 const unsigned int LOADBAR_FRAMESIZE = 2;
 
 using std::runtime_error;
 using std::string;
+
+const string LOADING_IMAGE = "Images/loadingimage.png";
 
 Game::Game()
 {
@@ -26,12 +29,25 @@ Game::Game()
 
 	// Load all resources.
 	mLoadResources();
+
+	// Load the loading screen image.
+	mLoadingScreen.setTexture(VideoManager::getTexture(LOADING_IMAGE));
 }
 
 Game::~Game()
 {
 	// Delete the tileset manager.
     TilesetManager::terminate();
+}
+
+void Game::mDrawLoadingScreen()
+{
+	// Set the loading image to the size of the screen.
+	mLoadingScreen.setScale(mRenderer.getSize().x / mLoadingScreen.getLocalBounds().width,
+							 mRenderer.getSize().y / mLoadingScreen.getLocalBounds().height);
+
+	// Draw the loading screen.
+	mRenderer.draw(mLoadingScreen);
 }
 
 void Game::mDrawResourceFrame(unsigned int percent, const string& title)

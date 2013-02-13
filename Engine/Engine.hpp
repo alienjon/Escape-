@@ -92,6 +92,11 @@ class Engine : public gcn::ActionListener, public GCNActionInterface, public gcn
 
     protected:
     /**
+     * @brief Draw the loading screen (it's only a single frame).
+     */
+    virtual void mDrawLoadingScreen() {}
+
+    /**
      * @brief Cleanup the game.
      */
     virtual void mGameCleanup() = 0;

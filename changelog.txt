@@ -40,6 +40,7 @@ Graphics
 *	Implement animations
 	Evaluate where I want graphics to go (ask Dan for input?)
 *	Graphics are a bit choppy - fix this
+*	Implement loading screens
 
 Audio
 	What other sounds could be implemented

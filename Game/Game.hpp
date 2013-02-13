@@ -7,6 +7,8 @@
 #ifndef GAME_HPP_
 #define GAME_HPP_
 
+#include <SFML/Graphics.hpp>
+
 #include "../Engine/Engine.hpp"
 #include "../Engine/guichan.hpp"
 
@@ -30,6 +32,11 @@ class Game : public Engine
 
 	protected:
     /**
+     * @brief Draw the loading screen (it's only a single frame).
+     */
+    virtual void mDrawLoadingScreen();
+
+    /**
      * @brief Cleanup the game.
      */
     virtual void mGameCleanup();
@@ -51,6 +58,9 @@ class Game : public Engine
      * @param title The title of the animation being loaded.
      */
     void mDrawResourceFrame(unsigned int percent, const std::string& title);
+
+    // The loading screen image.
+    sf::Sprite mLoadingScreen;
 };
 
 #endif /* GAME_HPP_ */
