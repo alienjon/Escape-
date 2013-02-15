@@ -13,6 +13,8 @@
 #include "../Interfaces/GCNActionInterface.hpp"
 #include "../Engine/GUI.hpp"
 #include "../Engine/guichan.hpp"
+#include "../Engine/RendererContext.hpp"
+#include "../Engine/RendererContextInterface.hpp"
 #include "../Engine/Guichan/sfml.hpp"
 
 class Screen;
@@ -20,7 +22,7 @@ class Screen;
 /**
  * @brief The game object itself.  Manages higher level aspects of the game.
  */
-class Engine : public gcn::ActionListener, public GCNActionInterface, public gcn::KeyListener
+class Engine : public gcn::ActionListener, public GCNActionInterface, public gcn::KeyListener, public RendererContextInterface
 {
     public:
     /**
@@ -42,43 +44,16 @@ class Engine : public gcn::ActionListener, public GCNActionInterface, public gcn
     virtual ~Engine();
 
     /**
+     * @brief Get the video context.
+     * @return The current video context.
+     */
+    virtual const RendererContext& getContext() const;
+
+    /**
      * @brief A key was pressed.
      * @param event The key event.
      */
     virtual void keyPressed(gcn::KeyEvent& event);
-
-    /**
-     * @brief Set the screen BPP.
-     * @param bpp The new bits per pixel.
-     * @note This just changes the setting, you still need to update the screen.
-     * @see updateScreen()
-     */
-    inline void setScreenBPP(unsigned int bpp)
-    {
-    	mVideoMode.bitsPerPixel = bpp;
-    }
-
-    /**
-     * @brief Set the screen height.
-     * @param height The new screen height.
-     * @note This just changes the setting, you still need to update the screen.
-     * @see updateScreen()
-     */
-    inline void setScreenHeight(unsigned int height)
-    {
-    	mVideoMode.height = height;
-    }
-
-    /**
-     * @brief Set the screen width.
-     * @param width The new screen width.
-     * @note This just changes the setting, you still need to update the screen.
-     * @see updateScreen()
-     */
-    inline void setScreenWidth(unsigned int width)
-    {
-    	mVideoMode.width = width;
-    }
 
     /**
      * @brief Run the game.
@@ -86,9 +61,10 @@ class Engine : public gcn::ActionListener, public GCNActionInterface, public gcn
     void run();
 
     /**
-     * @brief Update the screen with the current video mode settings.
+     * @brief Update the context.
+     * @param context Details needed to implement a new screen.
      */
-    void updateScreen();
+    virtual void updateContext(const RendererContext& context);
 
     protected:
     /**
@@ -113,12 +89,7 @@ class Engine : public gcn::ActionListener, public GCNActionInterface, public gcn
     virtual void mLoadResources() = 0;
 
     // The settings for the window.
-    sf::VideoMode mVideoMode;
-    sf::ContextSettings mSettings;
-
-    // The window states.
-    bool mFullscreen,
-		 mVerticalSync;
+    RendererContext mContext;
 
     // Game objects.
     gcn::SFMLGraphics mRenderer;

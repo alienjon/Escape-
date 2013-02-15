@@ -30,8 +30,6 @@ using std::string;
 const char* CONFIG_FILE = "config.txt";
 
 Engine::Engine() :
-	mFullscreen(false),
-	mVerticalSync(true),
 	mGui(0),
 	mCurrentScreen(mScreens.end())
 {
@@ -53,21 +51,21 @@ Engine::Engine() :
 			if(keyword.empty() || keyword[0] == '#')
 				continue;
 			else if(keyword == "ScreenWidth")
-				setScreenWidth(toInt(value));
+				mContext.mVideoMode.width = toInt(value);
 			else if(keyword == "ScreenHeight")
-				setScreenHeight(toInt(value));
+				mContext.mVideoMode.height = toInt(value);
 			else if(keyword == "ScreenBPP")
-				setScreenBPP(toInt(value));
+				mContext.mVideoMode.bitsPerPixel = toInt(value);
 			else if(keyword == "VerticalSync")
-				mVerticalSync = (toLower(value) == "true") ? true : false;
+				mContext.mVerticalSync = (toLower(value) == "true") ? true : false;
 			else if(keyword == "Fullscreen")
-				mFullscreen = (toLower(value) == "true") ? true : false;
+				mContext.mFullscreen = (toLower(value) == "true") ? true : false;
 			else if(keyword == "BitDepth")
-				mSettings.depthBits = toInt(value);
+				mContext.mContextSettings.depthBits = toInt(value);
 			else if(keyword == "StencilBits")
-				mSettings.stencilBits = toInt(value);
+				mContext.mContextSettings.stencilBits = toInt(value);
 			else if(keyword == "Antialiasing")
-				mSettings.antialiasingLevel = toInt(value);
+				mContext.mContextSettings.antialiasingLevel = toInt(value);
 			else if(Engine::isDebug())
 				LOG("Unknown entry in config.txt: " + keyword);
 		}
@@ -111,14 +109,14 @@ Engine::~Engine()
 	settings << "# Commented lines begin with a '#' and the entire line is ignored.\n";
 	settings << "# All other lines have a keyword and a value separated by a colon on a single line.\n";
 	settings << "##\n";
-	settings << "ScreenWidth:" << toString(mVideoMode.width) << "\n";
-	settings << "ScreenHeight:" << toString(mVideoMode.height) << "\n";
-	settings << "ScreenBPP:" << toString(mVideoMode.bitsPerPixel) << "\n";
-	settings << "VerticalSync:" << (mVerticalSync ? "true" : "false") << "\n";
-	settings << "Fullscreen:" << (mFullscreen ? "true" : "false") << "\n";
-	settings << "BitDepth:" << toString(mSettings.depthBits) << "\n";
-	settings << "StencilBits:" << toString(mSettings.stencilBits) << "\n";
-	settings << "Antialiasing:" << toString(mSettings.antialiasingLevel) << "\n";
+	settings << "ScreenWidth:" << toString(mContext.mVideoMode.width) << "\n";
+	settings << "ScreenHeight:" << toString(mContext.mVideoMode.height) << "\n";
+	settings << "ScreenBPP:" << toString(mContext.mVideoMode.bitsPerPixel) << "\n";
+	settings << "VerticalSync:" << (mContext.mVerticalSync ? "true" : "false") << "\n";
+	settings << "Fullscreen:" << (mContext.mFullscreen ? "true" : "false") << "\n";
+	settings << "BitDepth:" << toString(mContext.mContextSettings.depthBits) << "\n";
+	settings << "StencilBits:" << toString(mContext.mContextSettings.stencilBits) << "\n";
+	settings << "Antialiasing:" << toString(mContext.mContextSettings.antialiasingLevel) << "\n";
 	settings.close();
 
 	mCleanUpScreens();
@@ -176,6 +174,7 @@ void Engine::mLoadNextScreen()
     this->addActionListener(*mCurrentScreen);
     mGui->getTop()->addKeyListener(*mCurrentScreen);
     mGui->getTop()->addMouseListener(*mCurrentScreen);
+    (*mCurrentScreen)->setRendererContextInterface(this);
 
     // Display the loading screen.
     mRenderer.clear();
@@ -188,6 +187,11 @@ void Engine::mLoadNextScreen()
     // If the old screen exists, delete it.
     if(oldScreen)
         delete oldScreen;
+}
+
+const RendererContext& Engine::getContext() const
+{
+	return mContext;
 }
 
 void Engine::keyPressed(gcn::KeyEvent& event)
@@ -220,10 +224,10 @@ void Engine::keyPressed(gcn::KeyEvent& event)
 	// Display engine settings.
 	if(event.getKey().getValue() == gcn::Key::F2)
 	{
-		LOG_TO_CONSOLE("Screen Size: " + toString(mVideoMode.width) + " x " + toString(mVideoMode.height) + " (" + toString(mVideoMode.bitsPerPixel) + ")");
-		LOG_TO_CONSOLE(string("Fullscreen: ") + ((mFullscreen) ? "true" : "false"));
-		LOG_TO_CONSOLE(string("Vertical Sync: ") + ((mVerticalSync) ? "true" : "false"));
-		LOG_TO_CONSOLE("Antialiasing: " + toString(mSettings.antialiasingLevel));
+		LOG_TO_CONSOLE("Screen Size: " + toString(mContext.mVideoMode.width) + " x " + toString(mContext.mVideoMode.height) + " (" + toString(mContext.mVideoMode.bitsPerPixel) + ")");
+		LOG_TO_CONSOLE(string("Fullscreen: ") + ((mContext.mFullscreen) ? "true" : "false"));
+		LOG_TO_CONSOLE(string("Vertical Sync: ") + ((mContext.mVerticalSync) ? "true" : "false"));
+		LOG_TO_CONSOLE("Antialiasing: " + toString(mContext.mContextSettings.antialiasingLevel));
 		LOG_TO_CONSOLE("Audio Enabled: TO BE IMPLEMENTED");//@todo implement audio enable
 		LOG_TO_CONSOLE("Music Volume: TO BE IMPLEMENTED");//@todo implement music volume
 		LOG_TO_CONSOLE("SFX Volume: TO BE IMPLEMENTED");//@todo implement sfx volume
@@ -233,9 +237,10 @@ void Engine::keyPressed(gcn::KeyEvent& event)
 	//@todo I can do this without the screen flickering.  It's changing the scale/window decorations.  Look into it?
 	if(event.getKey().getValue() == gcn::Key::ENTER && event.isAltPressed())
 	{
-		mFullscreen = !mFullscreen;
-		updateScreen();
-		LOG(string("Fullscreen ") + (mFullscreen ? "enabled" : "disabled"));
+		RendererContext c = getContext();
+		c.mFullscreen = !c.mFullscreen;
+		updateContext(c);
+		LOG(string("Fullscreen ") + (c.mFullscreen ? "enabled" : "disabled"));
 	}
 }
 
@@ -247,7 +252,7 @@ bool Engine::isDebug()
 void Engine::run()
 {
 	// Start by creating (updating) the screen.
-	updateScreen();
+	updateContext(mContext);
 
     // Make sure all screens are cleared.
 	for(list<Screen*>::iterator it = mScreens.begin(); it != mScreens.end(); ++it)
@@ -314,19 +319,26 @@ void Engine::run()
     mCleanUpScreens();
 }
 
-void Engine::updateScreen()
+void Engine::updateContext(const RendererContext& context)
 {
 	// Check the video mode.
 	if(isDebug())
-		mVideoMode.isValid() ? LOG("Video Mode Valid") : LOG("Video Mode Invalid");
+	{
+		string log = "Updating Video Mode: ";
+		context.mVideoMode.isValid() ? LOG(log + "valid") : LOG(log + "invalid");
+	}
+
+	// The renderer context.
+	mContext = context;
 
 	// Recreate the renderer.
-	mRenderer.create(mVideoMode, GAME_NAME, (mFullscreen) ? sf::Style::Fullscreen : sf::Style::Titlebar, mSettings);
+	mRenderer.create(mContext.mVideoMode, GAME_NAME, (mContext.mFullscreen) ? sf::Style::Fullscreen : sf::Style::Titlebar, mContext.mContextSettings);
 
 	// Set other options that are defaulted when the renderer is re-created.
+	mGui->setSize(mContext.mVideoMode.width, mContext.mVideoMode.height);
 	mRenderer.setKeyRepeatEnabled(false);
-    mRenderer.setFramerateLimit(60); // @note Sets the maximum framerate if vsync is disabled.
-    mRenderer.setVerticalSyncEnabled(mVerticalSync);
+    mRenderer.setFramerateLimit(100); // @note Sets the maximum framerate if vsync is disabled.
+    mRenderer.setVerticalSyncEnabled(mContext.mVerticalSync);
 }
 
 void Engine::setDebug(bool state)

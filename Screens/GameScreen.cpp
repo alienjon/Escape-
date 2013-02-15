@@ -9,12 +9,10 @@
 #include <cmath>
 #include <stdexcept>
 
+#include "../Engine/FontManager.hpp"
 #include "../Game/Game.hpp"
 #include "../Game/Keywords.hpp"
 #include "../main.hpp"
-
-//@todo This probably won't be here forever...
-#include "../Engine/FontManager.hpp"
 
 using std::abs;
 using std::runtime_error;
@@ -32,23 +30,11 @@ GameScreen::GameScreen(unsigned int difficulty) : Screen(),
 	mCounter(0),
 	mResetView(false)
 {
-	// Set the size of the screen.
-	setSize(800, 600);//@todo how should screen sizing work?  also, this needs to be changed when the menu widget is included
-
 	// Configure the action listeners.
 	mLevelCompleteWidget.addActionListener(this);
 	mOptionsMenu.addActionListener(this);
 	addKeyListener(&mPlayer);
 	addKeyListener(&mLevelCompleteWidget);
-
-	// @todo Temporary configurations.
-	mScoreLabel.setFont(FontManager::getGCNFont(FONT_DEFAULT));
-	mScoreLabel.setCaption("Score: 0");
-	mScoreLabel.adjustSize();
-	mScoreTimer.start();
-
-	// Configurations.
-    mTimerWidget.setPosition(mBase.getWidth() - mTimerWidget.getWidth(), mBase.getHeight() - mTimerWidget.getHeight());
 
     //@todo remove this when I implement boost libs to read through the filesystem.
     mBackMusicVector.push_back("Audio/DrSeuss - RoaringCow.flac");
@@ -193,10 +179,25 @@ void GameScreen::keyReleased(gcn::KeyEvent& event)
 	Screen::keyReleased(event);
 }
 
-void GameScreen::load(GUI* gui)//@todo move the adding/etc... to the constructor
+void GameScreen::load(GUI* gui)
 {
+	// Set the size of the screen. @todo implement in menu screen
+	if(mContextInterface == 0)
+	{
+		ERROR("mContextInterface is null.");
+		setSize(DEFAULT_SCREEN_WIDTH, DEFAULT_SCREEN_HEIGHT);
+	}
+	else
+	{
+		RendererContext c = mContextInterface->getContext();
+		c.mVideoMode.width = 1024;
+		c.mVideoMode.height= 768;
+		mContextInterface->updateContext(c);
+		setSize(c.mVideoMode.width, c.mVideoMode.height);
+	}
+
     // Set the base.
-    gui->setBase(&mBase);//@todo should this be in Engine?
+    gui->setBase(&mBase);
 
     // Hide the cursor.
     mDistributeActionEvent(ACTION_HIDECURSOR);
@@ -206,9 +207,13 @@ void GameScreen::load(GUI* gui)//@todo move the adding/etc... to the constructor
     mBase.add(&mOptionsMenu, 0, 0);
 
     // Add the menu bar.
+	mScoreLabel.setFont(FontManager::getGCNFont(FONT_DEFAULT));
+	mScoreLabel.setCaption("Score: 0");
+	mScoreLabel.adjustSize();
+	mScoreTimer.start();
     mBase.add(&mScoreLabel, 0, mBase.getHeight() - mScoreLabel.getHeight());
     addTimeChangeListener(&mTimerWidget);
-    mBase.add(&mTimerWidget);
+    mBase.add(&mTimerWidget, mBase.getWidth() - mTimerWidget.getWidth(), mBase.getHeight() - mTimerWidget.getHeight());
 
     // Add the level complete widget.
     mLevelCompleteWidget.setVisible(false);
@@ -236,7 +241,7 @@ void GameScreen::load(GUI* gui)//@todo move the adding/etc... to the constructor
 		if(Game::isDebug())
 			LOG("Playing: " + music);
 		mBackMusic.play();
-		mBackMusic.setLoop(true);
+		mBackMusic.setLoop(true);;
 	}
 }
 

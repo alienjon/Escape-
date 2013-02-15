@@ -26,7 +26,14 @@ class GUI : public gcn::Gui
      * @brief Sets the base widget for the root container.
      * @param container The container to set.
      */
-    virtual void setBase(gcn::Container* container);
+    void setBase(gcn::Container* container);
+
+    /**
+     * @brief Set the size of the gui.
+     * @param width The gui width.
+     * @param height The gui height.
+     */
+    void setSize(unsigned int width, unsigned int height);
 
 	protected:
 	// The root container is the bottom container in which all other widgets feed out from.

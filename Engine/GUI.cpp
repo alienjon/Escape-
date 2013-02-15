@@ -34,7 +34,7 @@ GUI::GUI(gcn::SFMLGraphics& graphics, gcn::SFMLInput& input)
 	setInput(&input);
 
 	// Configure the root widget.
-	mRoot.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+	mRoot.setSize(DEFAULT_SCREEN_WIDTH, DEFAULT_SCREEN_HEIGHT);
 	mRoot.setOpaque(false);
 	mRoot.setFocusable(true);
 	setTop(&mRoot);
@@ -50,6 +50,12 @@ GUI::GUI(gcn::SFMLGraphics& graphics, gcn::SFMLInput& input)
 
 void GUI::setBase(gcn::Container* container)//@fixme Can I do this without this method?
 {
-	// Set the new container.
+	// Add and configure the new container.
     mRoot.add(container);
+    container->setSize(mRoot.getWidth(), mRoot.getHeight());
+}
+
+void GUI::setSize(unsigned int width, unsigned int height)
+{
+	mRoot.setSize(width, height);
 }

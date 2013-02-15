@@ -10,9 +10,9 @@ F2 (with debug enabled): Engine info
 ESCAPE: Display game options
 ALT+ENTER: toggle fullscreen
 CTRL + p: print screen
-arrow keys move around
+arrow keys move around	
 
-Version 0.2
+Version 0.1
 -------------
 Implement main menu
 	high score screen
@@ -20,22 +20,6 @@ Implement main menu
 	new game
 	other?
 
-Gameplay
-	Implement better widgets to display game info (score, remaining time, other? (maybe currently active effects?))
-	Check player speed (test faster/slower?)
-	Check point values (are they too much/too little)
-	Check level difficulties (there seems to be a big variety in map difficulty (is it based on size?)) and stabilize
-	
-Quality Control
-	Review graphics
-	Review control response
-	Review sound/music implementation
-	
-Backend
-	Implement boost libs to read filesystem (this way I can read files in a directory, instead of having to hard code things like audio files)
-
-Version 0.1
--------------
 Graphics
 *	Implement animations
 	Evaluate where I want graphics to go (ask Dan for input?)
@@ -51,9 +35,23 @@ Gameplay
 *	Add point +/- pickups
 	review other pick ups (maybe a multiplier, speed)
 *	remove items (or simplify)
-	update keys (at least for temporary purposes)
+	add effect for picking up keys
 	make sure exiting at end of level works (it currently does not)
+	Implement better widgets to display game info (score, remaining time, other? (maybe currently active effects?))
+	Check player speed (test faster/slower?)
+	Check point values (are they too much/too little)
+	Check level difficulties (there seems to be a big variety in map difficulty (is it based on size?)) and stabilize
+	Implement options in in-game menu (have it be able to set video size, vsync, antialiasing, music volume, sound volume, others?)
+	
+Backend
+	Implement boost libs to read filesystem (this way I can read files in a directory, instead of having to hard code things like audio files)
+*	Implement updating the video size
 
+Quality Control
+	Review graphics
+	Review control response
+	Review sound/music implementation
+	
 Version 0.0
 -------------
 *Engine

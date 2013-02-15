@@ -13,8 +13,8 @@
 #include <string>
 
 // Game constants.
-extern const unsigned int SCREEN_HEIGHT;
-extern const unsigned int SCREEN_WIDTH;
+extern const unsigned int DEFAULT_SCREEN_HEIGHT;
+extern const unsigned int DEFAULT_SCREEN_WIDTH;
 extern const char* GAME_NAME;
 extern const char* GAME_VERSION;
 extern const char DELIMITER;

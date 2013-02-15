@@ -14,6 +14,8 @@
 
 #include "../Interfaces/GCNActionInterface.hpp"
 #include "../Engine/Logger.hpp"
+#include "../Engine/RendererContext.hpp"
+#include "../Engine/RendererContextInterface.hpp"
 
 /*
  * @brief A screen is an abstract way of looking at what's going on.
@@ -227,6 +229,15 @@ class Screen : public gcn::ActionListener, public GCNActionInterface, public gcn
     }
 
     /**
+     * @brief Set the currently used context interface.
+     * @param contextInterface The currently used context interface.
+     */
+    inline void setRendererContextInterface(RendererContextInterface* contextInterface)
+    {
+    	mContextInterface = contextInterface;
+    }
+
+    /**
      * @brief Set the size of the screen.
      * @param width The width of the screen.
      * @param height The height of the screen.
@@ -256,7 +267,8 @@ class Screen : public gcn::ActionListener, public GCNActionInterface, public gcn
      * @note You need to call setSize() or setWidth()/setHeight() prior to using the screen.
      */
     Screen() :
-    	mDone(false)
+    	mDone(false),
+    	mContextInterface(0)
     {
         // They should not, however, draw anything superfluous to hide the root GUI widget.
         mBase.setOpaque(false);
@@ -276,7 +288,10 @@ class Screen : public gcn::ActionListener, public GCNActionInterface, public gcn
     bool mDone;
 
     // The base widget for this screen.
-    gcn::Container mBase;
+    gcn::Container mBase;//@fixme Remove this from here and put it in GUI
+
+    // The context interface.
+    RendererContextInterface* mContextInterface;
 
     private:
     /**
