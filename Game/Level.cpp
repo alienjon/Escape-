@@ -113,9 +113,9 @@ Level::Level(unsigned int difficulty, Player& player) :
 				else if(n <= 23)
 					entity = new TimeChange(*this);
 				else if(n <= 26)
-					entity = new SpeedChange(2.f, mPlayer);
+					entity = new SpeedChange(5.f, mPlayer);
 				else if(n <= 35)
-					entity = new SpeedChange(0.5f, mPlayer);
+					entity = new SpeedChange(1.25, mPlayer);
 				else
 				{
 					entity = new Pickup(5, sf::Color::Magenta, Pickup::MEDIUM);

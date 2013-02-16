@@ -9,6 +9,8 @@
 #include <cmath>
 #include <stdexcept>
 
+#include <boost/filesystem.hpp>
+
 #include "../Engine/FontManager.hpp"
 #include "../Game/Game.hpp"
 #include "../Game/Keywords.hpp"
@@ -18,6 +20,8 @@ using std::abs;
 using std::runtime_error;
 using std::string;
 using std::vector;
+
+using namespace boost::filesystem;
 
 const unsigned int SCORE_COUNTER_INTERVAL = 25;
 const unsigned int __TIME_MULTIPLIER__ = 1000;//@todo change time multiplier for difficulty levels? Laura found game a bit too hard, Dan a bit too easy?
@@ -36,13 +40,38 @@ GameScreen::GameScreen(unsigned int difficulty) : Screen(),
 	addKeyListener(&mPlayer);
 	addKeyListener(&mLevelCompleteWidget);
 
+	// Load all flac audio as background musics.
+	path p("Audio/");
+
+	try
+	{
+		// Make sure that Audio/ exists and is a directory.
+		// NOTE: The following code is modified from the boost::filesystem tutorials website.
+		if(exists(p) && is_directory(p))
+		{
+			// Create a vector of items within the directory and populate it.
+			vector<path> v;
+			copy(directory_iterator(p), directory_iterator(), back_inserter(v));
+
+			for(vector<path>::const_iterator it(v.begin()); it != v.end(); ++it)
+				if(it->extension() == ".flac")
+					mBackMusicVector.push_back(it->native());
+		}
+		else
+			ERROR("Audio directory not found.  No background music will be played.");
+	}
+	catch(filesystem_error& e)
+	{
+		ERROR(e.what());
+	}
+
     //@todo remove this when I implement boost libs to read through the filesystem.
-    mBackMusicVector.push_back("Audio/DrSeuss - RoaringCow.flac");
-    mBackMusicVector.push_back("Audio/Kid2Will-End_of_Your_Story.flac");
-    mBackMusicVector.push_back("Audio/Pitfall-Final_Boss.flac");
-    mBackMusicVector.push_back("Audio/Kid2Will-Valrens_Fight.flac");
-    mBackMusicVector.push_back("Audio/DJtheSdotcom-Firing_up_the_Flame.flac");
-    mBackMusicVector.push_back("Audio/BillBonham-MAGNETS.flac");
+//    mBackMusicVector.push_back("Audio/DrSeuss - RoaringCow.flac");
+//    mBackMusicVector.push_back("Audio/Kid2Will-End_of_Your_Story.flac");
+//    mBackMusicVector.push_back("Audio/Pitfall-Final_Boss.flac");
+//    mBackMusicVector.push_back("Audio/Kid2Will-Valrens_Fight.flac");
+//    mBackMusicVector.push_back("Audio/DJtheSdotcom-Firing_up_the_Flame.flac");
+//    mBackMusicVector.push_back("Audio/BillBonham-MAGNETS.flac");
 }
 
 GameScreen::~GameScreen()
@@ -181,21 +210,6 @@ void GameScreen::keyReleased(gcn::KeyEvent& event)
 
 void GameScreen::load(GUI* gui)
 {
-	// Set the size of the screen. @todo implement in menu screen
-	if(mContextInterface == 0)
-	{
-		ERROR("mContextInterface is null.");
-		setSize(DEFAULT_SCREEN_WIDTH, DEFAULT_SCREEN_HEIGHT);
-	}
-	else
-	{
-		RendererContext c = mContextInterface->getContext();
-		c.mVideoMode.width = 1024;
-		c.mVideoMode.height= 768;
-		mContextInterface->updateContext(c);
-		setSize(c.mVideoMode.width, c.mVideoMode.height);
-	}
-
     // Set the base.
     gui->setBase(&mBase);
 

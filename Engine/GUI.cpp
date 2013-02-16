@@ -34,7 +34,7 @@ GUI::GUI(gcn::SFMLGraphics& graphics, gcn::SFMLInput& input)
 	setInput(&input);
 
 	// Configure the root widget.
-	mRoot.setSize(DEFAULT_SCREEN_WIDTH, DEFAULT_SCREEN_HEIGHT);
+	setSize(DEFAULT_SCREEN_WIDTH, DEFAULT_SCREEN_HEIGHT);
 	mRoot.setOpaque(false);
 	mRoot.setFocusable(true);
 	setTop(&mRoot);

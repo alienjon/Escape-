@@ -17,8 +17,8 @@
 
 using std::string;
 
-const unsigned int SPEEDCHANGE_INCREASE_INTERVAL = 10000;
-const unsigned int SPEEDCHANGE_DECREASE_INTERVAL = 15000;
+const unsigned int SPEEDCHANGE_INCREASE_INTERVAL = 3000;
+const unsigned int SPEEDCHANGE_DECREASE_INTERVAL = 7000;
 
 SpeedChange::SpeedChange(float speed, Creature& creature) :
 	mSpeedTo(speed),

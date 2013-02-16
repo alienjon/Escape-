@@ -26,7 +26,7 @@ Player::Player() :
     mType = ENTITY_PLAYER;
 
     // The player moves at a normal speed.
-    setSpeed(1.5);
+    setSpeed(2.75);
 
     // Start the timer.
     mColorCycleTimer.start();
