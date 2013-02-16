@@ -34,7 +34,6 @@ const float FLOATINGTEXT_MOVE_STEP = 0.3f;
 Level::Level(unsigned int difficulty, Player& player) :
 	mIsDone(false),
 	mPlayer(player),
-	mPortal(30, 30),
 	mMap(random(random(difficulty, difficulty * 2), random(difficulty, difficulty * 2)),
 		 random(random(difficulty, difficulty * 2), random(difficulty, difficulty * 2))),
 	mPickupAward(false)
@@ -43,14 +42,14 @@ Level::Level(unsigned int difficulty, Player& player) :
 	mFloatingTextTimer.start();
 
 	// Calculate the entrance position.
-	mPortal.setPosition((((mMap.getCellWidth() / 2) * MAP_CELL_SIDE) + (MAP_CELL_SIDE / 2)) * mMap.getTileset().getWidth() - (mPortal.getPortalWidth() / 2),
-						(((mMap.getCellHeight()/ 2) * MAP_CELL_SIDE) + (MAP_CELL_SIDE / 2)) * mMap.getTileset().getHeight() - (mPortal.getPortalHeight() / 2));
+	mPortal.setPosition((((mMap.getCellWidth() / 2) * MAP_CELL_SIDE) + (MAP_CELL_SIDE / 2)) * mMap.getTileset().getWidth() - (mPortal.getWidth() / 2),
+						(((mMap.getCellHeight()/ 2) * MAP_CELL_SIDE) + (MAP_CELL_SIDE / 2)) * mMap.getTileset().getHeight() - (mPortal.getHeight() / 2));
 	mPortal.addLevelCompleteListener(this);
 	mEntities.push_back(&mPortal);
 
 	// Configure and setup the player.
-	mPlayer.setPosition((mPortal.getX() + (mPortal.getPortalWidth()  / 2)) - (mPlayer.getWidth()  / 2),
-						(mPortal.getY() + (mPortal.getPortalHeight() / 2)) - (mPlayer.getHeight() / 2));
+	mPlayer.setPosition((mPortal.getX() + (mPortal.getWidth()  / 2)) - (mPlayer.getWidth()  / 2),
+						(mPortal.getY() + (mPortal.getHeight() / 2)) - (mPlayer.getHeight() / 2));
 	mPlayer.addDeathListener(this);
 	mPlayer.addChangeScoreListener(this);
 	mPlayer.removeAllLocks();
@@ -58,13 +57,14 @@ Level::Level(unsigned int difficulty, Player& player) :
 
 	/*
 	 * Set the initial locks on the player.
-	 * @note What if the timer counts down, if it reaches zero the player loses the
+	 * @todo What if the timer counts down, if it reaches zero the player loses the
 	 * level, but opening locks adds time (maybe for easy/medium?)
 	 */
-	mPortal.addLock(sf::Color::Red);
-	mPortal.addLock(sf::Color::Cyan);
-	mPortal.addLock(sf::Color::Yellow);
-	mPortal.addLock(sf::Color::Green);
+	sf::Color topLeft = sf::Color::Blue, topRight = sf::Color::Cyan, botLeft = sf::Color::Yellow, botRight = sf::Color::Green;
+	mPortal.addLock(topLeft);
+	mPortal.addLock(topRight);
+	mPortal.addLock(botLeft);
+	mPortal.addLock(botRight);
 
 	// Populate the map with entities, etc...
 	unsigned int width = mMap.getCellWidth(),
@@ -84,13 +84,13 @@ Level::Level(unsigned int difficulty, Player& player) :
 
 			// If this is one of the 4 corners, add a key.
 			if(w == 0 && h == 0) // Top left corner.
-				entity = new KeyEntity(sf::Color::Blue);
+				entity = new KeyEntity(topLeft);
 			else if(w == 0 && h == height - 1) // Top right corner.
-				entity = new KeyEntity(sf::Color::Cyan);
+				entity = new KeyEntity(topRight);
 			else if(w == width - 1 && h == 0) // Bottom left corner.
-				entity = new KeyEntity(sf::Color::Yellow);
+				entity = new KeyEntity(botLeft);
 			else if(w == width - 1 && h == height - 1) // Bottom right corner.
-				entity = new KeyEntity(sf::Color::Green);
+				entity = new KeyEntity(botRight);
 			else if(w == width / 2 && h == height / 2) // Skip the portal cell.
 			{}
 			else

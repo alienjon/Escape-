@@ -73,11 +73,6 @@ void KeyEntity::logic(Level& level)//@todo Update code to enlarge and shrink the
 				mIsGrowing = true;
 			}
 		}
-//	    mShape.setPoint(0, sf::Vector2f(-(mSize.x / 2), -(mSize.y / 2)));
-//	    mShape.setPoint(1, sf::Vector2f(-(mSize.x / 2) + mSize.x, -(mSize.y / 2)));
-//	    mShape.setPoint(2, sf::Vector2f(-(mSize.x / 2) + mSize.x, -(mSize.y / 2) + mSize.y));
-//	    mShape.setPoint(3, sf::Vector2f(-(mSize.x / 2), -(mSize.y / 2) + mSize.y));
-//	    mShape.setFillColor(mColor);
 		sf::Vector2f pos = getPosition();
 		setPosition(pos.x, pos.y);
 		mTimer.start();

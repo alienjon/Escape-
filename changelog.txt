@@ -30,7 +30,7 @@ Gameplay
 	review other pick ups (maybe a multiplier, speed)
 *	remove items (or simplify)
 	add effect for picking up keys
-	make sure exiting at end of level works (it currently does not)
+*	make sure exiting at end of level works (it currently does not)
 	Implement better widgets to display game info (score, remaining time, other? (maybe currently active effects?))
 *	Check player speed (test faster/slower?)
 *	Check point values (are they too much/too little)

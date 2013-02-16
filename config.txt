@@ -4,8 +4,8 @@
 # Commented lines begin with a '#' and the entire line is ignored.
 # All other lines have a keyword and a value separated by a colon on a single line.
 ##
-ScreenWidth:1024
-ScreenHeight:768
+ScreenWidth:800
+ScreenHeight:600
 ScreenBPP:32
 VerticalSync:false
 Fullscreen:false
