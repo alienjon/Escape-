@@ -11,10 +11,9 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "../Engine/guichan.hpp"
-
 #include "../Listeners/AddLockListener.hpp"
 #include "../Entities/Creature.hpp"
+#include "../Listeners/KeyListener.hpp"
 #include "../Listeners/PickupListener.hpp"
 #include "../Listeners/RemoveLockListener.hpp"
 #include "../Engine/Timer.hpp"
@@ -25,7 +24,7 @@ class Level;
 /**
  * @brief The player class.
  */
-class Player : public AddLockListener, public Creature, public gcn::KeyListener, public RemoveLockListener
+class Player : public AddLockListener, public Creature, public KeyListener, public RemoveLockListener
 {
 	public:
     /**
@@ -76,13 +75,13 @@ class Player : public AddLockListener, public Creature, public gcn::KeyListener,
      * @brief A key was pressed.
      * @param event The key event.
      */
-    virtual void keyPressed(gcn::KeyEvent& event);
+    virtual void keyPressed(const sf::Event& event);
 
     /**
      * @brief A key was released.
      * @param event The key event.
      */
-    virtual void keyReleased(gcn::KeyEvent& event);
+    virtual void keyReleased(const sf::Event& event);
 
 	/**
 	 * @brief Perform player logic.

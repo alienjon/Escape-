@@ -19,8 +19,6 @@ FontManager::FontManager()
 
 FontManager::~FontManager()
 {
-	for(list<gcn::SFMLFont*>::iterator it = mGCNFonts.begin(); it != mGCNFonts.end(); ++it)
-		delete *it;
 }
 
 void FontManager::create()
@@ -29,16 +27,7 @@ void FontManager::create()
         mFontManager = new FontManager();
 }
 
-gcn::SFMLFont* FontManager::getGCNFont(const string& filename)
-{
-    if(!mFontManager)
-    	create();
-    gcn::SFMLFont* font = new gcn::SFMLFont(filename);
-    mFontManager->mGCNFonts.push_back(font);
-    return font;
-}
-
-const sf::Font& FontManager::getSFFont(const string& filename)
+const sf::Font& FontManager::getSFFont(const string& filename)//@fixme The font manager isn't working.  Do I want it anyway?
 {
     if(!mFontManager)
     	create();

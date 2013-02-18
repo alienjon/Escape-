@@ -11,13 +11,10 @@
 #include <map>
 #include <string>
 
-#include "../Engine/guichan.hpp"
-#include "../Engine/Guichan/sfml.hpp"
-
 /*
  * @brief Implementation of SFMLImageLoader
  */
-class VideoManager : public gcn::SFMLImageLoader
+class VideoManager
 {
 	public:
 	virtual ~VideoManager();
@@ -39,15 +36,6 @@ class VideoManager : public gcn::SFMLImageLoader
 	 */
 	static void terminate();
 
-	/**
-	 * @brief Load an image for the GUI.
-	 * @param filename The filename of the image.
-	 * @param convertToDisplayFormat If true, convert the image to display format (not needed for SFML)
-	 * @return The loaded image.
-	 * @note Overloaded to store the images.
-	 */
-	virtual gcn::Image* load(const std::string& filename, bool convertToDisplayFormat = true);
-
 	protected:
 	/**
 	 * The video manager.
@@ -62,7 +50,6 @@ class VideoManager : public gcn::SFMLImageLoader
 	private:
 	// The collection of loaded surfaces.
 	std::map<std::string, sf::Texture> mTextures;
-	std::map<std::string, gcn::Image*> mGCNImages;
 };
 
 #endif /* VIDEOMANAGER_HPP_ */

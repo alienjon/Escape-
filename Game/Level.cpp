@@ -101,22 +101,22 @@ Level::Level(unsigned int difficulty, Player& player) :
 				 * @todo finalize which power ups I'm going to keep
 				 */
 				int n = random(1, 100);
-				if(n <= 10)
-					entity = new SurprisePickup(*this);
-				else if(n <= 13)
-				{
-					entity = new Pickup(75, sf::Color::Magenta, Pickup::SMALL);
-					mPickups.push_back(entity);
-				}
-				else if(n <= 20)
-					entity = new Pickup(-50, sf::Color::Red, Pickup::LARGE);
-				else if(n <= 23)
-					entity = new TimeChange(*this);
-				else if(n <= 26)
-					entity = new SpeedChange(5.f, mPlayer);
-				else if(n <= 35)
-					entity = new SpeedChange(1.25, mPlayer);
-				else
+//				if(n <= 10)//@todo remove comments when done
+//					entity = new SurprisePickup(*this);
+//				else if(n <= 13)
+//				{
+//					entity = new Pickup(75, sf::Color::Magenta, Pickup::SMALL);
+//					mPickups.push_back(entity);
+//				}
+//				else if(n <= 20)
+//					entity = new Pickup(-50, sf::Color::Red, Pickup::LARGE);
+//				else if(n <= 23)
+//					entity = new TimeChange(*this);
+//				else if(n <= 26)
+//					entity = new SpeedChange(5.f, mPlayer);
+//				else if(n <= 35)
+//					entity = new SpeedChange(1.25, mPlayer);
+//				else
 				{
 					entity = new Pickup(5, sf::Color::Magenta, Pickup::MEDIUM);
 					mPickups.push_back(entity);
@@ -207,7 +207,7 @@ bool Level::checkMapCollision(Entity& entity)
 	return entity.isCollidable() && mMap.checkCollision(entity.getDimension());
 }
 
-void Level::draw(gcn::SFMLGraphics& renderer)
+void Level::draw(sf::RenderWindow& renderer)
 {
 	// Draw the map.
 	renderer.draw(mMap);

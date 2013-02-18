@@ -10,19 +10,20 @@
 #include <list>
 #include <SFML/Graphics.hpp>
 
-#include "../Interfaces/GCNActionInterface.hpp"
-#include "../Engine/GUI.hpp"
-#include "../Engine/guichan.hpp"
+#include "../Interfaces/EventInterface.hpp"
+#include "../Listeners/EventListener.hpp"
+#include "../Interfaces/KeyInterface.hpp"
+#include "../Listeners/KeyListener.hpp"
 #include "../Engine/RendererContext.hpp"
 #include "../Engine/RendererContextInterface.hpp"
-#include "../Engine/Guichan/sfml.hpp"
 
 class Screen;
 
 /**
  * @brief The game object itself.  Manages higher level aspects of the game.
  */
-class Engine : public gcn::ActionListener, public GCNActionInterface, public gcn::KeyListener, public RendererContextInterface
+class Engine : public EventInterface, public EventListener, public KeyInterface, public KeyListener,
+				public RendererContextInterface
 {
     public:
     /**
@@ -53,7 +54,13 @@ class Engine : public gcn::ActionListener, public GCNActionInterface, public gcn
      * @brief A key was pressed.
      * @param event The key event.
      */
-    virtual void keyPressed(gcn::KeyEvent& event);
+    virtual void keyPressed(const sf::Event& event);
+
+    /**
+     * @brief A key was released.
+     * @param event The key event.
+     */
+    virtual void keyReleased(const sf::Event& event);
 
     /**
      * @brief Run the game.
@@ -92,9 +99,7 @@ class Engine : public gcn::ActionListener, public GCNActionInterface, public gcn
     RendererContext mContext;
 
     // Game objects.
-    gcn::SFMLGraphics mRenderer;
-    gcn::SFMLInput mInput;
-    GUI* mGui;
+    sf::RenderWindow mRenderer;
     std::list<Screen*> mScreens;
     std::list<Screen*>::iterator mCurrentScreen;
 

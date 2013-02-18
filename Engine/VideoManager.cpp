@@ -8,22 +8,16 @@
 
 #include <stdexcept>
 
-#include "../Engine/Guichan/sfml.hpp"
-
 using std::map;
 using std::runtime_error;
 using std::string;
 
 VideoManager::VideoManager()
 {
-    // An image loader is needed for GUIchan draw methods.
-    gcn::Image::setImageLoader(this);
 }
 
 VideoManager::~VideoManager()
 {
-    // Clear the image loader.
-    gcn::Image::setImageLoader(0);
 }
 
 void VideoManager::create()
@@ -46,19 +40,6 @@ const sf::Texture& VideoManager::getTexture(const std::string& filename)
 		if(!mVideoManager->mTextures[filename].loadFromFile(filename))
 			throw runtime_error("Error: requested image not found: " + filename);
 		return mVideoManager->mTextures[filename];
-	}
-	return it->second;
-}
-
-gcn::Image* VideoManager::load(const string& filename, bool convertToDisplayFormat)
-{
-	map<string, gcn::Image*>::iterator it = mGCNImages.find(filename);
-	if(it == mGCNImages.end())
-	{
-		if(!mVideoManager)
-			create();
-		mGCNImages[filename] = mVideoManager->gcn::SFMLImageLoader::load(filename, convertToDisplayFormat);
-		return mGCNImages[filename];
 	}
 	return it->second;
 }

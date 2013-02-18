@@ -9,6 +9,7 @@
 #include "../Game/Game.hpp"
 #include "../Engine/FontManager.hpp"
 #include "../Game/Keywords.hpp"
+#include "../Engine/Logger.hpp"
 #include "../main.hpp"
 
 using std::string;
@@ -17,12 +18,25 @@ TimerWidget::TimerWidget() :
 	mStartTime(0)
 {
 	// Set the font.
-	setFont(FontManager::getGCNFont(FONT_DEFAULT));
+	if(!mFont.loadFromFile("Fonts/VeraMono.ttf"))
+		ERROR("TimerWidget::TimerWidget() -> Unable to load font.");
+	mText.setFont(mFont);
 
-	// Set default size.
-	setCaption("000:00:00");
-	adjustSize();
-	setAlignment(gcn::Graphics::LEFT);//@fixme This isn't actually aligning left.
+	// Set defaults
+    mText.setCharacterSize(18);
+    mText.setColor(sf::Color::Magenta);
+    mText.setStyle(sf::Text::Bold);
+	mText.setString("000:00:00");
+}
+
+void TimerWidget::draw(sf::RenderWindow& renderer)
+{
+	renderer.draw(mText);
+}
+
+int TimerWidget::getHeight() const
+{
+	return mText.getLocalBounds().height;
 }
 
 unsigned int TimerWidget::getTime() const
@@ -30,21 +44,27 @@ unsigned int TimerWidget::getTime() const
 	return (mStartTime == 0) ? mTimer.getTime() : mTimer.getTime() - mStartTime;
 }
 
+int TimerWidget::getWidth() const
+{
+	return mText.getLocalBounds().width;
+}
+
 void TimerWidget::logic()
 {
-	// Perform GCN logic.
-	gcn::Label::logic();
-
 	// If the timer has exceeded the start time, then time is up.
 	if(mStartTime > 0 && mTimer.getTime() >= mStartTime)
 		stop();
-	setCaption(convertToTime((mStartTime == 0) ? mTimer.getTime() : mStartTime - mTimer.getTime()));
-	adjustSize();
+	mText.setString(convertToTime((mStartTime == 0) ? mTimer.getTime() : mStartTime - mTimer.getTime()));
 }
 
 void TimerWidget::pause()
 {
 	mTimer.pause();
+}
+
+void TimerWidget::setPosition(int x, int y)
+{
+	mText.setPosition(x, y);
 }
 
 void TimerWidget::start(unsigned int startTime)

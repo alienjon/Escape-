@@ -32,7 +32,8 @@ class Level;
  * (such as displaying itself, performing logic and having
  * various listeners)
  */
-class Entity : public ActionInterface, public AddLockInterface, public ChangeScoreInterface, public FloatingTextInterface, public RemoveLockInterface
+class Entity : public ActionInterface, public AddLockInterface, public ChangeScoreInterface, public FloatingTextInterface,
+				public RemoveLockInterface
 {
     public:
     enum EntityType

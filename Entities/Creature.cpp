@@ -17,7 +17,7 @@
 using std::list;
 using std::queue;
 
-const unsigned int CREATURE_MOVEMENT_DISTANCE = 8;
+const unsigned int CREATURE_MOVEMENT_DISTANCE = 1;
 
 Creature::Creature() :
 	mUp(false), mDown(false), mLeft(false), mRight(false),

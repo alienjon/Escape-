@@ -8,7 +8,6 @@
 
 #include <stdexcept>
 
-#include "../Engine/Colors.hpp"
 #include "../Screens/GameScreen.hpp"
 #include "../Game/Keywords.hpp"
 #include "../Engine/Logger.hpp"
@@ -52,25 +51,6 @@ void Game::mDrawLoadingScreen()
 
 void Game::mDrawResourceFrame(unsigned int percent, const string& title)
 {
-    // Just draw a black background for now.
-	mRenderer._beginDraw();
-    mRenderer.setColor(gcn::COLOR_BLACK);
-    mRenderer.fillRectangle(gcn::Rectangle(0, 0, mRenderer.getSize().x, mRenderer.getSize().y));
-
-    // Draw a loading bar.
-    unsigned int width = (mRenderer.getSize().x / 4) + (LOADBAR_FRAMESIZE * 2),
-				 height= (mRenderer.getSize().y / 16) + (LOADBAR_FRAMESIZE * 2);
-    mRenderer.setColor(gcn::COLOR_BLUE);
-    mRenderer.fillRectangle(gcn::Rectangle((mRenderer.getSize().x / 2) - (width / 2), (mRenderer.getSize().y / 2) - (height / 2), width, height));
-
-    width -= (LOADBAR_FRAMESIZE * 2);
-    height -= (LOADBAR_FRAMESIZE * 2);
-    mRenderer.setColor(gcn::COLOR_CYAN);
-    mRenderer.fillRectangle(gcn::Rectangle((mRenderer.getSize().x / 2) - (width / 2), (mRenderer.getSize().x / 2) - (height / 2), width * percent / 100, height));
-
-    // Draw the text.@todo draw text
-//    mRenderer.drawText(toString(percent) + ": Loading " + title, 0, mRenderer.GetHeight() - mRenderer.getFontHeight(), gcn::Graphics::LEFT);
-    mRenderer._endDraw();
 }
 
 void Game::mGameCleanup()
@@ -119,19 +99,19 @@ void Game::mLoadResources()
     while(TilesetManager::loadResource());
 }
 
-void Game::action(const gcn::ActionEvent& event)
+void Game::eventOccurred(const string& event)
 {
-	if(event.getId() == ACTION_STARTGAME_EASY)
+	if(event == ACTION_STARTGAME_EASY)
 		mScreens.push_back(new GameScreen(1));
-	else if(event.getId() == ACTION_STARTGAME_NORMAL)
+	else if(event == ACTION_STARTGAME_NORMAL)
 		mScreens.push_back(new GameScreen(5));
-	else if(event.getId() == ACTION_STARTGAME_HARD)
+	else if(event == ACTION_STARTGAME_HARD)
 		mScreens.push_back(new GameScreen(10));
-	else if(event.getId() == ACTION_QUIT)
+	else if(event == ACTION_QUIT)
 		mRenderer.close();
-	else if(event.getId() == ACTION_SHOWCURSOR)
+	else if(event == ACTION_SHOWCURSOR)
 		mRenderer.setMouseCursorVisible(true);
-	else if(event.getId() == ACTION_HIDECURSOR)
+	else if(event == ACTION_HIDECURSOR)
 		mRenderer.setMouseCursorVisible(false);
 //	else if(event.getId() == ACTION_TO_MAINMENU)//@todo implement the main screen.
 //		mScreens.push_back(new MenuScreen());
@@ -144,5 +124,5 @@ void Game::action(const gcn::ActionEvent& event)
 //    	mScreens.push_back(new SpriteCreditScreen(Sprite(VideoManager::loadSurface(credit_file)), 4000, fade_in, fade_out));
 //    }
 	else
-		LOG("Invalid action requested: " + event.getId());
+		LOG("Invalid action requested: " + event);
 }

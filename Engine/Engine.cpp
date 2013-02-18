@@ -28,9 +28,9 @@ using std::runtime_error;
 using std::string;
 
 const char* CONFIG_FILE = "config.txt";
-
+#include <iostream>
+using namespace std;//@todo remove
 Engine::Engine() :
-	mGui(0),
 	mCurrentScreen(mScreens.end())
 {
 	// Seed the randomizer.
@@ -79,11 +79,6 @@ Engine::Engine() :
     FontManager::create();
     VideoManager::create();
 
-	// Do any Game specific stuff.
-	mGui = new GUI(mRenderer, mInput);
-	mGui->addGlobalKeyListener(this);
-	mGui->getTop()->addActionListener(this);
-
 	// Setup the FPS displays.
 	mFont.loadFromFile("Fonts/VeraMono.ttf");
 	mGameFPS.setFont(mFont);
@@ -96,6 +91,9 @@ Engine::Engine() :
 	mVideoFPS.setStyle(sf::Text::Bold);
 	mGameFPS.setPosition(0, 0);
 	mVideoFPS.setPosition(0, mGameFPS.getCharacterSize());
+
+	// Listen to self for keyboard input.
+	addKeyListener(this);
 }
 
 Engine::~Engine()
@@ -125,9 +123,6 @@ Engine::~Engine()
     AudioManager::terminate();
     FontManager::terminate();
     VideoManager::terminate();
-    mGui->getTop()->removeActionListener(this);
-    mGui->removeGlobalKeyListener(this);
-    delete mGui;
 }
 
 void Engine::mCleanUpScreens()
@@ -147,10 +142,9 @@ void Engine::mLoadNextScreen()
     if(mCurrentScreen != mScreens.end())
     {
         // Remove the listeners.
-        (*mCurrentScreen)->removeActionListener(this);
-        this->removeActionListener(*mCurrentScreen);
-        mGui->getTop()->removeKeyListener(*mCurrentScreen);
-        mGui->getTop()->removeMouseListener(*mCurrentScreen);
+        (*mCurrentScreen)->removeEventListener(this);
+        removeEventListener(*mCurrentScreen);
+        removeKeyListener(*mCurrentScreen);
 
         // Tell the screen to unload itself.
         (*mCurrentScreen)->unload();
@@ -170,10 +164,9 @@ void Engine::mLoadNextScreen()
     mCurrentScreen = mScreens.begin();
 
     // Set listeners.
-    (*mCurrentScreen)->addActionListener(this);
-    this->addActionListener(*mCurrentScreen);
-    mGui->getTop()->addKeyListener(*mCurrentScreen);
-    mGui->getTop()->addMouseListener(*mCurrentScreen);
+    (*mCurrentScreen)->addEventListener(this);
+    addEventListener(*mCurrentScreen);
+    addKeyListener(*mCurrentScreen);
     (*mCurrentScreen)->setRendererContextInterface(this);
 
     // Display the loading screen.
@@ -182,7 +175,7 @@ void Engine::mLoadNextScreen()
     mRenderer.display();
 
     // Load the new screen.
-    (*mCurrentScreen)->load(mGui);
+    (*mCurrentScreen)->load(mRenderer.getDefaultView());
 
     // If the old screen exists, delete it.
     if(oldScreen)
@@ -194,14 +187,14 @@ const RendererContext& Engine::getContext() const
 	return mContext;
 }
 
-void Engine::keyPressed(gcn::KeyEvent& event)
+void Engine::keyPressed(const sf::Event& event)
 {
 	// Quit the game.
-	if(isDebug() && event.getKey().getValue() == 'c' && event.isControlPressed())
+	if(isDebug() && event.key.code == sf::Keyboard::C && event.key.control)
 		mRenderer.close();
 
 	// Save a screenshot.
-	if(event.getKey().getValue() == 'p' && event.isControlPressed())
+	if(event.key.code == sf::Keyboard::P && event.key.control)
 	{
 		static unsigned int i = 0;
 		sf::Image shot = mRenderer.capture();
@@ -212,7 +205,7 @@ void Engine::keyPressed(gcn::KeyEvent& event)
 	}
 
 	// Enable/Disable debugging.
-	if(event.getKey().getValue() == gcn::Key::F1)
+	if(event.key.code == sf::Keyboard::F1)
 	{
 		setDebug(!isDebug());
 		if(isDebug())
@@ -222,7 +215,7 @@ void Engine::keyPressed(gcn::KeyEvent& event)
 	}
 
 	// Display engine settings.
-	if(event.getKey().getValue() == gcn::Key::F2)
+	if(event.key.code == sf::Keyboard::F2)
 	{
 		LOG_TO_CONSOLE("Screen Size: " + toString(mContext.mVideoMode.width) + " x " + toString(mContext.mVideoMode.height) + " (" + toString(mContext.mVideoMode.bitsPerPixel) + ")");
 		LOG_TO_CONSOLE(string("Fullscreen: ") + ((mContext.mFullscreen) ? "true" : "false"));
@@ -235,13 +228,17 @@ void Engine::keyPressed(gcn::KeyEvent& event)
 
 	// Toggle fullscreen.
 	//@todo I can do this without the screen flickering.  It's changing the scale/window decorations.  Look into it?
-	if(event.getKey().getValue() == gcn::Key::ENTER && event.isAltPressed())
+	if(event.key.code == sf::Keyboard::Return && event.key.control)
 	{
 		RendererContext c = getContext();
 		c.mFullscreen = !c.mFullscreen;
 		updateContext(c);
 		LOG(string("Fullscreen ") + (c.mFullscreen ? "enabled" : "disabled"));
 	}
+}
+
+void Engine::keyReleased(const sf::Event& event)
+{
 }
 
 bool Engine::isDebug()
@@ -275,11 +272,15 @@ void Engine::run()
 			// Process the events.
 			sf::Event event;
 			while(mRenderer.pollEvent(event))
-				mInput.pushInput(event);
+			{
+				if(event.type == sf::Event::KeyPressed)
+					distributeKeyPressed(event);
+				else if(event.type == sf::Event::KeyReleased)
+					distributeKeyReleased(event);
+			}
 
 			// Logic.
 			(*mCurrentScreen)->logic();
-			mGui->logic();
 			gamefps_count++;
 			gametimer.start();
     	}
@@ -287,7 +288,6 @@ void Engine::run()
 		// Draw
     	mRenderer.clear();
 		(*mCurrentScreen)->draw(mRenderer);
-		mGui->draw();
 
 		// If debugging, draw FPS info.
 		if(isDebug())
@@ -335,7 +335,6 @@ void Engine::updateContext(const RendererContext& context)
 	mRenderer.create(mContext.mVideoMode, GAME_NAME, (mContext.mFullscreen) ? sf::Style::Fullscreen : sf::Style::Titlebar, mContext.mContextSettings);
 
 	// Set other options that are defaulted when the renderer is re-created.
-	mGui->setSize(mContext.mVideoMode.width, mContext.mVideoMode.height);
 	mRenderer.setKeyRepeatEnabled(false);
     mRenderer.setFramerateLimit(100); // @note Sets the maximum framerate if vsync is disabled.
     mRenderer.setVerticalSyncEnabled(mContext.mVerticalSync);

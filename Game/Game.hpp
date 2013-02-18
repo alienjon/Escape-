@@ -7,10 +7,12 @@
 #ifndef GAME_HPP_
 #define GAME_HPP_
 
+#include <string>
+
 #include <SFML/Graphics.hpp>
 
 #include "../Engine/Engine.hpp"
-#include "../Engine/guichan.hpp"
+#include "../Interfaces/EventInterface.hpp"
 
 /*
  * @brief Implementation of engine.
@@ -25,10 +27,10 @@ class Game : public Engine
 	virtual ~Game();
 
     /**
-     * @brief An action occurred.
+     * @brief An event occurred.
      * @param event The event details.
      */
-    virtual void action(const gcn::ActionEvent& event);
+    virtual void eventOccurred(const std::string& event);
 
 	protected:
     /**

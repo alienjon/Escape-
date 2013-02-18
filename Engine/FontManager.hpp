@@ -11,7 +11,7 @@
 #include <map>
 #include <string>
 
-#include "../Engine/Guichan/sfml.hpp"
+#include <SFML/Graphics.hpp>
 
 /**
  * @brief A class that manages fonts.
@@ -23,13 +23,6 @@ class FontManager
      * @brief Create the font manager.
      */
     static void create();
-
-    /**
-     * @brief Get a requested font.
-     * @param filename The filename of the font to get.
-     * @return A new gcn::SFMLFont*
-     */
-    static gcn::SFMLFont* getGCNFont(const std::string& filename);
 
     /**
      * @brief Get a requested sf::Font.
@@ -58,7 +51,6 @@ class FontManager
 
     // The fonts.
     std::map<std::string, sf::Font> mSFFonts;
-    std::list<gcn::SFMLFont*> mGCNFonts;
 };
 
 #endif /* FONTMANAGER_HPP_ */

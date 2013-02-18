@@ -26,7 +26,7 @@ Player::Player() :
     mType = ENTITY_PLAYER;
 
     // The player moves at a normal speed.
-    setSpeed(2.75);
+    setSpeed(30.f);
 
     // Start the timer.
     mColorCycleTimer.start();
@@ -103,32 +103,32 @@ void Player::draw(sf::RenderWindow& renderer)
 	}
 }
 
-void Player::keyPressed(gcn::KeyEvent& event)
+void Player::keyPressed(const sf::Event& event)
 {
 	// Only perform input if allowed.
 	if(!mHasInput)
 		return;
 
     // Calculate the velocity.
-	if(event.getKey().getValue() == gcn::Key::UP)
+	if(event.key.code == sf::Keyboard::Up)
 		mUp = true;
-	if(event.getKey().getValue() == gcn::Key::DOWN)
+	if(event.key.code == sf::Keyboard::Down)
 		mDown = true;
-	if(event.getKey().getValue() == gcn::Key::LEFT)
+	if(event.key.code == sf::Keyboard::Left)
 		mLeft = true;
-	if(event.getKey().getValue() == gcn::Key::RIGHT)
+	if(event.key.code == sf::Keyboard::Right)
 		mRight = true;
 }
 
-void Player::keyReleased(gcn::KeyEvent& event)
+void Player::keyReleased(const sf::Event& event)
 {
-	if(event.getKey().getValue() == gcn::Key::UP)
+	if(event.key.code == sf::Keyboard::Up)
 		mUp = false;
-	if(event.getKey().getValue() == gcn::Key::DOWN)
+	if(event.key.code == sf::Keyboard::Down)
 		mDown = false;
-	if(event.getKey().getValue() == gcn::Key::LEFT)
+	if(event.key.code == sf::Keyboard::Left)
 		mLeft = false;
-	if(event.getKey().getValue() == gcn::Key::RIGHT)
+	if(event.key.code == sf::Keyboard::Right)
 		mRight = false;
 }
 

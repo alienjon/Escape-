@@ -7,7 +7,8 @@
 #ifndef TIMERWIDGET_HPP_
 #define TIMERWIDGET_HPP_
 
-#include "../Engine/guichan.hpp"
+#include <SFML/Graphics.hpp>
+
 #include "../Listeners/TimeChangeListener.hpp"
 #include "../Engine/Timer.hpp"
 
@@ -15,7 +16,7 @@
  * @brief A widget that displays a counting timer.  For a timer to count down
  * a time, @see CountdownTimerWidget
  */
-class TimerWidget : public gcn::Label, public TimeChangeListener
+class TimerWidget : public TimeChangeListener
 {
 	public:
 	/**
@@ -24,10 +25,28 @@ class TimerWidget : public gcn::Label, public TimeChangeListener
 	TimerWidget();
 
 	/**
+	 * @brief Draw the widget onto the renderer.
+	 * @param renderer The renderer on which to draw.
+	 */
+	virtual void draw(sf::RenderWindow& renderer);
+
+	/**
+	 * @brief Get the height of the widget.
+	 * @return The height of the widget.
+	 */
+	int getHeight() const;
+
+	/**
 	 * @brief Get the current timer's time.
 	 * @return The timer's current time.
 	 */
 	virtual unsigned int getTime() const;
+
+	/**
+	 * @brief Get the width of the widget.
+	 * @return The width.
+	 */
+	int getWidth() const;
 
 	/**
 	 * @brief Perform logic.
@@ -38,6 +57,13 @@ class TimerWidget : public gcn::Label, public TimeChangeListener
 	 * @brief Pause the timer.
 	 */
 	virtual void pause();
+
+	/**
+	 * @brief Set the position of the widget.
+	 * @param x The x location.
+	 * @param y The y location.
+	 */
+	void setPosition(int x, int y);
 
 	/**
 	 * @brief Start the timer.
@@ -69,6 +95,10 @@ class TimerWidget : public gcn::Label, public TimeChangeListener
 
 	// The start time.
 	unsigned int mStartTime;
+
+	// The display.
+	sf::Font mFont;
+	sf::Text mText;
 };
 
 #endif /* TIMERWIDGET_HPP_ */

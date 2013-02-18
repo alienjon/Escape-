@@ -7,7 +7,7 @@
 ScreenWidth:800
 ScreenHeight:600
 ScreenBPP:32
-VerticalSync:false
+VerticalSync:true
 Fullscreen:false
 BitDepth:24
 StencilBits:8

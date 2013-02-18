@@ -97,11 +97,6 @@ int main(int args, const char** pArgs)
 		// Run the game.
 		game.run();
     }
-    catch(gcn::Exception& e)
-    {
-    	ERROR(e.getMessage());
-        return 1;
-    }
     catch(exception& e)
     {
         ERROR(e.what());

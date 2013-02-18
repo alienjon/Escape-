@@ -9,15 +9,11 @@
 
 #include <list>
 
-#include "../Engine/guichan.hpp"
-#include "../Engine/Guichan/sfml.hpp"
-
 #include "../Interfaces/ActionInterface.hpp"
 #include "../Interfaces/ChangeScoreInterface.hpp"
 #include "../Listeners/ChangeScoreListener.hpp"
 #include "../Listeners/DeathListener.hpp"
 #include "../Listeners/FloatingTextListener.hpp"
-#include "../Interfaces/GCNActionInterface.hpp"
 #include "../Listeners/LevelCompleteListener.hpp"
 #include "../Game/Map.hpp"
 #include "../Entities/Portal.hpp"
@@ -35,8 +31,9 @@ class Player;
  * The level essentially acts as a manager between all objects (creatures, items, traps)
  * and a single map.  It is literally a solitary contained area in the game.
  */
-class Level : public ActionInterface, public ChangeScoreInterface, public ChangeScoreListener, public DeathListener, public GCNActionInterface,
-			  public FloatingTextListener, public LevelCompleteListener, public TimeChangeInterface, public TimeChangeListener
+class Level : public ActionInterface, public ChangeScoreInterface, public ChangeScoreListener, public DeathListener,
+			  public FloatingTextListener, public LevelCompleteListener, public TimeChangeInterface,
+			  public TimeChangeListener
 {
     public:
     /**
@@ -88,7 +85,7 @@ class Level : public ActionInterface, public ChangeScoreInterface, public Change
      * @brief Draw the map to the screen.
      * @param renderer The graphics object to draw with.
      */
-    virtual void draw(gcn::SFMLGraphics& renderer);
+    virtual void draw(sf::RenderWindow& renderer);
 
     /**
      * @brief Get the map.

@@ -7,6 +7,7 @@
 #ifndef GAMESCREEN_HPP_
 #define GAMESCREEN_HPP_
 
+#include <string>
 #include <vector>
 
 #include <SFML/Audio.hpp>
@@ -15,8 +16,6 @@
 
 #include "../Listeners/ChangeScoreListener.hpp"
 #include "../Widgets/GameOptionsWidget.hpp"
-#include "../Engine/GUI.hpp"
-#include "../Engine/guichan.hpp"
 #include "../Game/Level.hpp"
 #include "../Widgets/LevelCompleteWidget.hpp"
 #include "../Entities/Player.hpp"
@@ -43,7 +42,7 @@ class GameScreen : public ChangeScoreListener, public TimeChangeInterface, publi
      * @brief Listen for gui actions.
      * @param event The action event.
      */
-    virtual void action(const gcn::ActionEvent& event);
+    virtual void eventOccurred(const std::string& event);
 
 	/**
 	 * @brief Change the score by the provided amount.
@@ -55,25 +54,25 @@ class GameScreen : public ChangeScoreListener, public TimeChangeInterface, publi
      * @brief Render the screen.
      * @param renderer The graphics object with which to draw.
      */
-    virtual void draw(gcn::SFMLGraphics& renderer);
+    virtual void draw(sf::RenderWindow& renderer);
 
     /**
      * @brief A key was pressed.
      * @param event The key event.
      */
-    virtual void keyPressed(gcn::KeyEvent& event);
+    virtual void keyPressed(const sf::Event& event);
 
     /**
      * @brief A key was released.
      * @param event The key event.
      */
-    virtual void keyReleased(gcn::KeyEvent& event);
+    virtual void keyReleased(const sf::Event& event);
 
     /**
      * @brief Perform anything necessary to prepare this screen for displaying what it needs to.
-     * @param gui The gui to work with.
+     * @param view The view in which the screen is displayed.
      */
-    virtual void load(GUI* gui);
+    virtual void load(const sf::View& view);
 
     /**
      * @brief Perform logic.
@@ -102,11 +101,12 @@ class GameScreen : public ChangeScoreListener, public TimeChangeInterface, publi
     // The current level.
     Level* mLevel;
 
-    // The game options menu.
-    GameOptionsWidget mOptionsMenu;
-
-    // The level complete widget.
-    LevelCompleteWidget mLevelCompleteWidget;
+    //@todo implement options and
+//    // The game options menu.
+//    GameOptionsWidget mOptionsMenu;
+//
+//    // The level complete widget.
+//    LevelCompleteWidget mLevelCompleteWidget;
 
 	// This is the score.
 	unsigned int mScore;
@@ -114,16 +114,19 @@ class GameScreen : public ChangeScoreListener, public TimeChangeInterface, publi
 	// This is the amount to add to the score.
 	int mCounter;
 
-	// This is the score timer.
-	Timer mScoreTimer;
-
     // The visual bounds for this level.
     sf::View mCamera;
 
     // Internal widgets.
-    //@todo Transfer timer and label to separate widgets.
+    //@todo Need to re-implement widgets
+//    TimerWidget mTimerWidget;
+//    gcn::Label mScoreLabel;
+
+    //@fixme re-implement timer GUI and score GUI then remove.
+    sf::Text mScoreDisplay;
+    Timer mScoreTimer;
+    sf::Font mFont;//@todo remove when GUI is implemented?
     TimerWidget mTimerWidget;
-    gcn::Label mScoreLabel;
 
     // The player.
     Player mPlayer;
@@ -132,7 +135,6 @@ class GameScreen : public ChangeScoreListener, public TimeChangeInterface, publi
     bool mResetView;
 
     // The collection of background musics.
-    //@todo implement reading files in a directory to do this (boost libs)
     std::vector<std::string> mBackMusicVector;
 };
 
