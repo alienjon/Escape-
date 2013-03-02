@@ -58,10 +58,10 @@ void TimeChange::collide(Entity& entity)
 	}
 }
 
-void TimeChange::logic(Level& level)
+void TimeChange::logic(Level& level, int delta)
 {
 	// Perform entity logic.
-	Entity::logic(level);
+	Entity::logic(level, delta);
 
 	// If time is up, set the interval, update the image, and switch time gain/loss state.
 	if(mTimer.getTime() >= mInterval)

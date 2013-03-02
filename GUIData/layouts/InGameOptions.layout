@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<GUILayout >
+    <Window Type="TaharezLook/FrameWindow" Name="InGameOptionsMenu" >
+        <Property Name="Text" Value="Game Options" />
+        <Property Name="TitlebarFont" Value="DejaVuSans-10" />
+        <Property Name="TitlebarEnabled" Value="True" />
+        <Property Name="UnifiedAreaRect" Value="{{0.397266,0},{0.272603,0},{0.600391,0},{0.514385,0}}" />
+        <Property Name="DragMovingEnabled" Value="False" />
+        <Property Name="CloseButtonEnabled" Value="False" />
+        <Window Type="TaharezLook/Button" Name="InGameOptionsMenu/ResumeButton" >
+            <Property Name="Text" Value="Resume" />
+            <Property Name="UnifiedAreaRect" Value="{{0.1,0},{0,10},{0.9,0},{0,35}}" />
+        </Window>
+        <Window Type="TaharezLook/Button" Name="InGameOptionsMenu/VideoButton" >
+            <Property Name="Text" Value="Video" />
+            <Property Name="UnifiedAreaRect" Value="{{0.1,0},{0,45},{0.9,0},{0,70}}" />
+        </Window>
+        <Window Type="TaharezLook/Button" Name="InGameOptionsMenu/AudioButton" >
+            <Property Name="Text" Value="Audio" />
+            <Property Name="UnifiedAreaRect" Value="{{0.1,0},{0,80},{0.9,0},{0,105}}" />
+        </Window>
+        <Window Type="TaharezLook/Button" Name="InGameOptionsMenu/MainMenuButton" >
+            <Property Name="Text" Value="Main Menu" />
+            <Property Name="UnifiedAreaRect" Value="{{0.1,0},{0,115},{0.9,0},{0,140}}" />
+        </Window>
+    </Window>
+</GUILayout>

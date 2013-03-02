@@ -63,9 +63,9 @@ void SpeedChange::draw(sf::RenderWindow& renderer)
 		Entity::draw(renderer);
 }
 
-void SpeedChange::logic(Level& level)
+void SpeedChange::logic(Level& level, int delta)
 {
-	Entity::logic(level);
+	Entity::logic(level, delta);
 
 	if(mTimer.isStarted() &&
 	   ((mTimer.getTime() >= SPEEDCHANGE_INCREASE_INTERVAL && mSpeedTo < mSpeedFrom) ||

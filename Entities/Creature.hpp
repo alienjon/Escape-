@@ -47,7 +47,7 @@ class Creature : public Entity, public PhaseMovementListener
 
     /**
      * @brief Get the current speed of the creature.
-     * @return The speed of the creature.
+     * @return The speed of the creature in pixels per second.
      */
     inline double getSpeed() const
     {
@@ -66,8 +66,9 @@ class Creature : public Entity, public PhaseMovementListener
     /**
      * @brief Perform internal logic.
      * @param level The level within which the creature is residing.
+     * @param delta The time since the last frame displayed.
      */
-    virtual void logic(Level& level);
+    virtual void logic(Level& level, int delta);
 
     /**
      * @brief Phase this creature to the specified position.

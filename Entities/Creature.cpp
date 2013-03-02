@@ -51,8 +51,9 @@ void Creature::mMovedToWaypoint()
     for(list<CreatureWaypointListener*>::iterator it = mWaypointListeners.begin(); it != mWaypointListeners.end(); it++)
         (*it)->creatureMoved(*this);
 }
-
-void Creature::logic(Level& level)
+#include <iostream>
+using namespace std;//@todo remove
+void Creature::logic(Level& level, int delta)
 {
 	// If the creature is moving towards a waypoint, determine the direction to move.
 	if(!mWaypoints.empty())
@@ -74,7 +75,7 @@ void Creature::logic(Level& level)
 		// If we're moving, then do the generic stuff.
 		if(mMovementTimer.getTime() > 15)
 		{
-			float dist = CREATURE_MOVEMENT_DISTANCE * mSpeed;
+			float dist = getSpeed() * delta;
 			if(mUp)
 			{
 				setY(getY() - dist);
@@ -125,7 +126,7 @@ void Creature::logic(Level& level)
 	}
 
     // Call the entity's logic.
-    Entity::logic(level);
+    Entity::logic(level, delta);
 }
 
 void Creature::phaseTo(const sf::Vector2f& vec)

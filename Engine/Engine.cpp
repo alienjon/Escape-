@@ -28,8 +28,7 @@ using std::runtime_error;
 using std::string;
 
 const char* CONFIG_FILE = "config.txt";
-#include <iostream>
-using namespace std;//@todo remove
+
 Engine::Engine() :
 	mCurrentScreen(mScreens.end())
 {
@@ -81,19 +80,11 @@ Engine::Engine() :
 
 	// Setup the FPS displays.
 	mFont.loadFromFile("Fonts/VeraMono.ttf");
-	mGameFPS.setFont(mFont);
-	mGameFPS.setCharacterSize(18);
-	mGameFPS.setColor(sf::Color::Magenta);
-	mGameFPS.setStyle(sf::Text::Bold);
-	mVideoFPS.setFont(mFont);
-	mVideoFPS.setCharacterSize(18);
-	mVideoFPS.setColor(sf::Color::Magenta);
-	mVideoFPS.setStyle(sf::Text::Bold);
-	mGameFPS.setPosition(0, 0);
-	mVideoFPS.setPosition(0, mGameFPS.getCharacterSize());
-
-	// Listen to self for keyboard input.
-	addKeyListener(this);
+	mFPSDisplay.setFont(mFont);
+	mFPSDisplay.setCharacterSize(18);
+	mFPSDisplay.setColor(sf::Color::Magenta);
+	mFPSDisplay.setStyle(sf::Text::Bold);
+	mFPSDisplay.setPosition(0, 0);
 }
 
 Engine::~Engine()
@@ -144,7 +135,6 @@ void Engine::mLoadNextScreen()
         // Remove the listeners.
         (*mCurrentScreen)->removeEventListener(this);
         removeEventListener(*mCurrentScreen);
-        removeKeyListener(*mCurrentScreen);
 
         // Tell the screen to unload itself.
         (*mCurrentScreen)->unload();
@@ -166,11 +156,9 @@ void Engine::mLoadNextScreen()
     // Set listeners.
     (*mCurrentScreen)->addEventListener(this);
     addEventListener(*mCurrentScreen);
-    addKeyListener(*mCurrentScreen);
     (*mCurrentScreen)->setRendererContextInterface(this);
 
     // Display the loading screen.
-    mRenderer.clear();
     mDrawLoadingScreen();
     mRenderer.display();
 
@@ -187,11 +175,14 @@ const RendererContext& Engine::getContext() const
 	return mContext;
 }
 
-void Engine::keyPressed(const sf::Event& event)
+bool Engine::handleInput(const sf::Event& event)
 {
 	// Quit the game.
 	if(isDebug() && event.key.code == sf::Keyboard::C && event.key.control)
+	{
 		mRenderer.close();
+		return true;
+	}
 
 	// Save a screenshot.
 	if(event.key.code == sf::Keyboard::P && event.key.control)
@@ -201,7 +192,7 @@ void Engine::keyPressed(const sf::Event& event)
 		string filename = "screenshot_" + toString(i++) + ".png";
 		shot.saveToFile(filename);
 		LOG("Screenshot saved as '" + filename + "'");
-		return;
+		return true;
 	}
 
 	// Enable/Disable debugging.
@@ -212,6 +203,7 @@ void Engine::keyPressed(const sf::Event& event)
 			LOG("Debugging enabled");
 		else
 			LOG_TO_CONSOLE("Debugging disabled");
+		return true;
 	}
 
 	// Display engine settings.
@@ -224,6 +216,7 @@ void Engine::keyPressed(const sf::Event& event)
 		LOG_TO_CONSOLE("Audio Enabled: TO BE IMPLEMENTED");//@todo implement audio enable
 		LOG_TO_CONSOLE("Music Volume: TO BE IMPLEMENTED");//@todo implement music volume
 		LOG_TO_CONSOLE("SFX Volume: TO BE IMPLEMENTED");//@todo implement sfx volume
+		return true;
 	}
 
 	// Toggle fullscreen.
@@ -234,11 +227,11 @@ void Engine::keyPressed(const sf::Event& event)
 		c.mFullscreen = !c.mFullscreen;
 		updateContext(c);
 		LOG(string("Fullscreen ") + (c.mFullscreen ? "enabled" : "disabled"));
+		return true;
 	}
-}
 
-void Engine::keyReleased(const sf::Event& event)
-{
+	// If we've reached here, then the event wasn't used.
+	return false;
 }
 
 bool Engine::isDebug()
@@ -251,6 +244,16 @@ void Engine::run()
 	// Start by creating (updating) the screen.
 	updateContext(mContext);
 
+	// Initialize the GUI.
+	/*
+	 * @fixme The GUI seems to only work AFTER the video context is created.  When there is only the game
+	 * screen that is being used that works fine, but when the context is recreated - such as when
+	 * the resolution of the game is redone - I'm not sure that the GUI will work after that.  If
+	 * that happens then I will probably want to specifically call 'destroy' on the GUI system
+	 * and then re-initialize.
+	 */
+	mGUI.initialize();
+
     // Make sure all screens are cleared.
 	for(list<Screen*>::iterator it = mScreens.begin(); it != mScreens.end(); ++it)
 		delete *it;
@@ -258,60 +261,71 @@ void Engine::run()
 
     // Setup the game.
     mGameSetup();
+
+    // Load the first game screen.
     mLoadNextScreen();
-    Timer gametimer, fpstimer;
-    gametimer.start();
-    fpstimer.start();
-    unsigned int gamefps_count = 0, videofps_count = 0;
+
+    // FPS display and information.
+    Timer frameTimer, gameTimer;
+    frameTimer.start();
+    gameTimer.start();
+    unsigned int lastFrameTime = 0, frameCount = 0;
 
 	// Basic game loop.
     while(mRenderer.isOpen())
     {
-    	if(gametimer.getTime() > 1000/60)
-    	{
-			// Process the events.
-			sf::Event event;
-			while(mRenderer.pollEvent(event))
-			{
-				if(event.type == sf::Event::KeyPressed)
-					distributeKeyPressed(event);
-				else if(event.type == sf::Event::KeyReleased)
-					distributeKeyReleased(event);
-			}
+		/* HANDLE INPUT */
+		sf::Event event;
+		while(mRenderer.pollEvent(event))
+		{
+			// Have the engine handle input first.
+			if(handleInput(event))
+				continue;
+			// Then check for the GUI to handle input.
+			else if(mGUI.handleInput(event))
+				continue;
+			// Otherwise pass the input along to the screen.
+			else
+				(*mCurrentScreen)->handleInput(event);
+		}
 
-			// Logic.
-			(*mCurrentScreen)->logic();
-			gamefps_count++;
-			gametimer.start();
-    	}
+		/* LOGIC */
+		(*mCurrentScreen)->logic(gameTimer.getTime() - lastFrameTime);
+        lastFrameTime = gameTimer.getTime();
 
-		// Draw
+        // Calculate the FPS.
+		if(frameTimer.getTime() > 1000)
+		{
+			mFPSDisplay.setString("FPS: " + toString(frameCount));
+			frameCount = 0;
+			frameTimer.start();
+		}
+
+		// Clear the screen and draw SFML stuff.
     	mRenderer.clear();
+
+    	mRenderer.pushGLStates(); // Needed for GUI to display appropriately.
 		(*mCurrentScreen)->draw(mRenderer);
 
 		// If debugging, draw FPS info.
 		if(isDebug())
 		{
-			mRenderer.draw(mGameFPS);
-			mRenderer.draw(mVideoFPS);
-
-			if(fpstimer.getTime() > 1000)
-			{
-				mGameFPS.setString("Game FPS: " + toString(gamefps_count));
-				mVideoFPS.setString("VideoFPS: " + toString(videofps_count));
-				gamefps_count = 0;
-				videofps_count = 0;
-				fpstimer.start();
-			}
+			mRenderer.draw(mFPSDisplay);
 		}
+		mRenderer.popGLStates(); // Needed for GUI to display appropriately.
 
-        // Render the frame.
-        mRenderer.display();
-        videofps_count++;
+		// Draw the GUI on top.
+		mGUI.draw();
+
+		// Render the frame.
+		mRenderer.display();
 
         // If the screen has finished, then load the next screen.
         if((*mCurrentScreen)->isDone())
             mLoadNextScreen();
+
+        // The frame has completed.
+        frameCount++;
     }
 
     // Clean things up.
@@ -336,8 +350,8 @@ void Engine::updateContext(const RendererContext& context)
 
 	// Set other options that are defaulted when the renderer is re-created.
 	mRenderer.setKeyRepeatEnabled(false);
-    mRenderer.setFramerateLimit(100); // @note Sets the maximum framerate if vsync is disabled.
     mRenderer.setVerticalSyncEnabled(mContext.mVerticalSync);
+	mRenderer.setMouseCursorVisible(false); // Only use the CEGUI cursor.
 }
 
 void Engine::setDebug(bool state)

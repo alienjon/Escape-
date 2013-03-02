@@ -30,8 +30,9 @@ class TimeChange : public Entity
 	/**
 	 * @brief Perform logic.
 	 * @param level The level in which this entity exists.
+	 * @param delta The time since the last frame displayed.
 	 */
-	virtual void logic(Level& level);
+	virtual void logic(Level& level, int delta);
 
 	private:
 	// The level.

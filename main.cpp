@@ -97,9 +97,14 @@ int main(int args, const char** pArgs)
 		// Run the game.
 		game.run();
     }
+    catch(CEGUI::Exception& e)
+    {
+    	ERROR(string("(CEGUI) ") + e.getMessage().c_str());
+		return 1;
+    }
     catch(exception& e)
     {
-        ERROR(e.what());
+        ERROR(string("(std) ") + e.what());
         return 1;
     }
     catch(...)

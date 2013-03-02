@@ -11,8 +11,7 @@
 
 #include "../Interfaces/EventInterface.hpp"
 #include "../Listeners/EventListener.hpp"
-#include "../Interfaces/KeyInterface.hpp"
-#include "../Listeners/KeyListener.hpp"
+#include "../Listeners/InputListener.hpp"
 #include "../Engine/Logger.hpp"
 #include "../Engine/RendererContext.hpp"
 #include "../Engine/RendererContextInterface.hpp"
@@ -20,7 +19,7 @@
 /*
  * @brief A screen is an abstract way of looking at what's going on.
  */
-class Screen : public EventInterface, public EventListener, public KeyInterface, public KeyListener
+class Screen : public EventInterface, public EventListener, public InputListener
 {
     public:
     virtual ~Screen()
@@ -49,22 +48,11 @@ class Screen : public EventInterface, public EventListener, public KeyInterface,
     }
 
     /**
-     * @brief A key was pressed.
-     * @param event The key event.
+     * @brief Handle input.
+     * @param event The input event.
+     * @return True if the event was consumed (used).
      */
-    virtual void keyPressed(const sf::Event& event)
-    {
-    	distributeKeyPressed(event);
-    }
-
-    /**
-     * @brief A key was released.
-     * @param event The key event.
-     */
-    virtual void keyReleased(const sf::Event& event)
-    {
-    	distributeKeyReleased(event);
-    }
+    virtual bool handleInput(const sf::Event& event) = 0;
 
     /**
      * @brief Perform anything necessary to prepare this screen for displaying what it needs to.
@@ -74,8 +62,9 @@ class Screen : public EventInterface, public EventListener, public KeyInterface,
 
     /**
      * @brief Perform logic.
+     * @param delta The time since the last frame displayed.
      */
-    virtual void logic() = 0;
+    virtual void logic(int delta) = 0;
 
     /**
      * @brief Set the currently used context interface.

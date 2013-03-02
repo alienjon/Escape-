@@ -13,18 +13,17 @@
 
 #include "../Listeners/AddLockListener.hpp"
 #include "../Entities/Creature.hpp"
-#include "../Listeners/KeyListener.hpp"
+#include "../Listeners/InputListener.hpp"
 #include "../Listeners/PickupListener.hpp"
 #include "../Listeners/RemoveLockListener.hpp"
 #include "../Engine/Timer.hpp"
 
-class Item;
 class Level;
 
 /**
  * @brief The player class.
  */
-class Player : public AddLockListener, public Creature, public KeyListener, public RemoveLockListener
+class Player : public AddLockListener, public Creature, public InputListener, public RemoveLockListener
 {
 	public:
     /**
@@ -39,15 +38,6 @@ class Player : public AddLockListener, public Creature, public KeyListener, publ
     inline void addLock(sf::Color color)
     {
     	mLocks.push_back(color);
-    }
-
-    /**
-     * @brief Add a pickup listener.
-     * @param listener The listener to add.
-     */
-    inline void addPickupListener(PickupListener* listener)
-    {
-    	mPickupListeners.push_back(listener);
     }
 
     /**
@@ -72,29 +62,18 @@ class Player : public AddLockListener, public Creature, public KeyListener, publ
 	}
 
     /**
-     * @brief A key was pressed.
-     * @param event The key event.
+     * @brief Handle input.
+     * @param event The input event.
+     * @return True if the event was consumed (used).
      */
-    virtual void keyPressed(const sf::Event& event);
-
-    /**
-     * @brief A key was released.
-     * @param event The key event.
-     */
-    virtual void keyReleased(const sf::Event& event);
+    virtual bool handleInput(const sf::Event& event);
 
 	/**
 	 * @brief Perform player logic.
 	 * @param level The level in which this player exists.
+	 * @param delta The time since the last frame displayed.
 	 */
-	virtual void logic(Level& level);
-
-	/**
-	 * @brief Pickup an item.
-	 * @param item The item picked up.
-	 * @return True if the item was successfully picked up.
-	 */
-	virtual bool pickup(Item& item);
+	virtual void logic(Level& level, int delta);
 
 	/**
 	 * @brief Remove all locks from the player.
@@ -111,15 +90,6 @@ class Player : public AddLockListener, public Creature, public KeyListener, publ
     inline void removeLock(sf::Color color)
     {
     	mLocks.remove(color);
-    }
-
-    /**
-     * @brief Remove a pickup listener.
-     * @param listener The listener.
-     */
-    inline void removePickupListener(PickupListener* listener)
-    {
-    	mPickupListeners.remove(listener);
     }
 
     /**
@@ -146,14 +116,6 @@ class Player : public AddLockListener, public Creature, public KeyListener, publ
 	};
 
 	/**
-	 * @brief Distribute a pickup event.
-	 * @param pos The position of the pickup.
-	 * @param item
-	 * @return True if at least one listener was able to pick up the item.
-	 */
-	bool mDistributePickup(Item& item);
-
-	/**
 	 * @brief Reset the cycle colors to their original positions.
 	 */
 	void mResetCyclePositions();
@@ -169,12 +131,6 @@ class Player : public AddLockListener, public Creature, public KeyListener, publ
 
 	// The color locks.
 	std::list<sf::Color> mLocks;
-
-	// The 3 held objects.
-	std::list<Item*> mItems;
-
-	// The item pick up listeners.
-	std::list<PickupListener*> mPickupListeners;
 };
 
 // The action key.

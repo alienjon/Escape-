@@ -46,7 +46,9 @@ void Game::mDrawLoadingScreen()
 							 mRenderer.getSize().y / mLoadingScreen.getLocalBounds().height);
 
 	// Draw the loading screen.
+	mRenderer.pushGLStates();
 	mRenderer.draw(mLoadingScreen);
+	mRenderer.popGLStates();
 }
 
 void Game::mDrawResourceFrame(unsigned int percent, const string& title)
@@ -110,9 +112,9 @@ void Game::eventOccurred(const string& event)
 	else if(event == ACTION_QUIT)
 		mRenderer.close();
 	else if(event == ACTION_SHOWCURSOR)
-		mRenderer.setMouseCursorVisible(true);
+		CEGUI::MouseCursor::getSingleton().show();
 	else if(event == ACTION_HIDECURSOR)
-		mRenderer.setMouseCursorVisible(false);
+		CEGUI::MouseCursor::getSingleton().hide();
 //	else if(event.getId() == ACTION_TO_MAINMENU)//@todo implement the main screen.
 //		mScreens.push_back(new MenuScreen());
 //	else if(event.getId() == ACTION_TO_CREDITSCREEN)//@todo review adding credit screens.

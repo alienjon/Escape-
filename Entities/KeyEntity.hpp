@@ -36,8 +36,9 @@ class KeyEntity : public Entity
 	/**
 	 * @brief Perform logic.
 	 * @param level The level in which this entity resides.
+	 * @param delta The time since the last frame displayed.
 	 */
-	virtual void logic(Level& level);
+	virtual void logic(Level& level, int delta);
 
 	private:
 	// The key's color.

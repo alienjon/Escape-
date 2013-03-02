@@ -170,8 +170,9 @@ class Entity : public ActionInterface, public AddLockInterface, public ChangeSco
     /**
      * @brief Perform internal logic.
      * @param level The level within which the entity is currently residing.
+     * @param delta The time since the last frame displayed.
      */
-    virtual void logic(Level& level);
+    virtual void logic(Level& level, int delta);
 
     /**
      * @brief Pickup an item.

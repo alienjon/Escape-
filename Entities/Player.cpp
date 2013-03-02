@@ -6,7 +6,6 @@
  */
 #include "Player.hpp"
 
-#include "../Entities/Item.hpp"
 #include "../Game/Keywords.hpp"
 #include "../Engine/VideoManager.hpp"
 
@@ -26,7 +25,7 @@ Player::Player() :
     mType = ENTITY_PLAYER;
 
     // The player moves at a normal speed.
-    setSpeed(30.f);
+    setSpeed(1.f);
 
     // Start the timer.
     mColorCycleTimer.start();
@@ -37,15 +36,6 @@ Player::Player() :
 
     // Configure the internal sizes.
     mResetCyclePositions();
-}
-
-bool Player::mDistributePickup(Item& item)
-{
-	bool ret = false;
-	for(list<PickupListener*>::iterator it = mPickupListeners.begin(); it != mPickupListeners.end(); ++it)
-		if((*it)->itemPickedUp(item))
-			ret = true;
-	return ret;
 }
 
 void Player::mResetCyclePositions()
@@ -103,39 +93,46 @@ void Player::draw(sf::RenderWindow& renderer)
 	}
 }
 
-void Player::keyPressed(const sf::Event& event)
+bool Player::handleInput(const sf::Event& event)
 {
 	// Only perform input if allowed.
 	if(!mHasInput)
-		return;
+		return false;
 
-    // Calculate the velocity.
-	if(event.key.code == sf::Keyboard::Up)
-		mUp = true;
-	if(event.key.code == sf::Keyboard::Down)
-		mDown = true;
-	if(event.key.code == sf::Keyboard::Left)
-		mLeft = true;
-	if(event.key.code == sf::Keyboard::Right)
-		mRight = true;
+	if(event.type == sf::Event::KeyPressed)
+	{
+		// Calculate the velocity.
+		if(event.key.code == sf::Keyboard::Up)
+			mUp = true;
+		if(event.key.code == sf::Keyboard::Down)
+			mDown = true;
+		if(event.key.code == sf::Keyboard::Left)
+			mLeft = true;
+		if(event.key.code == sf::Keyboard::Right)
+			mRight = true;
+		return true;
+	}
+	else if(event.type == sf::Event::KeyReleased)
+	{
+		if(event.key.code == sf::Keyboard::Up)
+			mUp = false;
+		if(event.key.code == sf::Keyboard::Down)
+			mDown = false;
+		if(event.key.code == sf::Keyboard::Left)
+			mLeft = false;
+		if(event.key.code == sf::Keyboard::Right)
+			mRight = false;
+		return true;
+	}
+
+	// Nothing happened.
+	return false;
 }
 
-void Player::keyReleased(const sf::Event& event)
-{
-	if(event.key.code == sf::Keyboard::Up)
-		mUp = false;
-	if(event.key.code == sf::Keyboard::Down)
-		mDown = false;
-	if(event.key.code == sf::Keyboard::Left)
-		mLeft = false;
-	if(event.key.code == sf::Keyboard::Right)
-		mRight = false;
-}
-
-void Player::logic(Level& level)
+void Player::logic(Level& level, int delta)
 {
 	// Call creature logic.
-	Creature::logic(level);
+	Creature::logic(level, delta);
 
 	// Do the color cycle information after the player's position is updated.
 	if(mCycle == COLORCYCLE_MOVE)
@@ -230,11 +227,6 @@ void Player::logic(Level& level)
 
 		mCycle = COLORCYCLE_PAUSE;
 	}
-}
-
-bool Player::pickup(Item& item)
-{
-	return mDistributePickup(item);
 }
 
 const sf::Keyboard::Key PLAYER_ACTION_KEY = sf::Keyboard::Space;

@@ -107,8 +107,9 @@ class Level : public ActionInterface, public ChangeScoreInterface, public Change
     /**
      * @brief Calling logic for a level will call logic for all map tiles (if necessary), creatures and objects.
      * @param camera The camera that is looking at the level.
+     * @param delta The amount of time since the last frame displayed.
      */
-    virtual void logic(sf::View& camera);
+    virtual void logic(sf::View& camera, unsigned int delta);
 
     /**
      * @brief Called when the player finds the exit.

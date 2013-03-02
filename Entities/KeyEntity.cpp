@@ -45,10 +45,10 @@ void KeyEntity::collide(Entity& entity)
 	}
 }
 
-void KeyEntity::logic(Level& level)//@todo Update code to enlarge and shrink the keys
+void KeyEntity::logic(Level& level, int delta)//@todo Update code to enlarge and shrink the keys
 {
 	// Perform entity logic.
-	Entity::logic(level);
+	Entity::logic(level, delta);
 
 	// Grow or shrink the key.
 	if(mTimer.getTime() >= 10)

@@ -35,15 +35,9 @@ GameScreen::GameScreen(unsigned int difficulty) : Screen(),
 	mLevel(0),
 	mScore(0),
 	mCounter(0),
+	mOptionsWidget(0),
 	mResetView(false)
 {
-	// Configure the action listeners.
-	//@todo implement level complete and options widgets/menus
-//	mLevelCompleteWidget.addActionListener(this);
-//	mOptionsMenu.addActionListener(this);
-	addKeyListener(&mPlayer);
-//	addKeyListener(&mLevelCompleteWidget);
-
 	// Load all flac audio as background musics.
 	path p("Audio/");
 
@@ -72,6 +66,13 @@ GameScreen::GameScreen(unsigned int difficulty) : Screen(),
 	//@todo remove when GUI system is implemented
 	if(!mFont.loadFromFile("Fonts/VeraMono.ttf"))
 		ERROR("GameScreen::GameScreen() -> Unable to load font.");
+
+	  mOptionsWidget = static_cast<CEGUI::FrameWindow*>(CEGUI::WindowManager::getSingleton().loadWindowLayout("InGameOptions.layout","InGameOptions"));
+	  mOptionsWidget->setPosition(CEGUI::UVector2(CEGUI::UDim(0.5f,-75),CEGUI::UDim(0.5f,-100)));
+	  mOptionsWidget->setSize(CEGUI::UVector2(CEGUI::UDim(0,150),CEGUI::UDim(0,200)));
+	  mOptionsWidget->setSizingEnabled(false);
+	  mOptionsWidget->setVisible(false);
+	  CEGUI::System::getSingleton().getGUISheet()->addChildWindow(mOptionsWidget);
 }
 
 GameScreen::~GameScreen()
@@ -83,7 +84,6 @@ GameScreen::~GameScreen()
 		mLevel->removeTimeChangeListener(this);
 		delete mLevel;
 	}
-	removeKeyListener(&mPlayer);
 //	removeKeyListener(&mLevelCompleteWidget);
 }
 
@@ -186,7 +186,7 @@ void GameScreen::eventOccurred(const string& eventId)
 		mIsPaused = false;
 }
 
-void GameScreen::keyPressed(const sf::Event& event)
+bool GameScreen::handleInput(const sf::Event& event)
 {
 	// Open the options menu.
 	// @todo implement options menu
@@ -201,13 +201,10 @@ void GameScreen::keyPressed(const sf::Event& event)
 //		distributeEvent(ACTION_SHOWCURSOR);
 //	}
 
-	// Pass along the key pressed event.
-	Screen::keyPressed(event);
-}
+	// Have the player perform any input.
+	mPlayer.handleInput(event);
 
-void GameScreen::keyReleased(const sf::Event& event)
-{
-	Screen::keyReleased(event);
+	return true;
 }
 
 void GameScreen::load(const sf::View& view)
@@ -231,7 +228,6 @@ void GameScreen::load(const sf::View& view)
     mScoreDisplay.setStyle(sf::Text::Bold);
     mScoreTimer.start();
     mScoreDisplay.setPosition(0, view.getSize().y - mScoreDisplay.getLocalBounds().height - 2);
-cout << mScoreDisplay.getPosition().x << ", " << mScoreDisplay.getPosition().y << endl;
 //	mScoreLabel.setFont(FontManager::getGCNFont(FONT_DEFAULT));
 //	mScoreLabel.setCaption("Score: 0");
 //	mScoreLabel.adjustSize();
@@ -272,7 +268,7 @@ cout << mScoreDisplay.getPosition().x << ", " << mScoreDisplay.getPosition().y <
 	}
 }
 
-void GameScreen::logic()
+void GameScreen::logic(int delta)
 {
 	// @todo temporary hack for the timer widget logic (need to implement full gui)
 	mTimerWidget.logic();
@@ -335,5 +331,5 @@ void GameScreen::logic()
 
     // Only do game logic if the game is not paused.
     if(!mIsPaused)
-		mLevel->logic(mCamera);
+		mLevel->logic(mCamera, delta);
 }

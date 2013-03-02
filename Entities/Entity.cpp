@@ -41,7 +41,7 @@ void Entity::draw(sf::RenderWindow& renderer)
 	renderer.draw(mSprite);
 }
 
-void Entity::logic(Level& level)
+void Entity::logic(Level& level, int delta)
 {
     // Update the action logic.
     ActionInterface::logic(level);

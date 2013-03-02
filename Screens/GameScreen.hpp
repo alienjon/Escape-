@@ -14,6 +14,8 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
 
+#include <CEGUI/elements/CEGUIFrameWindow.h>
+
 #include "../Listeners/ChangeScoreListener.hpp"
 #include "../Widgets/GameOptionsWidget.hpp"
 #include "../Game/Level.hpp"
@@ -57,16 +59,11 @@ class GameScreen : public ChangeScoreListener, public TimeChangeInterface, publi
     virtual void draw(sf::RenderWindow& renderer);
 
     /**
-     * @brief A key was pressed.
-     * @param event The key event.
+     * @brief Handle input.
+     * @param event The input event.
+     * @return True if the event was consumed (used).
      */
-    virtual void keyPressed(const sf::Event& event);
-
-    /**
-     * @brief A key was released.
-     * @param event The key event.
-     */
-    virtual void keyReleased(const sf::Event& event);
+    virtual bool handleInput(const sf::Event& event);
 
     /**
      * @brief Perform anything necessary to prepare this screen for displaying what it needs to.
@@ -76,8 +73,9 @@ class GameScreen : public ChangeScoreListener, public TimeChangeInterface, publi
 
     /**
      * @brief Perform logic.
+     * @param delta The time since the last frame displayed.
      */
-    virtual void logic();
+    virtual void logic(int delta);
 
     /**
      * @brief A time change request was sent.
@@ -118,6 +116,7 @@ class GameScreen : public ChangeScoreListener, public TimeChangeInterface, publi
     sf::View mCamera;
 
     // Internal widgets.
+    CEGUI::FrameWindow* mOptionsWidget;
     //@todo Need to re-implement widgets
 //    TimerWidget mTimerWidget;
 //    gcn::Label mScoreLabel;

@@ -40,8 +40,9 @@ class SpeedChange : public Entity
 	/**
 	 * @brief Perform logic.
 	 * @param level The current level.
+	 * @param delta The time since the last frame displayed.
 	 */
-	virtual void logic(Level& level);
+	virtual void logic(Level& level, int delta);
 
 	private:
 	// The speed the creature is moving to and the speed the creature is moving from.
