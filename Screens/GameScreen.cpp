@@ -11,10 +11,12 @@
 
 #include <boost/filesystem.hpp>
 
+#include "../Engine/AudioManager.hpp"
 #include "../Engine/FontManager.hpp"
 #include "../Game/Game.hpp"
 #include "../Game/Keywords.hpp"
 #include "../main.hpp"
+#include "../Engine/RendererContext.hpp"
 
 using std::abs;
 using std::runtime_error;
@@ -29,6 +31,7 @@ const unsigned int __TIME_MULTIPLIER__ = 1000;//@todo change time multiplier for
 
 #include <iostream>
 using namespace std;//@todo remove when done
+
 GameScreen::GameScreen(unsigned int difficulty) : Screen(),
 	mDifficulty(difficulty),
 	mIsPaused(false),
@@ -36,6 +39,8 @@ GameScreen::GameScreen(unsigned int difficulty) : Screen(),
 	mScore(0),
 	mCounter(0),
 	mOptionsWidget(0),
+	mVideoOptionsWidget(0),
+	mAudioOptionsWidget(0),
 	mResetView(false)
 {
 	// Load all flac audio as background musics.
@@ -67,12 +72,37 @@ GameScreen::GameScreen(unsigned int difficulty) : Screen(),
 	if(!mFont.loadFromFile("Fonts/VeraMono.ttf"))
 		ERROR("GameScreen::GameScreen() -> Unable to load font.");
 
-	  mOptionsWidget = static_cast<CEGUI::FrameWindow*>(CEGUI::WindowManager::getSingleton().loadWindowLayout("InGameOptions.layout","InGameOptions"));
-	  mOptionsWidget->setPosition(CEGUI::UVector2(CEGUI::UDim(0.5f,-75),CEGUI::UDim(0.5f,-100)));
-	  mOptionsWidget->setSize(CEGUI::UVector2(CEGUI::UDim(0,150),CEGUI::UDim(0,200)));
-	  mOptionsWidget->setSizingEnabled(false);
-	  mOptionsWidget->setVisible(false);
-	  CEGUI::System::getSingleton().getGUISheet()->addChildWindow(mOptionsWidget);
+	/* Load the in game menus */
+	mOptionsWidget = static_cast<CEGUI::FrameWindow*>(CEGUI::WindowManager::getSingleton().loadWindowLayout("InGameOptions.layout"));
+	mOptionsWidget->setSizingEnabled(false);
+	mOptionsWidget->setVisible(false);
+	CEGUI::System::getSingleton().getGUISheet()->addChildWindow(mOptionsWidget);
+
+	mVideoOptionsWidget = static_cast<CEGUI::FrameWindow*>(CEGUI::WindowManager::getSingleton().loadWindowLayout("InGameVideoOptions.layout"));
+	mVideoOptionsWidget->setSizingEnabled(false);
+	mVideoOptionsWidget->setVisible(false);
+	CEGUI::System::getSingleton().getGUISheet()->addChildWindow(mVideoOptionsWidget);
+
+	mAudioOptionsWidget = static_cast<CEGUI::FrameWindow*>(CEGUI::WindowManager::getSingleton().loadWindowLayout("InGameAudioOptions.layout"));
+	mAudioOptionsWidget->setSizingEnabled(false);
+	mAudioOptionsWidget->setVisible(false);
+	static_cast<CEGUI::Slider*>(mAudioOptionsWidget->getChild("InGameAudioOptions/MusicVolume"))->setMaxValue(100.f);
+	static_cast<CEGUI::Slider*>(mAudioOptionsWidget->getChild("InGameAudioOptions/MusicVolume"))->setClickStep(5.f);
+	static_cast<CEGUI::Slider*>(mAudioOptionsWidget->getChild("InGameAudioOptions/SoundVolume"))->setMaxValue(100.f);
+	static_cast<CEGUI::Slider*>(mAudioOptionsWidget->getChild("InGameAudioOptions/SoundVolume"))->setClickStep(5.f);
+	CEGUI::System::getSingleton().getGUISheet()->addChildWindow(mAudioOptionsWidget);
+
+	mUpdateWidgetPositions(); // Set the initial positions.
+
+	// Subscribe to the various widget interfaces.
+	mOptionsWidget->getChild("InGameOptionsMenu/ResumeButton")->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&GameScreen::_handlerCloseOptions, this));
+	mOptionsWidget->getChild("InGameOptionsMenu/VideoButton")->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&GameScreen::_handlerShowVideoOptions, this));
+	mOptionsWidget->getChild("InGameOptionsMenu/AudioButton")->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&GameScreen::_handlerShowAudioOptions, this));
+	mOptionsWidget->getChild("InGameOptionsMenu/MainMenuButton")->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&GameScreen::_handlerMainMenu, this));
+	mVideoOptionsWidget->getChild("InGameVideoOptions/CloseButton")->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&GameScreen::_handlerCloseVideoOptions, this));
+	mAudioOptionsWidget->getChild("InGameAudioOptions/CloseButton")->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&GameScreen::_handlerCloseAudioOptions, this));
+	mAudioOptionsWidget->getChild("InGameAudioOptions/MusicVolume")->subscribeEvent(CEGUI::Slider::EventValueChanged, CEGUI::Event::Subscriber(&GameScreen::_handlerUpdateMusicTextLevels, this));
+	mAudioOptionsWidget->getChild("InGameAudioOptions/SoundVolume")->subscribeEvent(CEGUI::Slider::EventValueChanged, CEGUI::Event::Subscriber(&GameScreen::_handlerUpdateSoundTextLevels, this));
 }
 
 GameScreen::~GameScreen()
@@ -84,7 +114,152 @@ GameScreen::~GameScreen()
 		mLevel->removeTimeChangeListener(this);
 		delete mLevel;
 	}
-//	removeKeyListener(&mLevelCompleteWidget);
+
+	for(list<CEGUI::ListboxTextItem*>::const_iterator it(mResolutionOptions.begin()); it != mResolutionOptions.end(); ++it)
+		delete *it;
+}
+
+void GameScreen::mUpdateWidgetPositions()
+{
+	mOptionsWidget->setPosition(CEGUI::UVector2(CEGUI::UDim(0.35f, 0),CEGUI::UDim(0.25f, 0)));
+	mOptionsWidget->setSize(CEGUI::UVector2(CEGUI::UDim(0.35f, 0),CEGUI::UDim(0.3f, 0)));
+	mVideoOptionsWidget->setPosition(CEGUI::UVector2(CEGUI::UDim(0.35f, 0),CEGUI::UDim(0.25f, 0)));
+	mVideoOptionsWidget->setSize(CEGUI::UVector2(CEGUI::UDim(0.35f, 0),CEGUI::UDim(0.45f, 0)));
+	mAudioOptionsWidget->setPosition(CEGUI::UVector2(CEGUI::UDim(0.35f, 0),CEGUI::UDim(0.25f, 0)));
+	mAudioOptionsWidget->setSize(CEGUI::UVector2(CEGUI::UDim(0.35f, 0),CEGUI::UDim(0.45f, 0)));
+}
+
+bool GameScreen::_handlerShowAudioOptions(const CEGUI::EventArgs& eArgs)
+{
+	mOptionsWidget->setVisible(false);
+	mAudioOptionsWidget->setVisible(true);
+	return true;
+}
+
+bool GameScreen::_handlerCloseAudioOptions(const CEGUI::EventArgs& eArgs)
+{
+	mAudioOptionsWidget->setVisible(false);
+	mOptionsWidget->setVisible(true);
+	AudioManager::setMusicLevel(int(static_cast<CEGUI::Slider*>(mAudioOptionsWidget->getChild("InGameAudioOptions/MusicVolume"))->getCurrentValue()));
+	AudioManager::setSoundLevel(int(static_cast<CEGUI::Slider*>(mAudioOptionsWidget->getChild("InGameAudioOptions/SoundVolume"))->getCurrentValue()));
+	return true;
+}
+
+bool GameScreen::_handlerCloseOptions(const CEGUI::EventArgs& eArgs)
+{
+	mIsPaused = false; // Unpause the game.
+	mTimerWidget.unpause(); // Unpause the game timer.
+	mOptionsWidget->setVisible(false); // Hide the options widget.
+	distributeEvent(ACTION_HIDECURSOR); // Hide the cursor.
+	return true;
+}
+
+bool GameScreen::_handlerCloseVideoOptions(const CEGUI::EventArgs& eArgs)
+{
+	mVideoOptionsWidget->setVisible(false);
+	mOptionsWidget->setVisible(true);
+	if(!mContextInterface)
+		ERROR("GameScreen::_handlerCloseVideoOptions(const CEGUI::EventArgs&) -> Context interface not set.  Video options not updated.");
+	else
+	{
+		// Get the current context to update.
+		RendererContext s = mContextInterface->getContext();
+
+		// Set the resolution.
+		//@fixme Can this be cleaned up? (With find_if, maybe?)
+		switch(static_cast<CEGUI::Combobox*>(mVideoOptionsWidget->getChild("InGameVideoOptions/Resolution"))->getSelectedItem()->getID())
+		{
+			case 0:
+			{
+				s.mVideoMode.width = 640;
+				s.mVideoMode.height= 480;
+				break;
+			}
+			case 2:
+			{
+				s.mVideoMode.width = 1024;
+				s.mVideoMode.height= 768;
+				break;
+			}
+			case 3:
+			{
+				s.mVideoMode.width = 1280;
+				s.mVideoMode.height= 1024;
+				break;
+			}
+			case 4:
+			{
+				s.mVideoMode.width = 1366;
+				s.mVideoMode.height= 768;
+				break;
+			}
+			case 5:
+			{
+				s.mVideoMode.width = 1440;
+				s.mVideoMode.height= 900;
+				break;
+			}
+			case 6:
+			{
+				s.mVideoMode.width = 1920;
+				s.mVideoMode.height= 1080;
+				break;
+			}
+			default:
+			{
+				s.mVideoMode.width = 800;
+				s.mVideoMode.height= 600;
+				break;
+			}
+		}
+		// Set the BPP.
+		if(static_cast<CEGUI::RadioButton*>(mVideoOptionsWidget->getChild("InGameVideoOptions/16bpp"))->isSelected())
+			s.mVideoMode.bitsPerPixel = 16;
+		else if(static_cast<CEGUI::RadioButton*>(mVideoOptionsWidget->getChild("InGameVideoOptions/24bpp"))->isSelected())
+			s.mVideoMode.bitsPerPixel = 24;
+		else
+			s.mVideoMode.bitsPerPixel = 32;
+
+		// Set the vertical sync.
+		s.mVerticalSync = static_cast<CEGUI::Checkbox*>(mVideoOptionsWidget->getChild("InGameVideoOptions/VerticalSync"))->isSelected();
+
+		// Set the antialiasing.
+		s.mContextSettings.antialiasingLevel = (static_cast<CEGUI::Checkbox*>(mVideoOptionsWidget->getChild("InGameVideoOptions/AntiAliasing"))->isSelected()) ? 8 : 0;
+
+		// Update the context.
+		mContextInterface->updateContext(s);
+
+		// Update the widget positions.
+		mUpdateWidgetPositions();
+	}
+
+	return true;
+}
+
+bool GameScreen::_handlerMainMenu(const CEGUI::EventArgs& eArgs)//@todo implement main menu
+{
+	distributeEvent(ACTION_QUIT);
+	LOG("Main menu not yet implemented.");
+	return true;
+}
+
+bool GameScreen::_handlerShowVideoOptions(const CEGUI::EventArgs& eArgs)
+{
+	mOptionsWidget->setVisible(false);
+	mVideoOptionsWidget->setVisible(true);
+	return true;
+}
+
+bool GameScreen::_handlerUpdateMusicTextLevels(const CEGUI::EventArgs& eArgs)
+{
+	mAudioOptionsWidget->getChild("InGameAudioOptions/MusicVolumeLevel")->setText(toString(int(static_cast<CEGUI::Slider*>(mAudioOptionsWidget->getChild("InGameAudioOptions/MusicVolume"))->getCurrentValue())));
+	return true;
+}
+
+bool GameScreen::_handlerUpdateSoundTextLevels(const CEGUI::EventArgs& eArgs)
+{
+	mAudioOptionsWidget->getChild("InGameAudioOptions/SoundVolumeLevel")->setText(toString(int(static_cast<CEGUI::Slider*>(mAudioOptionsWidget->getChild("InGameAudioOptions/SoundVolume"))->getCurrentValue())));
+	return true;
 }
 
 void GameScreen::changeScore(int change)
@@ -190,16 +365,20 @@ bool GameScreen::handleInput(const sf::Event& event)
 {
 	// Open the options menu.
 	// @todo implement options menu
-//	if(!mOptionsMenu.isVisible() && event.key.code == sf::Keyboard::Escape)
-//	{
-//		// Pause the game.
-//		mIsPaused = true;
-//		mTimerWidget.pause();
-//
-//		// Show the options menu.
-//		mOptionsMenu.setVisible(true);
-//		distributeEvent(ACTION_SHOWCURSOR);
-//	}
+	if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)
+	{
+		if(!mOptionsWidget->isVisible())
+		{
+			mIsPaused = true; // Pause the game.
+			mTimerWidget.pause(); // Pause the game timer.
+			mOptionsWidget->setVisible(true); // Show the options widget.
+			distributeEvent(ACTION_SHOWCURSOR); // Show the cursor.
+		}
+		else
+		{
+			_handlerCloseOptions(CEGUI::EventArgs());
+		}
+	}
 
 	// Have the player perform any input.
 	mPlayer.handleInput(event);
@@ -211,6 +390,104 @@ void GameScreen::load(const sf::View& view)
 {
     // Hide the cursor.
     distributeEvent(ACTION_HIDECURSOR);
+
+    /* Set the options settings */
+
+    // Set the default video options if the context interface is present.
+	if(!mContextInterface)
+		ERROR("GameScreen::GameScreen() -> mContextInterface not set.  Not setting video options.");
+	else
+	{
+		// Load/set the resolution options.
+		//@fixme This feels bloated, is there a better way of approaching this? (maybe a find_if?)
+		CEGUI::Combobox* cbox = static_cast<CEGUI::Combobox*>(mVideoOptionsWidget->getChild("InGameVideoOptions/Resolution"));
+		cbox->setReadOnly(true);
+		mResolutionOptions.push_back(new CEGUI::ListboxTextItem("640x480", 0));
+		mResolutionOptions.push_back(new CEGUI::ListboxTextItem("800x600", 1));
+		mResolutionOptions.push_back(new CEGUI::ListboxTextItem("1024x768", 2));
+		mResolutionOptions.push_back(new CEGUI::ListboxTextItem("1280x1024", 3));
+		mResolutionOptions.push_back(new CEGUI::ListboxTextItem("1366x768", 4));
+		mResolutionOptions.push_back(new CEGUI::ListboxTextItem("1440x900", 5));
+		mResolutionOptions.push_back(new CEGUI::ListboxTextItem("1920x1080", 6));
+		for(list<CEGUI::ListboxTextItem*>::const_iterator it(mResolutionOptions.begin()); it != mResolutionOptions.end(); ++it)
+		{
+			(*it)->setSelectionBrushImage("TaharezLook", "MultiListSelectionBrush");//@todo needed?
+			cbox->addItem(*it);
+		}
+		cbox->setHeight(CEGUI::UDim(0.75f, 0));
+
+		switch(mContextInterface->getContext().mVideoMode.width)
+		{
+			case 640:
+			{
+				cbox->setItemSelectState((unsigned int)0, true);
+				break;
+			}
+			case 1024:
+			{
+				cbox->setItemSelectState((unsigned int)2, true);
+				break;
+			}
+			case 1280:
+			{
+				cbox->setItemSelectState((unsigned int)3, true);
+				break;
+			}
+			case 1366:
+			{
+				cbox->setItemSelectState((unsigned int)4, true);
+				break;
+			}
+			case 1440:
+			{
+				cbox->setItemSelectState((unsigned int)5, true);
+				break;
+			}
+			case 1920:
+			{
+				cbox->setItemSelectState((unsigned int)6, true);
+				break;
+			}
+			default:
+			{
+				cbox->setItemSelectState((unsigned int)1, true);
+				break;
+			}
+		}
+
+		// Load/set the bitdepths.
+		switch(mContextInterface->getContext().mContextSettings.depthBits)
+		{
+			case 16:
+			{
+				static_cast<CEGUI::RadioButton*>(mVideoOptionsWidget->getChild("InGameVideoOptions/16bpp"))->setSelected(true);
+				break;
+			}
+			case 24:
+			{
+				static_cast<CEGUI::RadioButton*>(mVideoOptionsWidget->getChild("InGameVideoOptions/24bpp"))->setSelected(true);
+				break;
+			}
+			default:
+			{
+				static_cast<CEGUI::RadioButton*>(mVideoOptionsWidget->getChild("InGameVideoOptions/32bpp"))->setSelected(true);
+				break;
+			}
+		}
+
+		// Load/set the v-sync.
+		static_cast<CEGUI::Checkbox*>(mVideoOptionsWidget->getChild("InGameVideoOptions/VerticalSync"))->setSelected(mContextInterface->getContext().mVerticalSync);
+
+		// Load/set anti-aliasing.
+		static_cast<CEGUI::Checkbox*>(mVideoOptionsWidget->getChild("InGameVideoOptions/AntiAliasing"))->setSelected(mContextInterface->getContext().mContextSettings.antialiasingLevel ? 16 : 0);
+
+		// Set the initial audio settings.
+		mAudioOptionsWidget->getChild("InGameAudioOptions/MusicVolumeLevel")->setText(toString(AudioManager::getMusicLevel()));
+		static_cast<CEGUI::Slider*>(mAudioOptionsWidget->getChild("InGameAudioOptions/MusicVolume"))->setCurrentValue(float(AudioManager::getMusicLevel()));
+		mAudioOptionsWidget->getChild("InGameAudioOptions/SoundVolumeLevel")->setText(toString(AudioManager::getSoundLevel()));
+		static_cast<CEGUI::Slider*>(mAudioOptionsWidget->getChild("InGameAudioOptions/SoundVolume"))->setCurrentValue(float(AudioManager::getSoundLevel()));
+
+	}
 
     // Setup the in-game options menu.
     //@todo implement options menu

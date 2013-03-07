@@ -65,6 +65,10 @@ Engine::Engine() :
 				mContext.mContextSettings.stencilBits = toInt(value);
 			else if(keyword == "Antialiasing")
 				mContext.mContextSettings.antialiasingLevel = toInt(value);
+			else if(keyword == "MusicVolume")
+				AudioManager::setMusicLevel(toInt(value));
+			else if(keyword == "SoundVolume")
+				AudioManager::setSoundLevel(toInt(value));
 			else if(Engine::isDebug())
 				LOG("Unknown entry in config.txt: " + keyword);
 		}
@@ -106,6 +110,8 @@ Engine::~Engine()
 	settings << "BitDepth:" << toString(mContext.mContextSettings.depthBits) << "\n";
 	settings << "StencilBits:" << toString(mContext.mContextSettings.stencilBits) << "\n";
 	settings << "Antialiasing:" << toString(mContext.mContextSettings.antialiasingLevel) << "\n";
+	settings << "MusicVolume:" << toString(AudioManager::getMusicLevel()) << "\n";
+	settings << "SoundVolume:" << toString(AudioManager::getSoundLevel()) << "\n";
 	settings.close();
 
 	mCleanUpScreens();
@@ -177,57 +183,59 @@ const RendererContext& Engine::getContext() const
 
 bool Engine::handleInput(const sf::Event& event)
 {
-	// Quit the game.
-	if(isDebug() && event.key.code == sf::Keyboard::C && event.key.control)
+	if(event.type == sf::Event::KeyPressed)
 	{
-		mRenderer.close();
-		return true;
-	}
+		// Quit the game.
+		if(isDebug() && event.key.code == sf::Keyboard::C && event.key.control)
+		{
+			mRenderer.close();
+			return true;
+		}
 
-	// Save a screenshot.
-	if(event.key.code == sf::Keyboard::P && event.key.control)
-	{
-		static unsigned int i = 0;
-		sf::Image shot = mRenderer.capture();
-		string filename = "screenshot_" + toString(i++) + ".png";
-		shot.saveToFile(filename);
-		LOG("Screenshot saved as '" + filename + "'");
-		return true;
-	}
+		// Save a screenshot.
+		if(event.key.code == sf::Keyboard::P && event.key.control)
+		{
+			static unsigned int i = 0;
+			sf::Image shot = mRenderer.capture();
+			string filename = "screenshot_" + toString(i++) + ".png";
+			shot.saveToFile(filename);
+			LOG("Screenshot saved as '" + filename + "'");
+			return true;
+		}
 
-	// Enable/Disable debugging.
-	if(event.key.code == sf::Keyboard::F1)
-	{
-		setDebug(!isDebug());
-		if(isDebug())
-			LOG("Debugging enabled");
-		else
-			LOG_TO_CONSOLE("Debugging disabled");
-		return true;
-	}
+		// Enable/Disable debugging.
+		if(event.key.code == sf::Keyboard::F1)
+		{
+			setDebug(!isDebug());
+			if(isDebug())
+				LOG("Debugging enabled");
+			else
+				LOG_TO_CONSOLE("Debugging disabled");
+			return true;
+		}
 
-	// Display engine settings.
-	if(event.key.code == sf::Keyboard::F2)
-	{
-		LOG_TO_CONSOLE("Screen Size: " + toString(mContext.mVideoMode.width) + " x " + toString(mContext.mVideoMode.height) + " (" + toString(mContext.mVideoMode.bitsPerPixel) + ")");
-		LOG_TO_CONSOLE(string("Fullscreen: ") + ((mContext.mFullscreen) ? "true" : "false"));
-		LOG_TO_CONSOLE(string("Vertical Sync: ") + ((mContext.mVerticalSync) ? "true" : "false"));
-		LOG_TO_CONSOLE("Antialiasing: " + toString(mContext.mContextSettings.antialiasingLevel));
-		LOG_TO_CONSOLE("Audio Enabled: TO BE IMPLEMENTED");//@todo implement audio enable
-		LOG_TO_CONSOLE("Music Volume: TO BE IMPLEMENTED");//@todo implement music volume
-		LOG_TO_CONSOLE("SFX Volume: TO BE IMPLEMENTED");//@todo implement sfx volume
-		return true;
-	}
+		// Display engine settings.
+		if(event.key.code == sf::Keyboard::F2)
+		{
+			LOG_TO_CONSOLE("Screen Size: " + toString(mContext.mVideoMode.width) + " x " + toString(mContext.mVideoMode.height) + " (" + toString(mContext.mVideoMode.bitsPerPixel) + ")");
+			LOG_TO_CONSOLE(string("Fullscreen: ") + ((mContext.mFullscreen) ? "true" : "false"));
+			LOG_TO_CONSOLE(string("Vertical Sync: ") + ((mContext.mVerticalSync) ? "true" : "false"));
+			LOG_TO_CONSOLE("Antialiasing: " + toString(mContext.mContextSettings.antialiasingLevel));
+			LOG_TO_CONSOLE("Music Volume: " + toString(AudioManager::getMusicLevel()));
+			LOG_TO_CONSOLE("SFX Volume: " + toString(AudioManager::getSoundLevel()));
+			return true;
+		}
 
-	// Toggle fullscreen.
-	//@todo I can do this without the screen flickering.  It's changing the scale/window decorations.  Look into it?
-	if(event.key.code == sf::Keyboard::Return && event.key.control)
-	{
-		RendererContext c = getContext();
-		c.mFullscreen = !c.mFullscreen;
-		updateContext(c);
-		LOG(string("Fullscreen ") + (c.mFullscreen ? "enabled" : "disabled"));
-		return true;
+		// Toggle fullscreen.
+		//@todo I can do this without the screen flickering.  It's changing the scale/window decorations.  Look into it?
+		if(event.key.code == sf::Keyboard::Return && event.key.control)
+		{
+			RendererContext c = getContext();
+			c.mFullscreen = !c.mFullscreen;
+			updateContext(c);
+			LOG(string("Fullscreen ") + (c.mFullscreen ? "enabled" : "disabled"));
+			return true;
+		}
 	}
 
 	// If we've reached here, then the event wasn't used.
@@ -245,13 +253,6 @@ void Engine::run()
 	updateContext(mContext);
 
 	// Initialize the GUI.
-	/*
-	 * @fixme The GUI seems to only work AFTER the video context is created.  When there is only the game
-	 * screen that is being used that works fine, but when the context is recreated - such as when
-	 * the resolution of the game is redone - I'm not sure that the GUI will work after that.  If
-	 * that happens then I will probably want to specifically call 'destroy' on the GUI system
-	 * and then re-initialize.
-	 */
 	mGUI.initialize();
 
     // Make sure all screens are cleared.
@@ -352,6 +353,10 @@ void Engine::updateContext(const RendererContext& context)
 	mRenderer.setKeyRepeatEnabled(false);
     mRenderer.setVerticalSyncEnabled(mContext.mVerticalSync);
 	mRenderer.setMouseCursorVisible(false); // Only use the CEGUI cursor.
+
+	// Update the GUI dimension, if the GUI exists.
+	if(CEGUI::System::getSingletonPtr())
+		CEGUI::System::getSingleton().notifyDisplaySizeChanged(CEGUI::Size((float)mContext.mVideoMode.width, (float)mContext.mVideoMode.height));
 }
 
 void Engine::setDebug(bool state)

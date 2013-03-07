@@ -24,10 +24,36 @@ class AudioManager
     static void create();
 
     /**
+     * @brief Get the music level.
+     * @return The music level.
+     */
+    static unsigned int getMusicLevel();
+
+    /**
+     * @brief Get the sound level.
+     * @return The sound level.
+     */
+    static unsigned int getSoundLevel();
+
+    /**
      * @brief Get a sound to play.
      * @param filename The filename of the sound.
      */
     static void playSound(const std::string& filename);
+
+    /**
+     * @brief Set the global music level.
+     * @param level The music level.
+     * @note The level will be clipped between [0,100]
+     */
+    static void setMusicLevel(unsigned int level);
+
+    /**
+     * @brief Set the global sound level.
+     * @param level The sound level.
+     * @note The level will be clipped between [0,100]
+     */
+    static void setSoundLevel(unsigned int level);
 
     /**
      * @brief Delete the manager.
@@ -37,6 +63,9 @@ class AudioManager
     protected:
     // The audio manager.
     static AudioManager* mAudioManager;
+
+    // The volume levels.
+    static unsigned int mMusicLevel, mSoundLevel;
 
     /**
      * @brief Manage all audio aspects of the game.

@@ -41,6 +41,62 @@ class GameScreen : public ChangeScoreListener, public TimeChangeInterface, publi
     virtual ~GameScreen();
 
     /**
+     * @brief Handler for opening the audio options widget.
+     * @param eArgs The event arguments.
+     * @return True if run successfully.
+     */
+    bool _handlerShowAudioOptions(const CEGUI::EventArgs& eArgs);
+
+    /**
+     * @brief Handler for closing the audio options widget.
+     * @param eArgs The event arguments.
+     * @return True if run successfully.
+     */
+    bool _handlerCloseAudioOptions(const CEGUI::EventArgs& eArgs);
+
+    /**
+     * @brief Handler for closing the options widget.
+     * @param eArgs The event arguments.
+     * @return True if run successfully.
+     */
+    bool _handlerCloseOptions(const CEGUI::EventArgs& eArgs);
+
+    /**
+     * @brief Handler for closing the video options widget.
+     * @param eArgs The event arguments.
+     * @return True if run successfully.
+     */
+    bool _handlerCloseVideoOptions(const CEGUI::EventArgs& eArgs);
+
+    /**
+     * @brief Handler for returning to the main menu.
+     * @param eArgs The event arguments.
+     * @return True if run successfully.
+     */
+    bool _handlerMainMenu(const CEGUI::EventArgs& eArgs);
+
+    /**
+     * @brief Handler for opening the video options widget.
+     * @param eArgs The event arguments.
+     * @return True if run successfully.
+     */
+    bool _handlerShowVideoOptions(const CEGUI::EventArgs& eArgs);
+
+    /**
+     * @brief Update the text level of the music.
+     * @param eArgs The event arguments.
+     * @return True if run successfully.
+     */
+    bool _handlerUpdateMusicTextLevels(const CEGUI::EventArgs& eArgs);
+
+    /**
+     * @brief Update the text level of the sound.
+     * @param eArgs The event arguments.
+     * @return True if run successfully.
+     */
+    bool _handlerUpdateSoundTextLevels(const CEGUI::EventArgs& eArgs);
+
+    /**
      * @brief Listen for gui actions.
      * @param event The action event.
      */
@@ -87,6 +143,11 @@ class GameScreen : public ChangeScoreListener, public TimeChangeInterface, publi
     }
 
     private:
+    /**
+     * @brief Reposition/resize the internal widgets.
+     */
+    void mUpdateWidgetPositions();
+
     // The game's initial difficulty.
     unsigned int mDifficulty;
 
@@ -100,9 +161,6 @@ class GameScreen : public ChangeScoreListener, public TimeChangeInterface, publi
     Level* mLevel;
 
     //@todo implement options and
-//    // The game options menu.
-//    GameOptionsWidget mOptionsMenu;
-//
 //    // The level complete widget.
 //    LevelCompleteWidget mLevelCompleteWidget;
 
@@ -116,7 +174,8 @@ class GameScreen : public ChangeScoreListener, public TimeChangeInterface, publi
     sf::View mCamera;
 
     // Internal widgets.
-    CEGUI::FrameWindow* mOptionsWidget;
+    CEGUI::FrameWindow *mOptionsWidget, *mVideoOptionsWidget, *mAudioOptionsWidget;
+    std::list<CEGUI::ListboxTextItem*> mResolutionOptions;
     //@todo Need to re-implement widgets
 //    TimerWidget mTimerWidget;
 //    gcn::Label mScoreLabel;

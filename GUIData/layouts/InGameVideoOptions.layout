@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<GUILayout >
+    <Window Type="TaharezLook/FrameWindow" Name="InGameVideoOptions" >
+        <Property Name="Text" Value="Video Options" />
+        <Property Name="TitlebarFont" Value="DejaVuSans-10" />
+        <Property Name="TitlebarEnabled" Value="True" />
+        <Property Name="UnifiedAreaRect" Value="{{0.316211,0},{0.176102,0},{0.711719,0},{0.424634,0}}" />
+        <Window Type="TaharezLook/Combobox" Name="InGameVideoOptions/Resolution" >
+            <Property Name="UnifiedAreaRect" Value="{{0.1,0},{0.05,0},{0.9,0},{0,50}}" />
+            <Property Name="MaxEditTextLength" Value="1073741823" />
+        </Window>
+        <Window Type="TaharezLook/RadioButton" Name="InGameVideoOptions/16bpp" >
+            <Property Name="Text" Value="16 bpp" />
+            <Property Name="UnifiedAreaRect" Value="{{0.097473,0},{0.334628,0},{0.3087,0},{0.456797,0}}" />
+        </Window>
+        <Window Type="TaharezLook/RadioButton" Name="InGameVideoOptions/24bpp" >
+            <Property Name="Text" Value="24 bpp" />
+            <Property Name="UnifiedAreaRect" Value="{{0.4144,0},{0.333121,0},{0.62854,0},{0.456759,0}}" />
+        </Window>
+        <Window Type="TaharezLook/RadioButton" Name="InGameVideoOptions/32bpp" >
+            <Property Name="Text" Value="32 bpp" />
+            <Property Name="UnifiedAreaRect" Value="{{0.690123,0},{0.341172,0},{0.912962,0},{0.472947,0}}" />
+        </Window>
+        <Window Type="TaharezLook/Checkbox" Name="InGameVideoOptions/VerticalSync" >
+            <Property Name="Text" Value="Vertical Sync" />
+            <Property Name="UnifiedAreaRect" Value="{{0.0962957,0},{0.611303,0},{0.457407,0},{0.703682,0}}" />
+        </Window>
+        <Window Type="TaharezLook/Checkbox" Name="InGameVideoOptions/AntiAliasing" >
+            <Property Name="Text" Value="Anti-Aliasing" />
+            <Property Name="UnifiedAreaRect" Value="{{0.574074,0},{0.580559,0},{0.903086,0},{0.724863,0}}" />
+        </Window>
+        <Window Type="TaharezLook/Button" Name="InGameVideoOptions/CloseButton" >
+            <Property Name="Text" Value="Close" />
+            <Property Name="UnifiedAreaRect" Value="{{0.382716,0},{0.835795,0},{0.632715,0},{0.949668,0}}" />
+        </Window>
+    </Window>
+</GUILayout>

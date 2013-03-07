@@ -42,6 +42,16 @@ void AudioManager::create()
         mAudioManager = new AudioManager;
 }
 
+unsigned int AudioManager::getMusicLevel()
+{
+	return mMusicLevel;
+}
+
+unsigned int AudioManager::getSoundLevel()
+{
+	return mSoundLevel;
+}
+
 void AudioManager::playSound(const string& filename)
 {
 	if(!mAudioManager)
@@ -69,6 +79,16 @@ void AudioManager::playSound(const string& filename)
 	}
 }
 
+void AudioManager::setMusicLevel(unsigned int level)
+{
+	mMusicLevel = (level > 100) ? 100 : level;
+}
+
+void AudioManager::setSoundLevel(unsigned int level)
+{
+	mSoundLevel = (level > 100) ? 100 : level;
+}
+
 void AudioManager::terminate()
 {
     delete mAudioManager;
@@ -76,3 +96,5 @@ void AudioManager::terminate()
 }
 
 AudioManager* AudioManager::mAudioManager = 0;
+unsigned int AudioManager::mMusicLevel = 0;
+unsigned int AudioManager::mSoundLevel = 0;

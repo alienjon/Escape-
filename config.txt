@@ -9,6 +9,8 @@ ScreenHeight:600
 ScreenBPP:32
 VerticalSync:true
 Fullscreen:false
-BitDepth:24
-StencilBits:8
-Antialiasing:0
+BitDepth:0
+StencilBits:0
+Antialiasing:8
+MusicVolume:65
+SoundVolume:100

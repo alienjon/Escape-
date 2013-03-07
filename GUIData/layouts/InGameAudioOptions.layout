@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<GUILayout >
+    <Window Type="TaharezLook/FrameWindow" Name="InGameAudioOptions" >
+        <Property Name="Text" Value="Audio Options" />
+        <Property Name="TitlebarFont" Value="DejaVuSans-10" />
+        <Property Name="SizingEnabled" Value="False" />
+        <Property Name="TitlebarEnabled" Value="True" />
+        <Property Name="UnifiedAreaRect" Value="{{0.441211,0},{0.201245,0},{0.651172,0},{0.574077,0}}" />
+        <Property Name="DragMovingEnabled" Value="False" />
+        <Property Name="CloseButtonEnabled" Value="False" />
+        <Window Type="TaharezLook/Slider" Name="InGameAudioOptions/MusicVolume" >
+            <Property Name="Text" Value="Music Volume" />
+            <Property Name="CurrentValue" Value="0" />
+            <Property Name="MaximumValue" Value="1" />
+            <Property Name="ClickStepSize" Value="0.01" />
+            <Property Name="UnifiedAreaRect" Value="{{0.872656,0},{0.0305766,0},{0.93125,0},{0.398525,0}}" />
+        </Window>
+        <Window Type="TaharezLook/StaticText" Name="InGameAudioOptions/MusicVolumeLabel" >
+            <Property Name="Text" Value="Music Volume" />
+            <Property Name="UnifiedAreaRect" Value="{{0.0900074,0},{0.0421726,0},{0.773438,0},{0.188611,0}}" />
+        </Window>
+        <Window Type="TaharezLook/StaticText" Name="InGameAudioOptions/MusicVolumeLevel" >
+            <Property Name="UnifiedAreaRect" Value="{{0.323129,0},{0.223677,0},{0.573128,0},{0.363615,0}}" />
+        </Window>
+        <Window Type="TaharezLook/Slider" Name="InGameAudioOptions/SoundVolume" >
+            <Property Name="CurrentValue" Value="0" />
+            <Property Name="MaximumValue" Value="1" />
+            <Property Name="ClickStepSize" Value="0.01" />
+            <Property Name="UnifiedAreaRect" Value="{{0.873474,0},{0.448697,0},{0.928161,0},{0.828267,0}}" />
+        </Window>
+        <Window Type="TaharezLook/StaticText" Name="InGameAudioOptions/SoundVolumeLabel" >
+            <Property Name="Text" Value="Sound Volume" />
+            <Property Name="UnifiedAreaRect" Value="{{0.0893351,0},{0.459725,0},{0.791551,0},{0.609411,0}}" />
+        </Window>
+        <Window Type="TaharezLook/StaticText" Name="InGameAudioOptions/SoundVolumeLevel" >
+            <Property Name="UnifiedAreaRect" Value="{{0.335556,0},{0.633773,0},{0.585556,0},{0.766741,0}}" />
+        </Window>
+        <Window Type="TaharezLook/Button" Name="InGameAudioOptions/CloseButton" >
+            <Property Name="Text" Value="Close" />
+            <Property Name="UnifiedAreaRect" Value="{{0.318114,0},{0.810848,0},{0.661864,0},{0.968894,0}}" />
+        </Window>
+    </Window>
+</GUILayout>
