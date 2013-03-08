@@ -7,10 +7,13 @@
 #ifndef TIMERWIDGET_HPP_
 #define TIMERWIDGET_HPP_
 
+#include <list>
+
 #include <SFML/Graphics.hpp>
 
 #include "../Listeners/TimeChangeListener.hpp"
 #include "../Engine/Timer.hpp"
+#include "../Listeners/TimeUpListener.hpp"
 
 /**
  * @brief A widget that displays a counting timer.  For a timer to count down
@@ -23,6 +26,17 @@ class TimerWidget : public TimeChangeListener
 	 * @brief Default constructor.
 	 */
 	TimerWidget();
+
+	/**
+	 * @brief Add a time up listener.
+	 * @param listener The listener to add.
+	 */
+	void addTimeUpListener(TimeUpListener* listener);
+
+	/**
+	 * @brief Distribute that the timer ran out to the listeners.
+	 */
+	void distributeTimeUp();
 
 	/**
 	 * @brief Draw the widget onto the renderer.
@@ -57,6 +71,12 @@ class TimerWidget : public TimeChangeListener
 	 * @brief Pause the timer.
 	 */
 	virtual void pause();
+
+	/**
+	 * @brief Remove a time up listener.
+	 * @param listener The listener to remove.
+	 */
+	void removeTimeUpListener(TimeUpListener* listener);
 
 	/**
 	 * @brief Set the position of the widget.
@@ -99,6 +119,9 @@ class TimerWidget : public TimeChangeListener
 	// The display.
 	sf::Font mFont;
 	sf::Text mText;
+
+	// The time up listeners.
+	std::list<TimeUpListener*> mTimeUpListeners;
 };
 
 #endif /* TIMERWIDGET_HPP_ */

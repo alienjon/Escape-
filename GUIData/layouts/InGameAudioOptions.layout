@@ -36,8 +36,8 @@
         <Window Type="TaharezLook/StaticText" Name="InGameAudioOptions/SoundVolumeLevel" >
             <Property Name="UnifiedAreaRect" Value="{{0.335556,0},{0.633773,0},{0.585556,0},{0.766741,0}}" />
         </Window>
-        <Window Type="TaharezLook/Button" Name="InGameAudioOptions/CloseButton" >
-            <Property Name="Text" Value="Close" />
+        <Window Type="TaharezLook/Button" Name="InGameAudioOptions/ApplyButton" >
+            <Property Name="Text" Value="Apply" />
             <Property Name="UnifiedAreaRect" Value="{{0.318114,0},{0.810848,0},{0.661864,0},{0.968894,0}}" />
         </Window>
     </Window>

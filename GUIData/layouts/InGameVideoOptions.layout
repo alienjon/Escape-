@@ -4,8 +4,11 @@
     <Window Type="TaharezLook/FrameWindow" Name="InGameVideoOptions" >
         <Property Name="Text" Value="Video Options" />
         <Property Name="TitlebarFont" Value="DejaVuSans-10" />
+        <Property Name="SizingEnabled" Value="False" />
         <Property Name="TitlebarEnabled" Value="True" />
-        <Property Name="UnifiedAreaRect" Value="{{0.316211,0},{0.176102,0},{0.711719,0},{0.424634,0}}" />
+        <Property Name="UnifiedAreaRect" Value="{{0.315304,0},{0.174677,0},{0.710812,0},{0.570508,0}}" />
+        <Property Name="DragMovingEnabled" Value="False" />
+        <Property Name="CloseButtonEnabled" Value="False" />
         <Window Type="TaharezLook/Combobox" Name="InGameVideoOptions/Resolution" >
             <Property Name="UnifiedAreaRect" Value="{{0.1,0},{0.05,0},{0.9,0},{0,50}}" />
             <Property Name="MaxEditTextLength" Value="1073741823" />
@@ -24,14 +27,14 @@
         </Window>
         <Window Type="TaharezLook/Checkbox" Name="InGameVideoOptions/VerticalSync" >
             <Property Name="Text" Value="Vertical Sync" />
-            <Property Name="UnifiedAreaRect" Value="{{0.0962957,0},{0.611303,0},{0.457407,0},{0.703682,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.334909,0},{0.508974,0},{0.785501,0},{0.601353,0}}" />
         </Window>
         <Window Type="TaharezLook/Checkbox" Name="InGameVideoOptions/AntiAliasing" >
             <Property Name="Text" Value="Anti-Aliasing" />
-            <Property Name="UnifiedAreaRect" Value="{{0.574074,0},{0.580559,0},{0.903086,0},{0.724863,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.33546,0},{0.628355,0},{0.765424,0},{0.772659,0}}" />
         </Window>
-        <Window Type="TaharezLook/Button" Name="InGameVideoOptions/CloseButton" >
-            <Property Name="Text" Value="Close" />
+        <Window Type="TaharezLook/Button" Name="InGameVideoOptions/ApplyButton" >
+            <Property Name="Text" Value="Apply" />
             <Property Name="UnifiedAreaRect" Value="{{0.382716,0},{0.835795,0},{0.632715,0},{0.949668,0}}" />
         </Window>
     </Window>

@@ -8,6 +8,7 @@
 
 #include <stdexcept>
 
+#include "../Game/Game.hpp"
 #include "../Engine/Logger.hpp"
 
 using std::list;
@@ -42,14 +43,32 @@ void AudioManager::create()
         mAudioManager = new AudioManager;
 }
 
-unsigned int AudioManager::getMusicLevel()
+float AudioManager::getMusicLevel()
 {
 	return mMusicLevel;
 }
 
-unsigned int AudioManager::getSoundLevel()
+float AudioManager::getSoundLevel()
 {
 	return mSoundLevel;
+}
+
+void AudioManager::playMusic(const string& filename)
+{
+	if(!mAudioManager)
+		create();
+
+	if(!mAudioManager->mMusic.openFromFile(filename))
+		ERROR("Unable to open music file '" + filename);
+	else
+	{
+		if(Game::isDebug())
+			LOG("Playing: " + filename);
+
+		mAudioManager->mMusic.setVolume(AudioManager::getMusicLevel());
+		mAudioManager->mMusic.setLoop(true);
+		mAudioManager->mMusic.play();
+	}
 }
 
 void AudioManager::playSound(const string& filename)
@@ -71,6 +90,7 @@ void AudioManager::playSound(const string& filename)
 	try
 	{
 		mAudioManager->mPlayingSounds.push_back(sf::Sound(mAudioManager->mGetSoundBuffer(filename)));
+		mAudioManager->mPlayingSounds.back().setVolume(mSoundLevel);
 		mAudioManager->mPlayingSounds.back().play();
 	}
 	catch(const runtime_error& e)
@@ -79,14 +99,29 @@ void AudioManager::playSound(const string& filename)
 	}
 }
 
-void AudioManager::setMusicLevel(unsigned int level)
+void AudioManager::setMusicLevel(float level)
 {
+	if(!mAudioManager)
+		create();
+
+	// Set the level.
 	mMusicLevel = (level > 100) ? 100 : level;
+
+	// Set the music level.
+	mAudioManager->mMusic.setVolume(mMusicLevel);
 }
 
-void AudioManager::setSoundLevel(unsigned int level)
+void AudioManager::setSoundLevel(float level)
 {
+	if(!mAudioManager)
+		create();
+
+	// Set the level.
 	mSoundLevel = (level > 100) ? 100 : level;
+
+	// Set the sound level.
+	for(list<sf::Sound>::iterator it(mAudioManager->mPlayingSounds.begin()); it != mAudioManager->mPlayingSounds.end(); ++it)
+		it->setVolume(mSoundLevel);
 }
 
 void AudioManager::terminate()
@@ -96,5 +131,5 @@ void AudioManager::terminate()
 }
 
 AudioManager* AudioManager::mAudioManager = 0;
-unsigned int AudioManager::mMusicLevel = 0;
-unsigned int AudioManager::mSoundLevel = 0;
+float AudioManager::mMusicLevel = 0;
+float AudioManager::mSoundLevel = 0;

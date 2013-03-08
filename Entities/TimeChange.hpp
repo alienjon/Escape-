@@ -9,17 +9,15 @@
 
 #include "../Entities/Entity.hpp"
 #include "../Engine/Timer.hpp"
+#include "../Interfaces/TimeChangeInterface.hpp"
 
-class Level;
-
-class TimeChange : public Entity
+class TimeChange : public Entity, public TimeChangeInterface
 {
 	public:
 	/**
 	 * @brief Default constructor.
-	 * @param level The level in which the time change is taking place.
 	 */
-	TimeChange(Level& level);
+	TimeChange();
 
 	/**
 	 * @brief A collision took place.
@@ -35,9 +33,6 @@ class TimeChange : public Entity
 	virtual void logic(Level& level, int delta);
 
 	private:
-	// The level.
-	Level& mLevel;
-
 	// Adding time if true, subtracting if false.
 	bool mIsAdding;
 

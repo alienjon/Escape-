@@ -111,7 +111,11 @@ Level::Level(unsigned int difficulty, Player& player) :
 				else if(n <= 20)
 					entity = new Pickup(-50, sf::Color::Red, Pickup::LARGE);
 				else if(n <= 23)
-					entity = new TimeChange(*this);
+				{
+					TimeChange* tmp = new TimeChange();
+					tmp->addTimeChangeListener(this);
+					entity = tmp;
+				}
 				else if(n <= 26)
 					entity = new SpeedChange(0.5, mPlayer);
 				else if(n <= 35)

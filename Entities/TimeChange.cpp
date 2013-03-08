@@ -26,8 +26,7 @@ const int TIMECHANGE_LOSS = 30000;
 
 using std::string;
 
-TimeChange::TimeChange(Level& level) :
-	mLevel(level),
+TimeChange::TimeChange() :
 	mIsAdding(false),
 	mInterval(0)
 {
@@ -44,9 +43,9 @@ void TimeChange::collide(Entity& entity)
 	{
 		// Add or subtract from the time.
 		if(mIsAdding)
-			mLevel.timeChange(TIMECHANGE_GAIN);
+			distributeTimeChange(TIMECHANGE_GAIN);
 		else
-			mLevel.timeChange(TIMECHANGE_LOSS);
+			distributeTimeChange(TIMECHANGE_LOSS);
 
 		distributeFloatingText((mIsAdding ? "+" : "-") + string("00:") + toString((mIsAdding ? (TIMECHANGE_GAIN * -1) : TIMECHANGE_LOSS) / 1000), getPosition(), sf::Color::White);
 

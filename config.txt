@@ -12,5 +12,5 @@ Fullscreen:false
 BitDepth:0
 StencilBits:0
 Antialiasing:8
-MusicVolume:65
-SoundVolume:100
+MusicVolume:20
+SoundVolume:75

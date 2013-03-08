@@ -27,7 +27,7 @@ void FontManager::create()
         mFontManager = new FontManager();
 }
 
-const sf::Font& FontManager::getSFFont(const string& filename)//@fixme The font manager isn't working.  Do I want it anyway?
+const sf::Font& FontManager::getSFFont(const string& filename)
 {
     if(!mFontManager)
     	create();

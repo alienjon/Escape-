@@ -12,32 +12,26 @@
 #include <boost/filesystem.hpp>
 
 #include "../Engine/AudioManager.hpp"
-#include "../Engine/FontManager.hpp"
 #include "../Game/Game.hpp"
 #include "../Game/Keywords.hpp"
 #include "../main.hpp"
 #include "../Engine/RendererContext.hpp"
 
 using std::abs;
+using std::list;
 using std::runtime_error;
 using std::string;
 using std::vector;
 
 using namespace boost::filesystem;
 
-const unsigned int SCORE_COUNTER_INTERVAL = 25;
 const unsigned int __TIME_MULTIPLIER__ = 1000;//@todo change time multiplier for difficulty levels? Laura found game a bit too hard, Dan a bit too easy?
 //@fixme make the time multiplier be based on the difficulty
-
-#include <iostream>
-using namespace std;//@todo remove when done
 
 GameScreen::GameScreen(unsigned int difficulty) : Screen(),
 	mDifficulty(difficulty),
 	mIsPaused(false),
 	mLevel(0),
-	mScore(0),
-	mCounter(0),
 	mOptionsWidget(0),
 	mVideoOptionsWidget(0),
 	mAudioOptionsWidget(0),
@@ -68,10 +62,6 @@ GameScreen::GameScreen(unsigned int difficulty) : Screen(),
 		ERROR(e.what());
 	}
 
-	//@todo remove when GUI system is implemented
-	if(!mFont.loadFromFile("Fonts/VeraMono.ttf"))
-		ERROR("GameScreen::GameScreen() -> Unable to load font.");
-
 	/* Load the in game menus */
 	mOptionsWidget = static_cast<CEGUI::FrameWindow*>(CEGUI::WindowManager::getSingleton().loadWindowLayout("InGameOptions.layout"));
 	mOptionsWidget->setSizingEnabled(false);
@@ -99,10 +89,14 @@ GameScreen::GameScreen(unsigned int difficulty) : Screen(),
 	mOptionsWidget->getChild("InGameOptionsMenu/VideoButton")->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&GameScreen::_handlerShowVideoOptions, this));
 	mOptionsWidget->getChild("InGameOptionsMenu/AudioButton")->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&GameScreen::_handlerShowAudioOptions, this));
 	mOptionsWidget->getChild("InGameOptionsMenu/MainMenuButton")->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&GameScreen::_handlerMainMenu, this));
-	mVideoOptionsWidget->getChild("InGameVideoOptions/CloseButton")->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&GameScreen::_handlerCloseVideoOptions, this));
-	mAudioOptionsWidget->getChild("InGameAudioOptions/CloseButton")->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&GameScreen::_handlerCloseAudioOptions, this));
+	mVideoOptionsWidget->getChild("InGameVideoOptions/ApplyButton")->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&GameScreen::_handlerApplyVideoOptions, this));
+	mAudioOptionsWidget->getChild("InGameAudioOptions/ApplyButton")->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&GameScreen::_handlerApplyAudioOptions, this));
 	mAudioOptionsWidget->getChild("InGameAudioOptions/MusicVolume")->subscribeEvent(CEGUI::Slider::EventValueChanged, CEGUI::Event::Subscriber(&GameScreen::_handlerUpdateMusicTextLevels, this));
 	mAudioOptionsWidget->getChild("InGameAudioOptions/SoundVolume")->subscribeEvent(CEGUI::Slider::EventValueChanged, CEGUI::Event::Subscriber(&GameScreen::_handlerUpdateSoundTextLevels, this));
+
+	// Configure any non-CEGUI widgets.
+	mTimerWidget.addTimeUpListener(this);
+    addTimeChangeListener(&mTimerWidget);
 }
 
 GameScreen::~GameScreen()
@@ -115,6 +109,10 @@ GameScreen::~GameScreen()
 		delete mLevel;
 	}
 
+	// Remove any needed listeners.
+	mTimerWidget.removeTimeUpListener(this);
+
+	// Delete the resolution items.
 	for(list<CEGUI::ListboxTextItem*>::const_iterator it(mResolutionOptions.begin()); it != mResolutionOptions.end(); ++it)
 		delete *it;
 }
@@ -136,7 +134,7 @@ bool GameScreen::_handlerShowAudioOptions(const CEGUI::EventArgs& eArgs)
 	return true;
 }
 
-bool GameScreen::_handlerCloseAudioOptions(const CEGUI::EventArgs& eArgs)
+bool GameScreen::_handlerApplyAudioOptions(const CEGUI::EventArgs& eArgs)
 {
 	mAudioOptionsWidget->setVisible(false);
 	mOptionsWidget->setVisible(true);
@@ -154,7 +152,7 @@ bool GameScreen::_handlerCloseOptions(const CEGUI::EventArgs& eArgs)
 	return true;
 }
 
-bool GameScreen::_handlerCloseVideoOptions(const CEGUI::EventArgs& eArgs)
+bool GameScreen::_handlerApplyVideoOptions(const CEGUI::EventArgs& eArgs)
 {
 	mVideoOptionsWidget->setVisible(false);
 	mOptionsWidget->setVisible(true);
@@ -264,9 +262,7 @@ bool GameScreen::_handlerUpdateSoundTextLevels(const CEGUI::EventArgs& eArgs)
 
 void GameScreen::changeScore(int change)
 {
-	mCounter += change;
-//	mScoreLabel.setCaption("Score: " + toString(mScore));
-	mScoreDisplay.setString("Score: " + toString(mScore));
+	mScoreWidget.changeScore(change);
 }
 
 void GameScreen::draw(sf::RenderWindow& renderer)
@@ -287,10 +283,9 @@ void GameScreen::draw(sf::RenderWindow& renderer)
     // Return the view.
     renderer.setView(renderer.getDefaultView());
 
-    //@fixme Draw the temporary widgets.
-    //@note These have to be done after setting the view because they are in the GUI.
+    //@note Widgets have to be done after setting the view because they are in the GUI.
     mTimerWidget.draw(renderer);
-    renderer.draw(mScoreDisplay);
+    mScoreWidget.draw(renderer);
 }
 
 void GameScreen::eventOccurred(const string& eventId)
@@ -364,7 +359,6 @@ void GameScreen::eventOccurred(const string& eventId)
 bool GameScreen::handleInput(const sf::Event& event)
 {
 	// Open the options menu.
-	// @todo implement options menu
 	if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)
 	{
 		if(!mOptionsWidget->isVisible())
@@ -489,30 +483,6 @@ void GameScreen::load(const sf::View& view)
 
 	}
 
-    // Setup the in-game options menu.
-    //@todo implement options menu
-//    mOptionsMenu.setVisible(false);
-//    mOptionsMenu.setSize(mBase.getWidth(), mBase.getHeight());
-//    mOptionsMenu.adjustInternals();
-//    mBase.add(&mOptionsMenu, 0, 0);
-
-    // Add the menu bar.
-    //@todo implement score widget
-    mScoreDisplay.setFont(mFont);
-    mScoreDisplay.setString("Score: 0");
-    mScoreDisplay.setCharacterSize(18);
-    mScoreDisplay.setColor(sf::Color::Magenta);
-    mScoreDisplay.setStyle(sf::Text::Bold);
-    mScoreTimer.start();
-    mScoreDisplay.setPosition(0, view.getSize().y - mScoreDisplay.getLocalBounds().height - 2);
-//	mScoreLabel.setFont(FontManager::getGCNFont(FONT_DEFAULT));
-//	mScoreLabel.setCaption("Score: 0");
-//	mScoreLabel.adjustSize();
-//	mScoreTimer.start();
-//    mBase.add(&mScoreLabel, 0, mBase.getHeight() - mScoreLabel.getHeight());
-//    addTimeChangeListener(&mTimerWidget);
-//    mBase.add(&mTimerWidget, mBase.getWidth() - mTimerWidget.getWidth(), mBase.getHeight() - mTimerWidget.getHeight());
-
     // Add the level complete widget.
     //@todo implement level complete
 //    mLevelCompleteWidget.setVisible(false);
@@ -526,50 +496,21 @@ void GameScreen::load(const sf::View& view)
     // Reset the view.
     mResetView = true;
 
-    // Restart the timer
-    //@todo re-implement new widget
+    // Load widget information.
     mTimerWidget.stop();
     mTimerWidget.start(mLevel->getMap().getComplexity() * __TIME_MULTIPLIER__);
     mTimerWidget.setPosition(view.getSize().x - mTimerWidget.getWidth(), view.getSize().y - mTimerWidget.getHeight() - 2);
+    mScoreWidget.setPosition(0, view.getSize().y - mScoreWidget.getHeight());
 
 	// Pick a random background music.
-	string music = mBackMusicVector.at(random(0, int(mBackMusicVector.size() - 1)));
-	if(!mBackMusic.openFromFile(music))
-		ERROR("Unable to open music file '" + music);
-	else
-	{
-		if(Game::isDebug())
-			LOG("Playing: " + music);
-		mBackMusic.play();
-		mBackMusic.setLoop(true);;
-	}
+	AudioManager::playMusic(mBackMusicVector.at(random(0, int(mBackMusicVector.size() - 1))));
 }
 
 void GameScreen::logic(int delta)
 {
 	// @todo temporary hack for the timer widget logic (need to implement full gui)
 	mTimerWidget.logic();
-
-	// Update the score.
-	if(mCounter != 0 && mScoreTimer.getTime() >= SCORE_COUNTER_INTERVAL)
-	{
-		// Only increment the score by 1, but determine the direction.
-		int sign = (mCounter != 0) ? mCounter / abs(mCounter) : 0;
-
-		// Increment the score.
-		mScore = (sign < 0 && mScore == 0) ? 0 : mScore + sign;
-
-		// Set the score.
-		//@todo implement score label widget
-//		mScoreLabel.setCaption("Score: " + toString(mScore));
-		mScoreDisplay.setString("Score: " + toString(mScore));
-
-		// Update the counter.
-		mCounter -= sign;
-
-		// Reset the timer.
-		mScoreTimer.start();
-	}
+	mScoreWidget.logic();
 
 	// If time is up, then the player has lost...
 	//@todo implement level complete widget
@@ -609,4 +550,8 @@ void GameScreen::logic(int delta)
     // Only do game logic if the game is not paused.
     if(!mIsPaused)
 		mLevel->logic(mCamera, delta);
+}
+
+void GameScreen::timeUp()
+{
 }

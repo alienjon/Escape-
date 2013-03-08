@@ -7,6 +7,7 @@
 #ifndef GAMESCREEN_HPP_
 #define GAMESCREEN_HPP_
 
+#include <list>
 #include <string>
 #include <vector>
 
@@ -21,16 +22,18 @@
 #include "../Game/Level.hpp"
 #include "../Widgets/LevelCompleteWidget.hpp"
 #include "../Entities/Player.hpp"
+#include "../Widgets/ScoreDisplay.hpp"
 #include "../Engine/Screen.hpp"
 #include "../Interfaces/TimeChangeInterface.hpp"
 #include "../Listeners/TimeChangeListener.hpp"
 #include "../Engine/Timer.hpp"
 #include "../Widgets/TimerWidget.hpp"
+#include "../Listeners/TimeUpListener.hpp"
 
 /**
  * @brief The game screen is a means to display the game itself.
  */
-class GameScreen : public ChangeScoreListener, public TimeChangeInterface, public TimeChangeListener, public Screen
+class GameScreen : public ChangeScoreListener, public TimeChangeInterface, public TimeChangeListener, public TimeUpListener, public Screen
 {
     public:
     /**
@@ -52,7 +55,7 @@ class GameScreen : public ChangeScoreListener, public TimeChangeInterface, publi
      * @param eArgs The event arguments.
      * @return True if run successfully.
      */
-    bool _handlerCloseAudioOptions(const CEGUI::EventArgs& eArgs);
+    bool _handlerApplyAudioOptions(const CEGUI::EventArgs& eArgs);
 
     /**
      * @brief Handler for closing the options widget.
@@ -66,7 +69,7 @@ class GameScreen : public ChangeScoreListener, public TimeChangeInterface, publi
      * @param eArgs The event arguments.
      * @return True if run successfully.
      */
-    bool _handlerCloseVideoOptions(const CEGUI::EventArgs& eArgs);
+    bool _handlerApplyVideoOptions(const CEGUI::EventArgs& eArgs);
 
     /**
      * @brief Handler for returning to the main menu.
@@ -142,6 +145,11 @@ class GameScreen : public ChangeScoreListener, public TimeChangeInterface, publi
     	distributeTimeChange(time);
     }
 
+    /**
+     * @brief The timer widget's time ran out.
+     */
+    void timeUp();
+
     private:
     /**
      * @brief Reposition/resize the internal widgets.
@@ -154,9 +162,6 @@ class GameScreen : public ChangeScoreListener, public TimeChangeInterface, publi
     // True if the game is paused.
     bool mIsPaused;
 
-    // The background music.
-    sf::Music mBackMusic;
-
     // The current level.
     Level* mLevel;
 
@@ -164,27 +169,14 @@ class GameScreen : public ChangeScoreListener, public TimeChangeInterface, publi
 //    // The level complete widget.
 //    LevelCompleteWidget mLevelCompleteWidget;
 
-	// This is the score.
-	unsigned int mScore;
-
-	// This is the amount to add to the score.
-	int mCounter;
-
     // The visual bounds for this level.
     sf::View mCamera;
 
     // Internal widgets.
     CEGUI::FrameWindow *mOptionsWidget, *mVideoOptionsWidget, *mAudioOptionsWidget;
     std::list<CEGUI::ListboxTextItem*> mResolutionOptions;
-    //@todo Need to re-implement widgets
-//    TimerWidget mTimerWidget;
-//    gcn::Label mScoreLabel;
-
-    //@fixme re-implement timer GUI and score GUI then remove.
-    sf::Text mScoreDisplay;
-    Timer mScoreTimer;
-    sf::Font mFont;//@todo remove when GUI is implemented?
     TimerWidget mTimerWidget;
+    ScoreDisplay mScoreWidget;
 
     // The player.
     Player mPlayer;

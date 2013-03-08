@@ -27,13 +27,19 @@ class AudioManager
      * @brief Get the music level.
      * @return The music level.
      */
-    static unsigned int getMusicLevel();
+    static float getMusicLevel();
 
     /**
      * @brief Get the sound level.
      * @return The sound level.
      */
-    static unsigned int getSoundLevel();
+    static float getSoundLevel();
+
+    /**
+     * @brief Play a music file.
+     * @param filename The filename of the music.
+     */
+    static void playMusic(const std::string& filename);
 
     /**
      * @brief Get a sound to play.
@@ -46,14 +52,14 @@ class AudioManager
      * @param level The music level.
      * @note The level will be clipped between [0,100]
      */
-    static void setMusicLevel(unsigned int level);
+    static void setMusicLevel(float level);
 
     /**
      * @brief Set the global sound level.
      * @param level The sound level.
      * @note The level will be clipped between [0,100]
      */
-    static void setSoundLevel(unsigned int level);
+    static void setSoundLevel(float level);
 
     /**
      * @brief Delete the manager.
@@ -65,7 +71,7 @@ class AudioManager
     static AudioManager* mAudioManager;
 
     // The volume levels.
-    static unsigned int mMusicLevel, mSoundLevel;
+    static float mMusicLevel, mSoundLevel;
 
     /**
      * @brief Manage all audio aspects of the game.
@@ -78,6 +84,9 @@ class AudioManager
      * @return The sound buffer.
      */
     sf::SoundBuffer& mGetSoundBuffer(const std::string& filename);
+
+    // There's only 1 music to play at a time.
+    sf::Music mMusic;
 
     // The audio collections.
     std::map<std::string, sf::SoundBuffer> mSounds;
