@@ -18,6 +18,7 @@
 #include <CEGUI/elements/CEGUIFrameWindow.h>
 
 #include "../Listeners/ChangeScoreListener.hpp"
+#include "../Game/Game.hpp"
 #include "../Widgets/GameOptionsWidget.hpp"
 #include "../Game/Level.hpp"
 #include "../Widgets/LevelCompleteWidget.hpp"
@@ -38,9 +39,10 @@ class GameScreen : public ChangeScoreListener, public TimeChangeInterface, publi
     public:
     /**
      * @brief Construct a game screen and start a new game.
+     * @param level The level at which to start the game.
      * @param difficulty The difficulty of the game.
      */
-    GameScreen(unsigned int difficulty);
+    GameScreen(unsigned int level, Game::Difficulty difficulty);
     virtual ~GameScreen();
 
     /**
@@ -158,6 +160,9 @@ class GameScreen : public ChangeScoreListener, public TimeChangeInterface, publi
 
     // The game's initial difficulty.
     unsigned int mDifficulty;
+
+    // The time multiplier (based on the difficulty)
+    unsigned int mTimeMultiplier;
 
     // True if the game is paused.
     bool mIsPaused;

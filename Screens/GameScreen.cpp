@@ -25,11 +25,9 @@ using std::vector;
 
 using namespace boost::filesystem;
 
-const unsigned int __TIME_MULTIPLIER__ = 1000;//@todo change time multiplier for difficulty levels? Laura found game a bit too hard, Dan a bit too easy?
-//@fixme make the time multiplier be based on the difficulty
-
-GameScreen::GameScreen(unsigned int difficulty) : Screen(),
-	mDifficulty(difficulty),
+GameScreen::GameScreen(unsigned int level, Game::Difficulty difficulty) : Screen(),
+	mDifficulty(level),
+	mTimeMultiplier(0),
 	mIsPaused(false),
 	mLevel(0),
 	mOptionsWidget(0),
@@ -37,6 +35,23 @@ GameScreen::GameScreen(unsigned int difficulty) : Screen(),
 	mAudioOptionsWidget(0),
 	mResetView(false)
 {
+	// Determine the time multiplier.
+	switch(difficulty)
+	{
+		case Game::EASY:
+		{
+			mTimeMultiplier = 1250;
+			break;
+		}
+		case Game::HARD:
+		{
+			mTimeMultiplier = 800;
+			break;
+		}
+		default:
+			mTimeMultiplier = 1000; break;
+	}
+
 	// Load all flac audio as background musics.
 	path p("Audio/");
 
@@ -315,7 +330,7 @@ void GameScreen::eventOccurred(const string& eventId)
 
 			// Make sure the game is not paused.
 			mTimerWidget.stop();
-			mTimerWidget.start(mLevel->getMap().getComplexity() * __TIME_MULTIPLIER__);//@todo remove when done
+			mTimerWidget.start(mLevel->getMap().getComplexity() * mTimeMultiplier);//@todo remove when done
 			mIsPaused = false;
 		}
 		// If the old level didn't complete, then the level was lost.
@@ -498,7 +513,7 @@ void GameScreen::load(const sf::View& view)
 
     // Load widget information.
     mTimerWidget.stop();
-    mTimerWidget.start(mLevel->getMap().getComplexity() * __TIME_MULTIPLIER__);
+    mTimerWidget.start(mLevel->getMap().getComplexity() * mTimeMultiplier);
     mTimerWidget.setPosition(view.getSize().x - mTimerWidget.getWidth(), view.getSize().y - mTimerWidget.getHeight() - 2);
     mScoreWidget.setPosition(0, view.getSize().y - mScoreWidget.getHeight());
 

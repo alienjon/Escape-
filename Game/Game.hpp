@@ -20,6 +20,13 @@
 class Game : public Engine
 {
 	public:
+	typedef enum
+	{
+		EASY,
+		NORMAL,
+		HARD
+	} Difficulty;
+
 	/**
 	 * @brief Default constructor.
 	 */

@@ -34,8 +34,7 @@ const float FLOATINGTEXT_MOVE_STEP = 0.3f;
 Level::Level(unsigned int difficulty, Player& player) :
 	mIsDone(false),
 	mPlayer(player),
-	mMap(random(random(difficulty, difficulty * 2), random(difficulty, difficulty * 2)),
-		 random(random(difficulty, difficulty * 2), random(difficulty, difficulty * 2))),
+	mMap(difficulty, difficulty),
 	mPickupAward(false)
 {
 	// Start the timers.

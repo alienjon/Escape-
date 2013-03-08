@@ -65,7 +65,7 @@ void Game::mGameSetup()
 //	mLoadResources();@todo I'm currently loading resources on the fly.  Implement file loading in advance.
 
 	// Run the game screens.
-	mScreens.push_back(new GameScreen(5));
+	mScreens.push_back(new GameScreen(7, NORMAL));
 	//@todo implement when done testing gamescreen.
 //    // If the game is being debugged, then skip to the game screen.
 //    if(Engine::isDebug())
@@ -104,11 +104,11 @@ void Game::mLoadResources()
 void Game::eventOccurred(const string& event)
 {
 	if(event == ACTION_STARTGAME_EASY)
-		mScreens.push_back(new GameScreen(1));
+		mScreens.push_back(new GameScreen(5, EASY));
 	else if(event == ACTION_STARTGAME_NORMAL)
-		mScreens.push_back(new GameScreen(5));
+		mScreens.push_back(new GameScreen(7, NORMAL));
 	else if(event == ACTION_STARTGAME_HARD)
-		mScreens.push_back(new GameScreen(10));
+		mScreens.push_back(new GameScreen(10, HARD));
 	else if(event == ACTION_QUIT)
 		mRenderer.close();
 	else if(event == ACTION_SHOWCURSOR)
