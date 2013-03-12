@@ -36,6 +36,12 @@ class ScoreDisplay : public ChangeScoreListener
 	void draw(sf::RenderWindow& renderer);
 
 	/**
+	 * @brief Get the remaining counter score.
+	 * @return The remaining counter score.
+	 */
+	int getCounter() const;
+
+	/**
 	 * @brief Get the height of the widget.
 	 * @return The height.
 	 */
@@ -48,6 +54,12 @@ class ScoreDisplay : public ChangeScoreListener
 	unsigned int getWidth() const;
 
 	/**
+	 * @brief Get the current score.
+	 * @return The current score.
+	 */
+	unsigned int getScore() const;
+
+	/**
 	 * @brief Perform widget logic.
 	 */
 	void logic();
@@ -58,6 +70,12 @@ class ScoreDisplay : public ChangeScoreListener
 	 * @param y The Y position.
 	 */
 	void setPosition(unsigned int x, unsigned int y);
+
+	/**
+	 * @brief Set the score.
+	 * @param score The score to set to.
+	 */
+	void setScore(unsigned int score);
 
 	private:
 	// This is the score.

@@ -11,7 +11,8 @@
 
 using std::list;
 
-Portal::Portal()
+Portal::Portal() :
+	mIsLocked(true)
 {
 	mType = ENTITY_PORTAL;
 	setCollidable(false);
@@ -19,19 +20,14 @@ Portal::Portal()
 	mSprite.setOrigin(getWidth() / 2, getHeight() / 2);
 }
 
-void Portal::addLock(sf::Color color)
-{
-	mLocks.push_back(color);
-}
-
 void Portal::collide(Entity& entity)
 {
 	// If the player collides with the portal and all the locks are removed, end the level.
-	if(entity.getType() == ENTITY_PLAYER && mLocks.empty())
+	if(entity.getType() == ENTITY_PLAYER && !mIsLocked)
 		distributeLevelComplete();
 }
 
-void Portal::removeLock(sf::Color color)
+void Portal::keyPickedUp()
 {
-	mLocks.remove(color);
+	mIsLocked = false;
 }

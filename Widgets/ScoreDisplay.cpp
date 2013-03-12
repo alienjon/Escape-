@@ -42,6 +42,11 @@ void ScoreDisplay::draw(sf::RenderWindow& renderer)
 	renderer.draw(mScoreText);
 }
 
+int ScoreDisplay::getCounter() const
+{
+	return mCounter;
+}
+
 unsigned int ScoreDisplay::getHeight() const
 {
 	return mScoreText.getCharacterSize();
@@ -50,6 +55,11 @@ unsigned int ScoreDisplay::getHeight() const
 unsigned int ScoreDisplay::getWidth() const
 {
 	return mScoreText.getLocalBounds().width;
+}
+
+unsigned int ScoreDisplay::getScore() const
+{
+	return mScore;
 }
 
 void ScoreDisplay::logic()
@@ -77,4 +87,10 @@ void ScoreDisplay::logic()
 void ScoreDisplay::setPosition(unsigned int x, unsigned int y)
 {
 	mScoreText.setPosition(x, y);
+}
+
+void ScoreDisplay::setScore(unsigned int score)
+{
+	mScore = score;
+	mCounter = 0;
 }

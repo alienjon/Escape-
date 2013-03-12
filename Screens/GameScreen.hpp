@@ -21,7 +21,6 @@
 #include "../Game/Game.hpp"
 #include "../Widgets/GameOptionsWidget.hpp"
 #include "../Game/Level.hpp"
-#include "../Widgets/LevelCompleteWidget.hpp"
 #include "../Entities/Player.hpp"
 #include "../Widgets/ScoreDisplay.hpp"
 #include "../Engine/Screen.hpp"
@@ -153,11 +152,6 @@ class GameScreen : public ChangeScoreListener, public TimeChangeInterface, publi
     void timeUp();
 
     private:
-    /**
-     * @brief Reposition/resize the internal widgets.
-     */
-    void mUpdateWidgetPositions();
-
     // The game's initial difficulty.
     unsigned int mDifficulty;
 
@@ -170,15 +164,12 @@ class GameScreen : public ChangeScoreListener, public TimeChangeInterface, publi
     // The current level.
     Level* mLevel;
 
-    //@todo implement options and
-//    // The level complete widget.
-//    LevelCompleteWidget mLevelCompleteWidget;
-
     // The visual bounds for this level.
     sf::View mCamera;
 
     // Internal widgets.
-    CEGUI::FrameWindow *mOptionsWidget, *mVideoOptionsWidget, *mAudioOptionsWidget;
+    CEGUI::FrameWindow *mOptionsWidget, *mVideoOptionsWidget, *mAudioOptionsWidget, *mLevelComplete;
+    CEGUI::Window *mLevelCompleteText;
     std::list<CEGUI::ListboxTextItem*> mResolutionOptions;
     TimerWidget mTimerWidget;
     ScoreDisplay mScoreWidget;

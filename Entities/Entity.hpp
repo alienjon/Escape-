@@ -13,13 +13,11 @@
 #include <SFML/Graphics.hpp>
 
 #include "../Interfaces/ActionInterface.hpp"
-#include "../Interfaces/AddLockInterface.hpp"
 #include "../Engine/AnimatedSprite.hpp"
 #include "../Interfaces/ChangeScoreInterface.hpp"
 #include "../Listeners/DeathListener.hpp"
 #include "../Interfaces/FloatingTextInterface.hpp"
 #include "../Game/Math.hpp"
-#include "../Interfaces/RemoveLockInterface.hpp"
 
 class Item;
 class Level;
@@ -32,8 +30,7 @@ class Level;
  * (such as displaying itself, performing logic and having
  * various listeners)
  */
-class Entity : public ActionInterface, public AddLockInterface, public ChangeScoreInterface, public FloatingTextInterface,
-				public RemoveLockInterface
+class Entity : public ActionInterface, public AddLockInterface, public ChangeScoreInterface, public FloatingTextInterface
 {
     public:
     enum EntityType
@@ -179,6 +176,7 @@ class Entity : public ActionInterface, public AddLockInterface, public ChangeSco
      * @param item The item to pickup.
      * @return True if the item was picked up successfully.
      * @note Used for the player.
+     * @todo remove?
      */
     virtual bool pickup(Item& item)
     {

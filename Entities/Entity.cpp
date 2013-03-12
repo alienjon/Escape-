@@ -31,9 +31,7 @@ void Entity::mDie()
 
     // Tell any listeners.
     for(list<DeathListener*>::iterator it = mDeathListeners.begin(); it != mDeathListeners.end(); ++it)
-    {
         (*it)->deathOccurred(this);
-    }
 }
 
 void Entity::draw(sf::RenderWindow& renderer)
@@ -51,7 +49,6 @@ void Entity::logic(Level& level, int delta)
 }
 
 bool sortByZIndex(Entity* a, Entity* b)
-{//@todo change to origin?
-//	return a->getDimension().getOrigin().y < b->getDimension().getOrigin().y;
+{
 	return a->getY() < b->getY();
 }

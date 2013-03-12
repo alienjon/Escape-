@@ -11,11 +11,12 @@
 #include "../Game/Level.hpp"
 #include "../Engine/VideoManager.hpp"
 
+using std::list;
+
 const float KEYENTITY_MAXSIZE = 35.f;
 const float KEYENTITY_MINSIZE = 5.f;
 
-KeyEntity::KeyEntity(sf::Color color) :
-	mColor(color),
+KeyEntity::KeyEntity() :
 	mIsGrowing(true)
 {
 	mType = ENTITY_KEY;
@@ -24,15 +25,20 @@ KeyEntity::KeyEntity(sf::Color color) :
 	mSprite.setOrigin(getWidth() / 2, getHeight() / 2);
 }
 
+void KeyEntity::addKeyPickedUpListener(KeyPickedUpListener* listener)
+{
+	mKeyPickedUpListeners.push_back(listener);
+}
+
 void KeyEntity::collide(Entity& entity)
 {
 	// If the entity was a player, then add a score to the level and die.
 	if(entity.getType() == Entity::ENTITY_PLAYER)
 	{
 		// Distribute information that the lock was picked up.
-		distributeAddLock(mColor);
-		distributeRemoveLock(mColor);
-		distributeFloatingText("Key", sf::Vector2f(getX() + getWidth(), getY()), mColor);
+		for(list<KeyPickedUpListener*>::const_iterator it(mKeyPickedUpListeners.begin()); it != mKeyPickedUpListeners.end(); ++it)
+				(*it)->keyPickedUp();
+		distributeFloatingText("Key", sf::Vector2f(getX() + getWidth(), getY()), sf::Color::Yellow);
 
 		// Add to the score.
 		distributeChangeScore(50);
@@ -77,4 +83,9 @@ void KeyEntity::logic(Level& level, int delta)//@todo Update code to enlarge and
 		setPosition(pos.x, pos.y);
 		mTimer.start();
 	}
+}
+
+void KeyEntity::removeKeyPickedUpListener(KeyPickedUpListener* listener)
+{
+	mKeyPickedUpListeners.remove(listener);
 }

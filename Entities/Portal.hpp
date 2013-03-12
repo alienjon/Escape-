@@ -9,13 +9,11 @@
 
 #include <list>
 
-#include <SFML/Graphics.hpp>
-
 #include "../Entities/Entity.hpp"
+#include "../Listeners/KeyPickedUpListener.hpp"
 #include "../Interfaces/LevelCompleteInterface.hpp"
-#include "../Listeners/RemoveLockListener.hpp"
 
-class Portal: public Entity, public LevelCompleteInterface, public RemoveLockListener
+class Portal: public Entity, public LevelCompleteInterface
 {
 	public:
 	/**
@@ -25,26 +23,19 @@ class Portal: public Entity, public LevelCompleteInterface, public RemoveLockLis
 	virtual ~Portal() {}
 
     /**
-     * @brief Add a color lock to the portal.
-     * @param color The color lock to add.
-     */
-    void addLock(sf::Color color);
-
-    /**
      * @brief This portal is colliding/interacting with an entity.
      * @param entity The entity this portal collided into.
      */
     virtual void collide(Entity& entity);
 
     /**
-     * @brief Remove a color lock from the portal.
-     * @param color The lock to remove.
+     * @brief A key was picked up.
      */
-    void removeLock(sf::Color color);
+    virtual void keyPickedUp();
 
 	private:
-    // These are the locks blocking the portal from being open.
-    std::list<sf::Color> mLocks;
+    // True if the portal is locked.
+    bool mIsLocked;
 };
 
 #endif /* PORTAL_HPP_ */

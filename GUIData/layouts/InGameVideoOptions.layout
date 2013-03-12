@@ -6,9 +6,11 @@
         <Property Name="TitlebarFont" Value="DejaVuSans-10" />
         <Property Name="SizingEnabled" Value="False" />
         <Property Name="TitlebarEnabled" Value="True" />
-        <Property Name="UnifiedAreaRect" Value="{{0.315304,0},{0.174677,0},{0.710812,0},{0.570508,0}}" />
+        <Property Name="UnifiedAreaRect" Value="{{0.0,0},{0.0,0},{0.371428,0},{0.349123,0}}" />
         <Property Name="DragMovingEnabled" Value="False" />
+        <Property Name="VerticalAlignment" Value="Centre" />
         <Property Name="CloseButtonEnabled" Value="False" />
+        <Property Name="HorizontalAlignment" Value="Centre" />
         <Window Type="TaharezLook/Combobox" Name="InGameVideoOptions/Resolution" >
             <Property Name="UnifiedAreaRect" Value="{{0.1,0},{0.05,0},{0.9,0},{0,50}}" />
             <Property Name="MaxEditTextLength" Value="1073741823" />

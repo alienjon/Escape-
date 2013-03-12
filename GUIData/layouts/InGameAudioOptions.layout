@@ -6,14 +6,16 @@
         <Property Name="TitlebarFont" Value="DejaVuSans-10" />
         <Property Name="SizingEnabled" Value="False" />
         <Property Name="TitlebarEnabled" Value="True" />
-        <Property Name="UnifiedAreaRect" Value="{{0.441211,0},{0.201245,0},{0.651172,0},{0.574077,0}}" />
+        <Property Name="UnifiedAreaRect" Value="{{0.000907441,0},{0,0},{0.22286,0},{0.381306,0}}" />
         <Property Name="DragMovingEnabled" Value="False" />
+        <Property Name="VerticalAlignment" Value="Centre" />
         <Property Name="CloseButtonEnabled" Value="False" />
+        <Property Name="HorizontalAlignment" Value="Centre" />
         <Window Type="TaharezLook/Slider" Name="InGameAudioOptions/MusicVolume" >
             <Property Name="Text" Value="Music Volume" />
             <Property Name="CurrentValue" Value="0" />
-            <Property Name="MaximumValue" Value="1" />
-            <Property Name="ClickStepSize" Value="0.01" />
+            <Property Name="MaximumValue" Value="100" />
+            <Property Name="ClickStepSize" Value="5" />
             <Property Name="UnifiedAreaRect" Value="{{0.872656,0},{0.0305766,0},{0.93125,0},{0.398525,0}}" />
         </Window>
         <Window Type="TaharezLook/StaticText" Name="InGameAudioOptions/MusicVolumeLabel" >
@@ -25,8 +27,8 @@
         </Window>
         <Window Type="TaharezLook/Slider" Name="InGameAudioOptions/SoundVolume" >
             <Property Name="CurrentValue" Value="0" />
-            <Property Name="MaximumValue" Value="1" />
-            <Property Name="ClickStepSize" Value="0.01" />
+            <Property Name="MaximumValue" Value="100" />
+            <Property Name="ClickStepSize" Value="5" />
             <Property Name="UnifiedAreaRect" Value="{{0.873474,0},{0.448697,0},{0.928161,0},{0.828267,0}}" />
         </Window>
         <Window Type="TaharezLook/StaticText" Name="InGameAudioOptions/SoundVolumeLabel" >
@@ -38,7 +40,8 @@
         </Window>
         <Window Type="TaharezLook/Button" Name="InGameAudioOptions/ApplyButton" >
             <Property Name="Text" Value="Apply" />
-            <Property Name="UnifiedAreaRect" Value="{{0.318114,0},{0.810848,0},{0.661864,0},{0.968894,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0,0},{0.810848,0},{0.469707,0},{0.968894,0}}" />
+            <Property Name="HorizontalAlignment" Value="Centre" />
         </Window>
     </Window>
 </GUILayout>

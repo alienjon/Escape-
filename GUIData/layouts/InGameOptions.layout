@@ -4,10 +4,13 @@
     <Window Type="TaharezLook/FrameWindow" Name="InGameOptionsMenu" >
         <Property Name="Text" Value="Game Options" />
         <Property Name="TitlebarFont" Value="DejaVuSans-10" />
+        <Property Name="SizingEnabled" Value="False" />
         <Property Name="TitlebarEnabled" Value="True" />
-        <Property Name="UnifiedAreaRect" Value="{{0.397266,0},{0.272603,0},{0.600391,0},{0.514385,0}}" />
+        <Property Name="UnifiedAreaRect" Value="{{0,0},{0,0},{0.217451,0},{0.297518,0}}" />
         <Property Name="DragMovingEnabled" Value="False" />
+        <Property Name="VerticalAlignment" Value="Centre" />
         <Property Name="CloseButtonEnabled" Value="False" />
+        <Property Name="HorizontalAlignment" Value="Centre" />
         <Window Type="TaharezLook/Button" Name="InGameOptionsMenu/ResumeButton" >
             <Property Name="Text" Value="Resume" />
             <Property Name="UnifiedAreaRect" Value="{{0.1,0},{0,10},{0.9,0},{0,35}}" />

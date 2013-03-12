@@ -33,6 +33,8 @@ GameScreen::GameScreen(unsigned int level, Game::Difficulty difficulty) : Screen
 	mOptionsWidget(0),
 	mVideoOptionsWidget(0),
 	mAudioOptionsWidget(0),
+	mLevelComplete(0),
+	mLevelCompleteText(0),
 	mResetView(false)
 {
 	// Determine the time multiplier.
@@ -77,27 +79,23 @@ GameScreen::GameScreen(unsigned int level, Game::Difficulty difficulty) : Screen
 		ERROR(e.what());
 	}
 
-	/* Load the in game menus */
+	/* Load the in game widgets */
 	mOptionsWidget = static_cast<CEGUI::FrameWindow*>(CEGUI::WindowManager::getSingleton().loadWindowLayout("InGameOptions.layout"));
-	mOptionsWidget->setSizingEnabled(false);
 	mOptionsWidget->setVisible(false);
 	CEGUI::System::getSingleton().getGUISheet()->addChildWindow(mOptionsWidget);
 
 	mVideoOptionsWidget = static_cast<CEGUI::FrameWindow*>(CEGUI::WindowManager::getSingleton().loadWindowLayout("InGameVideoOptions.layout"));
-	mVideoOptionsWidget->setSizingEnabled(false);
 	mVideoOptionsWidget->setVisible(false);
 	CEGUI::System::getSingleton().getGUISheet()->addChildWindow(mVideoOptionsWidget);
 
 	mAudioOptionsWidget = static_cast<CEGUI::FrameWindow*>(CEGUI::WindowManager::getSingleton().loadWindowLayout("InGameAudioOptions.layout"));
-	mAudioOptionsWidget->setSizingEnabled(false);
 	mAudioOptionsWidget->setVisible(false);
-	static_cast<CEGUI::Slider*>(mAudioOptionsWidget->getChild("InGameAudioOptions/MusicVolume"))->setMaxValue(100.f);
-	static_cast<CEGUI::Slider*>(mAudioOptionsWidget->getChild("InGameAudioOptions/MusicVolume"))->setClickStep(5.f);
-	static_cast<CEGUI::Slider*>(mAudioOptionsWidget->getChild("InGameAudioOptions/SoundVolume"))->setMaxValue(100.f);
-	static_cast<CEGUI::Slider*>(mAudioOptionsWidget->getChild("InGameAudioOptions/SoundVolume"))->setClickStep(5.f);
 	CEGUI::System::getSingleton().getGUISheet()->addChildWindow(mAudioOptionsWidget);
 
-	mUpdateWidgetPositions(); // Set the initial positions.
+	mLevelComplete = static_cast<CEGUI::FrameWindow*>(CEGUI::WindowManager::getSingleton().loadWindowLayout("LevelComplete.layout"));
+	mLevelComplete->setVisible(false);
+	mLevelCompleteText = mLevelComplete->getChild("LevelCompleteWidget/Text");
+	CEGUI::System::getSingleton().getGUISheet()->addChildWindow(mLevelComplete);
 
 	// Subscribe to the various widget interfaces.
 	mOptionsWidget->getChild("InGameOptionsMenu/ResumeButton")->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&GameScreen::_handlerCloseOptions, this));
@@ -108,6 +106,7 @@ GameScreen::GameScreen(unsigned int level, Game::Difficulty difficulty) : Screen
 	mAudioOptionsWidget->getChild("InGameAudioOptions/ApplyButton")->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&GameScreen::_handlerApplyAudioOptions, this));
 	mAudioOptionsWidget->getChild("InGameAudioOptions/MusicVolume")->subscribeEvent(CEGUI::Slider::EventValueChanged, CEGUI::Event::Subscriber(&GameScreen::_handlerUpdateMusicTextLevels, this));
 	mAudioOptionsWidget->getChild("InGameAudioOptions/SoundVolume")->subscribeEvent(CEGUI::Slider::EventValueChanged, CEGUI::Event::Subscriber(&GameScreen::_handlerUpdateSoundTextLevels, this));
+	mLevelComplete->getChild("LevelCompleteWidget/MainMenuButton")->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&GameScreen::_handlerMainMenu, this));
 
 	// Configure any non-CEGUI widgets.
 	mTimerWidget.addTimeUpListener(this);
@@ -130,16 +129,6 @@ GameScreen::~GameScreen()
 	// Delete the resolution items.
 	for(list<CEGUI::ListboxTextItem*>::const_iterator it(mResolutionOptions.begin()); it != mResolutionOptions.end(); ++it)
 		delete *it;
-}
-
-void GameScreen::mUpdateWidgetPositions()
-{
-	mOptionsWidget->setPosition(CEGUI::UVector2(CEGUI::UDim(0.35f, 0),CEGUI::UDim(0.25f, 0)));
-	mOptionsWidget->setSize(CEGUI::UVector2(CEGUI::UDim(0.35f, 0),CEGUI::UDim(0.3f, 0)));
-	mVideoOptionsWidget->setPosition(CEGUI::UVector2(CEGUI::UDim(0.35f, 0),CEGUI::UDim(0.25f, 0)));
-	mVideoOptionsWidget->setSize(CEGUI::UVector2(CEGUI::UDim(0.35f, 0),CEGUI::UDim(0.45f, 0)));
-	mAudioOptionsWidget->setPosition(CEGUI::UVector2(CEGUI::UDim(0.35f, 0),CEGUI::UDim(0.25f, 0)));
-	mAudioOptionsWidget->setSize(CEGUI::UVector2(CEGUI::UDim(0.35f, 0),CEGUI::UDim(0.45f, 0)));
 }
 
 bool GameScreen::_handlerShowAudioOptions(const CEGUI::EventArgs& eArgs)
@@ -241,9 +230,6 @@ bool GameScreen::_handlerApplyVideoOptions(const CEGUI::EventArgs& eArgs)
 
 		// Update the context.
 		mContextInterface->updateContext(s);
-
-		// Update the widget positions.
-		mUpdateWidgetPositions();
 	}
 
 	return true;
@@ -252,6 +238,7 @@ bool GameScreen::_handlerApplyVideoOptions(const CEGUI::EventArgs& eArgs)
 bool GameScreen::_handlerMainMenu(const CEGUI::EventArgs& eArgs)//@todo implement main menu
 {
 	distributeEvent(ACTION_QUIT);
+	mDone = true;
 	LOG("Main menu not yet implemented.");
 	return true;
 }
@@ -307,65 +294,9 @@ void GameScreen::eventOccurred(const string& eventId)
 {
 	string::size_type pos = 0;
 	string keyword = extractDataLine(eventId, pos, DELIMITER);
-	//@fixme need to re-implement gui here
-/*	if(false)//@fixme need to create an eventId for completing the level: event.getSource() == &mLevelCompleteWidget)
-	{
-		// If the old level completed, then load the next level.
-		if(mLevel->isDone())
-		{
-			// Unload the current level.
-			mLevel->removeEventListener(this);
-			mLevel->removeChangeScoreListener(this);
-			mLevel->removeTimeChangeListener(this);
-			delete mLevel;
 
-			// Increase the difficulty and go to the next level.
-			mLevel = new Level(++mDifficulty, mPlayer);
-			mLevel->addEventListener(this);
-			mLevel->addChangeScoreListener(this);
-			mLevel->addTimeChangeListener(this);
-
-		    // Reset the view.
-		    mResetView = true;//@fixme this isn't working.  Make sure the view is reset when a new level is loaded.
-
-			// Make sure the game is not paused.
-			mTimerWidget.stop();
-			mTimerWidget.start(mLevel->getMap().getComplexity() * mTimeMultiplier);//@todo remove when done
-			mIsPaused = false;
-		}
-		// If the old level didn't complete, then the level was lost.
-		else
-		{
-//			setActionEventId(ACTION_TO_MAINMENU);//@todo implement main menu.
-//			distributeActionEvent();
-			mDone = true;
-		}
-	}
-	else if(keyword == GAMEOPTIONS_RESUME)
-	{
-		mIsPaused = false;
-		mTimerWidget.unpause();
-		distributeEvent(ACTION_HIDECURSOR);
-	}
-	else if(keyword == GAMEOPTIONS_MAINMENU)
-	{
-		distributeEvent(ACTION_TO_MAINMENU);
-		mDone = true;
-	}
-	else if(keyword == GAMEOPTIONS_EXIT)
-	{
-		distributeEvent(ACTION_QUIT);
-		mDone = true;
-	}
-	// Now check for the id's.
-	else*/ if(keyword == ACTION_QUIT)
-		mDone = true;
-	else if(keyword == ACTION_TO_MAINMENU)
-	{
-		distributeEvent(ACTION_TO_MAINMENU);
-		mDone = true;
-	}
-	else if(keyword == ACTION_PAUSE)
+	// Check for the id's.
+	if(keyword == ACTION_PAUSE)
 		mIsPaused = true;
 	else if(keyword == ACTION_UNPAUSE)
 		mIsPaused = false;
@@ -420,7 +351,6 @@ void GameScreen::load(const sf::View& view)
 		mResolutionOptions.push_back(new CEGUI::ListboxTextItem("1920x1080", 6));
 		for(list<CEGUI::ListboxTextItem*>::const_iterator it(mResolutionOptions.begin()); it != mResolutionOptions.end(); ++it)
 		{
-			(*it)->setSelectionBrushImage("TaharezLook", "MultiListSelectionBrush");//@todo needed?
 			cbox->addItem(*it);
 		}
 		cbox->setHeight(CEGUI::UDim(0.75f, 0));
@@ -498,11 +428,6 @@ void GameScreen::load(const sf::View& view)
 
 	}
 
-    // Add the level complete widget.
-    //@todo implement level complete
-//    mLevelCompleteWidget.setVisible(false);
-//    mBase.add(&mLevelCompleteWidget);
-
     // Load the level at the current difficulty.
     mLevel = new Level(mDifficulty, mPlayer);
     mLevel->addChangeScoreListener(this);
@@ -523,44 +448,40 @@ void GameScreen::load(const sf::View& view)
 
 void GameScreen::logic(int delta)
 {
-	// @todo temporary hack for the timer widget logic (need to implement full gui)
+	// Perform widget logic.
 	mTimerWidget.logic();
 	mScoreWidget.logic();
 
-	// If time is up, then the player has lost...
-	//@todo implement level complete widget
-//	if(mTimerWidget.getTime() == 0 && !mLevel->isDone() && !mLevelCompleteWidget.isVisible())
-//	{
-//		// Pause the game.
-//		mTimerWidget.stop();
-//		mIsPaused = true;
-//
-//		// Display the level complete widget, but don't add any bonuses.
-//		double bonusMod = 0;
-//		unsigned int bonus = 0;
-//		unsigned int timeBonus = mTimerWidget.getTime() / (1000000 * mLevel->getMap().getComplexity());
-//		mLevelCompleteWidget.display("LEVEL FAILED", timeBonus, timeBonus, mLevel->getMap().getComplexity(), mLevel->getMap().getComplexity(), mDifficulty, (double)bonusMod, mScore, bonus, mScore + bonus);//@todo remove when done
-//		mLevelCompleteWidget.setPosition(mBase.getWidth() / 2 - mLevelCompleteWidget.getWidth() / 2, mBase.getHeight() / 2 - mLevelCompleteWidget.getHeight() / 2);
-//	}
-//	// ... or if the next level should be loaded.
-//	else if(mLevel->isDone() && !mLevelCompleteWidget.isVisible())
-//	{
-//		// Pause the game.
-//		mTimerWidget.pause();
-//		mIsPaused = true;
-//
-//		// Add the rest of the counter to the score and set the final score.
-//		mScore = (mScore + mCounter < 0) ? 0 : mScore + mCounter;
-//		mCounter = 0;
-//
-//		// Display the level complete widget.
-//		double bonusMod = (mDifficulty / 10.0) + 1;
-//		unsigned int timeBonus = mTimerWidget.getTime() / (1000000 * mLevel->getMap().getComplexity());
-//		unsigned int bonus = (timeBonus) * bonusMod;
-//		mLevelCompleteWidget.display("LEVEL COMPLETE", timeBonus, timeBonus, mLevel->getMap().getComplexity(), mLevel->getMap().getComplexity(), mDifficulty, (double)bonusMod, mScore, bonus, mScore + bonus);
-//		mScoreLabel.setCaption(toString(mScore += bonus));
-//		mLevelCompleteWidget.setPosition(mBase.getWidth() / 2 - mLevelCompleteWidget.getWidth() / 2, mBase.getHeight() / 2 - mLevelCompleteWidget.getHeight() / 2);
-//	}
+	// If the level completed then display the score.
+	if(mLevel->isDone())
+	{
+		// Pause the game.
+		mTimerWidget.pause();
+		mIsPaused = true;
+
+		// Add the rest of the counter to the score and set the final score.
+		mScoreWidget.setScore(mScoreWidget.getScore() + mScoreWidget.getCounter());
+
+		// Display the level complete widget.
+		double bonusMod = (mDifficulty / 10.0) + 1;
+		unsigned int timeBonus = mTimerWidget.getTime() / (1000000 * mLevel->getMap().getComplexity());
+		unsigned int bonus = (timeBonus) * bonusMod;
+
+		// Display the level complete widget, but don't add any bonuses.
+		string txt =
+				string("LEVEL COMPLETED\n\n") +
+				string("Time Remaining: ") + toString(mTimerWidget.getTime()) + "\n" +
+				string("Maze Complexity: ") + toString(mLevel->getMap().getComplexity()) + "\n" +
+				string("Difficulty: ") + toString(mDifficulty) + "\n" +
+				string("Base Score: ") + toString(mScoreWidget.getScore()) + "\n" +
+				string("Bonus Score: ") + toString(bonus) + "\n" +
+				string("Total Score: ") + toString(mScoreWidget.getScore());
+		mLevelCompleteText->setText(txt);
+//@todo Need to implement the level finishing when the player collides with the door while holding the key
+		// Show the cursor and the widget.
+		distributeEvent(ACTION_SHOWCURSOR);
+		mLevelComplete->setVisible(true);
+	}
 
     // Only do game logic if the game is not paused.
     if(!mIsPaused)
@@ -569,4 +490,22 @@ void GameScreen::logic(int delta)
 
 void GameScreen::timeUp()
 {
+	// Pause the game.
+	mTimerWidget.stop();
+	mIsPaused = true;
+
+	// Display the level complete widget, but don't add any bonuses.
+	string txt =
+			string("LEVEL FAILED\n\n") +
+			string("Time Remaining: ") + toString(mTimerWidget.getTime()) + "\n" +
+			string("Maze Complexity: ") + toString(mLevel->getMap().getComplexity()) + "\n" +
+			string("Difficulty: ") + toString(mDifficulty) + "\n" +
+			string("Base Score: ") + toString(mScoreWidget.getScore()) + "\n" +
+			string("Bonus Score: 0\n") +
+			string("Total Score: ") + toString(mScoreWidget.getScore());
+	mLevelCompleteText->setText(txt);
+
+	// Show the cursor and the widget.
+	distributeEvent(ACTION_SHOWCURSOR);
+	mLevelComplete->setVisible(true);
 }

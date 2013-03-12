@@ -41,89 +41,84 @@ Level::Level(unsigned int difficulty, Player& player) :
 	mFloatingTextTimer.start();
 
 	// Calculate the entrance position.
-	mPortal.setPosition((((mMap.getCellWidth() / 2) * MAP_CELL_SIDE) + (MAP_CELL_SIDE / 2)) * mMap.getTileset().getWidth() - (mPortal.getWidth() / 2),
-						(((mMap.getCellHeight()/ 2) * MAP_CELL_SIDE) + (MAP_CELL_SIDE / 2)) * mMap.getTileset().getHeight() - (mPortal.getHeight() / 2));
 	mPortal.addLevelCompleteListener(this);
 	mEntities.push_back(&mPortal);
 
 	// Configure and setup the player.
-	mPlayer.setPosition((mPortal.getX() + (mPortal.getWidth()  / 2)) - (mPlayer.getWidth()  / 2),
-						(mPortal.getY() + (mPortal.getHeight() / 2)) - (mPlayer.getHeight() / 2));
 	mPlayer.addDeathListener(this);
 	mPlayer.addChangeScoreListener(this);
-	mPlayer.removeAllLocks();
 	mEntities.push_back(&mPlayer);
 
-	/*
-	 * Set the initial locks on the player.
-	 * @todo What if the timer counts down, if it reaches zero the player loses the
-	 * level, but opening locks adds time (maybe for easy/medium?)
-	 */
-	sf::Color topLeft = sf::Color::Blue, topRight = sf::Color::Cyan, botLeft = sf::Color::Yellow, botRight = sf::Color::Green;
-	mPortal.addLock(topLeft);
-	mPortal.addLock(topRight);
-	mPortal.addLock(botLeft);
-	mPortal.addLock(botRight);
+	// Configure and setup the key.
+	KeyEntity* key = new KeyEntity();
+
 
 	// Populate the map with entities, etc...
 	unsigned int width = mMap.getCellWidth(),
 				 height= mMap.getCellHeight(),
 				 x_offset = (MAP_CELL_SIDE / 2) * mMap.getTileset().getWidth(),
 				 y_offset = (MAP_CELL_SIDE / 2) * mMap.getTileset().getHeight();
+
+	// First, place the portal at a random location.
+	int portal_x = random((unsigned int)0, width), portal_y = random((unsigned int)0, height);
+	mPortal.setPosition(portal_x * MAP_CELL_SIDE * mMap.getTileset().getWidth() + x_offset,
+						portal_y * MAP_CELL_SIDE * mMap.getTileset().getHeight()+ y_offset);
+
+	// Next, place the player at a random starting location.
+	int player_x = random((unsigned int)0, width), player_y = random((unsigned int)0, height);
+	mPlayer.setPosition(player_x * MAP_CELL_SIDE * mMap.getTileset().getWidth() + x_offset,
+						player_y * MAP_CELL_SIDE * mMap.getTileset().getHeight()+ y_offset);
+
+	// Next, place the key at a random location.
+	key->setPosition(0, 0);
+	int key_x = random((unsigned int)0, width), key_y = random((unsigned int)0, height);
+
+	// Finally, populate the rest of the map with stuff.
 	for(unsigned int h = 0; h != height; ++h)
 	{
 		for(unsigned int w = 0; w != width; ++w)
 		{
+			// If the current cell currently holds either the portal, player's starting location, or key, then continue in the loop.
+			if((w == portal_x && h == portal_y) ||
+			   (w == player_x && h == player_y) ||
+			   (w == key_x    && h == key_y))
+				continue;
+
 			// Get the x and y locations for this entity.
 			int x = (w * MAP_CELL_SIDE * mMap.getTileset().getWidth()) + x_offset,
 				y = (h * MAP_CELL_SIDE * mMap.getTileset().getHeight()) + y_offset;
 
 			// A likely entity to be created.
 			Entity* entity = 0;
-
-			// If this is one of the 4 corners, add a key.
-			if(w == 0 && h == 0) // Top left corner.
-				entity = new KeyEntity(topLeft);
-			else if(w == 0 && h == height - 1) // Top right corner.
-				entity = new KeyEntity(topRight);
-			else if(w == width - 1 && h == 0) // Bottom left corner.
-				entity = new KeyEntity(botLeft);
-			else if(w == width - 1 && h == height - 1) // Bottom right corner.
-				entity = new KeyEntity(botRight);
-			else if(w == width / 2 && h == height / 2) // Skip the portal cell.
-			{}
+			/**
+			 * @todo Other items?
+			 * @todo finalize colors
+			 * @todo finalize which power ups I'm going to keep
+			 */
+			int n = random(1, 100);
+			if(n <= 10)
+				entity = new SurprisePickup(*this);
+			else if(n <= 13)
+			{
+				entity = new Pickup(75, sf::Color::Magenta, Pickup::SMALL);
+				mPickups.push_back(entity);
+			}
+			else if(n <= 20)
+				entity = new Pickup(-50, sf::Color::Red, Pickup::LARGE);
+			else if(n <= 23)
+			{
+				TimeChange* tmp = new TimeChange();
+				tmp->addTimeChangeListener(this);
+				entity = tmp;
+			}
+			else if(n <= 26)
+				entity = new SpeedChange(0.5, mPlayer);
+			else if(n <= 35)
+				entity = new SpeedChange(1.75, mPlayer);
 			else
 			{
-				/**
-				 * @todo Other items?
-				 * @todo finalize colors
-				 * @todo finalize which power ups I'm going to keep
-				 */
-				int n = random(1, 100);
-				if(n <= 10)
-					entity = new SurprisePickup(*this);
-				else if(n <= 13)
-				{
-					entity = new Pickup(75, sf::Color::Magenta, Pickup::SMALL);
-					mPickups.push_back(entity);
-				}
-				else if(n <= 20)
-					entity = new Pickup(-50, sf::Color::Red, Pickup::LARGE);
-				else if(n <= 23)
-				{
-					TimeChange* tmp = new TimeChange();
-					tmp->addTimeChangeListener(this);
-					entity = tmp;
-				}
-				else if(n <= 26)
-					entity = new SpeedChange(0.5, mPlayer);
-				else if(n <= 35)
-					entity = new SpeedChange(1.75, mPlayer);
-				else
-				{
-					entity = new Pickup(5, sf::Color::Magenta, Pickup::MEDIUM);
-					mPickups.push_back(entity);
-				}
+				entity = new Pickup(5, sf::Color::Magenta, Pickup::MEDIUM);
+				mPickups.push_back(entity);
 			}
 
 			// If an entity was created, configure it.
@@ -157,8 +152,6 @@ void Level::mAddEntity(Entity* entity)
 {
 	entity->addDeathListener(this);
 	entity->addChangeScoreListener(this);
-	entity->addAddLockListener(&mPlayer);
-	entity->addRemoveLockListener(&mPortal);
 	entity->addFloatingTextListener(this);
 	mEntities.push_back(entity);
 }
@@ -168,8 +161,6 @@ void Level::mRemoveEntity(Entity* entity)
 	mPickups.remove(entity);
 	entity->removeDeathListener(this);
 	entity->removeChangeScoreListener(this);
-	entity->removeAddLockListener(&mPlayer);
-	entity->removeRemoveLockListener(&mPortal);
 	entity->removeFloatingTextListener(this);
 	mEntities.remove(entity);
 	delete entity;

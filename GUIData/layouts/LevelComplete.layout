@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<GUILayout >
+    <Window Type="TaharezLook/FrameWindow" Name="LevelCompleteWidget" >
+        <Property Name="FrameEnabled" Value="False" />
+        <Property Name="TitlebarFont" Value="DejaVuSans-10" />
+        <Property Name="SizingEnabled" Value="False" />
+        <Property Name="TitlebarEnabled" Value="False" />
+        <Property Name="UnifiedAreaRect" Value="{{0,0},{-0.00155039,0},{0.235027,0},{0.390698,0}}" />
+        <Property Name="DragMovingEnabled" Value="False" />
+        <Property Name="VerticalAlignment" Value="Centre" />
+        <Property Name="CloseButtonEnabled" Value="False" />
+        <Property Name="HorizontalAlignment" Value="Centre" />
+        <Window Type="TaharezLook/Button" Name="LevelCompleteWidget/MainMenuButton" >
+            <Property Name="Text" Value="Main Menu" />
+            <Property Name="UnifiedAreaRect" Value="{{0,0},{0.838268,0},{0.597454,0},{0.942132,0}}" />
+            <Property Name="HorizontalAlignment" Value="Centre" />
+        </Window>
+        <Window Type="TaharezLook/StaticText" Name="LevelCompleteWidget/Text" >
+            <Property Name="UnifiedAreaRect" Value="{{0,0},{-0.0871794,0},{0.884001,0},{0.665273,0}}" />
+            <Property Name="VerticalAlignment" Value="Centre" />
+            <Property Name="HorizontalAlignment" Value="Centre" />
+        </Window>
+    </Window>
+</GUILayout>

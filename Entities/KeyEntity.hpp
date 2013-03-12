@@ -7,10 +7,10 @@
 #ifndef KEY_HPP_
 #define KEY_HPP_
 
-#include <SFML/Graphics.hpp>
+#include <list>
 
 #include "../Entities/Entity.hpp"
-#include "../Interfaces/RemoveLockInterface.hpp"
+#include "../Listeners/KeyPickedUpListener.hpp"
 #include "../Engine/Timer.hpp"
 
 class Level;
@@ -23,9 +23,14 @@ class KeyEntity : public Entity
 	public:
 	/**
 	 * @brief Default constructor.
-	 * @param color The color of this key.
 	 */
-	KeyEntity(sf::Color color);
+	KeyEntity();
+
+    /**
+     * @brief Add a KeyPickedUpListener.
+     * @param listener The listener.
+     */
+    void addKeyPickedUpListener(KeyPickedUpListener* listener);
 
     /**
      * @brief This KeyEntity is colliding/interacting with an entity.
@@ -40,18 +45,24 @@ class KeyEntity : public Entity
 	 */
 	virtual void logic(Level& level, int delta);
 
-	private:
-	// The key's color.
-	sf::Color mColor;
+	/**
+	 * @brief Remove a KeyPickedUpListener.
+	 * @param listener The listener to remove.
+	 */
+	void removeKeyPickedUpListener(KeyPickedUpListener* listener);
 
+	private:
 	// If not growing, then it is shrinking.
 	bool mIsGrowing;
 
 	// The drawing area of the entity.
-	sf::Vector2f mSize;
+	sf::Vector2f mSize;//@todo check the growing/shrinking of the keys.
 
 	// The animation timer.
 	Timer mTimer;
+
+	// The KeyPickedUpListener's.
+	std::list<KeyPickedUpListener*> mKeyPickedUpListeners;
 };
 
 #endif /* KEY_HPP_ */
