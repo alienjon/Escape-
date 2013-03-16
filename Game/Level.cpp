@@ -51,7 +51,7 @@ Level::Level(unsigned int difficulty, Player& player) :
 
 	// Configure and setup the key.
 	KeyEntity* key = new KeyEntity();
-
+	mEntities.push_back(key);
 
 	// Populate the map with entities, etc...
 	unsigned int width = mMap.getCellWidth(),
@@ -60,18 +60,29 @@ Level::Level(unsigned int difficulty, Player& player) :
 				 y_offset = (MAP_CELL_SIDE / 2) * mMap.getTileset().getHeight();
 
 	// First, place the portal at a random location.
-	int portal_x = random((unsigned int)0, width), portal_y = random((unsigned int)0, height);
+	unsigned int portal_x = random((unsigned int)0, width), portal_y = random((unsigned int)0, height);
 	mPortal.setPosition(portal_x * MAP_CELL_SIDE * mMap.getTileset().getWidth() + x_offset,
 						portal_y * MAP_CELL_SIDE * mMap.getTileset().getHeight()+ y_offset);
 
 	// Next, place the player at a random starting location.
-	int player_x = random((unsigned int)0, width), player_y = random((unsigned int)0, height);
+	unsigned int player_x = 0, player_y = 0;
+	do
+	{
+		player_x = random((unsigned int)0, width);
+		player_y = random((unsigned int)0, height);
+	}while(player_x != portal_x && player_y != portal_y);
 	mPlayer.setPosition(player_x * MAP_CELL_SIDE * mMap.getTileset().getWidth() + x_offset,
 						player_y * MAP_CELL_SIDE * mMap.getTileset().getHeight()+ y_offset);
 
 	// Next, place the key at a random location.
-	key->setPosition(0, 0);
-	int key_x = random((unsigned int)0, width), key_y = random((unsigned int)0, height);
+	unsigned int key_x = 0, key_y = 0;
+	do
+	{
+		key_x = random((unsigned int)0, width);
+		key_y = random((unsigned int)0, height);
+	}while((key_x != player_x && key_y != player_y) && (key_x != portal_x && key_y != portal_y));
+	key->setPosition(key_x * MAP_CELL_SIDE * mMap.getTileset().getWidth() + x_offset,
+					 key_y * MAP_CELL_SIDE * mMap.getTileset().getHeight()+ y_offset);
 
 	// Finally, populate the rest of the map with stuff.
 	for(unsigned int h = 0; h != height; ++h)

@@ -359,37 +359,37 @@ void GameScreen::load(const sf::View& view)
 		{
 			case 640:
 			{
-				cbox->setItemSelectState((unsigned int)0, true);
+				cbox->setItemSelectState((std::size_t)0, true);
 				break;
 			}
 			case 1024:
 			{
-				cbox->setItemSelectState((unsigned int)2, true);
+				cbox->setItemSelectState((std::size_t)2, true);
 				break;
 			}
 			case 1280:
 			{
-				cbox->setItemSelectState((unsigned int)3, true);
+				cbox->setItemSelectState((std::size_t)3, true);
 				break;
 			}
 			case 1366:
 			{
-				cbox->setItemSelectState((unsigned int)4, true);
+				cbox->setItemSelectState((std::size_t)4, true);
 				break;
 			}
 			case 1440:
 			{
-				cbox->setItemSelectState((unsigned int)5, true);
+				cbox->setItemSelectState((std::size_t)5, true);
 				break;
 			}
 			case 1920:
 			{
-				cbox->setItemSelectState((unsigned int)6, true);
+				cbox->setItemSelectState((std::size_t)6, true);
 				break;
 			}
 			default:
 			{
-				cbox->setItemSelectState((unsigned int)1, true);
+				cbox->setItemSelectState((std::size_t)1, true);
 				break;
 			}
 		}
