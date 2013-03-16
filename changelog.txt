@@ -26,7 +26,7 @@ Audio
 
 Gameplay
 *	Add point +/- pickups
-	review speed - too fast right now (collide through walls)
+?	review speed - too fast right now (collide through walls)
 	review other pick ups (maybe a multiplier, speed)
 *	remove items (or simplify)
 	add effects (picking up keys - what the keys do, countdown - sound and big numbers, effects for increasing/decreasing score)

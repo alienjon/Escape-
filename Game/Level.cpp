@@ -265,7 +265,6 @@ void Level::logic(sf::View& camera, unsigned int delta)
     }
 
     // Perform floating text logic if the interval is passed.
-    //@todo turn floating text into actions?
     if(mFloatingTextTimer.getTime() >= FLOATINGTEXT_TIMER_INTERVAL)
     {
     	list<list<sf::Text>::iterator > removeList;

@@ -136,8 +136,8 @@ class Creature : public Entity, public PhaseMovementListener
     bool mUp, mDown, mLeft, mRight;
 
     private:
-    // The speed at which this creature is moving. (1.0 is 100% speed, but higher is faster, etc...)
-    double mSpeed;
+    double mSpeed,// The speed at which this creature is moving. (1.0 is 100% speed, but higher is faster, etc...)
+    	   mCurrentSpeed;// The current speed of the creature (creatures move slowly at first until they reach their regular speed.
 
     // True if the creature is moving.
     Timer mMovementTimer;

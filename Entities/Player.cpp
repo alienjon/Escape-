@@ -9,8 +9,6 @@
 #include "../Game/Keywords.hpp"
 #include "../Engine/VideoManager.hpp"
 
-using std::list;
-
 Player::Player() :
 	mHasInput(true)
 {

@@ -15,8 +15,7 @@ using std::list;
 
 const float KEYENTITY_MAXSIZE = 35.f;
 const float KEYENTITY_MINSIZE = 5.f;
-#include <iostream>
-using namespace std;//@todo remove
+
 KeyEntity::KeyEntity() :
 	mIsGrowing(true)
 {

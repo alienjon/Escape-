@@ -18,10 +18,12 @@ using std::list;
 using std::queue;
 
 const unsigned int CREATURE_MOVEMENT_DISTANCE = 1;
+const double CREATURE_SPEED_INCREASE_STEP = 0.045;
 
 Creature::Creature() :
 	mUp(false), mDown(false), mLeft(false), mRight(false),
 	mSpeed(1.f),
+	mCurrentSpeed(0.f),
 	mMovable(true)
 {
 	mType = ENTITY_CREATURE;
@@ -51,10 +53,15 @@ void Creature::mMovedToWaypoint()
     for(list<CreatureWaypointListener*>::iterator it = mWaypointListeners.begin(); it != mWaypointListeners.end(); it++)
         (*it)->creatureMoved(*this);
 }
-#include <iostream>
-using namespace std;//@todo remove
+
 void Creature::logic(Level& level, int delta)
 {
+	// If the creature is moving then get it up to speed, otherwise make sure it is stopped.
+	if(mUp || mDown || mLeft || mRight)
+		mCurrentSpeed = (mCurrentSpeed + CREATURE_SPEED_INCREASE_STEP > mSpeed) ? mSpeed : mCurrentSpeed + CREATURE_SPEED_INCREASE_STEP;
+	else
+		mCurrentSpeed = 0;
+
 	// If the creature is moving towards a waypoint, determine the direction to move.
 	if(!mWaypoints.empty())
 	{
@@ -75,7 +82,7 @@ void Creature::logic(Level& level, int delta)
 		// If we're moving, then do the generic stuff.
 		if(mMovementTimer.getTime() > 15)
 		{
-			float dist = getSpeed() * delta;
+			float dist = mCurrentSpeed * delta;
 			if(mUp)
 			{
 				setY(getY() - dist);
