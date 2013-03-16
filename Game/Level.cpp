@@ -103,9 +103,7 @@ Level::Level(unsigned int difficulty, Player& player) :
 			// A likely entity to be created.
 			Entity* entity = 0;
 			/**
-			 * @todo Other items?
-			 * @todo finalize colors
-			 * @todo finalize which power ups I'm going to keep
+			 * @todo items
 			 */
 			int n = random(1, 100);
 			if(n <= 10)

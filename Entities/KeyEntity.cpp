@@ -13,11 +13,13 @@
 
 using std::list;
 
-const float KEYENTITY_MAXSIZE = 35.f;
-const float KEYENTITY_MINSIZE = 5.f;
+const float KEYENTITY_MAXSIZE = 3.f;
+const float KEYENTITY_MINSIZE = 0.5f;
+const float KEYENTITY_SIZINGSTEP = 0.03;
 
 KeyEntity::KeyEntity() :
-	mIsGrowing(true)
+	mIsGrowing(true),
+	mSize(1.f, 1.f)
 {
 	mType = ENTITY_KEY;
 	mTimer.start();
@@ -51,7 +53,7 @@ void KeyEntity::collide(Entity& entity)
 	}
 }
 
-void KeyEntity::logic(Level& level, int delta)//@todo Update code to enlarge and shrink the keys
+void KeyEntity::logic(Level& level, int delta)
 {
 	// Perform entity logic.
 	Entity::logic(level, delta);
@@ -61,8 +63,8 @@ void KeyEntity::logic(Level& level, int delta)//@todo Update code to enlarge and
 	{
 		if(mIsGrowing)
 		{
-			mSize.x += 0.2;
-			mSize.y += 0.2;
+			mSize.x += KEYENTITY_SIZINGSTEP;
+			mSize.y += KEYENTITY_SIZINGSTEP;
 			if(mSize.x >= KEYENTITY_MAXSIZE)
 			{
 				mSize.x = mSize.y = KEYENTITY_MAXSIZE;
@@ -71,8 +73,8 @@ void KeyEntity::logic(Level& level, int delta)//@todo Update code to enlarge and
 		}
 		else
 		{
-			mSize.x -= 0.2;
-			mSize.y -= 0.2;
+			mSize.x -= KEYENTITY_SIZINGSTEP;
+			mSize.y -= KEYENTITY_SIZINGSTEP;
 			if(mSize.x <= KEYENTITY_MINSIZE)
 			{
 				mSize.x = mSize.y = KEYENTITY_MINSIZE;
@@ -81,6 +83,7 @@ void KeyEntity::logic(Level& level, int delta)//@todo Update code to enlarge and
 		}
 		sf::Vector2f pos = getPosition();
 		setPosition(pos.x, pos.y);
+		mSprite.setScale(mSize);
 		mTimer.start();
 	}
 }

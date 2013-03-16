@@ -86,9 +86,6 @@ class Map : public sf::Drawable
     virtual unsigned int getWidth() const;
 
     private:
-    // The walls and collisions.@todo remove?
-//    std::vector<std::pair<sf::Sprite, CollisionArea> > mMap;
-
     // The visual map.
     sf::Texture mMapTexture;
     sf::Sprite mMapSprite;

@@ -172,18 +172,6 @@ class Entity : public ActionInterface, public ChangeScoreInterface, public Float
     virtual void logic(Level& level, int delta);
 
     /**
-     * @brief Pickup an item.
-     * @param item The item to pickup.
-     * @return True if the item was picked up successfully.
-     * @note Used for the player.
-     * @todo remove?
-     */
-    virtual bool pickup(Item& item)
-    {
-    	return false;
-    }
-
-    /**
      * @brief Remove a death listener.
      * @param listener The listener to add.
      */

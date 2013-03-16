@@ -41,14 +41,10 @@ class MoveToAction : public Action, public CreatureWaypointListener
     virtual void creatureMoved(Creature& creature);
 
     protected:
-    /**
-     * The creature to move.
-     */
+    // The creature to move.
     Creature& mCreature;
 
-    /**
-     * The point to move to.
-     */
+    // The point to move to.
     sf::Vector2f mLoc;
 };
 

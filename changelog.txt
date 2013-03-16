@@ -28,8 +28,13 @@ Gameplay
 *	Add point +/- pickups
 ?	review speed - too fast right now (collide through walls)
 	review other pick ups (maybe a multiplier, speed)
+		Make everything a single 'switcher' that will cycle through all possible effects?
 *	remove items (or simplify)
 	add effects (picking up keys - what the keys do, countdown - sound and big numbers, effects for increasing/decreasing score)
+*		Make keys enlarge and shrink
+		Add effect to show that the player has the key (?key lifts off maze and moves to side of the screen/near timer?)
+		Add effect for when the timer is below 10 seconds (numbers grow and then shrink slowly over the course of the second - change color to red?)
+		Add effect for when things are picked up
 *	make sure exiting at end of level works (it currently does not)
 *	Implement better widgets to display game info (score, remaining time, other? (maybe currently active effects?))
 *	Check player speed (test faster/slower?)
