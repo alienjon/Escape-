@@ -52,7 +52,7 @@ Level::Level(unsigned int difficulty, Player& player) :
 	// Configure and setup the key.
 	KeyEntity* key = new KeyEntity();
 	key->addKeyPickedUpListener(&mPortal);
-	mEntities.push_back(key);
+	mAddEntity(key);
 
 	// Populate the map with entities, etc...
 	unsigned int width = mMap.getCellWidth(),
