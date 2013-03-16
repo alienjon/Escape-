@@ -51,6 +51,7 @@ Level::Level(unsigned int difficulty, Player& player) :
 
 	// Configure and setup the key.
 	KeyEntity* key = new KeyEntity();
+	key->addKeyPickedUpListener(&mPortal);
 	mEntities.push_back(key);
 
 	// Populate the map with entities, etc...
@@ -60,7 +61,7 @@ Level::Level(unsigned int difficulty, Player& player) :
 				 y_offset = (MAP_CELL_SIDE / 2) * mMap.getTileset().getHeight();
 
 	// First, place the portal at a random location.
-	unsigned int portal_x = random((unsigned int)0, width), portal_y = random((unsigned int)0, height);
+	unsigned int portal_x = random((unsigned int)0, width-1), portal_y = random((unsigned int)0, height-1);
 	mPortal.setPosition(portal_x * MAP_CELL_SIDE * mMap.getTileset().getWidth() + x_offset,
 						portal_y * MAP_CELL_SIDE * mMap.getTileset().getHeight()+ y_offset);
 
@@ -68,8 +69,8 @@ Level::Level(unsigned int difficulty, Player& player) :
 	unsigned int player_x = 0, player_y = 0;
 	do
 	{
-		player_x = random((unsigned int)0, width);
-		player_y = random((unsigned int)0, height);
+		player_x = random((unsigned int)0, width-1);
+		player_y = random((unsigned int)0, height-1);
 	}while(player_x != portal_x && player_y != portal_y);
 	mPlayer.setPosition(player_x * MAP_CELL_SIDE * mMap.getTileset().getWidth() + x_offset,
 						player_y * MAP_CELL_SIDE * mMap.getTileset().getHeight()+ y_offset);
@@ -78,8 +79,8 @@ Level::Level(unsigned int difficulty, Player& player) :
 	unsigned int key_x = 0, key_y = 0;
 	do
 	{
-		key_x = random((unsigned int)0, width);
-		key_y = random((unsigned int)0, height);
+		key_x = random((unsigned int)0, width-1);
+		key_y = random((unsigned int)0, height-1);
 	}while((key_x != player_x && key_y != player_y) && (key_x != portal_x && key_y != portal_y));
 	key->setPosition(key_x * MAP_CELL_SIDE * mMap.getTileset().getWidth() + x_offset,
 					 key_y * MAP_CELL_SIDE * mMap.getTileset().getHeight()+ y_offset);
@@ -296,13 +297,6 @@ void Level::logic(sf::View& camera, unsigned int delta)
 	if(center.y + half.y > mMap.getHeight())
 		center.y = mMap.getHeight() - half.y;
 	camera.setCenter(center);
-}
-
-
-
-void Level::playerFoundExit()
-{
-	mIsDone = true;
 }
 
 void Level::teleportPlayer()

@@ -13,7 +13,7 @@
 #include "../Listeners/KeyPickedUpListener.hpp"
 #include "../Interfaces/LevelCompleteInterface.hpp"
 
-class Portal: public Entity, public LevelCompleteInterface
+class Portal: public Entity, public KeyPickedUpListener, public LevelCompleteInterface
 {
 	public:
 	/**

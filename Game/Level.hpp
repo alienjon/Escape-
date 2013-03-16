@@ -112,11 +112,6 @@ class Level : public ActionInterface, public ChangeScoreInterface, public Change
     virtual void logic(sf::View& camera, unsigned int delta);
 
     /**
-     * @brief Called when the player finds the exit.
-     */
-    void playerFoundExit();
-
-    /**
      * @brief Teleport the player to a random position within the map.
      * @note As the keys are definitely in the corners, the player will be at least 1 cell in on all sides.
      */
