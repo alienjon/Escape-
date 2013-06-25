@@ -7,9 +7,11 @@
 #include "Player.hpp"
 
 #include "../Game/Keywords.hpp"
-#include "../Engine/VideoManager.hpp"
+
+using std::list;
 
 Player::Player() :
+	Creature(IMAGE_PLAYER),
 	mHasInput(true)
 {
     // This is the player.
@@ -17,10 +19,6 @@ Player::Player() :
 
     // The player moves at a normal speed.
     setSpeed(1.f);
-
-    // Setup the player's size.
-	mSprite.addFrame(VideoManager::getTexture(IMAGE_PLAYER));
-	mSprite.setOrigin(getWidth() / 2, getHeight() / 2);
 }
 
 void Player::collide(Entity& entity)
@@ -48,6 +46,7 @@ bool Player::handleInput(const sf::Event& event)
 			mLeft = true;
 		if(event.key.code == sf::Keyboard::Right)
 			mRight = true;
+		mUpdateFacingAnimation();
 		return true;
 	}
 	else if(event.type == sf::Event::KeyReleased)
@@ -60,6 +59,7 @@ bool Player::handleInput(const sf::Event& event)
 			mLeft = false;
 		if(event.key.code == sf::Keyboard::Right)
 			mRight = false;
+		mUpdateFacingAnimation();
 		return true;
 	}
 

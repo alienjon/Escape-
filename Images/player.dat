@@ -1,0 +1,26 @@
+# The player.dat file contains the animation image information for the player.
+# Each empty line and lines beginning with '#' are ignored.
+# The following lines should include the following:
+# file={image}:width:height -> Right now only one image for the player is allowed.  'image' is relative to the game directory.
+# The width:height is the size of the player image (all images must be the same size)
+# The order of ID order of subimages within the meta image starts with 1 at the top left and sequentially left to right and then the next line.
+# The file will load as the meta-image. 
+# Numbers 0-8 are the 9 directions the player can face going in clockwise order according to the following
+# 0 = neutral (no direction); 1 = up; 2 = upright; 3 = right; 4 = downright; 5 = down; 6 = downleft; 7 = left; 8 = upleft
+# Each image line is a colon delimited list of the positions for each image within the meta image.
+#
+# Things to note:
+# The file image is a sprite sheet that should contain all images for a single creature.
+# The animation speed is a uniform delay between every image in the sprite sheet.
+# The size of a single frame is uniform throughout the sprite sheet.
+# There need to be exactly 9 images (0-8), otherwise a certain animation won't display.
+file=Images/player.png:300:64:64
+0=0
+1=1
+2=2
+3=3
+4=4
+5=5
+6=6
+7=7
+8=8

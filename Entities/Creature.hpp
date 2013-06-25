@@ -9,6 +9,7 @@
 
 #include <list>
 #include <queue>
+#include <string>
 
 #include <SFML/System.hpp>
 
@@ -117,10 +118,12 @@ class Creature : public Entity, public PhaseMovementListener
      */
     virtual void stop();
 
+    protected:
     /**
      * @brief Construct a creature.
+     * @param imageData The image data with which to create the creature's display.
      */
-    Creature();
+    Creature(const std::string& imageData);
 
 	/**
 	 * @brief The creature has died.
@@ -132,12 +135,17 @@ class Creature : public Entity, public PhaseMovementListener
      */
     void mMovedToWaypoint();
 
+    /**
+     * @brief Update the facing direction animation.
+     */
+    void mUpdateFacingAnimation();
+
     // The four directionals.
     bool mUp, mDown, mLeft, mRight;
 
     private:
-    double mSpeed,// The speed at which this creature is moving. (1.0 is 100% speed, but higher is faster, etc...)
-    	   mCurrentSpeed;// The current speed of the creature (creatures move slowly at first until they reach their regular speed.
+    // The speed at which this creature is moving. (1.0 is 100% speed, but higher is faster, etc...)
+    double mSpeed;
 
     // True if the creature is moving.
     Timer mMovementTimer;
@@ -150,6 +158,22 @@ class Creature : public Entity, public PhaseMovementListener
 
     // The movability state.
     bool mMovable;
+
+    // The 9 facing directions.
+    typedef enum
+    {
+    	FACINGDIRECTION_NEUTRAL = 0,
+    	FACINGDIRECTION_UP = 1,
+    	FACINGDIRECTION_UPRIGHT = 2,
+    	FACINGDIRECTION_RIGHT = 3,
+    	FACINGDIRECTION_DOWNRIGHT = 4,
+    	FACINGDIRECTION_DOWN = 5,
+    	FACINGDIRECTION_DOWNLEFT = 6,
+    	FACINGDIRECTION_LEFT = 7,
+    	FACINGDIRECTION_UPLEFT = 8,
+    	FACINGDIRECTION_INVALID
+    } FacingDirection;
+    AnimatedSprite mDirections[9];
 };
 
 #endif

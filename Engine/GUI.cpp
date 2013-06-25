@@ -16,6 +16,8 @@ GUI::GUI()
 
 GUI::~GUI()
 {
+//	CEGUI::WindowManager::getSingleton().destroyAllWindows();//@fixme needed?
+//	CEGUI::WindowManager::getSingleton().cleanDeadPool();
 	CEGUI::OpenGLRenderer::destroySystem();
 }
 

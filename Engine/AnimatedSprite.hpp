@@ -33,6 +33,8 @@ class AnimatedSprite : public sf::Drawable, public sf::Transformable
 	 * @param speed Optional parameter to set the amount of time (in ms) between displaying the next image.
 	 */
 	AnimatedSprite(unsigned int speed = 100);
+	AnimatedSprite(const AnimatedSprite& copy);
+	AnimatedSprite& operator=(const AnimatedSprite& copy);
 	virtual ~AnimatedSprite();
 
 	/**
@@ -155,7 +157,7 @@ class AnimatedSprite : public sf::Drawable, public sf::Transformable
 	std::list<std::pair<const sf::Texture&, sf::IntRect> > mAnimation;
 
 	// The current image.
-	std::list<std::pair<const sf::Texture&, sf::IntRect> >::iterator mAnimationFrame;
+	std::list<std::pair<const sf::Texture&, sf::IntRect> >::const_iterator mAnimationFrame;
 
 	// The length of time (in ms) between displaying images.
 	unsigned int mAnimationSpeed;

@@ -7,8 +7,13 @@
 #ifndef PLAYER_H_
 #define PLAYER_H_
 
+#include <list>
+
 #include "../Entities/Creature.hpp"
 #include "../Listeners/InputListener.hpp"
+#include "../Listeners/KeyPickedUpListener.hpp"
+
+class Level;
 
 /**
  * @brief The player class.
