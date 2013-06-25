@@ -11,8 +11,7 @@
 using std::abs;
 using std::list;
 using std::pair;
-#include <iostream>
-using namespace std;//@todo remove when done.
+
 AnimatedSprite::AnimatedSprite(unsigned int speed) :
 	mAnimationSpeed(speed),
 	mAlpha(0)
@@ -34,6 +33,10 @@ AnimatedSprite::AnimatedSprite(const AnimatedSprite& copy) :
 		mAnimation.push_back(*it);
 	mAnimationFrame = mAnimation.begin();
 
+	// Update the position information.
+	mUpdatePositions();
+	mUpdateTexCoords();
+
 	// Start the timer.
 	mAnimationTimer.start();
 }
@@ -48,6 +51,10 @@ AnimatedSprite& AnimatedSprite::operator=(const AnimatedSprite& copy)
 		for(list<pair<const sf::Texture&, sf::IntRect> >::const_iterator it = copy.mAnimation.begin(); it != copy.mAnimation.end(); ++it)
 			mAnimation.push_back(*it);
 		mAnimationFrame = mAnimation.begin();
+
+		// Update the position information.
+		mUpdatePositions();
+		mUpdateTexCoords();
 
 		// Start the timer.
 		mAnimationTimer.start();
@@ -77,8 +84,7 @@ void AnimatedSprite::mUpdateTexCoords()
     float right  = left + mAnimationFrame->second.width;
     float top    = static_cast<float>(mAnimationFrame->second.top);
     float bottom = top + mAnimationFrame->second.height;
-//cout << "!" << left << ", " << top << " - " << right << ", " << bottom << endl;
-//    cout << "!!: " << mAnimationFrame->second.left << ", " << mAnimationFrame->second.top << " - " << mAnimationFrame->second.width << ", " << mAnimationFrame->second.height << endl;
+
     mVertices[0].texCoords = sf::Vector2f(left, top);
     mVertices[1].texCoords = sf::Vector2f(left, bottom);
     mVertices[2].texCoords = sf::Vector2f(right, bottom);
@@ -92,18 +98,8 @@ void AnimatedSprite::addFrame(const sf::Texture& frame)
 
 void AnimatedSprite::addFrame(const sf::Texture& frame, const sf::IntRect& drawArea)
 {
-//	static int TEMPTEMP = 0;
-//	if(drawArea.width == 19)
-//	{
-//		TEMPTEMP++;
-//		if(TEMPTEMP == 4)
-//		{
-//			AnimatedSprite* z = 0;
-//			z->getAlpha();
-//		}
-//	}
+
 	mAnimation.push_back(pair<const sf::Texture&, sf::IntRect>(frame, drawArea));
-//cout << drawArea.left << ", " << drawArea.top << " - " << drawArea.width << ", " << drawArea.height << endl;
 	if(mAnimationFrame == mAnimation.end())
 	{
 		mAnimationFrame = mAnimation.begin();
@@ -188,7 +184,7 @@ void AnimatedSprite::logic()
 	// If the animation is empty, don't do anything.
 	if(mAnimation.empty())
 		return;
-//	cout << "!!: " << mAnimationFrame->second.left << ", " << mAnimationFrame->second.top << " - " << mAnimationFrame->second.width << ", " << mAnimationFrame->second.height << endl;
+
 	// If the frame has finished displaying, go to the next frame.
 	if(mAnimationTimer.getTime() >= mAnimationSpeed)
 	{

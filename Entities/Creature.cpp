@@ -29,8 +29,7 @@ using std::string;
 using std::vector;
 
 const unsigned int CREATURE_MOVEMENT_DISTANCE = 1;
-#include <iostream>
-using namespace std;//@todo remove when done
+
 void fillAnimationData(vector<unsigned int>& dList, const string& data)
 {
 	string::size_type pos = 0;
