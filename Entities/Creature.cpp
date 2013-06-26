@@ -187,8 +187,10 @@ void Creature::logic(Level& level, int delta)
 		// If we're moving, then do the generic stuff.
 		if(mMovementTimer.getTime() > 15)
 		{
+			// Handle acceleration.
+			mCurrentSpeed  = mCurrentSpeed + 0.05 < getSpeed() ? mCurrentSpeed + 0.05 : getSpeed(); // Increment the current speed, but cap it at mSpeed.
 
-			float dist = getSpeed() * delta;
+			float dist = mCurrentSpeed * delta;
 			if(mUp)
 			{
 				setY(getY() - dist);
