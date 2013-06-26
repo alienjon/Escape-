@@ -29,7 +29,8 @@ using std::string;
 using std::vector;
 
 const unsigned int CREATURE_MOVEMENT_DISTANCE = 1;
-
+#include <iostream>
+using namespace std;//@todo remove when done
 void fillAnimationData(vector<unsigned int>& dList, const string& data)
 {
 	string::size_type pos = 0;
@@ -40,18 +41,21 @@ void fillAnimationData(vector<unsigned int>& dList, const string& data)
 Creature::Creature(const string& imageData) :
 	mUp(false), mDown(false), mLeft(false), mRight(false),
 	mSpeed(1.f),
+	mCurrentSpeed(0.f),
 	mMovable(true)
 {
 	// Initializations.
 	mType = ENTITY_CREATURE;
     mMovementTimer.start();
+    for(int i = 0; i != 9; ++i) // Populate the directions sprite.
+    	mDirections.push_back(AnimatedSprite());
 
     // Load the image data and process the images.
     ifstream dataFile;
     dataFile.open(imageData.c_str(), ifstream::in);
     string line, keyword, value, metaImage;
     sf::IntRect imageArea(0, 0, 0, 0);
-    vector<unsigned int> frameData[9]; // An array of lists of IDs. Each ID represents an image in the frame for the referring image in the array.
+    vector<unsigned int> frameData[9] = {vector<unsigned int>(), vector<unsigned int>(), vector<unsigned int>(), vector<unsigned int>(), vector<unsigned int>(), vector<unsigned int>(), vector<unsigned int>(), vector<unsigned int>(), vector<unsigned int>()}; // An array of lists of IDs. Each ID represents an image in the frame for the referring image in the array.
     unsigned int animation_speed = 100;
     if(dataFile.good())
     {
@@ -183,6 +187,7 @@ void Creature::logic(Level& level, int delta)
 		// If we're moving, then do the generic stuff.
 		if(mMovementTimer.getTime() > 15)
 		{
+
 			float dist = getSpeed() * delta;
 			if(mUp)
 			{
@@ -226,14 +231,19 @@ void Creature::logic(Level& level, int delta)
 		}
 	}
 
-	// If the creature is moving to a waypoint and all directions have stopped moving, go to the next waypoint.
-	if(!mWaypoints.empty() && (!mUp && !mDown && !mLeft && !mRight))
+	// Run any logic for the creature having stopped moving.
+	if(!mUp && !mDown && !mLeft && !mRight)
 	{
-		mWaypoints.pop();
-		mMovedToWaypoint();
+		// Reset the acceleration counter.
+		mCurrentSpeed = 0.f;
 
-		// Update the facing direction.
-		mUpdateFacingAnimation();
+		// If the creature is moving to a waypoint, then go to the next waypoint.
+		if(!mWaypoints.empty())
+		{
+			mWaypoints.pop(); // Go to the next waypoint.
+			mMovedToWaypoint(); // Run any 'moved to waypoint' code.
+			mUpdateFacingAnimation(); // Update the facing direction.
+		}
 	}
 
     // Call the entity's logic.

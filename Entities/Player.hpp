@@ -25,6 +25,7 @@ class Player : public Creature, public InputListener
      * @brief Construct a new player.
      */
     Player();
+    virtual ~Player();
 
     /**
      * @brief This player is colliding/interacting with an entity.
@@ -48,7 +49,7 @@ class Player : public Creature, public InputListener
     	mHasInput = state;
     }
 
-	protected:
+	private:
 	/**
 	 * This is the distance in front of the player that will be used when the player presses the action button.
 	 */

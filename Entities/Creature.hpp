@@ -145,7 +145,7 @@ class Creature : public Entity, public PhaseMovementListener
 
     private:
     // The speed at which this creature is moving. (1.0 is 100% speed, but higher is faster, etc...)
-    double mSpeed;
+    double mSpeed, mCurrentSpeed;
 
     // True if the creature is moving.
     Timer mMovementTimer;
@@ -173,7 +173,7 @@ class Creature : public Entity, public PhaseMovementListener
     	FACINGDIRECTION_UPLEFT = 8,
     	FACINGDIRECTION_INVALID
     } FacingDirection;
-    AnimatedSprite mDirections[9];
+    std::vector<AnimatedSprite> mDirections;
 };
 
 #endif

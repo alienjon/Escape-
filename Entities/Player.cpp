@@ -21,6 +21,9 @@ Player::Player() :
     setSpeed(1.f);
 }
 
+Player::~Player()
+{}
+
 void Player::collide(Entity& entity)
 {
 	// The player doesn't do any collision work.  If a collision does occur, then
