@@ -15,9 +15,6 @@
 //const string GAMEOPTIONS_MAINMENU = "GAMEOPTIONS_MAINMENU";
 //const string GAMEOPTIONS_EXIT = "GAMEOPTIONS_EXIT";
 //
-//#include <iostream>
-//using namespace std;//@todo remove
-//
 //GameOptionsWidget::GameOptionsWidget() :
 //	mResumeButton("RESUME"),
 //	mOptionsButton("GAME OPTIONS"),

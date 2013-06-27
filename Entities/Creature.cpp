@@ -29,8 +29,8 @@ using std::string;
 using std::vector;
 
 const unsigned int CREATURE_MOVEMENT_DISTANCE = 1;
-#include <iostream>
-using namespace std;//@todo remove when done
+const double CREATURE_ACCELERATION_RATE = 0.075;
+
 void fillAnimationData(vector<unsigned int>& dList, const string& data)
 {
 	string::size_type pos = 0;
@@ -188,7 +188,7 @@ void Creature::logic(Level& level, int delta)
 		if(mMovementTimer.getTime() > 15)
 		{
 			// Handle acceleration.
-			mCurrentSpeed  = mCurrentSpeed + 0.05 < getSpeed() ? mCurrentSpeed + 0.05 : getSpeed(); // Increment the current speed, but cap it at mSpeed.
+			mCurrentSpeed = mCurrentSpeed + CREATURE_ACCELERATION_RATE < getSpeed() ? mCurrentSpeed + CREATURE_ACCELERATION_RATE : getSpeed(); // Increment the current speed, but cap it at mSpeed.
 
 			float dist = mCurrentSpeed * delta;
 			if(mUp)

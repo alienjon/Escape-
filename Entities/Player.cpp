@@ -11,7 +11,7 @@
 using std::list;
 
 Player::Player() :
-	Creature(IMAGE_PLAYER),
+	Creature(DATA_PLAYER),
 	mHasInput(true)
 {
     // This is the player.

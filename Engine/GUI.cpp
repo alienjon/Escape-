@@ -16,14 +16,12 @@ GUI::GUI()
 
 GUI::~GUI()
 {
-//	CEGUI::WindowManager::getSingleton().destroyAllWindows();//@fixme needed?
-//	CEGUI::WindowManager::getSingleton().cleanDeadPool();
 	CEGUI::OpenGLRenderer::destroySystem();
 }
 
 void GUI::initialize()
 {
-	// Boodstrap the system.
+	// Bootstrap the system.
 	CEGUI::OpenGLRenderer::bootstrapSystem();
 
 	// Load the resource groups.

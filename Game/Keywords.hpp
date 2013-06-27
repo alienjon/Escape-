@@ -25,6 +25,9 @@ extern const std::string ACTION_STARTGAME_NORMAL;
 extern const std::string ACTION_UNPAUSE;
 extern const std::string ACTION_QUIT;
 
+// Data information.
+extern const std::string DATA_PLAYER;
+
 // These are the fonts.
 extern const std::string FONT_DEFAULT;
 extern const std::string FONT_TEXT;
@@ -41,7 +44,6 @@ extern const std::string IMAGE_ITEM_NULLIFY;
 extern const std::string IMAGE_ITEM_PHASE;
 extern const std::string IMAGE_KEY;
 extern const std::string IMAGE_PICKUP;
-extern const std::string IMAGE_PLAYER;
 extern const std::string IMAGE_PORTAL;
 extern const std::string IMAGE_SLOWPLAYER;
 extern const std::string IMAGE_SURPRISEPICKUP;

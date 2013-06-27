@@ -65,11 +65,10 @@ void Game::mGameSetup()
 //	mLoadResources();@todo I'm currently loading resources on the fly.  Implement file loading in advance.
 
 	// Run the game screens.
-	mScreens.push_back(new GameScreen(7, NORMAL));
 	//@todo implement when done testing gamescreen.
-//    // If the game is being debugged, then skip to the game screen.
+	// If the game is being debugged, then skip to the game screen.
 //    if(Engine::isDebug())
-//    	mScreens.push_back(new GameScreen(5));
+		mScreens.push_back(new GameScreen(7, NORMAL));
 //    else
 //    {
 //		/* The screens load in the following order:
@@ -77,7 +76,7 @@ void Game::mGameSetup()
 //		  2) Game credits.
 //		  3) Loading screen.
 //		  4) Main menu.*/
-//		mScreens.push_back(new SpriteCreditScreen(VideoManager::loadSurface(FILE_THETRUSTCREDIT_IMAGE), 2000, 750, 750));@todo remove when done testing
+//		mScreens.push_back(new SpriteCreditScreen(VideoManager::loadSurface(FILE_THETRUSTCREDIT_IMAGE), 2000, 750, 750));
 //		mScreens.push_back(new SpriteCreditScreen(VideoManager::loadSurface(FILE_ESCAPECREDIT_IMAGE), 2000));
 //		mScreens.push_back(new MenuScreen());
 //    }

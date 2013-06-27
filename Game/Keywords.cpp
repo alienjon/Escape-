@@ -24,6 +24,9 @@ const string ACTION_STARTGAME_NORMAL = "ACTION_STARTGAME_NORMAL";
 const string ACTION_UNPAUSE = "ACTION_UNPAUSE";
 const string ACTION_QUIT = "ACTION_QUIT";
 
+// Data information.
+const string DATA_PLAYER = "Images/player.dat";
+
 // These are the images.
 const string IMAGE_DIRECTIONAL_ARROW_UP = "Images/arrow_up.png";
 const string IMAGE_DIRECTIONAL_ARROW_DOWN = "Images/arrow_down.png";
@@ -34,7 +37,6 @@ const string IMAGE_ITEM_NULLIFY = "Images/nullify.png";
 const string IMAGE_ITEM_PHASE = "Images/phase.png";
 const string IMAGE_KEY = "Images/key.png";
 const string IMAGE_PICKUP = "Images/pickup.png";
-const string IMAGE_PLAYER = "Images/player.dat";//@todo if I am staying with data files then I'll want to rearrange this in the keywords files.
 const string IMAGE_PORTAL = "Images/portal.png";
 const string IMAGE_FLIPSCREEN = "Images/rotate.png";
 const string IMAGE_SLOWPLAYER = "Images/slowplayer.png";

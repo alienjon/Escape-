@@ -227,7 +227,6 @@ bool Engine::handleInput(const sf::Event& event)
 		}
 
 		// Toggle fullscreen.
-		//@todo I can do this without the screen flickering.  It's changing the scale/window decorations.  Look into it?
 		if(event.key.code == sf::Keyboard::Return && event.key.control)
 		{
 			RendererContext c = getContext();
@@ -347,7 +346,10 @@ void Engine::updateContext(const RendererContext& context)
 	mContext = context;
 
 	// Recreate the renderer.
-	mRenderer.create(mContext.mVideoMode, GAME_NAME, (mContext.mFullscreen) ? sf::Style::Fullscreen : sf::Style::Titlebar, mContext.mContextSettings);
+	if(mContext.mFullscreen)
+		mRenderer.create(sf::VideoMode::getFullscreenModes().front(), GAME_NAME, sf::Style::Fullscreen, mContext.mContextSettings);
+	else
+		mRenderer.create(mContext.mVideoMode, GAME_NAME, sf::Style::Titlebar, mContext.mContextSettings); // Resolution changes only affect windowed mode
 
 	// Set other options that are defaulted when the renderer is re-created.
 	mRenderer.setKeyRepeatEnabled(false);

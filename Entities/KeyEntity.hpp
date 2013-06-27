@@ -56,7 +56,7 @@ class KeyEntity : public Entity
 	bool mIsGrowing;
 
 	// The drawing area of the entity.
-	sf::Vector2f mSize;//@todo check the growing/shrinking of the keys.
+	sf::Vector2f mSize;
 
 	// The animation timer.
 	Timer mTimer;
