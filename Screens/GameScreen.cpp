@@ -125,10 +125,6 @@ GameScreen::~GameScreen()
 
 	// Remove any needed listeners.
 	mTimerWidget.removeTimeUpListener(this);
-
-	// Delete the resolution items.
-	for(list<CEGUI::ListboxTextItem*>::const_iterator it(mResolutionOptions.begin()); it != mResolutionOptions.end(); ++it)
-		delete *it;
 }
 
 bool GameScreen::_handlerShowAudioOptions(const CEGUI::EventArgs& eArgs)

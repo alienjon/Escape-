@@ -170,7 +170,7 @@ class GameScreen : public ChangeScoreListener, public TimeChangeInterface, publi
     // Internal widgets.
     CEGUI::FrameWindow *mOptionsWidget, *mVideoOptionsWidget, *mAudioOptionsWidget, *mLevelComplete;
     CEGUI::Window *mLevelCompleteText;
-    std::list<CEGUI::ListboxTextItem*> mResolutionOptions;
+    std::list<CEGUI::ListboxTextItem*> mResolutionOptions; // @note CEGUI handles memory management for itself.  I don't need to clear these later.
     TimerWidget mTimerWidget;
     ScoreDisplay mScoreWidget;
 
