@@ -8,7 +8,7 @@ ScreenWidth:1024
 ScreenHeight:768
 ScreenBPP:32
 VerticalSync:true
-Fullscreen:true
+Fullscreen:false
 BitDepth:0
 StencilBits:0
 Antialiasing:8

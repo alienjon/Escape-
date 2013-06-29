@@ -18,9 +18,6 @@
 #include "../main.hpp"
 #include "../Entities/Pickup.hpp"
 #include "../Entities/Player.hpp"
-#include "../Entities/SpeedChange.hpp"
-#include "../Entities/SurprisePickup.hpp"
-#include "../Entities/TimeChange.hpp"
 
 using std::invalid_argument;
 using std::list;
@@ -85,7 +82,7 @@ Level::Level(unsigned int difficulty, Player& player) :
 	key->setPosition(key_x * MAP_CELL_SIDE * mMap.getTileset().getWidth() + x_offset,
 					 key_y * MAP_CELL_SIDE * mMap.getTileset().getHeight()+ y_offset);
 
-	// Finally, populate the rest of the map with stuff.
+	// Finally, populate the rest of the map with point pickups.
 	for(unsigned int h = 0; h != height; ++h)
 	{
 		for(unsigned int w = 0; w != width; ++w)
@@ -100,43 +97,11 @@ Level::Level(unsigned int difficulty, Player& player) :
 			int x = (w * MAP_CELL_SIDE * mMap.getTileset().getWidth()) + x_offset,
 				y = (h * MAP_CELL_SIDE * mMap.getTileset().getHeight()) + y_offset;
 
-			// A likely entity to be created.
-			Entity* entity = 0;
-			/**
-			 * @todo items
-			 */
-			int n = random(1, 100);
-			if(n <= 10)
-				entity = new SurprisePickup(*this);
-			else if(n <= 13)
-			{
-				entity = new Pickup(75, sf::Color::Magenta, Pickup::SMALL);
-				mPickups.push_back(entity);
-			}
-			else if(n <= 20)
-				entity = new Pickup(-50, sf::Color::Red, Pickup::LARGE);
-			else if(n <= 23)
-			{
-				TimeChange* tmp = new TimeChange();
-				tmp->addTimeChangeListener(this);
-				entity = tmp;
-			}
-			else if(n <= 26)
-				entity = new SpeedChange(0.5, mPlayer);
-			else if(n <= 35)
-				entity = new SpeedChange(1.75, mPlayer);
-			else
-			{
-				entity = new Pickup(5, sf::Color::Magenta, Pickup::MEDIUM);
-				mPickups.push_back(entity);
-			}
-
-			// If an entity was created, configure it.
-			if(entity)
-			{
-				entity->setPosition(x, y);
-				mAddEntity(entity);
-			}
+			// The entity to create.
+			Entity* entity = new Pickup(5, sf::Color::Magenta, Pickup::LARGE);
+			mPickups.push_back(entity);
+			entity->setPosition(x, y);
+			mAddEntity(entity);
 		}
 	}
 }
